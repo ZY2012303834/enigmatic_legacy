@@ -22,10 +22,10 @@ public class ItemGenerator extends ItemModelProvider {
     protected void registerModels() {
         basicItem(ModItems.ASTRAL_DUST.getId());    // 星尘
         basicItem(ModItems.ENDER_ROD.getId());      // 末影棒
-        basicItem(ModItems.ETHERIUM_ORE.getId());   //
-        basicItem(ModItems.ETHERIUM_INGOT.getId());
-        basicItem(ModItems.THICC_SCROLL.getId());
-        basicItem(ModItems.DARKEST_SCROLL.getId());
-        basicItem(ModItems.COSMIC_HEART.getId());
+        basicItem(ModItems.ETHERIUM_ORE.getId());   // 以太矿石
+        basicItem(ModItems.ETHERIUM_INGOT.getId()); // 以太锭
+        basicItem(ModItems.THICC_SCROLL.getId());   // 空卷轴
+        basicItem(ModItems.DARKEST_SCROLL.getId()); // 至暗卷轴
+        basicItem(ModItems.COSMIC_HEART.getId());   // 寰宇之心
     }
 }
