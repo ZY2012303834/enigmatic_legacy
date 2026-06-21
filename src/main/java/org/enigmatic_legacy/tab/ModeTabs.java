@@ -3,11 +3,14 @@ package org.enigmatic_legacy.tab;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionContents;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.item.ModItems;
+import org.enigmatic_legacy.potion.ModPotions;
 
 public final class ModeTabs {
 
@@ -41,6 +44,7 @@ public final class ModeTabs {
                         output.accept(ModItems.STORAGE_CRYSTAL.get());
                         output.accept(ModItems.SOUL_CRYSTAL.get());
                         output.accept(ModItems.TWISTED_MIRROR.get()); // 扭曲魔镜
+                        output.accept(PotionContents.createItemStack(Items.POTION, ModPotions.RECALL)); // 召回药水
                     })
                     .build());
 

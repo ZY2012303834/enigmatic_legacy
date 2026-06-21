@@ -10,11 +10,16 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionContents;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.neoforged.neoforge.common.crafting.DataComponentIngredient;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.block.ModBlocks;
 import org.enigmatic_legacy.item.ModItems;
+import org.enigmatic_legacy.potion.ModPotions;
 import org.jetbrains.annotations.NotNull;
 
 public class RecipeGenerator extends RecipeProvider {
@@ -162,13 +167,23 @@ public class RecipeGenerator extends RecipeProvider {
                 .save(output);
 
         // 扭曲魔镜
+        ItemStack recallPotion = PotionContents.createItemStack(
+                Items.POTION,
+                ModPotions.RECALL
+        );
+
+        Ingredient recallPotionIngredient = DataComponentIngredient.of(
+                false,
+                recallPotion
+        );
+
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.TWISTED_MIRROR.get())
                 .pattern("IGI")
-                .pattern("EXE")
+                .pattern("PXP")
                 .pattern(" I ")
                 .define('I', Items.IRON_INGOT)
                 .define('G', Items.GLASS_PANE)
-                .define('E', Items.ENDER_PEARL)
+                .define('P', recallPotionIngredient)
                 .define('X', ModItems.TWISTED_HEART.get())
                 .unlockedBy("has_twisted_heart", has(ModItems.TWISTED_HEART.get()))
                 .save(output);

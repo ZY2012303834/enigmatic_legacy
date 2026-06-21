@@ -20,6 +20,8 @@ import org.enigmatic_legacy.generator.ItemGenerator;
 import org.enigmatic_legacy.generator.LanguageGenerator;
 import org.enigmatic_legacy.generator.RecipeGenerator;
 import org.enigmatic_legacy.item.ModItems;
+import org.enigmatic_legacy.potion.ModEffects;
+import org.enigmatic_legacy.potion.ModPotions;
 import org.enigmatic_legacy.tab.ModeTabs;
 
 @Mod(EnigmaticLegacy.MODID)
@@ -35,6 +37,9 @@ public class EnigmaticLegacy {
         ModItems.register(modEventBus);
         ModEntities.register(modEventBus);
         ModeTabs.register(modEventBus);
+
+        ModEffects.register(modEventBus);
+        ModPotions.register(modEventBus);
 
         modEventBus.addListener(BlockGenerator::gatherData);
         modEventBus.addListener(ItemGenerator::gatherData);
