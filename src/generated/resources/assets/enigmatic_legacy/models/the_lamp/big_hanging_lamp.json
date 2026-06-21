@@ -452,23 +452,23 @@
     },
     {
       "faces": {
-        "down": {
-          "texture": "#lantern"
-        },
-        "east": {
-          "texture": "#lantern"
-        },
         "north": {
-          "texture": "#lantern"
+          "texture": "#lantern",
+          "uv": [
+            11.0,
+            1.0,
+            14.0,
+            5.0
+          ]
         },
         "south": {
-          "texture": "#lantern"
-        },
-        "up": {
-          "texture": "#lantern"
-        },
-        "west": {
-          "texture": "#lantern"
+          "texture": "#lantern",
+          "uv": [
+            11.0,
+            1.0,
+            14.0,
+            5.0
+          ]
         }
       },
       "from": [
@@ -476,31 +476,41 @@
         12,
         8
       ],
+      "rotation": {
+        "angle": 45.0,
+        "axis": "y",
+        "origin": [
+          8,
+          9,
+          8
+        ]
+      },
+      "shade": false,
       "to": [
         9.5,
         16,
-        8.05
+        8
       ]
     },
     {
       "faces": {
-        "down": {
-          "texture": "#lantern"
-        },
         "east": {
-          "texture": "#lantern"
-        },
-        "north": {
-          "texture": "#lantern"
-        },
-        "south": {
-          "texture": "#lantern"
-        },
-        "up": {
-          "texture": "#lantern"
+          "texture": "#lantern",
+          "uv": [
+            11.0,
+            6.0,
+            14.0,
+            12.0
+          ]
         },
         "west": {
-          "texture": "#lantern"
+          "texture": "#lantern",
+          "uv": [
+            11.0,
+            6.0,
+            14.0,
+            12.0
+          ]
         }
       },
       "from": [
@@ -508,8 +518,18 @@
         11,
         6.5
       ],
+      "rotation": {
+        "angle": 45.0,
+        "axis": "y",
+        "origin": [
+          8,
+          9,
+          8
+        ]
+      },
+      "shade": false,
       "to": [
-        8.05,
+        8,
         17,
         9.5
       ]

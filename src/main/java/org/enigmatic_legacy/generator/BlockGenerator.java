@@ -46,6 +46,7 @@ public class BlockGenerator extends BlockStateProvider {
 
         simpleBlockWithItem(ModBlocks.ETHERIUM_BLOCK.get(), cubeAll(ModBlocks.ETHERIUM_BLOCK.get()));   // 以太块
 
+        //大灯笼
         getVariantBuilder(ModBlocks.BIG_LAMP.get())
                 .partialState()
                 .with(LanternBlock.HANGING, false)
@@ -58,7 +59,7 @@ public class BlockGenerator extends BlockStateProvider {
                 .modelFile(bigHangingLampModel())
                 .addModel();
 
-        simpleBlockItem(ModBlocks.BIG_LAMP.get(), bigLampModel());
+        simpleBlockItem(ModBlocks.BIG_LAMP.get(), bigLampModel());  //大灯笼
     }
 
     private ModelFile bigLampModel() {
@@ -123,11 +124,35 @@ public class BlockGenerator extends BlockStateProvider {
         cube(model, 5, 13, 5, 11, 14, 11, "#lantern");
 
         // 悬挂部分：用两个薄片模拟灯笼挂钩/吊链
-        cube(model, 6.5F, 12, 8, 9.5F, 16, 8.05F, "#lantern");
-        cube(model, 8, 11, 6.5F, 8.05F, 17, 9.5F, "#lantern");
+        model.element()
+                .from(6.5F, 12F, 8F)
+                .to(9.5F, 16F, 8F)
+                .shade(false)
+                .rotation()
+                .angle(45F)
+                .axis(Direction.Axis.Y)
+                .origin(8F, 9F, 8F)
+                .end()
+                .face(Direction.NORTH).uvs(11F, 1F, 14F, 5F).texture("#lantern").end()
+                .face(Direction.SOUTH).uvs(11F, 1F, 14F, 5F).texture("#lantern").end()
+                .end();
+
+        model.element()
+                .from(8F, 11F, 6.5F)
+                .to(8F, 17F, 9.5F)
+                .shade(false)
+                .rotation()
+                .angle(45F)
+                .axis(Direction.Axis.Y)
+                .origin(8F, 9F, 8F)
+                .end()
+                .face(Direction.EAST).uvs(11F, 6F, 14F, 12F).texture("#lantern").end()
+                .face(Direction.WEST).uvs(11F, 6F, 14F, 12F).texture("#lantern").end()
+                .end();
 
         return model;
     }
+
 
     private static void cube(
             BlockModelBuilder model,
