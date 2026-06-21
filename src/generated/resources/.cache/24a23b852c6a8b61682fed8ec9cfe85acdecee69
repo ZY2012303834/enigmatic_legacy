@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-21T11:48:42.1338961	vanilla/Block States: enigmatic_legacy
+// 1.21.1	2026-06-21T11:57:16.3488287	vanilla/Block States: enigmatic_legacy
 c58c2fcab4f20cc1c35d28f62b6dda31f5264004 assets/enigmatic_legacy/blockstates/astral_dust_sack.json
 14c67d867a1de63fc80cf1a4ed6d99e8a05786c2 assets/enigmatic_legacy/blockstates/big_lamp.json
 8f8aaf5d20e89632ee2f3e94c6e22b4137a908a1 assets/enigmatic_legacy/blockstates/big_shroomlamp.json
@@ -15,4 +15,4 @@ f1ffaff1d9554196b63dd0dee525fc06388511e7 assets/enigmatic_legacy/models/the_lamp
 f8093f3a10f31ec2f2f0ffa81be488e9ed31f6d9 assets/enigmatic_legacy/models/the_lamp/big_hanging_shroomlamp.json
 15a63c662673f256f62d356bb089092fa2ed7664 assets/enigmatic_legacy/models/the_lamp/big_lamp.json
 2bd018fa8a85331280a5474a7a09ce6a178acb8b assets/enigmatic_legacy/models/the_lamp/big_shroomlamp.json
-b432a7acfe65e20da44f9a595440b11c7e5672da assets/enigmatic_legacy/models/the_lamp/massive_lamp.json
+9164d9a3638da4ee52fcb44ff2974088c820affe assets/enigmatic_legacy/models/the_lamp/massive_lamp.json

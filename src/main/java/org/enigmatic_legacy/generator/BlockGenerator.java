@@ -135,25 +135,28 @@ public class BlockGenerator extends BlockStateProvider {
                 .texture("lampcore", modLoc("block/the_lamp"))
                 .texture("particle", modLoc("block/plate"));
 
-        // 外层玻璃壳
-        cube(model, 0, 0, 0, 16, 16, 16, "#casing");
+        // 外层玻璃壳：薄面版本，避免完整透明方块造成闪烁
+        cube(model, 0, 0, 0, 16, 16, 0.1F, "#casing");
+        cube(model, 0, 0, 15.9F, 16, 16, 16, "#casing");
+        cube(model, 0, 0, 0, 0.1F, 16, 16, "#casing");
+        cube(model, 15.9F, 0, 0, 16, 16, 16, "#casing");
+        cube(model, 0, 15.9F, 0, 16, 16, 16, "#casing");
+        cube(model, 0, 0, 0, 16, 0.1F, 16, "#casing");
 
         // 内部发光核心
         cube(model, 3, 3, 3, 13, 13, 13, "#lampcore");
 
-        // 底部金属框
+        // 金属框
         cube(model, 1, 1, 1, 15, 3, 3, "#metalplate");
         cube(model, 1, 1, 13, 15, 3, 15, "#metalplate");
         cube(model, 1, 1, 1, 3, 3, 15, "#metalplate");
         cube(model, 13, 1, 1, 15, 3, 15, "#metalplate");
 
-        // 顶部金属框
         cube(model, 1, 13, 1, 15, 15, 3, "#metalplate");
         cube(model, 1, 13, 13, 15, 15, 15, "#metalplate");
         cube(model, 1, 13, 1, 3, 15, 15, "#metalplate");
         cube(model, 13, 13, 1, 15, 15, 15, "#metalplate");
 
-        // 四根竖向边框
         cube(model, 1, 3, 1, 3, 13, 3, "#metalplate");
         cube(model, 13, 3, 1, 15, 13, 3, "#metalplate");
         cube(model, 1, 3, 13, 3, 13, 15, "#metalplate");
