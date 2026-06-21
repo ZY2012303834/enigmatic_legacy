@@ -22,6 +22,7 @@
   "item.enigmatic_legacy.thicc_scroll": "空卷轴",
   "item.enigmatic_legacy.twisted_heart": "扭曲之心",
   "item.enigmatic_legacy.twisted_mirror": "扭曲魔镜",
+  "item.enigmatic_legacy.unholy_grail": "不洁圣杯",
   "item.minecraft.lingering_potion.effect.recall": "滞留型召回药水",
   "item.minecraft.potion.effect.recall": "召回药水",
   "item.minecraft.splash_potion.effect.recall": "喷溅型召回药水",
@@ -71,5 +72,7 @@
   "tooltip.enigmatic_legacy.twisted_mirror1": "将你传送回重生点。",
   "tooltip.enigmatic_legacy.twisted_mirror2": "只能在原版维度中使用。",
   "tooltip.enigmatic_legacy.twisted_mirror3": "需要佩戴七咒之戒。",
+  "tooltip.enigmatic_legacy.unholy_grail1": "饮下其中之物，以汲取禁忌之力。",
+  "tooltip.enigmatic_legacy.unholy_grail2": "无资格者将因傲慢付出代价。",
   "tooltip.enigmatic_legacy.void": ""
 }

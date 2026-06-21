@@ -47,6 +47,7 @@ public final class ModeTabs {
                         output.accept(ModItems.SOUL_CRYSTAL.get());
                         output.accept(ModItems.TWISTED_MIRROR.get()); // 扭曲魔镜
                         output.accept(createRecallPotionStack()); // 召回药水
+                        output.accept(ModItems.UNHOLY_GRAIL.get()); // 不洁圣杯
                     })
                     .build());
 

@@ -87,6 +87,10 @@ public class LanguageGenerator extends LanguageProvider {
         add("item.minecraft.splash_potion.effect.recall", "Splash Potion of Recall");
         add("item.minecraft.lingering_potion.effect.recall", "Lingering Potion of Recall");
         add("item.minecraft.tipped_arrow.effect.recall", "Arrow of Recall");
+
+        addItem(ModItems.UNHOLY_GRAIL, "Unholy Grail");
+        add("tooltip.enigmatic_legacy.unholy_grail1", "Drink from it to draw upon forbidden power.");
+        add("tooltip.enigmatic_legacy.unholy_grail2", "The unworthy will suffer for their arrogance.");
     }
 
     private void addChineseTranslations() {
@@ -143,6 +147,10 @@ public class LanguageGenerator extends LanguageProvider {
         add("item.minecraft.splash_potion.effect.recall", "喷溅型召回药水");
         add("item.minecraft.lingering_potion.effect.recall", "滞留型召回药水");
         add("item.minecraft.tipped_arrow.effect.recall", "召回之箭");
+
+        addItem(ModItems.UNHOLY_GRAIL, "不洁圣杯");
+        add("tooltip.enigmatic_legacy.unholy_grail1", "饮下其中之物，以汲取禁忌之力。");
+        add("tooltip.enigmatic_legacy.unholy_grail2", "无资格者将因傲慢付出代价。");
     }
 
     private void addEnglishCursedRingTooltips() {

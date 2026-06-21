@@ -50,5 +50,6 @@ public class ItemGenerator extends ItemModelProvider {
         // 扭曲魔镜
         withExistingParent("item/twisted_mirror", mcLoc("item/handheld"))
                 .texture("layer0", modLoc("item/twisted_mirror"));
+        basicItem(ModItems.UNHOLY_GRAIL.getId()); // 不洁圣杯
     }
 }

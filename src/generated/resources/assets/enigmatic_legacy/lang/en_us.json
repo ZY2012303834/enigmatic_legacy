@@ -22,6 +22,7 @@
   "item.enigmatic_legacy.thicc_scroll": "Blank Scroll",
   "item.enigmatic_legacy.twisted_heart": "Twisted Heart",
   "item.enigmatic_legacy.twisted_mirror": "Twisted Mirror",
+  "item.enigmatic_legacy.unholy_grail": "Unholy Grail",
   "item.minecraft.lingering_potion.effect.recall": "Lingering Potion of Recall",
   "item.minecraft.potion.effect.recall": "Potion of Recall",
   "item.minecraft.splash_potion.effect.recall": "Splash Potion of Recall",
@@ -71,5 +72,7 @@
   "tooltip.enigmatic_legacy.twisted_mirror1": "Returns you to your spawn point.",
   "tooltip.enigmatic_legacy.twisted_mirror2": "Only works in vanilla dimensions.",
   "tooltip.enigmatic_legacy.twisted_mirror3": "Requires the Ring of the Seven Curses.",
+  "tooltip.enigmatic_legacy.unholy_grail1": "Drink from it to draw upon forbidden power.",
+  "tooltip.enigmatic_legacy.unholy_grail2": "The unworthy will suffer for their arrogance.",
   "tooltip.enigmatic_legacy.void": " "
 }

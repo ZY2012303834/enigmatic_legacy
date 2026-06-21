@@ -32,7 +32,8 @@ public final class ModItems {
     public static final DeferredItem<IronRing> IRON_RING = ITEMS.register("iron_ring", IronRing::new);
     public static final DeferredItem<ExquisiteRing> EXQUISITE_RING = ITEMS.register("golden_ring", ExquisiteRing::new);
     public static final DeferredItem<EvilIngot> EVIL_INGOT = ITEMS.register("evil_ingot", EvilIngot::new);
-    public static final DeferredItem<Item> TWISTED_MIRROR = ITEMS.register("twisted_mirror", TwistedMirror::new); // 扭曲魔镜
+    public static final DeferredItem<TwistedMirror> TWISTED_MIRROR = ITEMS.register("twisted_mirror", TwistedMirror::new); // 扭曲魔镜
+    public static final DeferredItem<UnholyGrail> UNHOLY_GRAIL = ITEMS.register("unholy_grail", UnholyGrail::new); // 不洁圣杯
 
     // 原版名为 storage_crystal，显示名是 Extradimensional Vessel / 超维容器。
     public static final DeferredItem<StorageCrystal> STORAGE_CRYSTAL = ITEMS.register("storage_crystal", StorageCrystal::new);
