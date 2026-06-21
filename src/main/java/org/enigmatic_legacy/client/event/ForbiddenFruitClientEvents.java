@@ -1,5 +1,6 @@
 package org.enigmatic_legacy.client.event;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.player.LocalPlayer;
@@ -62,6 +63,8 @@ public final class ForbiddenFruitClientEvents {
         int right = guiGraphics.guiWidth() / 2 + 91;
         int top = guiGraphics.guiHeight() - 39;
 
+        RenderSystem.enableBlend();
+
         for (int index = 0; index < 10; index++) {
             int x = right - index * 8 - 9;
             int y = top;
@@ -70,7 +73,9 @@ public final class ForbiddenFruitClientEvents {
                 y += Mth.floor(Mth.sin((player.tickCount + index * 13) * 0.55F));
             }
 
-            guiGraphics.blit(GENERIC_ICONS, x, y, 0, 0, 9, 9, 9, 9);
+            guiGraphics.blit(GENERIC_ICONS, x, y, 0, 0, 9, 9, 256, 256);
         }
+
+        RenderSystem.disableBlend();
     }
 }

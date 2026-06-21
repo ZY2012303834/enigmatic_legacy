@@ -1,6 +1,7 @@
-package org.enigmatic_legacy.client;
+package org.enigmatic_legacy.client.event;
 
 import com.mojang.blaze3d.platform.InputConstants;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Button;
@@ -10,17 +11,20 @@ import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
-import net.neoforged.api.distmarker.Dist;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.client.event.ScreenEvent;
-import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.config.ConfigClient;
 import org.enigmatic_legacy.event.EnderRingEvents;
 import org.enigmatic_legacy.util.EnderRingHelper;
+import org.jetbrains.annotations.NotNull;
 import org.lwjgl.glfw.GLFW;
+import top.theillusivec4.curios.client.gui.CuriosScreen;
+
+import java.util.function.BooleanSupplier;
 
 /**
  * 末影之戒客户端事件。
@@ -32,8 +36,14 @@ import org.lwjgl.glfw.GLFW;
  *     <li>向服务器发送打开末影箱命令。</li>
  * </ul>
  */
-@EventBusSubscriber(modid = EnigmaticLegacy.MODID, value = Dist.CLIENT)
 public final class EnderRingClientEvents {
+
+    private static final int INVENTORY_GUI_WIDTH = 176;
+    private static final int INVENTORY_GUI_HEIGHT = 166;
+    private static final int CREATIVE_GUI_WIDTH = 195;
+    private static final int CREATIVE_GUI_HEIGHT = 136;
+    private static final int BUTTON_SIZE = 20;
+    private static final ItemStack ENDER_CHEST_ICON = new ItemStack(Items.ENDER_CHEST);
 
     public static final KeyMapping OPEN_ENDER_CHEST = new KeyMapping(
             "key.enigmatic_legacy.ender_ring",
@@ -62,7 +72,7 @@ public final class EnderRingClientEvents {
     public static void onScreenInit(ScreenEvent.Init.Post event) {
         Screen screen = event.getScreen();
 
-        if (!(screen instanceof InventoryScreen) && !(screen instanceof CreativeModeInventoryScreen)) {
+        if (!isSupportedInventoryScreen(screen)) {
             return;
         }
 
@@ -84,22 +94,36 @@ public final class EnderRingClientEvents {
         int y;
 
         if (screen instanceof CreativeModeInventoryScreen) {
-            x = screen.width / 2 + 90 + ConfigClient.ENDER_RING_BUTTON_OFFSET_X_CREATIVE.get();
-            y = screen.height / 2 - 70 + ConfigClient.ENDER_RING_BUTTON_OFFSET_Y_CREATIVE.get();
+            int left = (screen.width - CREATIVE_GUI_WIDTH) / 2;
+            int top = (screen.height - CREATIVE_GUI_HEIGHT) / 2;
+            x = left + CREATIVE_GUI_WIDTH - BUTTON_SIZE - 12 + ConfigClient.ENDER_RING_BUTTON_OFFSET_X_CREATIVE.get();
+            y = top + 32 + ConfigClient.ENDER_RING_BUTTON_OFFSET_Y_CREATIVE.get();
         } else {
-            x = screen.width / 2 + 76 + ConfigClient.ENDER_RING_BUTTON_OFFSET_X.get();
-            y = screen.height / 2 - 83 + ConfigClient.ENDER_RING_BUTTON_OFFSET_Y.get();
+            int left = (screen.width - INVENTORY_GUI_WIDTH) / 2;
+            int top = (screen.height - INVENTORY_GUI_HEIGHT) / 2;
+            x = left + INVENTORY_GUI_WIDTH - BUTTON_SIZE - 12 + ConfigClient.ENDER_RING_BUTTON_OFFSET_X.get();
+            y = top + 54 + ConfigClient.ENDER_RING_BUTTON_OFFSET_Y.get();
         }
 
-        Button button = Button.builder(
-                        Component.literal("E"),
-                        pressed -> requestOpenEnderChest()
-                )
-                .bounds(x, y, 20, 20)
-                .tooltip(Tooltip.create(Component.translatable("button.enigmatic_legacy.open_ender_chest")))
-                .build();
+        Button button = new EnderChestButton(
+                x,
+                y,
+                () -> shouldShowOnCurrentPage(screen),
+                pressed -> requestOpenEnderChest()
+        );
+        button.setTooltip(Tooltip.create(Component.translatable("button.enigmatic_legacy.open_ender_chest")));
 
         event.addListener(button);
+    }
+
+    private static boolean isSupportedInventoryScreen(Screen screen) {
+        return screen instanceof InventoryScreen
+                || screen instanceof CreativeModeInventoryScreen
+                || screen instanceof CuriosScreen;
+    }
+
+    private static boolean shouldShowOnCurrentPage(Screen screen) {
+        return !(screen instanceof CreativeModeInventoryScreen creativeScreen) || creativeScreen.isInventoryOpen();
     }
 
     private static void requestOpenEnderChest() {
@@ -115,19 +139,34 @@ public final class EnderRingClientEvents {
     /**
      * Mod Bus 客户端事件。
      */
-    @EventBusSubscriber(
-            modid = EnigmaticLegacy.MODID,
-            bus = EventBusSubscriber.Bus.MOD,
-            value = Dist.CLIENT
-    )
-    public static final class ModBusEvents {
+    public static void registerKeyMappings(RegisterKeyMappingsEvent event) {
+        event.register(OPEN_ENDER_CHEST);
+    }
 
-        private ModBusEvents() {
+    private static final class EnderChestButton extends Button {
+
+        private final BooleanSupplier displayCondition;
+
+        private EnderChestButton(int x, int y, BooleanSupplier displayCondition, OnPress onPress) {
+            super(x, y, BUTTON_SIZE, BUTTON_SIZE, Component.empty(), onPress, DEFAULT_NARRATION);
+            this.displayCondition = displayCondition;
         }
 
-        @SubscribeEvent
-        public static void registerKeyMappings(RegisterKeyMappingsEvent event) {
-            event.register(OPEN_ENDER_CHEST);
+        @Override
+        protected void renderWidget(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+            active = displayCondition.getAsBoolean();
+
+            if (!active) {
+                return;
+            }
+
+            super.renderWidget(guiGraphics, mouseX, mouseY, partialTick);
+            guiGraphics.renderItem(ENDER_CHEST_ICON, getX() + 2, getY() + 2);
+        }
+
+        @Override
+        public boolean mouseClicked(double mouseX, double mouseY, int button) {
+            return displayCondition.getAsBoolean() && super.mouseClicked(mouseX, mouseY, button);
         }
     }
 }

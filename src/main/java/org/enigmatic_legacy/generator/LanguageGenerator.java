@@ -82,7 +82,7 @@ public class LanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.twisted_mirror3", "Requires the Ring of the Seven Curses.");
 
         add("effect.enigmatic_legacy.recall", "Recall");
-        add("effect.enigmatic_legacy.forbidden_fruit", "The Forbidden Fruit");
+        add("effect.enigmatic_legacy.forbidden_fruit", "\u00A75The Forbidden Fruit");
 
         add("item.minecraft.potion.effect.recall", "Potion of Recall");
         add("item.minecraft.splash_potion.effect.recall", "Splash Potion of Recall");
@@ -162,7 +162,7 @@ public class LanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.twisted_mirror3", "需要佩戴七咒之戒。");
 
         add("effect.enigmatic_legacy.recall", "召回");
-        add("effect.enigmatic_legacy.forbidden_fruit", "禁忌之果");
+        add("effect.enigmatic_legacy.forbidden_fruit", "\u00A75禁忌之果");
 
         add("item.minecraft.potion.effect.recall", "召回药水");
         add("item.minecraft.splash_potion.effect.recall", "喷溅型召回药水");

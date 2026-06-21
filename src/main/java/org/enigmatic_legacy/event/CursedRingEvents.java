@@ -377,6 +377,10 @@ public class CursedRingEvents {
                 continue;
             }
 
+            if (!CursedRingHelper.canEquipCursedRing(player, "ring", slot)) {
+                return false;
+            }
+
             ItemStack equippedStack = sourceStack.copyWithCount(1);
             ringStacks.setStackInSlot(slot, equippedStack);
             sourceStack.shrink(1);

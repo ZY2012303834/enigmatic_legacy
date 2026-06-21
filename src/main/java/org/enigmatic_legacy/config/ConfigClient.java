@@ -91,8 +91,6 @@ public class ConfigClient {
                 .comment("Whether The Forbidden Fruit replaces vanilla hunger icons with its original custom icons.")
                 .define("ForbiddenFruitReplaceHungerBar", true);
 
-        SPEC = builder.build();
-
         ENDER_RING_BUTTON_ENABLED = builder
                 .comment(
                         "是否在玩家装备末影之戒或七咒之戒时，在背包界面显示打开末影箱的按钮。",
@@ -115,6 +113,8 @@ public class ConfigClient {
         ENDER_RING_BUTTON_OFFSET_Y_CREATIVE = builder
                 .comment("末影之戒按钮在创造模式背包界面的 Y 偏移。")
                 .defineInRange("EnderRingButtonOffsetYCreative", 0, -32768, 32768);
+
+        SPEC = builder.build();
     }
 
     /**

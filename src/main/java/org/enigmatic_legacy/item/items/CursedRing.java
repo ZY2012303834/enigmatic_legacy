@@ -13,6 +13,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.storage.loot.LootContext;
 import org.enigmatic_legacy.config.ConfigClient;
 import org.enigmatic_legacy.config.ConfigCommon;
+import org.enigmatic_legacy.util.CursedRingHelper;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio;
@@ -107,6 +108,20 @@ public class CursedRing extends Item implements ICurioItem {
         }
 
         return false;
+    }
+
+    /**
+     * 七咒之戒只能佩戴一个。
+     * <p>
+     * ring 槽仍然可以保留多个给其他戒指使用，这里只限制七咒之戒本体。
+     */
+    @Override
+    public boolean canEquip(SlotContext context, ItemStack stack) {
+        if (context.entity() instanceof Player player) {
+            return CursedRingHelper.canEquipCursedRing(player, context.identifier(), context.index());
+        }
+
+        return true;
     }
 
     /**

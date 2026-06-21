@@ -6,6 +6,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import org.enigmatic_legacy.EnigmaticLegacy;
+import org.enigmatic_legacy.client.event.EnderRingClientEvents;
 import org.enigmatic_legacy.client.event.ForbiddenFruitClientEvents;
 import org.enigmatic_legacy.client.renderer.PermanentItemRenderer;
 import org.enigmatic_legacy.entity.ModEntities;
@@ -16,6 +17,8 @@ public final class EnigmaticLegacyClient {
     public EnigmaticLegacyClient(IEventBus modEventBus) {
         modEventBus.addListener(ClientItemProperties::onClientSetup);
         modEventBus.addListener(EnigmaticLegacyClient::registerEntityRenderers);
+        modEventBus.addListener(EnderRingClientEvents::registerKeyMappings);
+        NeoForge.EVENT_BUS.register(EnderRingClientEvents.class);
         NeoForge.EVENT_BUS.register(ForbiddenFruitClientEvents.class);
     }
 

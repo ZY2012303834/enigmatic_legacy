@@ -13,6 +13,7 @@ import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.monster.piglin.Piglin;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -43,6 +44,39 @@ public class CursedRingHelper {
         return CuriosApi.getCuriosInventory(player)
                 .map(handler -> handler.findFirstCurio(ModItems.CURSED_RING.get()).isPresent())
                 .orElse(false);
+    }
+
+    /**
+     * 判断指定戒指栏位是否允许放入七咒之戒。
+     * <p>
+     * Curios 的 ring 槽可以有多个，但七咒之戒本身只能佩戴一个。
+     * 如果检查的是当前已经放着七咒之戒的同一个槽位，返回 true，避免 Curios 刷新装备状态时误判。
+     */
+    public static boolean canEquipCursedRing(Player player, String slotIdentifier, int slotIndex) {
+        if (!ConfigCommon.CURSED_RING_ENABLED.get()) {
+            return false;
+        }
+
+        return CuriosApi.getCuriosInventory(player)
+                .flatMap(handler -> handler.getStacksHandler(slotIdentifier))
+                .map(ringHandler -> {
+                    for (int slot = 0; slot < ringHandler.getStacks().getSlots(); slot++) {
+                        ItemStack stack = ringHandler.getStacks().getStackInSlot(slot);
+
+                        if (!stack.is(ModItems.CURSED_RING.get())) {
+                            continue;
+                        }
+
+                        if (slot == slotIndex) {
+                            continue;
+                        }
+
+                        return false;
+                    }
+
+                    return true;
+                })
+                .orElse(true);
     }
 
     /**

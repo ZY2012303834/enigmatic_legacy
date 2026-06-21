@@ -44,7 +44,7 @@ public class ForbiddenFruit extends Item {
     public ForbiddenFruit() {
         super(new Item.Properties()
                 .stacksTo(1)
-                .rarity(Rarity.RARE)
+                .rarity(Rarity.EPIC)
                 .fireResistant());
     }
 
