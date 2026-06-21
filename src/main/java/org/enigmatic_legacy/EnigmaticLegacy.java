@@ -10,6 +10,7 @@ import org.enigmatic_legacy.client.ClientItemProperties;
 import org.enigmatic_legacy.config.ConfigClient;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.event.CursedRingEvents;
+import org.enigmatic_legacy.event.EvilEssenceEvents;
 import org.enigmatic_legacy.generator.*;
 import org.enigmatic_legacy.tab.ModeTabs;
 import org.enigmatic_legacy.item.ModItems;
@@ -45,8 +46,8 @@ public class EnigmaticLegacy {
         modEventBus.addListener(FurnaceRecipeGenerator::gatherData);
         modEventBus.addListener(CuriosGenerator::gatherData);
 
-
         // 注册游戏事件
-        NeoForge.EVENT_BUS.register(CursedRingEvents.class);
+        NeoForge.EVENT_BUS.register(CursedRingEvents.class);    // 七咒相关
+        NeoForge.EVENT_BUS.register(EvilEssenceEvents.class);   // 邪恶精髓
     }
 }
