@@ -63,7 +63,7 @@ public class TwistedMirror extends Item {
                                                            @NotNull InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
 
-        if (!isVanillaDimension(level)) {
+        if (isVanillaDimension(level)) {
             return InteractionResultHolder.fail(stack);
         }
 
@@ -146,7 +146,7 @@ public class TwistedMirror extends Item {
             return stack;
         }
 
-        if (!isVanillaDimension(level)) {
+        if (isVanillaDimension(level)) {
             return stack;
         }
 
@@ -158,17 +158,19 @@ public class TwistedMirror extends Item {
             return stack;
         }
 
-        spawnFinalParticles(player);
+        spawnDepartureParticles(player);
         teleportBackToSpawn(player);
+        spawnArrivalParticles(player);
+
         player.getCooldowns().addCooldown(this, COOLDOWN_TICKS);
 
         return stack;
     }
 
     /**
-     * 完成传送前生成一圈更明显的末影粒子。
+     * 传送前生成末影粒子。
      */
-    private static void spawnFinalParticles(ServerPlayer player) {
+    private static void spawnDepartureParticles(ServerPlayer player) {
         ServerLevel level = player.serverLevel();
 
         level.sendParticles(
@@ -185,12 +187,31 @@ public class TwistedMirror extends Item {
     }
 
     /**
+     * 传送到目的地后生成末影粒子。
+     */
+    private static void spawnArrivalParticles(ServerPlayer player) {
+        ServerLevel level = player.serverLevel();
+
+        level.sendParticles(
+                ParticleTypes.PORTAL,
+                player.getX(),
+                player.getY() + 1.0D,
+                player.getZ(),
+                64,
+                0.8D,
+                1.0D,
+                0.8D,
+                0.18D
+        );
+    }
+
+    /**
      * 判断是否为原版三维度。
      */
     private static boolean isVanillaDimension(Level level) {
-        return level.dimension() == Level.OVERWORLD
-                || level.dimension() == Level.NETHER
-                || level.dimension() == Level.END;
+        return level.dimension() != Level.OVERWORLD
+                && level.dimension() != Level.NETHER
+                && level.dimension() != Level.END;
     }
 
     /**

@@ -1,6 +1,7 @@
 package org.enigmatic_legacy.effect;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.InstantenousMobEffect;
@@ -56,6 +57,8 @@ public class RecallEffect extends InstantenousMobEffect {
             yaw = targetLevel.getSharedSpawnAngle();
         }
 
+        spawnDepartureParticles(player);
+
         player.stopRiding();
         player.teleportTo(
                 targetLevel,
@@ -66,9 +69,13 @@ public class RecallEffect extends InstantenousMobEffect {
                 player.getXRot()
         );
         player.resetFallDistance();
+
+        spawnArrivalParticles(player);
     }
 
     private static void teleportToEndPlatform(ServerPlayer player, ServerLevel endLevel) {
+        spawnDepartureParticles(player);
+
         player.stopRiding();
         player.teleportTo(
                 endLevel,
@@ -79,5 +86,45 @@ public class RecallEffect extends InstantenousMobEffect {
                 player.getXRot()
         );
         player.resetFallDistance();
+
+        spawnArrivalParticles(player);
+    }
+
+    /**
+     * 传送前生成末影粒子。
+     */
+    private static void spawnDepartureParticles(ServerPlayer player) {
+        ServerLevel level = player.serverLevel();
+
+        level.sendParticles(
+                ParticleTypes.PORTAL,
+                player.getX(),
+                player.getY() + 1.0D,
+                player.getZ(),
+                48,
+                0.7D,
+                0.9D,
+                0.7D,
+                0.15D
+        );
+    }
+
+    /**
+     * 传送到目的地后生成末影粒子。
+     */
+    private static void spawnArrivalParticles(ServerPlayer player) {
+        ServerLevel level = player.serverLevel();
+
+        level.sendParticles(
+                ParticleTypes.PORTAL,
+                player.getX(),
+                player.getY() + 1.0D,
+                player.getZ(),
+                64,
+                0.8D,
+                1.0D,
+                0.8D,
+                0.18D
+        );
     }
 }
