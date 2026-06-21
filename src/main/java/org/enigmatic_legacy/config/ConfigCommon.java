@@ -52,6 +52,25 @@ public class ConfigCommon {
     public static final ModConfigSpec.BooleanValue THICC_SCROLL_ENABLED;
     public static final ModConfigSpec.BooleanValue DARKEST_SCROLL_ENABLED;
 
+    // ==============================
+// 七咒之戒功能配置
+// ==============================
+
+    public static final ModConfigSpec.IntValue CURSED_RING_PAIN_MODIFIER;
+    public static final ModConfigSpec.IntValue CURSED_RING_MONSTER_DAMAGE_DEBUFF;
+    public static final ModConfigSpec.IntValue CURSED_RING_ARMOR_DEBUFF;
+    public static final ModConfigSpec.IntValue CURSED_RING_EXPERIENCE_BONUS;
+    public static final ModConfigSpec.IntValue CURSED_RING_KNOCKBACK_DEBUFF;
+
+    public static final ModConfigSpec.DoubleValue CURSED_RING_NEUTRAL_ANGER_RANGE;
+    public static final ModConfigSpec.DoubleValue CURSED_RING_NEUTRAL_XRAY_RANGE;
+    public static final ModConfigSpec.DoubleValue CURSED_RING_ENDERMAN_RANDOM_TELEPORT_RANGE;
+    public static final ModConfigSpec.DoubleValue CURSED_RING_ENDERMAN_RANDOM_TELEPORT_FREQUENCY;
+
+    public static final ModConfigSpec.BooleanValue CURSED_RING_SAVE_THE_BEES;
+    public static final ModConfigSpec.BooleanValue CURSED_RING_ULTRA_HARDCORE;
+    public static final ModConfigSpec.BooleanValue CURSED_RING_AUTO_EQUIP;
+
     static {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
 
@@ -106,6 +125,92 @@ public class ConfigCommon {
         builder.pop();
 
         SPEC = builder.build();
+
+        builder.comment(
+                "七咒之戒配置",
+                "这些配置参考原 Enigmatic Legacy 的 Ring of the Seven Curses。",
+                "当前项目先实现核心可迁移功能，时运、抢夺、附魔台加成后续单独接入。"
+        ).push("The Seven Curses");
+
+        CURSED_RING_PAIN_MODIFIER = builder
+                .comment(
+                        "七咒之戒佩戴者受到的伤害倍率，单位为百分比。",
+                        "原项目默认值为 200，表示受到 200% 伤害。"
+                )
+                .defineInRange("CursedRingPainModifier", 200, 0, 10000);
+
+        CURSED_RING_MONSTER_DAMAGE_DEBUFF = builder
+                .comment(
+                        "七咒之戒佩戴者对怪物造成的伤害降低百分比。",
+                        "原项目默认值为 50，表示对怪物伤害降低 50%。"
+                )
+                .defineInRange("CursedRingMonsterDamageDebuff", 50, 0, 100);
+
+        CURSED_RING_ARMOR_DEBUFF = builder
+                .comment(
+                        "七咒之戒佩戴者护甲减免降低百分比。",
+                        "原项目默认值为 30，表示护甲减伤效果降低 30%。"
+                )
+                .defineInRange("CursedRingArmorDebuff", 30, 0, 100);
+
+        CURSED_RING_EXPERIENCE_BONUS = builder
+                .comment(
+                        "七咒之戒佩戴者击杀生物获得的经验倍率，单位为百分比。",
+                        "原项目默认值为 400，表示获得 400% 经验。"
+                )
+                .defineInRange("CursedRingExperienceBonus", 400, 0, 10000);
+
+        CURSED_RING_KNOCKBACK_DEBUFF = builder
+                .comment(
+                        "七咒之戒佩戴者受到的击退倍率，单位为百分比。",
+                        "原项目默认值为 200，表示受到 200% 击退。"
+                )
+                .defineInRange("CursedRingKnockbackDebuff", 200, 0, 10000);
+
+        CURSED_RING_NEUTRAL_ANGER_RANGE = builder
+                .comment("中立生物会被七咒之戒激怒的范围。")
+                .defineInRange("CursedRingNeutralAngerRange", 24.0D, 4.0D, 256.0D);
+
+        CURSED_RING_NEUTRAL_XRAY_RANGE = builder
+                .comment(
+                        "中立生物无视视线仇恨七咒之戒佩戴者的最小范围。",
+                        "距离小于该值时，即使看不到玩家也会尝试仇恨。"
+                )
+                .defineInRange("CursedRingNeutralXRayRange", 4.0D, 0.0D, 256.0D);
+
+        CURSED_RING_ENDERMAN_RANDOM_TELEPORT_RANGE = builder
+                .comment("末影人尝试随机传送到七咒之戒佩戴者附近的范围。")
+                .defineInRange("CursedRingEndermanRandomTeleportRange", 32.0D, 8.0D, 256.0D);
+
+        CURSED_RING_ENDERMAN_RANDOM_TELEPORT_FREQUENCY = builder
+                .comment(
+                        "末影人随机传送频率倍率。",
+                        "数值越低，触发概率越低。"
+                )
+                .defineInRange("CursedRingEndermanRandomTeleportFrequency", 1.0D, 0.01D, 100.0D);
+
+        CURSED_RING_SAVE_THE_BEES = builder
+                .comment(
+                        "是否保护蜜蜂不受七咒之戒第二诅咒影响。",
+                        "true：蜜蜂不会因为戒指主动仇恨玩家。"
+                )
+                .define("CursedRingSaveTheBees", false);
+
+        CURSED_RING_ULTRA_HARDCORE = builder
+                .comment(
+                        "是否在玩家首次进入世界时直接给予七咒之戒。",
+                        "当前阶段先给予到背包，后续再做自动装备到 Curios 槽位。"
+                )
+                .define("CursedRingUltraHardcore", false);
+
+        CURSED_RING_AUTO_EQUIP = builder
+                .comment(
+                        "是否在七咒之戒进入背包后自动装备。",
+                        "当前阶段先保留配置，自动写入 Curios 槽位后续单独实现。"
+                )
+                .define("CursedRingAutoEquip", false);
+
+        builder.pop();
     }
 
     /**

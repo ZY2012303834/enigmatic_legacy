@@ -1,0 +1,217 @@
+package org.enigmatic_legacy.util;
+
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.NeutralMob;
+import net.minecraft.world.entity.TamableAnimal;
+import net.minecraft.world.entity.ai.Brain;
+import net.minecraft.world.entity.ai.memory.MemoryModuleType;
+import net.minecraft.world.entity.animal.Bee;
+import net.minecraft.world.entity.animal.IronGolem;
+import net.minecraft.world.entity.monster.EnderMan;
+import net.minecraft.world.entity.monster.piglin.Piglin;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.GameRules;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
+import org.enigmatic_legacy.config.ConfigCommon;
+import org.enigmatic_legacy.item.ModItems;
+import top.theillusivec4.curios.api.CuriosApi;
+
+import java.util.List;
+
+/**
+ * 七咒之戒工具类。
+ * <p>
+ * 这里集中处理：
+ * 1. 判断玩家是否佩戴七咒之戒
+ * 2. 激怒中立生物
+ * 3. 让末影人随机传送
+ */
+public class CursedRingHelper {
+
+    /**
+     * 判断玩家是否在 Curios 栏位中佩戴七咒之戒。
+     */
+    public static boolean hasCursedRing(Player player) {
+        if (!ConfigCommon.CURSED_RING_ENABLED.get()) {
+            return false;
+        }
+
+        return CuriosApi.getCuriosInventory(player)
+                .map(handler -> handler.findFirstCurio(ModItems.CURSED_RING.get()).isPresent())
+                .orElse(false);
+    }
+
+    /**
+     * 每秒处理一次七咒之戒的仇恨逻辑。
+     */
+    public static void tickCurses(Player player) {
+        if (player.level().isClientSide()) {
+            return;
+        }
+
+        if (player.isCreative() || player.isSpectator()) {
+            return;
+        }
+
+        if (!hasCursedRing(player)) {
+            return;
+        }
+
+        angerNeutralMobs(player);
+        teleportEndermen(player);
+    }
+
+    /**
+     * 激怒周围中立生物。
+     */
+    private static void angerNeutralMobs(Player player) {
+        double range = ConfigCommon.CURSED_RING_NEUTRAL_ANGER_RANGE.get();
+        double xrayRange = ConfigCommon.CURSED_RING_NEUTRAL_XRAY_RANGE.get();
+
+        AABB box = player.getBoundingBox().inflate(range);
+
+        List<LivingEntity> entities = player.level().getEntitiesOfClass(
+                LivingEntity.class,
+                box,
+                entity -> entity != player && entity.isAlive()
+        );
+
+        for (LivingEntity entity : entities) {
+            double visibility = player.getVisibilityPercent(entity);
+            double angerDistance = Math.max(range * visibility, xrayRange);
+
+            if (entity.distanceToSqr(player) > angerDistance * angerDistance) {
+                continue;
+            }
+
+            if (!player.hasLineOfSight(entity) && player.distanceTo(entity) > xrayRange) {
+                continue;
+            }
+
+            // 猪灵使用原版仇恨 AI。
+            if (entity instanceof Piglin piglin) {
+                if (piglin.getTarget() == null || !piglin.getTarget().isAlive()) {
+                    angerPiglin(piglin, player);
+                }
+
+                continue;
+            }
+
+            if (!(entity instanceof NeutralMob)) {
+                continue;
+            }
+
+            // 被驯服的生物不被七咒之戒激怒。
+            switch (entity) {
+                case TamableAnimal tamable when tamable.isTame() -> {
+                    continue;
+                }
+
+
+                // 玩家制造的铁傀儡不被七咒之戒激怒。
+                case IronGolem golem when golem.isPlayerCreated() -> {
+                    continue;
+                }
+
+
+                // 可选：保护蜜蜂。
+                case Bee bee when ConfigCommon.CURSED_RING_SAVE_THE_BEES.get() -> {
+                    continue;
+                }
+                default -> {
+                }
+            }
+
+            ResourceLocation entityId = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType());
+
+            if (isNeutralAngerBlacklisted(entityId)) {
+                continue;
+            }
+
+            if (entity instanceof Mob mob) {
+                if (mob.getTarget() == null || !mob.getTarget().isAlive()) {
+                    mob.setTarget(player);
+                }
+            }
+        }
+    }
+
+    /**
+     * 让猪灵把玩家记为仇恨目标。
+     * <p>
+     * PiglinAi.wasHurtBy 在当前映射中是 protected，不能从模组工具类直接调用。
+     * 这里复用它最关键的公开效果：写入 Brain 的 ANGRY_AT 记忆，让原版 StartAttacking 行为接手。
+     */
+    private static void angerPiglin(Piglin piglin, Player player) {
+        if (!piglin.canAttack(player)) {
+            return;
+        }
+
+        Brain<Piglin> brain = piglin.getBrain();
+        brain.eraseMemory(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE);
+        brain.eraseMemory(MemoryModuleType.CELEBRATE_LOCATION);
+        brain.eraseMemory(MemoryModuleType.DANCING);
+        brain.eraseMemory(MemoryModuleType.ADMIRING_ITEM);
+        brain.setMemoryWithExpiry(MemoryModuleType.ADMIRING_DISABLED, true, 400L);
+        brain.setMemoryWithExpiry(MemoryModuleType.ANGRY_AT, player.getUUID(), 600L);
+
+        if (piglin.level().getGameRules().getBoolean(GameRules.RULE_UNIVERSAL_ANGER)) {
+            brain.setMemoryWithExpiry(MemoryModuleType.UNIVERSAL_ANGER, true, 600L);
+        }
+    }
+
+    /**
+     * 末影人随机传送到佩戴者附近。
+     */
+    private static void teleportEndermen(Player player) {
+        double range = ConfigCommon.CURSED_RING_ENDERMAN_RANDOM_TELEPORT_RANGE.get();
+        double frequency = ConfigCommon.CURSED_RING_ENDERMAN_RANDOM_TELEPORT_FREQUENCY.get();
+
+        AABB box = player.getBoundingBox().inflate(range);
+
+        List<EnderMan> endermen = player.level().getEntitiesOfClass(
+                EnderMan.class,
+                box,
+                EnderMan::isAlive
+        );
+
+        for (EnderMan enderman : endermen) {
+            if (player.getRandom().nextDouble() <= 0.002D * frequency) {
+                if (teleportEndermanTowards(enderman, player) && player.hasLineOfSight(enderman)) {
+                    enderman.setTarget(player);
+                }
+            }
+        }
+    }
+
+    /**
+     * 使用原版 teleportTowards 的坐标公式，但通过公开的 randomTeleport 执行传送。
+     */
+    private static boolean teleportEndermanTowards(EnderMan enderman, Player player) {
+        Vec3 offset = new Vec3(
+                enderman.getX() - player.getX(),
+                enderman.getY(0.5D) - player.getEyeY(),
+                enderman.getZ() - player.getZ()
+        ).normalize();
+
+        double x = enderman.getX() + (enderman.getRandom().nextDouble() - 0.5D) * 8.0D - offset.x * 16.0D;
+        double y = enderman.getY() + enderman.getRandom().nextInt(16) - 8.0D - offset.y * 16.0D;
+        double z = enderman.getZ() + (enderman.getRandom().nextDouble() - 0.5D) * 8.0D - offset.z * 16.0D;
+
+        return enderman.randomTeleport(x, y, z, true);
+    }
+
+    /**
+     * 中立生物仇恨黑名单。
+     * <p>
+     * 原项目默认排除了 Bumblezone 的 bee_queen。
+     * 这里先硬编码保留该兼容项，后续可以改成配置列表。
+     */
+    private static boolean isNeutralAngerBlacklisted(ResourceLocation entityId) {
+        return entityId.equals(ResourceLocation.fromNamespaceAndPath("the_bumblezone", "bee_queen"));
+    }
+}
