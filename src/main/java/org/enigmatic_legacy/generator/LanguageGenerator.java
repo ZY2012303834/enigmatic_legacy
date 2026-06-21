@@ -44,7 +44,6 @@ public class LanguageGenerator extends LanguageProvider {
         addBlock(ModBlocks.ETHERIUM_BLOCK, "Block of Etherium"); // 以太块
         addItem(ModItems.COSMIC_HEART, "Heart of the Cosmos"); // 寰宇之心
         addBlock(ModBlocks.BIG_LAMP, "Lamp");   // 大灯笼
-        addBlock(ModBlocks.MASSIVE_LAMP, "Encased Lamp");   //封装的大灯笼
         addBlock(ModBlocks.BIG_SHROOMLAMP, "Shroomlamp");   //菌光体灯笼
     }
 
@@ -60,7 +59,6 @@ public class LanguageGenerator extends LanguageProvider {
         addBlock(ModBlocks.ETHERIUM_BLOCK, "以太块");
         addItem(ModItems.COSMIC_HEART, "寰宇之心");
         addBlock(ModBlocks.BIG_LAMP, "大灯笼");
-        addBlock(ModBlocks.MASSIVE_LAMP, "封装的大灯笼");
         addBlock(ModBlocks.BIG_SHROOMLAMP, "菌光体灯笼");
     }
 }

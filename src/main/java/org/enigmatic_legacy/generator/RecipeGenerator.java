@@ -98,13 +98,6 @@ public class RecipeGenerator extends RecipeProvider {
                 .unlockedBy("has_glowstone", has(Items.GLOWSTONE))
                 .save(output, ResourceLocation.fromNamespaceAndPath(EnigmaticLegacy.MODID, "lamps/big_lamp"));
 
-        // 封装的大灯笼
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, ModBlocks.MASSIVE_LAMP.get())
-                .requires(ModBlocks.BIG_LAMP.get())
-                .requires(Items.GLASS)
-                .unlockedBy("has_big_lamp", has(ModBlocks.BIG_LAMP.get()))
-                .save(output, ResourceLocation.fromNamespaceAndPath(EnigmaticLegacy.MODID, "lamps/massive_lamp"));
-
         // 菌光体灯笼
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.BIG_SHROOMLAMP.get(), 2)
                 .pattern("ici")

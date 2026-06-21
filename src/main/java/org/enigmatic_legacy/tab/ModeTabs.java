@@ -29,7 +29,6 @@ public class ModeTabs {
                         output.accept(ModItems.ETHERIUM_BLOCK.get());   // 以太块
                         output.accept(ModItems.COSMIC_HEART.get()); // 寰宇之心
                         output.accept(ModItems.BIG_LAMP.get()); // 大灯笼
-                        output.accept(ModItems.MASSIVE_LAMP.get()); // 封装的大灯笼
                         output.accept(ModItems.BIG_SHROOMLAMP.get());   // 菌光体灯笼
                     })
                     .build());

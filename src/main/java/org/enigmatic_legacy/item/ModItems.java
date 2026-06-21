@@ -23,7 +23,6 @@ public class ModItems {
     public static final DeferredItem<BlockItem> ETHERIUM_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.ETHERIUM_BLOCK);   // 以太块
     public static final DeferredItem<CosmicHeart> COSMIC_HEART = ITEMS.register("cosmic_heart", CosmicHeart::new);  // 寰宇之心
     public static final DeferredItem<BlockItem> BIG_LAMP = ITEMS.registerSimpleBlockItem(ModBlocks.BIG_LAMP); // 大灯笼
-    public static final DeferredItem<BlockItem> MASSIVE_LAMP = ITEMS.registerSimpleBlockItem(ModBlocks.MASSIVE_LAMP); // 封装的大灯笼
     public static final DeferredItem<BlockItem> BIG_SHROOMLAMP = ITEMS.registerSimpleBlockItem(ModBlocks.BIG_SHROOMLAMP); // 菌光体灯笼
 
     public static void register(IEventBus eventBus) {
