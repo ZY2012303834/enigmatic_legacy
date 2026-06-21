@@ -66,6 +66,7 @@ public class LanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.exquisite_ring.piglin", "Piglins regard the wearer as one bearing gold.");
         add("tooltip.enigmatic_legacy.exquisite_ring.cursed_warning", "This piglin-neutralizing effect fails for bearers of the Seven Curses.");
 
+        addItem(ModItems.EVIL_INGOT, "Nefarious Ingot");
     }
 
     private void addChineseTranslations() {
@@ -102,6 +103,7 @@ public class LanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.exquisite_ring.piglin", "猪灵会将佩戴者视作佩戴金制品。");
         add("tooltip.enigmatic_legacy.exquisite_ring.cursed_warning", "该猪灵中立效果对七咒佩戴者无效。");
 
+        addItem(ModItems.EVIL_INGOT, "极恶锭");
     }
 
     private void addEnglishCursedRingTooltips() {

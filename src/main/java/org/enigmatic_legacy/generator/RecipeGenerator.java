@@ -149,5 +149,16 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('X', ModItems.IRON_RING.get())
                 .unlockedBy("has_iron_ring", has(ModItems.IRON_RING.get()))
                 .save(output);
+
+        // 极恶锭
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.EVIL_INGOT.get())
+                .pattern("TET")
+                .pattern("EXE")
+                .pattern("TET")
+                .define('T', Items.GHAST_TEAR)
+                .define('E', ModItems.EVIL_ESSENCE.get())
+                .define('X', Items.NETHERITE_INGOT)
+                .unlockedBy("has_evil_essence", has(ModItems.EVIL_ESSENCE.get()))
+                .save(output);
     }
 }

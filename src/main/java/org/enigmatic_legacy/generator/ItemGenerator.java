@@ -44,5 +44,6 @@ public class ItemGenerator extends ItemModelProvider {
         basicItem(ModItems.CURSED_RING.getId()); // 七咒之戒
         basicItem(ModItems.IRON_RING.getId()); // 铁指环
         basicItem(ModItems.EXQUISITE_RING.getId()); // 精美戒指
+        basicItem(ModItems.EVIL_INGOT.getId()); // 极恶锭
     }
 }
