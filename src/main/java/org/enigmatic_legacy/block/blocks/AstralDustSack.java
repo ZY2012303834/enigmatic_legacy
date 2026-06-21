@@ -14,6 +14,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+// 袋装星尘
 public class AstralDustSack extends Block {
 
 	public AstralDustSack() {

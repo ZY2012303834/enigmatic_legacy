@@ -19,15 +19,16 @@ public class ModeTabs {
                     .title(Component.translatable("itemGroup.enigmatic_legacy"))
                     .icon(() -> ModItems.ASTRAL_DUST.get().getDefaultInstance())
                     .displayItems((parameters, output) -> {
-                        output.accept(ModItems.ASTRAL_DUST.get());
-                        output.accept(ModItems.ENDER_ROD.get());
-                        output.accept(ModItems.ETHERIUM_ORE.get());
-                        output.accept(ModItems.ETHERIUM_INGOT.get());
-                        output.accept(ModItems.THICC_SCROLL.get());
-                        output.accept(ModItems.DARKEST_SCROLL.get());
-                        output.accept(ModItems.ASTRAL_DUST_SACK.get());
-                        output.accept(ModItems.ETHERIUM_BLOCK.get());
-                        output.accept(ModItems.COSMIC_HEART.get());
+                        output.accept(ModItems.ASTRAL_DUST.get());  // 星尘
+                        output.accept(ModItems.ENDER_ROD.get());    // 末影棒
+                        output.accept(ModItems.ETHERIUM_ORE.get()); // 以太矿
+                        output.accept(ModItems.ETHERIUM_INGOT.get());   // 以太锭
+                        output.accept(ModItems.THICC_SCROLL.get());     // 空卷轴
+                        output.accept(ModItems.DARKEST_SCROLL.get());   // 至暗卷轴
+                        output.accept(ModItems.ASTRAL_DUST_SACK.get()); // 袋装星尘
+                        output.accept(ModItems.ETHERIUM_BLOCK.get());   // 以太块
+                        output.accept(ModItems.COSMIC_HEART.get()); // 寰宇之心
+                        output.accept(ModItems.BIG_LAMP.get()); //大灯笼
                     })
                     .build());
 

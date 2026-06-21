@@ -84,5 +84,17 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('S', Items.NETHER_STAR)
                 .unlockedBy("has_heart_of_the_sea", has(Items.HEART_OF_THE_SEA))
                 .save(output);
+
+        // 大灯笼
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.BIG_LAMP.get(), 2)
+                .pattern("ici")
+                .pattern("gXg")
+                .pattern("igi")
+                .define('X', Items.GLOWSTONE)
+                .define('i', Items.IRON_INGOT)
+                .define('g', Items.GOLD_NUGGET)
+                .define('c', Items.CHAIN)
+                .unlockedBy("has_glowstone", has(Items.GLOWSTONE))
+                .save(output, ResourceLocation.fromNamespaceAndPath(EnigmaticLegacy.MODID, "lamps/big_lamp"));
     }
 }

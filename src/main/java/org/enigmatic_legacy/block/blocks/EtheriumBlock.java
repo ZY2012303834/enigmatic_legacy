@@ -9,6 +9,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.storage.loot.LootParams;
 import org.jetbrains.annotations.NotNull;
 
+// 以太块
 public class EtheriumBlock extends Block {
 
     public EtheriumBlock() {
