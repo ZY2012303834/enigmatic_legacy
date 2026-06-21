@@ -44,5 +44,7 @@
   "tooltip.enigmatic_legacy.eternallyBound2": "§4这枚戒指将永远陪伴着你。",
   "tooltip.enigmatic_legacy.eternallyBound2_creative": "§6需要神的能力才能取下它。",
   "tooltip.enigmatic_legacy.holdShift": "§5按住 §6Shift§5 查看详情。",
+  "tooltip.enigmatic_legacy.twisted_heart.active": "已被七咒之戒激活。",
+  "tooltip.enigmatic_legacy.twisted_heart.inactive": "尚未激活。",
   "tooltip.enigmatic_legacy.void": ""
 }

@@ -44,5 +44,7 @@
   "tooltip.enigmatic_legacy.eternallyBound2": "§4This ring will persist with you forever.",
   "tooltip.enigmatic_legacy.eternallyBound2_creative": "§6With the power of god, you can unequip it.",
   "tooltip.enigmatic_legacy.holdShift": "§5Hold §6Shift§5 to see details.",
+  "tooltip.enigmatic_legacy.twisted_heart.active": "Activated by the Ring of the Seven Curses.",
+  "tooltip.enigmatic_legacy.twisted_heart.inactive": "Dormant.",
   "tooltip.enigmatic_legacy.void": " "
 }

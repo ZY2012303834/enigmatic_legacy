@@ -6,6 +6,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.common.NeoForge;
 import org.enigmatic_legacy.block.ModBlocks;
+import org.enigmatic_legacy.client.ClientItemProperties;
 import org.enigmatic_legacy.config.ConfigClient;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.event.CursedRingEvents;
@@ -43,6 +44,7 @@ public class EnigmaticLegacy {
         modEventBus.addListener(RecipeGenerator::gatherData);
         modEventBus.addListener(FurnaceRecipeGenerator::gatherData);
         modEventBus.addListener(CuriosGenerator::gatherData);
+
 
         // 注册游戏事件
         NeoForge.EVENT_BUS.register(CursedRingEvents.class);

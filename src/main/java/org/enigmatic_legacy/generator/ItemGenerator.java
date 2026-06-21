@@ -29,7 +29,17 @@ public class ItemGenerator extends ItemModelProvider {
         basicItem(ModItems.COSMIC_HEART.getId());   // 寰宇之心
         basicItem(ModItems.EARTH_HEART_FRAGMENT.getId()); // 大地之心碎片
         basicItem(ModItems.EARTH_HEART.getId()); // 大地之心
-        basicItem(ModItems.TWISTED_HEART.getId()); // 扭曲之心
+        // 扭曲之心
+        var twistedHeartOn = withExistingParent("item/twisted_heart_on", mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/twisted_heart_on"));
+
+        withExistingParent("item/twisted_heart", mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/twisted_heart"))
+                .override()
+                .predicate(modLoc("activated"), 1.0F)
+                .model(twistedHeartOn)
+                .end();
+        // end
         basicItem(ModItems.CURSED_RING.getId()); // 七咒之戒
     }
 }

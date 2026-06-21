@@ -47,8 +47,12 @@ public class LanguageGenerator extends LanguageProvider {
         addBlock(ModBlocks.BIG_SHROOMLAMP, "Shroomlamp");   //菌光体灯笼
         addItem(ModItems.EARTH_HEART_FRAGMENT, "Fragment of the Earth"); // 大地之心碎片
         addItem(ModItems.EARTH_HEART, "Heart of the Earth"); // 大地之心
+        // 扭曲之心
         addItem(ModItems.TWISTED_HEART, "Twisted Heart");
         add("tooltip.enigmatic_legacy.cursed_ones_only", "Only those bearing the curse may comprehend its purpose.");
+        add("tooltip.enigmatic_legacy.twisted_heart.active", "Activated by the Ring of the Seven Curses.");
+        add("tooltip.enigmatic_legacy.twisted_heart.inactive", "Dormant.");
+        // end
         addItem(ModItems.CURSED_RING, "Ring of the Seven Curses"); // 七咒之戒
         addEnglishCursedRingTooltips();
     }
@@ -70,6 +74,8 @@ public class LanguageGenerator extends LanguageProvider {
         addItem(ModItems.EARTH_HEART, "大地之心");
         addItem(ModItems.TWISTED_HEART, "扭曲之心");
         add("tooltip.enigmatic_legacy.cursed_ones_only", "唯有背负诅咒者方能理解它的用途。");
+        add("tooltip.enigmatic_legacy.twisted_heart.active", "已被七咒之戒激活。");
+        add("tooltip.enigmatic_legacy.twisted_heart.inactive", "尚未激活。");
         addItem(ModItems.CURSED_RING, "七咒之戒");
         addChineseCursedRingTooltips();
 
