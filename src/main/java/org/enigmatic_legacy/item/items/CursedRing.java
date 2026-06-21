@@ -1,6 +1,8 @@
 package org.enigmatic_legacy.item.items;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.player.Player;
@@ -20,12 +22,6 @@ import java.util.List;
 
 /**
  * 七咒之戒。
- * 当前实现：
- * 1. Curios 戒指物品
- * 2. 死亡保留
- * 3. 普通玩家无法摘下
- * 4. 基础 Tooltip
- * 具体数值效果由 CursedRingEvents 处理。
  */
 public class CursedRing extends Item implements ICurioItem {
 
@@ -40,39 +36,64 @@ public class CursedRing extends Item implements ICurioItem {
     public void appendHoverText(
             @NotNull ItemStack stack,
             @NotNull TooltipContext context,
-            List<Component> tooltip,
+            @NotNull List<Component> tooltip,
             @NotNull TooltipFlag flag
     ) {
-        tooltip.add(Component.empty());
+        addTooltip(tooltip, "void");
 
         if (ConfigClient.SHOW_CURIO_SLOT_HINT.get()) {
             tooltip.add(Component.literal("可放入：戒指栏位").withStyle(ChatFormatting.DARK_PURPLE));
         }
 
-        tooltip.add(Component.literal("永恒绑定").withStyle(ChatFormatting.RED));
+        if (Screen.hasShiftDown()) {
+            addTooltip(tooltip, "cursedRing3");
 
-        tooltip.add(Component.empty());
+            if (ConfigCommon.CURSED_RING_PAIN_MODIFIER.get() == 200) {
+                addTooltip(tooltip, "cursedRing4");
+            } else {
+                addTooltip(tooltip, "cursedRing4_alt", ConfigCommon.CURSED_RING_PAIN_MODIFIER.get() + "%");
+            }
 
-        tooltip.add(Component.literal("按住 Shift 查看七咒效果").withStyle(ChatFormatting.DARK_GRAY));
+            addTooltip(tooltip, "cursedRing5");
+            addTooltip(tooltip, "cursedRing6", ConfigCommon.CURSED_RING_ARMOR_DEBUFF.get() + "%");
+            addTooltip(tooltip, "cursedRing7", ConfigCommon.CURSED_RING_MONSTER_DAMAGE_DEBUFF.get() + "%");
+            addTooltip(tooltip, "cursedRing8");
+            addTooltip(tooltip, "cursedRing9");
+            addTooltip(tooltip, "cursedRing10");
+            addTooltip(tooltip, "void");
+            addTooltip(tooltip, "cursedRing11");
+            addTooltip(tooltip, "cursedRing12", ConfigCommon.CURSED_RING_LOOTING_BONUS.get());
+            addTooltip(tooltip, "cursedRing13", ConfigCommon.CURSED_RING_FORTUNE_BONUS.get());
+            addTooltip(tooltip, "cursedRing14", ConfigCommon.CURSED_RING_EXPERIENCE_BONUS.get() + "%");
+            addTooltip(tooltip, "cursedRing15", ConfigCommon.CURSED_RING_ENCHANTING_BONUS.get());
+            addTooltip(tooltip, "cursedRing16");
+            addTooltip(tooltip, "cursedRing17");
+            addTooltip(tooltip, "cursedRing18");
+            return;
+        }
 
-        // 这里使用 hasShiftDown 需要客户端 Screen 类。
-        // 为了避免服务端加载客户端类，这里先不直接调用 Screen。
-        // 后续可以做 ClientTooltipEvent 版本。
-        tooltip.add(Component.literal("受到伤害：")
-                .append(Component.literal(ConfigCommon.CURSED_RING_PAIN_MODIFIER.get() + "%").withStyle(ChatFormatting.GOLD))
-                .withStyle(ChatFormatting.GRAY));
+        addTooltip(tooltip, "cursedRingLore1");
+        addTooltip(tooltip, "cursedRingLore2");
+        addTooltip(tooltip, "cursedRingLore3");
+        addTooltip(tooltip, "cursedRingLore4");
+        addTooltip(tooltip, "cursedRingLore5");
+        addTooltip(tooltip, "cursedRingLore6");
+        addTooltip(tooltip, "cursedRingLore7");
+        addTooltip(tooltip, "void");
+        addTooltip(tooltip, "eternallyBound1");
 
-        tooltip.add(Component.literal("对怪物伤害降低：")
-                .append(Component.literal(ConfigCommon.CURSED_RING_MONSTER_DAMAGE_DEBUFF.get() + "%").withStyle(ChatFormatting.GOLD))
-                .withStyle(ChatFormatting.GRAY));
+        if (Minecraft.getInstance().player != null && Minecraft.getInstance().player.isCreative()) {
+            addTooltip(tooltip, "eternallyBound2_creative");
+        } else {
+            addTooltip(tooltip, "eternallyBound2");
+        }
 
-        tooltip.add(Component.literal("护甲减免降低：")
-                .append(Component.literal(ConfigCommon.CURSED_RING_ARMOR_DEBUFF.get() + "%").withStyle(ChatFormatting.GOLD))
-                .withStyle(ChatFormatting.GRAY));
+        addTooltip(tooltip, "void");
+        addTooltip(tooltip, "holdShift");
+    }
 
-        tooltip.add(Component.literal("击杀经验倍率：")
-                .append(Component.literal(ConfigCommon.CURSED_RING_EXPERIENCE_BONUS.get() + "%").withStyle(ChatFormatting.GOLD))
-                .withStyle(ChatFormatting.GRAY));
+    private static void addTooltip(List<Component> tooltip, String key, Object... args) {
+        tooltip.add(Component.translatable("tooltip.enigmatic_legacy." + key, args));
     }
 
     /**
