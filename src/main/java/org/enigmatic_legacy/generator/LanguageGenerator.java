@@ -67,6 +67,13 @@ public class LanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.exquisite_ring.cursed_warning", "This piglin-neutralizing effect fails for bearers of the Seven Curses.");
 
         addItem(ModItems.EVIL_INGOT, "Nefarious Ingot");
+        addItem(ModItems.STORAGE_CRYSTAL, "Extradimensional Vessel");
+        add("tooltip.enigmatic_legacy.storageCrystal1", "Contains items and experience lost on death.");
+        add("tooltip.enigmatic_legacy.storageCrystal2", "Stored stacks: %1$s");
+        add("tooltip.enigmatic_legacy.storageCrystal3", "Stored experience: %1$s");
+        addItem(ModItems.SOUL_CRYSTAL, "Soul Crystal");
+        add("tooltip.enigmatic_legacy.soulCrystal1", "Right-Click to absorb the crystal and");
+        add("tooltip.enigmatic_legacy.soulCrystal2", "restore one of your lost Soul Crystals.");
     }
 
     private void addChineseTranslations() {
@@ -104,6 +111,13 @@ public class LanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.exquisite_ring.cursed_warning", "该猪灵中立效果对七咒佩戴者无效。");
 
         addItem(ModItems.EVIL_INGOT, "极恶锭");
+        addItem(ModItems.STORAGE_CRYSTAL, "超维容器");
+        add("tooltip.enigmatic_legacy.storageCrystal1", "保存死亡时遗失的物品与经验。");
+        add("tooltip.enigmatic_legacy.storageCrystal2", "已保存物品堆：%1$s");
+        add("tooltip.enigmatic_legacy.storageCrystal3", "已保存经验：%1$s");
+        addItem(ModItems.SOUL_CRYSTAL, "灵魂水晶");
+        add("tooltip.enigmatic_legacy.soulCrystal1", "右击吸收水晶，");
+        add("tooltip.enigmatic_legacy.soulCrystal2", "并恢复一颗破碎的灵魂水晶。");
     }
 
     private void addEnglishCursedRingTooltips() {

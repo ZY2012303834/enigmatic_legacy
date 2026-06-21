@@ -6,15 +6,21 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.common.NeoForge;
 import org.enigmatic_legacy.block.ModBlocks;
-import org.enigmatic_legacy.client.ClientItemProperties;
 import org.enigmatic_legacy.config.ConfigClient;
 import org.enigmatic_legacy.config.ConfigCommon;
+import org.enigmatic_legacy.entity.ModEntities;
 import org.enigmatic_legacy.event.CursedRingEvents;
 import org.enigmatic_legacy.event.EvilEssenceEvents;
 import org.enigmatic_legacy.event.EvilIngotEvents;
-import org.enigmatic_legacy.generator.*;
-import org.enigmatic_legacy.tab.ModeTabs;
+import org.enigmatic_legacy.event.SoulCrystalEvents;
+import org.enigmatic_legacy.generator.BlockGenerator;
+import org.enigmatic_legacy.generator.CuriosGenerator;
+import org.enigmatic_legacy.generator.FurnaceRecipeGenerator;
+import org.enigmatic_legacy.generator.ItemGenerator;
+import org.enigmatic_legacy.generator.LanguageGenerator;
+import org.enigmatic_legacy.generator.RecipeGenerator;
 import org.enigmatic_legacy.item.ModItems;
+import org.enigmatic_legacy.tab.ModeTabs;
 
 @Mod(EnigmaticLegacy.MODID)
 public class EnigmaticLegacy {
@@ -22,22 +28,12 @@ public class EnigmaticLegacy {
     public static final String MODID = "enigmatic_legacy";
 
     public EnigmaticLegacy(IEventBus modEventBus, ModContainer modContainer) {
-        // 注册服务器配置
-        modContainer.registerConfig(
-                ModConfig.Type.SERVER,
-                ConfigCommon.SPEC,
-                "enigmatic_legacy-server.toml"
-        );
-
-        // 注册客户端配置
-        modContainer.registerConfig(
-                ModConfig.Type.CLIENT,
-                ConfigClient.SPEC,
-                "enigmatic_legacy-client.toml"
-        );
+        modContainer.registerConfig(ModConfig.Type.SERVER, ConfigCommon.SPEC, "enigmatic_legacy-server.toml");
+        modContainer.registerConfig(ModConfig.Type.CLIENT, ConfigClient.SPEC, "enigmatic_legacy-client.toml");
 
         ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
+        ModEntities.register(modEventBus);
         ModeTabs.register(modEventBus);
 
         modEventBus.addListener(BlockGenerator::gatherData);
@@ -47,9 +43,9 @@ public class EnigmaticLegacy {
         modEventBus.addListener(FurnaceRecipeGenerator::gatherData);
         modEventBus.addListener(CuriosGenerator::gatherData);
 
-        // 注册游戏事件
-        NeoForge.EVENT_BUS.register(CursedRingEvents.class);    // 七咒相关
-        NeoForge.EVENT_BUS.register(EvilEssenceEvents.class);   // 邪恶精髓
-        NeoForge.EVENT_BUS.register(EvilIngotEvents.class);     // 极恶锭
+        NeoForge.EVENT_BUS.register(CursedRingEvents.class);
+        NeoForge.EVENT_BUS.register(EvilEssenceEvents.class);
+        NeoForge.EVENT_BUS.register(EvilIngotEvents.class);
+        NeoForge.EVENT_BUS.register(SoulCrystalEvents.class);
     }
 }
