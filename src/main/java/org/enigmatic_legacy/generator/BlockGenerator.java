@@ -28,6 +28,7 @@ public class BlockGenerator extends BlockStateProvider {
         astralDustSack();   // 星尘袋
         etheriumBlock();    // 以太块
         bigLamp();          // 大灯笼
+        massiveLamp();      // 封装的大灯笼
         bigShroomlamp();    // 菌光体灯笼
     }
 
@@ -113,6 +114,50 @@ public class BlockGenerator extends BlockStateProvider {
             cube(model, 6, 14, 6, 10, 16, 10, "#connector");
             cube(model, 7, 11, 7, 9, 16, 9, "#connector");
         }
+
+        return model;
+    }
+
+    private void massiveLamp() {
+        ModelFile model = massiveLampModel();
+
+        simpleBlock(ModBlocks.MASSIVE_LAMP.get(), model);
+        simpleBlockItem(ModBlocks.MASSIVE_LAMP.get(), model);
+    }
+
+    private ModelFile massiveLampModel() {
+        BlockModelBuilder model = models().getBuilder("the_lamp/massive_lamp")
+                .parent(new ModelFile.UncheckedModelFile("minecraft:block/block"))
+                .ao(false)
+                .renderType("translucent")
+                .texture("casing", mcLoc("block/glass"))
+                .texture("metalplate", modLoc("block/plate"))
+                .texture("lampcore", modLoc("block/the_lamp"))
+                .texture("particle", modLoc("block/plate"));
+
+        // 外层玻璃壳
+        cube(model, 0, 0, 0, 16, 16, 16, "#casing");
+
+        // 内部发光核心
+        cube(model, 3, 3, 3, 13, 13, 13, "#lampcore");
+
+        // 底部金属框
+        cube(model, 1, 1, 1, 15, 3, 3, "#metalplate");
+        cube(model, 1, 1, 13, 15, 3, 15, "#metalplate");
+        cube(model, 1, 1, 1, 3, 3, 15, "#metalplate");
+        cube(model, 13, 1, 1, 15, 3, 15, "#metalplate");
+
+        // 顶部金属框
+        cube(model, 1, 13, 1, 15, 15, 3, "#metalplate");
+        cube(model, 1, 13, 13, 15, 15, 15, "#metalplate");
+        cube(model, 1, 13, 1, 3, 15, 15, "#metalplate");
+        cube(model, 13, 13, 1, 15, 15, 15, "#metalplate");
+
+        // 四根竖向边框
+        cube(model, 1, 3, 1, 3, 13, 3, "#metalplate");
+        cube(model, 13, 3, 1, 15, 13, 3, "#metalplate");
+        cube(model, 1, 3, 13, 3, 13, 15, "#metalplate");
+        cube(model, 13, 3, 13, 15, 13, 15, "#metalplate");
 
         return model;
     }
