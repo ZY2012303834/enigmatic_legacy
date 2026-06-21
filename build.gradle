@@ -196,9 +196,12 @@ idea {
     }
 }
 
-// ================= GitHub 上传任务 =================
-// 用法：
-//   .\gradlew.bat buildAndPush -PcommitMessage="你的提交说明"
+// ================= GitHub 一键上传任务 =================
+// PowerShell 用法：
+//   .\gradlew.bat uploadGithub -PcommitMessage="Update"
+// 中文提交信息建议先执行：
+//   chcp 65001
+//   .\gradlew.bat uploadGithub -PcommitMessage="更新说明"
 
 abstract class GitPushTask extends DefaultTask {
     @Input
@@ -272,14 +275,14 @@ abstract class GitPushTask extends DefaultTask {
 
 tasks.register('pushToGithub', GitPushTask) {
     group = 'github'
-    description = '提交本地改动并推送到 GitHub origin 仓库。'
+    description = '提交本地改动并推送到 GitHub。'
 
     gitBranchName.convention(
             providers.gradleProperty('gitBranch').orElse('main')
     )
 
     gitCommitMessage.convention(
-            providers.gradleProperty('commitMessage').orElse("Build ${project.version}".toString())
+            providers.gradleProperty('commitMessage').orElse("Update")
     )
 
     gitRepositoryDirectory.convention(layout.projectDirectory)
@@ -287,9 +290,9 @@ tasks.register('pushToGithub', GitPushTask) {
     mustRunAfter tasks.named('build')
 }
 
-tasks.register('buildAndPush') {
+tasks.register('uploadGithub') {
     group = 'github'
-    description = '先执行 build，构建成功后再提交并推送到 GitHub。'
+    description = '一键构建并上传到 GitHub。'
 
     dependsOn tasks.named('build')
     dependsOn tasks.named('pushToGithub')
