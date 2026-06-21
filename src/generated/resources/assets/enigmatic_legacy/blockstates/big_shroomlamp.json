@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "enigmatic_legacy:the_lamp/big_shroomlamp"
+    },
+    "hanging=true": {
+      "model": "enigmatic_legacy:the_lamp/big_hanging_shroomlamp"
+    }
+  }
+}

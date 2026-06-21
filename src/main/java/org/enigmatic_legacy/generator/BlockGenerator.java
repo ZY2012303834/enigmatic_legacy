@@ -2,6 +2,7 @@ package org.enigmatic_legacy.generator;
 
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.LanternBlock;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
@@ -24,9 +25,10 @@ public class BlockGenerator extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        astralDustSack();
-        etheriumBlock();
-        bigLamp();
+        astralDustSack();   // 星尘袋
+        etheriumBlock();    // 以太块
+        bigLamp();          // 大灯笼
+        bigShroomlamp();    // 菌光体灯笼
     }
 
     private void astralDustSack() {
@@ -54,8 +56,8 @@ public class BlockGenerator extends BlockStateProvider {
     }
 
     private void bigLamp() {
-        ModelFile standingLamp = bigLampModel("the_lamp/big_lamp", false);
-        ModelFile hangingLamp = bigLampModel("the_lamp/big_hanging_lamp", true);
+        ModelFile standingLamp = bigLampModel("the_lamp/big_lamp", false, modLoc("block/the_lamp"));
+        ModelFile hangingLamp = bigLampModel("the_lamp/big_hanging_lamp", true, modLoc("block/the_lamp"));
 
         getVariantBuilder(ModBlocks.BIG_LAMP.get())
                 .partialState()
@@ -72,14 +74,14 @@ public class BlockGenerator extends BlockStateProvider {
         simpleBlockItem(ModBlocks.BIG_LAMP.get(), standingLamp);
     }
 
-    private ModelFile bigLampModel(String modelName, boolean hanging) {
+    private ModelFile bigLampModel(String modelName, boolean hanging, ResourceLocation lampCoreTexture) {
         BlockModelBuilder model = models().getBuilder(modelName)
                 .parent(new ModelFile.UncheckedModelFile("minecraft:block/block"))
                 .ao(false)
                 .renderType("cutout")
                 .texture("lantern", mcLoc("block/lantern"))
                 .texture("metalplate", modLoc("block/plate"))
-                .texture("lampcore", modLoc("block/the_lamp"))
+                .texture("lampcore", lampCoreTexture)
                 .texture("connector", modLoc("block/lamp_connector"))
                 .texture("particle", modLoc("block/plate"));
 
@@ -131,5 +133,33 @@ public class BlockGenerator extends BlockStateProvider {
                 .face(Direction.UP).texture(texture).end()
                 .face(Direction.DOWN).texture(texture).end()
                 .end();
+    }
+
+    private void bigShroomlamp() {
+        ModelFile standingLamp = bigLampModel(
+                "the_lamp/big_shroomlamp",
+                false,
+                mcLoc("block/shroomlight")
+        );
+
+        ModelFile hangingLamp = bigLampModel(
+                "the_lamp/big_hanging_shroomlamp",
+                true,
+                mcLoc("block/shroomlight")
+        );
+
+        getVariantBuilder(ModBlocks.BIG_SHROOMLAMP.get())
+                .partialState()
+                .with(LanternBlock.HANGING, false)
+                .modelForState()
+                .modelFile(standingLamp)
+                .addModel()
+                .partialState()
+                .with(LanternBlock.HANGING, true)
+                .modelForState()
+                .modelFile(hangingLamp)
+                .addModel();
+
+        simpleBlockItem(ModBlocks.BIG_SHROOMLAMP.get(), standingLamp);
     }
 }
