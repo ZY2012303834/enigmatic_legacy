@@ -160,5 +160,17 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('X', Items.NETHERITE_INGOT)
                 .unlockedBy("has_evil_essence", has(ModItems.EVIL_ESSENCE.get()))
                 .save(output);
+
+        // 扭曲魔镜
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.TWISTED_MIRROR.get())
+                .pattern("IGI")
+                .pattern("EXE")
+                .pattern(" I ")
+                .define('I', Items.IRON_INGOT)
+                .define('G', Items.GLASS_PANE)
+                .define('E', Items.ENDER_PEARL)
+                .define('X', ModItems.TWISTED_HEART.get())
+                .unlockedBy("has_twisted_heart", has(ModItems.TWISTED_HEART.get()))
+                .save(output);
     }
 }

@@ -1,28 +1,13 @@
 package org.enigmatic_legacy.item;
 
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.block.ModBlocks;
-import org.enigmatic_legacy.item.items.AstralDust;
-import org.enigmatic_legacy.item.items.CosmicHeart;
-import org.enigmatic_legacy.item.items.CursedRing;
-import org.enigmatic_legacy.item.items.DarkestScroll;
-import org.enigmatic_legacy.item.items.EarthHeart;
-import org.enigmatic_legacy.item.items.EarthHeartFragment;
-import org.enigmatic_legacy.item.items.EnderRod;
-import org.enigmatic_legacy.item.items.EtheriumIngot;
-import org.enigmatic_legacy.item.items.EtheriumOre;
-import org.enigmatic_legacy.item.items.EvilEssence;
-import org.enigmatic_legacy.item.items.EvilIngot;
-import org.enigmatic_legacy.item.items.ExquisiteRing;
-import org.enigmatic_legacy.item.items.IronRing;
-import org.enigmatic_legacy.item.items.SoulCrystal;
-import org.enigmatic_legacy.item.items.StorageCrystal;
-import org.enigmatic_legacy.item.items.ThiccScroll;
-import org.enigmatic_legacy.item.items.TwistedHeart;
+import org.enigmatic_legacy.item.items.*;
 
 public final class ModItems {
 
@@ -47,6 +32,7 @@ public final class ModItems {
     public static final DeferredItem<IronRing> IRON_RING = ITEMS.register("iron_ring", IronRing::new);
     public static final DeferredItem<ExquisiteRing> EXQUISITE_RING = ITEMS.register("golden_ring", ExquisiteRing::new);
     public static final DeferredItem<EvilIngot> EVIL_INGOT = ITEMS.register("evil_ingot", EvilIngot::new);
+    public static final DeferredItem<Item> TWISTED_MIRROR = ITEMS.register("twisted_mirror", TwistedMirror::new); // 扭曲魔镜
 
     // 原版名为 storage_crystal，显示名是 Extradimensional Vessel / 超维容器。
     public static final DeferredItem<StorageCrystal> STORAGE_CRYSTAL = ITEMS.register("storage_crystal", StorageCrystal::new);

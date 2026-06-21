@@ -20,6 +20,7 @@
   "item.enigmatic_legacy.storage_crystal": "Extradimensional Vessel",
   "item.enigmatic_legacy.thicc_scroll": "Blank Scroll",
   "item.enigmatic_legacy.twisted_heart": "Twisted Heart",
+  "item.enigmatic_legacy.twisted_mirror": "Twisted Mirror",
   "itemGroup.enigmatic_legacy": "Enigmatic Legacy",
   "tooltip.enigmatic_legacy.cursedRing10": "§5- You suffer from incurable insomnia.",
   "tooltip.enigmatic_legacy.cursedRing11": "§dSeven blessings will reward those who withstand:",
@@ -62,5 +63,8 @@
   "tooltip.enigmatic_legacy.storageCrystal3": "Stored experience: %1$s",
   "tooltip.enigmatic_legacy.twisted_heart.active": "Activated by the Ring of the Seven Curses.",
   "tooltip.enigmatic_legacy.twisted_heart.inactive": "Dormant.",
+  "tooltip.enigmatic_legacy.twisted_mirror1": "Returns you to your spawn point.",
+  "tooltip.enigmatic_legacy.twisted_mirror2": "Only works in vanilla dimensions.",
+  "tooltip.enigmatic_legacy.twisted_mirror3": "Requires the Ring of the Seven Curses.",
   "tooltip.enigmatic_legacy.void": " "
 }

@@ -47,5 +47,8 @@ public class ItemGenerator extends ItemModelProvider {
         basicItem(ModItems.EVIL_INGOT.getId());
         basicItem(ModItems.STORAGE_CRYSTAL.getId());
         basicItem(ModItems.SOUL_CRYSTAL.getId());
+        // 扭曲魔镜
+        withExistingParent("item/twisted_mirror", mcLoc("item/handheld"))
+                .texture("layer0", modLoc("item/twisted_mirror"));
     }
 }

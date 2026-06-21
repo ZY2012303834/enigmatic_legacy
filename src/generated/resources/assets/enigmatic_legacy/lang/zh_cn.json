@@ -20,6 +20,7 @@
   "item.enigmatic_legacy.storage_crystal": "超维容器",
   "item.enigmatic_legacy.thicc_scroll": "空卷轴",
   "item.enigmatic_legacy.twisted_heart": "扭曲之心",
+  "item.enigmatic_legacy.twisted_mirror": "扭曲魔镜",
   "itemGroup.enigmatic_legacy": "神秘遗物",
   "tooltip.enigmatic_legacy.cursedRing10": "§5- 无药可医的失眠症困扰着你",
   "tooltip.enigmatic_legacy.cursedRing11": "§d而那些坚韧顽强之人，将会被给予七个祝福：",
@@ -62,5 +63,8 @@
   "tooltip.enigmatic_legacy.storageCrystal3": "已保存经验：%1$s",
   "tooltip.enigmatic_legacy.twisted_heart.active": "已被七咒之戒激活。",
   "tooltip.enigmatic_legacy.twisted_heart.inactive": "尚未激活。",
+  "tooltip.enigmatic_legacy.twisted_mirror1": "将你传送回重生点。",
+  "tooltip.enigmatic_legacy.twisted_mirror2": "只能在原版维度中使用。",
+  "tooltip.enigmatic_legacy.twisted_mirror3": "需要佩戴七咒之戒。",
   "tooltip.enigmatic_legacy.void": ""
 }

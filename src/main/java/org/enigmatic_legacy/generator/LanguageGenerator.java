@@ -71,9 +71,15 @@ public class LanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.storageCrystal1", "Contains items and experience lost on death.");
         add("tooltip.enigmatic_legacy.storageCrystal2", "Stored stacks: %1$s");
         add("tooltip.enigmatic_legacy.storageCrystal3", "Stored experience: %1$s");
+
         addItem(ModItems.SOUL_CRYSTAL, "Soul Crystal");
         add("tooltip.enigmatic_legacy.soulCrystal1", "Right-Click to absorb the crystal and");
         add("tooltip.enigmatic_legacy.soulCrystal2", "restore one of your lost Soul Crystals.");
+
+        addItem(ModItems.TWISTED_MIRROR, "Twisted Mirror");
+        add("tooltip.enigmatic_legacy.twisted_mirror1", "Returns you to your spawn point.");
+        add("tooltip.enigmatic_legacy.twisted_mirror2", "Only works in vanilla dimensions.");
+        add("tooltip.enigmatic_legacy.twisted_mirror3", "Requires the Ring of the Seven Curses.");
     }
 
     private void addChineseTranslations() {
@@ -118,6 +124,11 @@ public class LanguageGenerator extends LanguageProvider {
         addItem(ModItems.SOUL_CRYSTAL, "灵魂水晶");
         add("tooltip.enigmatic_legacy.soulCrystal1", "右击吸收水晶，");
         add("tooltip.enigmatic_legacy.soulCrystal2", "并恢复一颗破碎的灵魂水晶。");
+
+        addItem(ModItems.TWISTED_MIRROR, "扭曲魔镜");
+        add("tooltip.enigmatic_legacy.twisted_mirror1", "将你传送回重生点。");
+        add("tooltip.enigmatic_legacy.twisted_mirror2", "只能在原版维度中使用。");
+        add("tooltip.enigmatic_legacy.twisted_mirror3", "需要佩戴七咒之戒。");
     }
 
     private void addEnglishCursedRingTooltips() {

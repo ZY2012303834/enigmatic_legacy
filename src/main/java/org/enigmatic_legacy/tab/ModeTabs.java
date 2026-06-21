@@ -40,6 +40,7 @@ public final class ModeTabs {
                         output.accept(ModItems.EVIL_INGOT.get());
                         output.accept(ModItems.STORAGE_CRYSTAL.get());
                         output.accept(ModItems.SOUL_CRYSTAL.get());
+                        output.accept(ModItems.TWISTED_MIRROR.get()); // 扭曲魔镜
                     })
                     .build());
 
