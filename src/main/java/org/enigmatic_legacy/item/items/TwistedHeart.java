@@ -20,6 +20,7 @@ import java.util.List;
 public class TwistedHeart extends Item {
 
     public static final String ACTIVE_TAG = "enigmatic_legacy_twisted_heart_active";
+    public static final int CHECK_INTERVAL_TICKS = 40; // 2 秒检测一次
 
     public TwistedHeart() {
         super(new Item.Properties()
@@ -35,13 +36,23 @@ public class TwistedHeart extends Item {
                               boolean isSelected) {
         super.inventoryTick(stack, level, entity, slotId, isSelected);
 
+        if (level.isClientSide()) {
+            return;
+        }
+
         if (!(entity instanceof Player player)) {
+            return;
+        }
+
+        // 每 2 秒检测一次，减少 Curios 查询次数和服务器负担。
+        if (level.getGameTime() % CHECK_INTERVAL_TICKS != 0) {
             return;
         }
 
         boolean active = CursedRingHelper.hasCursedRing(player);
         setActivated(stack, active);
     }
+
 
     public static boolean isActivated(@NotNull ItemStack stack) {
         CustomData customData = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
