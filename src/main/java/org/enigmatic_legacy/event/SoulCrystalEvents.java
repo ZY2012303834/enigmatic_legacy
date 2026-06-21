@@ -42,8 +42,8 @@ public final class SoulCrystalEvents {
             return;
         }
 
-        // 超维容器和灵魂水晶现在都只由七咒之戒触发。
-        // 没有佩戴七咒之戒时，完全保留原版死亡掉落流程。
+    // 超维容器和灵魂水晶现在都只由七咒之戒触发。
+    // 没有佩戴七咒之戒时，完全保留原版死亡掉落流程。
         if (!CursedRingHelper.hasCursedRing(player)) {
             return;
         }

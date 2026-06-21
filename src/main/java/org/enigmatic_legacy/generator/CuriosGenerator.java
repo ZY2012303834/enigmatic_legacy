@@ -66,17 +66,56 @@ public class CuriosGenerator implements DataProvider {
         // 注册 ring 戒指栏位类型，控制玩家默认有几个戒指栏。
         futures.add(generateRingSlotType(cachedOutput));
 
-        // 为玩家实体分配 ring 戒指栏位。
+        // 注册 charm 护符栏位类型，神秘护身符需要这个栏位。
+        futures.add(generateCharmSlotType(cachedOutput));
+
+        // 为玩家实体分配 ring 和 charm 栏位。
         futures.add(generatePlayerRingSlot(cachedOutput));
 
         // 生成 curios:ring 标签，让戒指物品可以放入 ring 栏位。
         futures.add(generateRingTag(cachedOutput));
 
+        // 生成 curios:charm 标签，让神秘护身符可以放入 charm 栏位。
         futures.add(generateEnigmaticAmuletTag(cachedOutput));
 
         return CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new));
+    }
 
+    /**
+     * 生成 charm 护符栏位类型配置。
+     *
+     * 生成路径：
+     * src/generated/resources/data/enigmatic_legacy/curios/slots/charm.json
+     *
+     * 作用：
+     * 告诉 Curios：存在一个名为 charm 的饰品栏位。
+     * 如果只把物品加进 curios:charm 标签，但没有这个 slot 定义，
+     * 玩家在某些环境下可能不会真正拥有护符栏，导致护符效果无法触发。
+     */
+    private CompletableFuture<?> generateCharmSlotType(CachedOutput cachedOutput) {
+        JsonObject json = new JsonObject();
 
+        // 神秘护身符同一时间只允许佩戴一个，所以 charm 槽位数量设为 1。
+        json.addProperty("size", 1);
+
+        // SET 表示直接设置最终数量。
+        // 如果后续你希望兼容其他模组添加的 charm 槽，可以改成 ADD。
+        json.addProperty("operation", "SET");
+
+        // 控制该槽位在 Curios GUI 中的排序。
+        // 数字越小越靠前；这里让它排在 ring 后面。
+        json.addProperty("order", 120);
+
+        // 使用 Curios 自带的护符空槽图标。
+        json.addProperty("icon", "curios:slot/empty_charm_slot");
+
+        Path path = output.getOutputFolder(PackOutput.Target.DATA_PACK)
+                .resolve(EnigmaticLegacy.MODID)
+                .resolve("curios")
+                .resolve("slots")
+                .resolve("charm.json");
+
+        return DataProvider.saveStable(cachedOutput, json, path);
     }
 
     private CompletableFuture<?> generateEnigmaticAmuletTag(CachedOutput cachedOutput) {
