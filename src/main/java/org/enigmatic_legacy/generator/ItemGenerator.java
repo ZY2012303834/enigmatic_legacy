@@ -27,5 +27,6 @@ public class ItemGenerator extends ItemModelProvider {
         basicItem(ModItems.THICC_SCROLL.getId());   // 空卷轴
         basicItem(ModItems.DARKEST_SCROLL.getId()); // 至暗卷轴
         basicItem(ModItems.COSMIC_HEART.getId());   // 寰宇之心
+        basicItem(ModItems.EARTH_HEART_FRAGMENT.getId()); // 大地之心碎片
     }
 }
