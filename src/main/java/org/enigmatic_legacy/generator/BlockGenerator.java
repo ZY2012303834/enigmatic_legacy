@@ -2,6 +2,8 @@ package org.enigmatic_legacy.generator;
 
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.level.block.LanternBlock;
+import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -25,29 +27,127 @@ public class BlockGenerator extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         // 袋装星尘需要每个面的 UV 不同，先构建自定义模型，再分别注册方块状态和物品模型。
-        ModelFile astralDustModel = astralDustModel();
-        simpleBlock(ModBlocks.ASTRAL_DUST_SACK.get(), astralDustModel);
-        simpleBlockItem(ModBlocks.ASTRAL_DUST_SACK.get(), astralDustModel);
-
-        // 以太块六个面使用同一张贴图，cubeAll 可以直接生成最普通的完整方块模型。
-        simpleBlockWithItem(ModBlocks.ETHERIUM_BLOCK.get(), cubeAll(ModBlocks.ETHERIUM_BLOCK.get()));
-    }
-
-    private ModelFile astralDustModel() {
-        // 手写 cube_all 等价的完整立方体模型，但为侧面、顶面、底面指定不同的贴图区域。
-        return models().getBuilder(ModBlocks.ASTRAL_DUST_SACK.getId().getPath())
+        ModelFile astralDustModel = models().getBuilder(ModBlocks.ASTRAL_DUST_SACK.getId().getPath())
                 .parent(new ModelFile.UncheckedModelFile("minecraft:block/cube_all"))
                 .texture("0", modLoc("block/astral_dust_sack"))
                 .texture("particle", modLoc("block/astral_dust_sack"))
                 .element()
-                    .from(0, 0, 0)
-                    .to(16, 16, 16)
-                    .face(Direction.NORTH).uvs(8, 0, 16, 8).texture("#0").end()
-                    .face(Direction.EAST).uvs(8, 0, 16, 8).texture("#0").end()
-                    .face(Direction.SOUTH).uvs(8, 0, 16, 8).texture("#0").end()
-                    .face(Direction.WEST).uvs(8, 0, 16, 8).texture("#0").end()
-                    .face(Direction.UP).uvs(0, 0, 8, 8).texture("#0").end()
-                    .face(Direction.DOWN).uvs(0, 8, 8, 16).texture("#0").end()
-                    .end();
+                .from(0, 0, 0)
+                .to(16, 16, 16)
+                .face(Direction.NORTH).uvs(8, 0, 16, 8).texture("#0").end()
+                .face(Direction.EAST).uvs(8, 0, 16, 8).texture("#0").end()
+                .face(Direction.SOUTH).uvs(8, 0, 16, 8).texture("#0").end()
+                .face(Direction.WEST).uvs(8, 0, 16, 8).texture("#0").end()
+                .face(Direction.UP).uvs(0, 0, 8, 8).texture("#0").end()
+                .face(Direction.DOWN).uvs(0, 8, 8, 16).texture("#0").end()
+                .end();
+        simpleBlock(ModBlocks.ASTRAL_DUST_SACK.get(), astralDustModel); // 袋装星尘
+        simpleBlockItem(ModBlocks.ASTRAL_DUST_SACK.get(), astralDustModel); //袋装星尘物品
+
+        simpleBlockWithItem(ModBlocks.ETHERIUM_BLOCK.get(), cubeAll(ModBlocks.ETHERIUM_BLOCK.get()));   // 以太块
+
+        ModelFile sittingLamp = bigLampModel();
+        ModelFile hangingLamp = bigHangingLampModel();
+
+        getVariantBuilder(ModBlocks.BIG_LAMP.get())
+                .partialState()
+                .with(LanternBlock.HANGING, false)
+                .modelForState()
+                .modelFile(sittingLamp)
+                .addModel()
+                .partialState()
+                .with(LanternBlock.HANGING, true)
+                .modelForState()
+                .modelFile(hangingLamp)
+                .addModel();
+
+        simpleBlockItem(ModBlocks.BIG_LAMP.get(), sittingLamp);
     }
+
+    private ModelFile bigLampModel() {
+        BlockModelBuilder model = models().getBuilder("the_lamp/big_lamp")
+                .parent(new ModelFile.UncheckedModelFile("minecraft:block/block"))
+                .ao(false)
+                .renderType("cutout")
+                .texture("lantern", mcLoc("block/lantern"))
+                .texture("metalplate", modLoc("block/plate"))
+                .texture("lampcore", modLoc("block/the_lamp"))
+                .texture("particle", modLoc("block/plate"));
+
+        cube(model, 3, 2, 3, 13, 12, 13, "#lampcore");
+
+        cube(model, 1, 0, 1, 15, 2, 3, "#metalplate");
+        cube(model, 1, 0, 13, 15, 2, 15, "#metalplate");
+        cube(model, 1, 0, 1, 3, 2, 15, "#metalplate");
+        cube(model, 13, 0, 1, 15, 2, 15, "#metalplate");
+
+        cube(model, 1, 12, 1, 15, 14, 3, "#metalplate");
+        cube(model, 1, 12, 13, 15, 14, 15, "#metalplate");
+        cube(model, 1, 12, 1, 3, 14, 15, "#metalplate");
+        cube(model, 13, 12, 1, 15, 14, 15, "#metalplate");
+
+        cube(model, 1, 2, 1, 3, 12, 3, "#metalplate");
+        cube(model, 13, 2, 1, 15, 12, 3, "#metalplate");
+        cube(model, 1, 2, 13, 3, 12, 15, "#metalplate");
+        cube(model, 13, 2, 13, 15, 12, 15, "#metalplate");
+
+        cube(model, 5, 0, 5, 11, 2, 11, "#lantern");
+
+        return model;
+    }
+
+    private ModelFile bigHangingLampModel() {
+        BlockModelBuilder model = models().getBuilder("the_lamp/big_hanging_lamp")
+                .parent(new ModelFile.UncheckedModelFile("minecraft:block/block"))
+                .ao(false)
+                .renderType("cutout")
+                .texture("lantern", mcLoc("block/lantern"))
+                .texture("metalplate", modLoc("block/plate"))
+                .texture("lampcore", modLoc("block/the_lamp"))
+                .texture("particle", modLoc("block/plate"));
+
+        cube(model, 3, 3, 3, 13, 13, 13, "#lampcore");
+
+        cube(model, 1, 1, 1, 15, 3, 3, "#metalplate");
+        cube(model, 1, 1, 13, 15, 3, 15, "#metalplate");
+        cube(model, 1, 1, 1, 3, 3, 15, "#metalplate");
+        cube(model, 13, 1, 1, 15, 3, 15, "#metalplate");
+
+        cube(model, 1, 13, 1, 15, 15, 3, "#metalplate");
+        cube(model, 1, 13, 13, 15, 15, 15, "#metalplate");
+        cube(model, 1, 13, 1, 3, 15, 15, "#metalplate");
+        cube(model, 13, 13, 1, 15, 15, 15, "#metalplate");
+
+        cube(model, 1, 3, 1, 3, 13, 3, "#metalplate");
+        cube(model, 13, 3, 1, 15, 13, 3, "#metalplate");
+        cube(model, 1, 3, 13, 3, 13, 15, "#metalplate");
+        cube(model, 13, 3, 13, 15, 13, 15, "#metalplate");
+
+        cube(model, 5, 13, 5, 11, 14, 11, "#lantern");
+
+        // 悬挂部分：用两个薄片模拟灯笼挂钩/吊链
+        cube(model, 6.5F, 12, 8, 9.5F, 16, 8.05F, "#lantern");
+        cube(model, 8, 11, 6.5F, 8.05F, 17, 9.5F, "#lantern");
+
+        return model;
+    }
+
+    private static void cube(
+            BlockModelBuilder model,
+            float x1, float y1, float z1,
+            float x2, float y2, float z2,
+            String texture
+    ) {
+        model.element()
+                .from(x1, y1, z1)
+                .to(x2, y2, z2)
+                .face(Direction.NORTH).texture(texture).end()
+                .face(Direction.EAST).texture(texture).end()
+                .face(Direction.SOUTH).texture(texture).end()
+                .face(Direction.WEST).texture(texture).end()
+                .face(Direction.UP).texture(texture).end()
+                .face(Direction.DOWN).texture(texture).end()
+                .end();
+    }
+
 }
