@@ -3,7 +3,6 @@ package org.enigmatic_legacy.event;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.GameRules;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
@@ -43,8 +42,13 @@ public final class SoulCrystalEvents {
             return;
         }
 
-        boolean hadCursedRing = CursedRingHelper.hasCursedRing(player);
-        boolean canDropSoulCrystal = canDropSoulCrystal(player, hadCursedRing);
+        // 超维容器和灵魂水晶现在都只由七咒之戒触发。
+        // 没有佩戴七咒之戒时，完全保留原版死亡掉落流程。
+        if (!CursedRingHelper.hasCursedRing(player)) {
+            return;
+        }
+
+        boolean canDropSoulCrystal = canDropSoulCrystal(player);
         ItemStack embeddedSoulCrystal = canDropSoulCrystal
                 ? ModItems.SOUL_CRYSTAL.get().createCrystalFrom(player)
                 : ItemStack.EMPTY;
@@ -93,22 +97,10 @@ public final class SoulCrystalEvents {
         ModItems.SOUL_CRYSTAL.get().updatePlayerSoulMap(event.getEntity());
     }
 
-    private static boolean canDropSoulCrystal(Player player, boolean hadCursedRing) {
+    private static boolean canDropSoulCrystal(Player player) {
         SoulCrystal soulCrystal = ModItems.SOUL_CRYSTAL.get();
 
-        if (soulCrystal.getLostCrystals(player) >= ConfigCommon.MAX_SOUL_CRYSTAL_LOSS.get()) {
-            return false;
-        }
-
-        int mode = ConfigCommon.SOUL_CRYSTALS_MODE.get();
-        boolean keepInventory = player.level().getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY);
-
-        return switch (mode) {
-            case 0 -> hadCursedRing;
-            case 1 -> hadCursedRing || keepInventory;
-            case 2 -> true;
-            default -> false;
-        };
+        return soulCrystal.getLostCrystals(player) < ConfigCommon.MAX_SOUL_CRYSTAL_LOSS.get();
     }
 
     private static void spawnPermanentItem(Player player, ItemStack stack, double yOffset) {

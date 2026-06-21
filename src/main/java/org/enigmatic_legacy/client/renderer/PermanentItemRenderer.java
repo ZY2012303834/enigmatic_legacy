@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemDisplayContext;
 import org.enigmatic_legacy.entity.PermanentItemEntity;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * 用原物品模型渲染 PermanentItemEntity。
@@ -26,7 +27,7 @@ public class PermanentItemRenderer extends EntityRenderer<PermanentItemEntity> {
 
     @Override
     public void render(PermanentItemEntity entity, float yaw, float partialTick, PoseStack poseStack,
-                       MultiBufferSource buffer, int packedLight) {
+                       @NotNull MultiBufferSource buffer, int packedLight) {
         poseStack.pushPose();
         poseStack.translate(0.0D, 0.18D + Math.sin((entity.getAge() + partialTick) / 10.0D) * 0.08D, 0.0D);
         poseStack.mulPose(Axis.YP.rotation((entity.getAge() + partialTick) / 20.0F + entity.hoverStart));
@@ -39,7 +40,7 @@ public class PermanentItemRenderer extends EntityRenderer<PermanentItemEntity> {
     }
 
     @Override
-    public ResourceLocation getTextureLocation(PermanentItemEntity entity) {
+    public ResourceLocation getTextureLocation(@NotNull PermanentItemEntity entity) {
         return null;
     }
 }
