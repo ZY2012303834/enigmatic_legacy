@@ -421,122 +421,71 @@
     {
       "faces": {
         "down": {
-          "texture": "#lantern"
+          "texture": "#connector"
         },
         "east": {
-          "texture": "#lantern"
+          "texture": "#connector"
         },
         "north": {
-          "texture": "#lantern"
+          "texture": "#connector"
         },
         "south": {
-          "texture": "#lantern"
+          "texture": "#connector"
         },
         "up": {
-          "texture": "#lantern"
+          "texture": "#connector"
         },
         "west": {
-          "texture": "#lantern"
+          "texture": "#connector"
         }
       },
       "from": [
-        5,
-        13,
-        5
+        6,
+        14,
+        6
       ],
       "to": [
-        11,
-        14,
-        11
+        10,
+        16,
+        10
       ]
     },
     {
       "faces": {
+        "down": {
+          "texture": "#connector"
+        },
+        "east": {
+          "texture": "#connector"
+        },
         "north": {
-          "texture": "#lantern",
-          "uv": [
-            11.0,
-            1.0,
-            14.0,
-            5.0
-          ]
+          "texture": "#connector"
         },
         "south": {
-          "texture": "#lantern",
-          "uv": [
-            11.0,
-            1.0,
-            14.0,
-            5.0
-          ]
-        }
-      },
-      "from": [
-        6.5,
-        12,
-        8
-      ],
-      "rotation": {
-        "angle": 45.0,
-        "axis": "y",
-        "origin": [
-          8,
-          9,
-          8
-        ]
-      },
-      "shade": false,
-      "to": [
-        9.5,
-        16,
-        8
-      ]
-    },
-    {
-      "faces": {
-        "east": {
-          "texture": "#lantern",
-          "uv": [
-            11.0,
-            6.0,
-            14.0,
-            12.0
-          ]
+          "texture": "#connector"
+        },
+        "up": {
+          "texture": "#connector"
         },
         "west": {
-          "texture": "#lantern",
-          "uv": [
-            11.0,
-            6.0,
-            14.0,
-            12.0
-          ]
+          "texture": "#connector"
         }
       },
       "from": [
-        8,
+        7,
         11,
-        6.5
+        7
       ],
-      "rotation": {
-        "angle": 45.0,
-        "axis": "y",
-        "origin": [
-          8,
-          9,
-          8
-        ]
-      },
-      "shade": false,
       "to": [
-        8,
-        17,
-        9.5
+        9,
+        16,
+        9
       ]
     }
   ],
   "render_type": "minecraft:cutout",
   "textures": {
+    "connector": "enigmatic_legacy:block/lamp_connector",
     "lampcore": "enigmatic_legacy:block/the_lamp",
     "lantern": "minecraft:block/lantern",
     "metalplate": "enigmatic_legacy:block/plate",
