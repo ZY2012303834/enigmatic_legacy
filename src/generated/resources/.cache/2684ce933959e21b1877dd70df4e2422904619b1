@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-21T20:34:08.329433	vanilla/Recipes
+// 1.21.1	2026-06-21T22:46:26.5480084	vanilla/Recipes
 138cca5fc2d36a468976c88c266618e68aa51d88 data/enigmatic_legacy/advancement/recipes/building_blocks/astral_dust_sack.json
 75128c3d277fd90fca1df4cc9f996933af7f7241 data/enigmatic_legacy/advancement/recipes/building_blocks/etherium_block.json
 afc69a4ceaecd0685cc5f6ee8c892af17f05a22e data/enigmatic_legacy/advancement/recipes/decorations/lamps/big_lamp.json
@@ -11,6 +11,7 @@ fc3526652407b200798a6967f8f2bc68f688bb86 data/enigmatic_legacy/advancement/recip
 d7c3233c5491f5a2a19d12075ed845178837bc83 data/enigmatic_legacy/advancement/recipes/misc/evil_ingot.json
 c42014eeb94e52f8cd0ec999471820c210701d1b data/enigmatic_legacy/advancement/recipes/misc/golden_ring.json
 67afc31468041d604544d2ef7e517776de057341 data/enigmatic_legacy/advancement/recipes/misc/iron_ring.json
+e6d68748b75ff98fe29f25cf84a97c858267a267 data/enigmatic_legacy/advancement/recipes/misc/magnet_ring.json
 0802268decf9f83fe1bbc684a804e15c13e8efbc data/enigmatic_legacy/advancement/recipes/misc/thicc_scroll.json
 6e95028fab00920c226748ae0c7ec592a4ba6b87 data/enigmatic_legacy/advancement/recipes/misc/twisted_heart.json
 44184c796c476522c6aa3d1c9264d08810c28675 data/enigmatic_legacy/advancement/recipes/tools/twisted_mirror.json
@@ -26,6 +27,7 @@ ca5674a917f19e5f062c2a18f2a96f92c6163d97 data/enigmatic_legacy/recipe/golden_rin
 96515eef21b4c85507c8cb755cd98bdb17666433 data/enigmatic_legacy/recipe/iron_ring.json
 b7c1d5bc5ea6a00dba1fbcc0656e65bc1b07e93c data/enigmatic_legacy/recipe/lamps/big_lamp.json
 d65d6289f4b2aa74e1d51ee5e48c5286a303ae47 data/enigmatic_legacy/recipe/lamps/big_shroomlamp.json
+b7ff29e9a057ae6829ace5151db9d21fc64eda65 data/enigmatic_legacy/recipe/magnet_ring.json
 9d1164ba211257b9b0a8afceac161910f5403ce6 data/enigmatic_legacy/recipe/thicc_scroll.json
 8cfad9fa5459bfbf9f4230a1168be6e1c4093d45 data/enigmatic_legacy/recipe/twisted_heart.json
 6b97c26818db70de9c31c4ee5d28db679fcdacd6 data/enigmatic_legacy/recipe/twisted_mirror.json

@@ -53,8 +53,8 @@ public class ConfigCommon {
     public static final ModConfigSpec.BooleanValue DARKEST_SCROLL_ENABLED;
 
     // ==============================
-// 七咒之戒功能配置
-// ==============================
+    // 七咒之戒功能配置
+    // ==============================
 
     public static final ModConfigSpec.IntValue CURSED_RING_PAIN_MODIFIER;
     public static final ModConfigSpec.IntValue CURSED_RING_MONSTER_DAMAGE_DEBUFF;
@@ -77,6 +77,11 @@ public class ConfigCommon {
     public static final ModConfigSpec.BooleanValue CURSED_RING_DISABLE_INSOMNIA;
     public static final ModConfigSpec.IntValue FORBIDDEN_FRUIT_REGENERATION_SUBTRACTION;
     public static final ModConfigSpec.DoubleValue FORBIDDEN_FRUIT_DEBUFF_DURATION_MULTIPLIER;
+
+    // ==============================
+    // 磁力之戒配置
+    // ==============================
+    public static final ModConfigSpec.DoubleValue MAGNET_RING_RANGE;
 
     static {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
@@ -249,6 +254,20 @@ public class ConfigCommon {
         FORBIDDEN_FRUIT_DEBUFF_DURATION_MULTIPLIER = builder
                 .comment("Multiplier applied to the initial debuff durations after eating the fruit.")
                 .defineInRange("ForbiddenFruitDebuffDurationMultiplier", 1.0D, 0.0D, 100.0D);
+
+        builder.pop();
+
+        builder.comment(
+                "磁力之戒配置",
+                "控制 Magnetic Ring / 磁力之戒的吸取范围。"
+        ).push("Magnet Ring");
+
+        MAGNET_RING_RANGE = builder
+                .comment(
+                        "磁力之戒吸取掉落物的半径。",
+                        "原项目默认值为 8。"
+                )
+                .defineInRange("MagnetRingRange", 8.0D, 1.0D, 256.0D);
 
         builder.pop();
 

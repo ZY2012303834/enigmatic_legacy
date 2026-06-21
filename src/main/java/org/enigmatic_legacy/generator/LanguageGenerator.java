@@ -146,6 +146,10 @@ public class LanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.green", "+2 Mining Efficiency");
         add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.black", "10% Lifesteal");
         add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.blue", "+25% Swim Speed");
+
+        addItem(ModItems.MAGNET_RING, "Magnetic Ring");
+        add("tooltip.enigmatic_legacy.magnet_ring.1", "Attracts nearby items within %s blocks.");
+        add("tooltip.enigmatic_legacy.magnet_ring.2", "Hold Shift to suppress the magnetic field.");
     }
 
     private void addChineseTranslations() {
@@ -262,6 +266,10 @@ public class LanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.green", "+2 挖掘效率");
         add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.black", "10% 生命偷取");
         add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.blue", "+25% 游泳速度");
+
+        addItem(ModItems.MAGNET_RING, "磁力之戒");
+        add("tooltip.enigmatic_legacy.magnet_ring.1", "吸取 %s 格范围内的附近掉落物。");
+        add("tooltip.enigmatic_legacy.magnet_ring.2", "按住 Shift 可暂时抑制磁场。");
 
     }
 

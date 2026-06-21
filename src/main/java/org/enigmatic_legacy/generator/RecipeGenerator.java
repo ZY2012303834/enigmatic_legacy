@@ -203,5 +203,19 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('P', Items.ENDER_PEARL)
                 .unlockedBy("has_ender_chest", has(Items.ENDER_CHEST))
                 .save(output);
+
+        // 磁力之戒配方。
+        // 对齐原项目：钻石 + 铁锭 + 铁指环 + 金锭 + 红石。
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MAGNET_RING.get())
+                .pattern(" D ")
+                .pattern("IXG")
+                .pattern(" R ")
+                .define('D', Items.DIAMOND)
+                .define('I', Items.IRON_INGOT)
+                .define('X', ModItems.IRON_RING.get())
+                .define('G', Items.GOLD_INGOT)
+                .define('R', Items.REDSTONE)
+                .unlockedBy("has_iron_ring", has(ModItems.IRON_RING.get()))
+                .save(output);
     }
 }

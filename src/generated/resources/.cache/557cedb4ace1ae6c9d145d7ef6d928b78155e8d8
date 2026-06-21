@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-21T22:05:46.864119	vanilla/Item Models: enigmatic_legacy
+// 1.21.1	2026-06-21T22:46:26.543915	vanilla/Item Models: enigmatic_legacy
 71ad4196d7e8a842e7122ea637f5096bd1de67b7 assets/enigmatic_legacy/models/item/astral_dust.json
 a800b4eb7375f1b97f96baff0737b577c9df02a5 assets/enigmatic_legacy/models/item/cosmic_heart.json
 05e92afa49b30559cdf0273899d0933d14ae0156 assets/enigmatic_legacy/models/item/cursed_ring.json
@@ -22,6 +22,7 @@ d4e1214ce79dce9e287d896be997bc5972536f9c assets/enigmatic_legacy/models/item/evi
 d04fe019984814a8c097b8309d6aafc20e399370 assets/enigmatic_legacy/models/item/golden_ring.json
 df0aa91084051dacbbb39f169cedffe05c4dc426 assets/enigmatic_legacy/models/item/guardian_heart.json
 e9b89a174a55e8ae199acedfccbc959497d7b814 assets/enigmatic_legacy/models/item/iron_ring.json
+605ecdfd8e7c0a82ef87dabbff6105e8320fb367 assets/enigmatic_legacy/models/item/magnet_ring.json
 ecc9930eb84f65dfce77e42b52f82d09ac95fce5 assets/enigmatic_legacy/models/item/soul_crystal.json
 d2f712925c60a2c0d2c377f9a71c6df4f9872874 assets/enigmatic_legacy/models/item/storage_crystal.json
 f83b14662eaba05c2bb7492fdd6d909286dd0113 assets/enigmatic_legacy/models/item/thicc_scroll.json
