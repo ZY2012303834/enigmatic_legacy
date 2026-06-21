@@ -46,22 +46,19 @@ public class BlockGenerator extends BlockStateProvider {
 
         simpleBlockWithItem(ModBlocks.ETHERIUM_BLOCK.get(), cubeAll(ModBlocks.ETHERIUM_BLOCK.get()));   // 以太块
 
-        ModelFile sittingLamp = bigLampModel();
-        ModelFile hangingLamp = bigHangingLampModel();
-
         getVariantBuilder(ModBlocks.BIG_LAMP.get())
                 .partialState()
                 .with(LanternBlock.HANGING, false)
                 .modelForState()
-                .modelFile(sittingLamp)
+                .modelFile(bigLampModel())
                 .addModel()
                 .partialState()
                 .with(LanternBlock.HANGING, true)
                 .modelForState()
-                .modelFile(hangingLamp)
+                .modelFile(bigHangingLampModel())
                 .addModel();
 
-        simpleBlockItem(ModBlocks.BIG_LAMP.get(), sittingLamp);
+        simpleBlockItem(ModBlocks.BIG_LAMP.get(), bigLampModel());
     }
 
     private ModelFile bigLampModel() {

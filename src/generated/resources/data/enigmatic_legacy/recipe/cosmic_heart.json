@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "enigmatic_legacy:astral_dust"
+    },
+    "E": {
+      "item": "minecraft:ender_eye"
+    },
+    "P": {
+      "item": "minecraft:blaze_powder"
+    },
+    "S": {
+      "item": "minecraft:nether_star"
+    },
+    "X": {
+      "item": "minecraft:heart_of_the_sea"
+    }
+  },
+  "pattern": [
+    "DSD",
+    "PXP",
+    "DED"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:cosmic_heart"
+  }
+}

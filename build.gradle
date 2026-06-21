@@ -297,3 +297,7 @@ tasks.register('uploadGithub') {
     dependsOn tasks.named('build')
     dependsOn tasks.named('pushToGithub')
 }
+
+tasks.named('build') {
+    dependsOn tasks.named('runData')
+}
