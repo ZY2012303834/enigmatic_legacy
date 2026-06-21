@@ -1,14 +1,13 @@
 package org.enigmatic_legacy.effect;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.TickTask;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.InstantenousMobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
+import org.enigmatic_legacy.event.TeleportParticleEvents;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -58,7 +57,7 @@ public class RecallEffect extends InstantenousMobEffect {
             yaw = targetLevel.getSharedSpawnAngle();
         }
 
-        spawnDepartureParticles(player);
+        TeleportParticleEvents.spawnDepartureParticles(player);
 
         player.stopRiding();
         player.teleportTo(
@@ -71,11 +70,11 @@ public class RecallEffect extends InstantenousMobEffect {
         );
         player.resetFallDistance();
 
-        spawnArrivalParticlesDelayed(player);
+        TeleportParticleEvents.scheduleArrivalParticles(player, 3);
     }
 
     private static void teleportToEndPlatform(ServerPlayer player, ServerLevel endLevel) {
-        spawnDepartureParticles(player);
+        TeleportParticleEvents.spawnDepartureParticles(player);
 
         player.stopRiding();
         player.teleportTo(
@@ -88,61 +87,6 @@ public class RecallEffect extends InstantenousMobEffect {
         );
         player.resetFallDistance();
 
-        spawnArrivalParticlesDelayed(player);
+        TeleportParticleEvents.scheduleArrivalParticles(player, 3);
     }
-
-    /**
-     * 在玩家当前位置生成到达粒子。
-     */
-    private static void spawnArrivalParticles(ServerPlayer player) {
-        ServerLevel level = player.serverLevel();
-
-        level.sendParticles(
-                player,
-                ParticleTypes.PORTAL,
-                true,
-                player.getX(),
-                player.getY() + 1.0D,
-                player.getZ(),
-                64,
-                0.8D,
-                1.0D,
-                0.8D,
-                0.18D
-        );
-    }
-
-    /**
-     * 延迟 1 tick 后在目的地生成末影粒子。
-     */
-    private static void spawnArrivalParticlesDelayed(ServerPlayer player) {
-        player.server.tell(new TickTask(player.server.getTickCount() + 1, () -> {
-            if (player.isRemoved()) {
-                return;
-            }
-
-            spawnArrivalParticles(player);
-        }));
-    }
-
-    /**
-     * 传送前生成末影粒子。
-     */
-    private static void spawnDepartureParticles(ServerPlayer player) {
-        ServerLevel level = player.serverLevel();
-
-        level.sendParticles(
-                ParticleTypes.PORTAL,
-                player.getX(),
-                player.getY() + 1.0D,
-                player.getZ(),
-                48,
-                0.7D,
-                0.9D,
-                0.7D,
-                0.15D
-        );
-    }
-
-
 }

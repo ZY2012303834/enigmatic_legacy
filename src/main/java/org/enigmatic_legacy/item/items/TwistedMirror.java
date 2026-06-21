@@ -17,6 +17,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
+import org.enigmatic_legacy.event.TeleportParticleEvents;
 import org.enigmatic_legacy.util.CursedRingHelper;
 import org.jetbrains.annotations.NotNull;
 
@@ -64,7 +65,7 @@ public class TwistedMirror extends Item {
                                                            @NotNull InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
 
-        if (isVanillaDimension(level)) {
+        if (!isVanillaDimension(level)) {
             return InteractionResultHolder.fail(stack);
         }
 
@@ -147,7 +148,7 @@ public class TwistedMirror extends Item {
             return stack;
         }
 
-        if (isVanillaDimension(level)) {
+        if (!isVanillaDimension(level)) {
             return stack;
         }
 
@@ -159,9 +160,9 @@ public class TwistedMirror extends Item {
             return stack;
         }
 
-        spawnDepartureParticles(player);
+        TeleportParticleEvents.spawnDepartureParticles(player);
         teleportBackToSpawn(player);
-        spawnArrivalParticlesDelayed(player);
+        TeleportParticleEvents.scheduleArrivalParticles(player, 3);
 
         player.getCooldowns().addCooldown(this, COOLDOWN_TICKS);
 
@@ -169,68 +170,12 @@ public class TwistedMirror extends Item {
     }
 
     /**
-     * 延迟 1 tick 后在目的地生成末影粒子。
-     *
-     * <p>传送刚完成的同一 tick 内，客户端可能还没完成位置/维度同步，
-     * 所以目标点粒子容易看不到。延迟 1 tick 后再发给该玩家会稳定很多。
-     */
-    private static void spawnArrivalParticlesDelayed(ServerPlayer player) {
-        player.server.tell(new TickTask(player.server.getTickCount() + 1, () -> {
-            if (player.isRemoved()) {
-                return;
-            }
-
-            spawnArrivalParticles(player);
-        }));
-    }
-
-    /**
-     * 传送前生成末影粒子。
-     */
-    private static void spawnDepartureParticles(ServerPlayer player) {
-        ServerLevel level = player.serverLevel();
-
-        level.sendParticles(
-                ParticleTypes.PORTAL,
-                player.getX(),
-                player.getY() + 1.0D,
-                player.getZ(),
-                48,
-                0.7D,
-                0.9D,
-                0.7D,
-                0.15D
-        );
-    }
-
-    /**
-     * 在玩家当前位置生成到达粒子。
-     */
-    private static void spawnArrivalParticles(ServerPlayer player) {
-        ServerLevel level = player.serverLevel();
-
-        level.sendParticles(
-                player,
-                ParticleTypes.PORTAL,
-                true,
-                player.getX(),
-                player.getY() + 1.0D,
-                player.getZ(),
-                64,
-                0.8D,
-                1.0D,
-                0.8D,
-                0.18D
-        );
-    }
-
-    /**
      * 判断是否为原版三维度。
      */
     private static boolean isVanillaDimension(Level level) {
-        return level.dimension() != Level.OVERWORLD
-                && level.dimension() != Level.NETHER
-                && level.dimension() != Level.END;
+        return level.dimension() == Level.OVERWORLD
+                || level.dimension() == Level.NETHER
+                || level.dimension() == Level.END;
     }
 
     /**

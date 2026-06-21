@@ -9,10 +9,7 @@ import org.enigmatic_legacy.block.ModBlocks;
 import org.enigmatic_legacy.config.ConfigClient;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.entity.ModEntities;
-import org.enigmatic_legacy.event.CursedRingEvents;
-import org.enigmatic_legacy.event.EvilEssenceEvents;
-import org.enigmatic_legacy.event.EvilIngotEvents;
-import org.enigmatic_legacy.event.SoulCrystalEvents;
+import org.enigmatic_legacy.event.*;
 import org.enigmatic_legacy.generator.BlockGenerator;
 import org.enigmatic_legacy.generator.CuriosGenerator;
 import org.enigmatic_legacy.generator.FurnaceRecipeGenerator;
@@ -48,6 +45,7 @@ public class EnigmaticLegacy {
         modEventBus.addListener(FurnaceRecipeGenerator::gatherData);
         modEventBus.addListener(CuriosGenerator::gatherData);
 
+        NeoForge.EVENT_BUS.register(TeleportParticleEvents.class); // 传送粒子
         NeoForge.EVENT_BUS.register(CursedRingEvents.class);
         NeoForge.EVENT_BUS.register(EvilEssenceEvents.class);
         NeoForge.EVENT_BUS.register(EvilIngotEvents.class);
