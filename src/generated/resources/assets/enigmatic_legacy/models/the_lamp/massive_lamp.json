@@ -31,7 +31,7 @@
       "to": [
         16,
         16,
-        0.1
+        1
       ]
     },
     {
@@ -58,7 +58,7 @@
       "from": [
         0,
         0,
-        15.9
+        15
       ],
       "to": [
         16,
@@ -93,7 +93,7 @@
         0
       ],
       "to": [
-        0.1,
+        1,
         16,
         16
       ]
@@ -120,7 +120,7 @@
         }
       },
       "from": [
-        15.9,
+        15,
         0,
         0
       ],
@@ -153,7 +153,7 @@
       },
       "from": [
         0,
-        15.9,
+        15,
         0
       ],
       "to": [
@@ -190,7 +190,7 @@
       ],
       "to": [
         16,
-        0.1,
+        1,
         16
       ]
     },
@@ -611,9 +611,9 @@
       ]
     }
   ],
-  "render_type": "minecraft:translucent",
+  "render_type": "minecraft:cutout",
   "textures": {
-    "casing": "minecraft:block/glass",
+    "casing": "minecraft:block/white_stained_glass_pane_top",
     "lampcore": "enigmatic_legacy:block/the_lamp",
     "metalplate": "enigmatic_legacy:block/plate",
     "particle": "enigmatic_legacy:block/plate"

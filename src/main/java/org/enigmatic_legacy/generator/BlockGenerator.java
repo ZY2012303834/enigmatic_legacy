@@ -129,19 +129,19 @@ public class BlockGenerator extends BlockStateProvider {
         BlockModelBuilder model = models().getBuilder("the_lamp/massive_lamp")
                 .parent(new ModelFile.UncheckedModelFile("minecraft:block/block"))
                 .ao(false)
-                .renderType("translucent")
-                .texture("casing", mcLoc("block/glass"))
+                .renderType("cutout")
+                .texture("casing", mcLoc("block/white_stained_glass_pane_top"))
                 .texture("metalplate", modLoc("block/plate"))
                 .texture("lampcore", modLoc("block/the_lamp"))
                 .texture("particle", modLoc("block/plate"));
 
-        // 外层玻璃薄面，不使用完整透明方块
-        cube(model, 0, 0, 0, 16, 16, 0.1F, "#casing");
-        cube(model, 0, 0, 15.9F, 16, 16, 16, "#casing");
-        cube(model, 0, 0, 0, 0.1F, 16, 16, "#casing");
-        cube(model, 15.9F, 0, 0, 16, 16, 16, "#casing");
-        cube(model, 0, 15.9F, 0, 16, 16, 16, "#casing");
-        cube(model, 0, 0, 0, 16, 0.1F, 16, "#casing");
+        // 外层玻璃边框，不用完整透明玻璃块
+        cube(model, 0, 0, 0, 16, 16, 1, "#casing");
+        cube(model, 0, 0, 15, 16, 16, 16, "#casing");
+        cube(model, 0, 0, 0, 1, 16, 16, "#casing");
+        cube(model, 15, 0, 0, 16, 16, 16, "#casing");
+        cube(model, 0, 15, 0, 16, 16, 16, "#casing");
+        cube(model, 0, 0, 0, 16, 1, 16, "#casing");
 
         // 内部发光核心
         cube(model, 3, 3, 3, 13, 13, 13, "#lampcore");
@@ -166,6 +166,7 @@ public class BlockGenerator extends BlockStateProvider {
 
         return model;
     }
+
     private static void cube(
             BlockModelBuilder model,
             float x1, float y1, float z1,
