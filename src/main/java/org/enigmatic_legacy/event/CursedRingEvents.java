@@ -78,6 +78,16 @@ public class CursedRingEvents {
     public static void onPlayerTick(PlayerTickEvent.Post event) {
         Player player = event.getEntity();
 
+        // 复刻原项目：七咒之戒佩戴者着火后，燃烧时间会不断延长。
+        // 注意：这里只在“已经着火”时延长，不会主动点燃玩家。
+        // 所以跳进水里、雨水灭火、其他原版灭火方式依然有效。
+        if (!player.level().isClientSide()
+                && player.isOnFire()
+                && CursedRingHelper.hasCursedRing(player)) {
+            player.setRemainingFireTicks(player.getRemainingFireTicks() + 2);
+        }
+
+        // 其他七咒逻辑仍然每秒执行一次，避免中立生物仇恨和末影人传送每 tick 检查。
         if (player.tickCount % 20 != 0) {
             return;
         }
