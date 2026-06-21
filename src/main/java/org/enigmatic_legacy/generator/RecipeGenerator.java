@@ -104,5 +104,17 @@ public class RecipeGenerator extends RecipeProvider {
                 .requires(Items.GLASS)
                 .unlockedBy("has_big_lamp", has(ModBlocks.BIG_LAMP.get()))
                 .save(output, ResourceLocation.fromNamespaceAndPath(EnigmaticLegacy.MODID, "lamps/massive_lamp"));
+
+        // 菌光体灯笼
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.BIG_SHROOMLAMP.get(), 2)
+                .pattern("ici")
+                .pattern("gXg")
+                .pattern("igi")
+                .define('X', Items.SHROOMLIGHT)
+                .define('i', Items.IRON_INGOT)
+                .define('g', Items.GOLD_NUGGET)
+                .define('c', Items.CHAIN)
+                .unlockedBy("has_shroomlight", has(Items.SHROOMLIGHT))
+                .save(output, ResourceLocation.fromNamespaceAndPath(EnigmaticLegacy.MODID, "lamps/big_shroomlamp"));
     }
 }
