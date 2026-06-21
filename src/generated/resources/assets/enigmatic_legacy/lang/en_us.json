@@ -49,7 +49,7 @@
   "message.enigmatic_legacy.ender_ring.no_access": "You need the Ring of Ender to do that.",
   "message.enigmatic_legacy.magnet_ring.disabled": "Magnetic field disabled.",
   "message.enigmatic_legacy.magnet_ring.enabled": "Magnetic field enabled.",
-  "message.enigmatic_legacy.magnet_ring.no_ring": "You are not wearing a Magnetic Ring.",
+  "message.enigmatic_legacy.magnet_ring.no_ring": "You are not wearing a Magnetic Ring or Dislocation Ring.",
   "tooltip.enigmatic_legacy.cursedRing10": "§5- You suffer from incurable insomnia.",
   "tooltip.enigmatic_legacy.cursedRing11": "§dSeven blessings will reward those who withstand:",
   "tooltip.enigmatic_legacy.cursedRing12": "§5- §6+%1$s§d Looting Level",

@@ -156,7 +156,7 @@ public class LanguageGenerator extends LanguageProvider {
 
         add("message.enigmatic_legacy.magnet_ring.enabled", "Magnetic field enabled.");
         add("message.enigmatic_legacy.magnet_ring.disabled", "Magnetic field disabled.");
-        add("message.enigmatic_legacy.magnet_ring.no_ring", "You are not wearing a Magnetic Ring.");
+        add("message.enigmatic_legacy.magnet_ring.no_ring", "You are not wearing a Magnetic Ring or Dislocation Ring.");
 
         add("gui.enigmatic_legacy.magnet_ring.tooltip.enabled", "Magnetic Ring is enabled. Click to disable.");
         add("gui.enigmatic_legacy.magnet_ring.tooltip.disabled", "Magnetic Ring is disabled. Click to enable.");
@@ -286,7 +286,7 @@ public class LanguageGenerator extends LanguageProvider {
 
         add("message.enigmatic_legacy.magnet_ring.enabled", "磁力之戒已开启。");
         add("message.enigmatic_legacy.magnet_ring.disabled", "磁力之戒已关闭。");
-        add("message.enigmatic_legacy.magnet_ring.no_ring", "你没有佩戴磁力之戒。");
+        add("message.enigmatic_legacy.magnet_ring.no_ring", "你没有佩戴磁力之戒或转位之戒。");
 
         add("gui.enigmatic_legacy.magnet_ring.tooltip.enabled", "磁力之戒当前已开启。点击关闭。");
         add("gui.enigmatic_legacy.magnet_ring.tooltip.disabled", "磁力之戒当前已关闭。点击开启。");

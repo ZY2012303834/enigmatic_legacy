@@ -97,7 +97,8 @@ public final class MagnetRingClientEvents {
             return;
         }
 
-        Optional<ItemStack> ring = MagnetRingHelper.findEquippedMagnetRing(player);
+        // 佩戴磁力之戒或转位之戒时都显示磁力开关按钮。
+        Optional<ItemStack> ring = MagnetRingHelper.findEquippedMagnetControlRing(player);
 
         // 未佩戴磁力之戒时，不显示磁力按钮。
         if (ring.isEmpty()) {

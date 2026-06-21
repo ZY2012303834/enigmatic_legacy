@@ -1,10 +1,13 @@
 package org.enigmatic_legacy.util;
 
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
+import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.item.items.MagnetRing;
 import top.theillusivec4.curios.api.CuriosApi;
 
@@ -41,6 +44,63 @@ public final class MagnetRingHelper {
     private static final String ENABLED_TAG = "MagnetEnabled";
 
     private MagnetRingHelper() {
+    }
+
+    /**
+     * 查找当前佩戴的“可以控制磁力开关”的戒指。
+     *
+     * 目前包括：
+     * 1. 磁力之戒 magnet_ring；
+     * 2. 转位之戒 dislocation_ring；
+     * 3. 原项目命名兼容 super_magnet_ring。
+     *
+     * 这样做的好处：
+     * 即使转位之戒类还没写出来，这里也不会因为 import DislocationRing 而编译失败。
+     */
+    public static Optional<ItemStack> findEquippedMagnetControlRing(LivingEntity entity) {
+        AtomicReference<ItemStack> result = new AtomicReference<>(ItemStack.EMPTY);
+
+        CuriosApi.getCuriosInventory(entity).ifPresent(handler ->
+                handler.findFirstCurio(MagnetRingHelper::isMagnetControlRing)
+                        .ifPresent(slotResult -> result.set(slotResult.stack()))
+        );
+
+        ItemStack stack = result.get();
+        return stack.isEmpty() ? Optional.empty() : Optional.of(stack);
+    }
+
+    /**
+     * 判断某个 ItemStack 是否属于“能显示磁力开关 UI 的戒指”。
+     */
+    public static boolean isMagnetControlRing(ItemStack stack) {
+        if (stack.isEmpty()) {
+            return false;
+        }
+
+        // 已实现的磁力之戒，直接用 instanceof 判断。
+        if (stack.getItem() instanceof MagnetRing) {
+            return true;
+        }
+
+        ResourceLocation itemId = BuiltInRegistries.ITEM.getKey(stack.getItem());
+
+        if (!EnigmaticLegacy.MODID.equals(itemId.getNamespace())) {
+            return false;
+        }
+
+        String path = itemId.getPath();
+
+        // dislocation_ring 是更直观的项目内命名；
+        // super_magnet_ring 是原 Enigmatic Legacy 的旧/原始 ID 风格。
+        return path.equals("dislocation_ring")
+                || path.equals("super_magnet_ring");
+    }
+
+    /**
+     * 判断实体是否佩戴了磁力之戒或转位之戒。
+     */
+    public static boolean hasMagnetControlRing(LivingEntity entity) {
+        return findEquippedMagnetControlRing(entity).isPresent();
     }
 
     /**

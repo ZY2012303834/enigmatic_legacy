@@ -45,7 +45,9 @@ public final class MagnetRingEvents {
      * 服务端切换磁力之戒状态。
      */
     private static void toggleMagnetRing(ServerPlayer player) {
-        Optional<ItemStack> ring = MagnetRingHelper.findEquippedMagnetRing(player);
+        // 查找磁力之戒或转位之戒。
+        // 如果玩家只佩戴转位之戒，也允许使用同一个磁力开关按钮。
+        Optional<ItemStack> ring = MagnetRingHelper.findEquippedMagnetControlRing(player);
 
         if (ring.isEmpty()) {
             player.displayClientMessage(
