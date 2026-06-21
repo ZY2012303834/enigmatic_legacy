@@ -1,6 +1,7 @@
 package org.enigmatic_legacy.generator;
 
 import java.util.concurrent.CompletableFuture;
+
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -96,5 +97,12 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('c', Items.CHAIN)
                 .unlockedBy("has_glowstone", has(Items.GLOWSTONE))
                 .save(output, ResourceLocation.fromNamespaceAndPath(EnigmaticLegacy.MODID, "lamps/big_lamp"));
+
+        // 封装的大灯笼
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, ModBlocks.MASSIVE_LAMP.get())
+                .requires(ModBlocks.BIG_LAMP.get())
+                .requires(Items.GLASS)
+                .unlockedBy("has_big_lamp", has(ModBlocks.BIG_LAMP.get()))
+                .save(output, ResourceLocation.fromNamespaceAndPath(EnigmaticLegacy.MODID, "lamps/massive_lamp"));
     }
 }

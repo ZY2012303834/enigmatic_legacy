@@ -15,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+// 大灯笼
 public class BigLamp extends LanternBlock {
 
     protected static final VoxelShape SITTING_LANTERN = Block.box(

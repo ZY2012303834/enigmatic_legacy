@@ -60,8 +60,12 @@ public class BlockGenerator extends BlockStateProvider {
                 .addModel();
 
         simpleBlockItem(ModBlocks.BIG_LAMP.get(), bigLampModel());  //大灯笼
+        // end
+
+        massiveLamp();  //封装的大灯笼
     }
 
+    // 大灯笼
     private ModelFile bigLampModel() {
         BlockModelBuilder model = models().getBuilder("the_lamp/big_lamp")
                 .parent(new ModelFile.UncheckedModelFile("minecraft:block/block"))
@@ -171,5 +175,49 @@ public class BlockGenerator extends BlockStateProvider {
                 .face(Direction.DOWN).texture(texture).end()
                 .end();
     }
+    // end
 
+    // 封装的大灯笼
+    private void massiveLamp() {
+        ModelFile model = massiveLampModel();
+
+        simpleBlock(ModBlocks.MASSIVE_LAMP.get(), model);
+        simpleBlockItem(ModBlocks.MASSIVE_LAMP.get(), model);
+    }
+    private ModelFile massiveLampModel() {
+        BlockModelBuilder model = models().getBuilder("the_lamp/massive_lamp")
+                .parent(new ModelFile.UncheckedModelFile("minecraft:block/block"))
+                .ao(false)
+                .renderType("cutout")
+                .texture("casing", mcLoc("block/glass"))
+                .texture("metalplate", modLoc("block/plate"))
+                .texture("lampcore", modLoc("block/the_lamp"))
+                .texture("particle", modLoc("block/plate"));
+
+        // 外层玻璃壳
+        cube(model, 0, 0, 0, 16, 16, 16, "#casing");
+
+        // 内部发光核心
+        cube(model, 3, 3, 3, 13, 13, 13, "#lampcore");
+
+        // 金属边框：底部
+        cube(model, 1, 1, 1, 15, 3, 3, "#metalplate");
+        cube(model, 1, 1, 13, 15, 3, 15, "#metalplate");
+        cube(model, 1, 1, 1, 3, 3, 15, "#metalplate");
+        cube(model, 13, 1, 1, 15, 3, 15, "#metalplate");
+
+        // 金属边框：顶部
+        cube(model, 1, 13, 1, 15, 15, 3, "#metalplate");
+        cube(model, 1, 13, 13, 15, 15, 15, "#metalplate");
+        cube(model, 1, 13, 1, 3, 15, 15, "#metalplate");
+        cube(model, 13, 13, 1, 15, 15, 15, "#metalplate");
+
+        // 四根竖向边框
+        cube(model, 1, 3, 1, 3, 13, 3, "#metalplate");
+        cube(model, 13, 3, 1, 15, 13, 3, "#metalplate");
+        cube(model, 1, 3, 13, 3, 13, 15, "#metalplate");
+        cube(model, 13, 3, 13, 15, 13, 15, "#metalplate");
+
+        return model;
+    }
 }
