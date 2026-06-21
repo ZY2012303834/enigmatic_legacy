@@ -4,6 +4,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.TickTask;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -160,11 +161,27 @@ public class TwistedMirror extends Item {
 
         spawnDepartureParticles(player);
         teleportBackToSpawn(player);
-        spawnArrivalParticles(player);
+        spawnArrivalParticlesDelayed(player);
 
         player.getCooldowns().addCooldown(this, COOLDOWN_TICKS);
 
         return stack;
+    }
+
+    /**
+     * 延迟 1 tick 后在目的地生成末影粒子。
+     *
+     * <p>传送刚完成的同一 tick 内，客户端可能还没完成位置/维度同步，
+     * 所以目标点粒子容易看不到。延迟 1 tick 后再发给该玩家会稳定很多。
+     */
+    private static void spawnArrivalParticlesDelayed(ServerPlayer player) {
+        player.server.tell(new TickTask(player.server.getTickCount() + 1, () -> {
+            if (player.isRemoved()) {
+                return;
+            }
+
+            spawnArrivalParticles(player);
+        }));
     }
 
     /**
@@ -187,13 +204,15 @@ public class TwistedMirror extends Item {
     }
 
     /**
-     * 传送到目的地后生成末影粒子。
+     * 在玩家当前位置生成到达粒子。
      */
     private static void spawnArrivalParticles(ServerPlayer player) {
         ServerLevel level = player.serverLevel();
 
         level.sendParticles(
+                player,
                 ParticleTypes.PORTAL,
+                true,
                 player.getX(),
                 player.getY() + 1.0D,
                 player.getZ(),
