@@ -51,5 +51,6 @@ public class ItemGenerator extends ItemModelProvider {
         withExistingParent("item/twisted_mirror", mcLoc("item/handheld"))
                 .texture("layer0", modLoc("item/twisted_mirror"));
         basicItem(ModItems.UNHOLY_GRAIL.getId()); // 不洁圣杯
+        basicItem(ModItems.GUARDIAN_HEART.getId()); // 守卫者之心
     }
 }

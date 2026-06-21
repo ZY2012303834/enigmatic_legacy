@@ -211,11 +211,15 @@ public class CursedRingEvents {
         } else if (killed instanceof ElderGuardian) {
             addDrop(event, randomStack(killed, Items.PRISMARINE_CRYSTALS, 4, 16));
             addDrop(event, randomStack(killed, Items.PRISMARINE_SHARD, 7, 28));
+
             addOneOf(event,
+                    new ItemStack(ModItems.GUARDIAN_HEART.get()),
                     new ItemStack(ModItems.COSMIC_HEART.get()),
                     new ItemStack(Items.HEART_OF_THE_SEA),
                     new ItemStack(Items.ENCHANTED_GOLDEN_APPLE),
-                    new ItemStack(Items.ENDER_EYE));
+                    new ItemStack(Items.ENDER_EYE)
+            );
+
         } else if (killed.getClass() == EnderMan.class) {
             addDropWithChance(event, randomStack(killed, Items.ENDER_EYE, 1, 2), 40);
         } else if (killed.getClass() == Blaze.class) {

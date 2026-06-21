@@ -91,6 +91,11 @@ public class LanguageGenerator extends LanguageProvider {
         addItem(ModItems.UNHOLY_GRAIL, "Unholy Grail");
         add("tooltip.enigmatic_legacy.unholy_grail1", "Drink from it to draw upon forbidden power.");
         add("tooltip.enigmatic_legacy.unholy_grail2", "The unworthy will suffer for their arrogance.");
+
+        addItem(ModItems.GUARDIAN_HEART, "Heart of the Guardian");
+        add("tooltip.enigmatic_legacy.guardian_heart1", "While in your hotbar, looking at a monster within %s blocks turns it against nearby monsters.");
+        add("tooltip.enigmatic_legacy.guardian_heart2", "Nearby monsters within %s blocks will retaliate against the marked creature.");
+        add("tooltip.enigmatic_legacy.guardian_heart3", "Ability cooldown: %s seconds.");
     }
 
     private void addChineseTranslations() {
@@ -151,6 +156,11 @@ public class LanguageGenerator extends LanguageProvider {
         addItem(ModItems.UNHOLY_GRAIL, "不洁圣杯");
         add("tooltip.enigmatic_legacy.unholy_grail1", "饮下其中之物，以汲取禁忌之力。");
         add("tooltip.enigmatic_legacy.unholy_grail2", "无资格者将因傲慢付出代价。");
+
+        addItem(ModItems.GUARDIAN_HEART, "守卫者之心");
+        add("tooltip.enigmatic_legacy.guardian_heart1", "放在快捷栏时，注视 %s 格内的怪物会使其攻击附近怪物。");
+        add("tooltip.enigmatic_legacy.guardian_heart2", "%s 格内的附近怪物会反过来攻击被标记的怪物。");
+        add("tooltip.enigmatic_legacy.guardian_heart3", "能力冷却：%s 秒。");
     }
 
     private void addEnglishCursedRingTooltips() {
