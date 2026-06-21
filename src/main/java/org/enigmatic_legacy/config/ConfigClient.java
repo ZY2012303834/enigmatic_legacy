@@ -4,7 +4,6 @@ import net.neoforged.neoforge.common.ModConfigSpec;
 
 /**
  * 神秘遗物客户端配置。
- *
  * 说明：
  * 这里存放只影响本地显示、客户端操作、视觉效果、提示信息等内容的配置。
  * 使用 ModConfig.Type.CLIENT 注册后，只会在物理客户端加载，不会同步到服务器。
