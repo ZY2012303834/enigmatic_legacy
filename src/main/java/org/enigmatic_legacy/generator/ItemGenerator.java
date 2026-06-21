@@ -20,9 +20,9 @@ public class ItemGenerator extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        basicItem(ModItems.ASTRAL_DUST.getId());
-        basicItem(ModItems.ENDER_ROD.getId());
-        basicItem(ModItems.ETHERIUM_ORE.getId());
+        basicItem(ModItems.ASTRAL_DUST.getId());    // 星尘
+        basicItem(ModItems.ENDER_ROD.getId());      // 末影棒
+        basicItem(ModItems.ETHERIUM_ORE.getId());   //
         basicItem(ModItems.ETHERIUM_INGOT.getId());
         basicItem(ModItems.THICC_SCROLL.getId());
         basicItem(ModItems.DARKEST_SCROLL.getId());

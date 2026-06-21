@@ -33,16 +33,16 @@ public class LanguageGenerator extends LanguageProvider {
     }
 
     private void addEnglishTranslations() {
-        add("itemGroup.enigmatic_legacy", "Enigmatic Legacy");
-        addItem(ModItems.ASTRAL_DUST, "Astral Dust");
-        addItem(ModItems.ENDER_ROD, "Ender Rod");
-        addItem(ModItems.ETHERIUM_ORE, "Etherium Ore");
-        addItem(ModItems.ETHERIUM_INGOT, "Etherium Ingot");
-        addItem(ModItems.THICC_SCROLL, "Blank Scroll");
-        addItem(ModItems.DARKEST_SCROLL, "Darkest Scroll");
-        addBlock(ModBlocks.ASTRAL_DUST_SACK, "Astral Block");
-        addBlock(ModBlocks.ETHERIUM_BLOCK, "Block of Etherium");
-        addItem(ModItems.COSMIC_HEART, "Heart of the Cosmos");
+        add("itemGroup.enigmatic_legacy", "Enigmatic Legacy");      // 神秘遗物
+        addItem(ModItems.ASTRAL_DUST, "Astral Dust");   // 星尘
+        addItem(ModItems.ENDER_ROD, "Ender Rod");   // 末影棒
+        addItem(ModItems.ETHERIUM_ORE, "Etherium Ore"); // 以太矿石
+        addItem(ModItems.ETHERIUM_INGOT, "Etherium Ingot"); // 以太锭
+        addItem(ModItems.THICC_SCROLL, "Blank Scroll"); // 空卷轴
+        addItem(ModItems.DARKEST_SCROLL, "Darkest Scroll"); // 至暗卷轴
+        addBlock(ModBlocks.ASTRAL_DUST_SACK, "Astral Block"); // 袋装星尘
+        addBlock(ModBlocks.ETHERIUM_BLOCK, "Block of Etherium"); // 以太块
+        addItem(ModItems.COSMIC_HEART, "Heart of the Cosmos"); // 寰宇之心
     }
 
     private void addChineseTranslations() {

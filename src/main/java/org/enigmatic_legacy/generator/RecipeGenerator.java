@@ -29,11 +29,13 @@ public class RecipeGenerator extends RecipeProvider {
 
     @Override
     protected void buildRecipes(@NotNull RecipeOutput output) {
+        // 袋装星尘
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ASTRAL_DUST_SACK.get())
                 .requires(ModItems.ASTRAL_DUST.get(), 9)
                 .unlockedBy("has_astral_dust", has(ModItems.ASTRAL_DUST.get()))
                 .save(output);
 
+        // 末影棒
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ENDER_ROD.get(), 2)
                 .pattern("  b")
                 .pattern("aXa")
@@ -44,6 +46,7 @@ public class RecipeGenerator extends RecipeProvider {
                 .unlockedBy("has_astral_dust", has(ModItems.ASTRAL_DUST.get()))
                 .save(output);
 
+        // 空卷轴
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.THICC_SCROLL.get())
                 .pattern("nX ")
                 .pattern(" X ")
@@ -53,6 +56,7 @@ public class RecipeGenerator extends RecipeProvider {
                 .unlockedBy("has_paper", has(Items.PAPER))
                 .save(output);
 
+        // 以太块
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ETHERIUM_BLOCK.get())
                 .pattern("III")
                 .pattern("III")
@@ -61,12 +65,14 @@ public class RecipeGenerator extends RecipeProvider {
                 .unlockedBy("has_etherium_ingot", has(ModItems.ETHERIUM_INGOT.get()))
                 .save(output);
 
+        // 以太锭
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.ETHERIUM_INGOT.get(), 9)
                 .requires(ModBlocks.ETHERIUM_BLOCK.get())
                 .group("enigmatic_legacy_etherium_ingot")
                 .unlockedBy("has_etherium_block", has(ModBlocks.ETHERIUM_BLOCK.get()))
                 .save(output, ResourceLocation.fromNamespaceAndPath(EnigmaticLegacy.MODID, "etherium_block_uncrafting"));
 
+        // 寰宇之心
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.COSMIC_HEART.get())
                 .pattern("DSD")
                 .pattern("PXP")
