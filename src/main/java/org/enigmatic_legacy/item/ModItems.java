@@ -30,6 +30,7 @@ public class ModItems {
     public static final DeferredItem<CursedRing> CURSED_RING = ITEMS.register("cursed_ring", CursedRing::new); // 七咒之戒
     public static final DeferredItem<EvilEssence> EVIL_ESSENCE = ITEMS.register("evil_essence", EvilEssence::new); // 邪恶精髓
     public static final DeferredItem<IronRing> IRON_RING = ITEMS.register("iron_ring", IronRing::new); // 铁指环
+    public static final DeferredItem<ExquisiteRing> EXQUISITE_RING = ITEMS.register("golden_ring", ExquisiteRing::new); // 精美戒指
 
 
     public static void register(IEventBus eventBus) {

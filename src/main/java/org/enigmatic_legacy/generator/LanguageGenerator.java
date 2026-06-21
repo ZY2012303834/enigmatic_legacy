@@ -55,10 +55,16 @@ public class LanguageGenerator extends LanguageProvider {
         // end
         addItem(ModItems.CURSED_RING, "Ring of the Seven Curses"); // 七咒之戒
         addEnglishCursedRingTooltips();
+
         addItem(ModItems.EVIL_ESSENCE, "Nefarious Essence");
         add("tooltip.enigmatic_legacy.evilEssence1", "Embodies raw, unrefined energy torn out");
         add("tooltip.enigmatic_legacy.evilEssence2", "from the Wither's soul.");
         addItem(ModItems.IRON_RING, "Iron Ring");
+
+        addItem(ModItems.EXQUISITE_RING, "Exquisite Ring");
+        add("tooltip.enigmatic_legacy.exquisite_ring.luck", "Grants +1 Luck while equipped.");
+        add("tooltip.enigmatic_legacy.exquisite_ring.piglin", "Piglins regard the wearer as one bearing gold.");
+        add("tooltip.enigmatic_legacy.exquisite_ring.cursed_warning", "This piglin-neutralizing effect fails for bearers of the Seven Curses.");
 
     }
 
@@ -77,16 +83,24 @@ public class LanguageGenerator extends LanguageProvider {
         addBlock(ModBlocks.BIG_SHROOMLAMP, "菌光体灯笼");
         addItem(ModItems.EARTH_HEART_FRAGMENT, "大地之心碎片");
         addItem(ModItems.EARTH_HEART, "大地之心");
+
         addItem(ModItems.TWISTED_HEART, "扭曲之心");
         add("tooltip.enigmatic_legacy.cursed_ones_only", "唯有背负诅咒者方能理解它的用途。");
         add("tooltip.enigmatic_legacy.twisted_heart.active", "已被七咒之戒激活。");
         add("tooltip.enigmatic_legacy.twisted_heart.inactive", "尚未激活。");
+
         addItem(ModItems.CURSED_RING, "七咒之戒");
         addChineseCursedRingTooltips();
+
         addItem(ModItems.EVIL_ESSENCE, "邪恶精髓");
         add("tooltip.enigmatic_legacy.evilEssence1", "蕴含着从凋灵灵魂中撕裂而出的");
         add("tooltip.enigmatic_legacy.evilEssence2", "原始而未经提炼的邪恶能量。");
         addItem(ModItems.IRON_RING, "铁指环");
+
+        addItem(ModItems.EXQUISITE_RING, "精美戒指");
+        add("tooltip.enigmatic_legacy.exquisite_ring.luck", "装备时提供 +1 幸运。");
+        add("tooltip.enigmatic_legacy.exquisite_ring.piglin", "猪灵会将佩戴者视作佩戴金制品。");
+        add("tooltip.enigmatic_legacy.exquisite_ring.cursed_warning", "该猪灵中立效果对七咒佩戴者无效。");
 
     }
 

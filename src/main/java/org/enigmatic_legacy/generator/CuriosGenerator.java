@@ -178,6 +178,7 @@ public class CuriosGenerator implements DataProvider {
         // 将戒指类物品加入 curios:ring 标签。
         values.add(EnigmaticLegacy.MODID + ":iron_ring");
         values.add(EnigmaticLegacy.MODID + ":cursed_ring");
+        values.add(EnigmaticLegacy.MODID + ":cursed_ring");
 
         json.add("values", values);
 

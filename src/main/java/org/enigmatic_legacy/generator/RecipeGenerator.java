@@ -138,5 +138,16 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('N', Items.IRON_NUGGET)
                 .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
                 .save(output);
+
+        // 精美戒指
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.EXQUISITE_RING.get())
+                .pattern("NIN")
+                .pattern("IXI")
+                .pattern("NIN")
+                .define('I', Items.GOLD_INGOT)
+                .define('N', Items.GOLD_NUGGET)
+                .define('X', ModItems.IRON_RING.get())
+                .unlockedBy("has_iron_ring", has(ModItems.IRON_RING.get()))
+                .save(output);
     }
 }

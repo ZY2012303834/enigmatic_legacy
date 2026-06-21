@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-21T16:30:21.7350452	vanilla/Recipes
+// 1.21.1	2026-06-21T16:50:30.2190836	vanilla/Recipes
 138cca5fc2d36a468976c88c266618e68aa51d88 data/enigmatic_legacy/advancement/recipes/building_blocks/astral_dust_sack.json
 75128c3d277fd90fca1df4cc9f996933af7f7241 data/enigmatic_legacy/advancement/recipes/building_blocks/etherium_block.json
 afc69a4ceaecd0685cc5f6ee8c892af17f05a22e data/enigmatic_legacy/advancement/recipes/decorations/lamps/big_lamp.json
@@ -7,6 +7,7 @@ f0d876abfb4d231cd8cd0bca21b02c1f0caa053e data/enigmatic_legacy/advancement/recip
 af8bdf3eca5269e0bdaf8fbd98c431f2a9190ec4 data/enigmatic_legacy/advancement/recipes/misc/earth_heart.json
 5bfd2c1c2844d378811f31a88242dcc7a374a6f3 data/enigmatic_legacy/advancement/recipes/misc/ender_rod.json
 24c3d8ea697dfe04025193385be65d07fe3dc919 data/enigmatic_legacy/advancement/recipes/misc/etherium_block_uncrafting.json
+c42014eeb94e52f8cd0ec999471820c210701d1b data/enigmatic_legacy/advancement/recipes/misc/golden_ring.json
 67afc31468041d604544d2ef7e517776de057341 data/enigmatic_legacy/advancement/recipes/misc/iron_ring.json
 0802268decf9f83fe1bbc684a804e15c13e8efbc data/enigmatic_legacy/advancement/recipes/misc/thicc_scroll.json
 6e95028fab00920c226748ae0c7ec592a4ba6b87 data/enigmatic_legacy/advancement/recipes/misc/twisted_heart.json
@@ -16,6 +17,7 @@ bc5104864582da074782dc6da572b03febea86de data/enigmatic_legacy/recipe/astral_dus
 3aa049f53d180ba99760b21e135657624ae584a9 data/enigmatic_legacy/recipe/ender_rod.json
 793bd4e80692e9efccddd1eebcd84c988695217f data/enigmatic_legacy/recipe/etherium_block.json
 8f8a0b2bf4d6a776633bcc11239db349b6d8def5 data/enigmatic_legacy/recipe/etherium_block_uncrafting.json
+ca5674a917f19e5f062c2a18f2a96f92c6163d97 data/enigmatic_legacy/recipe/golden_ring.json
 96515eef21b4c85507c8cb755cd98bdb17666433 data/enigmatic_legacy/recipe/iron_ring.json
 b7c1d5bc5ea6a00dba1fbcc0656e65bc1b07e93c data/enigmatic_legacy/recipe/lamps/big_lamp.json
 d65d6289f4b2aa74e1d51ee5e48c5286a303ae47 data/enigmatic_legacy/recipe/lamps/big_shroomlamp.json

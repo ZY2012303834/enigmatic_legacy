@@ -36,6 +36,7 @@ public class ModeTabs {
                         output.accept(ModItems.EVIL_ESSENCE.get()); // 邪恶精髓
                         output.accept(ModItems.CURSED_RING.get());  // 七咒之戒
                         output.accept(ModItems.IRON_RING.get()); // 铁指环
+                        output.accept(ModItems.EXQUISITE_RING.get()); // 精美戒指
                     })
                     .build());
 
