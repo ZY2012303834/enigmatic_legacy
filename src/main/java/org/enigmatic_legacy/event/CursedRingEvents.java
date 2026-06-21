@@ -61,7 +61,7 @@ import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
 /**
  * 七咒之戒事件处理类。
- *
+ * <p>
  * 说明：
  * 原项目部分逻辑写在 CursedRing 类和 SuperpositionHandler 中。
  * 当前项目拆分为事件类，方便适配 NeoForge 1.21.1。
@@ -70,7 +70,7 @@ public class CursedRingEvents {
 
     /**
      * 玩家每秒处理一次七咒之戒的仇恨逻辑。
-     *
+     * <p>
      * PlayerTickEvent.Post 会在逻辑客户端和逻辑服务端都触发，
      * 所以具体逻辑中必须检查 level().isClientSide()。
      */
@@ -90,7 +90,7 @@ public class CursedRingEvents {
      * 1. 佩戴者受到更多伤害。
      * 2. 佩戴者攻击怪物时，伤害降低。
      * 3. 佩戴者的护甲减伤效果降低。
-     *
+     * <p>
      * NeoForge 1.21.1 使用 LivingIncomingDamageEvent 替代旧版 LivingHurtEvent。
      */
     @SubscribeEvent
@@ -254,7 +254,9 @@ public class CursedRingEvents {
         } else if (killed.getClass() == Chicken.class) {
             addDropWithChance(event, new ItemStack(Items.EGG), 50);
         } else if (killed instanceof WitherBoss) {
-            addDrop(event, randomStack(killed, ModItems.DARKEST_SCROLL.get(), 1, 4));
+            // 凋零
+            addDrop(event, randomStack(killed, ModItems.DARKEST_SCROLL.get(), 2, 6));
+            addDrop(event, new ItemStack(ModItems.EVIL_ESSENCE.get()));
         } else if (killed instanceof EnderDragon) {
             addDrop(event, new ItemStack(ModItems.COSMIC_HEART.get()));
         }
@@ -278,7 +280,7 @@ public class CursedRingEvents {
 
     /**
      * 七咒之戒死亡时保留。
-     *
+     * <p>
      * 旧版通过 ICurioItem#getDropRule 返回 ALWAYS_KEEP。当前 Curios 版本同时提供 DropRulesEvent，
      * 这里加一层兜底，确保戒指不会被 Curios 死亡掉落流程丢出。
      */

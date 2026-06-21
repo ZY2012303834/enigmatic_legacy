@@ -40,6 +40,7 @@ public class ItemGenerator extends ItemModelProvider {
                 .model(twistedHeartOn)
                 .end();
         // end
+        basicItem(ModItems.EVIL_ESSENCE.getId()); // 邪恶精髓
         basicItem(ModItems.CURSED_RING.getId()); // 七咒之戒
     }
 }

@@ -55,6 +55,10 @@ public class LanguageGenerator extends LanguageProvider {
         // end
         addItem(ModItems.CURSED_RING, "Ring of the Seven Curses"); // 七咒之戒
         addEnglishCursedRingTooltips();
+        addItem(ModItems.EVIL_ESSENCE, "Nefarious Essence");
+        add("tooltip.enigmatic_legacy.evilEssence1", "Embodies raw, unrefined energy torn out");
+        add("tooltip.enigmatic_legacy.evilEssence2", "from the Wither's soul.");
+
     }
 
     private void addChineseTranslations() {
@@ -78,6 +82,9 @@ public class LanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.twisted_heart.inactive", "尚未激活。");
         addItem(ModItems.CURSED_RING, "七咒之戒");
         addChineseCursedRingTooltips();
+        addItem(ModItems.EVIL_ESSENCE, "邪恶精髓");
+        add("tooltip.enigmatic_legacy.evilEssence1", "蕴含着从凋灵灵魂中撕裂而出的");
+        add("tooltip.enigmatic_legacy.evilEssence2", "原始而未经提炼的邪恶能量。");
 
     }
 
