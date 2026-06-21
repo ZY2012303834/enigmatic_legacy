@@ -1,0 +1,296 @@
+plugins {
+    // java-library：启用 Java 库项目能力，提供 api/implementation 等依赖配置。
+    id 'java-library'
+    // maven-publish：允许把构建产物发布到 Maven 仓库。
+    id 'maven-publish'
+    // idea：生成/调整 IntelliJ IDEA 项目设置。
+    id 'idea'
+    // NeoForge ModDev 插件：提供 NeoForge 开发环境、运行配置、资源处理等能力。
+    id 'net.neoforged.moddev' version '2.0.141'
+}
+
+// 项目版本和 Maven group，值来自 gradle.properties。
+version = mod_version
+group = mod_group_id
+
+repositories {
+    // 优先从本地 Maven 缓存读取依赖，便于使用本地发布的库。
+    mavenLocal()
+    // Curios API 所在的 Maven 仓库。
+    maven {
+        name = 'Illusive Soulworks'
+        url = 'https://maven.theillusivec4.top/'
+    }
+}
+
+base {
+    // 设置最终构建产物的基础文件名，使用 Mod ID。
+    archivesName = mod_id
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+neoForge {
+    // 指定要使用的 NeoForge 版本，值来自 gradle.properties 的 neo_version。
+    version = project.neo_version
+
+    // Parchment 映射用于提供更易读的 Minecraft 反混淆名称。
+    parchment {
+        mappingsVersion = project.parchment_mappings_version
+        minecraftVersion = project.parchment_minecraft_version
+    }
+
+    // 此行是可选的。Access Transformer 通常会被自动检测。
+    // accessTransformers.add('src/main/resources/META-INF/accesstransformer.cfg')
+
+    // 默认运行配置。
+    // 可按需调整、删除或复制这些配置。
+    runs {
+        // 客户端运行配置，用于启动带当前 Mod 的 Minecraft 客户端。
+        client {
+            client()
+
+            // 要加载 GameTest 的命名空间，多个值用逗号分隔。为空表示加载全部命名空间。
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+
+        // 服务端运行配置，用于启动带当前 Mod 的 dedicated server。
+        server {
+            server()
+            // 以无图形界面模式启动服务端。
+            programArgument '--nogui'
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+
+        // 此运行配置会启动 GameTestServer，执行所有已注册的 GameTest，然后退出。
+        // 默认情况下，如果没有提供 GameTest，服务器会崩溃。
+        // 其他运行配置中也默认启用了 GameTest 系统，可通过 /test 命令使用。
+        gameTestServer {
+            type = "gameTestServer"
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+
+        // 数据生成运行配置，用于生成方块状态、模型、语言文件、loot table 等数据资源。
+        data {
+            data()
+
+            // 覆盖 configureEach 中设置的工作目录示例；需要时取消注释。
+            // gameDirectory = project.file('run-data')
+
+            // 指定数据生成的 modid、输出目录，以及已有资源的读取目录。
+            programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+        }
+
+        // 应用于上面所有运行配置的公共设置。
+        configureEach {
+            // 用户开发环境推荐的日志标记。
+            // 可按需添加/移除标记，多个标记用逗号分隔。
+            // "SCAN"：输出 Mod 扫描相关日志。
+            // "REGISTRIES"：输出注册表事件触发相关日志。
+            // "REGISTRYDUMP"：输出所有注册表内容。
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+
+            // 控制台推荐日志等级。
+            // 这里可以设置不同等级。
+            // 参考：https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
+            logLevel = org.slf4j.event.Level.DEBUG
+        }
+    }
+
+    mods {
+        // 定义 Mod 与源码集之间的绑定关系。
+        // 这会告诉开发运行环境：哪些源码属于哪个 Mod。
+        // 单 Mod 项目中通常可选。
+        // 多 Mod 项目应为每个 Mod 分别定义一个绑定。
+        "${mod_id}" {
+            sourceSet(sourceSets.main)
+        }
+    }
+}
+
+// 将数据生成器输出的资源目录加入 main resources。
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+
+dependencies {
+    // 引入 Curios API / Mod，供编译和运行时使用。
+    implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}"
+
+    // JEI Mod 依赖示例。
+    // JEI API 仅用于编译期，完整 JEI artifact 用于运行时。
+    // compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
+    // compileOnly "mezz.jei:jei-${mc_version}-forge-api:${jei_version}"
+    // runtimeOnly "mezz.jei:jei-${mc_version}-forge:${jei_version}"
+
+    // 使用 ./libs 中 Mod jar 作为依赖的示例，需要配合 flatDir 仓库。
+    // 这会映射到 ./libs/coolmod-${mc_version}-${coolmod_version}.jar。
+    // 搜索时会忽略 group id；此处示例中 group id 为 "blank"。
+    // implementation "blank:coolmod-${mc_version}:${coolmod_version}"
+
+    // 直接使用文件作为依赖的示例。
+    // implementation files("libs/coolmod-${mc_version}-${coolmod_version}.jar")
+
+    // 使用同级或子 Gradle 项目作为依赖的示例。
+    // implementation project(":myproject")
+
+    // 更多信息：
+    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
+    // http://www.gradle.org/docs/current/userguide/dependency_management.html
+}
+
+// 此任务会把指定资源模板中的占位符替换为下面声明的属性值。
+// 如果缺少某个属性，任务会报错。属性使用 ${} Groovy 语法展开。
+var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
+    // 这些键会对应模板文件中的 ${minecraft_version}、${mod_id} 等占位符。
+    var replaceProperties = [minecraft_version      : minecraft_version,
+                             minecraft_version_range: minecraft_version_range,
+                             neo_version            : neo_version,
+                             neo_version_range      : neo_version_range,
+                             curios_version_range   : curios_version_range,
+                             loader_version_range   : loader_version_range,
+                             mod_id                 : mod_id,
+                             mod_name               : mod_name,
+                             mod_license            : mod_license,
+                             mod_version            : mod_version,
+                             mod_authors            : mod_authors,
+                             mod_description        : mod_description]
+    // 把替换属性声明为任务输入，便于 Gradle 判断任务是否需要重新执行。
+    inputs.properties replaceProperties
+    // 对模板内容执行占位符展开。
+    expand replaceProperties
+    // 模板来源目录，例如 src/main/templates/META-INF/neoforge.mods.toml。
+    from "src/main/templates"
+    // 生成后的 metadata 输出目录。
+    into "build/generated/sources/modMetadata"
+}
+
+// 将 generateModMetadata 的输出目录加入构建资源输入。
+// 这样无论通过 Gradle 构建还是通过 IDE 运行，都能使用生成后的 metadata。
+sourceSets.main.resources.srcDir generateModMetadata
+// 避免手动运行 generateModMetadata：每次 IDE 同步项目时自动执行它。
+neoForge.ideSyncTask generateModMetadata
+
+// 使用 maven-publish 插件发布构建产物的示例配置。
+publishing {
+    publications {
+        // 注册一个名为 mavenJava 的发布项，发布 Java 组件产物。
+        register('mavenJava', MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            // 发布到项目目录下的本地 repo 文件夹。
+            url "file://${project.projectDir}/repo"
+        }
+    }
+}
+
+// IDEA 不再自动下载依赖的 sources/javadoc jar，因此这里显式启用。
+idea {
+    module {
+        // 下载依赖源码，便于查看第三方库实现。
+        downloadSources = true
+        // 下载依赖 Javadoc，便于在 IDE 中查看 API 文档。
+        downloadJavadoc = true
+    }
+}
+
+// ================= GitHub 上传任务 =================
+// 用法：
+//   .\gradlew.bat buildAndPush -PcommitMessage="你的提交说明"
+
+abstract class GitPushTask extends DefaultTask {
+    @Input
+    abstract Property<String> getGitBranchName()
+
+    @Input
+    abstract Property<String> getGitCommitMessage()
+
+    @Internal
+    abstract DirectoryProperty getGitRepositoryDirectory()
+
+    @TaskAction
+    void pushToGithub() {
+        File repoDir = gitRepositoryDirectory.get().asFile
+
+        runCommand(repoDir, ['git', 'add', '.'])
+
+        String status = captureCommand(repoDir, ['git', 'status', '--porcelain'])
+
+        if (status.trim().isEmpty()) {
+            println '没有检测到需要提交的文件改动，跳过 git commit。'
+        } else {
+            runCommand(repoDir, ['git', 'commit', '-m', gitCommitMessage.get()])
+        }
+
+        runCommand(repoDir, ['git', 'push', 'origin', gitBranchName.get()])
+    }
+
+    static void runCommand(File dir, List<String> command) {
+        println "> ${command.join(' ')}"
+
+        def process = new ProcessBuilder(command)
+                .directory(dir)
+                .redirectErrorStream(true)
+                .start()
+
+        process.inputStream.eachLine { line ->
+            println line
+        }
+
+        int exitCode = process.waitFor()
+
+        if (exitCode != 0) {
+            throw new GradleException("命令执行失败：${command.join(' ')}")
+        }
+    }
+
+    static String captureCommand(File dir, List<String> command) {
+        println "> ${command.join(' ')}"
+
+        def process = new ProcessBuilder(command)
+                .directory(dir)
+                .redirectErrorStream(true)
+                .start()
+
+        def output = new StringBuilder()
+
+        process.inputStream.eachLine { line ->
+            output.append(line).append(System.lineSeparator())
+        }
+
+        int exitCode = process.waitFor()
+
+        if (exitCode != 0) {
+            throw new GradleException("命令执行失败：${command.join(' ')}")
+        }
+
+        return output.toString()
+    }
+}
+
+tasks.register('pushToGithub', GitPushTask) {
+    group = 'github'
+    description = '提交本地改动并推送到 GitHub origin 仓库。'
+
+    gitBranchName.convention(
+            providers.gradleProperty('gitBranch').orElse('main')
+    )
+
+    gitCommitMessage.convention(
+            providers.gradleProperty('commitMessage').orElse("Build ${project.version}".toString())
+    )
+
+    gitRepositoryDirectory.convention(layout.projectDirectory)
+
+    mustRunAfter tasks.named('build')
+}
+
+tasks.register('buildAndPush') {
+    group = 'github'
+    description = '先执行 build，构建成功后再提交并推送到 GitHub。'
+
+    dependsOn tasks.named('build')
+    dependsOn tasks.named('pushToGithub')
+}

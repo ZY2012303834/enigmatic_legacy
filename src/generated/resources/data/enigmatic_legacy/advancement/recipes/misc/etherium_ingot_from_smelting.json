@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_etherium_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:etherium_ore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "enigmatic_legacy:etherium_ingot_from_smelting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_etherium_ore"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "enigmatic_legacy:etherium_ingot_from_smelting"
+    ]
+  }
+}

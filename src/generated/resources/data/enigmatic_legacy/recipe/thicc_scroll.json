@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": {
+      "item": "minecraft:paper"
+    },
+    "n": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "nX ",
+    " X ",
+    " Xn"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:thicc_scroll"
+  }
+}

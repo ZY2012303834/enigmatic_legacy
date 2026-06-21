@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 8.0,
+  "ingredient": {
+    "item": "enigmatic_legacy:etherium_ore"
+  },
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:etherium_ingot"
+  }
+}

@@ -1,0 +1,5 @@
+// 1.21.1	2026-06-20T22:12:08.8932824	vanilla/Furnace Recipes: enigmatic_legacy
+bfd7f5dc17f78e650b07f55d3ad567df4b6c892b data/enigmatic_legacy/advancement/recipes/misc/etherium_ingot_from_blasting.json
+4bd9a7b8b3792be9ad170a62134a4cb8f09ea190 data/enigmatic_legacy/advancement/recipes/misc/etherium_ingot_from_smelting.json
+fe4c220c06188643779e081509b713811421fc06 data/enigmatic_legacy/recipe/etherium_ingot_from_blasting.json
+97735c6eee08707019f7eee7539e69ae9ee044aa data/enigmatic_legacy/recipe/etherium_ingot_from_smelting.json
