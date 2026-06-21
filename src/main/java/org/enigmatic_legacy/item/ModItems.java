@@ -6,12 +6,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.block.ModBlocks;
-import org.enigmatic_legacy.item.items.AstralDust;
-import org.enigmatic_legacy.item.items.DarkestScroll;
-import org.enigmatic_legacy.item.items.EnderRod;
-import org.enigmatic_legacy.item.items.EtheriumIngot;
-import org.enigmatic_legacy.item.items.EtheriumOre;
-import org.enigmatic_legacy.item.items.ThiccScroll;
+import org.enigmatic_legacy.item.items.*;
 
 public class ModItems {
 
@@ -26,6 +21,7 @@ public class ModItems {
     public static final DeferredItem<DarkestScroll> DARKEST_SCROLL = ITEMS.register("darkest_scroll", DarkestScroll::new);
     public static final DeferredItem<BlockItem> ASTRAL_DUST_SACK = ITEMS.registerSimpleBlockItem(ModBlocks.ASTRAL_DUST_SACK);
     public static final DeferredItem<BlockItem> ETHERIUM_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.ETHERIUM_BLOCK);
+    public static final DeferredItem<CosmicHeart> COSMIC_HEART = ITEMS.register("cosmic_heart", CosmicHeart::new);
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

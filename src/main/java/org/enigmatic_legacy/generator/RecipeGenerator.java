@@ -66,5 +66,17 @@ public class RecipeGenerator extends RecipeProvider {
                 .group("enigmatic_legacy_etherium_ingot")
                 .unlockedBy("has_etherium_block", has(ModBlocks.ETHERIUM_BLOCK.get()))
                 .save(output, ResourceLocation.fromNamespaceAndPath(EnigmaticLegacy.MODID, "etherium_block_uncrafting"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.COSMIC_HEART.get())
+                .pattern("DSD")
+                .pattern("PXP")
+                .pattern("DED")
+                .define('X', Items.HEART_OF_THE_SEA)
+                .define('D', ModItems.ASTRAL_DUST.get())
+                .define('E', Items.ENDER_EYE)
+                .define('P', Items.BLAZE_POWDER)
+                .define('S', Items.NETHER_STAR)
+                .unlockedBy("has_heart_of_the_sea", has(Items.HEART_OF_THE_SEA))
+                .save(output);
     }
 }

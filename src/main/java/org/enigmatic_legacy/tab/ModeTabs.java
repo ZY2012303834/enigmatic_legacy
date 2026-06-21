@@ -1,4 +1,4 @@
-package org.enigmatic_legacy.creative;
+package org.enigmatic_legacy.tab;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -9,7 +9,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.item.ModItems;
 
-public class ModCreativeModeTabs {
+public class ModeTabs {
 
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, EnigmaticLegacy.MODID);
@@ -27,6 +27,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DARKEST_SCROLL.get());
                         output.accept(ModItems.ASTRAL_DUST_SACK.get());
                         output.accept(ModItems.ETHERIUM_BLOCK.get());
+                        output.accept(ModItems.COSMIC_HEART.get());
                     })
                     .build());
 

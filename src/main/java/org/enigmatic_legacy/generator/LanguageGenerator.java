@@ -42,6 +42,7 @@ public class LanguageGenerator extends LanguageProvider {
         addItem(ModItems.DARKEST_SCROLL, "Darkest Scroll");
         addBlock(ModBlocks.ASTRAL_DUST_SACK, "Astral Block");
         addBlock(ModBlocks.ETHERIUM_BLOCK, "Block of Etherium");
+        addItem(ModItems.COSMIC_HEART, "Heart of the Cosmos");
     }
 
     private void addChineseTranslations() {
@@ -54,5 +55,6 @@ public class LanguageGenerator extends LanguageProvider {
         addItem(ModItems.DARKEST_SCROLL, "至暗卷轴");
         addBlock(ModBlocks.ASTRAL_DUST_SACK, "袋装星尘");
         addBlock(ModBlocks.ETHERIUM_BLOCK, "以太块");
+        addItem(ModItems.COSMIC_HEART, "寰宇之心");
     }
 }

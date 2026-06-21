@@ -26,5 +26,6 @@ public class ItemGenerator extends ItemModelProvider {
         basicItem(ModItems.ETHERIUM_INGOT.getId());
         basicItem(ModItems.THICC_SCROLL.getId());
         basicItem(ModItems.DARKEST_SCROLL.getId());
+        basicItem(ModItems.COSMIC_HEART.getId());
     }
 }
