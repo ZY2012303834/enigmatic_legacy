@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "enigmatic_legacy:iron_ring",
     "enigmatic_legacy:cursed_ring"
   ]
 }

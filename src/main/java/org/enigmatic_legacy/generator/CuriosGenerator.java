@@ -37,10 +37,10 @@ public class CuriosGenerator implements DataProvider {
 
     /**
      * 生成玩家 Curios 栏位配置。
-     *
+     * <p>
      * 生成路径：
      * src/generated/resources/data/enigmatic_legacy/curios/entities/player.json
-     *
+     * <p>
      * 作用：
      * 给玩家实体添加 ring 戒指栏位。
      */
@@ -67,10 +67,10 @@ public class CuriosGenerator implements DataProvider {
 
     /**
      * 生成 Curios 戒指标签。
-     *
+     * <p>
      * 生成路径：
      * src/generated/resources/data/curios/tags/item/ring.json
-     *
+     * <p>
      * 作用：
      * Curios 会读取 curios:ring 标签。
      * 加入该标签的物品可以被放入 ring 戒指栏位。
@@ -81,7 +81,8 @@ public class CuriosGenerator implements DataProvider {
 
         JsonArray values = new JsonArray();
 
-        // 将七咒之戒加入 curios:ring 标签
+        // 将戒指类物品加入 curios:ring 标签
+        values.add(EnigmaticLegacy.MODID + ":iron_ring");
         values.add(EnigmaticLegacy.MODID + ":cursed_ring");
 
         json.add("values", values);

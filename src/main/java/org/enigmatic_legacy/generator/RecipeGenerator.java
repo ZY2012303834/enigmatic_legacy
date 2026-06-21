@@ -128,5 +128,15 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('c', Items.CHAIN)
                 .unlockedBy("has_shroomlight", has(Items.SHROOMLIGHT))
                 .save(output, ResourceLocation.fromNamespaceAndPath(EnigmaticLegacy.MODID, "lamps/big_shroomlamp"));
+
+        // 铁指环
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.IRON_RING.get())
+                .pattern("NIN")
+                .pattern("I I")
+                .pattern("NIN")
+                .define('I', Items.IRON_INGOT)
+                .define('N', Items.IRON_NUGGET)
+                .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
+                .save(output);
     }
 }

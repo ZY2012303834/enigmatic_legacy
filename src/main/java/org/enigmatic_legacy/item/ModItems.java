@@ -1,7 +1,6 @@
 package org.enigmatic_legacy.item;
 
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -30,6 +29,7 @@ public class ModItems {
     public static final DeferredItem<TwistedHeart> TWISTED_HEART = ITEMS.register("twisted_heart", TwistedHeart::new); // 扭曲之心
     public static final DeferredItem<CursedRing> CURSED_RING = ITEMS.register("cursed_ring", CursedRing::new); // 七咒之戒
     public static final DeferredItem<EvilEssence> EVIL_ESSENCE = ITEMS.register("evil_essence", EvilEssence::new); // 邪恶精髓
+    public static final DeferredItem<IronRing> IRON_RING = ITEMS.register("iron_ring", IronRing::new); // 铁指环
 
 
     public static void register(IEventBus eventBus) {
