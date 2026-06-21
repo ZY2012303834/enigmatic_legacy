@@ -45,6 +45,7 @@ public class LanguageGenerator extends LanguageProvider {
         addItem(ModItems.COSMIC_HEART, "Heart of the Cosmos"); // 寰宇之心
         addBlock(ModBlocks.BIG_LAMP, "Lamp");   // 大灯笼
         addBlock(ModBlocks.MASSIVE_LAMP, "Encased Lamp");   //封装的大灯笼
+        addBlock(ModBlocks.BIG_SHROOMLAMP, "Shroomlamp");   //菌光体灯笼
     }
 
     private void addChineseTranslations() {
@@ -60,5 +61,6 @@ public class LanguageGenerator extends LanguageProvider {
         addItem(ModItems.COSMIC_HEART, "寰宇之心");
         addBlock(ModBlocks.BIG_LAMP, "大灯笼");
         addBlock(ModBlocks.MASSIVE_LAMP, "封装的大灯笼");
+        addBlock(ModBlocks.BIG_SHROOMLAMP, "菌光体灯笼");
     }
 }
