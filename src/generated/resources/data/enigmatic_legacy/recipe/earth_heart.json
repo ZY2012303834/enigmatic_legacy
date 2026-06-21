@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "enigmatic_legacy:earth_heart_fragment"
+    },
+    {
+      "item": "enigmatic_legacy:earth_heart_fragment"
+    },
+    {
+      "item": "enigmatic_legacy:earth_heart_fragment"
+    },
+    {
+      "item": "enigmatic_legacy:earth_heart_fragment"
+    },
+    {
+      "item": "enigmatic_legacy:earth_heart_fragment"
+    },
+    {
+      "item": "enigmatic_legacy:earth_heart_fragment"
+    },
+    {
+      "item": "enigmatic_legacy:earth_heart_fragment"
+    },
+    {
+      "item": "enigmatic_legacy:earth_heart_fragment"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:earth_heart"
+  }
+}

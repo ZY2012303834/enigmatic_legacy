@@ -86,6 +86,12 @@ public class RecipeGenerator extends RecipeProvider {
                 .unlockedBy("has_heart_of_the_sea", has(Items.HEART_OF_THE_SEA))
                 .save(output);
 
+        // 大地之心
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.EARTH_HEART.get())
+                .requires(ModItems.EARTH_HEART_FRAGMENT.get(), 8)
+                .unlockedBy("has_earth_heart_fragment", has(ModItems.EARTH_HEART_FRAGMENT.get()))
+                .save(output);
+
         // 大灯笼
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.BIG_LAMP.get(), 2)
                 .pattern("ici")
