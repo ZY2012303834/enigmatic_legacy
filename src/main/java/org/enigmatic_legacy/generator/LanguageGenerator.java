@@ -46,6 +46,7 @@ public class LanguageGenerator extends LanguageProvider {
         addBlock(ModBlocks.BIG_LAMP, "Lamp");   // 大灯笼
         addBlock(ModBlocks.BIG_SHROOMLAMP, "Shroomlamp");   //菌光体灯笼
         addItem(ModItems.EARTH_HEART_FRAGMENT, "Fragment of the Earth"); // 大地之心碎片
+        addItem(ModItems.CURSED_RING, "Ring of the Seven Curses"); // 七咒之戒
     }
 
     private void addChineseTranslations() {
@@ -62,5 +63,7 @@ public class LanguageGenerator extends LanguageProvider {
         addBlock(ModBlocks.BIG_LAMP, "大灯笼");
         addBlock(ModBlocks.BIG_SHROOMLAMP, "菌光体灯笼");
         addItem(ModItems.EARTH_HEART_FRAGMENT, "大地之心碎片");
+        addItem(ModItems.CURSED_RING, "七咒之戒");
+
     }
 }

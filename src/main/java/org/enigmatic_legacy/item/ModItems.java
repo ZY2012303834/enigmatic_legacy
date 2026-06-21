@@ -25,6 +25,7 @@ public class ModItems {
     public static final DeferredItem<BlockItem> BIG_LAMP = ITEMS.registerSimpleBlockItem(ModBlocks.BIG_LAMP); // 大灯笼
     public static final DeferredItem<BlockItem> BIG_SHROOMLAMP = ITEMS.registerSimpleBlockItem(ModBlocks.BIG_SHROOMLAMP); // 菌光体灯笼
     public static final DeferredItem<EarthHeartFragment> EARTH_HEART_FRAGMENT = ITEMS.register("earth_heart_fragment", EarthHeartFragment::new); // 大地之心碎片
+    public static final DeferredItem<CursedRing> CURSED_RING = ITEMS.register("cursed_ring", CursedRing::new); // 七咒之戒
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
