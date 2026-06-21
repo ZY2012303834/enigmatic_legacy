@@ -73,7 +73,6 @@ public class ConfigCommon {
 
     public static final ModConfigSpec.BooleanValue CURSED_RING_SAVE_THE_BEES;
     public static final ModConfigSpec.BooleanValue CURSED_RING_ULTRA_HARDCORE;
-    public static final ModConfigSpec.BooleanValue CURSED_RING_AUTO_EQUIP;
     public static final ModConfigSpec.BooleanValue CURSED_RING_SPECIAL_DROPS_ENABLED;
     public static final ModConfigSpec.BooleanValue CURSED_RING_DISABLE_INSOMNIA;
 
@@ -219,16 +218,9 @@ public class ConfigCommon {
         CURSED_RING_ULTRA_HARDCORE = builder
                 .comment(
                         "是否在玩家首次进入世界时直接给予七咒之戒。",
-                        "当前阶段先给予到背包，后续再做自动装备到 Curios 槽位。"
+                        "开启后会尝试直接装备到 Curios 戒指槽；无可用槽位时退回背包。"
                 )
                 .define("CursedRingUltraHardcore", false);
-
-        CURSED_RING_AUTO_EQUIP = builder
-                .comment(
-                        "是否在七咒之戒进入背包后自动装备。",
-                        "当前阶段先保留配置，自动写入 Curios 槽位后续单独实现。"
-                )
-                .define("CursedRingAutoEquip", false);
 
         CURSED_RING_SPECIAL_DROPS_ENABLED = builder
                 .comment("是否启用七咒之戒佩戴者可从原版生物获得的特殊掉落。")

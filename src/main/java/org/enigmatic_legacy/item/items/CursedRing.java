@@ -8,6 +8,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.storage.loot.LootContext;
 import org.enigmatic_legacy.config.ConfigClient;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.jetbrains.annotations.NotNull;
@@ -102,5 +103,15 @@ public class CursedRing extends Item implements ICurioItem {
     @Override
     public ICurio.@NotNull DropRule getDropRule(SlotContext slotContext, DamageSource source, boolean recentlyHit, ItemStack stack) {
         return ICurio.DropRule.ALWAYS_KEEP;
+    }
+
+    @Override
+    public int getFortuneLevel(SlotContext slotContext, LootContext lootContext, ItemStack stack) {
+        return ConfigCommon.CURSED_RING_FORTUNE_BONUS.get();
+    }
+
+    @Override
+    public int getLootingLevel(SlotContext slotContext, LootContext lootContext, ItemStack stack) {
+        return ConfigCommon.CURSED_RING_LOOTING_BONUS.get();
     }
 }
