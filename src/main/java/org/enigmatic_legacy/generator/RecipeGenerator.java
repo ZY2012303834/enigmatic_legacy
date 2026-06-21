@@ -3,6 +3,7 @@ package org.enigmatic_legacy.generator;
 import java.util.concurrent.CompletableFuture;
 
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -171,6 +172,7 @@ public class RecipeGenerator extends RecipeProvider {
                 Items.POTION,
                 ModPotions.RECALL
         );
+        recallPotion.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
 
         Ingredient recallPotionIngredient = DataComponentIngredient.of(
                 false,

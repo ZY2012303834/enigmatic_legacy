@@ -1,38 +1,53 @@
 package org.enigmatic_legacy.generator;
 
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.common.crafting.DataComponentIngredient;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import org.enigmatic_legacy.potion.ModPotions;
 
 /**
  * 酿造配方注册器。
  *
- * <p>注意：这不是普通 DataProvider。
- * Minecraft / NeoForge 1.21.1 的酿造配方不能通过 runData 生成 JSON。
- * 酿造配方需要在代码中监听 RegisterBrewingRecipesEvent 注册。
+ * <p>注意：酿造不是普通 JSON 配方，不能靠 runData 生成。
+ * 这里通过 RegisterBrewingRecipesEvent 在代码中注册。
  */
 public final class BrewingGenerator {
 
     private BrewingGenerator() {
     }
 
-    /**
-     * 注册召回药水酿造配方。
-     *
-     * <p>复刻原项目：
-     * <pre>
-     * Awkward Potion + Eye of Ender -> Potion of Recall
-     * 粗制药水 + 末影之眼 -> 召回药水
-     * </pre>
-     */
     @SubscribeEvent
     public static void registerBrewingRecipes(RegisterBrewingRecipesEvent event) {
-        event.getBuilder().addMix(
-                Potions.AWKWARD,
-                Items.ENDER_EYE,
+        ItemStack awkwardPotion = PotionContents.createItemStack(
+                Items.POTION,
+                Potions.AWKWARD
+        );
+
+        ItemStack recallPotion = PotionContents.createItemStack(
+                Items.POTION,
                 ModPotions.RECALL
+        );
+
+        // 给召回药水强制添加附魔光效。
+        recallPotion.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
+
+        Ingredient awkwardPotionIngredient = DataComponentIngredient.of(
+                false,
+                DataComponents.POTION_CONTENTS,
+                awkwardPotion.get(DataComponents.POTION_CONTENTS),
+                Items.POTION
+        );
+
+        event.getBuilder().addRecipe(
+                awkwardPotionIngredient,
+                Ingredient.of(Items.ENDER_EYE),
+                recallPotion
         );
     }
 }

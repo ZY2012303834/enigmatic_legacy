@@ -1,8 +1,10 @@
 package org.enigmatic_legacy.tab;
 
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.neoforged.bus.api.IEventBus;
@@ -44,11 +46,17 @@ public final class ModeTabs {
                         output.accept(ModItems.STORAGE_CRYSTAL.get());
                         output.accept(ModItems.SOUL_CRYSTAL.get());
                         output.accept(ModItems.TWISTED_MIRROR.get()); // 扭曲魔镜
-                        output.accept(PotionContents.createItemStack(Items.POTION, ModPotions.RECALL)); // 召回药水
+                        output.accept(createRecallPotionStack()); // 召回药水
                     })
                     .build());
 
     private ModeTabs() {
+    }
+
+    private static ItemStack createRecallPotionStack() {
+        ItemStack stack = PotionContents.createItemStack(Items.POTION, ModPotions.RECALL);
+        stack.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
+        return stack;
     }
 
     public static void register(IEventBus eventBus) {

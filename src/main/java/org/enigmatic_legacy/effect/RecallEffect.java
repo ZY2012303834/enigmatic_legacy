@@ -18,8 +18,8 @@ import org.jetbrains.annotations.NotNull;
 public class RecallEffect extends InstantenousMobEffect {
 
     public RecallEffect() {
-        // 药水颜色：紫色，和末影/扭曲主题接近。
-        super(MobEffectCategory.BENEFICIAL, 0x7B3FBB);
+        // 药水颜色
+        super(MobEffectCategory.BENEFICIAL, 0x2DA8FF);
     }
 
     @Override
