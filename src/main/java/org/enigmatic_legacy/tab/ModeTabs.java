@@ -32,6 +32,7 @@ public class ModeTabs {
                         output.accept(ModItems.BIG_SHROOMLAMP.get());   // 菌光体灯笼
                         output.accept(ModItems.EARTH_HEART_FRAGMENT.get()); // 大地之心碎片
                         output.accept(ModItems.EARTH_HEART.get()); // 大地之心
+                        output.accept(ModItems.TWISTED_HEART.get()); // 扭曲之心
                         output.accept(ModItems.CURSED_RING.get());  // 七咒之戒
                     })
                     .build());

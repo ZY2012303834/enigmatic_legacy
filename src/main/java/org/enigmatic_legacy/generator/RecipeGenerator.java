@@ -92,6 +92,19 @@ public class RecipeGenerator extends RecipeProvider {
                 .unlockedBy("has_earth_heart_fragment", has(ModItems.EARTH_HEART_FRAGMENT.get()))
                 .save(output);
 
+        // 扭曲之心
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.TWISTED_HEART.get())
+                .pattern(" T ")
+                .pattern("BXB")
+                .pattern("RER")
+                .define('T', Items.GHAST_TEAR)
+                .define('B', Items.BLAZE_POWDER)
+                .define('X', ModItems.EARTH_HEART.get())
+                .define('R', Items.REDSTONE)
+                .define('E', Items.ENDER_EYE)
+                .unlockedBy("has_earth_heart", has(ModItems.EARTH_HEART.get()))
+                .save(output);
+
         // 大灯笼
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.BIG_LAMP.get(), 2)
                 .pattern("ici")

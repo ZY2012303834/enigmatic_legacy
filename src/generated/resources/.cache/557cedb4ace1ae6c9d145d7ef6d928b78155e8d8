@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-21T14:58:49.8438859	vanilla/Item Models: enigmatic_legacy
+// 1.21.1	2026-06-21T15:13:22.3462064	vanilla/Item Models: enigmatic_legacy
 71ad4196d7e8a842e7122ea637f5096bd1de67b7 assets/enigmatic_legacy/models/item/astral_dust.json
 a800b4eb7375f1b97f96baff0737b577c9df02a5 assets/enigmatic_legacy/models/item/cosmic_heart.json
 05e92afa49b30559cdf0273899d0933d14ae0156 assets/enigmatic_legacy/models/item/cursed_ring.json
@@ -9,3 +9,4 @@ b03e79e998b8c55fa67f589b2e05892163cc5f9b assets/enigmatic_legacy/models/item/end
 25fd4c3fc52e68aad5da239a21e0a082169e9549 assets/enigmatic_legacy/models/item/etherium_ingot.json
 bdc03bfeb7cbc98752a6b9cc2a2e847293499d31 assets/enigmatic_legacy/models/item/etherium_ore.json
 f83b14662eaba05c2bb7492fdd6d909286dd0113 assets/enigmatic_legacy/models/item/thicc_scroll.json
+91dfacc884bca2b7104ff21a11a333cdf15d9a13 assets/enigmatic_legacy/models/item/twisted_heart.json

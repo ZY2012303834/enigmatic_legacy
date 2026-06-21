@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:blaze_powder"
+    },
+    "E": {
+      "item": "minecraft:ender_eye"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "T": {
+      "item": "minecraft:ghast_tear"
+    },
+    "X": {
+      "item": "enigmatic_legacy:earth_heart"
+    }
+  },
+  "pattern": [
+    " T ",
+    "BXB",
+    "RER"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:twisted_heart"
+  }
+}
