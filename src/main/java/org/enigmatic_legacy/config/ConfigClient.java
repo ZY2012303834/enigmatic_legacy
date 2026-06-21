@@ -37,6 +37,35 @@ public class ConfigClient {
     public static final ModConfigSpec.IntValue ENDER_RING_BUTTON_OFFSET_X_CREATIVE;
     public static final ModConfigSpec.IntValue ENDER_RING_BUTTON_OFFSET_Y_CREATIVE;
 
+    // ==============================
+// 磁力之戒按钮配置
+// ==============================
+
+    /**
+     * 是否在玩家装备磁力之戒时，在背包界面显示磁力开关按钮。
+     */
+    public static final ModConfigSpec.BooleanValue MAGNET_RING_BUTTON_ENABLED;
+
+    /**
+     * 磁力之戒按钮在普通背包界面的 X 偏移。
+     */
+    public static final ModConfigSpec.IntValue MAGNET_RING_BUTTON_OFFSET_X;
+
+    /**
+     * 磁力之戒按钮在普通背包界面的 Y 偏移。
+     */
+    public static final ModConfigSpec.IntValue MAGNET_RING_BUTTON_OFFSET_Y;
+
+    /**
+     * 磁力之戒按钮在创造模式背包界面的 X 偏移。
+     */
+    public static final ModConfigSpec.IntValue MAGNET_RING_BUTTON_OFFSET_X_CREATIVE;
+
+    /**
+     * 磁力之戒按钮在创造模式背包界面的 Y 偏移。
+     */
+    public static final ModConfigSpec.IntValue MAGNET_RING_BUTTON_OFFSET_Y_CREATIVE;
+
     static {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
 
@@ -113,6 +142,44 @@ public class ConfigClient {
         ENDER_RING_BUTTON_OFFSET_Y_CREATIVE = builder
                 .comment("末影之戒按钮在创造模式背包界面的 Y 偏移。")
                 .defineInRange("EnderRingButtonOffsetYCreative", 0, -32768, 32768);
+
+        // ==============================
+// 磁力之戒按钮配置
+// ==============================
+
+        MAGNET_RING_BUTTON_ENABLED = builder
+                .comment(
+                        "是否在玩家装备磁力之戒时，在背包界面显示磁力开关按钮。",
+                        "按钮只负责发送切换命令；真正的磁力吸取逻辑仍由服务端判断。"
+                )
+                .define("MagnetRingButtonEnabled", true);
+
+        MAGNET_RING_BUTTON_OFFSET_X = builder
+                .comment(
+                        "磁力之戒按钮在普通背包界面的 X 偏移。",
+                        "默认 0，按钮会显示在背包右侧。"
+                )
+                .defineInRange("MagnetRingButtonOffsetX", 0, -32768, 32768);
+
+        MAGNET_RING_BUTTON_OFFSET_Y = builder
+                .comment(
+                        "磁力之戒按钮在普通背包界面的 Y 偏移。",
+                        "默认 24，避免和末影之戒按钮重叠。"
+                )
+                .defineInRange("MagnetRingButtonOffsetY", 24, -32768, 32768);
+
+        MAGNET_RING_BUTTON_OFFSET_X_CREATIVE = builder
+                .comment(
+                        "磁力之戒按钮在创造模式背包界面的 X 偏移。"
+                )
+                .defineInRange("MagnetRingButtonOffsetXCreative", 0, -32768, 32768);
+
+        MAGNET_RING_BUTTON_OFFSET_Y_CREATIVE = builder
+                .comment(
+                        "磁力之戒按钮在创造模式背包界面的 Y 偏移。",
+                        "默认 24，避免和末影之戒按钮重叠。"
+                )
+                .defineInRange("MagnetRingButtonOffsetYCreative", 24, -32768, 32768);
 
         SPEC = builder.build();
     }

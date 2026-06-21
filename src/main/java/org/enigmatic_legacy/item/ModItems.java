@@ -35,7 +35,7 @@ public final class ModItems {
     public static final DeferredItem<UnholyGrail> UNHOLY_GRAIL = ITEMS.register("unholy_grail", UnholyGrail::new); // 不洁圣杯
     public static final DeferredItem<GuardianHeart> GUARDIAN_HEART = ITEMS.register("guardian_heart", GuardianHeart::new); // 守卫者之心
     public static final DeferredItem<EnderRing> ENDER_RING = ITEMS.register("ender_ring", EnderRing::new); // 末影之戒
-    public static final DeferredItem<MagnetRing> MAGNET_RING = ITEMS.register("magnet_ring", MagnetRing::new);
+    public static final DeferredItem<MagnetRing> MAGNET_RING = ITEMS.register("magnet_ring", MagnetRing::new);  // 磁力之戒
 
     public static final DeferredItem<UnwitnessedAmulet> UNWITNESSED_AMULET = ITEMS.register("unwitnessed_amulet", UnwitnessedAmulet::new);
     public static final DeferredItem<EnigmaticAmulet> ENIGMATIC_AMULET_RED = ITEMS.register("enigmatic_amulet_red", () -> new EnigmaticAmulet(AmuletVariant.RED));

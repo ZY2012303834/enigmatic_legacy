@@ -12,6 +12,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.enigmatic_legacy.config.ConfigCommon;
+import org.enigmatic_legacy.util.MagnetRingHelper;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
@@ -20,7 +21,6 @@ import java.util.List;
 
 /**
  * 磁力之戒 / Magnetic Ring。
- *
  * 功能：
  * 1. 装备在 Curios 的 ring 戒指栏后生效。
  * 2. 自动吸取附近掉落物。
@@ -30,7 +30,6 @@ import java.util.List;
 public class MagnetRing extends Item implements ICurioItem {
     /**
      * 原项目中使用的 NBT 标记。
-     *
      * 如果某个 ItemEntity 带有这个布尔标记，并且值为 true，
      * 磁力之戒不会移动它。
      */
@@ -38,28 +37,24 @@ public class MagnetRing extends Item implements ICurioItem {
 
     /**
      * 单次 tick 最多处理多少个掉落物。
-     *
      * 原项目也有限制，避免玩家附近堆积大量掉落物时造成明显卡顿。
      */
     private static final int MAX_PULLED_ITEMS_PER_TICK = 200;
 
     /**
      * 基础吸取速度。
-     *
      * 距离越远会稍微加速，但不会无限变快。
      */
     private static final double BASE_PULL_SPEED = 0.15D;
 
     /**
      * 距离速度倍率。
-     *
      * 物品离玩家越远，吸取速度越高一点点。
      */
     private static final double DISTANCE_PULL_SPEED = 0.06D;
 
     /**
      * 最大吸取速度。
-     *
      * 防止物品以过高速度乱飞。
      */
     private static final double MAX_PULL_SPEED = 0.80D;
@@ -80,7 +75,6 @@ public class MagnetRing extends Item implements ICurioItem {
 
     /**
      * Curios 每 tick 调用一次。
-     *
      * 这里不需要额外注册 NeoForge 事件；
      * 只要物品实现 ICurioItem，并且被放进 Curios 槽位，Curios 就会调用 curioTick。
      */
@@ -99,9 +93,13 @@ public class MagnetRing extends Item implements ICurioItem {
             return;
         }
 
+        // UI 开关关闭时，不吸取物品。
+        if (!MagnetRingHelper.isMagnetEnabled(stack)) {
+            return;
+        }
+
         // 默认：玩家按住 Shift 时暂停磁力效果。
-        // 你的 ConfigCommon 里已经有 DISABLE_AOE_SHIFT_SUPPRESSION，
-        // 这里顺手复用它：如果配置禁用 Shift 抑制，则潜行也照吸。
+        // 如果配置禁用 Shift 抑制，则潜行也照常吸取。
         if (player.isShiftKeyDown() && !ConfigCommon.DISABLE_AOE_SHIFT_SUPPRESSION.get()) {
             return;
         }
@@ -173,7 +171,7 @@ public class MagnetRing extends Item implements ICurioItem {
 
     /**
      * 判断玩家背包是否还能接收这个物品。
-     *
+     * <p>
      * 这里不直接调用 addItem，因为那会真的把物品塞进背包；
      * 我们只想判断能不能装下，然后继续让原版拾取逻辑完成最终拾取。
      */
@@ -233,12 +231,7 @@ public class MagnetRing extends Item implements ICurioItem {
      * Tooltip。
      */
     @Override
-    public void appendHoverText(
-            @NotNull ItemStack stack,
-            @NotNull TooltipContext context,
-            @NotNull List<Component> tooltip,
-            @NotNull TooltipFlag flag
-    ) {
+    public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
         tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
 
         tooltip.add(Component.translatable(
@@ -248,6 +241,13 @@ public class MagnetRing extends Item implements ICurioItem {
 
         tooltip.add(Component.translatable("tooltip.enigmatic_legacy.magnet_ring.2")
                 .withStyle(ChatFormatting.DARK_PURPLE));
+        tooltip.add(Component.translatable(
+                MagnetRingHelper.isMagnetEnabled(stack)
+                        ? "tooltip.enigmatic_legacy.magnet_ring.enabled"
+                        : "tooltip.enigmatic_legacy.magnet_ring.disabled"
+        ).withStyle(MagnetRingHelper.isMagnetEnabled(stack)
+                ? ChatFormatting.GREEN
+                : ChatFormatting.RED));
     }
 
     private String formatRange(double range) {
