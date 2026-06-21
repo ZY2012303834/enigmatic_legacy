@@ -12,11 +12,13 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.common.util.TriState;
 import net.neoforged.neoforge.event.entity.ProjectileImpactEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.enigmatic_legacy.EnigmaticLegacy;
@@ -34,7 +36,7 @@ import java.util.concurrent.atomic.AtomicReference;
  * 注意：
  * 1. 本类只负责护符本身的装备限制和七色效果。
  * 2. 超维容器 / 灵魂水晶的死亡生成逻辑已经移动到 SoulCrystalEvents，
- *    并且现在只由七咒之戒触发，护符不再参与死亡掉落保存。
+ * 并且现在只由七咒之戒触发，护符不再参与死亡掉落保存。
  */
 public final class EnigmaticAmuletEvents {
     /**
@@ -61,9 +63,17 @@ public final class EnigmaticAmuletEvents {
 
     /**
      * 品红护符：-20% 重力。
-     * 这里使用 ADD_MULTIPLIED_BASE，所以 -0.20D 表示基础重力减少 20%。
+     * 这部分只负责“下落更慢 / 滞空更久”。
+     * 注意：降低 GRAVITY 本身不一定会让玩家跳得更高，
+     * 所以跳高效果另外在 LivingJumpEvent 里处理。
      */
     private static final double GRAVITY_REDUCTION = -0.20D;
+    /**
+     * 品红护符：额外跳跃高度。
+     * 原版玩家跳跃初速度大约是 0.42。
+     * 这里额外增加 0.12，体感是明显跳高，但不会夸张到像跳跃提升 II。
+     */
+    private static final double JUMP_HEIGHT_BOOST = 0.12D;
 
     /**
      * 绿色护符：+2 挖掘效率。
@@ -185,6 +195,41 @@ public final class EnigmaticAmuletEvents {
 
         // 根据当前佩戴的颜色添加对应效果。
         applyAttributeModifier(player, variant);
+    }
+
+    /**
+     * 品红护符：跳得更高。
+     * 原理：
+     * LivingJumpEvent 会在实体完成原版跳跃逻辑后触发。
+     * 此时玩家已经获得了原版跳跃速度，我们再额外增加一点 Y 轴速度，
+     * 就能实现“跳得更高”。
+     * 为什么不用 Attributes.JUMP_STRENGTH？
+     * 因为该属性在 1.21.x 中对玩家不稳定/不生效，
+     * NeoForge 文档也提示 jump_strength 主要影响马，不影响玩家。
+     */
+    @SubscribeEvent
+    public static void onLivingJump(LivingEvent.LivingJumpEvent event) {
+        if (!(event.getEntity() instanceof Player player)) {
+            return;
+        }
+
+        // 只在服务端修改运动，避免客户端和服务端速度不一致。
+        if (player.level().isClientSide) {
+            return;
+        }
+
+        // 只有佩戴品红神秘护符时才增加跳跃高度。
+        if (!hasVariant(player, AmuletVariant.MAGENTA)) {
+            return;
+        }
+
+        Vec3 movement = player.getDeltaMovement();
+
+        // 在原版跳跃速度基础上额外增加 Y 轴速度。
+        player.setDeltaMovement(movement.x, movement.y + JUMP_HEIGHT_BOOST, movement.z);
+
+        // 标记实体运动发生变化，帮助同步速度。
+        player.hasImpulse = true;
     }
 
     /**
