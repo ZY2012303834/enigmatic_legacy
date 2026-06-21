@@ -10,6 +10,8 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.NeutralMob;
+import net.minecraft.world.entity.ai.memory.MemoryModuleType;
 import net.minecraft.world.entity.monster.ElderGuardian;
 import net.minecraft.world.entity.monster.Guardian;
 import net.minecraft.world.entity.monster.Monster;
@@ -163,9 +165,15 @@ public class GuardianHeart extends Item {
         watchedMonster.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 300, 1, false, false));
 
         for (Monster otherMonster : surroundingMonsters) {
-            if (otherMonster != watchedMonster) {
-                setAttackTarget(otherMonster, watchedMonster);
+            if (otherMonster == watchedMonster) {
+                continue;
             }
+
+            if (isExcludedWatchedTarget(otherMonster)) {
+                continue;
+            }
+
+            setAttackTarget(otherMonster, watchedMonster);
         }
 
         Level level = player.level();
@@ -232,7 +240,7 @@ public class GuardianHeart extends Item {
     /**
      * 玩家是否正在注视该怪物。
      *
-     * <p>这里用“视线方向点积 + 直线可见”模拟原项目的 doesObserveEntity。
+     * <p>0.95 太严格，实际游戏里很容易看着怪却无法触发。
      */
     private static boolean isObservedByPlayer(Player player, LivingEntity target) {
         if (!player.hasLineOfSight(target)) {
@@ -244,7 +252,7 @@ public class GuardianHeart extends Item {
         Vec3 targetEye = new Vec3(target.getX(), target.getEyeY(), target.getZ());
         Vec3 directionToTarget = targetEye.subtract(eye).normalize();
 
-        return look.dot(directionToTarget) > 0.95D;
+        return look.dot(directionToTarget) > 0.90D;
     }
 
     /**
@@ -254,13 +262,31 @@ public class GuardianHeart extends Item {
         return entity instanceof AbstractPiglin || entity instanceof Guardian;
     }
 
+    /**
+     * 强制切换怪物攻击目标。
+     *
+     * <p>不能只用 monster.setTarget(...)。
+     * 猪灵类和部分中立怪物有自己的 AI / Brain 目标记忆，
+     * 只设置普通 target 很容易被下一轮 AI tick 覆盖。
+     */
     private static void setAttackTarget(Monster monster, LivingEntity target) {
         if (monster == null || target == null || monster == target) {
             return;
         }
 
+        // 猪灵类使用 Brain AI，需要写入 ATTACK_TARGET 记忆。
+        if (monster instanceof AbstractPiglin piglin) {
+            piglin.getBrain().setMemory(MemoryModuleType.ATTACK_TARGET, target);
+        }
+
+        // 中立怪物需要走 NeutralMob 自己的 setTarget。
+        if (monster instanceof NeutralMob neutralMob) {
+            neutralMob.setTarget(target);
+        }
+
         monster.setTarget(target);
         monster.setLastHurtByMob(target);
+        monster.setAggressive(true);
     }
 
     private static boolean isHotbarSlot(int slotId) {
