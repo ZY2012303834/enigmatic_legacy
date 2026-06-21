@@ -61,15 +61,21 @@ public class ConfigCommon {
     public static final ModConfigSpec.IntValue CURSED_RING_ARMOR_DEBUFF;
     public static final ModConfigSpec.IntValue CURSED_RING_EXPERIENCE_BONUS;
     public static final ModConfigSpec.IntValue CURSED_RING_KNOCKBACK_DEBUFF;
+    public static final ModConfigSpec.IntValue CURSED_RING_FORTUNE_BONUS;
+    public static final ModConfigSpec.IntValue CURSED_RING_LOOTING_BONUS;
+    public static final ModConfigSpec.IntValue CURSED_RING_ENCHANTING_BONUS;
 
     public static final ModConfigSpec.DoubleValue CURSED_RING_NEUTRAL_ANGER_RANGE;
     public static final ModConfigSpec.DoubleValue CURSED_RING_NEUTRAL_XRAY_RANGE;
     public static final ModConfigSpec.DoubleValue CURSED_RING_ENDERMAN_RANDOM_TELEPORT_RANGE;
     public static final ModConfigSpec.DoubleValue CURSED_RING_ENDERMAN_RANDOM_TELEPORT_FREQUENCY;
+    public static final ModConfigSpec.DoubleValue CURSED_RING_SUPER_CURSED_TIME;
 
     public static final ModConfigSpec.BooleanValue CURSED_RING_SAVE_THE_BEES;
     public static final ModConfigSpec.BooleanValue CURSED_RING_ULTRA_HARDCORE;
     public static final ModConfigSpec.BooleanValue CURSED_RING_AUTO_EQUIP;
+    public static final ModConfigSpec.BooleanValue CURSED_RING_SPECIAL_DROPS_ENABLED;
+    public static final ModConfigSpec.BooleanValue CURSED_RING_DISABLE_INSOMNIA;
 
     static {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
@@ -124,8 +130,6 @@ public class ConfigCommon {
 
         builder.pop();
 
-        SPEC = builder.build();
-
         builder.comment(
                 "七咒之戒配置",
                 "这些配置参考原 Enigmatic Legacy 的 Ring of the Seven Curses。",
@@ -167,6 +171,18 @@ public class ConfigCommon {
                 )
                 .defineInRange("CursedRingKnockbackDebuff", 200, 0, 10000);
 
+        CURSED_RING_FORTUNE_BONUS = builder
+                .comment("七咒之戒提供的额外时运等级。")
+                .defineInRange("CursedRingFortuneBonus", 1, 0, 100);
+
+        CURSED_RING_LOOTING_BONUS = builder
+                .comment("七咒之戒提供的额外抢夺等级。")
+                .defineInRange("CursedRingLootingBonus", 1, 0, 100);
+
+        CURSED_RING_ENCHANTING_BONUS = builder
+                .comment("七咒之戒给附魔台提供的额外附魔能量。")
+                .defineInRange("CursedRingEnchantingBonus", 10, 0, 1000);
+
         CURSED_RING_NEUTRAL_ANGER_RANGE = builder
                 .comment("中立生物会被七咒之戒激怒的范围。")
                 .defineInRange("CursedRingNeutralAngerRange", 24.0D, 4.0D, 256.0D);
@@ -189,6 +205,10 @@ public class ConfigCommon {
                 )
                 .defineInRange("CursedRingEndermanRandomTeleportFrequency", 1.0D, 0.01D, 100.0D);
 
+        CURSED_RING_SUPER_CURSED_TIME = builder
+                .comment("玩家需要佩戴七咒之戒多久才视为 Super Cursed，数值为总时间比例。")
+                .defineInRange("CursedRingSuperCursedTime", 0.995D, 0.0D, 1.0D);
+
         CURSED_RING_SAVE_THE_BEES = builder
                 .comment(
                         "是否保护蜜蜂不受七咒之戒第二诅咒影响。",
@@ -210,7 +230,17 @@ public class ConfigCommon {
                 )
                 .define("CursedRingAutoEquip", false);
 
+        CURSED_RING_SPECIAL_DROPS_ENABLED = builder
+                .comment("是否启用七咒之戒佩戴者可从原版生物获得的特殊掉落。")
+                .define("CursedRingEnableSpecialDrops", true);
+
+        CURSED_RING_DISABLE_INSOMNIA = builder
+                .comment("是否禁用七咒之戒的失眠诅咒效果。")
+                .define("CursedRingDisableInsomnia", false);
+
         builder.pop();
+
+        SPEC = builder.build();
     }
 
     /**

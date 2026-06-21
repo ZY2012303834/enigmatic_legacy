@@ -5,8 +5,10 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.common.damagesource.DamageContainer;
+import net.neoforged.neoforge.event.entity.player.ItemEntityPickupEvent;
 import net.neoforged.neoforge.event.entity.living.LivingExperienceDropEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingKnockBackEvent;
@@ -15,6 +17,10 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.util.CursedRingHelper;
+import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.event.DropRulesEvent;
+import top.theillusivec4.curios.api.type.capability.ICurio;
+import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
 /**
  * 七咒之戒事件处理类。
@@ -112,10 +118,22 @@ public class CursedRingEvents {
     }
 
     /**
-     * Ultra Hardcore 模式：
-     * 玩家进入世界时给予七咒之戒。
+     * 七咒之戒死亡时保留。
      *
-     * 当前阶段先放入背包，不直接写入 Curios 槽位。
+     * 旧版通过 ICurioItem#getDropRule 返回 ALWAYS_KEEP。当前 Curios 版本同时提供 DropRulesEvent，
+     * 这里加一层兜底，确保戒指不会被 Curios 死亡掉落流程丢出。
+     */
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void onCurioDropRules(DropRulesEvent event) {
+        event.addOverride(
+                stack -> stack.is(ModItems.CURSED_RING.get()),
+                ICurio.DropRule.ALWAYS_KEEP
+        );
+    }
+
+    /**
+     * Ultra Hardcore 模式：
+     * 玩家进入世界时直接装备七咒之戒。
      */
     @SubscribeEvent
     public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
@@ -131,13 +149,84 @@ public class CursedRingEvents {
             return;
         }
 
-        boolean alreadyHasRing = player.getInventory().contains(new ItemStack(ModItems.CURSED_RING.get()))
-                || CursedRingHelper.hasCursedRing(player);
-
-        if (alreadyHasRing) {
+        if (CursedRingHelper.hasCursedRing(player)) {
             return;
         }
 
-        player.getInventory().add(new ItemStack(ModItems.CURSED_RING.get()));
+        if (equipCursedRingFromInventory(player)) {
+            return;
+        }
+
+        ItemStack ring = new ItemStack(ModItems.CURSED_RING.get());
+
+        if (!equipCursedRing(player, ring)) {
+            player.getInventory().add(ring);
+        }
+    }
+
+    /**
+     * Auto Equip：七咒之戒进入背包后自动装备。
+     */
+    @SubscribeEvent
+    public static void onItemPickup(ItemEntityPickupEvent.Post event) {
+        if (!ConfigCommon.CURSED_RING_ENABLED.get() || !ConfigCommon.CURSED_RING_AUTO_EQUIP.get()) {
+            return;
+        }
+
+        ItemStack originalStack = event.getOriginalStack();
+
+        if (!originalStack.is(ModItems.CURSED_RING.get())) {
+            return;
+        }
+
+        equipCursedRingFromInventory(event.getPlayer());
+    }
+
+    private static boolean equipCursedRingFromInventory(Player player) {
+        if (CursedRingHelper.hasCursedRing(player)) {
+            return true;
+        }
+
+        for (int slot = 0; slot < player.getInventory().getContainerSize(); slot++) {
+            ItemStack stack = player.getInventory().getItem(slot);
+
+            if (stack.is(ModItems.CURSED_RING.get()) && equipCursedRing(player, stack)) {
+                if (stack.isEmpty()) {
+                    player.getInventory().setItem(slot, ItemStack.EMPTY);
+                }
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private static boolean equipCursedRing(Player player, ItemStack sourceStack) {
+        if (sourceStack.isEmpty() || !sourceStack.is(ModItems.CURSED_RING.get())) {
+            return false;
+        }
+
+        return CuriosApi.getCuriosInventory(player)
+                .map(handler -> handler.getStacksHandler("ring")
+                        .map(ringHandler -> equipCursedRing(player, sourceStack, ringHandler.getStacks()))
+                        .orElse(false))
+                .orElse(false);
+    }
+
+    private static boolean equipCursedRing(Player player, ItemStack sourceStack, IDynamicStackHandler ringStacks) {
+        for (int slot = 0; slot < ringStacks.getSlots(); slot++) {
+            if (!ringStacks.getStackInSlot(slot).isEmpty()) {
+                continue;
+            }
+
+            ItemStack equippedStack = sourceStack.copyWithCount(1);
+            ringStacks.setStackInSlot(slot, equippedStack);
+            sourceStack.shrink(1);
+            player.getInventory().setChanged();
+            return true;
+        }
+
+        return false;
     }
 }
