@@ -3,12 +3,8 @@ package org.enigmatic_legacy;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import org.enigmatic_legacy.block.ModBlocks;
+import org.enigmatic_legacy.generator.*;
 import org.enigmatic_legacy.tab.ModeTabs;
-import org.enigmatic_legacy.generator.BlockGenerator;
-import org.enigmatic_legacy.generator.FurnaceRecipeGenerator;
-import org.enigmatic_legacy.generator.ItemGenerator;
-import org.enigmatic_legacy.generator.LanguageGenerator;
-import org.enigmatic_legacy.generator.RecipeGenerator;
 import org.enigmatic_legacy.item.ModItems;
 
 @Mod(EnigmaticLegacy.MODID)
@@ -19,11 +15,13 @@ public class EnigmaticLegacy {
         ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
         ModeTabs.register(modEventBus);
+
         modEventBus.addListener(BlockGenerator::gatherData);
         modEventBus.addListener(ItemGenerator::gatherData);
         modEventBus.addListener(LanguageGenerator::gatherData);
         modEventBus.addListener(RecipeGenerator::gatherData);
         modEventBus.addListener(FurnaceRecipeGenerator::gatherData);
+        modEventBus.addListener(CuriosGenerator::gatherData);
     }
 
 }
