@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "minecraft:ender_chest"
+    },
+    "I": {
+      "item": "minecraft:gold_ingot"
+    },
+    "N": {
+      "item": "minecraft:gold_nugget"
+    },
+    "P": {
+      "item": "minecraft:ender_pearl"
+    },
+    "X": {
+      "item": "enigmatic_legacy:iron_ring"
+    }
+  },
+  "pattern": [
+    " C ",
+    "IXI",
+    "NPN"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:ender_ring"
+  }
+}

@@ -75,6 +75,8 @@ public class ConfigCommon {
     public static final ModConfigSpec.BooleanValue CURSED_RING_ULTRA_HARDCORE;
     public static final ModConfigSpec.BooleanValue CURSED_RING_SPECIAL_DROPS_ENABLED;
     public static final ModConfigSpec.BooleanValue CURSED_RING_DISABLE_INSOMNIA;
+    public static final ModConfigSpec.IntValue FORBIDDEN_FRUIT_REGENERATION_SUBTRACTION;
+    public static final ModConfigSpec.DoubleValue FORBIDDEN_FRUIT_DEBUFF_DURATION_MULTIPLIER;
 
     static {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
@@ -229,6 +231,24 @@ public class ConfigCommon {
         CURSED_RING_DISABLE_INSOMNIA = builder
                 .comment("是否禁用七咒之戒的失眠诅咒效果。")
                 .define("CursedRingDisableInsomnia", false);
+
+        builder.pop();
+
+        builder.comment(
+                "Forbidden Fruit",
+                "Settings for the permanent effects granted after eating The Forbidden Fruit."
+        ).push("Forbidden Fruit");
+
+        FORBIDDEN_FRUIT_REGENERATION_SUBTRACTION = builder
+                .comment(
+                        "Percentage of small healing pulses removed after the fruit is consumed.",
+                        "The original default is 80, meaning natural regeneration heals only 20% as much."
+                )
+                .defineInRange("ForbiddenFruitRegenerationSubtraction", 80, 0, 100);
+
+        FORBIDDEN_FRUIT_DEBUFF_DURATION_MULTIPLIER = builder
+                .comment("Multiplier applied to the initial debuff durations after eating the fruit.")
+                .defineInRange("ForbiddenFruitDebuffDurationMultiplier", 1.0D, 0.0D, 100.0D);
 
         builder.pop();
 

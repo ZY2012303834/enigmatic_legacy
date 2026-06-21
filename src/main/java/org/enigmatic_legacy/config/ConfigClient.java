@@ -27,6 +27,15 @@ public class ConfigClient {
 
     public static final ModConfigSpec.BooleanValue SHOW_CURIO_SLOT_HINT;
     public static final ModConfigSpec.BooleanValue ENABLE_ITEM_ANIMATED_TEXTURES_HINT;
+    public static final ModConfigSpec.BooleanValue FORBIDDEN_FRUIT_RENDER_HUNGER_BAR;
+    public static final ModConfigSpec.BooleanValue FORBIDDEN_FRUIT_REPLACE_HUNGER_BAR;
+
+
+    public static final ModConfigSpec.BooleanValue ENDER_RING_BUTTON_ENABLED;
+    public static final ModConfigSpec.IntValue ENDER_RING_BUTTON_OFFSET_X;
+    public static final ModConfigSpec.IntValue ENDER_RING_BUTTON_OFFSET_Y;
+    public static final ModConfigSpec.IntValue ENDER_RING_BUTTON_OFFSET_X_CREATIVE;
+    public static final ModConfigSpec.IntValue ENDER_RING_BUTTON_OFFSET_Y_CREATIVE;
 
     static {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
@@ -74,7 +83,38 @@ public class ConfigClient {
 
         builder.pop();
 
+        FORBIDDEN_FRUIT_RENDER_HUNGER_BAR = builder
+                .comment("Whether to render a hunger bar after The Forbidden Fruit has been consumed.")
+                .define("ForbiddenFruitRenderHungerBar", true);
+
+        FORBIDDEN_FRUIT_REPLACE_HUNGER_BAR = builder
+                .comment("Whether The Forbidden Fruit replaces vanilla hunger icons with its original custom icons.")
+                .define("ForbiddenFruitReplaceHungerBar", true);
+
         SPEC = builder.build();
+
+        ENDER_RING_BUTTON_ENABLED = builder
+                .comment(
+                        "是否在玩家装备末影之戒或七咒之戒时，在背包界面显示打开末影箱的按钮。",
+                        "对应原项目 Ring of Ender 的背包 UI 按钮。"
+                )
+                .define("EnderRingButtonEnabled", true);
+
+        ENDER_RING_BUTTON_OFFSET_X = builder
+                .comment("末影之戒按钮在普通背包界面的 X 偏移。")
+                .defineInRange("EnderRingButtonOffsetX", 0, -32768, 32768);
+
+        ENDER_RING_BUTTON_OFFSET_Y = builder
+                .comment("末影之戒按钮在普通背包界面的 Y 偏移。")
+                .defineInRange("EnderRingButtonOffsetY", 0, -32768, 32768);
+
+        ENDER_RING_BUTTON_OFFSET_X_CREATIVE = builder
+                .comment("末影之戒按钮在创造模式背包界面的 X 偏移。")
+                .defineInRange("EnderRingButtonOffsetXCreative", 0, -32768, 32768);
+
+        ENDER_RING_BUTTON_OFFSET_Y_CREATIVE = builder
+                .comment("末影之戒按钮在创造模式背包界面的 Y 偏移。")
+                .defineInRange("EnderRingButtonOffsetYCreative", 0, -32768, 32768);
     }
 
     /**

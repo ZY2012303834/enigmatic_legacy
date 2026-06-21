@@ -174,11 +174,10 @@ public class CuriosGenerator implements DataProvider {
         json.addProperty("replace", false);
 
         JsonArray values = new JsonArray();
-
-        // 将戒指类物品加入 curios:ring 标签。
+        values.add(EnigmaticLegacy.MODID + ":cursed_ring");
         values.add(EnigmaticLegacy.MODID + ":iron_ring");
-        values.add(EnigmaticLegacy.MODID + ":cursed_ring");
-        values.add(EnigmaticLegacy.MODID + ":cursed_ring");
+        values.add(EnigmaticLegacy.MODID + ":golden_ring");
+        values.add(EnigmaticLegacy.MODID + ":ender_ring");
 
         json.add("values", values);
 

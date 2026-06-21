@@ -45,10 +45,12 @@ public final class ModeTabs {
                         output.accept(ModItems.EVIL_INGOT.get());
                         output.accept(ModItems.STORAGE_CRYSTAL.get());
                         output.accept(ModItems.SOUL_CRYSTAL.get());
+                        output.accept(ModItems.FORBIDDEN_FRUIT.get());
                         output.accept(ModItems.TWISTED_MIRROR.get()); // 扭曲魔镜
                         output.accept(createRecallPotionStack()); // 召回药水
                         output.accept(ModItems.UNHOLY_GRAIL.get()); // 不洁圣杯
                         output.accept(ModItems.GUARDIAN_HEART.get()); // 守卫者之心
+                        output.accept(ModItems.ENDER_RING.get()); // 末影之戒
                     })
                     .build());
 

@@ -179,6 +179,7 @@ public class RecipeGenerator extends RecipeProvider {
                 recallPotion
         );
 
+        // 扭曲之心
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.TWISTED_MIRROR.get())
                 .pattern("IGI")
                 .pattern("PXP")
@@ -188,6 +189,19 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('P', recallPotionIngredient)
                 .define('X', ModItems.TWISTED_HEART.get())
                 .unlockedBy("has_twisted_heart", has(ModItems.TWISTED_HEART.get()))
+                .save(output);
+
+        // 末影之戒
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ENDER_RING.get())
+                .pattern(" C ")
+                .pattern("IXI")
+                .pattern("NPN")
+                .define('C', Items.ENDER_CHEST)
+                .define('I', Items.GOLD_INGOT)
+                .define('X', ModItems.IRON_RING.get())
+                .define('N', Items.GOLD_NUGGET)
+                .define('P', Items.ENDER_PEARL)
+                .unlockedBy("has_ender_chest", has(Items.ENDER_CHEST))
                 .save(output);
     }
 }

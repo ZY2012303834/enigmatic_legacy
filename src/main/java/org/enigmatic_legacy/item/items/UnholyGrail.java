@@ -93,7 +93,7 @@ public class UnholyGrail extends Item{
      * </pre>
      */
     private static boolean isWorthyOne(Player player) {
-        return CursedRingHelper.hasCursedRing(player);
+        return CursedRingHelper.hasCursedRing(player) && ForbiddenFruit.hasConsumedFruit(player);
     }
 
     /**

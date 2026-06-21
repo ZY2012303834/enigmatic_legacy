@@ -1,15 +1,17 @@
-// 1.21.1	2026-06-21T19:51:44.1582352	vanilla/Item Models: enigmatic_legacy
+// 1.21.1	2026-06-21T20:34:08.326433	vanilla/Item Models: enigmatic_legacy
 71ad4196d7e8a842e7122ea637f5096bd1de67b7 assets/enigmatic_legacy/models/item/astral_dust.json
 a800b4eb7375f1b97f96baff0737b577c9df02a5 assets/enigmatic_legacy/models/item/cosmic_heart.json
 05e92afa49b30559cdf0273899d0933d14ae0156 assets/enigmatic_legacy/models/item/cursed_ring.json
 8fd53487262cb3693ab4d443a44884ffd6aecc67 assets/enigmatic_legacy/models/item/darkest_scroll.json
 5f1a130d2a78a8cf92087e96831b3c25880f701e assets/enigmatic_legacy/models/item/earth_heart.json
 c386ed909c185c9f51711d9f360d065d4db06807 assets/enigmatic_legacy/models/item/earth_heart_fragment.json
+5ff25963876aadf179ec247da2b5b09f9ff0d8ec assets/enigmatic_legacy/models/item/ender_ring.json
 b03e79e998b8c55fa67f589b2e05892163cc5f9b assets/enigmatic_legacy/models/item/ender_rod.json
 25fd4c3fc52e68aad5da239a21e0a082169e9549 assets/enigmatic_legacy/models/item/etherium_ingot.json
 bdc03bfeb7cbc98752a6b9cc2a2e847293499d31 assets/enigmatic_legacy/models/item/etherium_ore.json
 15a01771a4171a3b505cdfd801de2ae4dab011d4 assets/enigmatic_legacy/models/item/evil_essence.json
 d4e1214ce79dce9e287d896be997bc5972536f9c assets/enigmatic_legacy/models/item/evil_ingot.json
+80d748a10f665cee5974ba983025fc2176616d98 assets/enigmatic_legacy/models/item/forbidden_fruit.json
 d04fe019984814a8c097b8309d6aafc20e399370 assets/enigmatic_legacy/models/item/golden_ring.json
 df0aa91084051dacbbb39f169cedffe05c4dc426 assets/enigmatic_legacy/models/item/guardian_heart.json
 e9b89a174a55e8ae199acedfccbc959497d7b814 assets/enigmatic_legacy/models/item/iron_ring.json

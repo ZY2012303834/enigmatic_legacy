@@ -6,6 +6,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.enigmatic_legacy.EnigmaticLegacy;
+import org.enigmatic_legacy.effect.ForbiddenFruitEffect;
 import org.enigmatic_legacy.effect.RecallEffect;
 
 /**
@@ -25,6 +26,9 @@ public final class ModEffects {
      */
     public static final DeferredHolder<MobEffect, RecallEffect> RECALL =
             MOB_EFFECTS.register("recall", RecallEffect::new);
+
+    public static final DeferredHolder<MobEffect, ForbiddenFruitEffect> FORBIDDEN_FRUIT =
+            MOB_EFFECTS.register("forbidden_fruit", ForbiddenFruitEffect::new);
 
     private ModEffects() {
     }

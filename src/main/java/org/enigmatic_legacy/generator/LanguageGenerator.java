@@ -82,6 +82,7 @@ public class LanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.twisted_mirror3", "Requires the Ring of the Seven Curses.");
 
         add("effect.enigmatic_legacy.recall", "Recall");
+        add("effect.enigmatic_legacy.forbidden_fruit", "The Forbidden Fruit");
 
         add("item.minecraft.potion.effect.recall", "Potion of Recall");
         add("item.minecraft.splash_potion.effect.recall", "Splash Potion of Recall");
@@ -96,6 +97,20 @@ public class LanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.guardian_heart1", "While in your hotbar, looking at a monster within %s blocks turns it against nearby monsters.");
         add("tooltip.enigmatic_legacy.guardian_heart2", "Nearby monsters within %s blocks will retaliate against the marked creature.");
         add("tooltip.enigmatic_legacy.guardian_heart3", "Ability cooldown: %s seconds.");
+
+        addItem(ModItems.FORBIDDEN_FRUIT, "The Forbidden Fruit");
+        add("tooltip.enigmatic_legacy.forbidden_fruit_lore", "Knowledge is the highest gift.");
+        add("tooltip.enigmatic_legacy.forbidden_fruit1", "After eating it, you will no longer");
+        add("tooltip.enigmatic_legacy.forbidden_fruit2", "feel hunger, but any form of");
+        add("tooltip.enigmatic_legacy.forbidden_fruit3", "regeneration is reduced by %1$s.");
+
+        addItem(ModItems.ENDER_RING, "Ring of Ender");
+        add("tooltip.enigmatic_legacy.ender_ring1", "Allows access to your Ender Chest while equipped.");
+        add("tooltip.enigmatic_legacy.ender_ring2", "Press the keybind or use the inventory button.");
+        add("key.categories.enigmatic_legacy", "Enigmatic Legacy");
+        add("key.enigmatic_legacy.ender_ring", "Open Ender Chest");
+        add("button.enigmatic_legacy.open_ender_chest", "Open Ender Chest");
+        add("message.enigmatic_legacy.ender_ring.no_access", "You need the Ring of Ender to do that.");
     }
 
     private void addChineseTranslations() {
@@ -147,6 +162,7 @@ public class LanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.twisted_mirror3", "需要佩戴七咒之戒。");
 
         add("effect.enigmatic_legacy.recall", "召回");
+        add("effect.enigmatic_legacy.forbidden_fruit", "禁忌之果");
 
         add("item.minecraft.potion.effect.recall", "召回药水");
         add("item.minecraft.splash_potion.effect.recall", "喷溅型召回药水");
@@ -161,6 +177,22 @@ public class LanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.guardian_heart1", "放在快捷栏时，注视 %s 格内的怪物会使其攻击附近怪物。");
         add("tooltip.enigmatic_legacy.guardian_heart2", "%s 格内的附近怪物会反过来攻击被标记的怪物。");
         add("tooltip.enigmatic_legacy.guardian_heart3", "能力冷却：%s 秒。");
+
+
+        addItem(ModItems.FORBIDDEN_FRUIT, "禁忌之果");
+        add("tooltip.enigmatic_legacy.forbidden_fruit_lore", "知识乃最高的馈赠。");
+        add("tooltip.enigmatic_legacy.forbidden_fruit1", "食用后，你再也不会");
+        add("tooltip.enigmatic_legacy.forbidden_fruit2", "感到饥饿，但任何形式的");
+        add("tooltip.enigmatic_legacy.forbidden_fruit3", "再生效果都会削弱 %1$s。");
+
+        addItem(ModItems.ENDER_RING, "末影之戒");
+        add("tooltip.enigmatic_legacy.ender_ring1", "装备时可访问你的末影箱。");
+        add("tooltip.enigmatic_legacy.ender_ring2", "按下绑定按键，或使用背包界面按钮。");
+        add("key.categories.enigmatic_legacy", "神秘遗物");
+        add("key.enigmatic_legacy.ender_ring", "打开末影箱");
+        add("button.enigmatic_legacy.open_ender_chest", "打开末影箱");
+        add("message.enigmatic_legacy.ender_ring.no_access", "你需要末影之戒才能这么做。");
+
     }
 
     private void addEnglishCursedRingTooltips() {
