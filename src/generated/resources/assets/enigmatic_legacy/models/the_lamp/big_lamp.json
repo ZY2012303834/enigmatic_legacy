@@ -421,22 +421,22 @@
     {
       "faces": {
         "down": {
-          "texture": "#lantern"
+          "texture": "#connector"
         },
         "east": {
-          "texture": "#lantern"
+          "texture": "#connector"
         },
         "north": {
-          "texture": "#lantern"
+          "texture": "#connector"
         },
         "south": {
-          "texture": "#lantern"
+          "texture": "#connector"
         },
         "up": {
-          "texture": "#lantern"
+          "texture": "#connector"
         },
         "west": {
-          "texture": "#lantern"
+          "texture": "#connector"
         }
       },
       "from": [
