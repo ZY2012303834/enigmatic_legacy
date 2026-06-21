@@ -6,7 +6,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.enigmatic_legacy.EnigmaticLegacy;
-import org.enigmatic_legacy.potion.effect.RecallEffect;
+import org.enigmatic_legacy.effect.RecallEffect;
 
 /**
  * 模组药水效果注册类。

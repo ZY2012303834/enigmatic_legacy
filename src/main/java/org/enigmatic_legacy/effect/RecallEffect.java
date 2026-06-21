@@ -1,4 +1,4 @@
-package org.enigmatic_legacy.potion.effect;
+package org.enigmatic_legacy.effect;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
