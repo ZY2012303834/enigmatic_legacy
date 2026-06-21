@@ -417,38 +417,6 @@
         12,
         15
       ]
-    },
-    {
-      "faces": {
-        "down": {
-          "texture": "#connector"
-        },
-        "east": {
-          "texture": "#connector"
-        },
-        "north": {
-          "texture": "#connector"
-        },
-        "south": {
-          "texture": "#connector"
-        },
-        "up": {
-          "texture": "#connector"
-        },
-        "west": {
-          "texture": "#connector"
-        }
-      },
-      "from": [
-        5,
-        0,
-        5
-      ],
-      "to": [
-        11,
-        2,
-        11
-      ]
     }
   ],
   "render_type": "minecraft:cutout",

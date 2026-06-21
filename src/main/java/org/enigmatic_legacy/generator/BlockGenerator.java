@@ -110,9 +110,6 @@ public class BlockGenerator extends BlockStateProvider {
             // 顶部悬挂连接件
             cube(model, 6, 14, 6, 10, 16, 10, "#connector");
             cube(model, 7, 11, 7, 9, 16, 9, "#connector");
-        } else {
-            // 放置形态底座，使用和顶部悬挂相同的连接材质
-            cube(model, 5, 0, 5, 11, 2, 11, "#connector");
         }
 
         return model;
