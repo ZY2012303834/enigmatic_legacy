@@ -51,6 +51,16 @@ public final class ModeTabs {
                         output.accept(ModItems.UNHOLY_GRAIL.get()); // 不洁圣杯
                         output.accept(ModItems.GUARDIAN_HEART.get()); // 守卫者之心
                         output.accept(ModItems.ENDER_RING.get()); // 末影之戒
+
+                        output.accept(ModItems.UNWITNESSED_AMULET.get());
+
+                        output.accept(ModItems.ENIGMATIC_AMULET_RED.get());
+                        output.accept(ModItems.ENIGMATIC_AMULET_AQUA.get());
+                        output.accept(ModItems.ENIGMATIC_AMULET_VIOLET.get());
+                        output.accept(ModItems.ENIGMATIC_AMULET_MAGENTA.get());
+                        output.accept(ModItems.ENIGMATIC_AMULET_GREEN.get());
+                        output.accept(ModItems.ENIGMATIC_AMULET_BLACK.get());
+                        output.accept(ModItems.ENIGMATIC_AMULET_BLUE.get());
                     })
                     .build());
 

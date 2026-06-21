@@ -72,7 +72,42 @@ public class CuriosGenerator implements DataProvider {
         // 生成 curios:ring 标签，让戒指物品可以放入 ring 栏位。
         futures.add(generateRingTag(cachedOutput));
 
+        futures.add(generateEnigmaticAmuletTag(cachedOutput));
+
         return CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new));
+
+
+    }
+
+    private CompletableFuture<?> generateEnigmaticAmuletTag(CachedOutput cachedOutput) {
+        JsonObject json = new JsonObject();
+
+        json.addProperty("replace", false);
+
+        JsonArray values = getJsonElements();
+
+        json.add("values", values);
+
+        Path path = output.getOutputFolder(PackOutput.Target.DATA_PACK)
+                .resolve("curios")
+                .resolve("tags")
+                .resolve("item")
+                .resolve("charm.json");
+
+        return DataProvider.saveStable(cachedOutput, json, path);
+    }
+
+    private static @NotNull JsonArray getJsonElements() {
+        JsonArray values = new JsonArray();
+
+        values.add(EnigmaticLegacy.MODID + ":enigmatic_amulet_red");
+        values.add(EnigmaticLegacy.MODID + ":enigmatic_amulet_aqua");
+        values.add(EnigmaticLegacy.MODID + ":enigmatic_amulet_violet");
+        values.add(EnigmaticLegacy.MODID + ":enigmatic_amulet_magenta");
+        values.add(EnigmaticLegacy.MODID + ":enigmatic_amulet_green");
+        values.add(EnigmaticLegacy.MODID + ":enigmatic_amulet_black");
+        values.add(EnigmaticLegacy.MODID + ":enigmatic_amulet_blue");
+        return values;
     }
 
     /**
@@ -97,6 +132,7 @@ public class CuriosGenerator implements DataProvider {
 
         JsonArray slots = new JsonArray();
         slots.add("ring");
+        slots.add("charm");
 
         json.add("entities", entities);
         json.add("slots", slots);

@@ -36,6 +36,30 @@ public final class ModItems {
     public static final DeferredItem<GuardianHeart> GUARDIAN_HEART = ITEMS.register("guardian_heart", GuardianHeart::new); // 守卫者之心
     public static final DeferredItem<EnderRing> ENDER_RING = ITEMS.register("ender_ring", EnderRing::new); // 末影之戒
 
+    public static final DeferredItem<UnwitnessedAmulet> UNWITNESSED_AMULET =
+            ITEMS.register("unwitnessed_amulet", UnwitnessedAmulet::new);
+
+    public static final DeferredItem<EnigmaticAmulet> ENIGMATIC_AMULET_RED =
+            ITEMS.register("enigmatic_amulet_red", () -> new EnigmaticAmulet(AmuletVariant.RED));
+
+    public static final DeferredItem<EnigmaticAmulet> ENIGMATIC_AMULET_AQUA =
+            ITEMS.register("enigmatic_amulet_aqua", () -> new EnigmaticAmulet(AmuletVariant.AQUA));
+
+    public static final DeferredItem<EnigmaticAmulet> ENIGMATIC_AMULET_VIOLET =
+            ITEMS.register("enigmatic_amulet_violet", () -> new EnigmaticAmulet(AmuletVariant.VIOLET));
+
+    public static final DeferredItem<EnigmaticAmulet> ENIGMATIC_AMULET_MAGENTA =
+            ITEMS.register("enigmatic_amulet_magenta", () -> new EnigmaticAmulet(AmuletVariant.MAGENTA));
+
+    public static final DeferredItem<EnigmaticAmulet> ENIGMATIC_AMULET_GREEN =
+            ITEMS.register("enigmatic_amulet_green", () -> new EnigmaticAmulet(AmuletVariant.GREEN));
+
+    public static final DeferredItem<EnigmaticAmulet> ENIGMATIC_AMULET_BLACK =
+            ITEMS.register("enigmatic_amulet_black", () -> new EnigmaticAmulet(AmuletVariant.BLACK));
+
+    public static final DeferredItem<EnigmaticAmulet> ENIGMATIC_AMULET_BLUE =
+            ITEMS.register("enigmatic_amulet_blue", () -> new EnigmaticAmulet(AmuletVariant.BLUE));
+
     // 原版名为 storage_crystal，显示名是 Extradimensional Vessel / 超维容器。
     public static final DeferredItem<StorageCrystal> STORAGE_CRYSTAL = ITEMS.register("storage_crystal", StorageCrystal::new);
     public static final DeferredItem<SoulCrystal> SOUL_CRYSTAL = ITEMS.register("soul_crystal", SoulCrystal::new);

@@ -45,6 +45,7 @@ public class EnigmaticLegacy {
         modEventBus.addListener(FurnaceRecipeGenerator::gatherData);
         modEventBus.addListener(CuriosGenerator::gatherData);
 
+        NeoForge.EVENT_BUS.register(EnigmaticAmuletEvents.class);
         NeoForge.EVENT_BUS.register(TeleportParticleEvents.class); // 传送粒子
         NeoForge.EVENT_BUS.register(EnderRingEvents.class); // 末影之戒
         NeoForge.EVENT_BUS.register(CursedRingEvents.class);

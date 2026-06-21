@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-21T20:34:08.326433	vanilla/Item Models: enigmatic_legacy
+// 1.21.1	2026-06-21T22:05:46.864119	vanilla/Item Models: enigmatic_legacy
 71ad4196d7e8a842e7122ea637f5096bd1de67b7 assets/enigmatic_legacy/models/item/astral_dust.json
 a800b4eb7375f1b97f96baff0737b577c9df02a5 assets/enigmatic_legacy/models/item/cosmic_heart.json
 05e92afa49b30559cdf0273899d0933d14ae0156 assets/enigmatic_legacy/models/item/cursed_ring.json
@@ -7,6 +7,13 @@ a800b4eb7375f1b97f96baff0737b577c9df02a5 assets/enigmatic_legacy/models/item/cos
 c386ed909c185c9f51711d9f360d065d4db06807 assets/enigmatic_legacy/models/item/earth_heart_fragment.json
 5ff25963876aadf179ec247da2b5b09f9ff0d8ec assets/enigmatic_legacy/models/item/ender_ring.json
 b03e79e998b8c55fa67f589b2e05892163cc5f9b assets/enigmatic_legacy/models/item/ender_rod.json
+a89cff20e9b088eb69e98f683aefbac5d262be80 assets/enigmatic_legacy/models/item/enigmatic_amulet_aqua.json
+6fb8a788fdede2287a2fffcdcd19f5b98822a7e9 assets/enigmatic_legacy/models/item/enigmatic_amulet_black.json
+1095799ff772190055cd88317e89bac22844f58d assets/enigmatic_legacy/models/item/enigmatic_amulet_blue.json
+3419cf9dc3a001c069ecd7027467c485c61a255a assets/enigmatic_legacy/models/item/enigmatic_amulet_green.json
+1fdbd13f202a94c54752619289dcb5fdc27cb4fc assets/enigmatic_legacy/models/item/enigmatic_amulet_magenta.json
+03fd47157d91a5e1d950d4781ad56a20d79273a6 assets/enigmatic_legacy/models/item/enigmatic_amulet_red.json
+dfde0e9f7042672b13eecea2c502d1033955912b assets/enigmatic_legacy/models/item/enigmatic_amulet_violet.json
 25fd4c3fc52e68aad5da239a21e0a082169e9549 assets/enigmatic_legacy/models/item/etherium_ingot.json
 bdc03bfeb7cbc98752a6b9cc2a2e847293499d31 assets/enigmatic_legacy/models/item/etherium_ore.json
 15a01771a4171a3b505cdfd801de2ae4dab011d4 assets/enigmatic_legacy/models/item/evil_essence.json
@@ -22,3 +29,4 @@ f83b14662eaba05c2bb7492fdd6d909286dd0113 assets/enigmatic_legacy/models/item/thi
 3a61e89a46a450ebe6adc368db5c47ab48791976 assets/enigmatic_legacy/models/item/twisted_heart_on.json
 00598ccacd7ac960c93913a492d1d82fd921d471 assets/enigmatic_legacy/models/item/twisted_mirror.json
 d41a4664e69fdd63324518d3d62670247220d9d5 assets/enigmatic_legacy/models/item/unholy_grail.json
+b5f00c0683730d8cd3271b69f783b18961bc7749 assets/enigmatic_legacy/models/item/unwitnessed_amulet.json

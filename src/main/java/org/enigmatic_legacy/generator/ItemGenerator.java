@@ -54,5 +54,15 @@ public class ItemGenerator extends ItemModelProvider {
         basicItem(ModItems.UNHOLY_GRAIL.getId()); // 不洁圣杯
         basicItem(ModItems.GUARDIAN_HEART.getId()); // 守卫者之心
         basicItem(ModItems.ENDER_RING.getId());
+
+        basicItem(ModItems.UNWITNESSED_AMULET.getId());
+
+        basicItem(ModItems.ENIGMATIC_AMULET_RED.getId());
+        basicItem(ModItems.ENIGMATIC_AMULET_AQUA.getId());
+        basicItem(ModItems.ENIGMATIC_AMULET_VIOLET.getId());
+        basicItem(ModItems.ENIGMATIC_AMULET_MAGENTA.getId());
+        basicItem(ModItems.ENIGMATIC_AMULET_GREEN.getId());
+        basicItem(ModItems.ENIGMATIC_AMULET_BLACK.getId());
+        basicItem(ModItems.ENIGMATIC_AMULET_BLUE.getId());
     }
 }

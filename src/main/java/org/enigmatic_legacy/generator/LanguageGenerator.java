@@ -111,6 +111,41 @@ public class LanguageGenerator extends LanguageProvider {
         add("key.enigmatic_legacy.ender_ring", "Open Ender Chest");
         add("button.enigmatic_legacy.open_ender_chest", "Open Ender Chest");
         add("message.enigmatic_legacy.ender_ring.no_access", "You need the Ring of Ender to do that.");
+
+        addItem(ModItems.UNWITNESSED_AMULET, "Unwitnessed Amulet");
+
+        addItem(ModItems.ENIGMATIC_AMULET_RED, "Enigmatic Amulet");
+        addItem(ModItems.ENIGMATIC_AMULET_AQUA, "Enigmatic Amulet");
+        addItem(ModItems.ENIGMATIC_AMULET_VIOLET, "Enigmatic Amulet");
+        addItem(ModItems.ENIGMATIC_AMULET_MAGENTA, "Enigmatic Amulet");
+        addItem(ModItems.ENIGMATIC_AMULET_GREEN, "Enigmatic Amulet");
+        addItem(ModItems.ENIGMATIC_AMULET_BLACK, "Enigmatic Amulet");
+        addItem(ModItems.ENIGMATIC_AMULET_BLUE, "Enigmatic Amulet");
+
+        add("tooltip.enigmatic_legacy.unwitnessed_amulet.1", "An amulet without witness, name, or fate.");
+        add("tooltip.enigmatic_legacy.unwitnessed_amulet.2", "It waits to be claimed by a mortal soul.");
+        add("tooltip.enigmatic_legacy.unwitnessed_amulet.3", "Right-click to reveal its true color.");
+        add("tooltip.enigmatic_legacy.unwitnessed_amulet.use", "Right-click to witness it.");
+
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.1", "A relic marked by an unknown force.");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.2", "Only one amulet may answer your call.");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.owner", "Witnessed by: %s");
+
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.variant.red", "Color: Crimson");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.variant.aqua", "Color: Aqua");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.variant.violet", "Color: Violet");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.variant.magenta", "Color: Magenta");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.variant.green", "Color: Green");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.variant.black", "Color: Black");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.variant.blue", "Color: Blue");
+
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.red", "+2 Attack Damage");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.aqua", "+15% Movement Speed while sprinting");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.violet", "15% chance to deflect incoming projectiles");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.magenta", "-20% Gravity");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.green", "+2 Mining Efficiency");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.black", "10% Lifesteal");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.blue", "+25% Swim Speed");
     }
 
     private void addChineseTranslations() {
@@ -192,6 +227,41 @@ public class LanguageGenerator extends LanguageProvider {
         add("key.enigmatic_legacy.ender_ring", "打开末影箱");
         add("button.enigmatic_legacy.open_ender_chest", "打开末影箱");
         add("message.enigmatic_legacy.ender_ring.no_access", "你需要末影之戒才能这么做。");
+
+        addItem(ModItems.UNWITNESSED_AMULET, "无主护身符");
+
+        addItem(ModItems.ENIGMATIC_AMULET_RED, "神秘护身符");
+        addItem(ModItems.ENIGMATIC_AMULET_AQUA, "神秘护身符");
+        addItem(ModItems.ENIGMATIC_AMULET_VIOLET, "神秘护身符");
+        addItem(ModItems.ENIGMATIC_AMULET_MAGENTA, "神秘护身符");
+        addItem(ModItems.ENIGMATIC_AMULET_GREEN, "神秘护身符");
+        addItem(ModItems.ENIGMATIC_AMULET_BLACK, "神秘护身符");
+        addItem(ModItems.ENIGMATIC_AMULET_BLUE, "神秘护身符");
+
+        add("tooltip.enigmatic_legacy.unwitnessed_amulet.1", "无人见证、无人命名、无人拥有的护身符。");
+        add("tooltip.enigmatic_legacy.unwitnessed_amulet.2", "它静候某个凡俗灵魂将其认领。");
+        add("tooltip.enigmatic_legacy.unwitnessed_amulet.3", "右击后，它将显露真正的颜色。");
+        add("tooltip.enigmatic_legacy.unwitnessed_amulet.use", "右击以见证它。");
+
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.1", "被未知力量标记的遗物。");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.2", "同一时间只有一枚护身符会回应你。");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.owner", "见证者：%s");
+
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.variant.red", "颜色：赤红");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.variant.aqua", "颜色：青蓝");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.variant.violet", "颜色：紫罗兰");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.variant.magenta", "颜色：品红");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.variant.green", "颜色：翠绿");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.variant.black", "颜色：漆黑");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.variant.blue", "颜色：湛蓝");
+
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.red", "+2 攻击伤害");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.aqua", "疾跑时 +15% 移动速度");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.violet", "15% 概率偏转来袭弹射物");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.magenta", "-20% 重力");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.green", "+2 挖掘效率");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.black", "10% 生命偷取");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.blue", "+25% 游泳速度");
 
     }
 
