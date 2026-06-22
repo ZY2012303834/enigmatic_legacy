@@ -59,7 +59,7 @@ public class SoulCrystal extends Item {
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.soulCrystal1").withStyle(ChatFormatting.GOLD));
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.soulCrystal2").withStyle(ChatFormatting.DARK_PURPLE));
         } else {
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.holdShift").withStyle(ChatFormatting.DARK_PURPLE));
+            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hold_shift").withStyle(ChatFormatting.DARK_PURPLE));
         }
     }
 

@@ -148,7 +148,7 @@ public class ForbiddenFruit extends Item {
         tooltip.add(Component.empty());
 
         if (!Screen.hasShiftDown()) {
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.holdShift")
+            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hold_shift")
                     .withStyle(ChatFormatting.DARK_PURPLE));
             return;
         }

@@ -90,7 +90,7 @@ public class CursedRing extends Item implements ICurioItem {
         }
 
         addTooltip(tooltip, "void");
-        addTooltip(tooltip, "holdShift");
+        addTooltip(tooltip, "hold_shift");
     }
 
     private static void addTooltip(List<Component> tooltip, String key, Object... args) {

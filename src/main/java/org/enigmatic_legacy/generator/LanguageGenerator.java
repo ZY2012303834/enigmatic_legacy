@@ -197,12 +197,12 @@ public class LanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.6", "The closer you are to death, the stronger it becomes.");
         add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.cursed_only", "Only bearers of the Seven Curses can use this item.");
 
-        add("tooltip.enigmatic_legacy.hold_shift", "Hold Shift for details.");
+        // 按住 Shift 查看详情
+        add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");
     }
 
     private void addEnglishCursedRingTooltips() {
         add("tooltip.enigmatic_legacy.void", " ");
-        add("tooltip.enigmatic_legacy.holdShift", "§5Hold §6Shift§5 to see details.");
         add("tooltip.enigmatic_legacy.eternallyBound1", "§5Once worn, it becomes a part of you.");
         add("tooltip.enigmatic_legacy.eternallyBound2", "§4This ring will persist with you forever.");
         add("tooltip.enigmatic_legacy.eternallyBound2_creative", "§6With the power of god, you can unequip it.");
@@ -397,12 +397,13 @@ public class LanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.6", "越接近死亡，它的力量越强。");
         add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.cursed_only", "只有七咒之戒的佩戴者才能使用此物。");
 
-        add("tooltip.enigmatic_legacy.hold_shift", "按住 Shift 查看详情。");
+        // 按住 Shift 查看详情
+        add("tooltip.enigmatic_legacy.hold_shift", "§5按住 §6Shift§5 查看详情。");
     }
 
     private void addChineseCursedRingTooltips() {
         add("tooltip.enigmatic_legacy.void", "");
-        add("tooltip.enigmatic_legacy.holdShift", "§5按住 §6Shift§5 查看详情。");
+
         add("tooltip.enigmatic_legacy.eternallyBound1", "§5一旦佩戴，它便成为你的一部分。");
         add("tooltip.enigmatic_legacy.eternallyBound2", "§4这枚戒指将永远陪伴着你。");
         add("tooltip.enigmatic_legacy.eternallyBound2_creative", "§6需要神的能力才能取下它。");

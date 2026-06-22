@@ -82,7 +82,7 @@ public class MonsterCharm extends Item implements ICurioItem {
             }
         } else {
             tooltip.add(Component.translatable(
-                    "tooltip.enigmatic_legacy.holdShift"
+                    "tooltip.enigmatic_legacy.hold_shift"
             ).withStyle(ChatFormatting.DARK_GRAY));
         }
     }
