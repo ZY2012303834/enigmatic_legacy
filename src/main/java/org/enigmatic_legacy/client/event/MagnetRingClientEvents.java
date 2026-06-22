@@ -225,12 +225,6 @@ public final class MagnetRingClientEvents {
         );
     }
 
-    /**
-     * 在 Screen 渲染完成后渲染磁力按钮 tooltip。
-     * 注意：
-     * 这个方法必须在 MagnetRingClientEvents 外部类里，
-     * 不能放在 MagnetRingButton 内部类里。
-     */
     @SubscribeEvent
     public static void onScreenRenderPost(ScreenEvent.Render.Post event) {
         if (magnetButton == null) {
@@ -241,8 +235,8 @@ public final class MagnetRingClientEvents {
             return;
         }
 
-        int mouseX = event.getMouseX();
-        int mouseY = event.getMouseY();
+        double mouseX = event.getMouseX();
+        double mouseY = event.getMouseY();
 
         if (!magnetButton.shouldDisplay()) {
             return;
@@ -263,8 +257,8 @@ public final class MagnetRingClientEvents {
         event.getGuiGraphics().renderTooltip(
                 Minecraft.getInstance().font,
                 buttonTooltip(ring.get(), enabled),
-                mouseX,
-                mouseY
+                (int) mouseX,
+                (int) mouseY
         );
     }
 
@@ -294,16 +288,16 @@ public final class MagnetRingClientEvents {
         }
 
         /**
-         * 严格判断鼠标是否真的在按钮矩形内。
-         * 不使用 Button 自带 tooltip 逻辑，
-         * 只按坐标判断，避免 tooltip 在整个 GUI 内出现。
+         * 严格判断鼠标是否在完整按钮范围内。
+         * 使用固定 BUTTON_SIZE。
+         * 这样命中范围和实际渲染的 20x20 按钮完全一致。
          */
         private boolean isMouseActuallyOver(double mouseX, double mouseY) {
             return this.shouldDisplay()
                     && mouseX >= this.getX()
-                    && mouseX < this.getX() + this.getWidth()
+                    && mouseX < this.getX() + BUTTON_SIZE
                     && mouseY >= this.getY()
-                    && mouseY < this.getY() + this.getHeight();
+                    && mouseY < this.getY() + BUTTON_SIZE;
         }
 
         /**
