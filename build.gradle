@@ -21,6 +21,11 @@ repositories {
         name = 'Illusive Soulworks'
         url = 'https://maven.theillusivec4.top/'
     }
+    // 帕秋莉手册
+    maven {
+        name = 'BlameJared'
+        url = 'https://maven.blamejared.com'
+    }
 }
 
 base {
@@ -116,6 +121,10 @@ dependencies {
     // 引入 Curios API / Mod，供编译和运行时使用。
     implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}"
 
+    // Patchouli API is needed at compile time; the full mod is loaded in dev/runtime.
+    compileOnly "vazkii.patchouli:Patchouli:${patchouli_version}:api"
+    runtimeOnly "vazkii.patchouli:Patchouli:${patchouli_version}"
+
     // JEI Mod 依赖示例。
     // JEI API 仅用于编译期，完整 JEI artifact 用于运行时。
     // compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
@@ -144,10 +153,11 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
     // 这些键会对应模板文件中的 ${minecraft_version}、${mod_id} 等占位符。
     var replaceProperties = [minecraft_version      : minecraft_version,
                              minecraft_version_range: minecraft_version_range,
-                             neo_version            : neo_version,
-                             neo_version_range      : neo_version_range,
-                             curios_version_range   : curios_version_range,
-                             loader_version_range   : loader_version_range,
+                              neo_version            : neo_version,
+                              neo_version_range      : neo_version_range,
+                              curios_version_range   : curios_version_range,
+                              patchouli_version_range: patchouli_version_range,
+                              loader_version_range   : loader_version_range,
                              mod_id                 : mod_id,
                              mod_name               : mod_name,
                              mod_license            : mod_license,

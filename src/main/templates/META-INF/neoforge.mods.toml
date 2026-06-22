@@ -72,6 +72,14 @@ versionRange = "${curios_version_range}"
 ordering = "NONE"
 side = "BOTH"
 
+[[dependencies."${mod_id}"]]
+modId = "patchouli"
+type = "required"
+# Patchouli 1.21.1 NeoForge 稳定发布线
+versionRange = "${patchouli_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
 # 这是另一个依赖项
 [[dependencies."${mod_id}"]]
 modId = "minecraft"
