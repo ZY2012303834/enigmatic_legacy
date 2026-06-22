@@ -114,12 +114,20 @@ public class ConfigCommon {
                         "允许该列表为空；为空时表示不额外识别任何 Boss。"
                 )
                 .defineListAllowEmpty(
-                        "CompleteBossList",
+                        List.of("CompleteBossList"),
+
+                        // 配置文件不存在或无效时使用的默认完整列表。
                         List.of(
                                 "minecraft:ender_dragon",
                                 "minecraft:wither",
                                 "minecraft:elder_guardian"
                         ),
+
+                        // 在 NeoForge 配置界面里点击“新增列表项”时，默认填入的值。
+                        // 这个值必须能通过下面的 element validator。
+                        () -> "minecraft:wither",
+
+                        // 校验每一个列表元素必须是合法 ResourceLocation 字符串。
                         value -> value instanceof String string
                                 && ResourceLocation.tryParse(string) != null
                 );
