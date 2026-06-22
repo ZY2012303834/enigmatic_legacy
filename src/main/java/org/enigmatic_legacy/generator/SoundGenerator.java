@@ -7,12 +7,10 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.common.data.SoundDefinitionsProvider;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import org.enigmatic_legacy.EnigmaticLegacy;
-import org.enigmatic_legacy.client.quote.Quote;
+import org.enigmatic_legacy.sound.ModSounds;
 
 /**
  * 音效数据生成器。
- * 生成路径：
- * src/generated/resources/assets/enigmatic_legacy/sounds.json
  */
 public class SoundGenerator extends SoundDefinitionsProvider {
     private final ExistingFileHelper helper;
@@ -30,31 +28,30 @@ public class SoundGenerator extends SoundDefinitionsProvider {
 
     @Override
     public void registerSounds() {
-        // 原 Enigmatic Legacy 的 CHARGED_ON 音效。
-        // sounds.json key: "misc.hhon"
-        // 实际音频路径: assets/enigmatic_legacy/sounds/misc/hhon.ogg
         add(
-                "misc.hhon",
-                definition()
-                        .with(sound(ResourceLocation.fromNamespaceAndPath(
-                                EnigmaticLegacy.MODID,
-                                "misc/hhon"
-                        )))
+                ModSounds.CHARGED_ON.get(),
+                definition().with(sound(ResourceLocation.fromNamespaceAndPath(
+                        EnigmaticLegacy.MODID,
+                        "misc/hhon"
+                )))
         );
 
-        for (Quote quote : Quote.values()) {
+        ModSounds.QUOTES.forEach((name, soundEvent) -> {
             ResourceLocation sound = ResourceLocation.fromNamespaceAndPath(
                     EnigmaticLegacy.MODID,
-                    "quote/" + quote.name()
+                    "quote/" + name
             );
             if (!helper.exists(sound, PackType.CLIENT_RESOURCES, ".ogg", "sounds")) {
-                continue;
+                return;
             }
 
             add(
-                    "quote." + quote.name(),
-                    definition().with(sound(sound))
+                    soundEvent.get(),
+                    definition().with(sound(ResourceLocation.fromNamespaceAndPath(
+                        EnigmaticLegacy.MODID,
+                        "quote/" + name
+                    )))
             );
-        }
+        });
     }
 }

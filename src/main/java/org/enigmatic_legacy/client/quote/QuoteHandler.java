@@ -57,22 +57,28 @@ public final class QuoteHandler {
                 this.delayTicks--;
             }
 
-            if (this.delayTicks == 0) {
-                minecraft.getSoundManager().play(new SimpleSoundInstance(
-                        this.currentQuote.soundLocation(),
-                        SoundSource.VOICE,
-                        0.7F,
-                        1.0F,
-                        RANDOM,
-                        false,
-                        0,
-                        net.minecraft.client.resources.sounds.SoundInstance.Attenuation.NONE,
-                        0.0D,
-                        0.0D,
-                        0.0D,
-                        true
-                ));
+            if (this.delayTicks > 0) {
+                return;
             }
+        }
+
+        if (this.playTime <= 0.0D) {
+            minecraft.getSoundManager().play(new SimpleSoundInstance(
+                    this.currentQuote.soundLocation(),
+                    SoundSource.VOICE,
+                    0.7F,
+                    1.0F,
+                    RANDOM,
+                    false,
+                    0,
+                    net.minecraft.client.resources.sounds.SoundInstance.Attenuation.NONE,
+                    0.0D,
+                    0.0D,
+                    0.0D,
+                    true
+            ));
+
+            this.playTime = 0.001D;
         }
     }
 

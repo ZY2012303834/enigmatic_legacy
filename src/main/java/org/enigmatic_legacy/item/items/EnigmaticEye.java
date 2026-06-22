@@ -213,11 +213,6 @@ public class EnigmaticEye extends Item implements ICurioItem {
                         1.0F
                 );
 
-                player.displayClientMessage(
-                        Component.translatable("message.enigmatic_legacy.enigmatic_eye.awakening"),
-                        true
-                );
-
                 if (player instanceof ServerPlayer serverPlayer && !Quote.isNarratorUnlocked(serverPlayer)) {
                     Quote.unlockNarrator(serverPlayer);
                     Quote.random(Quote.NARRATOR_INTROS).play(serverPlayer, 80);
