@@ -1,6 +1,7 @@
 package org.enigmatic_legacy.item.items;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -120,29 +121,35 @@ public class TreasureHunterCharm extends Item implements ICurioItem {
     ) {
         tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
 
-        tooltip.add(Component.translatable(
-                "tooltip.enigmatic_legacy.treasure_hunter_charm.1"
-        ).withStyle(ChatFormatting.GOLD));
+        if (Screen.hasShiftDown()) {
+            tooltip.add(Component.translatable(
+                    "tooltip.enigmatic_legacy.treasure_hunter_charm.1"
+            ).withStyle(ChatFormatting.GOLD));
 
-        tooltip.add(Component.translatable(
-                "tooltip.enigmatic_legacy.treasure_hunter_charm.2"
-        ).withStyle(ChatFormatting.GOLD));
+            tooltip.add(Component.translatable(
+                    "tooltip.enigmatic_legacy.treasure_hunter_charm.2"
+            ).withStyle(ChatFormatting.GOLD));
 
-        tooltip.add(Component.translatable(
-                "tooltip.enigmatic_legacy.treasure_hunter_charm.3",
-                ConfigCommon.TREASURE_HUNTER_CHARM_MINING_SPEED_BONUS.get() + "%"
-        ).withStyle(ChatFormatting.GOLD));
+            tooltip.add(Component.translatable(
+                    "tooltip.enigmatic_legacy.treasure_hunter_charm.3",
+                    ConfigCommon.TREASURE_HUNTER_CHARM_MINING_SPEED_BONUS.get() + "%"
+            ).withStyle(ChatFormatting.GOLD));
 
-        tooltip.add(Component.translatable(
-                isNightVisionEnabled(stack)
-                        ? "tooltip.enigmatic_legacy.treasure_hunter_charm.night_vision.enabled"
-                        : "tooltip.enigmatic_legacy.treasure_hunter_charm.night_vision.disabled"
-        ).withStyle(isNightVisionEnabled(stack)
-                ? ChatFormatting.GREEN
-                : ChatFormatting.RED));
+            tooltip.add(Component.translatable(
+                    isNightVisionEnabled(stack)
+                            ? "tooltip.enigmatic_legacy.treasure_hunter_charm.night_vision.enabled"
+                            : "tooltip.enigmatic_legacy.treasure_hunter_charm.night_vision.disabled"
+            ).withStyle(isNightVisionEnabled(stack)
+                    ? ChatFormatting.GREEN
+                    : ChatFormatting.RED));
 
-        tooltip.add(Component.translatable(
-                "tooltip.enigmatic_legacy.treasure_hunter_charm.4"
-        ).withStyle(ChatFormatting.GRAY));
+            tooltip.add(Component.translatable(
+                    "tooltip.enigmatic_legacy.treasure_hunter_charm.4"
+            ).withStyle(ChatFormatting.GRAY));
+        } else {
+            tooltip.add(Component.translatable(
+                    "tooltip.enigmatic_legacy.hold_shift"
+            ).withStyle(ChatFormatting.DARK_GRAY));
+        }
     }
 }
