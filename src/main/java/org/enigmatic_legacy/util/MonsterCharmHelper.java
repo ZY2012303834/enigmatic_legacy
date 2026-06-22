@@ -37,6 +37,6 @@ public final class MonsterCharmHelper {
      * 判断玩家是否佩戴怪物猎人勋章。
      */
     public static boolean hasMonsterCharm(Player player) {
-        return findEquippedMonsterCharm(player).isEmpty();
+        return findEquippedMonsterCharm(player).isPresent();
     }
 }

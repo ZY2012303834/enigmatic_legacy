@@ -50,7 +50,7 @@ public class MonsterCharmEvents {
             return;
         }
 
-        if (!MonsterCharmHelper.hasMonsterCharm(attacker)) {
+        if (MonsterCharmHelper.hasMonsterCharm(attacker)) {
             return;
         }
 
@@ -97,7 +97,7 @@ public class MonsterCharmEvents {
             return;
         }
 
-        if (!MonsterCharmHelper.hasMonsterCharm(player)) {
+        if (MonsterCharmHelper.hasMonsterCharm(player)) {
             return;
         }
 
@@ -162,7 +162,7 @@ public class MonsterCharmEvents {
             return;
         }
 
-        if (!MonsterCharmHelper.hasMonsterCharm(attacker)) {
+        if (MonsterCharmHelper.hasMonsterCharm(attacker)) {
             return;
         }
 
