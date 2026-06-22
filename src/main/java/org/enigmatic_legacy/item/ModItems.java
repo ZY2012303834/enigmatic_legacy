@@ -46,6 +46,7 @@ public final class ModItems {
     public static final DeferredItem<EnigmaticAmulet> ENIGMATIC_AMULET_GREEN = ITEMS.register("enigmatic_amulet_green", () -> new EnigmaticAmulet(AmuletVariant.GREEN));
     public static final DeferredItem<EnigmaticAmulet> ENIGMATIC_AMULET_BLACK = ITEMS.register("enigmatic_amulet_black", () -> new EnigmaticAmulet(AmuletVariant.BLACK));
     public static final DeferredItem<EnigmaticAmulet> ENIGMATIC_AMULET_BLUE = ITEMS.register("enigmatic_amulet_blue", () -> new EnigmaticAmulet(AmuletVariant.BLUE));
+    public static final DeferredItem<MonsterCharm> MONSTER_CHARM = ITEMS.register("monster_charm", MonsterCharm::new); // 怪物猎人勋章
 
 
 

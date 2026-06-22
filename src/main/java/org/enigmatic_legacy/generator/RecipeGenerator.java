@@ -231,5 +231,19 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('X', ModItems.MAGNET_RING.get())
                 .unlockedBy("has_magnet_ring", has(ModItems.MAGNET_RING.get()))
                 .save(output);
+
+        // 怪物猎人勋章。
+        // 对齐原项目 monster_charm 配方。
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MONSTER_CHARM.get())
+                .pattern(" S ")
+                .pattern("PXP")
+                .pattern("EIE")
+                .define('S', Items.SOUL_LANTERN)
+                .define('P', Items.BLAZE_POWDER)
+                .define('X', Items.SKELETON_SKULL)
+                .define('E', Items.EXPERIENCE_BOTTLE)
+                .define('I', Items.NETHERITE_INGOT)
+                .unlockedBy("has_skeleton_skull", has(Items.SKELETON_SKULL))
+                .save(output);
     }
 }

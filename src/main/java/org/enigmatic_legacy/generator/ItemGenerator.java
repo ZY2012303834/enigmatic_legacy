@@ -67,5 +67,6 @@ public class ItemGenerator extends ItemModelProvider {
 
         basicItem(ModItems.MAGNET_RING.getId());
         basicItem(ModItems.DISLOCATION_RING.getId());
+        basicItem(ModItems.MONSTER_CHARM.getId());
     }
 }

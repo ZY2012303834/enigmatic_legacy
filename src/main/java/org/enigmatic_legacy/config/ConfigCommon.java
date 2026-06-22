@@ -83,14 +83,19 @@ public class ConfigCommon {
     // ==============================
     public static final ModConfigSpec.DoubleValue MAGNET_RING_RANGE;
 
-    // ==============================
-    // 转位之戒配置
-    // ==============================
-
     /**
      * 转位之戒远程拾取范围。
      */
     public static final ModConfigSpec.DoubleValue DISLOCATION_RING_RANGE;
+
+    // ==============================
+    // 怪物猎人勋章配置
+    // ==============================
+
+    public static final ModConfigSpec.IntValue MONSTER_CHARM_UNDEAD_DAMAGE;
+    public static final ModConfigSpec.IntValue MONSTER_CHARM_HOSTILE_DAMAGE;
+    public static final ModConfigSpec.BooleanValue MONSTER_CHARM_BONUS_LOOTING_ENABLED;
+    public static final ModConfigSpec.BooleanValue MONSTER_CHARM_DOUBLE_XP_ENABLED;
 
     static {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
@@ -315,6 +320,39 @@ public class ConfigCommon {
                         "原项目默认值为 16。"
                 )
                 .defineInRange("DislocationRingRange", 16.0D, 1.0D, 256.0D);
+
+        builder.pop();
+
+        builder.comment(
+                "怪物猎人勋章配置",
+                "这些配置参考原 Enigmatic Legacy 的 Emblem of Monster Slayer。"
+        ).push("Monster Charm");
+
+        MONSTER_CHARM_UNDEAD_DAMAGE = builder
+                .comment(
+                        "怪物猎人勋章对亡灵生物提供的额外伤害百分比。",
+                        "原项目默认值为 25。"
+                )
+                .defineInRange("MonsterCharmUndeadDamage", 25, 0, 1000);
+
+        MONSTER_CHARM_HOSTILE_DAMAGE = builder
+                .comment(
+                        "怪物猎人勋章对敌对生物提供的额外伤害百分比。",
+                        "原项目默认值为 10。"
+                )
+                .defineInRange("MonsterCharmHostileDamage", 10, 0, 1000);
+
+        MONSTER_CHARM_BONUS_LOOTING_ENABLED = builder
+                .comment(
+                        "怪物猎人勋章是否提供 +1 Looting。"
+                )
+                .define("MonsterCharmBonusLooting", true);
+
+        MONSTER_CHARM_DOUBLE_XP_ENABLED = builder
+                .comment(
+                        "怪物猎人勋章是否让怪物掉落双倍经验。"
+                )
+                .define("MonsterCharmDoubleXP", true);
 
         builder.pop();
 

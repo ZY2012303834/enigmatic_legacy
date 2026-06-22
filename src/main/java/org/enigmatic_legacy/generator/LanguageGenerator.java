@@ -167,6 +167,13 @@ public class LanguageGenerator extends LanguageProvider {
 
         add("gui.enigmatic_legacy.magnet_control.tooltip.enabled", "%s is enabled. Click to disable.");
         add("gui.enigmatic_legacy.magnet_control.tooltip.disabled", "%s is disabled. Click to enable.");
+
+        addItem(ModItems.MONSTER_CHARM, "Emblem of Monster Slayer");
+
+        add("tooltip.enigmatic_legacy.monster_charm.1", "Increases damage dealt to undead enemies by %s.");
+        add("tooltip.enigmatic_legacy.monster_charm.2", "Increases damage dealt to hostile creatures by %s.");
+        add("tooltip.enigmatic_legacy.monster_charm.3", "Provides +1 Looting.");
+        add("tooltip.enigmatic_legacy.monster_charm.4", "Doubles experience dropped by monsters.");
     }
 
     private void addChineseTranslations() {
@@ -304,6 +311,13 @@ public class LanguageGenerator extends LanguageProvider {
 
         add("gui.enigmatic_legacy.magnet_control.tooltip.enabled", "%s当前已开启。点击关闭。");
         add("gui.enigmatic_legacy.magnet_control.tooltip.disabled", "%s当前已关闭。点击开启。");
+
+        addItem(ModItems.MONSTER_CHARM, "怪物猎人勋章");
+
+        add("tooltip.enigmatic_legacy.monster_charm.1", "对亡灵生物造成的伤害提高 %s。");
+        add("tooltip.enigmatic_legacy.monster_charm.2", "对敌对生物造成的伤害提高 %s。");
+        add("tooltip.enigmatic_legacy.monster_charm.3", "提供 +1 抢夺。");
+        add("tooltip.enigmatic_legacy.monster_charm.4", "怪物掉落经验翻倍。");
     }
 
     private void addEnglishCursedRingTooltips() {
