@@ -11,7 +11,6 @@ import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * 怪物猎人勋章辅助类。
- *
  * 用于统一查询玩家是否佩戴了怪物猎人勋章，
  * 避免在多个事件里重复写 Curios 查询逻辑。
  */
@@ -38,6 +37,6 @@ public final class MonsterCharmHelper {
      * 判断玩家是否佩戴怪物猎人勋章。
      */
     public static boolean hasMonsterCharm(Player player) {
-        return findEquippedMonsterCharm(player).isPresent();
+        return findEquippedMonsterCharm(player).isEmpty();
     }
 }

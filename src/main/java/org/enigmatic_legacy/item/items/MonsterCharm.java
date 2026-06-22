@@ -68,6 +68,12 @@ public class MonsterCharm extends Item implements ICurioItem {
                     ConfigCommon.MONSTER_CHARM_HOSTILE_DAMAGE.get() + "%"
             ).withStyle(ChatFormatting.GOLD));
 
+            if (ConfigCommon.MONSTER_CHARM_BONUS_LOOTING_ENABLED.get()) {
+                tooltip.add(Component.translatable(
+                        "tooltip.enigmatic_legacy.monster_charm.3"
+                ).withStyle(ChatFormatting.GOLD));
+            }
+
             if (ConfigCommon.MONSTER_CHARM_DOUBLE_XP_ENABLED.get()) {
                 tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
                 tooltip.add(Component.translatable(
