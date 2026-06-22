@@ -29,25 +29,6 @@ public final class MagnetRingHelper {
     }
 
     /**
-     * 查找玩家当前佩戴的磁力之戒。
-     */
-    public static Optional<ItemStack> findEquippedMagnetRing(LivingEntity entity) {
-        AtomicReference<ItemStack> result = new AtomicReference<>(ItemStack.EMPTY);
-
-        CuriosApi.getCuriosInventory(entity).flatMap(handler -> handler.findFirstCurio(stack -> stack.getItem() instanceof MagnetRing)).ifPresent(slotResult -> result.set(slotResult.stack()));
-
-        ItemStack stack = result.get();
-        return stack.isEmpty() ? Optional.empty() : Optional.of(stack);
-    }
-
-    /**
-     * 判断玩家是否佩戴磁力之戒。
-     */
-    public static boolean hasMagnetRing(Player player) {
-        return findEquippedMagnetRing(player).isPresent();
-    }
-
-    /**
      * 查找当前佩戴的“磁力控制戒指”。
      * 包括：
      * 1. 磁力之戒 magnet_ring；
@@ -138,5 +119,31 @@ public final class MagnetRingHelper {
         boolean next = !isMagnetEnabled(stack);
         setMagnetEnabled(stack, next);
         return next;
+    }
+
+    /**
+     * 查找当前佩戴的磁力之戒。
+     *
+     * 兼容旧调用。
+     * 如果后续只需要“磁力之戒或转位之戒”，请使用 findEquippedMagnetControlRing。
+     */
+    public static Optional<ItemStack> findEquippedMagnetRing(LivingEntity entity) {
+        AtomicReference<ItemStack> result = new AtomicReference<>(ItemStack.EMPTY);
+
+        CuriosApi.getCuriosInventory(entity)
+                .flatMap(handler -> handler.findFirstCurio(stack -> stack.getItem() instanceof MagnetRing))
+                .ifPresent(slotResult -> result.set(slotResult.stack()));
+
+        ItemStack stack = result.get();
+        return stack.isEmpty() ? Optional.empty() : Optional.of(stack);
+    }
+
+    /**
+     * 判断是否佩戴磁力之戒。
+     *
+     * 兼容旧调用。
+     */
+    public static boolean hasMagnetRing(Player player) {
+        return findEquippedMagnetRing(player).isPresent();
     }
 }
