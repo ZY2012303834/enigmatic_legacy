@@ -212,6 +212,16 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("message.enigmatic_legacy.enigmatic_eye.awakened", "眼已苏醒。");
         // end
 
+        // 全知之眼
+        add("quote.enigmatic_legacy.enigmatic_eye.prefix", "[眼]");
+        add("quote.enigmatic_legacy.enigmatic_eye.first_wear", "终于，盲者重新拥有了视界。");
+        add("quote.enigmatic_legacy.enigmatic_eye.first_nether", "此地燃烧不息，但它并非最深的伤口。");
+        add("quote.enigmatic_legacy.enigmatic_eye.first_end", "空洞的天空，死寂的王国。何其熟悉。");
+        add("quote.enigmatic_legacy.enigmatic_eye.deep_underground", "岩石之下，古老之物仍记得你的脚步。");
+        add("quote.enigmatic_legacy.enigmatic_eye.low_health", "你比自己想象中更接近沉寂。");
+        add("quote.enigmatic_legacy.enigmatic_eye.midnight", "世界此刻很安静。仔细听。");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5按住 §6Shift§5 查看详情。");
     }

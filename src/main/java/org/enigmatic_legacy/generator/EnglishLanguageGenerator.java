@@ -211,6 +211,16 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("message.enigmatic_legacy.enigmatic_eye.awakened", "The Eye awakens.");
         // end
 
+        // 全知之眼
+        add("quote.enigmatic_legacy.enigmatic_eye.prefix", "[The Eye]");
+        add("quote.enigmatic_legacy.enigmatic_eye.first_wear", "At last, sight returns to the blind.");
+        add("quote.enigmatic_legacy.enigmatic_eye.first_nether", "This place burns, yet it is not the deepest wound.");
+        add("quote.enigmatic_legacy.enigmatic_eye.first_end", "An empty sky. A dead kingdom. How familiar.");
+        add("quote.enigmatic_legacy.enigmatic_eye.deep_underground", "Beneath the stone, old things still remember your steps.");
+        add("quote.enigmatic_legacy.enigmatic_eye.low_health", "You are closer to silence than you think.");
+        add("quote.enigmatic_legacy.enigmatic_eye.midnight", "The world is quiet now. Listen carefully.");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");
     }
