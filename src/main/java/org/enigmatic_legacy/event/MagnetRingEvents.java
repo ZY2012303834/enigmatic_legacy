@@ -64,9 +64,12 @@ public final class MagnetRingEvents {
         player.containerMenu.broadcastChanges();
 
         player.displayClientMessage(
-                Component.translatable(enabled
-                        ? "message.enigmatic_legacy.magnet_ring.enabled"
-                        : "message.enigmatic_legacy.magnet_ring.disabled"),
+                Component.translatable(
+                        enabled
+                                ? "message.enigmatic_legacy.magnet_control.enabled"
+                                : "message.enigmatic_legacy.magnet_control.disabled",
+                        Component.translatable(MagnetRingHelper.getMagnetControlRingNameKey(ring.get()))
+                ),
                 true
         );
     }

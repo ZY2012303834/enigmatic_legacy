@@ -61,18 +61,17 @@ public class DislocationRing extends Item implements ICurioItem {
 
     /**
      * 装备限制。
-     * 转位之戒和磁力之戒不能同时佩戴。
-     * 因为两者都控制同一种“远程拾取”能力，
-     * 同时佩戴会造成重复处理附近掉落物。
+     * 规则：
+     * 1. 转位之戒只能佩戴一个；
+     * 2. 磁力之戒和转位之戒不能同时佩戴；
+     * 3. 因此只要玩家已经佩戴任意“磁力控制戒指”，就不允许再装备转位之戒。
      */
     @Override
     public boolean canEquip(SlotContext context, ItemStack stack) {
         LivingEntity entity = context.entity();
 
         return CuriosApi.getCuriosInventory(entity)
-                .map(handler -> handler.findFirstCurio(curio ->
-                        curio.getItem() instanceof MagnetRing
-                ).isEmpty())
+                .map(handler -> handler.findFirstCurio(MagnetRingHelper::isMagnetControlRing).isEmpty())
                 .orElse(true);
     }
 

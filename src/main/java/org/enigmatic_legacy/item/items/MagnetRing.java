@@ -76,18 +76,17 @@ public class MagnetRing extends Item implements ICurioItem {
 
     /**
      * 装备限制。
-     * 磁力之戒和转位之戒不能同时佩戴。
-     * 转位之戒是磁力之戒的高级版本，同时佩戴没有意义，还会造成重复处理掉落物。
+     * 规则：
+     * 1. 磁力之戒只能佩戴一个；
+     * 2. 转位之戒是磁力之戒的高级版本，两者不能同时佩戴；
+     * 3. 因此只要玩家已经佩戴任意“磁力控制戒指”，就不允许再装备磁力之戒。
      */
     @Override
     public boolean canEquip(SlotContext context, ItemStack stack) {
         LivingEntity entity = context.entity();
 
         return CuriosApi.getCuriosInventory(entity)
-                .map(handler -> handler.findFirstCurio(curio ->
-                        MagnetRingHelper.isMagnetControlRing(curio)
-                                && !(curio.getItem() instanceof MagnetRing)
-                ).isEmpty())
+                .map(handler -> handler.findFirstCurio(MagnetRingHelper::isMagnetControlRing).isEmpty())
                 .orElse(true);
     }
 
@@ -116,8 +115,7 @@ public class MagnetRing extends Item implements ICurioItem {
             return;
         }
 
-        // 默认：玩家按住 Shift 时暂停磁力效果。
-        // 如果配置禁用 Shift 抑制，则潜行也照常吸取。
+        // 按下潜行键时，磁力之戒不生效。
         if (player.isShiftKeyDown() && !ConfigCommon.DISABLE_AOE_SHIFT_SUPPRESSION.get()) {
             return;
         }

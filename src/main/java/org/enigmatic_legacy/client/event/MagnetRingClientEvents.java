@@ -216,11 +216,17 @@ public final class MagnetRingClientEvents {
 
     /**
      * 按钮 tooltip。
+     * 根据当前佩戴的戒指动态显示：
+     * - 磁力之戒当前已开启/关闭
+     * - 转位之戒当前已开启/关闭
      */
-    private static Component buttonTooltip(boolean enabled) {
-        return Component.translatable(enabled
-                ? "gui.enigmatic_legacy.magnet_ring.tooltip.enabled"
-                : "gui.enigmatic_legacy.magnet_ring.tooltip.disabled");
+    private static Component buttonTooltip(ItemStack ring, boolean enabled) {
+        return Component.translatable(
+                enabled
+                        ? "gui.enigmatic_legacy.magnet_control.tooltip.enabled"
+                        : "gui.enigmatic_legacy.magnet_control.tooltip.disabled",
+                Component.translatable(MagnetRingHelper.getMagnetControlRingNameKey(ring))
+        );
     }
 
     /**
@@ -288,14 +294,12 @@ public final class MagnetRingClientEvents {
             }
 
             // 只在按钮实际显示，并且鼠标悬停在按钮上时，手动渲染 tooltip。
-            if (super.isMouseOver(mouseX, mouseY)) {
-                guiGraphics.renderTooltip(
-                        Minecraft.getInstance().font,
-                        buttonTooltip(enabled),
-                        mouseX,
-                        mouseY
-                );
-            }
+            guiGraphics.renderTooltip(
+                    Minecraft.getInstance().font,
+                    buttonTooltip(ring.orElse(ItemStack.EMPTY), enabled),
+                    mouseX,
+                    mouseY
+            );
         }
 
         /**

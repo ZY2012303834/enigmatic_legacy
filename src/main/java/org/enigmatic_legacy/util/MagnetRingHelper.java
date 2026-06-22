@@ -56,24 +56,7 @@ public final class MagnetRingHelper {
      * 判断某个 ItemStack 是否是磁力按钮可控制的戒指。
      */
     public static boolean isMagnetControlRing(ItemStack stack) {
-        if (stack.isEmpty()) {
-            return false;
-        }
-
-        if (stack.getItem() instanceof MagnetRing) {
-            return true;
-        }
-
-        ResourceLocation id = BuiltInRegistries.ITEM.getKey(stack.getItem());
-
-        if (!EnigmaticLegacy.MODID.equals(id.getNamespace())) {
-            return false;
-        }
-
-        String path = id.getPath();
-
-        return path.equals("dislocation_ring")
-                || path.equals("super_magnet_ring");
+        return isMagnetRing(stack) || isDislocationRing(stack);
     }
 
     /**
@@ -123,7 +106,6 @@ public final class MagnetRingHelper {
 
     /**
      * 查找当前佩戴的磁力之戒。
-     *
      * 兼容旧调用。
      * 如果后续只需要“磁力之戒或转位之戒”，请使用 findEquippedMagnetControlRing。
      */
@@ -139,8 +121,50 @@ public final class MagnetRingHelper {
     }
 
     /**
+     * 判断 ItemStack 是否是磁力之戒。
+     */
+    public static boolean isMagnetRing(ItemStack stack) {
+        return !stack.isEmpty() && stack.getItem() instanceof MagnetRing;
+    }
+
+    /**
+     * 判断 ItemStack 是否是转位之戒。
+     * 这里用注册 ID 判断，避免直接 import DislocationRing。
+     * 这样以后如果类名变了，只要物品 ID 不变，UI 和装备限制仍然能工作。
+     */
+    public static boolean isDislocationRing(ItemStack stack) {
+        if (stack.isEmpty()) {
+            return false;
+        }
+
+        ResourceLocation id = BuiltInRegistries.ITEM.getKey(stack.getItem());
+
+        if (!EnigmaticLegacy.MODID.equals(id.getNamespace())) {
+            return false;
+        }
+
+        String path = id.getPath();
+
+        return path.equals("dislocation_ring")
+                || path.equals("super_magnet_ring");
+    }
+
+    /**
+     * 获取磁力控制戒指的显示名翻译 key。
+     * GUI 提示会用这个 key 动态显示：
+     * - 磁力之戒
+     * - 转位之戒
+     */
+    public static String getMagnetControlRingNameKey(ItemStack stack) {
+        if (isDislocationRing(stack)) {
+            return "item.enigmatic_legacy.dislocation_ring";
+        }
+
+        return "item.enigmatic_legacy.magnet_ring";
+    }
+
+    /**
      * 判断是否佩戴磁力之戒。
-     *
      * 兼容旧调用。
      */
     public static boolean hasMagnetRing(Player player) {

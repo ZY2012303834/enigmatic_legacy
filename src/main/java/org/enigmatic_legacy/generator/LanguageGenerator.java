@@ -82,7 +82,7 @@ public class LanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.twisted_mirror3", "Requires the Ring of the Seven Curses.");
 
         add("effect.enigmatic_legacy.recall", "Recall");
-        add("effect.enigmatic_legacy.forbidden_fruit", "\u00A75The Forbidden Fruit");
+        add("effect.enigmatic_legacy.forbidden_fruit", "§5The Forbidden Fruit");
 
         add("item.minecraft.potion.effect.recall", "Potion of Recall");
         add("item.minecraft.splash_potion.effect.recall", "Splash Potion of Recall");
@@ -149,23 +149,24 @@ public class LanguageGenerator extends LanguageProvider {
 
         addItem(ModItems.MAGNET_RING, "Magnetic Ring");
         add("tooltip.enigmatic_legacy.magnet_ring.1", "Attracts nearby items within %s blocks.");
-        add("tooltip.enigmatic_legacy.magnet_ring.2", "Hold Shift to suppress the magnetic field.");
 
         add("tooltip.enigmatic_legacy.magnet_ring.enabled", "Magnetic field: Enabled");
         add("tooltip.enigmatic_legacy.magnet_ring.disabled", "Magnetic field: Disabled");
 
-        add("message.enigmatic_legacy.magnet_ring.enabled", "Magnetic field enabled.");
-        add("message.enigmatic_legacy.magnet_ring.disabled", "Magnetic field disabled.");
-        add("message.enigmatic_legacy.magnet_ring.no_ring", "You are not wearing a Magnetic Ring or Dislocation Ring.");
-
-        add("gui.enigmatic_legacy.magnet_ring.tooltip.enabled", "Magnetic Ring is enabled. Click to disable.");
-        add("gui.enigmatic_legacy.magnet_ring.tooltip.disabled", "Magnetic Ring is disabled. Click to enable.");
-
         addItem(ModItems.DISLOCATION_RING, "Dislocation Ring");
 
         add("tooltip.enigmatic_legacy.dislocation_ring.1", "Instantly collects nearby items within %s blocks.");
-        add("tooltip.enigmatic_legacy.dislocation_ring.2", "Hold Shift to suppress the dislocation field.");
         add("tooltip.enigmatic_legacy.dislocation_ring.3", "Cannot be worn together with a Magnetic Ring.");
+
+        add("tooltip.enigmatic_legacy.magnet_ring.2", "Inactive while sneaking.");
+        add("tooltip.enigmatic_legacy.dislocation_ring.2", "Inactive while sneaking.");
+
+        add("message.enigmatic_legacy.magnet_control.enabled", "%s enabled.");
+        add("message.enigmatic_legacy.magnet_control.disabled", "%s disabled.");
+        add("message.enigmatic_legacy.magnet_ring.no_ring", "You are not wearing a Magnetic Ring or Dislocation Ring.");
+
+        add("gui.enigmatic_legacy.magnet_control.tooltip.enabled", "%s is enabled. Click to disable.");
+        add("gui.enigmatic_legacy.magnet_control.tooltip.disabled", "%s is disabled. Click to enable.");
     }
 
     private void addChineseTranslations() {
@@ -217,7 +218,7 @@ public class LanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.twisted_mirror3", "需要佩戴七咒之戒。");
 
         add("effect.enigmatic_legacy.recall", "召回");
-        add("effect.enigmatic_legacy.forbidden_fruit", "\u00A75禁忌之果");
+        add("effect.enigmatic_legacy.forbidden_fruit", "§5禁忌之果");
 
         add("item.minecraft.potion.effect.recall", "召回药水");
         add("item.minecraft.splash_potion.effect.recall", "喷溅型召回药水");
@@ -285,23 +286,24 @@ public class LanguageGenerator extends LanguageProvider {
 
         addItem(ModItems.MAGNET_RING, "磁力之戒");
         add("tooltip.enigmatic_legacy.magnet_ring.1", "吸取 %s 格范围内的附近掉落物。");
-        add("tooltip.enigmatic_legacy.magnet_ring.2", "按住 Shift 可暂时抑制磁场。");
 
         add("tooltip.enigmatic_legacy.magnet_ring.enabled", "磁场状态：已开启");
         add("tooltip.enigmatic_legacy.magnet_ring.disabled", "磁场状态：已关闭");
 
-        add("message.enigmatic_legacy.magnet_ring.enabled", "磁力之戒已开启。");
-        add("message.enigmatic_legacy.magnet_ring.disabled", "磁力之戒已关闭。");
-        add("message.enigmatic_legacy.magnet_ring.no_ring", "你没有佩戴磁力之戒或转位之戒。");
-
-        add("gui.enigmatic_legacy.magnet_ring.tooltip.enabled", "磁力之戒当前已开启。点击关闭。");
-        add("gui.enigmatic_legacy.magnet_ring.tooltip.disabled", "磁力之戒当前已关闭。点击开启。");
-
         addItem(ModItems.DISLOCATION_RING, "转位之戒");
 
         add("tooltip.enigmatic_legacy.dislocation_ring.1", "瞬间收集 %s 格范围内的附近掉落物。");
-        add("tooltip.enigmatic_legacy.dislocation_ring.2", "按住 Shift 可暂时抑制转位场。");
         add("tooltip.enigmatic_legacy.dislocation_ring.3", "不能与磁力之戒同时佩戴。");
+
+        add("tooltip.enigmatic_legacy.magnet_ring.2", "按下潜行键时不生效。");
+        add("tooltip.enigmatic_legacy.dislocation_ring.2", "按下潜行键时不生效。");
+
+        add("message.enigmatic_legacy.magnet_control.enabled", "%s已开启。");
+        add("message.enigmatic_legacy.magnet_control.disabled", "%s已关闭。");
+        add("message.enigmatic_legacy.magnet_ring.no_ring", "你没有佩戴磁力之戒或转位之戒。");
+
+        add("gui.enigmatic_legacy.magnet_control.tooltip.enabled", "%s当前已开启。点击关闭。");
+        add("gui.enigmatic_legacy.magnet_control.tooltip.disabled", "%s当前已关闭。点击开启。");
     }
 
     private void addEnglishCursedRingTooltips() {
