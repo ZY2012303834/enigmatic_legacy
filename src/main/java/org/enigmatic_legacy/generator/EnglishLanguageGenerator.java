@@ -194,6 +194,23 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.enchanter_pearl.cursed_only", "Only bearers of the Seven Curses can use this item.");
         // end
 
+        // 莫测之眼
+        add("item.enigmatic_legacy.enigmatic_eye_dormant", "Dormant Eye");
+        add("item.enigmatic_legacy.enigmatic_eye_active", "Inscrutable Eye");
+
+        add("tooltip.enigmatic_legacy.enigmatic_eye.dormant.1", "It watches, yet it sleeps.");
+        add("tooltip.enigmatic_legacy.enigmatic_eye.dormant.2", "Right-click to awaken the Eye.");
+        add("tooltip.enigmatic_legacy.enigmatic_eye.dormant.3", "Some things are better left unseen.");
+
+        add("tooltip.enigmatic_legacy.enigmatic_eye.active.1", "Provides +1 Charm slot while equipped.");
+        add("tooltip.enigmatic_legacy.enigmatic_eye.active.2", "Increases block interaction range by 3 blocks.");
+        add("tooltip.enigmatic_legacy.enigmatic_eye.active.3", "The Eye has awakened, and now it sees.");
+        add("tooltip.enigmatic_legacy.enigmatic_eye.active.4", "Only the awakened Eye can be equipped.");
+
+        add("message.enigmatic_legacy.enigmatic_eye.awakening", "The Eye begins to awaken...");
+        add("message.enigmatic_legacy.enigmatic_eye.awakened", "The Eye awakens.");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");
     }

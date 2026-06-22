@@ -195,6 +195,23 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.enchanter_pearl.cursed_only", "只有七咒之戒的佩戴者才能使用此物。");
         // end
 
+        // 莫测之眼
+        add("item.enigmatic_legacy.enigmatic_eye_dormant", "休眠之眼");
+        add("item.enigmatic_legacy.enigmatic_eye_active", "全知之眼");
+
+        add("tooltip.enigmatic_legacy.enigmatic_eye.dormant.1", "它注视着，却仍在沉睡。");
+        add("tooltip.enigmatic_legacy.enigmatic_eye.dormant.2", "右键以唤醒此眼。");
+        add("tooltip.enigmatic_legacy.enigmatic_eye.dormant.3", "有些事物，最好永远不要被看见。");
+
+        add("tooltip.enigmatic_legacy.enigmatic_eye.active.1", "佩戴时提供 +1 个护符栏位。");
+        add("tooltip.enigmatic_legacy.enigmatic_eye.active.2", "方块交互距离增加 3 格。");
+        add("tooltip.enigmatic_legacy.enigmatic_eye.active.3", "眼已苏醒，而它正在注视。");
+        add("tooltip.enigmatic_legacy.enigmatic_eye.active.4", "只有已唤醒的眼才能被佩戴。");
+
+        add("message.enigmatic_legacy.enigmatic_eye.awakening", "眼开始苏醒……");
+        add("message.enigmatic_legacy.enigmatic_eye.awakened", "眼已苏醒。");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5按住 §6Shift§5 查看详情。");
     }

@@ -72,5 +72,34 @@ public class ItemGenerator extends ItemModelProvider {
         basicItem(ModItems.TREASURE_HUNTER_CHARM.getId());
         basicItem(ModItems.MEGA_SPONGE.getId());
         basicItem(ModItems.ENCHANTER_PEARL.getId());
+
+        enigmaticEye();
+
+    }
+
+    private void enigmaticEye() {
+        var dormant1 = withExistingParent("item/enigmatic_eye_dormant_1", mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/enigmatic_eye_dormant_1"));
+
+        var dormant2 = withExistingParent("item/enigmatic_eye_dormant_2", mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/enigmatic_eye_dormant_2"));
+
+        var active = withExistingParent("item/enigmatic_eye_active", mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/enigmatic_eye"));
+
+        withExistingParent("item/enigmatic_eye", mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/enigmatic_eye_dormant"))
+                .override()
+                .predicate(modLoc("enigmatic_eye_activated"), 0.33F)
+                .model(dormant1)
+                .end()
+                .override()
+                .predicate(modLoc("enigmatic_eye_activated"), 0.66F)
+                .model(dormant2)
+                .end()
+                .override()
+                .predicate(modLoc("enigmatic_eye_activated"), 1.0F)
+                .model(active)
+                .end();
     }
 }

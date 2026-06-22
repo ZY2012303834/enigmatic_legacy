@@ -51,6 +51,7 @@ public final class ModItems {
     public static final DeferredItem<BloodstainedValorEmblem> BLOODSTAINED_VALOR_EMBLEM = ITEMS.register("bloodstained_valor_emblem", BloodstainedValorEmblem::new); //
     public static final DeferredItem<MegaSponge> MEGA_SPONGE = ITEMS.register("mega_sponge", MegaSponge::new); // 超级海绵
     public static final DeferredItem<EnchanterPearl> ENCHANTER_PEARL = ITEMS.register("enchanter_pearl", EnchanterPearl::new); // 附魔师的珍珠
+    public static final DeferredItem<EnigmaticEye> ENIGMATIC_EYE = ITEMS.register("enigmatic_eye", EnigmaticEye::new); // 休眠之眼
 
 
 
