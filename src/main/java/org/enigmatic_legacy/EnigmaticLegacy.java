@@ -10,15 +10,11 @@ import org.enigmatic_legacy.config.ConfigClient;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.entity.ModEntities;
 import org.enigmatic_legacy.event.*;
-import org.enigmatic_legacy.generator.BlockGenerator;
-import org.enigmatic_legacy.generator.CuriosGenerator;
-import org.enigmatic_legacy.generator.FurnaceRecipeGenerator;
-import org.enigmatic_legacy.generator.ItemGenerator;
-import org.enigmatic_legacy.generator.LanguageGenerator;
-import org.enigmatic_legacy.generator.RecipeGenerator;
+import org.enigmatic_legacy.generator.*;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.potion.ModEffects;
 import org.enigmatic_legacy.potion.ModPotions;
+import org.enigmatic_legacy.sound.ModSounds;
 import org.enigmatic_legacy.tab.ModeTabs;
 
 @Mod(EnigmaticLegacy.MODID)
@@ -34,9 +30,10 @@ public class EnigmaticLegacy {
         ModItems.register(modEventBus);
         ModEntities.register(modEventBus);
         ModeTabs.register(modEventBus);
-
         ModEffects.register(modEventBus);
         ModPotions.register(modEventBus);
+
+        ModSounds.SOUND_EVENTS.register(modEventBus);
 
         modEventBus.addListener(BlockGenerator::gatherData);
         modEventBus.addListener(ItemGenerator::gatherData);
@@ -44,6 +41,7 @@ public class EnigmaticLegacy {
         modEventBus.addListener(RecipeGenerator::gatherData);
         modEventBus.addListener(FurnaceRecipeGenerator::gatherData);
         modEventBus.addListener(CuriosGenerator::gatherData);
+        modEventBus.addListener(SoundGenerator::gatherData);
 
         NeoForge.EVENT_BUS.register(MonsterCharmEvents.class);
         NeoForge.EVENT_BUS.register(EnchanterPearlEvents.class);
@@ -58,5 +56,7 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(EvilIngotEvents.class);
         NeoForge.EVENT_BUS.register(SoulCrystalEvents.class);
         NeoForge.EVENT_BUS.register(ForbiddenFruitEvents.class);
+
+
     }
 }

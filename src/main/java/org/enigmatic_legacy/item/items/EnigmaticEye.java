@@ -25,6 +25,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
 import org.enigmatic_legacy.EnigmaticLegacy;
+import org.enigmatic_legacy.sound.ModSounds;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
@@ -162,9 +163,18 @@ public class EnigmaticEye extends Item implements ICurioItem {
      */
     @Override
     public boolean canEquip(SlotContext context, ItemStack stack) {
-        return !isDormant(stack);
-    }
+        if (isDormant(stack)) {
+            return false;
+        }
 
+        return CuriosApi.getCuriosInventory(context.entity())
+                .map(handler -> handler.findFirstCurio(otherStack ->
+                        otherStack != stack
+                                && otherStack.getItem() instanceof EnigmaticEye
+                                && !isDormant(otherStack)
+                ).isEmpty())
+                .orElse(true);
+    }
     /**
      * 根据状态显示不同名称：
      * 休眠之眼 / 全知之眼。
@@ -194,7 +204,7 @@ public class EnigmaticEye extends Item implements ICurioItem {
                 level.playSound(
                         null,
                         player.blockPosition(),
-                        SoundEvents.END_PORTAL_FRAME_FILL,
+                        ModSounds.CHARGED_ON.get(),
                         SoundSource.PLAYERS,
                         1.0F,
                         1.0F
