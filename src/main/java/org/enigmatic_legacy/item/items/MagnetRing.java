@@ -14,6 +14,7 @@ import net.minecraft.world.phys.Vec3;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.util.MagnetRingHelper;
 import org.jetbrains.annotations.NotNull;
+import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
@@ -71,6 +72,23 @@ public class MagnetRing extends Item implements ICurioItem {
     @Override
     public boolean canEquipFromUse(SlotContext context, ItemStack stack) {
         return true;
+    }
+
+    /**
+     * 装备限制。
+     * 磁力之戒和转位之戒不能同时佩戴。
+     * 转位之戒是磁力之戒的高级版本，同时佩戴没有意义，还会造成重复处理掉落物。
+     */
+    @Override
+    public boolean canEquip(SlotContext context, ItemStack stack) {
+        LivingEntity entity = context.entity();
+
+        return CuriosApi.getCuriosInventory(entity)
+                .map(handler -> handler.findFirstCurio(curio ->
+                        MagnetRingHelper.isMagnetControlRing(curio)
+                                && !(curio.getItem() instanceof MagnetRing)
+                ).isEmpty())
+                .orElse(true);
     }
 
     /**

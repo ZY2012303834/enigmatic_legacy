@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_magnet_ring": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:magnet_ring"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "enigmatic_legacy:dislocation_ring"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_magnet_ring"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "enigmatic_legacy:dislocation_ring"
+    ]
+  }
+}

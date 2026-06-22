@@ -160,6 +160,12 @@ public class LanguageGenerator extends LanguageProvider {
 
         add("gui.enigmatic_legacy.magnet_ring.tooltip.enabled", "Magnetic Ring is enabled. Click to disable.");
         add("gui.enigmatic_legacy.magnet_ring.tooltip.disabled", "Magnetic Ring is disabled. Click to enable.");
+
+        addItem(ModItems.DISLOCATION_RING, "Dislocation Ring");
+
+        add("tooltip.enigmatic_legacy.dislocation_ring.1", "Instantly collects nearby items within %s blocks.");
+        add("tooltip.enigmatic_legacy.dislocation_ring.2", "Hold Shift to suppress the dislocation field.");
+        add("tooltip.enigmatic_legacy.dislocation_ring.3", "Cannot be worn together with a Magnetic Ring.");
     }
 
     private void addChineseTranslations() {
@@ -290,6 +296,12 @@ public class LanguageGenerator extends LanguageProvider {
 
         add("gui.enigmatic_legacy.magnet_ring.tooltip.enabled", "磁力之戒当前已开启。点击关闭。");
         add("gui.enigmatic_legacy.magnet_ring.tooltip.disabled", "磁力之戒当前已关闭。点击开启。");
+
+        addItem(ModItems.DISLOCATION_RING, "转位之戒");
+
+        add("tooltip.enigmatic_legacy.dislocation_ring.1", "瞬间收集 %s 格范围内的附近掉落物。");
+        add("tooltip.enigmatic_legacy.dislocation_ring.2", "按住 Shift 可暂时抑制转位场。");
+        add("tooltip.enigmatic_legacy.dislocation_ring.3", "不能与磁力之戒同时佩戴。");
     }
 
     private void addEnglishCursedRingTooltips() {

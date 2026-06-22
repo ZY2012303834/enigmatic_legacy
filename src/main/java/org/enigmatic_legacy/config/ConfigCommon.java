@@ -83,6 +83,15 @@ public class ConfigCommon {
     // ==============================
     public static final ModConfigSpec.DoubleValue MAGNET_RING_RANGE;
 
+    // ==============================
+    // 转位之戒配置
+    // ==============================
+
+    /**
+     * 转位之戒远程拾取范围。
+     */
+    public static final ModConfigSpec.DoubleValue DISLOCATION_RING_RANGE;
+
     static {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
 
@@ -292,6 +301,20 @@ public class ConfigCommon {
                         "原项目默认值为 8。"
                 )
                 .defineInRange("MagnetRingRange", 8.0D, 1.0D, 256.0D);
+
+        builder.pop();
+
+        builder.comment(
+                "转位之戒配置",
+                "控制 Dislocation Ring / 转位之戒的远程拾取范围。"
+        ).push("Dislocation Ring");
+
+        DISLOCATION_RING_RANGE = builder
+                .comment(
+                        "转位之戒远程拾取掉落物的半径。",
+                        "原项目默认值为 16。"
+                )
+                .defineInRange("DislocationRingRange", 16.0D, 1.0D, 256.0D);
 
         builder.pop();
 

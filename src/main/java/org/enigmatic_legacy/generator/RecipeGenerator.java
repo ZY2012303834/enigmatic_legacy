@@ -217,5 +217,19 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('R', Items.REDSTONE)
                 .unlockedBy("has_iron_ring", has(ModItems.IRON_RING.get()))
                 .save(output);
+
+        // 转位之戒配方。
+        // 原项目 ID 是 super_magnet_ring，显示名是 Dislocation Ring；
+        // 本项目使用更直观的 dislocation_ring 作为注册 ID。
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.DISLOCATION_RING.get())
+                .pattern("LEL")
+                .pattern("GXG")
+                .pattern("LGL")
+                .define('L', Items.LAPIS_LAZULI)
+                .define('E', Items.ENDER_EYE)
+                .define('G', Items.GOLD_INGOT)
+                .define('X', ModItems.MAGNET_RING.get())
+                .unlockedBy("has_magnet_ring", has(ModItems.MAGNET_RING.get()))
+                .save(output);
     }
 }

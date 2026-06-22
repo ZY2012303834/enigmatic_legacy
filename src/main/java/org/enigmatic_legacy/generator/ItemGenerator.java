@@ -66,5 +66,6 @@ public class ItemGenerator extends ItemModelProvider {
         basicItem(ModItems.ENIGMATIC_AMULET_BLUE.getId());
 
         basicItem(ModItems.MAGNET_RING.getId());
+        basicItem(ModItems.DISLOCATION_RING.getId());
     }
 }

@@ -62,7 +62,8 @@ public final class ModeTabs {
                         output.accept(ModItems.ENIGMATIC_AMULET_BLACK.get());
                         output.accept(ModItems.ENIGMATIC_AMULET_BLUE.get());
 
-                        output.accept(ModItems.MAGNET_RING.get()); // 磁力之戒
+                        output.accept(ModItems.MAGNET_RING.get());
+                        output.accept(ModItems.DISLOCATION_RING.get());
                     })
                     .build());
 
