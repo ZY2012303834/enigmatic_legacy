@@ -83,10 +83,8 @@ public class CuriosGenerator implements DataProvider {
 
     /**
      * 生成 charm 护符栏位类型配置。
-     *
      * 生成路径：
      * src/generated/resources/data/enigmatic_legacy/curios/slots/charm.json
-     *
      * 作用：
      * 告诉 Curios：存在一个名为 charm 的饰品栏位。
      * 如果只把物品加进 curios:charm 标签，但没有这个 slot 定义，
