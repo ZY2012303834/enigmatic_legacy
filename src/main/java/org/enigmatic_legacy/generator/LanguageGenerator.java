@@ -196,6 +196,40 @@ public class LanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.5", "These traits scale with how much health you are missing.");
         add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.6", "The closer you are to death, the stronger it becomes.");
         add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.cursed_only", "Only bearers of the Seven Curses can use this item.");
+
+        add("tooltip.enigmatic_legacy.hold_shift", "Hold Shift for details.");
+    }
+
+    private void addEnglishCursedRingTooltips() {
+        add("tooltip.enigmatic_legacy.void", " ");
+        add("tooltip.enigmatic_legacy.holdShift", "§5Hold §6Shift§5 to see details.");
+        add("tooltip.enigmatic_legacy.eternallyBound1", "§5Once worn, it becomes a part of you.");
+        add("tooltip.enigmatic_legacy.eternallyBound2", "§4This ring will persist with you forever.");
+        add("tooltip.enigmatic_legacy.eternallyBound2_creative", "§6With the power of god, you can unequip it.");
+        add("tooltip.enigmatic_legacy.cursedRing3", "§dSeven curses will befall whoever bears it:");
+        add("tooltip.enigmatic_legacy.cursedRing4", "§5- You receive double damage from §6ANY§5 source.");
+        add("tooltip.enigmatic_legacy.cursedRing4_alt", "§5- You receive §6%1$s§5 damage from §6ANY§5 source.");
+        add("tooltip.enigmatic_legacy.cursedRing5", "§5- Neutral creatures are aggressive towards you.");
+        add("tooltip.enigmatic_legacy.cursedRing6", "§5- Armor is §6%1$s§5 less effective.");
+        add("tooltip.enigmatic_legacy.cursedRing7", "§5- Monsters receive §6%1$s§5 less damage from you.");
+        add("tooltip.enigmatic_legacy.cursedRing8", "§5- When on fire, you burn forever.");
+        add("tooltip.enigmatic_legacy.cursedRing9", "§5- Every death tears your soul apart.");
+        add("tooltip.enigmatic_legacy.cursedRing10", "§5- You suffer from incurable insomnia.");
+        add("tooltip.enigmatic_legacy.cursedRing11", "§dSeven blessings will reward those who withstand:");
+        add("tooltip.enigmatic_legacy.cursedRing12", "§5- §6+%1$s§d Looting Level");
+        add("tooltip.enigmatic_legacy.cursedRing13", "§5- §6+%1$s§d Fortune Level");
+        add("tooltip.enigmatic_legacy.cursedRing14", "§5- §6+%1$s§5 §dExperience§5 dropped.");
+        add("tooltip.enigmatic_legacy.cursedRing15", "§5- §6+%1$s§d Enchanting Power§5 in §6Enchanting Table§5.");
+        add("tooltip.enigmatic_legacy.cursedRing16", "§5- Unique drops from some creatures.");
+        add("tooltip.enigmatic_legacy.cursedRing17", "§5- Functionality of §6Ring of Ender§5.");
+        add("tooltip.enigmatic_legacy.cursedRing18", "§5- You can create and use unique relics.");
+        add("tooltip.enigmatic_legacy.cursedRingLore1", "§5Once forged by antediluvian god, it beckons");
+        add("tooltip.enigmatic_legacy.cursedRingLore2", "§5mortals and higher beings alike with promise");
+        add("tooltip.enigmatic_legacy.cursedRingLore3", "§5of untold riches and immeasurable might...");
+        add("tooltip.enigmatic_legacy.cursedRingLore4", "§5Be it arrogance or ignorance that leads them");
+        add("tooltip.enigmatic_legacy.cursedRingLore5", "§5to believe they can harness ring's power,");
+        add("tooltip.enigmatic_legacy.cursedRingLore6", "§5both are paid for in suffering the extent of");
+        add("tooltip.enigmatic_legacy.cursedRingLore7", "§5which defies description.");
     }
 
     private void addChineseTranslations() {
@@ -362,38 +396,8 @@ public class LanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.5", "这些属性会根据你当前缺失的生命值提升。");
         add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.6", "越接近死亡，它的力量越强。");
         add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.cursed_only", "只有七咒之戒的佩戴者才能使用此物。");
-    }
 
-    private void addEnglishCursedRingTooltips() {
-        add("tooltip.enigmatic_legacy.void", " ");
-        add("tooltip.enigmatic_legacy.holdShift", "§5Hold §6Shift§5 to see details.");
-        add("tooltip.enigmatic_legacy.eternallyBound1", "§5Once worn, it becomes a part of you.");
-        add("tooltip.enigmatic_legacy.eternallyBound2", "§4This ring will persist with you forever.");
-        add("tooltip.enigmatic_legacy.eternallyBound2_creative", "§6With the power of god, you can unequip it.");
-        add("tooltip.enigmatic_legacy.cursedRing3", "§dSeven curses will befall whoever bears it:");
-        add("tooltip.enigmatic_legacy.cursedRing4", "§5- You receive double damage from §6ANY§5 source.");
-        add("tooltip.enigmatic_legacy.cursedRing4_alt", "§5- You receive §6%1$s§5 damage from §6ANY§5 source.");
-        add("tooltip.enigmatic_legacy.cursedRing5", "§5- Neutral creatures are aggressive towards you.");
-        add("tooltip.enigmatic_legacy.cursedRing6", "§5- Armor is §6%1$s§5 less effective.");
-        add("tooltip.enigmatic_legacy.cursedRing7", "§5- Monsters receive §6%1$s§5 less damage from you.");
-        add("tooltip.enigmatic_legacy.cursedRing8", "§5- When on fire, you burn forever.");
-        add("tooltip.enigmatic_legacy.cursedRing9", "§5- Every death tears your soul apart.");
-        add("tooltip.enigmatic_legacy.cursedRing10", "§5- You suffer from incurable insomnia.");
-        add("tooltip.enigmatic_legacy.cursedRing11", "§dSeven blessings will reward those who withstand:");
-        add("tooltip.enigmatic_legacy.cursedRing12", "§5- §6+%1$s§d Looting Level");
-        add("tooltip.enigmatic_legacy.cursedRing13", "§5- §6+%1$s§d Fortune Level");
-        add("tooltip.enigmatic_legacy.cursedRing14", "§5- §6+%1$s§5 §dExperience§5 dropped.");
-        add("tooltip.enigmatic_legacy.cursedRing15", "§5- §6+%1$s§d Enchanting Power§5 in §6Enchanting Table§5.");
-        add("tooltip.enigmatic_legacy.cursedRing16", "§5- Unique drops from some creatures.");
-        add("tooltip.enigmatic_legacy.cursedRing17", "§5- Functionality of §6Ring of Ender§5.");
-        add("tooltip.enigmatic_legacy.cursedRing18", "§5- You can create and use unique relics.");
-        add("tooltip.enigmatic_legacy.cursedRingLore1", "§5Once forged by antediluvian god, it beckons");
-        add("tooltip.enigmatic_legacy.cursedRingLore2", "§5mortals and higher beings alike with promise");
-        add("tooltip.enigmatic_legacy.cursedRingLore3", "§5of untold riches and immeasurable might...");
-        add("tooltip.enigmatic_legacy.cursedRingLore4", "§5Be it arrogance or ignorance that leads them");
-        add("tooltip.enigmatic_legacy.cursedRingLore5", "§5to believe they can harness ring's power,");
-        add("tooltip.enigmatic_legacy.cursedRingLore6", "§5both are paid for in suffering the extent of");
-        add("tooltip.enigmatic_legacy.cursedRingLore7", "§5which defies description.");
+        add("tooltip.enigmatic_legacy.hold_shift", "按住 Shift 查看详情。");
     }
 
     private void addChineseCursedRingTooltips() {

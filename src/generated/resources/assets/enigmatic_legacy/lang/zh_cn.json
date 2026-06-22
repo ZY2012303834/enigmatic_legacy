@@ -126,6 +126,7 @@
   "tooltip.enigmatic_legacy.guardian_heart2": "%s 格内的附近怪物会反过来攻击被标记的怪物。",
   "tooltip.enigmatic_legacy.guardian_heart3": "能力冷却：%s 秒。",
   "tooltip.enigmatic_legacy.holdShift": "§5按住 §6Shift§5 查看详情。",
+  "tooltip.enigmatic_legacy.hold_shift": "按住 Shift 查看详情。",
   "tooltip.enigmatic_legacy.magnet_ring.1": "吸取 %s 格范围内的附近掉落物。",
   "tooltip.enigmatic_legacy.magnet_ring.2": "按下潜行键时不生效。",
   "tooltip.enigmatic_legacy.magnet_ring.disabled": "磁场状态：已关闭",

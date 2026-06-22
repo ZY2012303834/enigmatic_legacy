@@ -126,6 +126,7 @@
   "tooltip.enigmatic_legacy.guardian_heart2": "Nearby monsters within %s blocks will retaliate against the marked creature.",
   "tooltip.enigmatic_legacy.guardian_heart3": "Ability cooldown: %s seconds.",
   "tooltip.enigmatic_legacy.holdShift": "§5Hold §6Shift§5 to see details.",
+  "tooltip.enigmatic_legacy.hold_shift": "Hold Shift for details.",
   "tooltip.enigmatic_legacy.magnet_ring.1": "Attracts nearby items within %s blocks.",
   "tooltip.enigmatic_legacy.magnet_ring.2": "Inactive while sneaking.",
   "tooltip.enigmatic_legacy.magnet_ring.disabled": "Magnetic field: Disabled",
