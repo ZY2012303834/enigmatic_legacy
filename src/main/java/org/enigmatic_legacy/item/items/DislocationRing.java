@@ -105,16 +105,19 @@ public class DislocationRing extends Item implements ICurioItem {
             return;
         }
 
-        teleportNearbyItems(player);
+        collectNearbyItems(player);
     }
 
     /**
-     * 搜索并拾取附近物品。
+     * 搜索并直接拾取附近物品。
+     *
+     * 注意：
+     * 转位之戒不是磁力吸附。
+     * 它不会修改掉落物速度，而是直接触发玩家拾取逻辑。
      */
-    private void teleportNearbyItems(Player player) {
+    private void collectNearbyItems(Player player) {
         double range = ConfigCommon.DISLOCATION_RING_RANGE.get();
 
-        // 以玩家身体中部为中心搜索，和磁力之戒保持一致。
         Vec3 center = player.position().add(0.0D, 0.75D, 0.0D);
 
         AABB area = new AABB(
@@ -132,27 +135,21 @@ public class DislocationRing extends Item implements ICurioItem {
                 this::canTeleportItem
         );
 
-        int teleported = 0;
+        int collected = 0;
 
         for (ItemEntity item : items) {
-            if (teleported >= MAX_TELEPORTED_ITEMS_PER_TICK) {
+            if (collected >= MAX_TELEPORTED_ITEMS_PER_TICK) {
                 break;
             }
 
-            // 背包装不下时不处理，避免物品一直被强制触碰。
             if (!canPlayerAcceptItem(player, item.getItem())) {
                 continue;
             }
 
-            // 取消拾取延迟，然后直接触发原版玩家拾取逻辑。
             item.setNoPickUpDelay();
-
-            // 这里是转位之戒和磁力之戒的核心区别：
-            // 磁力之戒移动物品实体；
-            // 转位之戒直接让物品尝试被玩家拾取。
             item.playerTouch(player);
 
-            teleported++;
+            collected++;
         }
     }
 

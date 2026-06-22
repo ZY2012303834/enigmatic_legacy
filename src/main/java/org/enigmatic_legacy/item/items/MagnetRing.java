@@ -76,10 +76,8 @@ public class MagnetRing extends Item implements ICurioItem {
 
     /**
      * 装备限制。
-     * 规则：
-     * 1. 磁力之戒只能佩戴一个；
-     * 2. 转位之戒是磁力之戒的高级版本，两者不能同时佩戴；
-     * 3. 因此只要玩家已经佩戴任意“磁力控制戒指”，就不允许再装备磁力之戒。
+     * 转位之戒只能佩戴一个。
+     * 转位之戒和磁力之戒不能同时佩戴。
      */
     @Override
     public boolean canEquip(SlotContext context, ItemStack stack) {
@@ -89,7 +87,6 @@ public class MagnetRing extends Item implements ICurioItem {
                 .map(handler -> handler.findFirstCurio(MagnetRingHelper::isMagnetControlRing).isEmpty())
                 .orElse(true);
     }
-
     /**
      * Curios 每 tick 调用一次。
      * 这里不需要额外注册 NeoForge 事件；
