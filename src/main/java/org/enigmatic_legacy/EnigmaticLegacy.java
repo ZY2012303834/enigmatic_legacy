@@ -42,6 +42,7 @@ public class EnigmaticLegacy {
         modEventBus.addListener(FurnaceRecipeGenerator::gatherData);
         modEventBus.addListener(CuriosGenerator::gatherData);
         modEventBus.addListener(SoundGenerator::gatherData);
+        modEventBus.addListener(PatchouliBookGenerator::gatherData);
 
         NeoForge.EVENT_BUS.register(MonsterCharmEvents.class);
         NeoForge.EVENT_BUS.register(EnchanterPearlEvents.class);

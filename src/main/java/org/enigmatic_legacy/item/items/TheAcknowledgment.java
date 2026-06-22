@@ -110,7 +110,7 @@ public class TheAcknowledgment extends Item {
             PatchouliAPI.get().openBookGUI(serverPlayer, BOOK_ID);
         }
 
-        return InteractionResultHolder.success(stack);
+        return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
     }
 
     /**

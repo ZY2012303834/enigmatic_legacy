@@ -76,7 +76,7 @@ public class PatchouliBookGenerator implements DataProvider {
 
         // Plus 原文件这里是 enigmaticlegacy:the_acknowledgment；
         // 你的项目应使用自己的命名空间。
-        book.addProperty("model", "enigmatic_legacy:the_acknowledgment");
+        book.addProperty("model", "enigmatic_legacy:item/the_acknowledgment");
 
         book.addProperty("dont_generate_book", true);
         book.addProperty("custom_book_item", "enigmatic_legacy:the_acknowledgment");
