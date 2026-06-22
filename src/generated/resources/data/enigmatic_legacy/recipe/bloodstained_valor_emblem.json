@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "M": {
+      "item": "minecraft:crimson_fungus"
+    },
+    "P": {
+      "item": "minecraft:blaze_powder"
+    },
+    "S": {
+      "item": "minecraft:golden_sword"
+    },
+    "T": {
+      "item": "minecraft:ghast_tear"
+    },
+    "X": {
+      "item": "enigmatic_legacy:twisted_heart"
+    }
+  },
+  "pattern": [
+    "MSM",
+    "PXP",
+    "TIT"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:bloodstained_valor_emblem"
+  }
+}

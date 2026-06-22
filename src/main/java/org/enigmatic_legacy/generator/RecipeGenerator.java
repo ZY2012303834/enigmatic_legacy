@@ -258,5 +258,19 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('D', Items.DIAMOND)
                 .unlockedBy("has_earth_heart", has(ModItems.EARTH_HEART.get()))
                 .save(output);
+
+        // 血战沙场之证 / Emblem of Bloodstained Valor。
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BLOODSTAINED_VALOR_EMBLEM.get())
+                .pattern("MSM")
+                .pattern("PXP")
+                .pattern("TIT")
+                .define('M', Items.CRIMSON_FUNGUS)
+                .define('S', Items.GOLDEN_SWORD)
+                .define('P', Items.BLAZE_POWDER)
+                .define('T', Items.GHAST_TEAR)
+                .define('I', Items.NETHERITE_INGOT)
+                .define('X', ModItems.TWISTED_HEART.get())
+                .unlockedBy("has_twisted_heart", has(ModItems.TWISTED_HEART.get()))
+                .save(output);
     }
 }

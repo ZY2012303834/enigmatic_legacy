@@ -186,6 +186,16 @@ public class LanguageGenerator extends LanguageProvider {
 
         add("message.enigmatic_legacy.treasure_hunter_charm.night_vision.enabled", "Night Vision enabled.");
         add("message.enigmatic_legacy.treasure_hunter_charm.night_vision.disabled", "Night Vision disabled.");
+
+        addItem(ModItems.BLOODSTAINED_VALOR_EMBLEM, "Emblem of Bloodstained Valor");
+
+        add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.1", "+%s Attack Damage per missing health percent.");
+        add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.2", "+%s Attack Speed per missing health percent.");
+        add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.3", "+%s Movement Speed per missing health percent.");
+        add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.4", "+%s Damage Resistance per missing health percent.");
+        add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.5", "These traits scale with how much health you are missing.");
+        add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.6", "The closer you are to death, the stronger it becomes.");
+        add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.cursed_only", "Only bearers of the Seven Curses can use this item.");
     }
 
     private void addChineseTranslations() {
@@ -342,6 +352,16 @@ public class LanguageGenerator extends LanguageProvider {
 
         add("message.enigmatic_legacy.treasure_hunter_charm.night_vision.enabled", "夜视已开启。");
         add("message.enigmatic_legacy.treasure_hunter_charm.night_vision.disabled", "夜视已关闭。");
+
+        addItem(ModItems.BLOODSTAINED_VALOR_EMBLEM, "血战沙场之证");
+
+        add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.1", "每缺失 1% 生命，获得 +%s 攻击伤害。");
+        add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.2", "每缺失 1% 生命，获得 +%s 攻击速度。");
+        add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.3", "每缺失 1% 生命，获得 +%s 移动速度。");
+        add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.4", "每缺失 1% 生命，获得 +%s 伤害抗性。");
+        add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.5", "这些属性会根据你当前缺失的生命值提升。");
+        add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.6", "越接近死亡，它的力量越强。");
+        add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.cursed_only", "只有七咒之戒的佩戴者才能使用此物。");
     }
 
     private void addEnglishCursedRingTooltips() {

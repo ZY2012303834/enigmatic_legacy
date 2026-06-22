@@ -29,6 +29,7 @@ public class ItemGenerator extends ItemModelProvider {
         basicItem(ModItems.COSMIC_HEART.getId());
         basicItem(ModItems.EARTH_HEART_FRAGMENT.getId());
         basicItem(ModItems.EARTH_HEART.getId());
+        basicItem(ModItems.BLOODSTAINED_VALOR_EMBLEM.getId());
 
         var twistedHeartOn = withExistingParent("item/twisted_heart_on", mcLoc("item/generated"))
                 .texture("layer0", modLoc("item/twisted_heart_on"));

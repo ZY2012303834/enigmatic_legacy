@@ -106,6 +106,15 @@ public class ConfigCommon {
     public static final ModConfigSpec.BooleanValue TREASURE_HUNTER_CHARM_NIGHT_VISION_ENABLED;
     public static final ModConfigSpec.IntValue TREASURE_HUNTER_CHARM_NIGHT_VISION_DURATION;
 
+    // ==============================
+    // 血战沙场之证配置
+    // ==============================
+
+    public static final ModConfigSpec.DoubleValue BLOODSTAINED_VALOR_ATTACK_DAMAGE;
+    public static final ModConfigSpec.DoubleValue BLOODSTAINED_VALOR_ATTACK_SPEED;
+    public static final ModConfigSpec.DoubleValue BLOODSTAINED_VALOR_MOVEMENT_SPEED;
+    public static final ModConfigSpec.DoubleValue BLOODSTAINED_VALOR_DAMAGE_RESISTANCE;
+
     static {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
 
@@ -391,6 +400,42 @@ public class ConfigCommon {
                         "20 tick = 1 秒。"
                 )
                 .defineInRange("TreasureHunterCharmNightVisionDuration", 400, 40, 12000);
+
+        builder.pop();
+
+        builder.comment(
+                "血战沙场之证配置",
+                "这些配置参考原 Enigmatic Legacy 的 Emblem of Bloodstained Valor。",
+                "数值含义：每缺失 1% 生命，提供多少百分比加成。"
+        ).push("Bloodstained Valor Emblem");
+
+        BLOODSTAINED_VALOR_ATTACK_DAMAGE = builder
+                .comment(
+                        "血战沙场之证每缺失 1% 生命提供的攻击伤害加成。",
+                        "原项目默认值为 1，表示每缺失 1% 生命，获得 +1% 攻击伤害。"
+                )
+                .defineInRange("BloodstainedValorAttackDamage", 1.0D, 0.0D, 100.0D);
+
+        BLOODSTAINED_VALOR_ATTACK_SPEED = builder
+                .comment(
+                        "血战沙场之证每缺失 1% 生命提供的攻击速度加成。",
+                        "原项目默认值为 1，表示每缺失 1% 生命，获得 +1% 攻击速度。"
+                )
+                .defineInRange("BloodstainedValorAttackSpeed", 1.0D, 0.0D, 100.0D);
+
+        BLOODSTAINED_VALOR_MOVEMENT_SPEED = builder
+                .comment(
+                        "血战沙场之证每缺失 1% 生命提供的移动速度加成。",
+                        "原项目默认值为 0.5，表示每缺失 1% 生命，获得 +0.5% 移动速度。"
+                )
+                .defineInRange("BloodstainedValorMovementSpeed", 0.5D, 0.0D, 100.0D);
+
+        BLOODSTAINED_VALOR_DAMAGE_RESISTANCE = builder
+                .comment(
+                        "血战沙场之证每缺失 1% 生命提供的伤害抗性。",
+                        "原项目默认值为 0.5，表示每缺失 1% 生命，获得 0.5% 伤害减免。"
+                )
+                .defineInRange("BloodstainedValorDamageResistance", 0.5D, 0.0D, 1.0D);
 
         builder.pop();
 
