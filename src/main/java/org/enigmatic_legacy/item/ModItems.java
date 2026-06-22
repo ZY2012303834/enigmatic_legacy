@@ -48,7 +48,8 @@ public final class ModItems {
     public static final DeferredItem<EnigmaticAmulet> ENIGMATIC_AMULET_BLUE = ITEMS.register("enigmatic_amulet_blue", () -> new EnigmaticAmulet(AmuletVariant.BLUE));
     public static final DeferredItem<MonsterCharm> MONSTER_CHARM = ITEMS.register("monster_charm", MonsterCharm::new); // 怪物猎人勋章
     public static final DeferredItem<TreasureHunterCharm> TREASURE_HUNTER_CHARM = ITEMS.register("treasure_hunter_charm", TreasureHunterCharm::new); // 猎宝者护符
-    public static final DeferredItem<BloodstainedValorEmblem> BLOODSTAINED_VALOR_EMBLEM = ITEMS.register("bloodstained_valor_emblem", BloodstainedValorEmblem::new); // 血战沙场之证
+    public static final DeferredItem<BloodstainedValorEmblem> BLOODSTAINED_VALOR_EMBLEM = ITEMS.register("bloodstained_valor_emblem", BloodstainedValorEmblem::new); //
+    public static final DeferredItem<MegaSponge> MEGA_SPONGE = ITEMS.register("mega_sponge", MegaSponge::new); // 超级海绵
 
 
 

@@ -272,5 +272,18 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('X', ModItems.TWISTED_HEART.get())
                 .unlockedBy("has_twisted_heart", has(ModItems.TWISTED_HEART.get()))
                 .save(output);
+
+        // 超级海绵 / Extrapolated Megasponge。
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MEGA_SPONGE.get())
+                .pattern("SES")
+                .pattern("XNX")
+                .pattern("STS")
+                .define('S', Items.SPONGE)
+                .define('E', Items.ENDER_EYE)
+                .define('X', Items.HEART_OF_THE_SEA)
+                .define('N', Items.NAUTILUS_SHELL)
+                .define('T', Items.GHAST_TEAR)
+                .unlockedBy("has_sponge", has(Items.SPONGE))
+                .save(output);
     }
 }

@@ -115,6 +115,12 @@ public class ConfigCommon {
     public static final ModConfigSpec.DoubleValue BLOODSTAINED_VALOR_MOVEMENT_SPEED;
     public static final ModConfigSpec.DoubleValue BLOODSTAINED_VALOR_DAMAGE_RESISTANCE;
 
+    // ==============================
+    // 超级海绵配置
+    // ==============================
+
+    public static final ModConfigSpec.IntValue MEGA_SPONGE_RADIUS;
+
     static {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
 
@@ -436,6 +442,20 @@ public class ConfigCommon {
                         "原项目默认值为 0.5，表示每缺失 1% 生命，获得 0.5% 伤害减免。"
                 )
                 .defineInRange("BloodstainedValorDamageResistance", 0.5D, 0.0D, 1.0D);
+
+        builder.pop();
+
+        builder.comment(
+                "超级海绵配置",
+                "这些配置参考原 Enigmatic Legacy 的 Extrapolated Megasponge。"
+        ).push("Mega Sponge");
+
+        MEGA_SPONGE_RADIUS = builder
+                .comment(
+                        "超级海绵吸收水体的连锁半径。",
+                        "原项目默认值为 4，等同于原版海绵范围。"
+                )
+                .defineInRange("MegaspongeRadius", 4, 0, 128);
 
         builder.pop();
 

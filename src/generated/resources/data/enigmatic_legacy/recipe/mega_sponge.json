@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "E": {
+      "item": "minecraft:ender_eye"
+    },
+    "N": {
+      "item": "minecraft:nautilus_shell"
+    },
+    "S": {
+      "item": "minecraft:sponge"
+    },
+    "T": {
+      "item": "minecraft:ghast_tear"
+    },
+    "X": {
+      "item": "minecraft:heart_of_the_sea"
+    }
+  },
+  "pattern": [
+    "SES",
+    "XNX",
+    "STS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:mega_sponge"
+  }
+}
