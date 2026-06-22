@@ -64,6 +64,8 @@ public final class MagnetRingClientEvents {
      */
     private static final int BUTTON_GAP = 2;
 
+    private static MagnetRingButton magnetButton;
+
     private MagnetRingClientEvents() {
     }
 
@@ -134,20 +136,14 @@ public final class MagnetRingClientEvents {
         int magnetX = enderX - BUTTON_SIZE - BUTTON_GAP;
         int magnetY = enderY;
 
-        Button button = new MagnetRingButton(
+        magnetButton = new MagnetRingButton(
                 magnetX,
                 magnetY,
                 () -> shouldShowOnCurrentPage(screen),
                 pressed -> requestToggleMagnetRing()
         );
 
-        /*
-         * 不要在这里 setTooltip。
-         *
-         * Tooltip 要在按钮实际显示时动态设置。
-         * 否则按钮隐藏后，旧 tooltip 仍可能在原位置被 Screen 读到。
-         */
-        event.addListener(button);
+        event.addListener(magnetButton);
     }
 
     /**
@@ -248,6 +244,27 @@ public final class MagnetRingClientEvents {
         }
 
         /**
+         * 当前按钮是否应该显示。
+         */
+        private boolean shouldDisplay() {
+            return shouldShowMagnetButton(this.pageCondition);
+        }
+
+        /**
+         * 严格判断鼠标是否真的在按钮矩形内。
+         *
+         * 不使用 Button 自带 tooltip 逻辑，
+         * 只按坐标判断，避免 tooltip 在整个 GUI 内出现。
+         */
+        private boolean isMouseActuallyOver(double mouseX, double mouseY) {
+            return this.shouldDisplay()
+                    && mouseX >= this.getX()
+                    && mouseX < this.getX() + this.getWidth()
+                    && mouseY >= this.getY()
+                    && mouseY < this.getY() + this.getHeight();
+        }
+
+        /**
          * 渲染按钮。
          * 关键点：
          * 这里不再使用 Button 自带的 Tooltip 系统。
@@ -261,7 +278,7 @@ public final class MagnetRingClientEvents {
          */
         @Override
         protected void renderWidget(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
-            boolean shouldShow = shouldShowMagnetButton(this.pageCondition);
+            boolean shouldShow = this.shouldDisplay();
 
             this.active = shouldShow;
 
@@ -292,14 +309,6 @@ public final class MagnetRingClientEvents {
                         0x88000000
                 );
             }
-
-            // 只在按钮实际显示，并且鼠标悬停在按钮上时，手动渲染 tooltip。
-            guiGraphics.renderTooltip(
-                    Minecraft.getInstance().font,
-                    buttonTooltip(ring.orElse(ItemStack.EMPTY), enabled),
-                    mouseX,
-                    mouseY
-            );
         }
 
         /**
@@ -310,17 +319,57 @@ public final class MagnetRingClientEvents {
          */
         @Override
         public boolean isMouseOver(double mouseX, double mouseY) {
-            return shouldShowMagnetButton(this.pageCondition)
-                    && super.isMouseOver(mouseX, mouseY);
+            return this.isMouseActuallyOver(mouseX, mouseY);
         }
-
         /**
          * 隐藏时禁止点击。
          */
         @Override
         public boolean mouseClicked(double mouseX, double mouseY, int button) {
-            return shouldShowMagnetButton(this.pageCondition)
+            return this.isMouseActuallyOver(mouseX, mouseY)
                     && super.mouseClicked(mouseX, mouseY, button);
+        }
+
+        /**
+         * 在 Screen 渲染完成后渲染磁力按钮 tooltip。
+         * 不能在按钮 renderWidget 里直接 renderTooltip，
+         * 否则 tooltip 容易在整个 GUI 内持续显示。
+         */
+        @SubscribeEvent
+        public static void onScreenRenderPost(ScreenEvent.Render.Post event) {
+            if (magnetButton == null) {
+                return;
+            }
+
+            if (!isSupportedInventoryScreen(event.getScreen())) {
+                return;
+            }
+
+            int mouseX = event.getMouseX();
+            int mouseY = event.getMouseY();
+
+            if (!magnetButton.shouldDisplay()) {
+                return;
+            }
+
+            if (!magnetButton.isMouseActuallyOver(mouseX, mouseY)) {
+                return;
+            }
+
+            Optional<ItemStack> ring = getCurrentControlRing();
+
+            if (ring.isEmpty()) {
+                return;
+            }
+
+            boolean enabled = MagnetRingHelper.isMagnetEnabled(ring.get());
+
+            event.getGuiGraphics().renderTooltip(
+                    Minecraft.getInstance().font,
+                    buttonTooltip(ring.get(), enabled),
+                    mouseX,
+                    mouseY
+            );
         }
     }
 }

@@ -163,6 +163,7 @@ public final class MagnetRingHelper {
         return "item.enigmatic_legacy.magnet_ring";
     }
 
+
     /**
      * 判断是否佩戴磁力之戒。
      * 兼容旧调用。
