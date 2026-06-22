@@ -285,5 +285,18 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('T', Items.GHAST_TEAR)
                 .unlockedBy("has_sponge", has(Items.SPONGE))
                 .save(output);
+
+        // 附魔师的珍珠 / Enchanter's Pearl。
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ENCHANTER_PEARL.get())
+                .pattern(" G ")
+                .pattern("EXE")
+                .pattern("POP")
+                .define('G', Items.EMERALD)
+                .define('X', Items.ENDER_PEARL)
+                .define('P', Items.BLAZE_POWDER)
+                .define('O', Items.CRYING_OBSIDIAN)
+                .define('E', ModItems.EVIL_ESSENCE.get())
+                .unlockedBy("has_evil_essence", has(ModItems.EVIL_ESSENCE.get()))
+                .save(output);
     }
 }

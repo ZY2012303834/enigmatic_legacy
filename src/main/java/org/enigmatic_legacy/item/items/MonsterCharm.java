@@ -3,6 +3,7 @@ package org.enigmatic_legacy.item.items;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
@@ -40,6 +41,11 @@ public class MonsterCharm extends Item implements ICurioItem {
     @Override
     public boolean canEquipFromUse(SlotContext context, ItemStack stack) {
         return true;
+    }
+
+    @Override
+    public int getLootingLevel(SlotContext slotContext, LootContext lootContext, ItemStack stack) {
+        return ConfigCommon.MONSTER_CHARM_BONUS_LOOTING_ENABLED.get() ? 1 : 0;
     }
 
     /**

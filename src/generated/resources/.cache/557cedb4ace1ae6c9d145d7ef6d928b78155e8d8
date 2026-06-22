@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-22T13:11:39.8222091	vanilla/Item Models: enigmatic_legacy
+// 1.21.1	2026-06-22T13:50:30.9048838	vanilla/Item Models: enigmatic_legacy
 71ad4196d7e8a842e7122ea637f5096bd1de67b7 assets/enigmatic_legacy/models/item/astral_dust.json
 883d3ab1336b5915dde7ab6fc667910b9222b43a assets/enigmatic_legacy/models/item/bloodstained_valor_emblem.json
 a800b4eb7375f1b97f96baff0737b577c9df02a5 assets/enigmatic_legacy/models/item/cosmic_heart.json
@@ -7,6 +7,7 @@ a800b4eb7375f1b97f96baff0737b577c9df02a5 assets/enigmatic_legacy/models/item/cos
 db483d06c4aa7d2a5c5b56bf15524e7306755731 assets/enigmatic_legacy/models/item/dislocation_ring.json
 5f1a130d2a78a8cf92087e96831b3c25880f701e assets/enigmatic_legacy/models/item/earth_heart.json
 c386ed909c185c9f51711d9f360d065d4db06807 assets/enigmatic_legacy/models/item/earth_heart_fragment.json
+090cc45fb284db38781ee16743be0d44f66a02b5 assets/enigmatic_legacy/models/item/enchanter_pearl.json
 5ff25963876aadf179ec247da2b5b09f9ff0d8ec assets/enigmatic_legacy/models/item/ender_ring.json
 b03e79e998b8c55fa67f589b2e05892163cc5f9b assets/enigmatic_legacy/models/item/ender_rod.json
 a89cff20e9b088eb69e98f683aefbac5d262be80 assets/enigmatic_legacy/models/item/enigmatic_amulet_aqua.json

@@ -178,13 +178,23 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.6", "The closer you are to death, the stronger it becomes.");
         add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.cursed_only", "Only bearers of the Seven Curses can use this item.");
 
-        // 按住 Shift 查看详情
+
         // Mega Sponge
         addItem(ModItems.MEGA_SPONGE, "Extrapolated Megasponge");
         add("tooltip.enigmatic_legacy.mega_sponge.1", "Automatically absorbs nearby water while equipped.");
         add("tooltip.enigmatic_legacy.mega_sponge.2", "Absorption radius: %s blocks.");
         // end
 
+        // 附魔师的珍珠
+        addItem(ModItems.ENCHANTER_PEARL, "Enchanter's Pearl");
+
+        add("tooltip.enigmatic_legacy.enchanter_pearl.1", "Provides +1 Charm slot while equipped.");
+        add("tooltip.enigmatic_legacy.enchanter_pearl.2", "Allows the bearer to carry more magical trinkets.");
+        add("tooltip.enigmatic_legacy.enchanter_pearl.3", "The extra slot exists only while this pearl is equipped.");
+        add("tooltip.enigmatic_legacy.enchanter_pearl.cursed_only", "Only bearers of the Seven Curses can use this item.");
+        // end
+
+        // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");
     }
 

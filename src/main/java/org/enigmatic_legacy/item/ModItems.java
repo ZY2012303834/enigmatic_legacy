@@ -50,6 +50,7 @@ public final class ModItems {
     public static final DeferredItem<TreasureHunterCharm> TREASURE_HUNTER_CHARM = ITEMS.register("treasure_hunter_charm", TreasureHunterCharm::new); // 猎宝者护符
     public static final DeferredItem<BloodstainedValorEmblem> BLOODSTAINED_VALOR_EMBLEM = ITEMS.register("bloodstained_valor_emblem", BloodstainedValorEmblem::new); //
     public static final DeferredItem<MegaSponge> MEGA_SPONGE = ITEMS.register("mega_sponge", MegaSponge::new); // 超级海绵
+    public static final DeferredItem<EnchanterPearl> ENCHANTER_PEARL = ITEMS.register("enchanter_pearl", EnchanterPearl::new); // 附魔师的珍珠
 
 
 

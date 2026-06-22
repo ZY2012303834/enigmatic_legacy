@@ -179,13 +179,23 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.cursed_only", "只有七咒之戒的佩戴者才能使用此物。");
         // end
 
-        // 按住 Shift 查看详情
+
         // 超级海绵
         addItem(ModItems.MEGA_SPONGE, "超级海绵");
         add("tooltip.enigmatic_legacy.mega_sponge.1", "佩戴时会自动吸收附近水体。");
         add("tooltip.enigmatic_legacy.mega_sponge.2", "吸水半径：%s 格。");
         // end
 
+        // 附魔师的珍珠
+        addItem(ModItems.ENCHANTER_PEARL, "附魔师的珍珠");
+
+        add("tooltip.enigmatic_legacy.enchanter_pearl.1", "佩戴时提供 +1 个护符栏位。");
+        add("tooltip.enigmatic_legacy.enchanter_pearl.2", "允许佩戴者携带更多魔法饰品。");
+        add("tooltip.enigmatic_legacy.enchanter_pearl.3", "额外栏位只会在此珍珠被佩戴时存在。");
+        add("tooltip.enigmatic_legacy.enchanter_pearl.cursed_only", "只有七咒之戒的佩戴者才能使用此物。");
+        // end
+
+        // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5按住 §6Shift§5 查看详情。");
     }
 

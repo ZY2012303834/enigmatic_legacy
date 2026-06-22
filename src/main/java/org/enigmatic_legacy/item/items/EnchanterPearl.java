@@ -1,0 +1,131 @@
+package org.enigmatic_legacy.item.items;
+
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.Holder;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.TooltipFlag;
+import org.enigmatic_legacy.EnigmaticLegacy;
+import org.enigmatic_legacy.util.CursedRingHelper;
+import org.enigmatic_legacy.util.EnchanterPearlHelper;
+import org.jetbrains.annotations.NotNull;
+import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.api.type.capability.ICurioItem;
+
+import java.util.List;
+import java.util.UUID;
+
+/**
+ * 附魔师的珍珠 / Enchanter's Pearl。
+ * 原项目效果：
+ * 1. 只能由七咒之戒佩戴者装备；
+ * 2. 作为 charm 饰品佩戴时，额外提供 +1 charm 栏位。
+ */
+public class EnchanterPearl extends Item implements ICurioItem {
+    private static final ResourceLocation EXTRA_CHARM_SLOT_ID = ResourceLocation.fromNamespaceAndPath(
+            EnigmaticLegacy.MODID,
+            "enchanter_pearl_extra_charm_slot"
+    );
+
+    public EnchanterPearl() {
+        super(new Item.Properties()
+                .stacksTo(1)
+                .rarity(Rarity.EPIC)
+                .fireResistant());
+    }
+
+    /**
+     * 允许右键尝试装备进 Curios 栏位。
+     */
+    @Override
+    public boolean canEquipFromUse(SlotContext context, ItemStack stack) {
+        return true;
+    }
+
+    /**
+     * 只有七咒之戒佩戴者可以装备。
+     * 同时禁止重复佩戴多个附魔师的珍珠。
+     */
+    @Override
+    public boolean canEquip(SlotContext context, ItemStack stack) {
+        if (!(context.entity() instanceof Player player)) {
+            return false;
+        }
+
+        return CursedRingHelper.hasCursedRing(player)
+                && !EnchanterPearlHelper.hasEnchanterPearl(player);
+    }
+
+    /**
+     * 佩戴时提供 +1 charm 栏位。
+     * 注意：
+     * Curios 1.21.1 仍可使用这个旧式 slot modifier API。
+     * 后续 Curios 1.21.4+ 才会更强制迁移到 CurioAttributeModifiers。
+     */
+    @Override
+    @SuppressWarnings({"removal"})
+    public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(
+            SlotContext slotContext,
+            UUID uuid,
+            ItemStack stack
+    ) {
+        Multimap<Holder<Attribute>, AttributeModifier> attributes = HashMultimap.create();
+
+        if (slotContext.entity() instanceof Player player && CursedRingHelper.hasCursedRing(player)) {
+            CuriosApi.addSlotModifier(
+                    attributes,
+                    "charm",
+                    EXTRA_CHARM_SLOT_ID,
+                    1.0D,
+                    AttributeModifier.Operation.ADD_VALUE
+            );
+        }
+
+        return attributes;
+    }
+
+    @Override
+    public void appendHoverText(
+            @NotNull ItemStack stack,
+            @NotNull TooltipContext context,
+            @NotNull List<Component> tooltip,
+            @NotNull TooltipFlag flag
+    ) {
+        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+
+        if (!Screen.hasShiftDown()) {
+            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hold_shift"));
+            return;
+        }
+
+        tooltip.add(Component.translatable(
+                "tooltip.enigmatic_legacy.enchanter_pearl.1"
+        ).withStyle(ChatFormatting.GOLD));
+
+        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+
+        tooltip.add(Component.translatable(
+                "tooltip.enigmatic_legacy.enchanter_pearl.2"
+        ).withStyle(ChatFormatting.GOLD));
+
+        tooltip.add(Component.translatable(
+                "tooltip.enigmatic_legacy.enchanter_pearl.3"
+        ).withStyle(ChatFormatting.GOLD));
+
+        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+
+        tooltip.add(Component.translatable(
+                "tooltip.enigmatic_legacy.enchanter_pearl.cursed_only"
+        ).withStyle(ChatFormatting.DARK_RED));
+    }
+}

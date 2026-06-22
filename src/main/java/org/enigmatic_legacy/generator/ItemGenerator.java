@@ -71,5 +71,6 @@ public class ItemGenerator extends ItemModelProvider {
         basicItem(ModItems.MONSTER_CHARM.getId());
         basicItem(ModItems.TREASURE_HUNTER_CHARM.getId());
         basicItem(ModItems.MEGA_SPONGE.getId());
+        basicItem(ModItems.ENCHANTER_PEARL.getId());
     }
 }
