@@ -3,9 +3,15 @@ package org.enigmatic_legacy.util;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.ItemEnchantments;
 import org.enigmatic_legacy.item.items.EnchanterPearl;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
+import net.minecraft.core.Holder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
 
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
@@ -57,5 +63,41 @@ public final class EnchanterPearlHelper {
      */
     public static boolean canUseEnchanterPearl(Player player) {
         return hasEnchanterPearl(player) && CursedRingHelper.hasCursedRing(player);
+    }
+
+    public static ItemStack mergeEnchantments(ItemStack input, ItemStack mergeFrom) {
+        ItemStack result = input.copy();
+        ItemEnchantments.Mutable resultEnchantments = new ItemEnchantments.Mutable(
+                EnchantmentHelper.getEnchantmentsForCrafting(result)
+        );
+        ItemEnchantments extraEnchantments = EnchantmentHelper.getEnchantmentsForCrafting(mergeFrom);
+
+        for (Object2IntMap.Entry<Holder<Enchantment>> entry : extraEnchantments.entrySet()) {
+            Holder<Enchantment> extraHolder = entry.getKey();
+            Enchantment extraEnchantment = extraHolder.value();
+            int existingLevel = resultEnchantments.getLevel(extraHolder);
+            int extraLevel = entry.getIntValue();
+
+            int mergedLevel = existingLevel == extraLevel
+                    ? Math.min(extraLevel + 1, extraEnchantment.getMaxLevel())
+                    : Math.max(existingLevel, extraLevel);
+
+            boolean compatible = extraEnchantment.canEnchant(input) || input.is(Items.ENCHANTED_BOOK);
+
+            for (Holder<Enchantment> existingHolder : resultEnchantments.keySet()) {
+                if (!existingHolder.equals(extraHolder)
+                        && !Enchantment.areCompatible(extraHolder, existingHolder)) {
+                    compatible = false;
+                    break;
+                }
+            }
+
+            if (compatible) {
+                resultEnchantments.set(extraHolder, mergedLevel);
+            }
+        }
+
+        EnchantmentHelper.setEnchantments(result, resultEnchantments.toImmutable());
+        return result;
     }
 }

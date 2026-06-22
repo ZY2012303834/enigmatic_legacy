@@ -7,7 +7,7 @@ public class MixinConnector implements IMixinConnector {
 
 	@Override
 	public void connect() {
-		Mixins.addConfigurations("enigmaticlegacy.mixins.json");
+		Mixins.addConfigurations("enigmatic_legacy.mixins.json");
 	}
 
 }

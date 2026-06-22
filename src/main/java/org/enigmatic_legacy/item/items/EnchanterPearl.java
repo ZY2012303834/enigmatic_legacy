@@ -31,10 +31,12 @@ import java.util.List;
  * 2. 作为 charm 饰品佩戴时，额外提供 +1 charm 栏位。
  */
 public class EnchanterPearl extends Item implements ICurioItem {
-    private static final ResourceLocation EXTRA_CHARM_SLOT_ID = ResourceLocation.fromNamespaceAndPath(
+    public static final String EXTRA_CHARM_SLOT = "charm";
+    public static final ResourceLocation EXTRA_CHARM_SLOT_ID = ResourceLocation.fromNamespaceAndPath(
             EnigmaticLegacy.MODID,
             "enchanter_pearl_extra_charm_slot"
     );
+    public static final double EXTRA_CHARM_SLOT_AMOUNT = 1.0D;
 
     public EnchanterPearl() {
         super(new Item.Properties()
@@ -82,9 +84,9 @@ public class EnchanterPearl extends Item implements ICurioItem {
         if (slotContext.entity() instanceof Player player && CursedRingHelper.hasCursedRing(player)) {
             CuriosApi.addSlotModifier(
                     attributes,
-                    "charm",
+                    EXTRA_CHARM_SLOT,
                     EXTRA_CHARM_SLOT_ID,
-                    1.0D,
+                    EXTRA_CHARM_SLOT_AMOUNT,
                     AttributeModifier.Operation.ADD_VALUE
             );
         }

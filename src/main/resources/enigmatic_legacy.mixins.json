@@ -4,6 +4,7 @@
   "package": "org.enigmatic_legacy.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "MixinEnchantmentMenu"
   ],
   "client": [
   ],
