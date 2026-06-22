@@ -9,6 +9,7 @@ import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.client.event.EnderRingClientEvents;
 import org.enigmatic_legacy.client.event.ForbiddenFruitClientEvents;
 import org.enigmatic_legacy.client.event.MagnetRingClientEvents;
+import org.enigmatic_legacy.client.quote.QuoteHandler;
 import org.enigmatic_legacy.client.renderer.PermanentItemRenderer;
 import org.enigmatic_legacy.entity.ModEntities;
 
@@ -19,9 +20,11 @@ public final class EnigmaticLegacyClient {
         modEventBus.addListener(ClientItemProperties::onClientSetup);
         modEventBus.addListener(EnigmaticLegacyClient::registerEntityRenderers);
         modEventBus.addListener(EnderRingClientEvents::registerKeyMappings);
+
         NeoForge.EVENT_BUS.register(EnderRingClientEvents.class);
         NeoForge.EVENT_BUS.register(ForbiddenFruitClientEvents.class);
         NeoForge.EVENT_BUS.register(MagnetRingClientEvents.class);
+        NeoForge.EVENT_BUS.register(QuoteHandler.INSTANCE);
     }
 
     private static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {

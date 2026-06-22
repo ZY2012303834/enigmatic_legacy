@@ -219,6 +219,65 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("quote.enigmatic_legacy.enigmatic_eye.deep_underground", "Beneath the stone, old things still remember your steps.");
         add("quote.enigmatic_legacy.enigmatic_eye.low_health", "You are closer to silence than you think.");
         add("quote.enigmatic_legacy.enigmatic_eye.midnight", "The world is quiet now. Listen carefully.");
+
+        add("quote.no_peril_1", "Where there is no peril in the task - there can be no glory in its accomplishment.");
+        add("quote.end_doorstep_1", "The doorstep of The End...\\nsingle step now separates you from it.");
+        add("quote.only_because_1", "Only because you have fallen does not yet mean you backed down.");
+        add("quote.demise_is_1", "Demise is but a temporary inconvenience for a demigod such as you.");
+        add("quote.we_fall_1", "We fall, so that we may learn how to pick ourselves back up.");
+        add("quote.you_will_endure_1", "You will endure this loss, and learn from it.");
+        add("quote.oblivion_rejects_1", "Oblivion rejects you...\\nmake use of such opportunity, while you still can.");
+        add("quote.setback_1", "A setback, but not a defeat.");
+        add("quote.death_may_1", "Death may impede your conquest, but only broken will can halt it.");
+        add("quote.eternity_to_keep_1", "You have eternity to keep trying. Do what it takes.");
+        add("quote.violence_calls_1", "Violence calls for vengeance.\\nReturn, and dispense it!");
+        add("quote.immortal_1", "You are immortal! Return and give that pitiful creature a demonstration of this fact.");
+        add("quote.appaling_presence_1", "The shell is gone... but appalling presence will forever remain imprinted upon this realm.");
+        add("quote.its_destruction_1", "Its destruction is a small consolation...\\ngiven the implications of its terrible existence.");
+
+        add("quote.i_wandered_1", "Yes, I wandered those lands many times...");
+        add("quote.i_wandered_2", "A desolate reminder of everything that was, and all that could have been.");
+
+        add("quote.another_demigod_1", "Another demigod wanders this forsaken land...");
+        add("quote.another_demigod_2", "Let me accompany you in your journey. Perhaps, you will manage that which others could not.");
+
+        add("quote.another_eon_1", "Another eon, another wanderer.\\nAnother story to be told...");
+        add("quote.another_eon_2", "I will observe yours with great curiosity.");
+
+        add("quote.perhaps_you_1", "Perhaps, you will be the one to uncover the long-forgotten history of this land...");
+        add("quote.perhaps_you_2", "If so, I must bear witness to your accomplishments.");
+
+        add("quote.sulfur_air_1", "Sulfur in the air, sharp scent of burnt rock and flesh...");
+        add("quote.sulfur_air_2", "This place is a Hell indeed.");
+
+        add("quote.tortured_rocks_1", "Tortured rocks, pale as bones, hanged up above infinite, all-consuming blackness.");
+        add("quote.tortured_rocks_2", "The End...\\nis almost like a fever dream.");
+
+        add("quote.breathes_relieved_1", "The world breathes relieved without the burdensome presence of that horror...");
+        add("quote.breathes_relieved_2", "So long at least.");
+
+        add("quote.whether_it_is_1", "Whether it is power, or redemption that you seek in repeatedly returning Wither from and to its grave...");
+        add("quote.whether_it_is_2", "...at least, you give that damnable creature a purpose.");
+
+        add("quote.poor_creature_1", "Poor creature...\\nThe last of her kind, bound to guard the godforsaken island...");
+        add("quote.poor_creature_2", "...in the middle of nothingness. Lay her to the deserved rest.");
+
+        add("quote.horrible_existence_1", "What a horrible existence...\\nBrought back from the dead, only to be slain once more.");
+        add("quote.horrible_existence_2", "You must truly be devoid of compassion.");
+
+        add("quote.countless_dead_1", "Countless dead souls, merged into abomination of such terrible form that it defies description.");
+        add("quote.countless_dead_2", "The earth is stained by the very presence of this foul creature.");
+
+        add("quote.with_dragons_1", "With dragon's imminent demise, this place seems even more empty and purposeless than before.");
+        add("quote.with_dragons_2", "Will you wander those fractured, deserted lands...");
+        add("quote.with_dragons_3", "...or return to the facade of sanity and liveliness the Overworld provides?");
+        add("quote.with_dragons_4", "Of course, we both know the answer...\\nyou cannot resist exploring the unknown, be it now or later.");
+
+        add("quote.terrifying_form_1", "...its terrifying form is destructible, but not its soul.");
+        add("quote.terrifying_form_2", "It bears curse not dissimilar to yours...\\nCurse of immortality.");
+
+        add("quote.toll_paid_1", "With the toll paid, you are free from the burdensome swell of hatred and sorrow...");
+        add("quote.toll_paid_2", "...imprisoned in that ring.");
         // end
 
         // 按住 Shift 查看详情

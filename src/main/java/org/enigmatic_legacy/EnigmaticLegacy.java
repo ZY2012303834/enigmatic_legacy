@@ -12,6 +12,7 @@ import org.enigmatic_legacy.entity.ModEntities;
 import org.enigmatic_legacy.event.*;
 import org.enigmatic_legacy.generator.*;
 import org.enigmatic_legacy.item.ModItems;
+import org.enigmatic_legacy.network.ModNetwork;
 import org.enigmatic_legacy.potion.ModEffects;
 import org.enigmatic_legacy.potion.ModPotions;
 import org.enigmatic_legacy.sound.ModSounds;
@@ -35,6 +36,8 @@ public class EnigmaticLegacy {
 
         ModSounds.SOUND_EVENTS.register(modEventBus);
 
+        modEventBus.addListener(ModNetwork::registerPayloads);
+
         modEventBus.addListener(BlockGenerator::gatherData);
         modEventBus.addListener(ItemGenerator::gatherData);
         modEventBus.addListener(LanguageGenerator::gatherData);
@@ -51,7 +54,6 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(MagnetRingEvents.class); // 磁力之戒
         NeoForge.EVENT_BUS.register(TreasureHunterCharmEvents.class); // 猎宝者护符
         NeoForge.EVENT_BUS.register(BloodstainedValorEvents.class); // 血战沙场之证
-        NeoForge.EVENT_BUS.register(EnigmaticEyeQuoteEvents.class); // 全知之眼旁白
         NeoForge.EVENT_BUS.register(CursedRingEvents.class);
         NeoForge.EVENT_BUS.register(EvilEssenceEvents.class);
         NeoForge.EVENT_BUS.register(EvilIngotEvents.class);

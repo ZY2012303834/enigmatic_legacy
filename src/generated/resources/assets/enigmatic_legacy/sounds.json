@@ -3,5 +3,70 @@
     "sounds": [
       "enigmatic_legacy:misc/hhon"
     ]
+  },
+  "quote.another_demigod": {
+    "sounds": [
+      "enigmatic_legacy:quote/another_demigod"
+    ]
+  },
+  "quote.countless_dead": {
+    "sounds": [
+      "enigmatic_legacy:quote/countless_dead"
+    ]
+  },
+  "quote.death_may": {
+    "sounds": [
+      "enigmatic_legacy:quote/death_may"
+    ]
+  },
+  "quote.immortal": {
+    "sounds": [
+      "enigmatic_legacy:quote/immortal"
+    ]
+  },
+  "quote.its_destruction": {
+    "sounds": [
+      "enigmatic_legacy:quote/its_destruction"
+    ]
+  },
+  "quote.no_peril": {
+    "sounds": [
+      "enigmatic_legacy:quote/no_peril"
+    ]
+  },
+  "quote.oblivion_rejects": {
+    "sounds": [
+      "enigmatic_legacy:quote/oblivion_rejects"
+    ]
+  },
+  "quote.poor_creature": {
+    "sounds": [
+      "enigmatic_legacy:quote/poor_creature"
+    ]
+  },
+  "quote.setback": {
+    "sounds": [
+      "enigmatic_legacy:quote/setback"
+    ]
+  },
+  "quote.terrifying_form": {
+    "sounds": [
+      "enigmatic_legacy:quote/terrifying_form"
+    ]
+  },
+  "quote.toll_paid": {
+    "sounds": [
+      "enigmatic_legacy:quote/toll_paid"
+    ]
+  },
+  "quote.with_dragons": {
+    "sounds": [
+      "enigmatic_legacy:quote/with_dragons"
+    ]
+  },
+  "quote.you_will_endure": {
+    "sounds": [
+      "enigmatic_legacy:quote/you_will_endure"
+    ]
   }
 }

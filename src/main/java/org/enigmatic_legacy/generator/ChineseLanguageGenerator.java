@@ -220,6 +220,65 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("quote.enigmatic_legacy.enigmatic_eye.deep_underground", "岩石之下，古老之物仍记得你的脚步。");
         add("quote.enigmatic_legacy.enigmatic_eye.low_health", "你比自己想象中更接近沉寂。");
         add("quote.enigmatic_legacy.enigmatic_eye.midnight", "世界此刻很安静。仔细听。");
+
+        add("quote.no_peril_1", "没有危险的任务，便谈不上完成后的荣耀。");
+        add("quote.end_doorstep_1", "末地的门阶……\n如今，你与它只隔一步之遥。");
+        add("quote.only_because_1", "你曾倒下，并不意味着你已经退缩。");
+        add("quote.demise_is_1", "对你这样的半神而言，死亡不过是一时的不便。");
+        add("quote.we_fall_1", "我们跌倒，是为了学会如何重新站起。");
+        add("quote.you_will_endure_1", "你会承受这次失败，并从中学到东西。");
+        add("quote.oblivion_rejects_1", "湮灭拒绝了你……\n趁你仍有机会，好好利用它。");
+        add("quote.setback_1", "这是挫折，但不是败北。");
+        add("quote.death_may_1", "死亡或许会阻碍你的征服，但只有破碎的意志才能真正让它停下。");
+        add("quote.eternity_to_keep_1", "你有永恒的时间继续尝试。去做必须做的事。");
+        add("quote.violence_calls_1", "暴力呼唤复仇。\n回去，将它奉还！");
+        add("quote.immortal_1", "你是不朽的！回去，让那可悲的生物见识这一事实。");
+        add("quote.appaling_presence_1", "躯壳已逝……但那骇人的存在感，将永远铭刻在此界之中。");
+        add("quote.its_destruction_1", "它的毁灭只能算是微不足道的慰藉……\n考虑到它那可怖存在所暗示的一切。");
+
+        add("quote.i_wandered_1", "是的，我曾无数次游荡于那片土地……");
+        add("quote.i_wandered_2", "那是对一切曾经存在之物，以及一切本可能存在之物的荒凉提醒。");
+
+        add("quote.another_demigod_1", "又一位半神徘徊在这片被遗弃的土地上……");
+        add("quote.another_demigod_2", "让我伴随你的旅途吧。也许，你能做到其他人未能做到的事。");
+
+        add("quote.another_eon_1", "又一个纪元，又一个游荡者。\n又一个将被讲述的故事……");
+        add("quote.another_eon_2", "我会怀着极大的好奇见证你的故事。");
+
+        add("quote.perhaps_you_1", "也许，你会成为揭开这片土地久远遗史之人……");
+        add("quote.perhaps_you_2", "若真如此，我必须见证你的成就。");
+
+        add("quote.sulfur_air_1", "空气中弥漫着硫磺，烧灼岩石与血肉的刺鼻气味……");
+        add("quote.sulfur_air_2", "此地，确是一片地狱。");
+
+        add("quote.tortured_rocks_1", "受尽折磨的岩石，苍白如骨，悬挂在无尽而吞噬一切的漆黑之上。");
+        add("quote.tortured_rocks_2", "末地……\n几乎就像一场高热中的梦魇。");
+
+        add("quote.breathes_relieved_1", "没有了那恐怖存在的沉重压迫，世界终于松了一口气……");
+        add("quote.breathes_relieved_2", "至少暂时如此。");
+
+        add("quote.whether_it_is_1", "无论你反复将凋灵从坟墓中唤回又送回，是为了力量，还是为了救赎……");
+        add("quote.whether_it_is_2", "……至少，你给了那该死的生物一个目的。");
+
+        add("quote.poor_creature_1", "可怜的生灵……\n她是同族最后的遗孤，被束缚在那被神遗弃的岛屿上……");
+        add("quote.poor_creature_2", "……位于一片虚无的中央。让她得到应有的安息吧。");
+
+        add("quote.horrible_existence_1", "何等可怖的存在……\n从死亡中被带回，只为再一次被杀死。");
+        add("quote.horrible_existence_2", "你必定已经没有半点怜悯。");
+
+        add("quote.countless_dead_1", "无数亡魂融合成了如此骇人的憎恶之物，以至于言语都无法描述它的形态。");
+        add("quote.countless_dead_2", "仅仅是这污秽生物的存在，便已玷污了大地。");
+
+        add("quote.with_dragons_1", "随着巨龙即将消亡，此地似乎比以往更加空洞，也更加失去了意义。");
+        add("quote.with_dragons_2", "你会继续游荡在这些破碎而荒芜的土地上……");
+        add("quote.with_dragons_3", "……还是回到主世界所提供的那层理智与生机的伪装之中？");
+        add("quote.with_dragons_4", "当然，我们都知道答案……\n你无法抗拒探索未知，无论是现在，还是以后。");
+
+        add("quote.terrifying_form_1", "……它那可怖的形体可以被毁灭，但它的灵魂不行。");
+        add("quote.terrifying_form_2", "它背负着与你并无二致的诅咒……\n不朽的诅咒。");
+
+        add("quote.toll_paid_1", "代价已付，你终于从那膨胀的憎恨与悲伤中解脱……");
+        add("quote.toll_paid_2", "……那些被囚禁在戒指中的憎恨与悲伤。");
         // end
 
         // 按住 Shift 查看详情

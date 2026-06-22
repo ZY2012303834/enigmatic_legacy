@@ -9,6 +9,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -25,6 +26,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
 import org.enigmatic_legacy.EnigmaticLegacy;
+import org.enigmatic_legacy.client.quote.Quote;
 import org.enigmatic_legacy.sound.ModSounds;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.CuriosApi;
@@ -197,6 +199,7 @@ public class EnigmaticEye extends Item implements ICurioItem {
     ) {
         ItemStack stack = player.getItemInHand(hand);
 
+
         if (isDormant(stack) && !hasActivationAnimation(stack)) {
             if (!level.isClientSide) {
                 setActivationAnimation(stack, 4);
@@ -214,6 +217,11 @@ public class EnigmaticEye extends Item implements ICurioItem {
                         Component.translatable("message.enigmatic_legacy.enigmatic_eye.awakening"),
                         true
                 );
+
+                if (player instanceof ServerPlayer serverPlayer && !Quote.isNarratorUnlocked(serverPlayer)) {
+                    Quote.unlockNarrator(serverPlayer);
+                    Quote.random(Quote.NARRATOR_INTROS).play(serverPlayer, 80);
+                }
             }
 
             return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
@@ -241,11 +249,12 @@ public class EnigmaticEye extends Item implements ICurioItem {
             setActivationAnimation(stack, -1);
             setDormant(stack, false);
 
-            if (!level.isClientSide && entity instanceof Player player) {
-                player.displayClientMessage(
-                        Component.translatable("message.enigmatic_legacy.enigmatic_eye.awakened"),
-                        true
-                );
+            if (!level.isClientSide
+                    && entity instanceof ServerPlayer serverPlayer
+                    && !isDormant(stack)
+                    && !Quote.isNarratorUnlocked(serverPlayer)) {
+                Quote.unlockNarrator(serverPlayer);
+                Quote.random(Quote.NARRATOR_INTROS).play(serverPlayer, 60);
             }
         }
 
