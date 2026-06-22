@@ -66,6 +66,7 @@ public final class ModeTabs {
                         output.accept(ModItems.DISLOCATION_RING.get());
                         output.accept(ModItems.MONSTER_CHARM.get());
                         output.accept(ModItems.TREASURE_HUNTER_CHARM.get());
+                        output.accept(ModItems.MEGA_SPONGE.get());
                     })
                     .build());
 
