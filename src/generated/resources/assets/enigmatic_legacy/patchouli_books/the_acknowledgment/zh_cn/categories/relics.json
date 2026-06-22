@@ -1,0 +1,7 @@
+{
+  "description": "古老遗物与神秘器具的记载。",
+  "icon": "enigmatic_legacy:the_acknowledgment",
+  "name": "遗物",
+  "secret": false,
+  "sortnum": 10
+}

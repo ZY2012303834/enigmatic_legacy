@@ -1,0 +1,20 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:enigmatic_eye",
+  "name": "Inscrutable Eye",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:enigmatic_eye",
+      "text": "The Eye sleeps until awakened. Once awakened, it may be worn as a charm.",
+      "title": "Dormant Eye"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "When equipped, the awakened Eye grants an additional charm slot and increases block interaction range.",
+      "title": "Awakened Sight"
+    }
+  ],
+  "secret": false,
+  "sortnum": 1
+}

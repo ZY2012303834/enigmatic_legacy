@@ -106,7 +106,7 @@ public class TheAcknowledgment extends Item {
     ) {
         ItemStack stack = player.getItemInHand(hand);
 
-        if (player instanceof ServerPlayer serverPlayer) {
+        if (!level.isClientSide && player instanceof ServerPlayer serverPlayer) {
             PatchouliAPI.get().openBookGUI(serverPlayer, BOOK_ID);
         }
 

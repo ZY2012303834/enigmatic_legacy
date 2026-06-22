@@ -1,0 +1,14 @@
+{
+  "category": "enigmatic_legacy:world",
+  "icon": "minecraft:soul_lantern",
+  "name": "灵魂损耗",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "死亡从来不是毫无代价的。有些力量会归还失去之物，但世界始终记得你付出过什么。",
+      "title": "灵魂损耗"
+    }
+  ],
+  "secret": false,
+  "sortnum": 0
+}
