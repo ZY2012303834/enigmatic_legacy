@@ -174,6 +174,18 @@ public class LanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.monster_charm.2", "Increases damage dealt to hostile creatures by %s.");
         add("tooltip.enigmatic_legacy.monster_charm.3", "Provides +1 Looting.");
         add("tooltip.enigmatic_legacy.monster_charm.4", "Doubles experience dropped by monsters.");
+
+        addItem(ModItems.TREASURE_HUNTER_CHARM, "Charm of Treasure Hunter");
+
+        add("tooltip.enigmatic_legacy.treasure_hunter_charm.1", "Grants Night Vision while equipped.");
+        add("tooltip.enigmatic_legacy.treasure_hunter_charm.2", "Provides +1 Fortune.");
+        add("tooltip.enigmatic_legacy.treasure_hunter_charm.3", "Increases mining speed by %s.");
+        add("tooltip.enigmatic_legacy.treasure_hunter_charm.4", "Right-click to toggle Night Vision.");
+        add("tooltip.enigmatic_legacy.treasure_hunter_charm.night_vision.enabled", "Night Vision is enabled.");
+        add("tooltip.enigmatic_legacy.treasure_hunter_charm.night_vision.disabled", "Night Vision is disabled.");
+
+        add("message.enigmatic_legacy.treasure_hunter_charm.night_vision.enabled", "Night Vision enabled.");
+        add("message.enigmatic_legacy.treasure_hunter_charm.night_vision.disabled", "Night Vision disabled.");
     }
 
     private void addChineseTranslations() {
@@ -318,6 +330,18 @@ public class LanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.monster_charm.2", "对敌对生物造成的伤害提高 %s。");
         add("tooltip.enigmatic_legacy.monster_charm.3", "提供 +1 抢夺。");
         add("tooltip.enigmatic_legacy.monster_charm.4", "怪物掉落经验翻倍。");
+
+        addItem(ModItems.TREASURE_HUNTER_CHARM, "猎宝者护符");
+
+        add("tooltip.enigmatic_legacy.treasure_hunter_charm.1", "佩戴时获得夜视。");
+        add("tooltip.enigmatic_legacy.treasure_hunter_charm.2", "提供 +1 时运。");
+        add("tooltip.enigmatic_legacy.treasure_hunter_charm.3", "挖掘速度提高 %s。");
+        add("tooltip.enigmatic_legacy.treasure_hunter_charm.4", "右键可切换夜视。");
+        add("tooltip.enigmatic_legacy.treasure_hunter_charm.night_vision.enabled", "夜视当前已开启。");
+        add("tooltip.enigmatic_legacy.treasure_hunter_charm.night_vision.disabled", "夜视当前已关闭。");
+
+        add("message.enigmatic_legacy.treasure_hunter_charm.night_vision.enabled", "夜视已开启。");
+        add("message.enigmatic_legacy.treasure_hunter_charm.night_vision.disabled", "夜视已关闭。");
     }
 
     private void addEnglishCursedRingTooltips() {

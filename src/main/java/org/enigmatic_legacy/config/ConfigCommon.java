@@ -97,6 +97,15 @@ public class ConfigCommon {
     public static final ModConfigSpec.BooleanValue MONSTER_CHARM_BONUS_LOOTING_ENABLED;
     public static final ModConfigSpec.BooleanValue MONSTER_CHARM_DOUBLE_XP_ENABLED;
 
+    // ==============================
+    // 猎宝者护符配置
+    // ==============================
+
+    public static final ModConfigSpec.IntValue TREASURE_HUNTER_CHARM_MINING_SPEED_BONUS;
+    public static final ModConfigSpec.BooleanValue TREASURE_HUNTER_CHARM_FORTUNE_ENABLED;
+    public static final ModConfigSpec.BooleanValue TREASURE_HUNTER_CHARM_NIGHT_VISION_ENABLED;
+    public static final ModConfigSpec.IntValue TREASURE_HUNTER_CHARM_NIGHT_VISION_DURATION;
+
     static {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
 
@@ -353,6 +362,35 @@ public class ConfigCommon {
                         "怪物猎人勋章是否让怪物掉落双倍经验。"
                 )
                 .define("MonsterCharmDoubleXP", true);
+
+        builder.pop();
+
+        builder.comment(
+                "猎宝者护符配置",
+                "这些配置参考原 Enigmatic Legacy 的 Charm of Treasure Hunter。"
+        ).push("Treasure Hunter Charm");
+
+        TREASURE_HUNTER_CHARM_MINING_SPEED_BONUS = builder
+                .comment(
+                        "猎宝者护符提供的挖掘速度加成，单位为百分比。",
+                        "原项目后续默认值为 30。"
+                )
+                .defineInRange("TreasureHunterCharmMiningSpeedBonus", 30, 0, 1000);
+
+        TREASURE_HUNTER_CHARM_FORTUNE_ENABLED = builder
+                .comment("猎宝者护符是否提供 +1 时运。")
+                .define("TreasureHunterCharmFortuneEnabled", true);
+
+        TREASURE_HUNTER_CHARM_NIGHT_VISION_ENABLED = builder
+                .comment("猎宝者护符是否提供夜视。")
+                .define("TreasureHunterCharmNightVisionEnabled", true);
+
+        TREASURE_HUNTER_CHARM_NIGHT_VISION_DURATION = builder
+                .comment(
+                        "猎宝者护符刷新夜视时给予的持续时间，单位为 tick。",
+                        "20 tick = 1 秒。"
+                )
+                .defineInRange("TreasureHunterCharmNightVisionDuration", 400, 40, 12000);
 
         builder.pop();
 

@@ -50,6 +50,7 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(TeleportParticleEvents.class); // 传送粒子
         NeoForge.EVENT_BUS.register(EnderRingEvents.class); // 末影之戒
         NeoForge.EVENT_BUS.register(MagnetRingEvents.class); // 磁力之戒
+        NeoForge.EVENT_BUS.register(TreasureHunterCharmEvents.class); // 猎宝者护符
         NeoForge.EVENT_BUS.register(CursedRingEvents.class);
         NeoForge.EVENT_BUS.register(EvilEssenceEvents.class);
         NeoForge.EVENT_BUS.register(EvilIngotEvents.class);

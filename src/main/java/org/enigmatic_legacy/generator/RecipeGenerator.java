@@ -245,5 +245,18 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('I', Items.NETHERITE_INGOT)
                 .unlockedBy("has_skeleton_skull", has(Items.SKELETON_SKULL))
                 .save(output);
+
+        // 猎宝者护符。
+        // 原项目后续版本配方要求大地之心；这里先按当前项目材料体系接入。
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.TREASURE_HUNTER_CHARM.get())
+                .pattern(" G ")
+                .pattern("EHE")
+                .pattern(" D ")
+                .define('G', Items.GOLDEN_PICKAXE)
+                .define('E', Items.EMERALD)
+                .define('H', ModItems.EARTH_HEART.get())
+                .define('D', Items.DIAMOND)
+                .unlockedBy("has_earth_heart", has(ModItems.EARTH_HEART.get()))
+                .save(output);
     }
 }
