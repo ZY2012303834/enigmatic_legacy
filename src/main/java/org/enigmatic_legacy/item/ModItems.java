@@ -53,6 +53,8 @@ public final class ModItems {
     public static final DeferredItem<EnchanterPearl> ENCHANTER_PEARL = ITEMS.register("enchanter_pearl", EnchanterPearl::new); // 附魔师的珍珠
     public static final DeferredItem<EnigmaticEye> ENIGMATIC_EYE = ITEMS.register("enigmatic_eye", EnigmaticEye::new); // 休眠之眼
 
+    public static final DeferredItem<TheAcknowledgment> THE_ACKNOWLEDGMENT = ITEMS.register("the_acknowledgment", TheAcknowledgment::new); // 启示之证 / The Acknowledgment
+
 
 
     // 原版名为 storage_crystal，显示名是 Extradimensional Vessel / 超维容器。

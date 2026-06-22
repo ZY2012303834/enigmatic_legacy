@@ -75,6 +75,8 @@ public class ItemGenerator extends ItemModelProvider {
 
         enigmaticEye();
 
+        basicItem(ModItems.THE_ACKNOWLEDGMENT.getId());
+
     }
 
     private void enigmaticEye() {

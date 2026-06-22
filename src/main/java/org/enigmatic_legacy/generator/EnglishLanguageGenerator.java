@@ -280,6 +280,17 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("quote.toll_paid_2", "...imprisoned in that ring.");
         // end
 
+        // 启示之证
+        addItem(ModItems.THE_ACKNOWLEDGMENT, "The Acknowledgment");
+
+        add("book.enigmatic_legacy.landing_text", "The vast lands lie ahead of you, full of secrets and mysteries to uncover.");
+
+        add("tooltip.enigmatic_legacy.the_acknowledgment.1", "A guidebook for forgotten relics.");
+        add("tooltip.enigmatic_legacy.the_acknowledgment.2", "Right-click to open The Acknowledgment.");
+        add("tooltip.enigmatic_legacy.the_acknowledgment.shift.1", "Alters the Fourth Curse.");
+        add("tooltip.enigmatic_legacy.the_acknowledgment.shift.2", "The Fourth Curse is weakened by %s.");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");
     }

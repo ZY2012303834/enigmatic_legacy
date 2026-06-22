@@ -66,6 +66,7 @@ public final class ModeTabs {
                         output.accept(ModItems.MEGA_SPONGE.get());
                         output.accept(ModItems.ENCHANTER_PEARL.get());
                         output.accept(ModItems.ENIGMATIC_EYE.get());
+                        output.accept(ModItems.THE_ACKNOWLEDGMENT.get());
                     })
                     .build());
 

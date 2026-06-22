@@ -281,6 +281,17 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("quote.toll_paid_2", "……那些被囚禁在戒指中的憎恨与悲伤。");
         // end
 
+        // 启示之证
+        addItem(ModItems.THE_ACKNOWLEDGMENT, "启示之证");
+
+        add("book.enigmatic_legacy.landing_text", "辽阔的土地在你面前延展，等待你揭开被遗忘的秘密与神秘遗物。");
+
+        add("tooltip.enigmatic_legacy.the_acknowledgment.1", "记录神秘遗物知识的指南书。");
+        add("tooltip.enigmatic_legacy.the_acknowledgment.2", "右键打开《启示之证》。");
+        add("tooltip.enigmatic_legacy.the_acknowledgment.shift.1", "改变第四诅咒。");
+        add("tooltip.enigmatic_legacy.the_acknowledgment.shift.2", "第四诅咒削弱 %s。");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5按住 §6Shift§5 查看详情。");
     }

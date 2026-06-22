@@ -298,5 +298,13 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('E', ModItems.EVIL_ESSENCE.get())
                 .unlockedBy("has_evil_essence", has(ModItems.EVIL_ESSENCE.get()))
                 .save(output);
+
+        // 启示之证 / The Acknowledgment。
+        // Plus 版配方：书 + 灯笼。
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.THE_ACKNOWLEDGMENT.get())
+                .requires(Items.BOOK)
+                .requires(Items.LANTERN)
+                .unlockedBy("has_book", has(Items.BOOK))
+                .save(output);
     }
 }
