@@ -5,6 +5,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import org.enigmatic_legacy.item.items.EnchanterPearl;
 import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
@@ -35,6 +36,20 @@ public final class EnchanterPearlHelper {
      */
     public static boolean hasEnchanterPearl(Player player) {
         return findEquippedEnchanterPearl(player).isPresent();
+    }
+
+    public static boolean hasOtherEnchanterPearl(Player player, SlotContext currentSlot) {
+        return CuriosApi.getCuriosInventory(player)
+                .map(handler -> handler.findCurios(stack ->
+                                stack.getItem() instanceof EnchanterPearl)
+                        .stream()
+                        .anyMatch(slotResult -> !isSameSlot(slotResult.slotContext(), currentSlot)))
+                .orElse(false);
+    }
+
+    private static boolean isSameSlot(SlotContext first, SlotContext second) {
+        return first.index() == second.index()
+                && first.identifier().equals(second.identifier());
     }
 
     /**

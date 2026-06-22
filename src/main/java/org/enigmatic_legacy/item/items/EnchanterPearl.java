@@ -23,7 +23,6 @@ import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 import java.util.List;
-import java.util.UUID;
 
 /**
  * 附魔师的珍珠 / Enchanter's Pearl。
@@ -49,7 +48,7 @@ public class EnchanterPearl extends Item implements ICurioItem {
      */
     @Override
     public boolean canEquipFromUse(SlotContext context, ItemStack stack) {
-        return true;
+        return canEquip(context, stack);
     }
 
     /**
@@ -63,7 +62,7 @@ public class EnchanterPearl extends Item implements ICurioItem {
         }
 
         return CursedRingHelper.hasCursedRing(player)
-                && !EnchanterPearlHelper.hasEnchanterPearl(player);
+                && !EnchanterPearlHelper.hasOtherEnchanterPearl(player, context);
     }
 
     /**
@@ -73,10 +72,9 @@ public class EnchanterPearl extends Item implements ICurioItem {
      * 后续 Curios 1.21.4+ 才会更强制迁移到 CurioAttributeModifiers。
      */
     @Override
-    @SuppressWarnings({"removal"})
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(
             SlotContext slotContext,
-            UUID uuid,
+            ResourceLocation id,
             ItemStack stack
     ) {
         Multimap<Holder<Attribute>, AttributeModifier> attributes = HashMultimap.create();
