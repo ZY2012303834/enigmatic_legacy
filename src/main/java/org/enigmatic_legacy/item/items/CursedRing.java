@@ -94,7 +94,13 @@ public class CursedRing extends Item implements ICurioItem {
     }
 
     private static void addTooltip(List<Component> tooltip, String key, Object... args) {
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy." + key, args));
+        Object[] formattedArgs = new Object[args.length];
+
+        for (int i = 0; i < args.length; i++) {
+            formattedArgs[i] = Component.literal(String.valueOf(args[i])).withStyle(ChatFormatting.GOLD);
+        }
+
+        tooltip.add(Component.translatable("tooltip.enigmatic_legacy." + key, formattedArgs));
     }
 
     /**
