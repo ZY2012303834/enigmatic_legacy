@@ -9,6 +9,21 @@
       "enigmatic_legacy:quote/another_demigod"
     ]
   },
+  "quote.another_eon": {
+    "sounds": [
+      "enigmatic_legacy:quote/another_eon"
+    ]
+  },
+  "quote.appaling_presence": {
+    "sounds": [
+      "enigmatic_legacy:quote/appaling_presence"
+    ]
+  },
+  "quote.breathes_relieved": {
+    "sounds": [
+      "enigmatic_legacy:quote/breathes_relieved"
+    ]
+  },
   "quote.countless_dead": {
     "sounds": [
       "enigmatic_legacy:quote/countless_dead"
@@ -17,6 +32,31 @@
   "quote.death_may": {
     "sounds": [
       "enigmatic_legacy:quote/death_may"
+    ]
+  },
+  "quote.demise_is": {
+    "sounds": [
+      "enigmatic_legacy:quote/demise_is"
+    ]
+  },
+  "quote.end_doorstep": {
+    "sounds": [
+      "enigmatic_legacy:quote/end_doorstep"
+    ]
+  },
+  "quote.eternity_to_keep": {
+    "sounds": [
+      "enigmatic_legacy:quote/eternity_to_keep"
+    ]
+  },
+  "quote.horrible_existence": {
+    "sounds": [
+      "enigmatic_legacy:quote/horrible_existence"
+    ]
+  },
+  "quote.i_wandered": {
+    "sounds": [
+      "enigmatic_legacy:quote/i_wandered"
     ]
   },
   "quote.immortal": {
@@ -39,6 +79,16 @@
       "enigmatic_legacy:quote/oblivion_rejects"
     ]
   },
+  "quote.only_because": {
+    "sounds": [
+      "enigmatic_legacy:quote/only_because"
+    ]
+  },
+  "quote.perhaps_you": {
+    "sounds": [
+      "enigmatic_legacy:quote/perhaps_you"
+    ]
+  },
   "quote.poor_creature": {
     "sounds": [
       "enigmatic_legacy:quote/poor_creature"
@@ -49,6 +99,11 @@
       "enigmatic_legacy:quote/setback"
     ]
   },
+  "quote.sulfur_air": {
+    "sounds": [
+      "enigmatic_legacy:quote/sulfur_air"
+    ]
+  },
   "quote.terrifying_form": {
     "sounds": [
       "enigmatic_legacy:quote/terrifying_form"
@@ -57,6 +112,26 @@
   "quote.toll_paid": {
     "sounds": [
       "enigmatic_legacy:quote/toll_paid"
+    ]
+  },
+  "quote.tortured_rocks": {
+    "sounds": [
+      "enigmatic_legacy:quote/tortured_rocks"
+    ]
+  },
+  "quote.violence_calls": {
+    "sounds": [
+      "enigmatic_legacy:quote/violence_calls"
+    ]
+  },
+  "quote.we_fall": {
+    "sounds": [
+      "enigmatic_legacy:quote/we_fall"
+    ]
+  },
+  "quote.whether_it_is": {
+    "sounds": [
+      "enigmatic_legacy:quote/whether_it_is"
     ]
   },
   "quote.with_dragons": {

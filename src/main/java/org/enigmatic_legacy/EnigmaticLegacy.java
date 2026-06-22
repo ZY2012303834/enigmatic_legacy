@@ -20,7 +20,6 @@ import org.enigmatic_legacy.tab.ModeTabs;
 
 @Mod(EnigmaticLegacy.MODID)
 public class EnigmaticLegacy {
-
     public static final String MODID = "enigmatic_legacy";
 
     public EnigmaticLegacy(IEventBus modEventBus, ModContainer modContainer) {
@@ -33,11 +32,9 @@ public class EnigmaticLegacy {
         ModeTabs.register(modEventBus);
         ModEffects.register(modEventBus);
         ModPotions.register(modEventBus);
-
         ModSounds.SOUND_EVENTS.register(modEventBus);
 
         modEventBus.addListener(ModNetwork::registerPayloads);
-
         modEventBus.addListener(BlockGenerator::gatherData);
         modEventBus.addListener(ItemGenerator::gatherData);
         modEventBus.addListener(LanguageGenerator::gatherData);
@@ -49,17 +46,16 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(MonsterCharmEvents.class);
         NeoForge.EVENT_BUS.register(EnchanterPearlEvents.class);
         NeoForge.EVENT_BUS.register(EnigmaticAmuletEvents.class);
-        NeoForge.EVENT_BUS.register(TeleportParticleEvents.class); // 传送粒子
-        NeoForge.EVENT_BUS.register(EnderRingEvents.class); // 末影之戒
-        NeoForge.EVENT_BUS.register(MagnetRingEvents.class); // 磁力之戒
-        NeoForge.EVENT_BUS.register(TreasureHunterCharmEvents.class); // 猎宝者护符
-        NeoForge.EVENT_BUS.register(BloodstainedValorEvents.class); // 血战沙场之证
+        NeoForge.EVENT_BUS.register(EnigmaticEyeQuoteEvents.class);
+        NeoForge.EVENT_BUS.register(TeleportParticleEvents.class);
+        NeoForge.EVENT_BUS.register(EnderRingEvents.class);
+        NeoForge.EVENT_BUS.register(MagnetRingEvents.class);
+        NeoForge.EVENT_BUS.register(TreasureHunterCharmEvents.class);
+        NeoForge.EVENT_BUS.register(BloodstainedValorEvents.class);
         NeoForge.EVENT_BUS.register(CursedRingEvents.class);
         NeoForge.EVENT_BUS.register(EvilEssenceEvents.class);
         NeoForge.EVENT_BUS.register(EvilIngotEvents.class);
         NeoForge.EVENT_BUS.register(SoulCrystalEvents.class);
         NeoForge.EVENT_BUS.register(ForbiddenFruitEvents.class);
-
-
     }
 }
