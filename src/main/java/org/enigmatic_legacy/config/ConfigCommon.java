@@ -83,12 +83,6 @@ public class ConfigCommon {
     // ==============================
     public static final ModConfigSpec.DoubleValue MAGNET_RING_RANGE;
 
-    public static final ModConfigSpec.BooleanValue MAGNET_RING_BUTTON_ENABLED;
-    public static final ModConfigSpec.IntValue MAGNET_RING_BUTTON_OFFSET_X;
-    public static final ModConfigSpec.IntValue MAGNET_RING_BUTTON_OFFSET_Y;
-    public static final ModConfigSpec.IntValue MAGNET_RING_BUTTON_OFFSET_X_CREATIVE;
-    public static final ModConfigSpec.IntValue MAGNET_RING_BUTTON_OFFSET_Y_CREATIVE;
-
     static {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
 
@@ -112,7 +106,23 @@ public class ConfigCommon {
 
         MAX_SOUL_CRYSTAL_LOSS = builder.comment("玩家最多可以损失多少个灵魂水晶。", "每损失 1 个灵魂水晶，后续可用于减少 10% 最大生命上限。", "如果设置为 10，代表玩家最多可能损失全部灵魂水晶。").defineInRange("MaxSoulCrystalLoss", 9, 1, 10);
 
-        COMPLETE_BOSS_LIST = builder.comment("完整 Boss 列表。", "后续实现 Boss 判断、特殊掉落或饰品效果时，可使用该列表。", "格式示例：minecraft:wither").defineList("CompleteBossList", List.of("minecraft:ender_dragon", "minecraft:wither", "minecraft:elder_guardian"), value -> value instanceof String && ResourceLocation.tryParse((String) value) != null);
+        COMPLETE_BOSS_LIST = builder
+                .comment(
+                        "完整 Boss 列表。",
+                        "后续实现 Boss 判断、特殊掉落或饰品效果时，可使用该列表。",
+                        "格式示例：minecraft:wither",
+                        "允许该列表为空；为空时表示不额外识别任何 Boss。"
+                )
+                .defineListAllowEmpty(
+                        "CompleteBossList",
+                        List.of(
+                                "minecraft:ender_dragon",
+                                "minecraft:wither",
+                                "minecraft:elder_guardian"
+                        ),
+                        value -> value instanceof String string
+                                && ResourceLocation.tryParse(string) != null
+                );
 
         builder.pop();
 
@@ -276,29 +286,6 @@ public class ConfigCommon {
                 .defineInRange("MagnetRingRange", 8.0D, 1.0D, 256.0D);
 
         builder.pop();
-
-        MAGNET_RING_BUTTON_ENABLED = builder
-                .comment(
-                        "是否在玩家装备磁力之戒时，在背包界面显示磁力开关按钮。",
-                        "按钮只负责发送切换命令；真正的磁力效果仍由服务端判断。"
-                )
-                .define("MagnetRingButtonEnabled", true);
-
-        MAGNET_RING_BUTTON_OFFSET_X = builder
-                .comment("磁力之戒按钮在普通背包界面的 X 偏移。")
-                .defineInRange("MagnetRingButtonOffsetX", 0, -32768, 32768);
-
-        MAGNET_RING_BUTTON_OFFSET_Y = builder
-                .comment("磁力之戒按钮在普通背包界面的 Y 偏移。")
-                .defineInRange("MagnetRingButtonOffsetY", 0, -32768, 32768);
-
-        MAGNET_RING_BUTTON_OFFSET_X_CREATIVE = builder
-                .comment("磁力之戒按钮在创造模式背包界面的 X 偏移。")
-                .defineInRange("MagnetRingButtonOffsetXCreative", 0, -32768, 32768);
-
-        MAGNET_RING_BUTTON_OFFSET_Y_CREATIVE = builder
-                .comment("磁力之戒按钮在创造模式背包界面的 Y 偏移。")
-                .defineInRange("MagnetRingButtonOffsetYCreative", 0, -32768, 32768);
 
         SPEC = builder.build();
     }
