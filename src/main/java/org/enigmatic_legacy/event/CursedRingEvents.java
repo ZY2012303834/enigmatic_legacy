@@ -54,10 +54,8 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.util.CursedRingHelper;
-import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.event.DropRulesEvent;
 import top.theillusivec4.curios.api.type.capability.ICurio;
-import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
 /**
  * 七咒之戒事件处理类。
@@ -67,6 +65,8 @@ import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
  * 当前项目拆分为事件类，方便适配 NeoForge 1.21.1。
  */
 public class CursedRingEvents {
+    private static final String STARTING_CURSED_RING_GIVEN = "enigmatic_legacy_received_cursed_ring";
+    private static final String LEGACY_STARTING_CURSED_RING_GIVEN = "EnigmaticLegacyStartingCursedRingGiven";
 
     /**
      * 玩家每秒处理一次七咒之戒的仇恨逻辑。
@@ -306,10 +306,6 @@ public class CursedRingEvents {
         );
     }
 
-    /**
-     * Ultra Hardcore 模式：
-     * 玩家进入世界时直接装备七咒之戒。
-     */
     @SubscribeEvent
     public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) {
@@ -320,72 +316,43 @@ public class CursedRingEvents {
             return;
         }
 
-        if (!ConfigCommon.CURSED_RING_ULTRA_HARDCORE.get()) {
+        if (hasReceivedStartingCursedRing(player)) {
             return;
         }
 
-        if (CursedRingHelper.hasCursedRing(player)) {
+        if (CursedRingHelper.hasCursedRing(player) || hasCursedRingInInventory(player)) {
+            markReceivedStartingCursedRing(player);
             return;
         }
 
-        if (equipCursedRingFromInventory(player)) {
-            return;
-        }
+        markReceivedStartingCursedRing(player);
+        player.addItem(new ItemStack(ModItems.CURSED_RING.get()));
+    }
 
-        ItemStack ring = new ItemStack(ModItems.CURSED_RING.get());
-
-        if (!equipCursedRing(player, ring)) {
-            player.getInventory().add(ring);
+    @SubscribeEvent
+    public static void onPlayerClone(PlayerEvent.Clone event) {
+        if (hasReceivedStartingCursedRing(event.getOriginal())) {
+            markReceivedStartingCursedRing(event.getEntity());
         }
     }
 
-    private static boolean equipCursedRingFromInventory(Player player) {
-        if (CursedRingHelper.hasCursedRing(player)) {
-            return true;
-        }
+    private static boolean hasReceivedStartingCursedRing(Player player) {
+        return player.getPersistentData().getBoolean(STARTING_CURSED_RING_GIVEN)
+                || player.getPersistentData().getBoolean(LEGACY_STARTING_CURSED_RING_GIVEN);
+    }
 
+    private static void markReceivedStartingCursedRing(Player player) {
+        player.getPersistentData().putBoolean(STARTING_CURSED_RING_GIVEN, true);
+        player.getPersistentData().putBoolean(LEGACY_STARTING_CURSED_RING_GIVEN, true);
+    }
+
+    private static boolean hasCursedRingInInventory(Player player) {
         for (int slot = 0; slot < player.getInventory().getContainerSize(); slot++) {
             ItemStack stack = player.getInventory().getItem(slot);
 
-            if (stack.is(ModItems.CURSED_RING.get()) && equipCursedRing(player, stack)) {
-                if (stack.isEmpty()) {
-                    player.getInventory().setItem(slot, ItemStack.EMPTY);
-                }
-
+            if (stack.is(ModItems.CURSED_RING.get())) {
                 return true;
             }
-        }
-
-        return false;
-    }
-
-    private static boolean equipCursedRing(Player player, ItemStack sourceStack) {
-        if (sourceStack.isEmpty() || !sourceStack.is(ModItems.CURSED_RING.get())) {
-            return false;
-        }
-
-        return CuriosApi.getCuriosInventory(player)
-                .map(handler -> handler.getStacksHandler("ring")
-                        .map(ringHandler -> equipCursedRing(player, sourceStack, ringHandler.getStacks()))
-                        .orElse(false))
-                .orElse(false);
-    }
-
-    private static boolean equipCursedRing(Player player, ItemStack sourceStack, IDynamicStackHandler ringStacks) {
-        for (int slot = 0; slot < ringStacks.getSlots(); slot++) {
-            if (!ringStacks.getStackInSlot(slot).isEmpty()) {
-                continue;
-            }
-
-            if (!CursedRingHelper.canEquipCursedRing(player, "ring", slot)) {
-                return false;
-            }
-
-            ItemStack equippedStack = sourceStack.copyWithCount(1);
-            ringStacks.setStackInSlot(slot, equippedStack);
-            sourceStack.shrink(1);
-            player.getInventory().setChanged();
-            return true;
         }
 
         return false;

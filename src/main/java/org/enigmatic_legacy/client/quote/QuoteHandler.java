@@ -21,6 +21,7 @@ public final class QuoteHandler {
     public static final QuoteHandler INSTANCE = new QuoteHandler();
 
     private static final RandomSource RANDOM = RandomSource.create();
+    private static final int SUBTITLE_COLOR = 0xAA00AA;
 
     private Quote currentQuote;
     private int delayTicks = 0;
@@ -145,7 +146,7 @@ public final class QuoteHandler {
             int lineY = y + i * lineHeight;
 
             graphics.fill(centerX - maxWidth / 2 - 6, lineY - 2, centerX + maxWidth / 2 + 6, lineY + minecraft.font.lineHeight + 2, rectColor);
-            graphics.drawString(minecraft.font, s, x, lineY, (textAlpha << 24) | 0xFFFF55, true);
+            graphics.drawString(minecraft.font, s, x, lineY, (textAlpha << 24) | SUBTITLE_COLOR, true);
         }
     }
 
