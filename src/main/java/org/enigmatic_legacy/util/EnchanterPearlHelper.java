@@ -3,13 +3,13 @@ package org.enigmatic_legacy.util;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
 import org.enigmatic_legacy.item.items.EnchanterPearl;
-import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.CuriosCapability;
 import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 import net.minecraft.core.Holder;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 
@@ -29,7 +29,7 @@ public final class EnchanterPearlHelper {
     public static Optional<ItemStack> findEquippedEnchanterPearl(LivingEntity entity) {
         AtomicReference<ItemStack> result = new AtomicReference<>(ItemStack.EMPTY);
 
-        CuriosApi.getCuriosInventory(entity)
+        getCuriosInventory(entity)
                 .flatMap(handler -> handler.findFirstCurio(stack -> stack.getItem() instanceof EnchanterPearl))
                 .ifPresent(slotResult -> result.set(slotResult.stack()));
 
@@ -45,7 +45,7 @@ public final class EnchanterPearlHelper {
     }
 
     public static boolean hasOtherEnchanterPearl(Player player, SlotContext currentSlot) {
-        return CuriosApi.getCuriosInventory(player)
+        return getCuriosInventory(player)
                 .map(handler -> handler.findCurios(stack ->
                                 stack.getItem() instanceof EnchanterPearl)
                         .stream()
@@ -65,6 +65,10 @@ public final class EnchanterPearlHelper {
         return hasEnchanterPearl(player) && CursedRingHelper.hasCursedRing(player);
     }
 
+    public static Optional<ICuriosItemHandler> getCuriosInventory(LivingEntity entity) {
+        return Optional.ofNullable(entity.getCapability(CuriosCapability.INVENTORY));
+    }
+
     public static ItemStack mergeEnchantments(ItemStack input, ItemStack mergeFrom) {
         ItemStack result = input.copy();
         ItemEnchantments.Mutable resultEnchantments = new ItemEnchantments.Mutable(
@@ -82,7 +86,7 @@ public final class EnchanterPearlHelper {
                     ? Math.min(extraLevel + 1, extraEnchantment.getMaxLevel())
                     : Math.max(existingLevel, extraLevel);
 
-            boolean compatible = extraEnchantment.canEnchant(input) || input.is(Items.ENCHANTED_BOOK);
+            boolean compatible = true;
 
             for (Holder<Enchantment> existingHolder : resultEnchantments.keySet()) {
                 if (!existingHolder.equals(extraHolder)
