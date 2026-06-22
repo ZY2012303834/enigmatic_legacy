@@ -23,50 +23,47 @@ import java.util.function.BooleanSupplier;
 
 /**
  * 磁力之戒客户端 UI 事件。
- * 作用：
- * 1. 玩家佩戴磁力之戒时，在背包界面显示磁力开关按钮；
- * 2. 按钮使用“磁力之戒”物品图标，而不是文字 ON/OFF；
- * 3. 按钮固定显示在末影箱按钮左侧；
- * 4. 点击按钮后向服务器发送切换命令。
+ * 修复目标：
+ * 1. 佩戴磁力之戒 / 转位之戒后，按钮立即出现；
+ * 2. 摘下磁力之戒 / 转位之戒后，按钮立即消失；
+ * 3. 按钮使用磁力之戒图标；
+ * 4. 按钮固定放在末影箱按钮左侧。
  * 注意：
- * 这里只负责客户端 UI。
- * 真正的磁力开关状态必须由服务端 MagnetRingEvents 处理。
+ * 本类只负责客户端 UI。
+ * 真正的开关状态修改由服务端 MagnetRingEvents 处理。
  */
 public final class MagnetRingClientEvents {
     /**
-     * 普通生存背包 GUI 宽度。
+     * 普通背包 GUI 宽度。
      * 和 EnderRingClientEvents 保持一致，
-     * 这样磁力按钮才能准确贴在末影箱按钮左边。
+     * 这样磁力按钮可以准确放到末影箱按钮左侧。
      */
     private static final int INVENTORY_GUI_WIDTH = 176;
 
     /**
-     * 普通生存背包 GUI 高度。
+     * 普通背包 GUI 高度。
      */
     private static final int INVENTORY_GUI_HEIGHT = 166;
 
     /**
-     * 创造模式背包 GUI 宽度。
-     * 和 EnderRingClientEvents 保持一致。
+     * 创造背包 GUI 宽度。
      */
     private static final int CREATIVE_GUI_WIDTH = 195;
 
     /**
-     * 创造模式背包 GUI 高度。
+     * 创造背包 GUI 高度。
      */
     private static final int CREATIVE_GUI_HEIGHT = 136;
 
     /**
-     * 按钮大小。
+     * 按钮尺寸。
      * 末影箱按钮是 20x20，
-     * 磁力之戒按钮也用 20x20，视觉上对齐。
+     * 磁力按钮也使用 20x20。
      */
     private static final int BUTTON_SIZE = 20;
 
     /**
-     * 磁力按钮和末影箱按钮之间的间隔。
-     * 末影箱按钮在右侧，磁力按钮放在它左侧：
-     * magnetX = enderX - BUTTON_SIZE - BUTTON_GAP
+     * 磁力按钮与末影箱按钮之间的间距。
      */
     private static final int BUTTON_GAP = 2;
 
@@ -74,13 +71,19 @@ public final class MagnetRingClientEvents {
     }
 
     /**
-     * 背包界面初始化完成后添加磁力之戒按钮。
+     * 背包界面初始化完成后添加磁力按钮。
+     * 关键点：
+     * 这里不能检查“是否佩戴磁力之戒”。
+     * 因为玩家可能在背包打开之后才把戒指放进 Curios 槽，
+     * 当前 Screen 不会因此重新触发 Init.Post。
+     * 所以这里始终添加按钮。
+     * 按钮是否实际显示，由按钮自己的 renderWidget 每帧动态判断。
      */
     @SubscribeEvent
     public static void onScreenInit(ScreenEvent.Init.Post event) {
         Screen screen = event.getScreen();
 
-        // 只在普通背包、创造背包、Curios 背包界面显示。
+        // 只在普通背包、创造背包、Curios 背包中添加这个按钮。
         if (!isSupportedInventoryScreen(screen)) {
             return;
         }
@@ -91,17 +94,9 @@ public final class MagnetRingClientEvents {
             return;
         }
 
-        // 复用末影之戒按钮开关。
-        // 这样不需要额外新增 MAGNET_RING_BUTTON_ENABLED 配置项。
+        // 复用末影之戒按钮显示开关。
+        // 如果你后面想单独控制磁力按钮，再改成 MAGNET_RING_BUTTON_ENABLED。
         if (!ConfigClient.ENDER_RING_BUTTON_ENABLED.get()) {
-            return;
-        }
-
-        // 佩戴磁力之戒或转位之戒时都显示磁力开关按钮。
-        Optional<ItemStack> ring = MagnetRingHelper.findEquippedMagnetControlRing(player);
-
-        // 未佩戴磁力之戒时，不显示磁力按钮。
-        if (ring.isEmpty()) {
             return;
         }
 
@@ -109,8 +104,8 @@ public final class MagnetRingClientEvents {
         int enderY;
 
         /*
-         * 这里完全复刻末影箱按钮的坐标算法。
-         * 然后把磁力按钮放到末影箱按钮左侧。
+         * 这里复刻末影箱按钮的位置算法。
+         * 当前项目的 EnderRingClientEvents 也是这样计算按钮位置的。
          */
         if (screen instanceof CreativeModeInventoryScreen) {
             int left = (screen.width - CREATIVE_GUI_WIDTH) / 2;
@@ -144,22 +139,18 @@ public final class MagnetRingClientEvents {
         int magnetX = enderX - BUTTON_SIZE - BUTTON_GAP;
         int magnetY = enderY;
 
-        boolean enabled = MagnetRingHelper.isMagnetEnabled(ring.get());
-
         Button button = new MagnetRingButton(
                 magnetX,
                 magnetY,
-                enabled,
                 () -> shouldShowOnCurrentPage(screen),
                 pressed -> requestToggleMagnetRing()
         );
 
-        button.setTooltip(Tooltip.create(buttonTooltip(enabled)));
         event.addListener(button);
     }
 
     /**
-     * 判断当前界面是否支持显示按钮。
+     * 判断当前 Screen 是否支持显示磁力按钮。
      */
     private static boolean isSupportedInventoryScreen(Screen screen) {
         return screen instanceof InventoryScreen
@@ -168,8 +159,8 @@ public final class MagnetRingClientEvents {
     }
 
     /**
-     * 创造模式下只有打开“生存背包页”时才显示按钮。
-     * 这样可以避免按钮出现在创造物品分页上。
+     * 创造模式下，只在生存背包页显示按钮。
+     * 这样避免按钮出现在创造物品分页上。
      */
     private static boolean shouldShowOnCurrentPage(Screen screen) {
         return !(screen instanceof CreativeModeInventoryScreen creativeScreen)
@@ -177,9 +168,44 @@ public final class MagnetRingClientEvents {
     }
 
     /**
-     * 向服务器请求切换磁力之戒状态。
+     * 每帧判断当前是否应该显示磁力按钮。
+     * 这个方法会在 renderWidget / mouseClicked 中实时调用，
+     * 因此玩家在背包打开状态下佩戴或摘下戒指时，UI 会立即变化。
+     */
+    private static boolean shouldShowMagnetButton(BooleanSupplier pageCondition) {
+        Minecraft minecraft = Minecraft.getInstance();
+
+        if (minecraft.player == null) {
+            return false;
+        }
+
+        if (!pageCondition.getAsBoolean()) {
+            return false;
+        }
+
+        // 佩戴磁力之戒或转位之戒时才显示。
+        return MagnetRingHelper.hasMagnetControlRing(minecraft.player);
+    }
+
+    /**
+     * 获取当前佩戴的磁力控制戒指。
+     * 磁力控制戒指包括：
+     * 1. 磁力之戒；
+     * 2. 转位之戒。
+     */
+    private static Optional<ItemStack> getCurrentControlRing() {
+        Minecraft minecraft = Minecraft.getInstance();
+
+        if (minecraft.player == null) {
+            return Optional.empty();
+        }
+
+        return MagnetRingHelper.findEquippedMagnetControlRing(minecraft.player);
+    }
+
+    /**
+     * 请求服务器切换磁力开关。
      * 客户端不直接修改真实状态。
-     * 服务端会检查玩家是否真的佩戴磁力之戒，然后修改 ItemStack CustomData。
      */
     private static void requestToggleMagnetRing() {
         Minecraft minecraft = Minecraft.getInstance();
@@ -192,7 +218,7 @@ public final class MagnetRingClientEvents {
     }
 
     /**
-     * 按钮悬浮提示。
+     * 根据当前磁力状态生成 tooltip。
      */
     private static Component buttonTooltip(boolean enabled) {
         return Component.translatable(enabled
@@ -202,59 +228,60 @@ public final class MagnetRingClientEvents {
 
     /**
      * 磁力之戒图标按钮。
-     * 这个按钮不显示文字，只渲染磁力之戒物品图标。
+     * 这个按钮在 Screen 初始化时始终添加。
+     * 是否真正显示，由 shouldShowMagnetButton 每帧动态决定。
      */
     private static final class MagnetRingButton extends Button {
-        private final BooleanSupplier displayCondition;
-
-        /**
-         * 客户端预览状态。
-         * 点击后先本地翻转，用来立即更新 tooltip 和暗色遮罩。
-         * 最终真实状态仍由服务端同步。
-         */
-        private boolean previewEnabled;
+        private final BooleanSupplier pageCondition;
 
         private MagnetRingButton(
                 int x,
                 int y,
-                boolean enabled,
-                BooleanSupplier displayCondition,
+                BooleanSupplier pageCondition,
                 OnPress onPress
         ) {
             super(x, y, BUTTON_SIZE, BUTTON_SIZE, Component.empty(), onPress, DEFAULT_NARRATION);
-            this.previewEnabled = enabled;
-            this.displayCondition = displayCondition;
-        }
+            this.pageCondition = pageCondition;
 
-        @Override
-        public void onPress() {
-            super.onPress();
-
-            // 点击后立即更新客户端显示反馈。
-            // 服务端稍后会同步真实 ItemStack 数据。
-            this.previewEnabled = !this.previewEnabled;
-            this.setTooltip(Tooltip.create(buttonTooltip(this.previewEnabled)));
+            /*
+             * 重要：
+             * visible 必须一直保持 true。
+             *
+             * 如果设置为 false，很多情况下下一帧不会再进入 renderWidget，
+             * 这样按钮隐藏后就无法重新显示。
+             *
+             * 所以隐藏逻辑只在 renderWidget 里 return，不修改 visible。
+             */
+            this.visible = true;
         }
 
         @Override
         protected void renderWidget(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
-            active = displayCondition.getAsBoolean();
+            boolean shouldShow = shouldShowMagnetButton(this.pageCondition);
 
-            if (!active) {
+            // 不该显示时，不渲染，也不允许点击。
+            this.active = shouldShow;
+
+            if (!shouldShow) {
                 return;
             }
 
-            // 先渲染原版按钮背景。
+            Optional<ItemStack> ring = getCurrentControlRing();
+
+            // 默认开启，兼容没有写入 MagnetEnabled 的旧戒指。
+            boolean enabled = ring.map(MagnetRingHelper::isMagnetEnabled).orElse(true);
+
+            // 每帧刷新 tooltip，保证点击开关后提示能同步。
+            this.setTooltip(Tooltip.create(buttonTooltip(enabled)));
+
+            // 渲染原版按钮背景。
             super.renderWidget(guiGraphics, mouseX, mouseY, partialTick);
 
-            // 渲染磁力之戒物品图标。
+            // 渲染磁力之戒图标。
             guiGraphics.renderItem(new ItemStack(ModItems.MAGNET_RING.get()), getX() + 2, getY() + 2);
 
-            /*
-             * 如果磁力被关闭，给图标盖一层半透明黑色遮罩。
-             * 这样玩家不用看 tooltip，也能大概知道当前是关闭状态。
-             */
-            if (!this.previewEnabled) {
+            // 关闭时添加暗色遮罩。
+            if (!enabled) {
                 guiGraphics.fill(
                         getX() + 1,
                         getY() + 1,
@@ -267,7 +294,9 @@ public final class MagnetRingClientEvents {
 
         @Override
         public boolean mouseClicked(double mouseX, double mouseY, int button) {
-            return displayCondition.getAsBoolean() && super.mouseClicked(mouseX, mouseY, button);
+            // 隐藏状态下，即使点到按钮原位置也不触发。
+            return shouldShowMagnetButton(this.pageCondition)
+                    && super.mouseClicked(mouseX, mouseY, button);
         }
     }
 }
