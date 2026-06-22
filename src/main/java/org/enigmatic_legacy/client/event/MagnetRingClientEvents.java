@@ -270,6 +270,14 @@ public final class MagnetRingClientEvents {
     private static final class MagnetRingButton extends Button {
         private final BooleanSupplier pageCondition;
 
+        /**
+         * 当前帧鼠标是否悬停在按钮上。
+         *
+         * 这个值在 renderWidget 里用按钮自己的鼠标坐标计算，
+         * 避免 Render.Post 里重新计算导致命中范围偏移。
+         */
+        private boolean hoveredThisFrame;
+
         private MagnetRingButton(
                 int x,
                 int y,
@@ -287,19 +295,15 @@ public final class MagnetRingClientEvents {
             return shouldShowMagnetButton(this.pageCondition);
         }
 
+
         /**
-         * 严格判断鼠标是否在完整按钮范围内。
-         * 使用固定 BUTTON_SIZE。
-         * 这样命中范围和实际渲染的 20x20 按钮完全一致。
+         * 当前帧鼠标是否真的悬停在按钮上。
+         * 不在这里重新计算坐标。
+         * 坐标计算统一放在 renderWidget 里，避免 Render.Post 阶段坐标偏移。
          */
         private boolean isMouseActuallyOver(double mouseX, double mouseY) {
-            return this.shouldDisplay()
-                    && mouseX >= this.getX()
-                    && mouseX < this.getX() + BUTTON_SIZE
-                    && mouseY >= this.getY()
-                    && mouseY < this.getY() + BUTTON_SIZE;
+            return this.shouldDisplay() && this.hoveredThisFrame;
         }
-
         /**
          * 渲染按钮。
          * 关键点：
@@ -317,13 +321,30 @@ public final class MagnetRingClientEvents {
             boolean shouldShow = this.shouldDisplay();
 
             this.active = shouldShow;
+            this.hoveredThisFrame = false;
 
             if (!shouldShow) {
                 return;
             }
 
             Optional<ItemStack> ring = getCurrentControlRing();
-            boolean enabled = ring.map(MagnetRingHelper::isMagnetEnabled).orElse(true);
+
+            if (ring.isEmpty()) {
+                return;
+            }
+
+            boolean enabled = MagnetRingHelper.isMagnetEnabled(ring.get());
+
+            /*
+             * 关键：
+             * 悬停判断必须在按钮自己的 renderWidget 里做。
+             * 这里的 mouseX / mouseY 与 Button 渲染流程使用的是同一套坐标，
+             * 不会出现 tooltip 命中框相对按钮偏移的问题。
+             */
+            this.hoveredThisFrame = mouseX >= this.getX()
+                    && mouseX < this.getX() + BUTTON_SIZE
+                    && mouseY >= this.getY()
+                    && mouseY < this.getY() + BUTTON_SIZE;
 
             // 渲染原版按钮背景。
             super.renderWidget(guiGraphics, mouseX, mouseY, partialTick);
@@ -355,14 +376,22 @@ public final class MagnetRingClientEvents {
          */
         @Override
         public boolean isMouseOver(double mouseX, double mouseY) {
-            return this.isMouseActuallyOver(mouseX, mouseY);
+            return this.shouldDisplay()
+                    && mouseX >= this.getX()
+                    && mouseX < this.getX() + BUTTON_SIZE
+                    && mouseY >= this.getY()
+                    && mouseY < this.getY() + BUTTON_SIZE;
         }
         /**
          * 隐藏时禁止点击。
          */
         @Override
         public boolean mouseClicked(double mouseX, double mouseY, int button) {
-            return this.isMouseActuallyOver(mouseX, mouseY)
+            return this.shouldDisplay()
+                    && mouseX >= this.getX()
+                    && mouseX < this.getX() + BUTTON_SIZE
+                    && mouseY >= this.getY()
+                    && mouseY < this.getY() + BUTTON_SIZE
                     && super.mouseClicked(mouseX, mouseY, button);
         }
     }
