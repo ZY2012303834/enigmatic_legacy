@@ -8,7 +8,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.enigmatic_legacy.item.items.EnchanterPearl;
 import org.enigmatic_legacy.util.EnchanterPearlHelper;
-import top.theillusivec4.curios.api.CuriosApi;
 
 public final class EnchanterPearlEvents {
 
@@ -24,7 +23,7 @@ public final class EnchanterPearlEvents {
             return;
         }
 
-        CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+        EnchanterPearlHelper.getCuriosInventory(player).ifPresent(handler -> {
             Multimap<String, AttributeModifier> modifier = createSlotModifier();
             boolean hasModifier = handler.getModifiers().get(EnchanterPearl.EXTRA_CHARM_SLOT)
                     .stream()

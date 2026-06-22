@@ -1,14 +1,9 @@
 package org.enigmatic_legacy.item.items;
 
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -18,7 +13,6 @@ import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.util.CursedRingHelper;
 import org.enigmatic_legacy.util.EnchanterPearlHelper;
 import org.jetbrains.annotations.NotNull;
-import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
@@ -65,33 +59,6 @@ public class EnchanterPearl extends Item implements ICurioItem {
 
         return CursedRingHelper.hasCursedRing(player)
                 && !EnchanterPearlHelper.hasOtherEnchanterPearl(player, context);
-    }
-
-    /**
-     * 佩戴时提供 +1 charm 栏位。
-     * 注意：
-     * Curios 1.21.1 仍可使用这个旧式 slot modifier API。
-     * 后续 Curios 1.21.4+ 才会更强制迁移到 CurioAttributeModifiers。
-     */
-    @Override
-    public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(
-            SlotContext slotContext,
-            ResourceLocation id,
-            ItemStack stack
-    ) {
-        Multimap<Holder<Attribute>, AttributeModifier> attributes = HashMultimap.create();
-
-        if (slotContext.entity() instanceof Player player && CursedRingHelper.hasCursedRing(player)) {
-            CuriosApi.addSlotModifier(
-                    attributes,
-                    EXTRA_CHARM_SLOT,
-                    EXTRA_CHARM_SLOT_ID,
-                    EXTRA_CHARM_SLOT_AMOUNT,
-                    AttributeModifier.Operation.ADD_VALUE
-            );
-        }
-
-        return attributes;
     }
 
     @Override
