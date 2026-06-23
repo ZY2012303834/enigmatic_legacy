@@ -317,7 +317,7 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.angel_blessing.passive.1", "免疫摔落和碰撞伤害。");
         add("tooltip.enigmatic_legacy.angel_blessing.passive.2", "%s 概率反射接近的弹射物。");
         add("tooltip.enigmatic_legacy.angel_blessing.passive.3", "你自己射出的弹射物会被加速。");
-        add("tooltip.enigmatic_legacy.angel_blessing.passive.4", "可以在空中按下空格键激活空中冲刺。");
+        add("tooltip.enigmatic_legacy.angel_blessing.passive.4", "按下术石快捷键可激活主动冲刺。");
         add("tooltip.enigmatic_legacy.angel_blessing.passive.5", "受到的凋零和虚空伤害增加。");
         // end
 

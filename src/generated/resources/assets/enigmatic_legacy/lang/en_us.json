@@ -123,7 +123,7 @@
   "tooltip.enigmatic_legacy.angel_blessing.passive.1": "Immune to fall and collision damage.",
   "tooltip.enigmatic_legacy.angel_blessing.passive.2": "%s chance to reflect nearby projectiles.",
   "tooltip.enigmatic_legacy.angel_blessing.passive.3": "Your own projectiles are accelerated.",
-  "tooltip.enigmatic_legacy.angel_blessing.passive.4": "Press Jump in midair to activate an air dash.",
+  "tooltip.enigmatic_legacy.angel_blessing.passive.4": "Press the spellstone key to activate the dash.",
   "tooltip.enigmatic_legacy.angel_blessing.passive.5": "Wither and void damage taken is increased.",
   "tooltip.enigmatic_legacy.bloodstained_valor_emblem.1": "+%s Attack Damage per missing health percent.",
   "tooltip.enigmatic_legacy.bloodstained_valor_emblem.2": "+%s Attack Speed per missing health percent.",

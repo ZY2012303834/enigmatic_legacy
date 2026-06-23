@@ -123,7 +123,7 @@
   "tooltip.enigmatic_legacy.angel_blessing.passive.1": "免疫摔落和碰撞伤害。",
   "tooltip.enigmatic_legacy.angel_blessing.passive.2": "%s 概率反射接近的弹射物。",
   "tooltip.enigmatic_legacy.angel_blessing.passive.3": "你自己射出的弹射物会被加速。",
-  "tooltip.enigmatic_legacy.angel_blessing.passive.4": "可以在空中按下空格键激活空中冲刺。",
+  "tooltip.enigmatic_legacy.angel_blessing.passive.4": "按下术石快捷键可激活主动冲刺。",
   "tooltip.enigmatic_legacy.angel_blessing.passive.5": "受到的凋零和虚空伤害增加。",
   "tooltip.enigmatic_legacy.bloodstained_valor_emblem.1": "每缺失 1% 生命，获得 +%s 攻击伤害。",
   "tooltip.enigmatic_legacy.bloodstained_valor_emblem.2": "每缺失 1% 生命，获得 +%s 攻击速度。",

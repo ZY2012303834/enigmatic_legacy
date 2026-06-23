@@ -316,7 +316,7 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.angel_blessing.passive.1", "Immune to fall and collision damage.");
         add("tooltip.enigmatic_legacy.angel_blessing.passive.2", "%s chance to reflect nearby projectiles.");
         add("tooltip.enigmatic_legacy.angel_blessing.passive.3", "Your own projectiles are accelerated.");
-        add("tooltip.enigmatic_legacy.angel_blessing.passive.4", "Press Jump in midair to activate an air dash.");
+        add("tooltip.enigmatic_legacy.angel_blessing.passive.4", "Press the spellstone key to activate the dash.");
         add("tooltip.enigmatic_legacy.angel_blessing.passive.5", "Wither and void damage taken is increased.");
         // end
 

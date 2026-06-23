@@ -3,7 +3,6 @@ package org.enigmatic_legacy.client.event;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.LocalPlayer;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
@@ -13,6 +12,8 @@ import org.lwjgl.glfw.GLFW;
 
 /**
  * 术石主动技能客户端按键。
+ * 只允许通过绑定按键触发。
+ * 默认按键：K。
  */
 public final class AngelBlessingClientEvents {
     public static final KeyMapping USE_SPELLSTONE = new KeyMapping(
@@ -21,8 +22,6 @@ public final class AngelBlessingClientEvents {
             GLFW.GLFW_KEY_K,
             "key.categories.enigmatic_legacy"
     );
-
-    private static boolean wasJumpDown;
 
     private AngelBlessingClientEvents() {
     }
@@ -36,23 +35,6 @@ public final class AngelBlessingClientEvents {
         while (USE_SPELLSTONE.consumeClick()) {
             requestUseSpellstone();
         }
-
-        Minecraft minecraft = Minecraft.getInstance();
-        LocalPlayer player = minecraft.player;
-
-        if (player == null) {
-            wasJumpDown = false;
-            return;
-        }
-
-        boolean jumpDown = minecraft.options.keyJump.isDown();
-
-        // 空中按空格触发主动技能。
-        if (jumpDown && !wasJumpDown && !player.onGround() && !player.getAbilities().flying) {
-            requestUseSpellstone();
-        }
-
-        wasJumpDown = jumpDown;
     }
 
     private static void requestUseSpellstone() {
