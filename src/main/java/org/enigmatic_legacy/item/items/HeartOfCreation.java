@@ -43,7 +43,7 @@ public class HeartOfCreation extends Item implements ICurioItem {
      * 主动技能凋零持续时间。
      * 100 tick = 5 秒。
      */
-    public static final int ACTIVE_WITHER_DURATION = 100;
+    public static final int ACTIVE_WITHER_DURATION = 200;
 
     /**
      * 主动技能凋零等级。
