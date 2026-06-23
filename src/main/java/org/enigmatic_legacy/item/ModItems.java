@@ -55,6 +55,9 @@ public final class ModItems {
 
     public static final DeferredItem<TheAcknowledgment> THE_ACKNOWLEDGMENT = ITEMS.register("the_acknowledgment", TheAcknowledgment::new); // 启示之证 / The Acknowledgment
 
+    // 术石
+    public static final DeferredItem<GolemHeart> GOLEM_HEART = ITEMS.register("golem_heart", GolemHeart::new); // 魔像之心
+
 
 
     // 原版名为 storage_crystal，显示名是 Extradimensional Vessel / 超维容器。

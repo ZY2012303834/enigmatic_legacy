@@ -291,6 +291,20 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.the_acknowledgment.shift.2", "The Fourth Curse is weakened by %s.");
         // end
 
+        // 魔像之心
+        addItem(ModItems.GOLEM_HEART, "Heart of the Golem");
+
+        add("tooltip.enigmatic_legacy.spellstone.passive", "Passive Ability:");
+        add("tooltip.enigmatic_legacy.golem_heart.1", "+%s Armor.");
+        add("tooltip.enigmatic_legacy.golem_heart.2", "If you wear no armor:");
+        add("tooltip.enigmatic_legacy.golem_heart.3", "+%s Armor and +%s Armor Toughness.");
+        add("tooltip.enigmatic_legacy.golem_heart.4", "%s Explosion Damage Resistance.");
+        add("tooltip.enigmatic_legacy.golem_heart.5", "%s Melee Damage Resistance.");
+        add("tooltip.enigmatic_legacy.golem_heart.6", "%s Knockback Resistance.");
+        add("tooltip.enigmatic_legacy.golem_heart.7", "Immune to crushing and piercing environmental damage.");
+        add("tooltip.enigmatic_legacy.golem_heart.8", "Magic damage taken is multiplied by %s.");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");
     }

@@ -58,5 +58,6 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(EvilIngotEvents.class);
         NeoForge.EVENT_BUS.register(SoulCrystalEvents.class);
         NeoForge.EVENT_BUS.register(ForbiddenFruitEvents.class);
+        NeoForge.EVENT_BUS.register(GolemHeartEvents.class);
     }
 }

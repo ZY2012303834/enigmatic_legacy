@@ -78,7 +78,46 @@ public class CuriosGenerator implements DataProvider {
         // 生成 curios:charm 标签，让神秘护身符可以放入 charm 栏位。
         futures.add(generateEnigmaticAmuletTag(cachedOutput));
 
+        // 术石
+        futures.add(generateSpellstoneSlotType(cachedOutput));
+        futures.add(generateSpellstoneTag(cachedOutput));
+
         return CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new));
+    }
+
+    private CompletableFuture<?> generateSpellstoneSlotType(CachedOutput cachedOutput) {
+        JsonObject json = new JsonObject();
+
+        json.addProperty("size", 1);
+        json.addProperty("operation", "SET");
+        json.addProperty("order", 130);
+        json.addProperty("icon", "curios:slot/empty_charm_slot");
+
+        Path path = output.getOutputFolder(PackOutput.Target.DATA_PACK)
+                .resolve(EnigmaticLegacy.MODID)
+                .resolve("curios")
+                .resolve("slots")
+                .resolve("spellstone.json");
+
+        return DataProvider.saveStable(cachedOutput, json, path);
+    }
+
+    private CompletableFuture<?> generateSpellstoneTag(CachedOutput cachedOutput) {
+        JsonObject json = new JsonObject();
+        json.addProperty("replace", false);
+
+        JsonArray values = new JsonArray();
+        values.add(EnigmaticLegacy.MODID + ":golem_heart");
+
+        json.add("values", values);
+
+        Path path = output.getOutputFolder(PackOutput.Target.DATA_PACK)
+                .resolve("curios")
+                .resolve("tags")
+                .resolve("item")
+                .resolve("spellstone.json");
+
+        return DataProvider.saveStable(cachedOutput, json, path);
     }
 
     /**
@@ -176,6 +215,7 @@ public class CuriosGenerator implements DataProvider {
         JsonArray slots = new JsonArray();
         slots.add("ring");
         slots.add("charm");
+        slots.add("spellstone");
 
         json.add("entities", entities);
         json.add("slots", slots);

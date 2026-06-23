@@ -91,7 +91,6 @@ public class ConfigCommon {
     // ==============================
     // 怪物猎人勋章配置
     // ==============================
-
     public static final ModConfigSpec.IntValue MONSTER_CHARM_UNDEAD_DAMAGE;
     public static final ModConfigSpec.IntValue MONSTER_CHARM_HOSTILE_DAMAGE;
     public static final ModConfigSpec.BooleanValue MONSTER_CHARM_BONUS_LOOTING_ENABLED;
@@ -100,7 +99,6 @@ public class ConfigCommon {
     // ==============================
     // 猎宝者护符配置
     // ==============================
-
     public static final ModConfigSpec.IntValue TREASURE_HUNTER_CHARM_MINING_SPEED_BONUS;
     public static final ModConfigSpec.BooleanValue TREASURE_HUNTER_CHARM_FORTUNE_ENABLED;
     public static final ModConfigSpec.BooleanValue TREASURE_HUNTER_CHARM_NIGHT_VISION_ENABLED;
@@ -109,7 +107,6 @@ public class ConfigCommon {
     // ==============================
     // 血战沙场之证配置
     // ==============================
-
     public static final ModConfigSpec.DoubleValue BLOODSTAINED_VALOR_ATTACK_DAMAGE;
     public static final ModConfigSpec.DoubleValue BLOODSTAINED_VALOR_ATTACK_SPEED;
     public static final ModConfigSpec.DoubleValue BLOODSTAINED_VALOR_MOVEMENT_SPEED;
@@ -118,8 +115,9 @@ public class ConfigCommon {
     // ==============================
     // 超级海绵配置
     // ==============================
-
     public static final ModConfigSpec.IntValue MEGA_SPONGE_RADIUS;
+
+
 
     static {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
@@ -458,8 +456,6 @@ public class ConfigCommon {
                 .defineInRange("MegaspongeRadius", 4, 0, 128);
 
         builder.pop();
-
-        SPEC = builder.build();
     }
 
     /**
@@ -479,5 +475,56 @@ public class ConfigCommon {
      */
     public static boolean isCursedRingEnabled() {
         return CURSED_RING_ENABLED.get();
+    }
+
+
+    // 魔像之心
+    public static final ModConfigSpec.DoubleValue GOLEM_HEART_DEFAULT_ARMOR_BONUS;
+    public static final ModConfigSpec.DoubleValue GOLEM_HEART_SUPER_ARMOR_BONUS;
+    public static final ModConfigSpec.DoubleValue GOLEM_HEART_SUPER_ARMOR_TOUGHNESS_BONUS;
+    public static final ModConfigSpec.DoubleValue GOLEM_HEART_KNOCKBACK_RESISTANCE;
+    public static final ModConfigSpec.IntValue GOLEM_HEART_MELEE_RESISTANCE;
+    public static final ModConfigSpec.IntValue GOLEM_HEART_EXPLOSION_RESISTANCE;
+    public static final ModConfigSpec.DoubleValue GOLEM_HEART_MAGIC_VULNERABILITY;
+
+    static {
+        ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
+        builder.push("Golem Heart");
+
+        GOLEM_HEART_DEFAULT_ARMOR_BONUS = builder
+                .comment("Armor bonus provided by Heart of the Golem while wearing armor.")
+                .defineInRange("golemHeartDefaultArmorBonus", 4.0D, 0.0D, 20.0D);
+
+        GOLEM_HEART_SUPER_ARMOR_BONUS = builder
+                .comment("Armor bonus provided by Heart of the Golem while wearing no armor.")
+                .defineInRange("golemHeartSuperArmorBonus", 16.0D, 0.0D, 100.0D);
+
+        GOLEM_HEART_SUPER_ARMOR_TOUGHNESS_BONUS = builder
+                .comment("Armor toughness bonus provided by Heart of the Golem while wearing no armor.")
+                .defineInRange("golemHeartSuperArmorToughnessBonus", 4.0D, 0.0D, 20.0D);
+
+        GOLEM_HEART_KNOCKBACK_RESISTANCE = builder
+                .comment("Knockback resistance provided by Heart of the Golem.")
+                .defineInRange("golemHeartKnockbackResistance", 0.9D, 0.0D, 1.0D);
+
+        GOLEM_HEART_MELEE_RESISTANCE = builder
+                .comment("Melee damage resistance percentage provided by Heart of the Golem.")
+                .defineInRange("golemHeartMeleeResistance", 25, 0, 100);
+
+        GOLEM_HEART_EXPLOSION_RESISTANCE = builder
+                .comment("Explosion damage resistance percentage provided by Heart of the Golem while wearing no armor.")
+                .defineInRange("golemHeartExplosionResistance", 40, 0, 100);
+
+        GOLEM_HEART_MAGIC_VULNERABILITY = builder
+                .comment("Magic damage multiplier applied by Heart of the Golem.")
+                .defineInRange("golemHeartMagicVulnerability", 2.0D, 1.0D, 20.0D);
+
+        builder.pop();
+    }
+    // end
+
+    static {
+        ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
+        SPEC = builder.build();
     }
 }

@@ -292,6 +292,20 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.the_acknowledgment.shift.2", "第四诅咒削弱 %s。");
         // end
 
+        // 魔像之心
+        addItem(ModItems.GOLEM_HEART, "魔像之心");
+
+        add("tooltip.enigmatic_legacy.spellstone.passive", "被动能力：");
+        add("tooltip.enigmatic_legacy.golem_heart.1", "+%s 护甲。");
+        add("tooltip.enigmatic_legacy.golem_heart.2", "如果你没有穿戴任何护甲：");
+        add("tooltip.enigmatic_legacy.golem_heart.3", "+%s 护甲与 +%s 护甲韧性。");
+        add("tooltip.enigmatic_legacy.golem_heart.4", "%s 爆炸伤害抗性。");
+        add("tooltip.enigmatic_legacy.golem_heart.5", "%s 近战伤害抗性。");
+        add("tooltip.enigmatic_legacy.golem_heart.6", "%s 击退抗性。");
+        add("tooltip.enigmatic_legacy.golem_heart.7", "免疫挤压、窒息、仙人掌与钟乳石刺伤害。");
+        add("tooltip.enigmatic_legacy.golem_heart.8", "受到的魔法伤害变为 %s 倍。");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5按住 §6Shift§5 查看详情。");
     }

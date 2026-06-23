@@ -4,10 +4,10 @@
   "package": "org.enigmatic_legacy.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "MixinEnchantmentMenu"
+    "MixinEnchantmentMenu",
+    "MixinPoisonMobEffect"
   ],
-  "client": [
-  ],
+  "client": [],
   "injectors": {
     "defaultRequire": 1
   },

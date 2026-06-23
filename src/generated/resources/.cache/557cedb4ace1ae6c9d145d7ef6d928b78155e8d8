@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-22T23:19:47.7962427	vanilla/Item Models: enigmatic_legacy
+// 1.21.1	2026-06-23T08:47:27.0501928	vanilla/Item Models: enigmatic_legacy
 71ad4196d7e8a842e7122ea637f5096bd1de67b7 assets/enigmatic_legacy/models/item/astral_dust.json
 883d3ab1336b5915dde7ab6fc667910b9222b43a assets/enigmatic_legacy/models/item/bloodstained_valor_emblem.json
 a800b4eb7375f1b97f96baff0737b577c9df02a5 assets/enigmatic_legacy/models/item/cosmic_heart.json
@@ -27,6 +27,7 @@ bdc03bfeb7cbc98752a6b9cc2a2e847293499d31 assets/enigmatic_legacy/models/item/eth
 d4e1214ce79dce9e287d896be997bc5972536f9c assets/enigmatic_legacy/models/item/evil_ingot.json
 80d748a10f665cee5974ba983025fc2176616d98 assets/enigmatic_legacy/models/item/forbidden_fruit.json
 d04fe019984814a8c097b8309d6aafc20e399370 assets/enigmatic_legacy/models/item/golden_ring.json
+7c7aed17b6411d420dfbe89f0bc430ba6504abd2 assets/enigmatic_legacy/models/item/golem_heart.json
 df0aa91084051dacbbb39f169cedffe05c4dc426 assets/enigmatic_legacy/models/item/guardian_heart.json
 e9b89a174a55e8ae199acedfccbc959497d7b814 assets/enigmatic_legacy/models/item/iron_ring.json
 605ecdfd8e7c0a82ef87dabbff6105e8320fb367 assets/enigmatic_legacy/models/item/magnet_ring.json

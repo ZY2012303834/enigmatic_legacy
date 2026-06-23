@@ -515,6 +515,26 @@ public class PatchouliBookGenerator implements DataProvider {
                 )
         )));
 
+        futures.add(save(output, "en_us", "entries/relics/golem_heart", entry(
+                "Heart of the Golem",
+                "relics",
+                "enigmatic_legacy:golem_heart",
+                2,
+                spotlightPage(
+                        "enigmatic_legacy:golem_heart",
+                        "Heart of the Golem",
+                        "A spellstone that makes its bearer as sturdy as an iron golem, at the cost of greater vulnerability to magic."
+                ),
+                textPage(
+                        "Stone Skin",
+                        "It grants armor and knockback resistance. If worn without armor, it grants stronger armor, armor toughness, and explosion resistance."
+                ),
+                textPage(
+                        "Magical Weakness",
+                        "Magic damage is amplified. Effects such as Poison, which normally cannot kill, can become lethal while this spellstone is worn."
+                )
+        )));
+
         futures.add(save(output, "en_us", "entries/relics/unwitnessed_amulet", entry(
                 "Unwitnessed Amulet",
                 "relics",
@@ -678,6 +698,26 @@ public class PatchouliBookGenerator implements DataProvider {
                 textPage(
                         "苏醒之视",
                         "佩戴已唤醒的全知之眼时，会额外提供一个护符栏位，并提高方块交互距离。它也可能让观察者发声。"
+                )
+        )));
+
+        futures.add(save(output, "zh_cn", "entries/relics/golem_heart", entry(
+                "魔像之心",
+                "relics",
+                "enigmatic_legacy:golem_heart",
+                2,
+                spotlightPage(
+                        "enigmatic_legacy:golem_heart",
+                        "魔像之心",
+                        "一种术石。它让佩戴者变得如铁魔像般坚硬，但也让魔法伤害变得更加危险。"
+                ),
+                textPage(
+                        "石肤",
+                        "佩戴时提供护甲和击退抗性；未穿护甲时会获得更强的护甲、护甲韧性与爆炸抗性。"
+                ),
+                textPage(
+                        "魔法易伤",
+                        "魔法伤害会被放大。中毒等原本不能杀死玩家的效果，在魔像之心的影响下可以继续造成致命伤害。"
                 )
         )));
 

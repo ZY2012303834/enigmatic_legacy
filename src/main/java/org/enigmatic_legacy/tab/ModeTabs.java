@@ -67,6 +67,7 @@ public final class ModeTabs {
                         output.accept(ModItems.ENCHANTER_PEARL.get());
                         output.accept(ModItems.ENIGMATIC_EYE.get());
                         output.accept(ModItems.THE_ACKNOWLEDGMENT.get());
+                        output.accept(ModItems.GOLEM_HEART.get());
                     })
                     .build());
 
