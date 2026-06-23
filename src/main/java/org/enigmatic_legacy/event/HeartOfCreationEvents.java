@@ -123,6 +123,13 @@ public final class HeartOfCreationEvents {
      * 不朽效果：
      * 装备创造之心，或物品栏内有创造之心时，
      * 任何伤害最多只会把生命降到 1 点。
+
+     * 重要：
+     * 这里不再用 event.setNewDamage(health - 1) 等待系统结算，
+     * 而是直接取消伤害并把血量设置为 1。
+
+     * 这样客户端血条会立刻显示到 1 点，
+     * 保护触发效果会明显很多。
      */
     @SubscribeEvent
     public static void onLivingDamage(LivingDamageEvent.Pre event) {
@@ -140,23 +147,20 @@ public final class HeartOfCreationEvents {
 
         float health = target.getHealth();
 
-        // 如果这次伤害不会致命，正常结算。
+        // 这次伤害不会把生命压到 1 点以下，正常结算。
         if (health - damage > 1.0F) {
             return;
         }
 
-        // 如果当前生命高于 1，则把伤害压到刚好剩 1 点。
-        if (health > 1.0F) {
-            event.setNewDamage(Math.max(0.0F, health - 1.0F));
-            playImmortalFeedback(target);
-            return;
-        }
-
-        // 不朽触发：任何致命伤害都直接压到 1 点血，并取消本次伤害。
-        // 这样血量栏会稳定出现“掉到 1 点”的视觉反馈。
+        // 创造之心不朽触发：
+        // 直接取消本次伤害，并把血量强制设置为 1。
         event.setNewDamage(0.0F);
         target.setHealth(1.0F);
+
+        // 给一点无敌帧，避免连续伤害同 tick 反复触发。
         target.invulnerableTime = Math.max(target.invulnerableTime, 10);
+
+        // 播放保护音效、受击动画、血条同步。
         playImmortalFeedback(target);
     }
 
@@ -247,10 +251,10 @@ public final class HeartOfCreationEvents {
      * 创造之心不朽触发反馈。
 
      * 效果：
-     * 1. 使用原作者资源里的 misc.shield_trigger 音效；
-     * 2. 强制血量同步到客户端，让血量栏立刻显示到 1 点；
-     * 3. 设置 hurtTime / hurtDuration，让屏幕和血量栏有原版受击闪烁感；
-     * 4. 不使用 PLAYER_HURT，避免听起来像普通挨打，而是更像护盾触发。
+     * 1. 播放原作者 shield_trigger 音效；
+     * 2. 强制同步 1 点血到客户端；
+     * 3. 触发受击动画，让血条/屏幕有保护触发反馈；
+     * 4. 发送一次实体受击事件，增强视觉反馈。
      */
     private static void playImmortalFeedback(LivingEntity entity) {
         entity.level().playSound(
@@ -262,19 +266,24 @@ public final class HeartOfCreationEvents {
                 0.85F + entity.getRandom().nextFloat() * 0.2F
         );
 
-        // 触发原版受击动画/红闪反馈。
+        // 原版受击动画/红闪反馈。
         entity.hurtTime = Math.max(entity.hurtTime, 10);
         entity.hurtDuration = Math.max(entity.hurtDuration, 10);
         entity.invulnerableTime = Math.max(entity.invulnerableTime, 10);
 
+        // 广播受击事件，客户端会播放实体受击反馈。
+        entity.level().broadcastEntityEvent(entity, (byte) 2);
+
         /*
-         * 如果是玩家，强制同步血量包。
-         * 这样“不朽把血量压到 1 点”时，客户端血量栏会立即刷新，
-         * 视觉上更接近原作者那种状态栏变化反馈。
+         * 玩家血条同步。
+         *
+         * 这里必须发送 1.0F，而不是 player.getHealth() 的旧值。
+         * 因为我们已经在 onLivingDamage 里 setHealth(1.0F)，
+         * 但为了让 HUD 立即刷新，再手动发一次血量包。
          */
         if (entity instanceof ServerPlayer player) {
             player.connection.send(new ClientboundSetHealthPacket(
-                    player.getHealth(),
+                    1.0F,
                     player.getFoodData().getFoodLevel(),
                     player.getFoodData().getSaturationLevel()
             ));

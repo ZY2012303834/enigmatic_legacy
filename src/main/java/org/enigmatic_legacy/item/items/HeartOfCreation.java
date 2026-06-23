@@ -163,20 +163,32 @@ public class HeartOfCreation extends Item implements ICurioItem {
 
      * 主动效果：
      * 对范围内所有敌人降下视觉闪电；
+     * 播放雷电音效；
      * 造成配置伤害；
      * 附加凋零 III。
      */
     private static void strikeTarget(ServerLevel level, ServerPlayer player, LivingEntity target, float damage) {
-        // 原作者创造之心主动技能音效：凋灵发射音效。
-        level.levelEvent(null, 1024, target.blockPosition(), 0);
-
         LightningBolt lightning = EntityType.LIGHTNING_BOLT.create(level);
 
         if (lightning != null) {
             lightning.moveTo(target.getX(), target.getY(), target.getZ());
+
+            // 只保留视觉闪电，避免原版闪电额外点火或造成额外不可控伤害。
             lightning.setVisualOnly(true);
+
             level.addFreshEntity(lightning);
         }
+
+        // 主动技能音效改为雷电音效。
+        // 每个被命中的敌人位置都会播放一次雷击冲击声。
+        level.playSound(
+                null,
+                target.blockPosition(),
+                SoundEvents.LIGHTNING_BOLT_IMPACT,
+                SoundSource.WEATHER,
+                1.5F,
+                0.9F + target.getRandom().nextFloat() * 0.2F
+        );
 
         // 配置伤害，默认 10。
         target.hurt(player.damageSources().lightningBolt(), damage);
