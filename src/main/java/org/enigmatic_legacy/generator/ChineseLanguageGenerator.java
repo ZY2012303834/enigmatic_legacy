@@ -379,6 +379,20 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.eye_of_nebula.passive.6", "当你在水中时，受到的所有伤害翻倍。");
         // end
 
+        // 虚空珍珠
+        addItem(ModItems.VOID_PEARL, "虚空珍珠");
+
+        add("tooltip.enigmatic_legacy.void_pearl.passive.1", "不再需要呼吸空气，并免疫溺水伤害。");
+        add("tooltip.enigmatic_legacy.void_pearl.passive.2", "免疫绝大多数状态效果，但禁忌之果等特殊效果除外。");
+        add("tooltip.enigmatic_legacy.void_pearl.passive.3", "你的攻击会使目标凋零。");
+        add("tooltip.enigmatic_legacy.void_pearl.passive.4", "每 0.5 秒，对 %s 格内暴露在黑暗中的生物造成 %s 点虚空伤害，并施加严重负面效果。");
+        add("tooltip.enigmatic_legacy.void_pearl.passive.5", "受到致命伤害时，有 %s 概率抵挡死亡。");
+        add("tooltip.enigmatic_legacy.void_pearl.passive.6", "每 tick 熄灭自身火焰，并免疫墙内窒息伤害。");
+
+        add("death.attack.enigmatic_legacy.darkness", "%1$s 被黑暗吞噬了");
+        add("death.attack.enigmatic_legacy.darkness.player", "%1$s 被 %2$s 身边的虚空黑暗吞噬了");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5按住 §6Shift§5 查看详情。");
 

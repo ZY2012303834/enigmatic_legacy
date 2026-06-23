@@ -46,6 +46,7 @@ public class EnigmaticLegacy {
         modEventBus.addListener(DamageTagGenerator::gatherData);
         modEventBus.addListener(AngelBlessingLootTableGenerator::gatherData);
         modEventBus.addListener(AngelBlessingLootModifierGenerator::gatherData);
+        modEventBus.addListener(DamageTypeGenerator::gatherData);
 
         NeoForge.EVENT_BUS.register(MonsterCharmEvents.class);
         NeoForge.EVENT_BUS.register(EnchanterPearlEvents.class);
@@ -67,5 +68,7 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(OceanStoneEvents.class);
         NeoForge.EVENT_BUS.register(BlazingCoreEvents.class);
         NeoForge.EVENT_BUS.register(EyeOfNebulaEvents.class);
+        NeoForge.EVENT_BUS.register(PearlOfTheVoidEvents.class);
+
     }
 }

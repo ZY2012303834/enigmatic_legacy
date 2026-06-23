@@ -6,6 +6,8 @@
   "book.enigmatic_legacy.landing_text": "The vast lands lie ahead of you, full of secrets and mysteries to uncover.",
   "button.enigmatic_legacy.open_ender_chest": "Open Ender Chest",
   "curios.identifier.spellstone": "Spellstone",
+  "death.attack.enigmatic_legacy.darkness": "%1$s was devoured by darkness",
+  "death.attack.enigmatic_legacy.darkness.player": "%1$s was devoured by the void darkness around %2$s",
   "effect.enigmatic_legacy.forbidden_fruit": "§5The Forbidden Fruit",
   "effect.enigmatic_legacy.recall": "Recall",
   "gui.enigmatic_legacy.magnet_control.tooltip.disabled": "%s is disabled. Click to enable.",
@@ -55,6 +57,7 @@
   "item.enigmatic_legacy.twisted_mirror": "Twisted Mirror",
   "item.enigmatic_legacy.unholy_grail": "Unholy Grail",
   "item.enigmatic_legacy.unwitnessed_amulet": "Unwitnessed Amulet",
+  "item.enigmatic_legacy.void_pearl": "Pearl of the Void",
   "item.minecraft.lingering_potion.effect.recall": "Lingering Potion of Recall",
   "item.minecraft.potion.effect.recall": "Potion of Recall",
   "item.minecraft.splash_potion.effect.recall": "Splash Potion of Recall",
@@ -279,5 +282,11 @@
   "tooltip.enigmatic_legacy.unwitnessed_amulet.2": "It waits to be claimed by a mortal soul.",
   "tooltip.enigmatic_legacy.unwitnessed_amulet.3": "Right-click to reveal its true color.",
   "tooltip.enigmatic_legacy.unwitnessed_amulet.use": "Right-click to witness it.",
-  "tooltip.enigmatic_legacy.void": " "
+  "tooltip.enigmatic_legacy.void": " ",
+  "tooltip.enigmatic_legacy.void_pearl.passive.1": "You no longer need to breathe air and become immune to drowning damage.",
+  "tooltip.enigmatic_legacy.void_pearl.passive.2": "Removes almost all status effects, except special effects such as Forbidden Fruit.",
+  "tooltip.enigmatic_legacy.void_pearl.passive.3": "Your attacks inflict Wither.",
+  "tooltip.enigmatic_legacy.void_pearl.passive.4": "Every 0.5 seconds, creatures exposed to darkness within %s blocks take %s void damage and suffer severe debuffs.",
+  "tooltip.enigmatic_legacy.void_pearl.passive.5": "Has a %s chance to block fatal damage.",
+  "tooltip.enigmatic_legacy.void_pearl.passive.6": "Extinguishes you every tick and prevents suffocation damage inside blocks."
 }

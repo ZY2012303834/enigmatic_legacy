@@ -7,9 +7,11 @@ import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.damagesource.DamageTypes;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import org.enigmatic_legacy.EnigmaticLegacy;
+import org.enigmatic_legacy.damage.ModDamageTypes;
 import org.enigmatic_legacy.tag.ModDamageTags;
 import org.jetbrains.annotations.NotNull;
 
@@ -45,6 +47,19 @@ public class DamageTagGenerator extends TagsProvider<DamageType> {
         tag(ModDamageTags.ANGEL_BLESSING_VULNERABLE_TO)
                 .add(DamageTypes.WITHER)
                 .add(DamageTypes.FELL_OUT_OF_WORLD);
+
+        // 虚空珍珠黑暗光环伤害：无视护甲。
+        // 这里必须用 addOptional，否则 runData 阶段会因为自定义 DamageType 尚未进入 lookup 而报 missing references。
+        tag(DamageTypeTags.BYPASSES_ARMOR)
+                .addOptional(ModDamageTypes.DARKNESS.location());
+
+        // 虚空珍珠黑暗光环伤害：无视盾牌。
+        tag(DamageTypeTags.BYPASSES_SHIELD)
+                .addOptional(ModDamageTypes.DARKNESS.location());
+
+        // 虚空珍珠黑暗光环伤害：标记为魔法伤害，方便你其他魔法抗性/魔法增伤逻辑识别。
+        tag(Tags.DamageTypes.IS_MAGIC)
+                .addOptional(ModDamageTypes.DARKNESS.location());
     }
 
     @Override

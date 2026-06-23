@@ -378,6 +378,20 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.eye_of_nebula.passive.6", "While in water, all damage taken is doubled.");
         // end
 
+        // 虚空珍珠
+        addItem(ModItems.VOID_PEARL, "Pearl of the Void");
+
+        add("tooltip.enigmatic_legacy.void_pearl.passive.1", "You no longer need to breathe air and become immune to drowning damage.");
+        add("tooltip.enigmatic_legacy.void_pearl.passive.2", "Removes almost all status effects, except special effects such as Forbidden Fruit.");
+        add("tooltip.enigmatic_legacy.void_pearl.passive.3", "Your attacks inflict Wither.");
+        add("tooltip.enigmatic_legacy.void_pearl.passive.4", "Every 0.5 seconds, creatures exposed to darkness within %s blocks take %s void damage and suffer severe debuffs.");
+        add("tooltip.enigmatic_legacy.void_pearl.passive.5", "Has a %s chance to block fatal damage.");
+        add("tooltip.enigmatic_legacy.void_pearl.passive.6", "Extinguishes you every tick and prevents suffocation damage inside blocks.");
+
+        add("death.attack.enigmatic_legacy.darkness", "%1$s was devoured by darkness");
+        add("death.attack.enigmatic_legacy.darkness.player", "%1$s was devoured by the void darkness around %2$s");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");
     }

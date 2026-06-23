@@ -81,6 +81,7 @@ public class ItemGenerator extends ItemModelProvider {
         basicItem(ModItems.OCEAN_STONE.getId());
         basicItem(ModItems.BLAZING_CORE.getId());   // 烈焰之核
         basicItem(ModItems.EYE_OF_NEBULA.getId()); // 星云之眼
+        basicItem(ModItems.VOID_PEARL.getId()); // 虚空珍珠
 
     }
 

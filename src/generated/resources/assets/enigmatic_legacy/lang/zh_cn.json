@@ -6,6 +6,8 @@
   "book.enigmatic_legacy.landing_text": "辽阔的土地在你面前延展，等待你揭开被遗忘的秘密与神秘遗物。",
   "button.enigmatic_legacy.open_ender_chest": "打开末影箱",
   "curios.identifier.spellstone": "术石",
+  "death.attack.enigmatic_legacy.darkness": "%1$s 被黑暗吞噬了",
+  "death.attack.enigmatic_legacy.darkness.player": "%1$s 被 %2$s 身边的虚空黑暗吞噬了",
   "effect.enigmatic_legacy.forbidden_fruit": "§5禁忌之果",
   "effect.enigmatic_legacy.recall": "召回",
   "gui.enigmatic_legacy.magnet_control.tooltip.disabled": "%s当前已关闭。点击开启。",
@@ -55,6 +57,7 @@
   "item.enigmatic_legacy.twisted_mirror": "扭曲魔镜",
   "item.enigmatic_legacy.unholy_grail": "不洁圣杯",
   "item.enigmatic_legacy.unwitnessed_amulet": "无主护身符",
+  "item.enigmatic_legacy.void_pearl": "虚空珍珠",
   "item.minecraft.lingering_potion.effect.recall": "滞留型召回药水",
   "item.minecraft.potion.effect.recall": "召回药水",
   "item.minecraft.splash_potion.effect.recall": "喷溅型召回药水",
@@ -279,5 +282,11 @@
   "tooltip.enigmatic_legacy.unwitnessed_amulet.2": "它静候某个凡俗灵魂将其认领。",
   "tooltip.enigmatic_legacy.unwitnessed_amulet.3": "右击后，它将显露真正的颜色。",
   "tooltip.enigmatic_legacy.unwitnessed_amulet.use": "右击以见证它。",
-  "tooltip.enigmatic_legacy.void": ""
+  "tooltip.enigmatic_legacy.void": "",
+  "tooltip.enigmatic_legacy.void_pearl.passive.1": "不再需要呼吸空气，并免疫溺水伤害。",
+  "tooltip.enigmatic_legacy.void_pearl.passive.2": "免疫绝大多数状态效果，但禁忌之果等特殊效果除外。",
+  "tooltip.enigmatic_legacy.void_pearl.passive.3": "你的攻击会使目标凋零。",
+  "tooltip.enigmatic_legacy.void_pearl.passive.4": "每 0.5 秒，对 %s 格内暴露在黑暗中的生物造成 %s 点虚空伤害，并施加严重负面效果。",
+  "tooltip.enigmatic_legacy.void_pearl.passive.5": "受到致命伤害时，有 %s 概率抵挡死亡。",
+  "tooltip.enigmatic_legacy.void_pearl.passive.6": "每 tick 熄灭自身火焰，并免疫墙内窒息伤害。"
 }

@@ -1,3 +1,6 @@
-// 1.21.1	2026-06-23T11:23:11.861656	Enigmatic Legacy Damage Type Tags
+// 1.21.1	2026-06-23T17:17:08.9160038	Enigmatic Legacy Damage Type Tags
 33e93dc4a81a4553a4693ca2d062179c2a9f973d data/enigmatic_legacy/tags/damage_type/spellstone/angel_blessing/immune_to.json
 2e3e13f254621dc994235c8b3be78a025d40df97 data/enigmatic_legacy/tags/damage_type/spellstone/angel_blessing/vulnerable_to.json
+9135743915da500599769de6035e65ac1ba82cf2 data/minecraft/tags/damage_type/bypasses_armor.json
+9135743915da500599769de6035e65ac1ba82cf2 data/minecraft/tags/damage_type/bypasses_shield.json
+9135743915da500599769de6035e65ac1ba82cf2 data/neoforge/tags/damage_type/is_magic.json

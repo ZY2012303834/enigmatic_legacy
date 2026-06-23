@@ -1,0 +1,344 @@
+package org.enigmatic_legacy.event;
+
+import net.minecraft.core.Holder;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.phys.AABB;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
+import net.neoforged.neoforge.event.tick.EntityTickEvent;
+import org.enigmatic_legacy.damage.ModDamageTypes;
+import org.enigmatic_legacy.item.items.PearlOfTheVoid;
+import org.enigmatic_legacy.potion.ModEffects;
+import org.enigmatic_legacy.util.PearlOfTheVoidHelper;
+import org.enigmatic_legacy.util.TreasureHunterCharmHelper;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 虚空珍珠事件逻辑。
+
+ * 这里处理所有被动效果：
+ * 1. 不再需要呼吸空气；
+ * 2. 免疫溺水伤害；
+ * 3. 免疫墙内窒息伤害；
+ * 4. 每 tick 熄灭身上的火；
+ * 5. 下一 tick 清除绝大多数状态效果；
+ * 6. 攻击附加凋零；
+ * 7. 黑暗光环；
+ * 8. 35% 概率抵挡致命伤害。
+ */
+public final class PearlOfTheVoidEvents {
+    private PearlOfTheVoidEvents() {
+    }
+
+    /**
+     * 每 tick 处理常驻被动：
+     * - 氧气补满；
+     * - 清火；
+     * - 清除状态效果；
+     * - 每 10 tick 扫描黑暗中的附近生物。
+     */
+    @SubscribeEvent
+    public static void onEntityTick(EntityTickEvent.Post event) {
+        if (!(event.getEntity() instanceof LivingEntity bearer)) {
+            return;
+        }
+
+        if (bearer.level().isClientSide()) {
+            return;
+        }
+
+        if (!PearlOfTheVoidHelper.hasPearlOfTheVoid(bearer)) {
+            return;
+        }
+
+        // 不再需要呼吸空气：每 tick 把氧气条补满。
+        bearer.setAirSupply(bearer.getMaxAirSupply());
+
+        // 未写明效果：每 tick 熄灭玩家身上的火焰。
+        if (bearer.isOnFire()) {
+            bearer.clearFire();
+        }
+
+        // 免疫任何状态效果：
+        // 原版思路不是阻止添加，而是下一 tick 立刻清理。
+        removeForbiddenEffects(bearer);
+
+        // 黑暗光环每 10 tick，也就是 0.5 秒，触发一次。
+        if (bearer.tickCount % PearlOfTheVoid.DARKNESS_INTERVAL_TICKS == 0) {
+            applyDarknessAura(bearer);
+        }
+    }
+
+    /**
+     * IncomingDamage 阶段可以直接取消伤害。
+
+     * 用于：
+     * 1. 免疫溺水伤害；
+     * 2. 免疫墙内窒息伤害。
+     */
+    @SubscribeEvent
+    public static void onIncomingDamage(LivingIncomingDamageEvent event) {
+        LivingEntity target = event.getEntity();
+
+        if (!PearlOfTheVoidHelper.hasPearlOfTheVoid(target)) {
+            return;
+        }
+
+        DamageSource source = event.getSource();
+
+        // 不再需要呼吸空气：同时取消原版溺水伤害。
+        if (source.is(DamageTypes.DROWN)) {
+            event.setCanceled(true);
+            return;
+        }
+
+        // 未写明效果：免疫墙内窒息伤害。
+        if (source.is(DamageTypes.IN_WALL)) {
+            event.setCanceled(true);
+        }
+    }
+
+    /**
+     * LivingDamageEvent.Pre 可以修改最终伤害。
+
+     * 用于：
+     * 1. 攻击附加凋零；
+     * 2. 35% 概率抵挡致命伤害。
+     */
+    @SubscribeEvent
+    public static void onLivingDamage(LivingDamageEvent.Pre event) {
+        LivingEntity target = event.getEntity();
+        DamageSource source = event.getSource();
+        float damage = event.getNewDamage();
+
+        /*
+         * 佩戴者攻击会造成凋零。
+         *
+         * 注意：
+         * 这里不直接增加伤害，只给目标附加凋零效果。
+         * 所以力量、暴击、锋利等普通伤害系统不会影响这个附加效果。
+         */
+        if (source.getEntity() instanceof LivingEntity attacker
+                && attacker != target
+                && PearlOfTheVoidHelper.hasPearlOfTheVoid(attacker)
+                && damage > 0.0F) {
+
+            target.addEffect(new MobEffectInstance(
+                    MobEffects.WITHER,
+                    PearlOfTheVoid.ATTACK_WITHER_DURATION,
+                    PearlOfTheVoid.ATTACK_WITHER_AMPLIFIER
+            ), attacker);
+        }
+
+        /*
+         * 35% 概率抵挡致命伤害。
+         *
+         * 这里在最终伤害阶段判断：
+         * 如果本次伤害会让佩戴者死亡，就有 35% 概率把伤害改成 0。
+         */
+        if (PearlOfTheVoidHelper.hasPearlOfTheVoid(target)
+                && isFatalDamage(target, damage)
+                && canBlockFatalDamage(source)
+                && target.getRandom().nextInt(100) < PearlOfTheVoid.DEATH_PROTECTION_CHANCE) {
+
+            event.setNewDamage(0.0F);
+
+            // 保险：确保血量至少为 1，避免某些模组同时处理伤害导致死亡。
+            if (target.getHealth() < 1.0F) {
+                target.setHealth(1.0F);
+            }
+
+            // 给一点无敌帧，避免同一瞬间连续伤害立刻击杀。
+            target.invulnerableTime = Math.max(target.invulnerableTime, 20);
+        }
+    }
+
+    /**
+     * 判断本次伤害是否足以致命。
+     */
+    private static boolean isFatalDamage(LivingEntity target, float damage) {
+        return damage >= target.getHealth();
+    }
+
+    /**
+     * 判断致命伤害是否可以被虚空珍珠抵挡。
+
+     * 这里不抵挡掉出世界伤害。
+     * 否则虚空、kill 指令、某些强制死亡逻辑会变得很怪。
+     */
+    private static boolean canBlockFatalDamage(DamageSource source) {
+        return !source.is(DamageTypes.FELL_OUT_OF_WORLD);
+    }
+
+    /**
+     * 清除佩戴者身上的状态效果。
+
+     * 保留例外：
+     * 1. 禁忌之果的隐藏同步效果；
+     * 2. 猎宝者护符提供的夜视。
+     */
+    private static void removeForbiddenEffects(LivingEntity entity) {
+        List<Holder<MobEffect>> effectsToRemove = new ArrayList<>();
+
+        for (MobEffectInstance instance : entity.getActiveEffects()) {
+            if (!shouldKeepEffect(entity, instance)) {
+                effectsToRemove.add(instance.getEffect());
+            }
+        }
+
+        for (Holder<MobEffect> effect : effectsToRemove) {
+            entity.removeEffect(effect);
+        }
+    }
+
+    /**
+     * 判断某个效果是否不应该被虚空珍珠清理。
+     */
+    private static boolean shouldKeepEffect(LivingEntity entity, MobEffectInstance instance) {
+        // 禁忌之果的永久标记效果不能清，否则禁忌之果逻辑会被破坏。
+        if (instance.is(ModEffects.FORBIDDEN_FRUIT)) {
+            return true;
+        }
+
+        /*
+         * 猎宝者护符的夜视不清。
+         *
+         * 这里保持和你的 TreasureHunterCharmEvents 兼容：
+         * 玩家佩戴猎宝者护符时，夜视效果可以保留。
+         */
+        if (entity instanceof Player player
+                && instance.is(MobEffects.NIGHT_VISION)
+                && TreasureHunterCharmHelper.hasTreasureHunterCharm(player)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * 黑暗光环：
+     * 每 0.5 秒扫描 16 格内生物。
+
+     * 条件：
+     * 1. 目标不是佩戴者自己；
+     * 2. 目标存活；
+     * 3. 目标不是同样佩戴虚空珍珠的玩家；
+     * 4. 目标所在位置亮度 < 3，或者目标是未着火的幻翼。
+     */
+    private static void applyDarknessAura(LivingEntity bearer) {
+        if (!(bearer.level() instanceof ServerLevel level)) {
+            return;
+        }
+
+        AABB area = bearer.getBoundingBox().inflate(PearlOfTheVoid.DARKNESS_RANGE);
+
+        List<LivingEntity> targets = level.getEntitiesOfClass(
+                LivingEntity.class,
+                area,
+                target -> canDarknessAuraAffect(bearer, target)
+        );
+
+        for (LivingEntity target : targets) {
+            if (!isExposedToDarkness(level, target)) {
+                continue;
+            }
+
+            // 自定义 DARKNESS 伤害源。
+            // 伤害类型本身会通过数据生成器加入 BYPASSES_ARMOR 标签，从而无视护甲。
+            target.hurt(
+                    ModDamageTypes.darkness(level, bearer),
+                    PearlOfTheVoid.DARKNESS_DAMAGE
+            );
+
+            // 附加严重负面效果。
+            applyDarknessEffects(target, bearer);
+        }
+    }
+
+    /**
+     * 判断黑暗光环是否可以影响目标。
+     */
+    private static boolean canDarknessAuraAffect(LivingEntity bearer, LivingEntity target) {
+        if (target == bearer) {
+            return false;
+        }
+
+        if (!target.isAlive()) {
+            return false;
+        }
+
+        /*
+         * 同样佩戴虚空珍珠的玩家除外。
+         * 这里按你的描述只排除玩家，避免其他可穿戴实体出现奇怪兼容问题。
+         */
+        if (target instanceof Player && PearlOfTheVoidHelper.hasPearlOfTheVoid(target)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * 判断目标是否暴露在黑暗中。
+
+     * 普通生物：
+     * - 所在位置综合亮度 < 3。
+
+     * 幻翼：
+     * - 如果没有着火，忽略天空光照等级，直接受到影响。
+     */
+    private static boolean isExposedToDarkness(ServerLevel level, LivingEntity target) {
+        // 文本提到的“飞行生物”实测按幻翼处理。
+        if (target.getType() == EntityType.PHANTOM && !target.isOnFire()) {
+            return true;
+        }
+
+        return level.getMaxLocalRawBrightness(target.blockPosition()) < 3;
+    }
+
+    /**
+     * 给黑暗光环目标附加负面效果。
+     */
+    private static void applyDarknessEffects(LivingEntity target, LivingEntity source) {
+        target.addEffect(new MobEffectInstance(
+                MobEffects.WITHER,
+                PearlOfTheVoid.AURA_WITHER_DURATION,
+                PearlOfTheVoid.AURA_WITHER_AMPLIFIER
+        ), source);
+
+        target.addEffect(new MobEffectInstance(
+                MobEffects.MOVEMENT_SLOWDOWN,
+                PearlOfTheVoid.AURA_SLOWNESS_DURATION,
+                PearlOfTheVoid.AURA_SLOWNESS_AMPLIFIER
+        ), source);
+
+        target.addEffect(new MobEffectInstance(
+                MobEffects.BLINDNESS,
+                PearlOfTheVoid.AURA_BLINDNESS_DURATION,
+                PearlOfTheVoid.AURA_BLINDNESS_AMPLIFIER
+        ), source);
+
+        target.addEffect(new MobEffectInstance(
+                MobEffects.HUNGER,
+                PearlOfTheVoid.AURA_HUNGER_DURATION,
+                PearlOfTheVoid.AURA_HUNGER_AMPLIFIER
+        ), source);
+
+        target.addEffect(new MobEffectInstance(
+                MobEffects.DIG_SLOWDOWN,
+                PearlOfTheVoid.AURA_MINING_FATIGUE_DURATION,
+                PearlOfTheVoid.AURA_MINING_FATIGUE_AMPLIFIER
+        ), source);
+    }
+}
