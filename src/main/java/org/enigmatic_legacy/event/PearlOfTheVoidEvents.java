@@ -2,6 +2,7 @@ package org.enigmatic_legacy.event;
 
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffect;
@@ -41,37 +42,45 @@ public final class PearlOfTheVoidEvents {
     private PearlOfTheVoidEvents() {
     }
 
-    /**
+    /*
      * 每 tick 处理常驻被动：
      * - 氧气补满；
      * - 清火；
      * - 清除状态效果；
      * - 每 10 tick 扫描黑暗中的附近生物。
      */
+    /**
+     * 每 tick 处理虚空珍珠佩戴者的常驻被动。
+
+     * 重要优化：
+     * 这里只检查 ServerPlayer，不再检查所有 LivingEntity。
+
+     * 原因：
+     * 如果对所有生物每 tick 都调用 CuriosApi 查询，会非常掉帧，
+     * 尤其是附近怪物多的时候，还可能导致退出保存时主线程迟迟停不下来。
+     */
     @SubscribeEvent
     public static void onEntityTick(EntityTickEvent.Post event) {
-        if (!(event.getEntity() instanceof LivingEntity bearer)) {
+        // 虚空珍珠是玩家 Curios 术石，所以这里只处理服务端玩家。
+        if (!(event.getEntity() instanceof ServerPlayer bearer)) {
             return;
         }
 
-        if (bearer.level().isClientSide()) {
-            return;
-        }
-
+        // 只对真正佩戴虚空珍珠的玩家生效。
         if (!PearlOfTheVoidHelper.hasPearlOfTheVoid(bearer)) {
             return;
         }
 
-        // 不再需要呼吸空气：每 tick 把氧气条补满。
+        // 不再需要呼吸空气：每 tick 补满氧气。
         bearer.setAirSupply(bearer.getMaxAirSupply());
 
-        // 未写明效果：每 tick 熄灭玩家身上的火焰。
+        // 未写明效果：每 tick 熄灭身上的火。
         if (bearer.isOnFire()) {
             bearer.clearFire();
         }
 
-        // 免疫任何状态效果：
-        // 原版思路不是阻止添加，而是下一 tick 立刻清理。
+        // 免疫状态效果：下一 tick 清除。
+        // 这里只对佩戴者执行，不再对所有生物执行。
         removeForbiddenEffects(bearer);
 
         // 黑暗光环每 10 tick，也就是 0.5 秒，触发一次。
@@ -217,13 +226,9 @@ public final class PearlOfTheVoidEvents {
          * 这里保持和你的 TreasureHunterCharmEvents 兼容：
          * 玩家佩戴猎宝者护符时，夜视效果可以保留。
          */
-        if (entity instanceof Player player
+        return entity instanceof Player player
                 && instance.is(MobEffects.NIGHT_VISION)
-                && TreasureHunterCharmHelper.hasTreasureHunterCharm(player)) {
-            return true;
-        }
-
-        return false;
+                && TreasureHunterCharmHelper.hasTreasureHunterCharm(player);
     }
 
     /**
@@ -282,11 +287,7 @@ public final class PearlOfTheVoidEvents {
          * 同样佩戴虚空珍珠的玩家除外。
          * 这里按你的描述只排除玩家，避免其他可穿戴实体出现奇怪兼容问题。
          */
-        if (target instanceof Player && PearlOfTheVoidHelper.hasPearlOfTheVoid(target)) {
-            return false;
-        }
-
-        return true;
+        return !(target instanceof Player) || !PearlOfTheVoidHelper.hasPearlOfTheVoid(target);
     }
 
     /**
@@ -309,6 +310,9 @@ public final class PearlOfTheVoidEvents {
 
     /**
      * 给黑暗光环目标附加负面效果。
+
+     * 保留药水粒子：
+     * 这里使用普通 MobEffectInstance 构造，不关闭 visible。
      */
     private static void applyDarknessEffects(LivingEntity target, LivingEntity source) {
         target.addEffect(new MobEffectInstance(
