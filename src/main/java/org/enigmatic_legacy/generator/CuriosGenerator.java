@@ -112,6 +112,7 @@ public class CuriosGenerator implements DataProvider {
         JsonArray values = new JsonArray();
         values.add(EnigmaticLegacy.MODID + ":golem_heart");
         values.add(EnigmaticLegacy.MODID + ":angel_blessing");
+        values.add(EnigmaticLegacy.MODID + ":ocean_stone");
 
         json.add("values", values);
 
