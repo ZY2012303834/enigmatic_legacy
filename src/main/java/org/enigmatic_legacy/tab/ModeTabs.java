@@ -67,9 +67,11 @@ public final class ModeTabs {
                         output.accept(ModItems.ENCHANTER_PEARL.get());
                         output.accept(ModItems.ENIGMATIC_EYE.get());
                         output.accept(ModItems.THE_ACKNOWLEDGMENT.get());
-                        output.accept(ModItems.GOLEM_HEART.get());
-                        output.accept(ModItems.ANGEL_BLESSING.get());
-                        output.accept(ModItems.OCEAN_STONE.get());
+                        // 术石
+                        output.accept(ModItems.GOLEM_HEART.get()); // 魔像之心
+                        output.accept(ModItems.ANGEL_BLESSING.get()); // 天使之祝
+                        output.accept(ModItems.OCEAN_STONE.get()); // 海洋意志
+                        output.accept(ModItems.BLAZING_CORE.get()); // 烈焰核心
                     })
                     .build());
 
