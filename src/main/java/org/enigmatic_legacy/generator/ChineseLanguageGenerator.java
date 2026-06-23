@@ -349,7 +349,7 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         // end
 
         // 烈焰核心
-        addItem(ModItems.BLAZING_CORE, "烈焰核心");
+        addItem(ModItems.BLAZING_CORE, "烈焰之核");
 
         add("tooltip.enigmatic_legacy.blazing_core.active",
                 "无主动效果。");

@@ -3,6 +3,7 @@ package org.enigmatic_legacy.client.event;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.api.distmarker.Dist;
@@ -15,15 +16,15 @@ import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.util.BlazingCoreHelper;
 
 /**
- * 烈焰核心客户端 GUI 事件。
+ * 烈焰之核客户端 GUI 事件。
 
  * 效果：
- * 玩家佩戴烈焰核心进入岩浆时，
- * 原版经验条位置会临时显示为“过热条”。
+ * 佩戴烈焰之核并接触岩浆后，
+ * 原版经验条会临时变成过热条。
 
  * 注意：
- * 这里只改变 GUI 显示，不修改玩家真实经验。
- * 真实岩浆免疫/过热受伤逻辑仍由 BlazingCoreEvents 处理。
+ * 这里只改变 GUI 显示，不改变玩家真实经验。
+ * 创造模式不显示，也不参与这个过热 GUI 功能。
  */
 @EventBusSubscriber(
         modid = EnigmaticLegacy.MODID,
@@ -31,50 +32,43 @@ import org.enigmatic_legacy.util.BlazingCoreHelper;
 )
 public final class BlazingCoreClientEvents {
     /**
-     * 必须和 BlazingCoreEvents 里的热量 NBT 名称一致。
-
-     * 这里直接复制字符串，避免因为 BlazingCoreEvents 里的字段是 private 导致无法访问。
+     * 必须和 BlazingCoreEvents 中的热量 NBT 名称一致。
      */
     private static final String LAVA_HEAT_TAG = "enigmatic_legacy.blazing_core_lava_heat";
 
     /**
-     * 原版经验条宽度。
-     */
-    private static final int BAR_WIDTH = 182;
+     * 原版经验条 sprite。
 
-    /**
-     * 原版经验条高度。
+     * 使用 Minecraft 原版 HUD sprite，
+     * 避免之前方块 fill 画出来的样式和原版经验条差异太大。
      */
+    private static final ResourceLocation EXPERIENCE_BAR_BACKGROUND =
+            ResourceLocation.fromNamespaceAndPath("minecraft", "hud/experience_bar_background");
+
+    private static final ResourceLocation EXPERIENCE_BAR_PROGRESS =
+            ResourceLocation.fromNamespaceAndPath("minecraft", "hud/experience_bar_progress");
+
+    private static final int BAR_WIDTH = 182;
     private static final int BAR_HEIGHT = 5;
 
     private BlazingCoreClientEvents() {
     }
 
-    /**
-     * 在原版 GUI 层绘制前拦截经验条。
-     */
     @SubscribeEvent
     public static void onRenderGuiLayerPre(RenderGuiLayerEvent.Pre event) {
         Minecraft minecraft = Minecraft.getInstance();
         LocalPlayer player = minecraft.player;
 
-        if (player == null) {
+        if (player == null || minecraft.options.hideGui) {
             return;
         }
 
-        if (minecraft.options.hideGui) {
-            return;
-        }
-
-        /*
-         * 只有佩戴烈焰核心并进入岩浆时，才替换经验条。
-         */
-        if (!shouldRenderHeatBar(player)) {
+        if (!shouldReplaceExperienceBar(player)) {
             return;
         }
 
         /*
-         * 取消原版经验条，改画烈焰核心过热条。
+         * 取消原版经验条，改画烈焰之核过热条。
          */
         if (event.getName().equals(VanillaGuiLayers.EXPERIENCE_BAR)) {
             event.setCanceled(true);
@@ -83,7 +77,8 @@ public final class BlazingCoreClientEvents {
         }
 
         /*
-         * 取消经验等级数字，避免经验等级文字盖在过热条上。
+         * 过热条显示期间隐藏经验等级数字。
+         * 否则经验等级会压在过热条上方，看起来不自然。
          */
         if (event.getName().equals(VanillaGuiLayers.EXPERIENCE_LEVEL)) {
             event.setCanceled(true);
@@ -91,24 +86,37 @@ public final class BlazingCoreClientEvents {
     }
 
     /**
-     * 判断是否显示过热条。
+     * 是否替换经验条。
+
+     * 重点：
+     * 1. 创造模式不显示；
+     * 2. 旁观模式不显示；
+     * 3. 必须佩戴烈焰之核；
+     * 4. 只要热量还没完全消退，就继续显示 GUI；
+     * 5. 刚进入岩浆时，即使热量还是 0，也先显示空过热条。
      */
-    private static boolean shouldRenderHeatBar(Player player) {
+    private static boolean shouldReplaceExperienceBar(Player player) {
         if (player.isSpectator()) {
             return false;
         }
 
-        if (!player.isInLava()) {
+        if (player.getAbilities().instabuild) {
             return false;
         }
 
-        return BlazingCoreHelper.hasBlazingCore(player);
-    }
+        int heat = player.getPersistentData().getInt(LAVA_HEAT_TAG);
+        boolean hasBlazingCore = BlazingCoreHelper.hasBlazingCore(player);
 
+        /*
+         * 佩戴烈焰之核并在岩浆中时，显示热条。
+         * 脱下后，只要热力值还没降到 0，也继续显示热条。
+         */
+        return heat > 0 || (hasBlazingCore && player.isInLava());
+    }
     /**
      * 绘制过热条。
 
-     * 坐标参考原版经验条：
+     * 坐标完全参考原版经验条：
      * x = 屏幕中心 - 91
      * y = 屏幕高度 - 29
      */
@@ -123,71 +131,85 @@ public final class BlazingCoreClientEvents {
         int heat = Mth.clamp(player.getPersistentData().getInt(LAVA_HEAT_TAG), 0, maxHeat);
 
         float progress = heat / (float) maxHeat;
-        int filledWidth = Mth.floor(progress * BAR_WIDTH);
 
         /*
-         * 背景槽：暗红色。
+         * 缓动曲线：
+         * - 接近 0 时变化较慢；
+         * - 中段变化较快；
+         * - 接近满载临界点时再次变慢。
+         *
+         * 这样进入临界和离开临界时都不会显得突兀。
+         * 数学上仍保证：
+         * progress = 0 时显示 0；
+         * progress = 1 时显示满载。
          */
-        guiGraphics.fill(
+        float visualProgress = smoothStep(progress);
+
+        int filledWidth = Mth.floor(visualProgress * BAR_WIDTH);
+
+        /*
+         * 先绘制原版经验条背景。
+         */
+        guiGraphics.blitSprite(
+                EXPERIENCE_BAR_BACKGROUND,
                 x,
                 y,
-                x + BAR_WIDTH,
-                y + BAR_HEIGHT,
-                0xAA2B1200
+                BAR_WIDTH,
+                BAR_HEIGHT
         );
 
         /*
-         * 边框。
-         */
-        guiGraphics.fill(x - 1, y - 1, x + BAR_WIDTH + 1, y, 0xFF5A1B00);
-        guiGraphics.fill(x - 1, y + BAR_HEIGHT, x + BAR_WIDTH + 1, y + BAR_HEIGHT + 1, 0xFF5A1B00);
-        guiGraphics.fill(x - 1, y, x, y + BAR_HEIGHT, 0xFF5A1B00);
-        guiGraphics.fill(x + BAR_WIDTH, y, x + BAR_WIDTH + 1, y + BAR_HEIGHT, 0xFF5A1B00);
-
-        /*
-         * 前景进度：橙色热量条。
+         * 再绘制原版经验条进度 sprite。
+         * 这里只给它轻微染成橙红色，形状仍然是原版经验条样式。
          */
         if (filledWidth > 0) {
-            guiGraphics.fill(
+            guiGraphics.setColor(1.0F, 0.42F, 0.05F, 1.0F);
+
+            guiGraphics.blitSprite(
+                    EXPERIENCE_BAR_PROGRESS,
+                    BAR_WIDTH,
+                    BAR_HEIGHT,
+                    0,
+                    0,
                     x,
                     y,
-                    x + filledWidth,
-                    y + BAR_HEIGHT,
-                    0xFFFF6A00
+                    filledWidth,
+                    BAR_HEIGHT
             );
 
-            /*
-             * 顶部高亮线。
-             */
-            guiGraphics.fill(
-                    x,
-                    y,
-                    x + filledWidth,
-                    y + 1,
-                    0xFFFFD36A
-            );
+            guiGraphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
         }
 
         /*
-         * 满载后用红色覆盖整条，表示已经过热。
-         * 不显示文字，因此无需语言文件。
+         * 满载后稍微偏红，提示已经到达临界。
+         * 不加文字，所以不需要语言文件。
          */
         if (heat >= maxHeat) {
-            guiGraphics.fill(
+            guiGraphics.setColor(1.0F, 0.12F, 0.04F, 1.0F);
+
+            guiGraphics.blitSprite(
+                    EXPERIENCE_BAR_PROGRESS,
+                    BAR_WIDTH,
+                    BAR_HEIGHT,
+                    0,
+                    0,
                     x,
                     y,
-                    x + BAR_WIDTH,
-                    y + BAR_HEIGHT,
-                    0xFFFF2222
+                    BAR_WIDTH,
+                    BAR_HEIGHT
             );
 
-            guiGraphics.fill(
-                    x,
-                    y,
-                    x + BAR_WIDTH,
-                    y + 1,
-                    0xFFFF8888
-            );
+            guiGraphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
         }
+    }
+
+    /**
+     * 平滑步进函数。
+     * 这个函数会让进度条在 0 和 1 两端变慢，
+     * 也就是你说的“到达临界缓慢上升，下降到临界也是这个效果”。
+     */
+    private static float smoothStep(float value) {
+        value = Mth.clamp(value, 0.0F, 1.0F);
+        return value * value * (3.0F - 2.0F * value);
     }
 }

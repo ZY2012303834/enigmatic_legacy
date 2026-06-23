@@ -13,6 +13,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Drowned;
 import net.minecraft.world.entity.monster.ElderGuardian;
 import net.minecraft.world.entity.monster.Guardian;
+import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
@@ -51,18 +52,36 @@ public final class BlazingCoreEvents {
 
         CompoundTag data = entity.getPersistentData();
 
-        if (!BlazingCoreHelper.hasBlazingCore(entity)) {
-            // 脱下烈焰核心后清理热量，避免下次佩戴继承旧热量。
+        if (isCreativePlayer(entity)) {
+            /*
+             * 创造模式不触发烈焰之核功能。
+             * 创造模式切换进去后，热力值直接清掉，避免 GUI 残留。
+             */
             data.remove(LAVA_HEAT_TAG);
             return;
         }
 
-        // 双保险：除了 BlazingCore.curioTick，这里也执行一次自动灭火。
-        if (entity.isOnFire()) {
+        boolean hasBlazingCore = BlazingCoreHelper.hasBlazingCore(entity);
+
+        /*
+         * 自动灭火只在佩戴烈焰之核时生效。
+         * 脱下后不应该继续自动灭火。
+         */
+        if (hasBlazingCore && entity.isOnFire()) {
             entity.clearFire();
         }
 
-        handleLavaHeat(entity, data);
+        /*
+         * 佩戴时：
+         * - 在岩浆中增加热力；
+         * - 离开岩浆后降低热力。
+         *
+         * 脱下后：
+         * - 不再增加热力；
+         * - 但已有热力继续按原速度降低；
+         * - 降到 0 后 GUI 自然消失。
+         */
+        handleLavaHeat(entity, data, hasBlazingCore);
     }
 
     /**
@@ -73,13 +92,24 @@ public final class BlazingCoreEvents {
      * - 热量满后不再拦截岩浆伤害；
      * - 离开岩浆后逐渐冷却。
      */
-    private static void handleLavaHeat(LivingEntity entity, CompoundTag data) {
+    private static void handleLavaHeat(LivingEntity entity, CompoundTag data, boolean hasBlazingCore) {
         int heat = data.getInt(LAVA_HEAT_TAG);
         int maxHeat = ConfigCommon.BLAZING_CORE_LAVA_IMMUNITY_TICKS.get();
 
-        if (entity.isInLava()) {
+        /*
+         * 只有佩戴烈焰之核时，进入岩浆才会增加热力。
+         * 脱下后即使还泡在岩浆里，也不再继续累计烈焰之核热力。
+         */
+        if (hasBlazingCore && entity.isInLava()) {
             data.putInt(LAVA_HEAT_TAG, Math.min(maxHeat, heat + 1));
-        } else if (heat > 0) {
+            return;
+        }
+
+        /*
+         * 未佩戴、离开岩浆，或者脱下烈焰之核后：
+         * 只要热力值还大于 0，就继续按原速度冷却。
+         */
+        if (heat > 0) {
             int cooldown = Math.max(1, ConfigCommon.BLAZING_CORE_LAVA_COOLDOWN_PER_TICK.get());
             int newHeat = Math.max(0, heat - cooldown);
 
@@ -100,6 +130,11 @@ public final class BlazingCoreEvents {
         }
 
         DamageSource source = event.getSource();
+
+        if (isCreativePlayer(target) && source.is(DamageTypes.LAVA)) {
+            target.getPersistentData().remove(LAVA_HEAT_TAG);
+            return;
+        }
 
         /*
          * 岩浆伤害：
@@ -268,5 +303,14 @@ public final class BlazingCoreEvents {
                 || entity instanceof Guardian
                 || entity instanceof ElderGuardian
                 || entity.getType().is(EntityTypeTags.AQUATIC);
+    }
+
+    /**
+     * 判断实体是否为创造模式玩家。
+     * 只用于烈焰之核的岩浆过热功能过滤；
+     * 避免创造模式玩家显示 GUI 或积累热量。
+     */
+    private static boolean isCreativePlayer(LivingEntity entity) {
+        return entity instanceof Player player && player.getAbilities().instabuild;
     }
 }
