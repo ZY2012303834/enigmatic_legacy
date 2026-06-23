@@ -307,6 +307,9 @@ public class EnglishLanguageGenerator extends LanguageProvider {
 
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");
+
+        // 术石
+        add("curios.identifier.spellstone", "Spellstone");
     }
 
     private void addEnglishCursedRingTooltips() {

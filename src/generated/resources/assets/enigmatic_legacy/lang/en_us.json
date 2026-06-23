@@ -5,6 +5,7 @@
   "block.enigmatic_legacy.etherium_block": "Block of Etherium",
   "book.enigmatic_legacy.landing_text": "The vast lands lie ahead of you, full of secrets and mysteries to uncover.",
   "button.enigmatic_legacy.open_ender_chest": "Open Ender Chest",
+  "curios.identifier.spellstone": "Spellstone",
   "effect.enigmatic_legacy.forbidden_fruit": "§5The Forbidden Fruit",
   "effect.enigmatic_legacy.recall": "Recall",
   "gui.enigmatic_legacy.magnet_control.tooltip.disabled": "%s is disabled. Click to enable.",

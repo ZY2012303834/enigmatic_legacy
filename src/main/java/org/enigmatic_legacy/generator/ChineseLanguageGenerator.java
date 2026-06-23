@@ -308,6 +308,9 @@ public class ChineseLanguageGenerator extends LanguageProvider {
 
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5按住 §6Shift§5 查看详情。");
+
+        // 术石
+        add("curios.identifier.spellstone", "术石");
     }
 
     private void addChineseCursedRingTooltips() {

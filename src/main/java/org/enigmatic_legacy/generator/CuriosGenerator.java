@@ -91,7 +91,7 @@ public class CuriosGenerator implements DataProvider {
         json.addProperty("size", 1);
         json.addProperty("operation", "SET");
         json.addProperty("order", 130);
-        json.addProperty("icon", "curios:slot/empty_charm_slot");
+        json.addProperty("icon", EnigmaticLegacy.MODID + ":slot/empty_spellstone_slot");
 
         Path path = output.getOutputFolder(PackOutput.Target.DATA_PACK)
                 .resolve(EnigmaticLegacy.MODID)
