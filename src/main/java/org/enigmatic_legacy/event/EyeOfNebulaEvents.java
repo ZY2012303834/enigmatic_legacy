@@ -1,8 +1,8 @@
 package org.enigmatic_legacy.event;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.SectionPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.LivingEntity;
@@ -11,6 +11,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
+import net.minecraft.world.level.chunk.status.ChunkStatus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
@@ -226,10 +227,53 @@ public final class EyeOfNebulaEvents {
 
     /**
      * 判断位置是否适合传送。
+
+     * 注意：
+     * 不使用 hasChunksAt(...)，因为 1.21.x 里它已经被标记为弃用。
+
+     * 这里使用 getChunk(chunkX, chunkZ, ChunkStatus.FULL, false)：
+     * 1. 不会强制生成新区块；
+     * 2. 可以判断目标区块是否已经完整加载；
+     * 3. 避免传送到未加载区块导致卡顿或异常。
      */
     private static boolean isSafeTeleportPosition(ServerLevel level, BlockPos pos) {
-        return level.getBlockState(pos).getCollisionShape(level, pos).isEmpty()
-                && level.getBlockState(pos.above()).getCollisionShape(level, pos.above()).isEmpty()
-                && !level.getBlockState(pos.below()).getCollisionShape(level, pos.below()).isEmpty();
+        // 如果位置超出世界高度，直接不允许传送。
+        if (level.isOutsideBuildHeight(pos) || level.isOutsideBuildHeight(pos.above())) {
+            return false;
+        }
+
+        // 检查目标位置所在区块是否已经加载。
+        if (!isChunkLoaded(level, pos)) {
+            return false;
+        }
+
+        // 脚部位置必须为空，避免玩家卡进方块。
+        boolean feetClear = level.getBlockState(pos)
+                .getCollisionShape(level, pos)
+                .isEmpty();
+
+        // 头部位置必须为空，避免玩家窒息。
+        boolean headClear = level.getBlockState(pos.above())
+                .getCollisionShape(level, pos.above())
+                .isEmpty();
+
+        // 脚下必须有实体方块，避免直接传送到空中。
+        boolean hasGround = !level.getBlockState(pos.below())
+                .getCollisionShape(level, pos.below())
+                .isEmpty();
+
+        return feetClear && headClear && hasGround;
+    }
+
+    /**
+     * 判断某个 BlockPos 所在区块是否已经完整加载。
+
+     * 这个方法替代已弃用的 hasChunksAt(...)。
+     */
+    private static boolean isChunkLoaded(ServerLevel level, BlockPos pos) {
+        int chunkX = SectionPos.blockToSectionCoord(pos.getX());
+        int chunkZ = SectionPos.blockToSectionCoord(pos.getZ());
+
+        return level.getChunk(chunkX, chunkZ, ChunkStatus.FULL, false) != null;
     }
 }
