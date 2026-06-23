@@ -34,5 +34,11 @@ public final class ModNetwork {
                 ForceProjectileRotationPayload.STREAM_CODEC,
                 ForceProjectileRotationPayload::handle
         );
+
+        registrar.playToClient(
+                HeartOfCreationGuardPayload.TYPE,
+                HeartOfCreationGuardPayload.STREAM_CODEC,
+                HeartOfCreationGuardPayload::handle
+        );
     }
 }

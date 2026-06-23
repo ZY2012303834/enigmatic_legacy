@@ -19,6 +19,8 @@ import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingKnockBackEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
+import net.neoforged.neoforge.network.PacketDistributor;
+import org.enigmatic_legacy.network.HeartOfCreationGuardPayload;
 import org.enigmatic_legacy.sound.ModSounds;
 import org.enigmatic_legacy.util.HeartOfCreationHelper;
 
@@ -124,12 +126,8 @@ public final class HeartOfCreationEvents {
      * 装备创造之心，或物品栏内有创造之心时，
      * 任何伤害最多只会把生命降到 1 点。
 
-     * 重要：
-     * 这里不再用 event.setNewDamage(health - 1) 等待系统结算，
-     * 而是直接取消伤害并把血量设置为 1。
-
-     * 这样客户端血条会立刻显示到 1 点，
-     * 保护触发效果会明显很多。
+     * 这里直接取消致命伤害并设置 1 点血，
+     * 同时发送客户端包触发血条 GUI 保护特效。
      */
     @SubscribeEvent
     public static void onLivingDamage(LivingDamageEvent.Pre event) {
@@ -147,20 +145,16 @@ public final class HeartOfCreationEvents {
 
         float health = target.getHealth();
 
-        // 这次伤害不会把生命压到 1 点以下，正常结算。
+        // 如果这次伤害不会把生命压到 1 点以下，正常结算。
         if (health - damage > 1.0F) {
             return;
         }
 
-        // 创造之心不朽触发：
-        // 直接取消本次伤害，并把血量强制设置为 1。
+        // 不朽触发：直接取消本次致命伤害，并把血量设为 1。
         event.setNewDamage(0.0F);
         target.setHealth(1.0F);
-
-        // 给一点无敌帧，避免连续伤害同 tick 反复触发。
         target.invulnerableTime = Math.max(target.invulnerableTime, 10);
 
-        // 播放保护音效、受击动画、血条同步。
         playImmortalFeedback(target);
     }
 
@@ -250,11 +244,11 @@ public final class HeartOfCreationEvents {
     /**
      * 创造之心不朽触发反馈。
 
-     * 效果：
-     * 1. 播放原作者 shield_trigger 音效；
-     * 2. 强制同步 1 点血到客户端；
-     * 3. 触发受击动画，让血条/屏幕有保护触发反馈；
-     * 4. 发送一次实体受击事件，增强视觉反馈。
+     * 这里同时处理：
+     * 1. 原作者 shield_trigger 音效；
+     * 2. 实体受击动画；
+     * 3. 玩家血量同步；
+     * 4. 客户端 HUD 血量条保护特效。
      */
     private static void playImmortalFeedback(LivingEntity entity) {
         entity.level().playSound(
@@ -266,27 +260,23 @@ public final class HeartOfCreationEvents {
                 0.85F + entity.getRandom().nextFloat() * 0.2F
         );
 
-        // 原版受击动画/红闪反馈。
         entity.hurtTime = Math.max(entity.hurtTime, 10);
         entity.hurtDuration = Math.max(entity.hurtDuration, 10);
         entity.invulnerableTime = Math.max(entity.invulnerableTime, 10);
 
-        // 广播受击事件，客户端会播放实体受击反馈。
+        // 播放实体受击动画。
         entity.level().broadcastEntityEvent(entity, (byte) 2);
 
-        /*
-         * 玩家血条同步。
-         *
-         * 这里必须发送 1.0F，而不是 player.getHealth() 的旧值。
-         * 因为我们已经在 onLivingDamage 里 setHealth(1.0F)，
-         * 但为了让 HUD 立即刷新，再手动发一次血量包。
-         */
         if (entity instanceof ServerPlayer player) {
+            // 立即同步血量到 1 点。
             player.connection.send(new ClientboundSetHealthPacket(
                     1.0F,
                     player.getFoodData().getFoodLevel(),
                     player.getFoodData().getSaturationLevel()
             ));
+
+            // 关键：通知客户端绘制血条 GUI 保护特效。
+            PacketDistributor.sendToPlayer(player, new HeartOfCreationGuardPayload());
         }
     }
 }
