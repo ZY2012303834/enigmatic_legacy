@@ -306,5 +306,22 @@ public class RecipeGenerator extends RecipeProvider {
                 .requires(Items.LANTERN)
                 .unlockedBy("has_book", has(Items.BOOK))
                 .save(output);
+
+        // 非欧立方 / Non-Euclidean Cube。
+        // 按原版材料逻辑：魔像之心、寰宇之心 x2、烈焰核心、天使之祝、黑曜石、星云之眼、海洋意志、虚空珍珠。
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.THE_CUBE.get())
+                .pattern("GCG")
+                .pattern("AOB")
+                .pattern("EPV")
+                .define('G', ModItems.GOLEM_HEART.get())
+                .define('C', ModItems.COSMIC_HEART.get())
+                .define('A', ModItems.ANGEL_BLESSING.get())
+                .define('O', Items.OBSIDIAN)
+                .define('B', ModItems.BLAZING_CORE.get())
+                .define('E', ModItems.EYE_OF_NEBULA.get())
+                .define('P', ModItems.OCEAN_STONE.get())
+                .define('V', ModItems.VOID_PEARL.get())
+                .unlockedBy("has_eye_of_nebula", has(ModItems.EYE_OF_NEBULA.get()))
+                .save(output);
     }
 }

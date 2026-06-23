@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-22T23:19:47.8003968	vanilla/Recipes
+// 1.21.1	2026-06-23T18:22:42.2224518	vanilla/Recipes
 138cca5fc2d36a468976c88c266618e68aa51d88 data/enigmatic_legacy/advancement/recipes/building_blocks/astral_dust_sack.json
 75128c3d277fd90fca1df4cc9f996933af7f7241 data/enigmatic_legacy/advancement/recipes/building_blocks/etherium_block.json
 afc69a4ceaecd0685cc5f6ee8c892af17f05a22e data/enigmatic_legacy/advancement/recipes/decorations/lamps/big_lamp.json
@@ -18,6 +18,7 @@ e6d68748b75ff98fe29f25cf84a97c858267a267 data/enigmatic_legacy/advancement/recip
 b4bc3350ebdc21a63600169d4bdbb66abe888b29 data/enigmatic_legacy/advancement/recipes/misc/mega_sponge.json
 03d4356a380943e7d1952c0b1149bc38da4bccc7 data/enigmatic_legacy/advancement/recipes/misc/monster_charm.json
 501be4947ff26e2ed6d5e41e09162300a7fffed6 data/enigmatic_legacy/advancement/recipes/misc/the_acknowledgment.json
+0165b94e6e6f736530ee29fc3acd60355868f04e data/enigmatic_legacy/advancement/recipes/misc/the_cube.json
 0802268decf9f83fe1bbc684a804e15c13e8efbc data/enigmatic_legacy/advancement/recipes/misc/thicc_scroll.json
 1d093f4497302d163cf984678461df7b7ba56b69 data/enigmatic_legacy/advancement/recipes/misc/treasure_hunter_charm.json
 6e95028fab00920c226748ae0c7ec592a4ba6b87 data/enigmatic_legacy/advancement/recipes/misc/twisted_heart.json
@@ -41,6 +42,7 @@ b7ff29e9a057ae6829ace5151db9d21fc64eda65 data/enigmatic_legacy/recipe/magnet_rin
 1a7fcaac2a30e1ae84d8113fa331190680d7c92d data/enigmatic_legacy/recipe/mega_sponge.json
 73dffe23d0416988f96b69e6853bf9014071a213 data/enigmatic_legacy/recipe/monster_charm.json
 516862b7044c46c4e7294da1ab7aafe5196ee822 data/enigmatic_legacy/recipe/the_acknowledgment.json
+37833edd533983868b64f9e92e785dfe87090cf6 data/enigmatic_legacy/recipe/the_cube.json
 9d1164ba211257b9b0a8afceac161910f5403ce6 data/enigmatic_legacy/recipe/thicc_scroll.json
 356776aabc4bdd1b8cc93bc0ced18e8d0172d019 data/enigmatic_legacy/recipe/treasure_hunter_charm.json
 8cfad9fa5459bfbf9f4230a1168be6e1c4093d45 data/enigmatic_legacy/recipe/twisted_heart.json

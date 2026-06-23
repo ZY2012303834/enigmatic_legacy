@@ -392,6 +392,23 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("death.attack.enigmatic_legacy.darkness.player", "%1$s was devoured by the void darkness around %2$s");
         // end
 
+        // 非欧立方
+        addItem(ModItems.THE_CUBE, "Non-Euclidean Cube");
+
+        add("message.enigmatic_legacy.non_euclidean_cube.no_structure", "The Non-Euclidean Cube found no structure to fold space toward.");
+        add("message.enigmatic_legacy.non_euclidean_cube.teleported", "Space folds, carrying you toward an unknown structure.");
+
+        add("tooltip.enigmatic_legacy.non_euclidean_cube.active", "Teleports you near a random structure in the current dimension.");
+
+        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.1", "+35% sprint speed, +100% swim speed, +60% mining speed, and +40% attack speed.");
+        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.2", "+1 Fortune level and +1 Luck.");
+        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.3", "Ignores damage above 100. With the Ring of Seven Curses, ignores damage above 150 instead.");
+        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.4", "Has a 35% chance to reflect projectiles or return damage to the attacker.");
+        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.5", "When damaged by non-projectile attacks, progressively afflicts the attacker with negative effects.");
+        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.6", "Grants a random positive effect when you defeat a creature, excluding Slow Falling.");
+        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.7", "Prevents negative effects, cramming, fall, collision, thorns, teleportation, fire, and lava damage, and folds space to save you near death.");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");
     }

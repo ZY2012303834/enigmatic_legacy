@@ -1,0 +1,39 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "enigmatic_legacy:angel_blessing"
+    },
+    "B": {
+      "item": "enigmatic_legacy:blazing_core"
+    },
+    "C": {
+      "item": "enigmatic_legacy:cosmic_heart"
+    },
+    "E": {
+      "item": "enigmatic_legacy:eye_of_nebula"
+    },
+    "G": {
+      "item": "enigmatic_legacy:golem_heart"
+    },
+    "O": {
+      "item": "minecraft:obsidian"
+    },
+    "P": {
+      "item": "enigmatic_legacy:ocean_stone"
+    },
+    "V": {
+      "item": "enigmatic_legacy:void_pearl"
+    }
+  },
+  "pattern": [
+    "GCG",
+    "AOB",
+    "EPV"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:the_cube"
+  }
+}

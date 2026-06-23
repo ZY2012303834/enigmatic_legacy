@@ -393,6 +393,23 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("death.attack.enigmatic_legacy.darkness.player", "%1$s 被 %2$s 身边的虚空黑暗吞噬了");
         // end
 
+        // 非欧立方
+        addItem(ModItems.THE_CUBE, "非欧立方");
+
+        add("message.enigmatic_legacy.non_euclidean_cube.no_structure", "非欧立方没有找到可传送的结构。");
+        add("message.enigmatic_legacy.non_euclidean_cube.teleported", "空间折叠，非欧几何将你送往未知结构。");
+
+        add("tooltip.enigmatic_legacy.non_euclidean_cube.active", "将你传送到当前维度的随机结构附近。");
+
+        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.1", "+35% 疾跑速度，+100% 游泳速度，+60% 挖掘速度，+40% 攻击速度。");
+        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.2", "+1 时运等级，+1 幸运。");
+        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.3", "无视高于 100 点的伤害；佩戴七咒之戒时改为无视高于 150 点的伤害。");
+        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.4", "35% 概率反弹投射物，或将伤害返还给攻击者。");
+        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.5", "受到非投射物伤害时，逐步给予攻击者负面效果。");
+        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.6", "击败生物后获得随机正面效果，但不会获得缓降。");
+        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.7", "免疫负面效果、挤压、摔落、碰撞、荆棘、传送、火焰与熔岩伤害，并可在濒死时折叠空间保命。");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5按住 §6Shift§5 查看详情。");
 

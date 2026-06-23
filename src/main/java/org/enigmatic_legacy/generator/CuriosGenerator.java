@@ -116,6 +116,7 @@ public class CuriosGenerator implements DataProvider {
         values.add(EnigmaticLegacy.MODID + ":blazing_core");
         values.add(EnigmaticLegacy.MODID + ":eye_of_nebula"); // 星云之眼
         values.add(EnigmaticLegacy.MODID + ":void_pearl"); // 虚空珍珠
+        values.add(EnigmaticLegacy.MODID + ":the_cube"); // 非欧立方
 
         json.add("values", values);
 
