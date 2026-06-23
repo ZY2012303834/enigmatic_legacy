@@ -1,0 +1,23 @@
+{
+  "category": "enigmatic_legacy:materials",
+  "icon": "enigmatic_legacy:twisted_heart",
+  "name": "Twisted Heart",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:twisted_heart",
+      "link_recipe": true,
+      "text": "A heart distorted by hostile energies. It is dangerous, but many relics demand dangerous components.",
+      "title": "Twisted Heart"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:twisted_heart",
+      "text": "合成配方 / Crafting Recipe",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 60
+}

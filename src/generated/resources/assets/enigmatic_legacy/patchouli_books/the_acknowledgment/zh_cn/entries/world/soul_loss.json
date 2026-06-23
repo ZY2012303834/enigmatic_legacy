@@ -9,6 +9,7 @@
       "title": "灵魂损耗"
     }
   ],
+  "read_by_default": true,
   "secret": false,
   "sortnum": 0
 }

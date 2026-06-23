@@ -1,0 +1,23 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:monster_charm",
+  "name": "Emblem of Monster Slayer",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:monster_charm",
+      "link_recipe": true,
+      "text": "An emblem devoted to hunting monsters. It increases damage against hostile creatures and grants additional rewards.",
+      "title": "Emblem of Monster Slayer"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:monster_charm",
+      "text": "合成配方 / Crafting Recipe",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 70
+}

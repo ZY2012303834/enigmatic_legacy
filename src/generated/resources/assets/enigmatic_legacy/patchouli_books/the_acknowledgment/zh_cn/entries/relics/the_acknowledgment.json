@@ -6,15 +6,18 @@
     {
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:the_acknowledgment",
-      "text": "一本记录被遗忘遗物知识的奇异书册。右键即可翻阅。",
+      "link_recipe": true,
+      "text": "一本记录神秘遗物知识的指南书。尽管它是书，也能作为武器使用，使被击中的敌人燃烧。",
       "title": "启示之证"
     },
     {
-      "type": "patchouli:text",
-      "text": "尽管它是一本书，却同样可以作为武器使用。被击中的敌人会在短时间内燃烧。",
-      "title": "化作武器的知识"
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:the_acknowledgment",
+      "text": "合成配方 / Crafting Recipe",
+      "title": " "
     }
   ],
+  "read_by_default": true,
   "secret": false,
   "sortnum": 0
 }

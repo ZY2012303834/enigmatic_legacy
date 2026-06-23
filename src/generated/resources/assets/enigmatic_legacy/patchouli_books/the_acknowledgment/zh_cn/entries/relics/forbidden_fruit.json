@@ -1,0 +1,17 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:forbidden_fruit",
+  "name": "禁果",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:forbidden_fruit",
+      "link_recipe": true,
+      "text": "甜美得过于危险的果实。它许诺了不应轻易触碰的东西。",
+      "title": "禁果"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 160
+}

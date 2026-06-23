@@ -1,0 +1,20 @@
+{
+  "category": "enigmatic_legacy:world",
+  "icon": "minecraft:structure_block",
+  "name": "The Architect's Favor",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Somewhere beyond ordinary craft and ordinary reward lies a favor not meant to be seen by everyone.",
+      "title": "The Architect's Favor"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "In the original design, this knowledge was deliberately hidden. In this book, the hint is visible, but the item itself is not generated until it is registered in the mod.",
+      "title": "Not Hidden Here"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 10
+}

@@ -1,0 +1,23 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:bloodstained_valor_emblem",
+  "name": "血战沙场之证",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:bloodstained_valor_emblem",
+      "link_recipe": true,
+      "text": "只有受诅者才能承受的勋章。佩戴者越接近死亡，它回应得越猛烈。",
+      "title": "血战沙场之证"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:bloodstained_valor_emblem",
+      "text": "合成配方 / Crafting Recipe",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 90
+}

@@ -1,0 +1,23 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:ender_ring",
+  "name": "Ender Ring",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:ender_ring",
+      "link_recipe": true,
+      "text": "A ring linked to ender storage. It grants convenient access to an Ender Chest through its own interface.",
+      "title": "Ender Ring"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:ender_ring",
+      "text": "合成配方 / Crafting Recipe",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 30
+}

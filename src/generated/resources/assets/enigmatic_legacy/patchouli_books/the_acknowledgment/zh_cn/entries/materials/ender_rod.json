@@ -1,0 +1,23 @@
+{
+  "category": "enigmatic_legacy:materials",
+  "icon": "enigmatic_legacy:ender_rod",
+  "name": "末影棒",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:ender_rod",
+      "link_recipe": true,
+      "text": "注入末影共鸣的细棒，可作为更奇异构造的稳定部件。",
+      "title": "末影棒"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:ender_rod",
+      "text": "合成配方 / Crafting Recipe",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 10
+}

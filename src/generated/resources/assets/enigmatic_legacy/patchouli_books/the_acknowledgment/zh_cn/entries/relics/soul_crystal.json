@@ -1,0 +1,17 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:soul_crystal",
+  "name": "灵魂水晶",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:soul_crystal",
+      "link_recipe": true,
+      "text": "被拯救灵魂的结晶残片，绑定于死亡发生的地点与时刻。",
+      "title": "灵魂水晶"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 150
+}

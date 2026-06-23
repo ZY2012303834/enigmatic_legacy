@@ -1,0 +1,23 @@
+{
+  "category": "enigmatic_legacy:materials",
+  "icon": "enigmatic_legacy:etherium_ingot",
+  "name": "以太锭",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:etherium_ingot",
+      "link_recipe": true,
+      "text": "以太是一种经过精炼的材料，用于更高阶遗物的构造。",
+      "title": "以太"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:etherium_block_uncrafting",
+      "text": "以太块可以重新拆回以太锭。",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 30
+}

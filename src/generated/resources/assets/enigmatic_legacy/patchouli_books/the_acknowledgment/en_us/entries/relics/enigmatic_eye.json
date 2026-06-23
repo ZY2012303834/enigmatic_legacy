@@ -6,15 +6,17 @@
     {
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:enigmatic_eye",
+      "link_recipe": true,
       "text": "The Eye sleeps until awakened. Once awakened, it may be worn as a charm.",
       "title": "Dormant Eye"
     },
     {
       "type": "patchouli:text",
-      "text": "When equipped, the awakened Eye grants an additional charm slot and increases block interaction range.",
+      "text": "When equipped, the awakened Eye grants an additional charm slot and increases block interaction range. It may also give voice to the Watcher.",
       "title": "Awakened Sight"
     }
   ],
+  "read_by_default": true,
   "secret": false,
-  "sortnum": 1
+  "sortnum": 120
 }

@@ -1,0 +1,17 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:soul_crystal",
+  "name": "Soul Crystal",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:soul_crystal",
+      "link_recipe": true,
+      "text": "A crystallized remnant of a rescued soul, bound to the place and moment of death.",
+      "title": "Soul Crystal"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 150
+}

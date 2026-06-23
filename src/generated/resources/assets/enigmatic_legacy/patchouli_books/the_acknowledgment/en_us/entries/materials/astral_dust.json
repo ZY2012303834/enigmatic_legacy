@@ -1,0 +1,17 @@
+{
+  "category": "enigmatic_legacy:materials",
+  "icon": "enigmatic_legacy:astral_dust",
+  "name": "Astral Dust",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:astral_dust",
+      "link_recipe": true,
+      "text": "A faintly shimmering substance found at the edge of the unknown. Many early relics begin with this dust.",
+      "title": "Astral Dust"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 0
+}

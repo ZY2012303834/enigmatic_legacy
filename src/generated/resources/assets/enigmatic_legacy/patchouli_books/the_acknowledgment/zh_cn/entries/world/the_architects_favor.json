@@ -1,0 +1,20 @@
+{
+  "category": "enigmatic_legacy:world",
+  "icon": "minecraft:structure_block",
+  "name": "建筑师的青睐",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "在寻常合成与寻常奖赏之外，存在着某种并非所有人都该看见的青睐。",
+      "title": "建筑师的青睐"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "原设计中，这份知识被刻意隐藏。现在手册会显示这条提示；但在物品真正注册前，不会生成对应物品页与配方页。",
+      "title": "此处不再隐藏"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 10
+}

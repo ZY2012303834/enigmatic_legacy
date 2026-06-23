@@ -1,0 +1,23 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:twisted_mirror",
+  "name": "扭曲魔镜",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:twisted_mirror",
+      "link_recipe": true,
+      "text": "一面扭曲归返与记忆的镜子，以回忆药水和扭曲之心为核心制成。",
+      "title": "扭曲魔镜"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:twisted_mirror",
+      "text": "合成配方 / Crafting Recipe",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 60
+}

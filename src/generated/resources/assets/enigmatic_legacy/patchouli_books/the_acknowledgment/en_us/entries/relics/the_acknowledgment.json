@@ -6,15 +6,18 @@
     {
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:the_acknowledgment",
-      "text": "A strange book that records knowledge of forgotten relics. Right-click to open it.",
+      "link_recipe": true,
+      "text": "A guidebook for enigmatic relics. Despite being a book, it can also be used as a weapon and sets struck enemies aflame.",
       "title": "The Acknowledgment"
     },
     {
-      "type": "patchouli:text",
-      "text": "Despite being a book, it can be used as a weapon. Struck enemies are set aflame for a short time.",
-      "title": "Weaponized Knowledge"
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:the_acknowledgment",
+      "text": "合成配方 / Crafting Recipe",
+      "title": " "
     }
   ],
+  "read_by_default": true,
   "secret": false,
   "sortnum": 0
 }

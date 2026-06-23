@@ -1,0 +1,7 @@
+{
+  "description": "Unusual materials used to create enigmatic relics.",
+  "icon": "enigmatic_legacy:astral_dust",
+  "name": "Materials",
+  "secret": false,
+  "sortnum": 10
+}

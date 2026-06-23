@@ -1,0 +1,23 @@
+{
+  "category": "enigmatic_legacy:materials",
+  "icon": "enigmatic_legacy:ender_rod",
+  "name": "Ender Rod",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:ender_rod",
+      "link_recipe": true,
+      "text": "A rod infused with ender resonance. It serves as a stabilizing component for stranger constructions.",
+      "title": "Ender Rod"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:ender_rod",
+      "text": "合成配方 / Crafting Recipe",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 10
+}

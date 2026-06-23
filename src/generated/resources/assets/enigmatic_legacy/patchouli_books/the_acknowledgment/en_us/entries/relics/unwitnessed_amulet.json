@@ -1,0 +1,22 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:unwitnessed_amulet",
+  "name": "Unwitnessed Amulet",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:unwitnessed_amulet",
+      "link_recipe": true,
+      "text": "An amulet whose nature is not yet witnessed. Use it to reveal one of its enigmatic variants.",
+      "title": "Unwitnessed Amulet"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Each revealed amulet bears a different color and power: damage, speed, deflection, gravity, mining, lifesteal, or swimming.",
+      "title": "Revealed Forms"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 130
+}

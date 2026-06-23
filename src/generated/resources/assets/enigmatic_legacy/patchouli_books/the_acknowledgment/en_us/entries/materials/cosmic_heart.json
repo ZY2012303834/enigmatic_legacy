@@ -1,0 +1,23 @@
+{
+  "category": "enigmatic_legacy:materials",
+  "icon": "enigmatic_legacy:cosmic_heart",
+  "name": "Cosmic Heart",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:cosmic_heart",
+      "link_recipe": true,
+      "text": "A heart-shaped concentration of cosmic potential. It is a crucial ingredient for artifacts tied to space and distance.",
+      "title": "Cosmic Heart"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:cosmic_heart",
+      "text": "合成配方 / Crafting Recipe",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 40
+}

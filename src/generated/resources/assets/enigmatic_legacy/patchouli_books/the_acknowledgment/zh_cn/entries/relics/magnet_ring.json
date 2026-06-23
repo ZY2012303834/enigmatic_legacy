@@ -1,0 +1,23 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:magnet_ring",
+  "name": "磁力之戒",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:magnet_ring",
+      "link_recipe": true,
+      "text": "这枚戒指会将附近掉落物吸向佩戴者。可在物品栏界面切换启用状态。",
+      "title": "磁力之戒"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:magnet_ring",
+      "text": "合成配方 / Crafting Recipe",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 40
+}

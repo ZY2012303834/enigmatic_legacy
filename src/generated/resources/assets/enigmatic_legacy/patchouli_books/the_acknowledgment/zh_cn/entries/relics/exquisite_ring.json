@@ -1,0 +1,23 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:golden_ring",
+  "name": "精美戒指",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:golden_ring",
+      "link_recipe": true,
+      "text": "以贵重材料精制而成的戒指，适合作为附魔与进一步转化的载体。",
+      "title": "精美戒指"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:golden_ring",
+      "text": "合成配方 / Crafting Recipe",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 20
+}

@@ -1,7 +1,7 @@
 {
   "description": "Laws, consequences, and hidden truths of this world.",
   "icon": "minecraft:grass_block",
-  "name": "The World",
+  "name": "World",
   "secret": false,
   "sortnum": 0
 }

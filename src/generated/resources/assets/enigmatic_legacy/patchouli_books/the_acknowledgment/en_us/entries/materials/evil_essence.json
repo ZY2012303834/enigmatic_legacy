@@ -1,0 +1,17 @@
+{
+  "category": "enigmatic_legacy:materials",
+  "icon": "enigmatic_legacy:evil_essence",
+  "name": "Evil Essence",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:evil_essence",
+      "link_recipe": true,
+      "text": "Condensed malice given form. It is unstable, corruptive, and useful.",
+      "title": "Evil Essence"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 70
+}

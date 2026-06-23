@@ -1,0 +1,23 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:twisted_mirror",
+  "name": "Twisted Mirror",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:twisted_mirror",
+      "link_recipe": true,
+      "text": "A mirror that bends return and remembrance. It is crafted around a recall potion and a Twisted Heart.",
+      "title": "Twisted Mirror"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:twisted_mirror",
+      "text": "合成配方 / Crafting Recipe",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 60
+}

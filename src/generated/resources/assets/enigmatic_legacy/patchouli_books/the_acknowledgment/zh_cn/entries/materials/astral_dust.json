@@ -1,0 +1,17 @@
+{
+  "category": "enigmatic_legacy:materials",
+  "icon": "enigmatic_legacy:astral_dust",
+  "name": "星尘",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:astral_dust",
+      "link_recipe": true,
+      "text": "一种微微闪烁的物质，仿佛来自未知的边缘。许多早期遗物都从这份尘埃开始。",
+      "title": "星尘"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 0
+}

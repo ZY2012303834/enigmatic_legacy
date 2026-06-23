@@ -6,15 +6,17 @@
     {
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:enigmatic_eye",
+      "link_recipe": true,
       "text": "此眼沉睡着，直到被唤醒。苏醒后，它可以作为护符佩戴。",
       "title": "休眠之眼"
     },
     {
       "type": "patchouli:text",
-      "text": "佩戴已唤醒的全知之眼时，会额外提供一个护符栏位，并提高方块交互距离。",
+      "text": "佩戴已唤醒的全知之眼时，会额外提供一个护符栏位，并提高方块交互距离。它也可能让观察者发声。",
       "title": "苏醒之视"
     }
   ],
+  "read_by_default": true,
   "secret": false,
-  "sortnum": 1
+  "sortnum": 120
 }

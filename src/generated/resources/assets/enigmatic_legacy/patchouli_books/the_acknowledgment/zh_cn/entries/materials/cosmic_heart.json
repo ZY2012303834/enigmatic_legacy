@@ -1,0 +1,23 @@
+{
+  "category": "enigmatic_legacy:materials",
+  "icon": "enigmatic_legacy:cosmic_heart",
+  "name": "寰宇之心",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:cosmic_heart",
+      "link_recipe": true,
+      "text": "凝聚成心形的宇宙潜能，是与空间和距离相关遗物的重要材料。",
+      "title": "寰宇之心"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:cosmic_heart",
+      "text": "合成配方 / Crafting Recipe",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 40
+}

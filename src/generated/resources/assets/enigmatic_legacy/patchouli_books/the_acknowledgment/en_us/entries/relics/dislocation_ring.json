@@ -1,0 +1,23 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:dislocation_ring",
+  "name": "Dislocation Ring",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:dislocation_ring",
+      "link_recipe": true,
+      "text": "A stronger magnetic ring. Instead of slowly dragging items, it dislocates nearby drops directly into reach.",
+      "title": "Dislocation Ring"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:dislocation_ring",
+      "text": "合成配方 / Crafting Recipe",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 50
+}

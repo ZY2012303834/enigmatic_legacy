@@ -1,7 +1,7 @@
 {
-  "description": "Ancient artifacts and enigmatic tools.",
+  "description": "Ancient tools, rings, charms, and artifacts.",
   "icon": "enigmatic_legacy:the_acknowledgment",
   "name": "Relics",
   "secret": false,
-  "sortnum": 10
+  "sortnum": 20
 }

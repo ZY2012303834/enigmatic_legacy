@@ -1,0 +1,17 @@
+{
+  "category": "enigmatic_legacy:materials",
+  "icon": "enigmatic_legacy:evil_essence",
+  "name": "极恶精华",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:evil_essence",
+      "link_recipe": true,
+      "text": "凝成实质的恶意。它不稳定，带有腐化性，也因此十分有用。",
+      "title": "极恶精华"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 70
+}

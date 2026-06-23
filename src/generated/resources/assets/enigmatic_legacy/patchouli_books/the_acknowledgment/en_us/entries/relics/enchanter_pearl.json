@@ -1,0 +1,23 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:enchanter_pearl",
+  "name": "Enchanter's Pearl",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:enchanter_pearl",
+      "link_recipe": true,
+      "text": "A pearl useful only to cursed bearers. While equipped, it grants an additional charm slot.",
+      "title": "Enchanter's Pearl"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:enchanter_pearl",
+      "text": "合成配方 / Crafting Recipe",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 110
+}

@@ -1,0 +1,23 @@
+{
+  "category": "enigmatic_legacy:materials",
+  "icon": "enigmatic_legacy:thicc_scroll",
+  "name": "Thicc Scroll",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:thicc_scroll",
+      "link_recipe": true,
+      "text": "A blank but unusually sturdy scroll. It is prepared to contain knowledge that ordinary paper would fail to hold.",
+      "title": "Thicc Scroll"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:thicc_scroll",
+      "text": "合成配方 / Crafting Recipe",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 20
+}

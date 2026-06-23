@@ -1,0 +1,23 @@
+{
+  "category": "enigmatic_legacy:materials",
+  "icon": "enigmatic_legacy:earth_heart",
+  "name": "大地之心",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:earth_heart",
+      "link_recipe": true,
+      "text": "大地的碎片被重新聚合为一颗心，其中脉动着深埋地下的生命力。",
+      "title": "大地之心"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:earth_heart",
+      "text": "合成配方 / Crafting Recipe",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 50
+}

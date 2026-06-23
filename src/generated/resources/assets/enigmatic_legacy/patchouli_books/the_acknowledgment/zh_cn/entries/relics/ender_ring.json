@@ -1,0 +1,23 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:ender_ring",
+  "name": "末影之戒",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:ender_ring",
+      "link_recipe": true,
+      "text": "与末影储物相连的戒指，可通过专属界面便捷访问末影箱。",
+      "title": "末影之戒"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:ender_ring",
+      "text": "合成配方 / Crafting Recipe",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 30
+}
