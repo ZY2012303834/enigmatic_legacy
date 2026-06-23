@@ -63,6 +63,7 @@ public final class ModItems {
     public static final DeferredItem<EyeOfNebula> EYE_OF_NEBULA = ITEMS.register("eye_of_nebula", EyeOfNebula::new); // 星云之眼
     public static final DeferredItem<PearlOfTheVoid> VOID_PEARL = ITEMS.register("void_pearl", PearlOfTheVoid::new); // 虚空珍珠
     public static final DeferredItem<NonEuclideanCube> THE_CUBE = ITEMS.register("the_cube", NonEuclideanCube::new); // 非欧立方
+    public static final DeferredItem<HeartOfCreation> HEART_OF_CREATION = ITEMS.register("heart_of_creation", HeartOfCreation::new); // 创造之心
 
 
     // 原版名为 storage_crystal，显示名是 Extradimensional Vessel / 超维容器。

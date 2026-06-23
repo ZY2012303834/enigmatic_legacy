@@ -409,6 +409,19 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.7", "Prevents negative effects, cramming, fall, collision, thorns, teleportation, fire, and lava damage, and folds space to save you near death.");
         // end
 
+        // 创造之心
+        addItem(ModItems.HEART_OF_CREATION, "Heart of Creation");
+
+        add("message.enigmatic_legacy.heart_of_creation.no_targets", "The Heart of Creation found no enemies to judge.");
+
+        add("tooltip.enigmatic_legacy.heart_of_creation.active", "Calls lightning upon all enemies within %s blocks, dealing %s damage and inflicting Wither.");
+        add("tooltip.enigmatic_legacy.heart_of_creation.passive.1", "Prevents suffocation, fall, collision, cramming, starvation, void, thorns, fire, and lava damage.");
+        add("tooltip.enigmatic_legacy.heart_of_creation.passive.2", "Removes most negative status effects.");
+        add("tooltip.enigmatic_legacy.heart_of_creation.passive.3", "Prevents knockback and grants flight.");
+        add("tooltip.enigmatic_legacy.heart_of_creation.passive.4", "Compensates for mining speed loss while flying.");
+        add("tooltip.enigmatic_legacy.heart_of_creation.passive.5", "While equipped or carried in your inventory, you become immortal;");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");
     }

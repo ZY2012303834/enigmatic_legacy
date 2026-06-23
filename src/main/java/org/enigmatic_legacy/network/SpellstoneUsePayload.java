@@ -9,14 +9,8 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.enigmatic_legacy.EnigmaticLegacy;
-import org.enigmatic_legacy.item.items.AngelBlessing;
-import org.enigmatic_legacy.item.items.EyeOfNebula;
-import org.enigmatic_legacy.item.items.NonEuclideanCube;
-import org.enigmatic_legacy.item.items.OceanStone;
-import org.enigmatic_legacy.util.AngelBlessingHelper;
-import org.enigmatic_legacy.util.EyeOfNebulaHelper;
-import org.enigmatic_legacy.util.NonEuclideanCubeHelper;
-import org.enigmatic_legacy.util.OceanStoneHelper;
+import org.enigmatic_legacy.item.items.*;
+import org.enigmatic_legacy.util.*;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -62,12 +56,17 @@ public record SpellstoneUsePayload() implements CustomPacketPayload {
                 stack = NonEuclideanCubeHelper.findNonEuclideanCube(player).orElse(ItemStack.EMPTY);
             }
 
+            if (stack.isEmpty()) {
+                stack = HeartOfCreationHelper.findHeartOfCreation(player).orElse(ItemStack.EMPTY);
+            }
+
             // 根据找到的物品类型触发对应主动技能。
             switch (stack.getItem()) {
                 case AngelBlessing angelBlessing -> angelBlessing.triggerActiveAbility(level, player, stack);
                 case OceanStone oceanStone -> oceanStone.triggerActiveAbility(level, player, stack);
                 case EyeOfNebula eyeOfNebula -> eyeOfNebula.triggerActiveAbility(level, player, stack);
                 case NonEuclideanCube cube -> cube.triggerActiveAbility(level, player, stack);
+                case HeartOfCreation heartOfCreation -> heartOfCreation.triggerActiveAbility(level, player, stack);
 
                 default -> {
                 }

@@ -410,6 +410,19 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.7", "免疫负面效果、挤压、摔落、碰撞、荆棘、传送、火焰与熔岩伤害，并可在濒死时折叠空间保命。");
         // end
 
+        // 创造之心
+        addItem(ModItems.HEART_OF_CREATION, "创造之心");
+
+        add("message.enigmatic_legacy.heart_of_creation.no_targets", "创造之心没有找到可审判的敌人。");
+
+        add("tooltip.enigmatic_legacy.heart_of_creation.active", "对 %s 格范围内的所有敌人降下闪电，造成 %s 点伤害并附加凋零。");
+        add("tooltip.enigmatic_legacy.heart_of_creation.passive.1", "免疫窒息、坠落、碰撞、挤压、饥饿、虚空、荆棘、火焰和岩浆伤害。");
+        add("tooltip.enigmatic_legacy.heart_of_creation.passive.2", "免疫大部分负面状态效果。");
+        add("tooltip.enigmatic_legacy.heart_of_creation.passive.3", "免疫击退，并给予你飞行能力。");
+        add("tooltip.enigmatic_legacy.heart_of_creation.passive.4", "补偿飞行时的挖掘速度损失。");
+        add("tooltip.enigmatic_legacy.heart_of_creation.passive.5", "装备它或将其放在物品栏中时，你将不朽；");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5按住 §6Shift§5 查看详情。");
 

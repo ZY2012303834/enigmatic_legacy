@@ -75,6 +75,7 @@ public final class ModeTabs {
                         output.accept(ModItems.EYE_OF_NEBULA.get()); // 星云之眼
                         output.accept(ModItems.VOID_PEARL.get()); // 虚空珍珠
                         output.accept(ModItems.THE_CUBE.get()); // 非欧立方
+                        output.accept(ModItems.HEART_OF_CREATION.get()); // 创造之心
                     })
                     .build());
 

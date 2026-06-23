@@ -83,6 +83,7 @@ public class ItemGenerator extends ItemModelProvider {
         basicItem(ModItems.EYE_OF_NEBULA.getId()); // 星云之眼
         basicItem(ModItems.VOID_PEARL.getId()); // 虚空珍珠
         basicItem(ModItems.THE_CUBE.getId()); // 非欧立方
+        basicItem(ModItems.HEART_OF_CREATION.getId()); // 创造之心
 
     }
 

@@ -109,14 +109,7 @@ public class CuriosGenerator implements DataProvider {
         JsonObject json = new JsonObject();
         json.addProperty("replace", false);
 
-        JsonArray values = new JsonArray();
-        values.add(EnigmaticLegacy.MODID + ":golem_heart");
-        values.add(EnigmaticLegacy.MODID + ":angel_blessing");
-        values.add(EnigmaticLegacy.MODID + ":ocean_stone");
-        values.add(EnigmaticLegacy.MODID + ":blazing_core");
-        values.add(EnigmaticLegacy.MODID + ":eye_of_nebula"); // 星云之眼
-        values.add(EnigmaticLegacy.MODID + ":void_pearl"); // 虚空珍珠
-        values.add(EnigmaticLegacy.MODID + ":the_cube"); // 非欧立方
+        JsonArray values = getElements();
 
         json.add("values", values);
 
@@ -127,6 +120,19 @@ public class CuriosGenerator implements DataProvider {
                 .resolve("spellstone.json");
 
         return DataProvider.saveStable(cachedOutput, json, path);
+    }
+
+    private static @NotNull JsonArray getElements() {
+        JsonArray values = new JsonArray();
+        values.add(EnigmaticLegacy.MODID + ":golem_heart");
+        values.add(EnigmaticLegacy.MODID + ":angel_blessing");
+        values.add(EnigmaticLegacy.MODID + ":ocean_stone");
+        values.add(EnigmaticLegacy.MODID + ":blazing_core");
+        values.add(EnigmaticLegacy.MODID + ":eye_of_nebula"); // 星云之眼
+        values.add(EnigmaticLegacy.MODID + ":void_pearl"); // 虚空珍珠
+        values.add(EnigmaticLegacy.MODID + ":the_cube"); // 非欧立方
+        values.add(EnigmaticLegacy.MODID + ":heart_of_creation"); // 创造之心
+        return values;
     }
 
     /**

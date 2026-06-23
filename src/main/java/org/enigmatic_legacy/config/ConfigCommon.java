@@ -161,6 +161,12 @@ public final class ConfigCommon {
     public static final ModConfigSpec.IntValue BLAZING_CORE_MOLTEN_EFFECT_DURATION_MODIFIER;
     public static final ModConfigSpec.DoubleValue BLAZING_CORE_AQUATIC_DAMAGE_VULNERABILITY;
 
+    // 创造之心
+    public static final HeartOfCreationConfig HEART_OF_CREATION;
+    public static final ModConfigSpec.IntValue HEART_OF_CREATION_COOLDOWN;
+    public static final ModConfigSpec.DoubleValue HEART_OF_CREATION_LIGHTNING_RANGE;
+    public static final ModConfigSpec.DoubleValue HEART_OF_CREATION_LIGHTNING_DAMAGE;
+
     static {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
 
@@ -278,6 +284,14 @@ public final class ConfigCommon {
         BLAZING_CORE_EFFECT_DURATION_MODIFIER = BLAZING_CORE.effectDurationModifier;
         BLAZING_CORE_MOLTEN_EFFECT_DURATION_MODIFIER = BLAZING_CORE.moltenEffectDurationModifier;
         BLAZING_CORE_AQUATIC_DAMAGE_VULNERABILITY = BLAZING_CORE.aquaticDamageVulnerability;
+
+        // 创造之心
+        HEART_OF_CREATION = new HeartOfCreationConfig(builder);
+        HEART_OF_CREATION_COOLDOWN = HEART_OF_CREATION.cooldown;
+        HEART_OF_CREATION_LIGHTNING_RANGE = HEART_OF_CREATION.lightningRange;
+        HEART_OF_CREATION_LIGHTNING_DAMAGE = HEART_OF_CREATION.lightningDamage;
+
+
 
 
 
