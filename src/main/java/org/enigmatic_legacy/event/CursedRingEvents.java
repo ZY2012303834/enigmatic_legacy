@@ -312,23 +312,48 @@ public class CursedRingEvents {
             return;
         }
 
-        // 七咒之戒初始给予由 Ultra Hardcore 配置控制。
-        // 不要读取 CURSED_RING_ENABLED，否则配置尚未完成加载时会在玩家登录阶段崩溃。
-        if (!ConfigCommon.CURSED_RING_ULTRA_HARDCORE.get()) {
+        /*
+         * 七咒之戒首次进世界发放逻辑。
+         *
+         * 注意：
+         * 不再使用 CURSED_RING_ULTRA_HARDCORE 控制初始发放。
+         * 当前项目的 ItemOptionsConfig 里 CursedRingEnabled 默认就是 true，
+         * 注释也说明它可用于控制初始给予、Curios 佩戴、诅咒功能触发。
+         */
+        if (!ConfigCommon.CURSED_RING_ENABLED.get()) {
             return;
         }
 
-        if (hasReceivedStartingCursedRing(player)) {
-            return;
-        }
-
+        /*
+         * 如果玩家已经佩戴，或者背包里已经有七咒之戒，
+         * 只记录已发放标记，不再重复给予。
+         */
         if (CursedRingHelper.hasCursedRing(player) || hasCursedRingInInventory(player)) {
             markReceivedStartingCursedRing(player);
             return;
         }
 
+        /*
+         * 如果已经记录发放过，则不重复发放。
+         */
+        if (hasReceivedStartingCursedRing(player)) {
+            return;
+        }
+
+        ItemStack cursedRing = new ItemStack(ModItems.CURSED_RING.get());
+
+        /*
+         * 先尝试放入背包。
+         * 如果背包满了，就掉落到玩家脚下，避免因为 addItem 失败导致戒指丢失。
+         */
+        if (!player.addItem(cursedRing)) {
+            player.drop(cursedRing, false);
+        }
+
+        /*
+         * 只有真正执行过给予逻辑后，再写入已发放标记。
+         */
         markReceivedStartingCursedRing(player);
-        player.addItem(new ItemStack(ModItems.CURSED_RING.get()));
     }
 
     @SubscribeEvent
