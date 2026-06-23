@@ -59,6 +59,7 @@ public final class ModItems {
     public static final DeferredItem<GolemHeart> GOLEM_HEART = ITEMS.register("golem_heart", GolemHeart::new); // 魔像之心
     public static final DeferredItem<AngelBlessing> ANGEL_BLESSING = ITEMS.register("angel_blessing", AngelBlessing::new); // 天使之祝
     public static final DeferredItem<OceanStone> OCEAN_STONE = ITEMS.register("ocean_stone", OceanStone::new);  // 海洋意志
+    public static final DeferredItem<BlazingCore> BLAZING_CORE = ITEMS.register("blazing_core", BlazingCore::new); // 烈焰核心
 
 
     // 原版名为 storage_crystal，显示名是 Extradimensional Vessel / 超维容器。

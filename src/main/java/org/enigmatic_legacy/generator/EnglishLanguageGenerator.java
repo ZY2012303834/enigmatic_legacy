@@ -291,6 +291,9 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.the_acknowledgment.shift.2", "The Fourth Curse is weakened by %s.");
         // end
 
+        // 术石
+        add("curios.identifier.spellstone", "Spellstone");
+
         // 魔像之心
         addItem(ModItems.GOLEM_HEART, "Heart of the Golem");
 
@@ -344,11 +347,25 @@ public class EnglishLanguageGenerator extends LanguageProvider {
                 "The ocean answers your will.");
         // end
 
+        // 烈焰核心
+        addItem(ModItems.BLAZING_CORE, "Blazing Core");
+
+        add("tooltip.enigmatic_legacy.blazing_core.active",
+                "No active ability.");
+        add("tooltip.enigmatic_legacy.blazing_core.passive.1",
+                "Immunizes you against fire damage and automatically extinguishes you.");
+        add("tooltip.enigmatic_legacy.blazing_core.passive.2",
+                "Temporarily protects you from lava damage; staying in lava too long makes you overheat.");
+        add("tooltip.enigmatic_legacy.blazing_core.passive.3",
+                "When hit in melee, deals %s fire feedback damage to the attacker and ignites them.");
+        add("tooltip.enigmatic_legacy.blazing_core.passive.4",
+                "Most status effects last %s as long; fire resistance-like effects last twice as long.");
+        add("tooltip.enigmatic_legacy.blazing_core.passive.5",
+                "Damage from aquatic creatures is multiplied by %s.");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");
-
-        // 术石
-        add("curios.identifier.spellstone", "Spellstone");
     }
 
     private void addEnglishCursedRingTooltips() {

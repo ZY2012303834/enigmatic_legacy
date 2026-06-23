@@ -150,6 +150,17 @@ public final class ConfigCommon {
     public static final ModConfigSpec.IntValue OCEAN_STONE_NIGHT_VISION_DURATION;
     public static final ModConfigSpec.DoubleValue OCEAN_STONE_FIRE_VULNERABILITY;
 
+    // 烈焰核心
+    public static final BlazingCoreConfig BLAZING_CORE;
+    public static final ModConfigSpec.IntValue BLAZING_CORE_COOLDOWN;
+    public static final ModConfigSpec.DoubleValue BLAZING_CORE_DAMAGE_FEEDBACK;
+    public static final ModConfigSpec.IntValue BLAZING_CORE_IGNITION_FEEDBACK;
+    public static final ModConfigSpec.IntValue BLAZING_CORE_LAVA_IMMUNITY_TICKS;
+    public static final ModConfigSpec.IntValue BLAZING_CORE_LAVA_COOLDOWN_PER_TICK;
+    public static final ModConfigSpec.IntValue BLAZING_CORE_EFFECT_DURATION_MODIFIER;
+    public static final ModConfigSpec.IntValue BLAZING_CORE_MOLTEN_EFFECT_DURATION_MODIFIER;
+    public static final ModConfigSpec.DoubleValue BLAZING_CORE_AQUATIC_DAMAGE_VULNERABILITY;
+
     static {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
 
@@ -256,6 +267,19 @@ public final class ConfigCommon {
         OCEAN_STONE_XP_COST_MODIFIER = OCEAN_STONE.xpCostModifier;
         OCEAN_STONE_NIGHT_VISION_DURATION = OCEAN_STONE.nightVisionDuration;
         OCEAN_STONE_FIRE_VULNERABILITY = OCEAN_STONE.fireVulnerability;
+
+        // 烈焰核心
+        BLAZING_CORE = new BlazingCoreConfig(builder);
+        BLAZING_CORE_COOLDOWN = BLAZING_CORE.cooldown;
+        BLAZING_CORE_DAMAGE_FEEDBACK = BLAZING_CORE.damageFeedback;
+        BLAZING_CORE_IGNITION_FEEDBACK = BLAZING_CORE.ignitionFeedback;
+        BLAZING_CORE_LAVA_IMMUNITY_TICKS = BLAZING_CORE.lavaImmunityTicks;
+        BLAZING_CORE_LAVA_COOLDOWN_PER_TICK = BLAZING_CORE.lavaCooldownPerTick;
+        BLAZING_CORE_EFFECT_DURATION_MODIFIER = BLAZING_CORE.effectDurationModifier;
+        BLAZING_CORE_MOLTEN_EFFECT_DURATION_MODIFIER = BLAZING_CORE.moltenEffectDurationModifier;
+        BLAZING_CORE_AQUATIC_DAMAGE_VULNERABILITY = BLAZING_CORE.aquaticDamageVulnerability;
+
+
 
         SPEC = builder.build();
     }

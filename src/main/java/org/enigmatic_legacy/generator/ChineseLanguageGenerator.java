@@ -292,6 +292,9 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.the_acknowledgment.shift.2", "第四诅咒削弱 %s。");
         // end
 
+        // 术石
+        add("curios.identifier.spellstone", "术石");
+
         // 魔像之心
         addItem(ModItems.GOLEM_HEART, "魔像之心");
 
@@ -345,11 +348,27 @@ public class ChineseLanguageGenerator extends LanguageProvider {
                 "海洋回应了你的意志。");
         // end
 
+        // 烈焰核心
+        addItem(ModItems.BLAZING_CORE, "烈焰核心");
+
+        add("tooltip.enigmatic_legacy.blazing_core.active",
+                "无主动效果。");
+        add("tooltip.enigmatic_legacy.blazing_core.passive.1",
+                "免疫火焰伤害，并会自动熄灭自身燃烧。");
+        add("tooltip.enigmatic_legacy.blazing_core.passive.2",
+                "暂时免疫岩浆伤害；在岩浆中停留过久后会过热并开始受伤。");
+        add("tooltip.enigmatic_legacy.blazing_core.passive.3",
+                "受到近战攻击时，对攻击者造成 %s 点火焰反馈伤害并点燃攻击者。");
+        add("tooltip.enigmatic_legacy.blazing_core.passive.4",
+                "大多数状态效果持续时间变为 %s；抗火类效果持续时间翻倍。");
+        add("tooltip.enigmatic_legacy.blazing_core.passive.5",
+                "来自水生生物的伤害变为 %s 倍。");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5按住 §6Shift§5 查看详情。");
 
-        // 术石
-        add("curios.identifier.spellstone", "术石");
+
     }
 
     private void addChineseCursedRingTooltips() {
