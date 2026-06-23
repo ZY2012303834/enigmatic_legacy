@@ -64,14 +64,33 @@ public class GolemHeart extends Item implements ICurioItem {
                 .rarity(Rarity.RARE));
     }
 
+    private static final String SPELLSTONE_SLOT = "spellstone";
+
+    private static boolean isSpellstoneSlot(SlotContext context) {
+        return SPELLSTONE_SLOT.equals(context.identifier());
+    }
+
     @Override
     public boolean canEquipFromUse(SlotContext context, ItemStack stack) {
-        return true;
+        return isSpellstoneSlot(context);
+    }
+
+    @Override
+    public boolean canEquip(SlotContext context, ItemStack stack) {
+        return isSpellstoneSlot(context);
     }
 
     @Override
     public void curioTick(SlotContext context, ItemStack stack) {
         LivingEntity entity = context.entity();
+
+        // 保险处理：如果因为旧存档、旧数据包或其他原因进入了非 spellstone 槽，
+        // 立即清理属性并不触发效果。
+        if (!isSpellstoneSlot(context)) {
+            entity.getAttributes().removeAttributeModifiers(getDefaultModifiers());
+            entity.getAttributes().removeAttributeModifiers(getNoArmorModifiers());
+            return;
+        }
 
         // 每 tick 先清理两组属性，避免切换穿甲状态时残留。
         entity.getAttributes().removeAttributeModifiers(getDefaultModifiers());
