@@ -305,6 +305,21 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.golem_heart.8", "Magic damage taken is multiplied by %s.");
         // end
 
+        // 天使之祝
+        addItem(ModItems.ANGEL_BLESSING, "Angel's Blessing");
+
+        add("key.enigmatic_legacy.use_spellstone", "Use Spellstone");
+
+        add("tooltip.enigmatic_legacy.spellstone.active", "Active Ability:");
+        add("tooltip.enigmatic_legacy.spellstone.cooldown", "Cooldown: %s seconds.");
+        add("tooltip.enigmatic_legacy.angel_blessing.active", "Accelerates you toward your line of sight.");
+        add("tooltip.enigmatic_legacy.angel_blessing.passive.1", "Immune to fall and collision damage.");
+        add("tooltip.enigmatic_legacy.angel_blessing.passive.2", "%s chance to reflect nearby projectiles.");
+        add("tooltip.enigmatic_legacy.angel_blessing.passive.3", "Your own projectiles are accelerated.");
+        add("tooltip.enigmatic_legacy.angel_blessing.passive.4", "Press Jump in midair to activate an air dash.");
+        add("tooltip.enigmatic_legacy.angel_blessing.passive.5", "Wither and void damage taken is increased.");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");
 

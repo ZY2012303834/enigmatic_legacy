@@ -91,6 +91,8 @@ public class CuriosGenerator implements DataProvider {
         json.addProperty("size", 1);
         json.addProperty("operation", "SET");
         json.addProperty("order", 130);
+
+        // 使用自定义术石空槽图标。
         json.addProperty("icon", EnigmaticLegacy.MODID + ":slot/empty_spellstone_slot");
 
         Path path = output.getOutputFolder(PackOutput.Target.DATA_PACK)
@@ -108,6 +110,7 @@ public class CuriosGenerator implements DataProvider {
 
         JsonArray values = new JsonArray();
         values.add(EnigmaticLegacy.MODID + ":golem_heart");
+        values.add(EnigmaticLegacy.MODID + ":angel_blessing");
 
         json.add("values", values);
 

@@ -36,7 +36,7 @@ public class GolemHeartEvents {
     /**
      * Plus 版伤害调整：
      * 1. 无护甲时爆炸减伤；
-     * 2. 魔法伤害易伤；
+     * 2. 所有魔法类伤害易伤；
      * 3. 近战减伤。
      */
     @SubscribeEvent
@@ -52,7 +52,7 @@ public class GolemHeartEvents {
 
         if (GolemHeart.hasNoArmor(entity) && source.is(DamageTypeTags.IS_EXPLOSION)) {
             damage *= 1.0F - ConfigCommon.GOLEM_HEART_EXPLOSION_RESISTANCE.get() / 100.0F;
-        } else if (source.is(Tags.DamageTypes.IS_MAGIC)) {
+        } else if (isMagicDamage(source)) {
             damage *= ConfigCommon.GOLEM_HEART_MAGIC_VULNERABILITY.get().floatValue();
         } else if (isMeleeDamage(source)) {
             damage *= 1.0F - ConfigCommon.GOLEM_HEART_MELEE_RESISTANCE.get() / 100.0F;
@@ -66,6 +66,24 @@ public class GolemHeartEvents {
                 || source.is(DamageTypes.CRAMMING)
                 || source.is(DamageTypes.CACTUS)
                 || source.is(DamageTypes.STALAGMITE);
+    }
+
+    /**
+     * 魔像之心的魔法易伤。
+     * 这里不要只依赖中毒 Mixin。
+     * 所有魔法类伤害都应该被放大，包括：
+     * - 中毒；
+     * - 瞬间伤害；
+     * - 龙息；
+     * - 凋零；
+     * - 其他被数据标签标记为 neoforge:is_magic 的伤害。
+     */
+    private static boolean isMagicDamage(DamageSource source) {
+        return source.is(Tags.DamageTypes.IS_MAGIC)
+                || source.is(DamageTypes.MAGIC)
+                || source.is(DamageTypes.INDIRECT_MAGIC)
+                || source.is(DamageTypes.WITHER)
+                || source.is(DamageTypes.DRAGON_BREATH);
     }
 
     private static boolean isMeleeDamage(DamageSource source) {

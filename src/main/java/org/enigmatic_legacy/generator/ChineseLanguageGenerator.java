@@ -306,6 +306,21 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.golem_heart.8", "受到的魔法伤害变为 %s 倍。");
         // end
 
+        // 天使之祝
+        addItem(ModItems.ANGEL_BLESSING, "天使之祝");
+
+        add("key.enigmatic_legacy.use_spellstone", "使用术石");
+
+        add("tooltip.enigmatic_legacy.spellstone.active", "主动能力：");
+        add("tooltip.enigmatic_legacy.spellstone.cooldown", "冷却：%s 秒。");
+        add("tooltip.enigmatic_legacy.angel_blessing.active", "向视野方向加速。");
+        add("tooltip.enigmatic_legacy.angel_blessing.passive.1", "免疫摔落和碰撞伤害。");
+        add("tooltip.enigmatic_legacy.angel_blessing.passive.2", "%s 概率反射接近的弹射物。");
+        add("tooltip.enigmatic_legacy.angel_blessing.passive.3", "你自己射出的弹射物会被加速。");
+        add("tooltip.enigmatic_legacy.angel_blessing.passive.4", "可以在空中按下空格键激活空中冲刺。");
+        add("tooltip.enigmatic_legacy.angel_blessing.passive.5", "受到的凋零和虚空伤害增加。");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5按住 §6Shift§5 查看详情。");
 

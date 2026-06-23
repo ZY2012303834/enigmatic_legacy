@@ -43,6 +43,10 @@ public class EnigmaticLegacy {
         modEventBus.addListener(CuriosGenerator::gatherData);
         modEventBus.addListener(SoundGenerator::gatherData);
         modEventBus.addListener(PatchouliBookGenerator::gatherData);
+        modEventBus.addListener(DamageTagGenerator::gatherData);
+        modEventBus.addListener(AngelBlessingLootTableGenerator::gatherData);
+        modEventBus.addListener(AngelBlessingLootModifierGenerator::gatherData);
+
 
         NeoForge.EVENT_BUS.register(MonsterCharmEvents.class);
         NeoForge.EVENT_BUS.register(EnchanterPearlEvents.class);
@@ -59,5 +63,7 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(SoulCrystalEvents.class);
         NeoForge.EVENT_BUS.register(ForbiddenFruitEvents.class);
         NeoForge.EVENT_BUS.register(GolemHeartEvents.class);
+        NeoForge.EVENT_BUS.register(AngelBlessingEvents.class);
+        NeoForge.EVENT_BUS.register(AngelBlessingLootEvents.class);
     }
 }

@@ -57,7 +57,7 @@ public final class ModItems {
 
     // 术石
     public static final DeferredItem<GolemHeart> GOLEM_HEART = ITEMS.register("golem_heart", GolemHeart::new); // 魔像之心
-
+    public static final DeferredItem<AngelBlessing> ANGEL_BLESSING = ITEMS.register("angel_blessing", AngelBlessing::new); // 天使之祝 / Angel's Blessing
 
 
     // 原版名为 storage_crystal，显示名是 Extradimensional Vessel / 超维容器。

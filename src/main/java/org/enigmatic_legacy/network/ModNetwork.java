@@ -16,5 +16,23 @@ public final class ModNetwork {
                 PlayQuotePayload.STREAM_CODEC,
                 PlayQuotePayload::handle
         );
+
+        registrar.playToServer(
+                SpellstoneUsePayload.TYPE,
+                SpellstoneUsePayload.STREAM_CODEC,
+                SpellstoneUsePayload::handle
+        );
+
+        registrar.playToClient(
+                PlayerMotionPayload.TYPE,
+                PlayerMotionPayload.STREAM_CODEC,
+                PlayerMotionPayload::handle
+        );
+
+        registrar.playToClient(
+                ForceProjectileRotationPayload.TYPE,
+                ForceProjectileRotationPayload.STREAM_CODEC,
+                ForceProjectileRotationPayload::handle
+        );
     }
 }

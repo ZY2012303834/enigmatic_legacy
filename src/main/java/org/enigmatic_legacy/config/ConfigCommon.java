@@ -131,6 +131,15 @@ public final class ConfigCommon {
     public static final ModConfigSpec.IntValue GOLEM_HEART_EXPLOSION_RESISTANCE;
     public static final ModConfigSpec.DoubleValue GOLEM_HEART_MAGIC_VULNERABILITY;
 
+    // 天使之祝
+    public static final AngelBlessingConfig ANGEL_BLESSING;
+
+    public static final ModConfigSpec.DoubleValue ANGEL_BLESSING_ACCELERATION_MODIFIER;
+    public static final ModConfigSpec.DoubleValue ANGEL_BLESSING_ACCELERATION_MODIFIER_ELYTRA;
+    public static final ModConfigSpec.IntValue ANGEL_BLESSING_DEFLECT_CHANCE;
+    public static final ModConfigSpec.DoubleValue ANGEL_BLESSING_VULNERABILITY_MODIFIER;
+    public static final ModConfigSpec.IntValue ANGEL_BLESSING_COOLDOWN;
+
     static {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
 
@@ -207,8 +216,10 @@ public final class ConfigCommon {
         BLOODSTAINED_VALOR_MOVEMENT_SPEED = BLOODSTAINED_VALOR.movementSpeed;
         BLOODSTAINED_VALOR_DAMAGE_RESISTANCE = BLOODSTAINED_VALOR.damageResistance;
 
+
         MEGA_SPONGE_RADIUS = MEGA_SPONGE.radius;
 
+        // 魔像之心
         GOLEM_HEART_DEFAULT_ARMOR_BONUS = GOLEM_HEART.defaultArmorBonus;
         GOLEM_HEART_SUPER_ARMOR_BONUS = GOLEM_HEART.superArmorBonus;
         GOLEM_HEART_SUPER_ARMOR_TOUGHNESS_BONUS = GOLEM_HEART.superArmorToughnessBonus;
@@ -216,6 +227,15 @@ public final class ConfigCommon {
         GOLEM_HEART_MELEE_RESISTANCE = GOLEM_HEART.meleeResistance;
         GOLEM_HEART_EXPLOSION_RESISTANCE = GOLEM_HEART.explosionResistance;
         GOLEM_HEART_MAGIC_VULNERABILITY = GOLEM_HEART.magicVulnerability;
+
+        // 天使之祝
+        ANGEL_BLESSING = new AngelBlessingConfig(builder);
+
+        ANGEL_BLESSING_ACCELERATION_MODIFIER = ANGEL_BLESSING.accelerationModifier;
+        ANGEL_BLESSING_ACCELERATION_MODIFIER_ELYTRA = ANGEL_BLESSING.accelerationModifierElytra;
+        ANGEL_BLESSING_DEFLECT_CHANCE = ANGEL_BLESSING.deflectChance;
+        ANGEL_BLESSING_VULNERABILITY_MODIFIER = ANGEL_BLESSING.vulnerabilityModifier;
+        ANGEL_BLESSING_COOLDOWN = ANGEL_BLESSING.cooldown;
 
         SPEC = builder.build();
     }
