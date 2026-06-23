@@ -268,14 +268,12 @@ public final class HeartOfCreationEvents {
         entity.level().broadcastEntityEvent(entity, (byte) 2);
 
         if (entity instanceof ServerPlayer player) {
-            // 立即同步血量到 1 点。
             player.connection.send(new ClientboundSetHealthPacket(
                     1.0F,
                     player.getFoodData().getFoodLevel(),
                     player.getFoodData().getSaturationLevel()
             ));
 
-            // 关键：通知客户端绘制血条 GUI 保护特效。
             PacketDistributor.sendToPlayer(player, new HeartOfCreationGuardPayload());
         }
     }

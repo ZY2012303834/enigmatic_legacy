@@ -10,8 +10,7 @@ import org.enigmatic_legacy.client.HeartOfCreationClientEffects;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 服务端通知客户端：
- * 创造之心不朽保护已触发，需要播放血条 GUI 保护特效。
+ * 服务端通知客户端播放创造之心血条保护特效。
  */
 public record HeartOfCreationGuardPayload() implements CustomPacketPayload {
     public static final Type<HeartOfCreationGuardPayload> TYPE = new Type<>(
