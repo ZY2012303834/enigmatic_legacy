@@ -47,9 +47,16 @@ public class HeartOfCreation extends Item implements ICurioItem {
 
     /**
      * 主动技能凋零等级。
-     * 1 = 凋零 II，因为药水等级从 0 开始。
+
+     * 注意：
+     * Minecraft 药水等级从 0 开始。
+     * 0 = I
+     * 1 = II
+     * 2 = III
+
+     * 所以这里 2 代表凋零 III。
      */
-    public static final int ACTIVE_WITHER_AMPLIFIER = 1;
+    public static final int ACTIVE_WITHER_AMPLIFIER = 2;
 
     public HeartOfCreation() {
         super(new Item.Properties()
@@ -154,12 +161,15 @@ public class HeartOfCreation extends Item implements ICurioItem {
     /**
      * 对单个目标降下闪电并造成伤害。
 
-     * 闪电设置为 visualOnly：
-     * 1. 保留闪电视觉；
-     * 2. 不让原版闪电额外点火或造成不可控伤害；
-     * 3. 真正伤害由配置项 lightningDamage 控制。
+     * 主动效果：
+     * 对范围内所有敌人降下视觉闪电；
+     * 造成配置伤害；
+     * 附加凋零 III。
      */
     private static void strikeTarget(ServerLevel level, ServerPlayer player, LivingEntity target, float damage) {
+        // 原作者创造之心主动技能音效：凋灵发射音效。
+        level.levelEvent(null, 1024, target.blockPosition(), 0);
+
         LightningBolt lightning = EntityType.LIGHTNING_BOLT.create(level);
 
         if (lightning != null) {
@@ -168,8 +178,10 @@ public class HeartOfCreation extends Item implements ICurioItem {
             level.addFreshEntity(lightning);
         }
 
+        // 配置伤害，默认 10。
         target.hurt(player.damageSources().lightningBolt(), damage);
 
+        // 附加凋零 III。
         target.addEffect(new MobEffectInstance(
                 MobEffects.WITHER,
                 ACTIVE_WITHER_DURATION,

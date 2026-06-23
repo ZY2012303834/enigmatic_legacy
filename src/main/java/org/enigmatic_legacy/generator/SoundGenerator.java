@@ -44,5 +44,22 @@ public class SoundGenerator extends SoundDefinitionsProvider {
                     definition().with(sound(sound))
             );
         });
+
+        // 原作者 misc.shield_trigger 音效。
+        // 注意：音效事件叫 misc.shield_trigger，
+        // 但实际 OGG 文件不是 shield_trigger.ogg，
+        // 而是 shield_hit_0.ogg 和 shield_hit_1.ogg。
+        add(
+                ModSounds.SHIELD_TRIGGER.getId(),
+                definition()
+                        .with(sound(ResourceLocation.fromNamespaceAndPath(
+                                EnigmaticLegacy.MODID,
+                                "misc/shield_hit_0"
+                        )))
+                        .with(sound(ResourceLocation.fromNamespaceAndPath(
+                                EnigmaticLegacy.MODID,
+                                "misc/shield_hit_1"
+                        )))
+        );
     }
 }

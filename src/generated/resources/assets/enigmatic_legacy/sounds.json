@@ -4,6 +4,12 @@
       "enigmatic_legacy:misc/hhon"
     ]
   },
+  "misc.shield_trigger": {
+    "sounds": [
+      "enigmatic_legacy:misc/shield_hit_0",
+      "enigmatic_legacy:misc/shield_hit_1"
+    ]
+  },
   "quote.another_demigod": {
     "sounds": [
       "enigmatic_legacy:quote/another_demigod"

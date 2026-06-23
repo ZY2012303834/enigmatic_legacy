@@ -17,8 +17,8 @@ public final class ModSounds {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
             DeferredRegister.create(Registries.SOUND_EVENT, EnigmaticLegacy.MODID);
 
-    public static final DeferredHolder<SoundEvent, SoundEvent> CHARGED_ON =
-            register("misc.hhon");
+    public static final DeferredHolder<SoundEvent, SoundEvent> CHARGED_ON = register("misc.hhon");
+    public static final DeferredHolder<SoundEvent, SoundEvent> SHIELD_TRIGGER = register("misc.shield_trigger");;
 
     public static final Map<String, DeferredHolder<SoundEvent, SoundEvent>> QUOTES = new LinkedHashMap<>();
 

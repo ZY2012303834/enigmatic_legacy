@@ -1,6 +1,7 @@
 package org.enigmatic_legacy.event;
 
 import net.minecraft.core.Holder;
+import net.minecraft.network.protocol.game.ClientboundSetHealthPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -18,6 +19,7 @@ import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingKnockBackEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
+import org.enigmatic_legacy.sound.ModSounds;
 import org.enigmatic_legacy.util.HeartOfCreationHelper;
 
 import java.util.ArrayList;
@@ -150,7 +152,8 @@ public final class HeartOfCreationEvents {
             return;
         }
 
-        // 如果已经是 1 点或更低，完全抵消这次伤害并强制回到 1 点。
+        // 不朽触发：任何致命伤害都直接压到 1 点血，并取消本次伤害。
+        // 这样血量栏会稳定出现“掉到 1 点”的视觉反馈。
         event.setNewDamage(0.0F);
         target.setHealth(1.0F);
         target.invulnerableTime = Math.max(target.invulnerableTime, 10);
@@ -241,22 +244,40 @@ public final class HeartOfCreationEvents {
     }
 
     /**
-     * 不朽触发时的反馈：
-     * 1. 播放受击音效；
-     * 2. 给玩家一点受击反馈时间；
-     * 3. 让血量栏变化看起来像真的被打到了 1 点。
+     * 创造之心不朽触发反馈。
+
+     * 效果：
+     * 1. 使用原作者资源里的 misc.shield_trigger 音效；
+     * 2. 强制血量同步到客户端，让血量栏立刻显示到 1 点；
+     * 3. 设置 hurtTime / hurtDuration，让屏幕和血量栏有原版受击闪烁感；
+     * 4. 不使用 PLAYER_HURT，避免听起来像普通挨打，而是更像护盾触发。
      */
     private static void playImmortalFeedback(LivingEntity entity) {
         entity.level().playSound(
                 null,
                 entity.blockPosition(),
-                SoundEvents.PLAYER_HURT,
+                ModSounds.SHIELD_TRIGGER.get(),
                 SoundSource.PLAYERS,
-                1.0F,
-                1.0F
+                1.35F,
+                0.85F + entity.getRandom().nextFloat() * 0.2F
         );
 
+        // 触发原版受击动画/红闪反馈。
         entity.hurtTime = Math.max(entity.hurtTime, 10);
         entity.hurtDuration = Math.max(entity.hurtDuration, 10);
+        entity.invulnerableTime = Math.max(entity.invulnerableTime, 10);
+
+        /*
+         * 如果是玩家，强制同步血量包。
+         * 这样“不朽把血量压到 1 点”时，客户端血量栏会立即刷新，
+         * 视觉上更接近原作者那种状态栏变化反馈。
+         */
+        if (entity instanceof ServerPlayer player) {
+            player.connection.send(new ClientboundSetHealthPacket(
+                    player.getHealth(),
+                    player.getFoodData().getFoodLevel(),
+                    player.getFoodData().getSaturationLevel()
+            ));
+        }
     }
 }
