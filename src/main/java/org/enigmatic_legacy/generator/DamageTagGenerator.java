@@ -38,27 +38,32 @@ public class DamageTagGenerator extends TagsProvider<DamageType> {
 
     @Override
     protected void addTags(@NotNull HolderLookup.Provider provider) {
-        // 天使之祝免疫：摔落伤害、鞘翅撞墙伤害。
-        tag(ModDamageTags.ANGEL_BLESSING_IMMUNE_TO)
-                .addTag(DamageTypeTags.IS_FALL)
-                .add(DamageTypes.FLY_INTO_WALL);
+        // 虚空珍珠黑暗光环伤害：类似坠入虚空造成的伤害。
+        // 注意：这里不要加入 Tags.DamageTypes.IS_MAGIC，避免被魔法抗性/魔法增伤影响。
 
-        // 天使之祝弱点：凋零伤害、虚空伤害。
-        tag(ModDamageTags.ANGEL_BLESSING_VULNERABLE_TO)
-                .add(DamageTypes.WITHER)
-                .add(DamageTypes.FELL_OUT_OF_WORLD);
-
-        // 虚空珍珠黑暗光环伤害：无视护甲。
-        // 这里必须用 addOptional，否则 runData 阶段会因为自定义 DamageType 尚未进入 lookup 而报 missing references。
+        // 无视护甲。
         tag(DamageTypeTags.BYPASSES_ARMOR)
                 .addOptional(ModDamageTypes.DARKNESS.location());
 
-        // 虚空珍珠黑暗光环伤害：无视盾牌。
+        // 无视盾牌。
         tag(DamageTypeTags.BYPASSES_SHIELD)
                 .addOptional(ModDamageTypes.DARKNESS.location());
 
-        // 虚空珍珠黑暗光环伤害：标记为魔法伤害，方便你其他魔法抗性/魔法增伤逻辑识别。
-        tag(Tags.DamageTypes.IS_MAGIC)
+        // 无视抗性效果，例如 Resistance。
+        tag(DamageTypeTags.BYPASSES_RESISTANCE)
+                .addOptional(ModDamageTypes.DARKNESS.location());
+
+        // 无视保护类附魔减伤。
+        tag(DamageTypeTags.BYPASSES_ENCHANTMENTS)
+                .addOptional(ModDamageTypes.DARKNESS.location());
+
+        // 无视药水/状态效果类减伤。
+        tag(DamageTypeTags.BYPASSES_EFFECTS)
+                .addOptional(ModDamageTypes.DARKNESS.location());
+
+        // 可选：类似虚空伤害，绕过受伤冷却。
+        // 如果你希望 0.5 秒稳定造成 4 点伤害，建议保留。
+        tag(DamageTypeTags.BYPASSES_COOLDOWN)
                 .addOptional(ModDamageTypes.DARKNESS.location());
     }
 

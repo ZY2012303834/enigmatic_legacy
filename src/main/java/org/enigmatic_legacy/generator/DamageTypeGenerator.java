@@ -53,16 +53,13 @@ public class DamageTypeGenerator implements DataProvider {
          */
         json.addProperty("scaling", "when_caused_by_living_non_player");
 
-        /*
-         * exhaustion：
-         * 影响玩家受伤后的饥饿消耗。
-         */
-        json.addProperty("exhaustion", 0.1F);
+        // 类似坠入虚空的固定环境伤害，不随难度缩放。
+        json.addProperty("scaling", "never");
 
-        /*
-         * effects：
-         * hurt = 普通受伤表现。
-         */
+        // 虚空伤害不额外消耗太多饥饿值。
+        json.addProperty("exhaustion", 0.0F);
+
+        // 普通受伤表现。
         json.addProperty("effects", "hurt");
 
         Path path = output.getOutputFolder(PackOutput.Target.DATA_PACK)

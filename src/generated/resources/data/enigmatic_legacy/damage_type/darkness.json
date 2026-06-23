@@ -1,6 +1,6 @@
 {
   "effects": "hurt",
-  "exhaustion": 0.1,
+  "exhaustion": 0.0,
   "message_id": "enigmatic_legacy.darkness",
-  "scaling": "when_caused_by_living_non_player"
+  "scaling": "never"
 }
