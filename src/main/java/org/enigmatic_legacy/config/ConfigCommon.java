@@ -140,6 +140,16 @@ public final class ConfigCommon {
     public static final ModConfigSpec.DoubleValue ANGEL_BLESSING_VULNERABILITY_MODIFIER;
     public static final ModConfigSpec.IntValue ANGEL_BLESSING_COOLDOWN;
 
+    // 海洋意志
+    public static final OceanStoneConfig OCEAN_STONE;
+
+    public static final ModConfigSpec.IntValue OCEAN_STONE_COOLDOWN;
+    public static final ModConfigSpec.IntValue OCEAN_STONE_SWIM_SPEED_BONUS;
+    public static final ModConfigSpec.IntValue OCEAN_STONE_AQUATIC_DAMAGE_RESISTANCE;
+    public static final ModConfigSpec.DoubleValue OCEAN_STONE_XP_COST_MODIFIER;
+    public static final ModConfigSpec.IntValue OCEAN_STONE_NIGHT_VISION_DURATION;
+    public static final ModConfigSpec.DoubleValue OCEAN_STONE_FIRE_VULNERABILITY;
+
     static {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
 
@@ -236,6 +246,16 @@ public final class ConfigCommon {
         ANGEL_BLESSING_DEFLECT_CHANCE = ANGEL_BLESSING.deflectChance;
         ANGEL_BLESSING_VULNERABILITY_MODIFIER = ANGEL_BLESSING.vulnerabilityModifier;
         ANGEL_BLESSING_COOLDOWN = ANGEL_BLESSING.cooldown;
+
+        // 海洋意志
+        OCEAN_STONE = new OceanStoneConfig(builder);
+
+        OCEAN_STONE_COOLDOWN = OCEAN_STONE.cooldown;
+        OCEAN_STONE_SWIM_SPEED_BONUS = OCEAN_STONE.swimSpeedBonus;
+        OCEAN_STONE_AQUATIC_DAMAGE_RESISTANCE = OCEAN_STONE.aquaticDamageResistance;
+        OCEAN_STONE_XP_COST_MODIFIER = OCEAN_STONE.xpCostModifier;
+        OCEAN_STONE_NIGHT_VISION_DURATION = OCEAN_STONE.nightVisionDuration;
+        OCEAN_STONE_FIRE_VULNERABILITY = OCEAN_STONE.fireVulnerability;
 
         SPEC = builder.build();
     }

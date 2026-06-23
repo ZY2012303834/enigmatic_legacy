@@ -10,7 +10,9 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.item.items.AngelBlessing;
+import org.enigmatic_legacy.item.items.OceanStone;
 import org.enigmatic_legacy.util.AngelBlessingHelper;
+import org.enigmatic_legacy.util.OceanStoneHelper;
 
 /**
  * 客户端请求触发当前术石主动技能。
@@ -41,11 +43,13 @@ public record SpellstoneUsePayload() implements CustomPacketPayload {
             ItemStack stack = AngelBlessingHelper.findAngelBlessing(player).orElse(ItemStack.EMPTY);
 
             if (stack.isEmpty()) {
-                return;
+                stack = OceanStoneHelper.findOceanStone(player).orElse(ItemStack.EMPTY);
             }
 
             if (stack.getItem() instanceof AngelBlessing angelBlessing) {
                 angelBlessing.triggerActiveAbility(level, player, stack);
+            } else if (stack.getItem() instanceof OceanStone oceanStone) {
+                oceanStone.triggerActiveAbility(level, player, stack);
             }
         });
     }

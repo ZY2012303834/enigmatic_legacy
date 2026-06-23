@@ -321,6 +321,30 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.angel_blessing.passive.5", "受到的凋零和虚空伤害增加。");
         // end
 
+        // 海洋意志
+        addItem(ModItems.OCEAN_STONE, "海洋意志");
+
+        add("tooltip.enigmatic_legacy.ocean_stone.active",
+                "消耗经验，在主世界召来雷暴。");
+        add("tooltip.enigmatic_legacy.ocean_stone.passive.1",
+                "受到水生生物伤害时减免 %s。");
+        add("tooltip.enigmatic_legacy.ocean_stone.passive.2",
+                "在水下获得水下呼吸、水下夜视，并大幅改善水下挖掘速度。");
+        add("tooltip.enigmatic_legacy.ocean_stone.passive.3",
+                "游泳速度提高 %s，并抵消水下重力。");
+        add("tooltip.enigmatic_legacy.ocean_stone.passive.4",
+                "受到的火焰伤害提高。");
+
+        add("message.enigmatic_legacy.ocean_stone.wrong_dimension",
+                "海洋的意志无法抵达这个维度。");
+        add("message.enigmatic_legacy.ocean_stone.already_thundering",
+                "风暴已经在怒吼。");
+        add("message.enigmatic_legacy.ocean_stone.not_enough_xp",
+                "你的经验不足以呼唤风暴。");
+        add("message.enigmatic_legacy.ocean_stone.summoned",
+                "海洋回应了你的意志。");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5按住 §6Shift§5 查看详情。");
 

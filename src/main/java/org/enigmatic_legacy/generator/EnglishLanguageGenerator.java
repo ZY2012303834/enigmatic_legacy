@@ -320,6 +320,30 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.angel_blessing.passive.5", "Wither and void damage taken is increased.");
         // end
 
+        // 海洋意志
+        addItem(ModItems.OCEAN_STONE, "Will of the Ocean");
+
+        add("tooltip.enigmatic_legacy.ocean_stone.active",
+                "Summons a thunderstorm in the Overworld at the cost of experience.");
+        add("tooltip.enigmatic_legacy.ocean_stone.passive.1",
+                "Grants %s damage resistance against aquatic creatures.");
+        add("tooltip.enigmatic_legacy.ocean_stone.passive.2",
+                "Grants water breathing, underwater night vision and greatly improves underwater mining.");
+        add("tooltip.enigmatic_legacy.ocean_stone.passive.3",
+                "Increases swimming speed by %s and negates underwater gravity.");
+        add("tooltip.enigmatic_legacy.ocean_stone.passive.4",
+                "Makes you more vulnerable to fire damage.");
+
+        add("message.enigmatic_legacy.ocean_stone.wrong_dimension",
+                "The will of the ocean cannot reach this dimension.");
+        add("message.enigmatic_legacy.ocean_stone.already_thundering",
+                "The storm is already raging.");
+        add("message.enigmatic_legacy.ocean_stone.not_enough_xp",
+                "You need more experience to call the storm.");
+        add("message.enigmatic_legacy.ocean_stone.summoned",
+                "The ocean answers your will.");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");
 

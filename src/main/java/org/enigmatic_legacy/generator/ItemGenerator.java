@@ -78,6 +78,7 @@ public class ItemGenerator extends ItemModelProvider {
         basicItem(ModItems.THE_ACKNOWLEDGMENT.getId());
         basicItem(ModItems.GOLEM_HEART.getId());
         basicItem(ModItems.ANGEL_BLESSING.getId());
+        basicItem(ModItems.OCEAN_STONE.getId());
 
     }
 

@@ -92,6 +92,7 @@ public class CuriosGenerator implements DataProvider {
         json.addProperty("operation", "SET");
         json.addProperty("order", 130);
 
+
         // 使用自定义术石空槽图标。
         json.addProperty("icon", EnigmaticLegacy.MODID + ":slot/empty_spellstone_slot");
 

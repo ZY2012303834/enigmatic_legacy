@@ -69,6 +69,7 @@ public final class ModeTabs {
                         output.accept(ModItems.THE_ACKNOWLEDGMENT.get());
                         output.accept(ModItems.GOLEM_HEART.get());
                         output.accept(ModItems.ANGEL_BLESSING.get());
+                        output.accept(ModItems.OCEAN_STONE.get());
                     })
                     .build());
 

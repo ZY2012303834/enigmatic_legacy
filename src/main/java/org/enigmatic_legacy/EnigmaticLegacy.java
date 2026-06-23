@@ -47,7 +47,6 @@ public class EnigmaticLegacy {
         modEventBus.addListener(AngelBlessingLootTableGenerator::gatherData);
         modEventBus.addListener(AngelBlessingLootModifierGenerator::gatherData);
 
-
         NeoForge.EVENT_BUS.register(MonsterCharmEvents.class);
         NeoForge.EVENT_BUS.register(EnchanterPearlEvents.class);
         NeoForge.EVENT_BUS.register(EnigmaticAmuletEvents.class);
@@ -65,5 +64,6 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(GolemHeartEvents.class);
         NeoForge.EVENT_BUS.register(AngelBlessingEvents.class);
         NeoForge.EVENT_BUS.register(AngelBlessingLootEvents.class);
+        NeoForge.EVENT_BUS.register(OceanStoneEvents.class);
     }
 }
