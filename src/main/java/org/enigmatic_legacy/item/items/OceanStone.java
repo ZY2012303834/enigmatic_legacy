@@ -11,7 +11,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -73,7 +72,7 @@ public class OceanStone extends Item implements ICurioItem {
 
         entity.getAttributes().addTransientAttributeModifiers(getSwimSpeedModifiers());
 
-        if (entity.isEyeInFluid(FluidTags.WATER)) {
+        if (isEyeInWater(entity)) {
             entity.getAttributes().addTransientAttributeModifiers(getUnderwaterGravityModifiers());
 
             if (!entity.level().isClientSide()) {
@@ -96,6 +95,10 @@ public class OceanStone extends Item implements ICurioItem {
                 ));
             }
         }
+    }
+
+    private static boolean isEyeInWater(LivingEntity entity) {
+        return entity.getEyeInFluidType() == NeoForgeMod.WATER_TYPE.value();
     }
 
     @Override
@@ -221,10 +224,10 @@ public class OceanStone extends Item implements ICurioItem {
 
     @Override
     public void appendHoverText(
-            ItemStack stack,
-            Item.TooltipContext context,
-            List<Component> tooltip,
-            TooltipFlag flag
+            @NotNull ItemStack stack,
+            Item.@NotNull TooltipContext context,
+            @NotNull List<Component> tooltip,
+            @NotNull TooltipFlag flag
     ) {
         if (Screen.hasShiftDown()) {
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.spellstone.active")

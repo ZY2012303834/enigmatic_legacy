@@ -2,7 +2,6 @@ package org.enigmatic_legacy.event;
 
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
@@ -12,6 +11,7 @@ import net.minecraft.world.entity.monster.ElderGuardian;
 import net.minecraft.world.entity.monster.Guardian;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
@@ -57,11 +57,15 @@ public final class OceanStoneEvents {
         event.setNewDamage(damage);
     }
 
+    private static boolean isEyeInWater(LivingEntity entity) {
+        return entity.getEyeInFluidType() == NeoForgeMod.WATER_TYPE.value();
+    }
+
     @SubscribeEvent
     public static void onBreakSpeed(PlayerEvent.BreakSpeed event) {
         Player player = event.getEntity();
 
-        if (OceanStoneHelper.hasOceanStone(player) && player.isEyeInFluid(FluidTags.WATER)) {
+        if (OceanStoneHelper.hasOceanStone(player) && isEyeInWater(player)) {
             event.setNewSpeed(event.getNewSpeed() * 5.0F);
         }
     }
