@@ -72,6 +72,7 @@ public final class ModeTabs {
                         output.accept(ModItems.ANGEL_BLESSING.get()); // 天使之祝
                         output.accept(ModItems.OCEAN_STONE.get()); // 海洋意志
                         output.accept(ModItems.BLAZING_CORE.get()); // 烈焰核心
+                        output.accept(ModItems.EYE_OF_NEBULA.get()); // 星云之眼
                     })
                     .build());
 

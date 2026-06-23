@@ -364,6 +364,20 @@ public class EnglishLanguageGenerator extends LanguageProvider {
                 "Damage from aquatic creatures is multiplied by %s.");
         // end
 
+        // 星云之眼
+        addItem(ModItems.EYE_OF_NEBULA, "Eye of the Nebula");
+
+        add("message.enigmatic_legacy.eye_of_nebula.no_target", "The Eye of the Nebula found no target.");
+
+        add("tooltip.enigmatic_legacy.eye_of_nebula.active", "Teleports you behind the creature you are looking at.");
+        add("tooltip.enigmatic_legacy.eye_of_nebula.passive.1", "Increases magic damage by %s.");
+        add("tooltip.enigmatic_legacy.eye_of_nebula.passive.2", "Grants %s magic resistance.");
+        add("tooltip.enigmatic_legacy.eye_of_nebula.passive.3", "Has a %s chance to teleport away when attacked, avoiding that damage.");
+        add("tooltip.enigmatic_legacy.eye_of_nebula.passive.4", "After using its active ability, your next attack deals %s additional damage.");
+        add("tooltip.enigmatic_legacy.eye_of_nebula.passive.5", "Prevents fall-type teleportation damage after its own teleportation.");
+        add("tooltip.enigmatic_legacy.eye_of_nebula.passive.6", "While in water, all damage taken is doubled.");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");
     }

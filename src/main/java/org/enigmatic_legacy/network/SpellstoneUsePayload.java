@@ -10,9 +10,12 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.item.items.AngelBlessing;
+import org.enigmatic_legacy.item.items.EyeOfNebula;
 import org.enigmatic_legacy.item.items.OceanStone;
 import org.enigmatic_legacy.util.AngelBlessingHelper;
+import org.enigmatic_legacy.util.EyeOfNebulaHelper;
 import org.enigmatic_legacy.util.OceanStoneHelper;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * 客户端请求触发当前术石主动技能。
@@ -26,7 +29,7 @@ public record SpellstoneUsePayload() implements CustomPacketPayload {
             StreamCodec.unit(new SpellstoneUsePayload());
 
     @Override
-    public Type<SpellstoneUsePayload> type() {
+    public @NotNull Type<SpellstoneUsePayload> type() {
         return TYPE;
     }
 
@@ -40,16 +43,26 @@ public record SpellstoneUsePayload() implements CustomPacketPayload {
                 return;
             }
 
+            // 按优先级查找当前佩戴的术石。
+            // 你的项目目前是一个 spellstone 槽，所以理论上只会找到一个。
+            // 这里保留顺序，方便以后扩展更多术石。
             ItemStack stack = AngelBlessingHelper.findAngelBlessing(player).orElse(ItemStack.EMPTY);
 
             if (stack.isEmpty()) {
                 stack = OceanStoneHelper.findOceanStone(player).orElse(ItemStack.EMPTY);
             }
 
-            if (stack.getItem() instanceof AngelBlessing angelBlessing) {
-                angelBlessing.triggerActiveAbility(level, player, stack);
-            } else if (stack.getItem() instanceof OceanStone oceanStone) {
-                oceanStone.triggerActiveAbility(level, player, stack);
+            if (stack.isEmpty()) {
+                stack = EyeOfNebulaHelper.findEyeOfNebula(player).orElse(ItemStack.EMPTY);
+            }
+
+            // 根据找到的物品类型触发对应主动技能。
+            switch (stack.getItem()) {
+                case AngelBlessing angelBlessing -> angelBlessing.triggerActiveAbility(level, player, stack);
+                case OceanStone oceanStone -> oceanStone.triggerActiveAbility(level, player, stack);
+                case EyeOfNebula eyeOfNebula -> eyeOfNebula.triggerActiveAbility(level, player, stack);
+                default -> {
+                }
             }
         });
     }

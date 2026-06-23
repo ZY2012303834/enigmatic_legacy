@@ -96,8 +96,8 @@ public final class BlazingCoreClientEvents {
          *
          * 如果你觉得还不够清楚，可以把 32.0F 改成 48.0F 或 64.0F。
          */
-        event.setNearPlaneDistance(0.0F);
-        event.setFarPlaneDistance(32.0F);
+        event.setNearPlaneDistance(0.5F);
+        event.setFarPlaneDistance(4.0F);
         event.setFogShape(FogShape.CYLINDER);
 
         /*
@@ -109,7 +109,6 @@ public final class BlazingCoreClientEvents {
 
     /**
      * 烈焰之核：稍微改善熔岩雾颜色。
-     *
      * 这一步不是必须，但能让岩浆里不再那么黑红糊成一片。
      */
     @SubscribeEvent

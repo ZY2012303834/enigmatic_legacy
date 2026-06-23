@@ -348,7 +348,7 @@ public class ChineseLanguageGenerator extends LanguageProvider {
                 "海洋回应了你的意志。");
         // end
 
-        // 烈焰核心
+        // 烈焰之核
         addItem(ModItems.BLAZING_CORE, "烈焰之核");
 
         add("tooltip.enigmatic_legacy.blazing_core.active",
@@ -363,6 +363,20 @@ public class ChineseLanguageGenerator extends LanguageProvider {
                 "大多数状态效果持续时间变为 %s；抗火类效果持续时间翻倍。");
         add("tooltip.enigmatic_legacy.blazing_core.passive.5",
                 "来自水生生物的伤害变为 %s 倍。");
+        // end
+
+        // 星云之眼
+        addItem(ModItems.EYE_OF_NEBULA, "星云之眼");
+
+        add("message.enigmatic_legacy.eye_of_nebula.no_target", "星云之眼没有找到可传送的目标。");
+
+        add("tooltip.enigmatic_legacy.eye_of_nebula.active", "将你传送到你注视着的生物背后。");
+        add("tooltip.enigmatic_legacy.eye_of_nebula.passive.1", "增加 %s 魔法伤害。");
+        add("tooltip.enigmatic_legacy.eye_of_nebula.passive.2", "获得 %s 魔法抗性。");
+        add("tooltip.enigmatic_legacy.eye_of_nebula.passive.3", "受到攻击时，有 %s 概率传送到别处，并免疫本次伤害。");
+        add("tooltip.enigmatic_legacy.eye_of_nebula.passive.4", "使用主动技能后，下一次攻击额外造成 %s 伤害。");
+        add("tooltip.enigmatic_legacy.eye_of_nebula.passive.5", "免疫星云之眼传送后的摔落型传送伤害。");
+        add("tooltip.enigmatic_legacy.eye_of_nebula.passive.6", "当你在水中时，受到的所有伤害翻倍。");
         // end
 
         // 按住 Shift 查看详情
