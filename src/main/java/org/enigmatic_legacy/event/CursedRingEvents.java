@@ -312,7 +312,9 @@ public class CursedRingEvents {
             return;
         }
 
-        if (!ConfigCommon.CURSED_RING_ENABLED.get()) {
+        // 七咒之戒初始给予由 Ultra Hardcore 配置控制。
+        // 不要读取 CURSED_RING_ENABLED，否则配置尚未完成加载时会在玩家登录阶段崩溃。
+        if (!ConfigCommon.CURSED_RING_ULTRA_HARDCORE.get()) {
             return;
         }
 
