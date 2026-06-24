@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "enigmatic_legacy:eye_of_nebula",
+          "weight": 90
+        },
+        {
+          "type": "minecraft:item",
+          "name": "enigmatic_legacy:void_pearl",
+          "weight": 10
+        }
+      ],
+      "rolls": {
+        "type": "minecraft:uniform",
+        "max": 1.0,
+        "min": -12.0
+      }
+    }
+  ]
+}

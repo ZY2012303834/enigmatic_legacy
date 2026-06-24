@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "enigmatic_legacy:golem_heart",
+          "weight": 35
+        },
+        {
+          "type": "minecraft:item",
+          "name": "enigmatic_legacy:angel_blessing",
+          "weight": 65
+        }
+      ],
+      "rolls": {
+        "type": "minecraft:uniform",
+        "max": 1.0,
+        "min": -12.0
+      }
+    }
+  ]
+}

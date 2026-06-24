@@ -64,7 +64,6 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(ForbiddenFruitEvents.class);
         NeoForge.EVENT_BUS.register(GolemHeartEvents.class);
         NeoForge.EVENT_BUS.register(AngelBlessingEvents.class);
-        NeoForge.EVENT_BUS.register(AngelBlessingLootEvents.class);
         NeoForge.EVENT_BUS.register(OceanStoneEvents.class);
         NeoForge.EVENT_BUS.register(BlazingCoreEvents.class);
         NeoForge.EVENT_BUS.register(EyeOfNebulaEvents.class);

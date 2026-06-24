@@ -1,7 +1,24 @@
 {
   "entries": [
-    "enigmatic_legacy:angel_blessing_desert_pyramid",
-    "enigmatic_legacy:angel_blessing_jungle_temple"
+    "enigmatic_legacy:spellstones_air_earthen_desert_pyramid",
+    "enigmatic_legacy:spellstones_air_earthen_jungle_temple",
+    "enigmatic_legacy:spellstones_ender_earthen_stronghold_corridor",
+    "enigmatic_legacy:spellstones_ender_earthen_stronghold_crossing",
+    "enigmatic_legacy:spellstones_air_village_temple",
+    "enigmatic_legacy:spellstones_earthen_simple_dungeon",
+    "enigmatic_legacy:spellstones_earthen_abandoned_mineshaft",
+    "enigmatic_legacy:spellstones_earthen_village_armorer",
+    "enigmatic_legacy:spellstones_nether_bridge",
+    "enigmatic_legacy:spellstones_nether_bastion_treasure",
+    "enigmatic_legacy:spellstones_nether_bastion_other",
+    "enigmatic_legacy:spellstones_nether_bastion_bridge",
+    "enigmatic_legacy:spellstones_nether_bastion_hoglin_stable",
+    "enigmatic_legacy:spellstones_nether_ruined_portal",
+    "enigmatic_legacy:spellstones_water_underwater_ruin_big",
+    "enigmatic_legacy:spellstones_water_underwater_ruin_small",
+    "enigmatic_legacy:spellstones_water_shipwreck_treasure",
+    "enigmatic_legacy:spellstones_water_buried_treasure",
+    "enigmatic_legacy:spellstones_ender_end_city_treasure"
   ],
   "replace": false
 }

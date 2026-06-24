@@ -1,2 +1,8 @@
-// 1.21.1	2026-06-23T11:23:11.8643212	Angel Blessing Inject Loot Table
-c6a9a88ae86e4ceb15eefc98a86f9e7ec88b1f2e data/enigmatic_legacy/loot_table/inject/chests/angel_blessing.json
+// 1.21.1	2026-06-24T21:47:21.0158581	Angel Blessing Inject Loot Table
+7c18f0e1eab479f5ad04e1a5c21fc4812f38ae49 data/enigmatic_legacy/loot_table/inject/chests/spellstones/air.json
+f3d654d6a34e96376777fbe4429213d631efac1a data/enigmatic_legacy/loot_table/inject/chests/spellstones/air_earthen.json
+e2eef22739c70e4efb656e767eb351192af8486a data/enigmatic_legacy/loot_table/inject/chests/spellstones/earthen.json
+be762708578d25fb913c74866ef7e04757607ccf data/enigmatic_legacy/loot_table/inject/chests/spellstones/ender.json
+23e7fc7b5a177b816e7f22f95e555b25c1dd72bb data/enigmatic_legacy/loot_table/inject/chests/spellstones/ender_earthen.json
+1f0fdc631aa0dbbcc04ecb37feaeb7b929494eb7 data/enigmatic_legacy/loot_table/inject/chests/spellstones/nether.json
+290ace7c1c37ac8cc6abd6af3102ec9008913aa1 data/enigmatic_legacy/loot_table/inject/chests/spellstones/water.json
