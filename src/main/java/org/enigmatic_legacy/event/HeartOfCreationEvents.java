@@ -238,6 +238,7 @@ public final class HeartOfCreationEvents {
                 || source.is(DamageTypes.FELL_OUT_OF_WORLD)
                 || source.is(DamageTypes.THORNS)
                 || source.is(DamageTypes.LAVA)
+                || source.is(DamageTypes.CACTUS)
                 || source.is(DamageTypeTags.IS_FIRE);
     }
 
