@@ -68,6 +68,7 @@ public final class HeartOfCreationEvents {
         if (equipped) {
             grantFlight(player);
             player.setAirSupply(player.getMaxAirSupply());
+            player.clearFire();
             removeNegativeEffects(player);
         } else {
             revokeFlightIfGranted(player);
