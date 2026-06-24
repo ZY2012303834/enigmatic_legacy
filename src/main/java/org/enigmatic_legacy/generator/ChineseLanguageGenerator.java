@@ -476,6 +476,15 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.cursed_scroll.current.healing", "当前生命恢复：+%s");
         // end
 
+        // 创造者的恩赐
+        addItem(ModItems.FABULOUS_SCROLL, "创造者的恩赐");
+
+        add("tooltip.enigmatic_legacy.fabulous_scroll.1", "给予你自由飞行的能力。");
+        add("tooltip.enigmatic_legacy.fabulous_scroll.2", "飞行会快速消耗经验值。");
+        add("tooltip.enigmatic_legacy.fabulous_scroll.3", "在激活信标范围内飞行不消耗经验。");
+        add("tooltip.enigmatic_legacy.fabulous_scroll.4", "补偿飞行时的挖掘速度损失，并在未丧失飞行能力时免疫摔落伤害。");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5按住 §6Shift§5 查看详情。");
 

@@ -80,6 +80,7 @@ public final class ModeTabs {
                         output.accept(ModItems.XP_SCROLL.get()); // 永恒智慧卷轴
                         output.accept(ModItems.HEAVEN_SCROLL.get()); // 天堂之礼
                         output.accept(ModItems.CURSED_SCROLL.get()); // 千咒卷轴
+                        output.accept(ModItems.FABULOUS_SCROLL.get()); // 创造者的恩赐
                     })
                     .build());
 

@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-24T16:11:18.8881636	vanilla/Item Models: enigmatic_legacy
+// 1.21.1	2026-06-24T16:49:39.1594821	vanilla/Item Models: enigmatic_legacy
 79e416a4d6e90035107f541617b7d4a2d2d7abbb assets/enigmatic_legacy/models/item/angel_blessing.json
 71ad4196d7e8a842e7122ea637f5096bd1de67b7 assets/enigmatic_legacy/models/item/astral_dust.json
 baae1e9410c2ca95493c81ced390f9823be60e7d assets/enigmatic_legacy/models/item/blazing_core.json
@@ -29,6 +29,7 @@ bdc03bfeb7cbc98752a6b9cc2a2e847293499d31 assets/enigmatic_legacy/models/item/eth
 15a01771a4171a3b505cdfd801de2ae4dab011d4 assets/enigmatic_legacy/models/item/evil_essence.json
 d4e1214ce79dce9e287d896be997bc5972536f9c assets/enigmatic_legacy/models/item/evil_ingot.json
 59a15801641af51a328a4558a3f91f5e392661b2 assets/enigmatic_legacy/models/item/eye_of_nebula.json
+120f342d1b9b00bd9e2735f02ad39b9feee168cc assets/enigmatic_legacy/models/item/fabulous_scroll.json
 80d748a10f665cee5974ba983025fc2176616d98 assets/enigmatic_legacy/models/item/forbidden_fruit.json
 d04fe019984814a8c097b8309d6aafc20e399370 assets/enigmatic_legacy/models/item/golden_ring.json
 7c7aed17b6411d420dfbe89f0bc430ba6504abd2 assets/enigmatic_legacy/models/item/golem_heart.json

@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "enigmatic_legacy:astral_dust"
+    },
+    "B": {
+      "item": "minecraft:elytra"
+    },
+    "D": {
+      "item": "minecraft:dragon_breath"
+    },
+    "E": {
+      "item": "enigmatic_legacy:etherium_ingot"
+    },
+    "H": {
+      "item": "enigmatic_legacy:heaven_scroll"
+    }
+  },
+  "pattern": [
+    "EAE",
+    "AHA",
+    "DBD"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:fabulous_scroll"
+  }
+}

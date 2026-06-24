@@ -475,6 +475,15 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.cursed_scroll.current.healing", "Current Healing: +%s");
         // end
 
+        // 创造者的恩赐
+        addItem(ModItems.FABULOUS_SCROLL, "Grace of the Creator");
+
+        add("tooltip.enigmatic_legacy.fabulous_scroll.1", "Grants you the ability of free flight.");
+        add("tooltip.enigmatic_legacy.fabulous_scroll.2", "Flying rapidly consumes experience.");
+        add("tooltip.enigmatic_legacy.fabulous_scroll.3", "Flight does not consume experience within range of an active beacon.");
+        add("tooltip.enigmatic_legacy.fabulous_scroll.4", "Compensates mining speed loss while flying and negates fall damage while flight remains available.");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");
     }

@@ -354,5 +354,19 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('B', Items.ENCHANTED_BOOK)
                 .unlockedBy("has_darkest_scroll", has(ModItems.DARKEST_SCROLL.get()))
                 .save(output);
+
+        // 创造者的恩赐 / Grace of the Creator。
+        // 原项目配方：以太锭 * 2、星尘 * 3、天堂之礼、龙息 * 2、鞘翅。
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.FABULOUS_SCROLL.get())
+                .pattern("EAE")
+                .pattern("AHA")
+                .pattern("DBD")
+                .define('E', ModItems.ETHERIUM_INGOT.get())
+                .define('A', ModItems.ASTRAL_DUST.get())
+                .define('H', ModItems.HEAVEN_SCROLL.get())
+                .define('D', Items.DRAGON_BREATH)
+                .define('B', Items.ELYTRA)
+                .unlockedBy("has_heaven_scroll", has(ModItems.HEAVEN_SCROLL.get()))
+                .save(output);
     }
 }
