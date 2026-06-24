@@ -76,6 +76,8 @@ public final class ModeTabs {
                         output.accept(ModItems.VOID_PEARL.get()); // 虚空珍珠
                         output.accept(ModItems.THE_CUBE.get()); // 非欧立方
                         output.accept(ModItems.HEART_OF_CREATION.get()); // 创造之心
+
+                        output.accept(ModItems.XP_SCROLL.get()); // 永恒智慧卷轴
                     })
                     .build());
 

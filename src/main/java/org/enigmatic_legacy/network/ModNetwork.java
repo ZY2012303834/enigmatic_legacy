@@ -40,5 +40,11 @@ public final class ModNetwork {
                 HeartOfCreationGuardPayload.STREAM_CODEC,
                 HeartOfCreationGuardPayload::handle
         );
+
+        registrar.playToServer(
+                ScrollUsePayload.TYPE,
+                ScrollUsePayload.STREAM_CODEC,
+                ScrollUsePayload::handle
+        );
     }
 }

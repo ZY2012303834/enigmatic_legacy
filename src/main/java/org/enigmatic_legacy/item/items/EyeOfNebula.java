@@ -24,6 +24,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import org.enigmatic_legacy.event.TeleportParticleEvents;
+import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
@@ -403,37 +404,28 @@ public class EyeOfNebula extends Item implements ICurioItem {
             @NotNull List<Component> tooltip,
             @NotNull TooltipFlag flag
     ) {
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.void"));
 
         if (!Screen.hasShiftDown()) {
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hold_shift"));
             return;
         }
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.spellstone.active")
-                .withStyle(ChatFormatting.DARK_PURPLE));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.eye_of_nebula.active")
-                .withStyle(ChatFormatting.GOLD));
-        tooltip.add(Component.translatable(
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.spellstone.active"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.eye_of_nebula.active"));
+        tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.spellstone.cooldown",
-                String.format("%.1f", COOLDOWN_TICKS / 20.0F)
-        ).withStyle(ChatFormatting.GRAY));
+                SpellstoneTooltip.number(String.format("%.1f", COOLDOWN_TICKS / 20.0F))
+        ));
 
         tooltip.add(Component.empty());
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.spellstone.passive")
-                .withStyle(ChatFormatting.DARK_PURPLE));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.eye_of_nebula.passive.1", "+40%")
-                .withStyle(ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.eye_of_nebula.passive.2", "65%")
-                .withStyle(ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.eye_of_nebula.passive.3", "15%")
-                .withStyle(ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.eye_of_nebula.passive.4", "+150%")
-                .withStyle(ChatFormatting.GOLD));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.eye_of_nebula.passive.5")
-                .withStyle(ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.eye_of_nebula.passive.6")
-                .withStyle(ChatFormatting.RED));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.spellstone.passive"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.eye_of_nebula.passive.1", SpellstoneTooltip.number("+40%")));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.eye_of_nebula.passive.2", SpellstoneTooltip.number("65%")));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.eye_of_nebula.passive.3", SpellstoneTooltip.number("15%")));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.eye_of_nebula.passive.4", SpellstoneTooltip.number("+150%")));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.eye_of_nebula.passive.5"));
+        tooltip.add(SpellstoneTooltip.negative("tooltip.enigmatic_legacy.eye_of_nebula.passive.6"));
     }
 }

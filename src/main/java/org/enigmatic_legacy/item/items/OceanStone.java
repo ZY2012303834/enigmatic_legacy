@@ -25,6 +25,7 @@ import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.config.ConfigCommon;
+import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
@@ -230,25 +231,18 @@ public class OceanStone extends Item implements ICurioItem {
             @NotNull TooltipFlag flag
     ) {
         if (Screen.hasShiftDown()) {
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.spellstone.active")
-                    .withStyle(ChatFormatting.LIGHT_PURPLE));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.ocean_stone.active")
-                    .withStyle(ChatFormatting.GRAY));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.spellstone.active"));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.ocean_stone.active"));
 
             tooltip.add(Component.empty());
 
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.spellstone.passive")
-                    .withStyle(ChatFormatting.AQUA));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.ocean_stone.passive.1",
-                            ConfigCommon.OCEAN_STONE_AQUATIC_DAMAGE_RESISTANCE.get() + "%")
-                    .withStyle(ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.ocean_stone.passive.2")
-                    .withStyle(ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.ocean_stone.passive.3",
-                            ConfigCommon.OCEAN_STONE_SWIM_SPEED_BONUS.get() + "%")
-                    .withStyle(ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.ocean_stone.passive.4")
-                    .withStyle(ChatFormatting.RED));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.spellstone.passive"));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.ocean_stone.passive.1",
+                    SpellstoneTooltip.number(ConfigCommon.OCEAN_STONE_AQUATIC_DAMAGE_RESISTANCE.get() + "%")));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.ocean_stone.passive.2"));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.ocean_stone.passive.3",
+                    SpellstoneTooltip.number(ConfigCommon.OCEAN_STONE_SWIM_SPEED_BONUS.get() + "%")));
+            tooltip.add(SpellstoneTooltip.negative("tooltip.enigmatic_legacy.ocean_stone.passive.4"));
         } else {
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hold_shift")
                     .withStyle(ChatFormatting.DARK_GRAY));

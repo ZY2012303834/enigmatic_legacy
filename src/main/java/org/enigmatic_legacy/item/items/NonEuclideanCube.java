@@ -28,6 +28,7 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.event.TeleportParticleEvents;
+import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
@@ -344,37 +345,35 @@ public class NonEuclideanCube extends Item implements ICurioItem {
             @NotNull List<Component> tooltip,
             @NotNull TooltipFlag flag
     ) {
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.void"));
 
         if (!Screen.hasShiftDown()) {
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hold_shift"));
             return;
         }
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.spellstone.active")
-                .withStyle(ChatFormatting.DARK_PURPLE));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.non_euclidean_cube.active")
-                .withStyle(ChatFormatting.GOLD));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.spellstone.cooldown", "120.0")
-                .withStyle(ChatFormatting.GRAY));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.spellstone.active"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.non_euclidean_cube.active"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.spellstone.cooldown", SpellstoneTooltip.number("120.0")));
 
         tooltip.add(Component.empty());
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.spellstone.passive")
-                .withStyle(ChatFormatting.DARK_PURPLE));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.non_euclidean_cube.passive.1")
-                .withStyle(ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.non_euclidean_cube.passive.2")
-                .withStyle(ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.non_euclidean_cube.passive.3")
-                .withStyle(ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.non_euclidean_cube.passive.4")
-                .withStyle(ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.non_euclidean_cube.passive.5")
-                .withStyle(ChatFormatting.GOLD));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.non_euclidean_cube.passive.6")
-                .withStyle(ChatFormatting.DARK_PURPLE));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.non_euclidean_cube.passive.7")
-                .withStyle(ChatFormatting.RED));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.spellstone.passive"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.non_euclidean_cube.passive.1",
+                SpellstoneTooltip.number("+35%"),
+                SpellstoneTooltip.number("+100%"),
+                SpellstoneTooltip.number("+60%"),
+                SpellstoneTooltip.number("+40%")));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.non_euclidean_cube.passive.2",
+                SpellstoneTooltip.number("+1"),
+                SpellstoneTooltip.number("+1")));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.non_euclidean_cube.passive.3",
+                SpellstoneTooltip.number("100"),
+                SpellstoneTooltip.number("150")));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.non_euclidean_cube.passive.4",
+                SpellstoneTooltip.number("35%")));
+        tooltip.add(SpellstoneTooltip.negative("tooltip.enigmatic_legacy.non_euclidean_cube.passive.5"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.non_euclidean_cube.passive.6"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.non_euclidean_cube.passive.7"));
     }
 }

@@ -16,6 +16,7 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.network.PlayerMotionPayload;
+import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
@@ -119,37 +120,30 @@ public class AngelBlessing extends Item implements ICurioItem {
             @NotNull List<Component> tooltip,
             @NotNull TooltipFlag flag
     ) {
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.void"));
 
         if (!Screen.hasShiftDown()) {
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hold_shift"));
             return;
         }
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.spellstone.active")
-                .withStyle(ChatFormatting.DARK_PURPLE));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.angel_blessing.active")
-                .withStyle(ChatFormatting.GOLD));
-        tooltip.add(Component.translatable(
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.spellstone.active"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.angel_blessing.active"));
+        tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.spellstone.cooldown",
-                String.format("%.1f", ConfigCommon.ANGEL_BLESSING_COOLDOWN.get() / 20.0F)
-        ).withStyle(ChatFormatting.GRAY));
+                SpellstoneTooltip.number(String.format("%.1f", ConfigCommon.ANGEL_BLESSING_COOLDOWN.get() / 20.0F))
+        ));
 
         tooltip.add(Component.empty());
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.spellstone.passive")
-                .withStyle(ChatFormatting.DARK_PURPLE));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.angel_blessing.passive.1")
-                .withStyle(ChatFormatting.GRAY));
-        tooltip.add(Component.translatable(
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.spellstone.passive"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.angel_blessing.passive.1"));
+        tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.angel_blessing.passive.2",
-                ConfigCommon.ANGEL_BLESSING_DEFLECT_CHANCE.get() + "%"
-        ).withStyle(ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.angel_blessing.passive.3")
-                .withStyle(ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.angel_blessing.passive.4")
-                .withStyle(ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.angel_blessing.passive.5")
-                .withStyle(ChatFormatting.RED));
+                SpellstoneTooltip.number(ConfigCommon.ANGEL_BLESSING_DEFLECT_CHANCE.get() + "%")
+        ));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.angel_blessing.passive.3"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.angel_blessing.passive.4"));
+        tooltip.add(SpellstoneTooltip.negative("tooltip.enigmatic_legacy.angel_blessing.passive.5"));
     }
 }

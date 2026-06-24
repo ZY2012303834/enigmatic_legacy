@@ -65,6 +65,9 @@ public final class ModItems {
     public static final DeferredItem<NonEuclideanCube> THE_CUBE = ITEMS.register("the_cube", NonEuclideanCube::new); // 非欧立方
     public static final DeferredItem<HeartOfCreation> HEART_OF_CREATION = ITEMS.register("heart_of_creation", HeartOfCreation::new); // 创造之心
 
+    // 卷轴
+    public static final DeferredItem<ScrollOfAgelessWisdom> XP_SCROLL = ITEMS.register("xp_scroll", ScrollOfAgelessWisdom::new); // 永恒智慧卷轴
+
 
     // 原版名为 storage_crystal，显示名是 Extradimensional Vessel / 超维容器。
     public static final DeferredItem<StorageCrystal> STORAGE_CRYSTAL = ITEMS.register("storage_crystal", StorageCrystal::new);

@@ -82,6 +82,10 @@ public class CuriosGenerator implements DataProvider {
         futures.add(generateSpellstoneSlotType(cachedOutput));
         futures.add(generateSpellstoneTag(cachedOutput));
 
+        // 卷轴
+        futures.add(generateScrollSlotType(cachedOutput));
+        futures.add(generateScrollTag(cachedOutput));
+
         return CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new));
     }
 
@@ -231,6 +235,7 @@ public class CuriosGenerator implements DataProvider {
         slots.add("ring");
         slots.add("charm");
         slots.add("spellstone");
+        slots.add("scroll");
 
         json.add("entities", entities);
         json.add("slots", slots);
@@ -351,5 +356,58 @@ public class CuriosGenerator implements DataProvider {
                 event.includeServer(),
                 new CuriosGenerator(event.getGenerator().getPackOutput())
         );
+    }
+
+    /**
+     * 生成 scroll 卷轴栏位类型配置。
+
+     * 路径：
+     * src/generated/resources/data/enigmatic_legacy/curios/slots/scroll.json
+     */
+    private CompletableFuture<?> generateScrollSlotType(CachedOutput cachedOutput) {
+        JsonObject json = new JsonObject();
+
+        json.addProperty("size", 3);
+        json.addProperty("operation", "SET");
+        json.addProperty("order", 140);
+
+        /*
+         * 这里先使用 Curios 通用空槽图标。
+         * 后面如果你想做自定义卷轴空槽贴图，可以改成：
+         * enigmatic_legacy:slot/empty_scroll_slot
+         */
+        json.addProperty("icon", "curios:slot/empty_curio_slot");
+
+        Path path = output.getOutputFolder(PackOutput.Target.DATA_PACK)
+                .resolve(EnigmaticLegacy.MODID)
+                .resolve("curios")
+                .resolve("slots")
+                .resolve("scroll.json");
+
+        return DataProvider.saveStable(cachedOutput, json, path);
+    }
+
+    /**
+     * 生成 curios:scroll 物品标签。
+
+     * 路径：
+     * src/generated/resources/data/curios/tags/item/scroll.json
+     */
+    private CompletableFuture<?> generateScrollTag(CachedOutput cachedOutput) {
+        JsonObject json = new JsonObject();
+        json.addProperty("replace", false);
+
+        JsonArray values = new JsonArray();
+        values.add(EnigmaticLegacy.MODID + ":xp_scroll");
+
+        json.add("values", values);
+
+        Path path = output.getOutputFolder(PackOutput.Target.DATA_PACK)
+                .resolve("curios")
+                .resolve("tags")
+                .resolve("item")
+                .resolve("scroll.json");
+
+        return DataProvider.saveStable(cachedOutput, json, path);
     }
 }

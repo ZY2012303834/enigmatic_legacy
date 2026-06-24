@@ -17,6 +17,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.config.ConfigCommon;
+import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
@@ -187,51 +188,48 @@ public class GolemHeart extends Item implements ICurioItem {
             @NotNull List<Component> tooltip,
             @NotNull TooltipFlag flag
     ) {
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.void"));
 
         if (!Screen.hasShiftDown()) {
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hold_shift"));
             return;
         }
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.spellstone.passive")
-                .withStyle(ChatFormatting.DARK_PURPLE));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.spellstone.passive"));
 
-        tooltip.add(Component.translatable(
+        tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.golem_heart.1",
-                String.format("%.1f", ConfigCommon.GOLEM_HEART_DEFAULT_ARMOR_BONUS.get())
-        ).withStyle(ChatFormatting.GOLD));
+                SpellstoneTooltip.number(String.format("%.1f", ConfigCommon.GOLEM_HEART_DEFAULT_ARMOR_BONUS.get()))
+        ));
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.golem_heart.2")
-                .withStyle(ChatFormatting.GRAY));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.golem_heart.2"));
 
-        tooltip.add(Component.translatable(
+        tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.golem_heart.3",
-                String.format("%.1f", ConfigCommon.GOLEM_HEART_SUPER_ARMOR_BONUS.get()),
-                String.format("%.1f", ConfigCommon.GOLEM_HEART_SUPER_ARMOR_TOUGHNESS_BONUS.get())
-        ).withStyle(ChatFormatting.GOLD));
+                SpellstoneTooltip.number(String.format("%.1f", ConfigCommon.GOLEM_HEART_SUPER_ARMOR_BONUS.get())),
+                SpellstoneTooltip.number(String.format("%.1f", ConfigCommon.GOLEM_HEART_SUPER_ARMOR_TOUGHNESS_BONUS.get()))
+        ));
 
-        tooltip.add(Component.translatable(
+        tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.golem_heart.4",
-                ConfigCommon.GOLEM_HEART_EXPLOSION_RESISTANCE.get() + "%"
-        ).withStyle(ChatFormatting.GOLD));
+                SpellstoneTooltip.number(ConfigCommon.GOLEM_HEART_EXPLOSION_RESISTANCE.get() + "%")
+        ));
 
-        tooltip.add(Component.translatable(
+        tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.golem_heart.5",
-                ConfigCommon.GOLEM_HEART_MELEE_RESISTANCE.get() + "%"
-        ).withStyle(ChatFormatting.GOLD));
+                SpellstoneTooltip.number(ConfigCommon.GOLEM_HEART_MELEE_RESISTANCE.get() + "%")
+        ));
 
-        tooltip.add(Component.translatable(
+        tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.golem_heart.6",
-                String.format("%.0f%%", ConfigCommon.GOLEM_HEART_KNOCKBACK_RESISTANCE.get() * 100.0D)
-        ).withStyle(ChatFormatting.GOLD));
+                SpellstoneTooltip.number(String.format("%.0f%%", ConfigCommon.GOLEM_HEART_KNOCKBACK_RESISTANCE.get() * 100.0D))
+        ));
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.golem_heart.7")
-                .withStyle(ChatFormatting.GRAY));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.golem_heart.7"));
 
-        tooltip.add(Component.translatable(
+        tooltip.add(SpellstoneTooltip.negative(
                 "tooltip.enigmatic_legacy.golem_heart.8",
-                String.format("%.1f", ConfigCommon.GOLEM_HEART_MAGIC_VULNERABILITY.get())
-        ).withStyle(ChatFormatting.RED));
+                SpellstoneTooltip.number(String.format("%.1f", ConfigCommon.GOLEM_HEART_MAGIC_VULNERABILITY.get()))
+        ));
     }
 }

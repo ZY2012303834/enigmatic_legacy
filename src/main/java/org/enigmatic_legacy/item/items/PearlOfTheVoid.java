@@ -7,6 +7,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
+import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
@@ -120,37 +121,32 @@ public class PearlOfTheVoid extends Item implements ICurioItem {
             @NotNull List<Component> tooltip,
             @NotNull TooltipFlag flag
     ) {
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.void"));
 
         if (!Screen.hasShiftDown()) {
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hold_shift"));
             return;
         }
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.spellstone.passive")
-                .withStyle(ChatFormatting.DARK_PURPLE));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.spellstone.passive"));
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void_pearl.passive.1")
-                .withStyle(ChatFormatting.GRAY));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.void_pearl.passive.1"));
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void_pearl.passive.2")
-                .withStyle(ChatFormatting.GRAY));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.void_pearl.passive.2"));
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void_pearl.passive.3")
-                .withStyle(ChatFormatting.GRAY));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.void_pearl.passive.3"));
 
-        tooltip.add(Component.translatable(
+        tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.void_pearl.passive.4",
-                String.format("%.1f", DARKNESS_RANGE),
-                String.format("%.1f", DARKNESS_DAMAGE)
-        ).withStyle(ChatFormatting.DARK_PURPLE));
+                SpellstoneTooltip.number(String.format("%.1f", DARKNESS_RANGE)),
+                SpellstoneTooltip.number(String.format("%.1f", DARKNESS_DAMAGE))
+        ));
 
-        tooltip.add(Component.translatable(
+        tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.void_pearl.passive.5",
-                DEATH_PROTECTION_CHANCE + "%"
-        ).withStyle(ChatFormatting.GOLD));
+                SpellstoneTooltip.number(DEATH_PROTECTION_CHANCE + "%")
+        ));
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void_pearl.passive.6")
-                .withStyle(ChatFormatting.GRAY));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.void_pearl.passive.6"));
     }
 }

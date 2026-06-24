@@ -400,10 +400,10 @@ public class EnglishLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.non_euclidean_cube.active", "Teleports you near a random structure in the current dimension.");
 
-        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.1", "+35% sprint speed, +100% swim speed, +60% mining speed, and +40% attack speed.");
-        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.2", "+1 Fortune level and +1 Luck.");
-        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.3", "Ignores damage above 100. With the Ring of Seven Curses, ignores damage above 150 instead.");
-        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.4", "Has a 35% chance to reflect projectiles or return damage to the attacker.");
+        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.1", "%s sprint speed, %s swim speed, %s mining speed, and %s attack speed.");
+        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.2", "%s Fortune level and %s Luck.");
+        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.3", "Ignores damage above %s. With the Ring of Seven Curses, ignores damage above %s instead.");
+        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.4", "Has a %s chance to reflect projectiles or return damage to the attacker.");
         add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.5", "When damaged by non-projectile attacks, progressively afflicts the attacker with negative effects.");
         add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.6", "Grants a random positive effect when you defeat a creature, excluding Slow Falling.");
         add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.7", "Prevents negative effects, cramming, fall, collision, thorns, teleportation, fire, and lava damage, and folds space to save you near death.");
@@ -420,6 +420,27 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.heart_of_creation.passive.3", "Prevents knockback and grants flight.");
         add("tooltip.enigmatic_legacy.heart_of_creation.passive.4", "Compensates for mining speed loss while flying.");
         add("tooltip.enigmatic_legacy.heart_of_creation.passive.5", "While equipped or carried in your inventory, you become immortal;");
+        // end
+
+        // 永恒智慧卷轴
+        addItem(ModItems.XP_SCROLL, "Scroll of Ageless Wisdom");
+
+        add("key.enigmatic_legacy.scroll", "Use Mystic Scroll");
+
+        add("message.enigmatic_legacy.xp_scroll.enabled", "Scroll of Ageless Wisdom enabled.");
+        add("message.enigmatic_legacy.xp_scroll.disabled", "Scroll of Ageless Wisdom disabled.");
+        add("message.enigmatic_legacy.xp_scroll.mode_absorption", "Scroll of Ageless Wisdom switched to Absorption Mode.");
+        add("message.enigmatic_legacy.xp_scroll.mode_extraction", "Scroll of Ageless Wisdom switched to Extraction Mode.");
+        add("message.enigmatic_legacy.xp_scroll.extracted", "Scroll of Ageless Wisdom returned all stored experience.");
+
+        add("tooltip.enigmatic_legacy.xp_scroll.stored", "Stored Experience: %s");
+        add("tooltip.enigmatic_legacy.xp_scroll.active", "State: Active");
+        add("tooltip.enigmatic_legacy.xp_scroll.inactive", "State: Inactive");
+        add("tooltip.enigmatic_legacy.xp_scroll.mode_absorption", "Mode: Absorption");
+        add("tooltip.enigmatic_legacy.xp_scroll.mode_extraction", "Mode: Extraction");
+        add("tooltip.enigmatic_legacy.xp_scroll.usage.1", "Right-click to switch between Absorption and Extraction Mode.");
+        add("tooltip.enigmatic_legacy.xp_scroll.usage.2", "Shift + right-click to enable or disable the scroll.");
+        add("tooltip.enigmatic_legacy.xp_scroll.usage.3", "While active, collects experience orbs within %s blocks.");
         // end
 
         // 按住 Shift 查看详情

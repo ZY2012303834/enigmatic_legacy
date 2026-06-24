@@ -401,10 +401,10 @@ public class ChineseLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.non_euclidean_cube.active", "将你传送到当前维度的随机结构附近。");
 
-        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.1", "+35% 疾跑速度，+100% 游泳速度，+60% 挖掘速度，+40% 攻击速度。");
-        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.2", "+1 时运等级，+1 幸运。");
-        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.3", "无视高于 100 点的伤害；佩戴七咒之戒时改为无视高于 150 点的伤害。");
-        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.4", "35% 概率反弹投射物，或将伤害返还给攻击者。");
+        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.1", "%s 疾跑速度，%s 游泳速度，%s 挖掘速度，%s 攻击速度。");
+        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.2", "%s 时运等级，%s 幸运。");
+        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.3", "无视高于 %s 点的伤害；佩戴七咒之戒时改为无视高于 %s 点的伤害。");
+        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.4", "%s 概率反弹投射物，或将伤害返还给攻击者。");
         add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.5", "受到非投射物伤害时，逐步给予攻击者负面效果。");
         add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.6", "击败生物后获得随机正面效果，但不会获得缓降。");
         add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.7", "免疫负面效果、挤压、摔落、碰撞、荆棘、传送、火焰与熔岩伤害，并可在濒死时折叠空间保命。");
@@ -421,6 +421,27 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.heart_of_creation.passive.3", "免疫击退，并给予你飞行能力。");
         add("tooltip.enigmatic_legacy.heart_of_creation.passive.4", "补偿飞行时的挖掘速度损失。");
         add("tooltip.enigmatic_legacy.heart_of_creation.passive.5", "装备它或将其放在物品栏中时，你将不朽；");
+        // end
+
+        // 永恒智慧卷轴
+        addItem(ModItems.XP_SCROLL, "永恒智慧卷轴");
+
+        add("key.enigmatic_legacy.scroll", "使用秘术卷轴");
+
+        add("message.enigmatic_legacy.xp_scroll.enabled", "永恒智慧卷轴已启用。");
+        add("message.enigmatic_legacy.xp_scroll.disabled", "永恒智慧卷轴已停用。");
+        add("message.enigmatic_legacy.xp_scroll.mode_absorption", "永恒智慧卷轴切换为吸收模式。");
+        add("message.enigmatic_legacy.xp_scroll.mode_extraction", "永恒智慧卷轴切换为提取模式。");
+        add("message.enigmatic_legacy.xp_scroll.extracted", "永恒智慧卷轴已返还所有存储经验。");
+
+        add("tooltip.enigmatic_legacy.xp_scroll.stored", "已存储经验：%s");
+        add("tooltip.enigmatic_legacy.xp_scroll.active", "状态：已启用");
+        add("tooltip.enigmatic_legacy.xp_scroll.inactive", "状态：已停用");
+        add("tooltip.enigmatic_legacy.xp_scroll.mode_absorption", "模式：吸收");
+        add("tooltip.enigmatic_legacy.xp_scroll.mode_extraction", "模式：提取");
+        add("tooltip.enigmatic_legacy.xp_scroll.usage.1", "右键切换吸收 / 提取模式。");
+        add("tooltip.enigmatic_legacy.xp_scroll.usage.2", "Shift + 右键启用或停用卷轴。");
+        add("tooltip.enigmatic_legacy.xp_scroll.usage.3", "启用时会收集 %s 格内的经验球。");
         // end
 
         // 按住 Shift 查看详情

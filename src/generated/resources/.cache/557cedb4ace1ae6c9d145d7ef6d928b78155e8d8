@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-23T18:55:27.1133255	vanilla/Item Models: enigmatic_legacy
+// 1.21.1	2026-06-24T11:32:38.8703068	vanilla/Item Models: enigmatic_legacy
 79e416a4d6e90035107f541617b7d4a2d2d7abbb assets/enigmatic_legacy/models/item/angel_blessing.json
 71ad4196d7e8a842e7122ea637f5096bd1de67b7 assets/enigmatic_legacy/models/item/astral_dust.json
 baae1e9410c2ca95493c81ced390f9823be60e7d assets/enigmatic_legacy/models/item/blazing_core.json
@@ -50,3 +50,4 @@ f83b14662eaba05c2bb7492fdd6d909286dd0113 assets/enigmatic_legacy/models/item/thi
 d41a4664e69fdd63324518d3d62670247220d9d5 assets/enigmatic_legacy/models/item/unholy_grail.json
 b5f00c0683730d8cd3271b69f783b18961bc7749 assets/enigmatic_legacy/models/item/unwitnessed_amulet.json
 66d21b417902351a20c426f721c34225c21f2a39 assets/enigmatic_legacy/models/item/void_pearl.json
+c6fe8d0e793760f8760d0354ab6183228886e2f3 assets/enigmatic_legacy/models/item/xp_scroll.json
