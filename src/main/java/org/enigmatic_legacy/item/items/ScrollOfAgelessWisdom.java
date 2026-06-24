@@ -60,9 +60,10 @@ public class ScrollOfAgelessWisdom extends Item implements ICurioItem {
 
     /**
      * 普通右键可以直接装备到奥秘卷轴栏。
-     * 但是 Shift + 右键时必须禁止装备，
+     * Shift + 右键时禁止 Curios 接管装备，
      * 因为 Shift + 右键用于切换吸收 / 提取模式。
-     * 同时，永恒智慧卷轴最多只能装备 1 个。
+     * 奥秘卷轴栏有 3 个，
+     * 但永恒智慧卷轴最多只能装备 1 个。
      */
     @Override
     public boolean canEquipFromUse(SlotContext context, ItemStack stack) {
@@ -72,19 +73,17 @@ public class ScrollOfAgelessWisdom extends Item implements ICurioItem {
 
         LivingEntity entity = context.entity();
 
-        // Shift + 右键时，不允许 Curios 接管装备。
         if (entity instanceof Player player && player.isShiftKeyDown()) {
             return false;
         }
 
-        // 奥秘卷轴栏有 3 个，但永恒智慧卷轴自身只能装备 1 个。
-        return !hasAnotherXpScrollEquipped(entity);
+        return canEquipXpScroll(entity, stack);
     }
 
     /**
-     * 限制只能放进 scroll 奥秘卷轴栏。
+     * 只能放入 scroll 奥秘卷轴栏。
      * 奥秘卷轴栏可以有 3 个槽位，
-     * 但永恒智慧卷轴这个物品最多只能装备 1 个。
+     * 但永恒智慧卷轴最多只能装备 1 个。
      */
     @Override
     public boolean canEquip(SlotContext context, ItemStack stack) {
@@ -92,7 +91,7 @@ public class ScrollOfAgelessWisdom extends Item implements ICurioItem {
             return false;
         }
 
-        return !hasAnotherXpScrollEquipped(context.entity());
+        return canEquipXpScroll(context.entity(), stack);
     }
 
     /**
@@ -116,6 +115,24 @@ public class ScrollOfAgelessWisdom extends Item implements ICurioItem {
         return CuriosApi.getCuriosInventory(entity)
                 .flatMap(handler -> handler.findFirstCurio(
                         stack -> stack.is(ModItems.XP_SCROLL.get())
+                ))
+                .isEmpty();
+    }
+
+    /**
+     * 判断是否允许装备永恒智慧卷轴。
+     * 规则：
+     * 奥秘卷轴栏位可以有 3 个，
+     * 但是永恒智慧卷轴本身最多只能装备 1 个。
+     */
+    private static boolean canEquipXpScroll(LivingEntity entity, ItemStack stack) {
+        if (entity == null) {
+            return true;
+        }
+
+        return CuriosApi.getCuriosInventory(entity)
+                .flatMap(handler -> handler.findFirstCurio(
+                        equippedStack -> equippedStack.is(ModItems.XP_SCROLL.get()) && equippedStack != stack
                 ))
                 .isEmpty();
     }
@@ -160,13 +177,10 @@ public class ScrollOfAgelessWisdom extends Item implements ICurioItem {
 
     /**
      * 手持右键逻辑。
-
      * 普通右键：
      * 返回 PASS，交给 Curios 处理，让卷轴直接装备到奥秘卷轴栏。
-
      * Shift + 右键：
      * 只切换吸收 / 提取模式，不进行装备。
-
      * 启用 / 停用：
      * 装备在奥秘卷轴栏后，使用 Shift + 绑定按键触发。
      */
@@ -189,14 +203,15 @@ public class ScrollOfAgelessWisdom extends Item implements ICurioItem {
 
         /*
          * 普通右键：
-         * 返回 PASS，交给 Curios 的 canEquipFromUse(...) 处理右键装备。
+         * 必须返回 PASS。
+         * 如果这里返回 sidedSuccess，右键事件会被物品自身消费，
+         * Curios 就无法继续处理“右键装备”。
          */
         return InteractionResultHolder.pass(stack);
     }
 
     /**
      * 切换启用 / 停用。
-
      * 如果当前是提取模式，启用时会立即返还全部经验并自动停用。
      */
     public static void toggleActive(Player player, ItemStack stack) {
