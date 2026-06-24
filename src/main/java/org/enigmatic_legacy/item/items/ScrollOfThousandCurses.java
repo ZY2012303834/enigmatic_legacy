@@ -2,20 +2,25 @@ package org.enigmatic_legacy.item.items;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.CustomData;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.util.CursedRingHelper;
+import org.enigmatic_legacy.util.ScrollOfThousandCursesHelper;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 import java.util.List;
+import java.util.Locale;
 
 /**
  * 千咒卷轴 / Scroll of a Thousand Curses。
@@ -24,6 +29,8 @@ import java.util.List;
  */
 public class ScrollOfThousandCurses extends Item implements ICurioItem {
     private static final String SCROLL_SLOT = "scroll";
+
+    private static final String CACHED_CURSE_FACTOR_TAG = "cachedCurseFactor";
 
     public ScrollOfThousandCurses() {
         super(new Item.Properties()
@@ -96,6 +103,47 @@ public class ScrollOfThousandCurses extends Item implements ICurioItem {
                 .orElse(true);
     }
 
+    /**
+     * 装备在奥秘卷轴栏时，每 tick 缓存当前诅咒因子。
+     * 这样 tooltip 就能显示当前加成：
+     * 当前诅咒因子 = 装备诅咒项数 + 七咒之戒固定 7 项。
+     */
+    @Override
+    public void curioTick(SlotContext context, ItemStack stack) {
+        if (!(context.entity() instanceof Player player)) {
+            return;
+        }
+
+        if (player.level().isClientSide()) {
+            return;
+        }
+
+        int curseFactor = ScrollOfThousandCursesHelper.getCurseFactor(player);
+        setCachedCurseFactor(stack, curseFactor);
+    }
+
+    private static int getCachedCurseFactor(ItemStack stack) {
+        return Math.max(0, getTag(stack).getInt(CACHED_CURSE_FACTOR_TAG));
+    }
+
+    private static void setCachedCurseFactor(ItemStack stack, int curseFactor) {
+        CompoundTag tag = getTag(stack);
+        tag.putInt(CACHED_CURSE_FACTOR_TAG, Math.max(0, curseFactor));
+        setTag(stack, tag);
+    }
+
+    private static CompoundTag getTag(ItemStack stack) {
+        return stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+    }
+
+    private static void setTag(ItemStack stack, CompoundTag tag) {
+        stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
+    }
+
+    private static String formatPercent(double value) {
+        return String.format(Locale.ROOT, "%.0f%%", value * 100.0D);
+    }
+
     @Override
     public void appendHoverText(
             @NotNull ItemStack stack,
@@ -123,6 +171,32 @@ public class ScrollOfThousandCurses extends Item implements ICurioItem {
                     .withStyle(ChatFormatting.GOLD));
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.cursed_scroll.healing", "4%")
                     .withStyle(ChatFormatting.GOLD));
+
+            int curseFactor = getCachedCurseFactor(stack);
+
+            if (curseFactor > 0) {
+                tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+
+                tooltip.add(Component.translatable(
+                        "tooltip.enigmatic_legacy.cursed_scroll.current.factor",
+                        curseFactor
+                ).withStyle(ChatFormatting.AQUA));
+
+                tooltip.add(Component.translatable(
+                        "tooltip.enigmatic_legacy.cursed_scroll.current.attack",
+                        formatPercent(curseFactor * 0.04D)
+                ).withStyle(ChatFormatting.LIGHT_PURPLE));
+
+                tooltip.add(Component.translatable(
+                        "tooltip.enigmatic_legacy.cursed_scroll.current.mining",
+                        formatPercent(curseFactor * 0.07D)
+                ).withStyle(ChatFormatting.LIGHT_PURPLE));
+
+                tooltip.add(Component.translatable(
+                        "tooltip.enigmatic_legacy.cursed_scroll.current.healing",
+                        formatPercent(curseFactor * 0.04D)
+                ).withStyle(ChatFormatting.LIGHT_PURPLE));
+            }
 
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
 

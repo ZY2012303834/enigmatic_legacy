@@ -468,6 +468,11 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.cursed_scroll.healing", "Per curse: +%s Healing Received");
 
         add("tooltip.enigmatic_legacy.cursed_scroll.cursed_only", "Only bearers of the Seven Curses may use this item.");
+
+        add("tooltip.enigmatic_legacy.cursed_scroll.current.factor", "Current Curse Count: %s");
+        add("tooltip.enigmatic_legacy.cursed_scroll.current.attack", "Current Attack Damage: +%s");
+        add("tooltip.enigmatic_legacy.cursed_scroll.current.mining", "Current Mining Speed: +%s");
+        add("tooltip.enigmatic_legacy.cursed_scroll.current.healing", "Current Healing: +%s");
         // end
 
         // 按住 Shift 查看详情
