@@ -338,5 +338,21 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('V', ModItems.VOID_PEARL.get())
                 .unlockedBy("has_eye_of_nebula", has(ModItems.EYE_OF_NEBULA.get()))
                 .save(output);
+
+        // 千咒卷轴 / Scroll of a Thousand Curses。
+        // 原项目配方：幻翼膜 * 2、扭曲之心、墨囊、至暗卷轴、羽毛、红石粉 * 2、附魔书。
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CURSED_SCROLL.get())
+                .pattern("PTP")
+                .pattern("ISF")
+                .pattern("RBR")
+                .define('P', Items.PHANTOM_MEMBRANE)
+                .define('T', ModItems.TWISTED_HEART.get())
+                .define('I', Items.INK_SAC)
+                .define('S', ModItems.DARKEST_SCROLL.get())
+                .define('F', Items.FEATHER)
+                .define('R', Items.REDSTONE)
+                .define('B', Items.ENCHANTED_BOOK)
+                .unlockedBy("has_darkest_scroll", has(ModItems.DARKEST_SCROLL.get()))
+                .save(output);
     }
 }

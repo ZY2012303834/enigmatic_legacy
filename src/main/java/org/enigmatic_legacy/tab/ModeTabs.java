@@ -76,9 +76,10 @@ public final class ModeTabs {
                         output.accept(ModItems.VOID_PEARL.get()); // 虚空珍珠
                         output.accept(ModItems.THE_CUBE.get()); // 非欧立方
                         output.accept(ModItems.HEART_OF_CREATION.get()); // 创造之心
-
+                        // 卷轴
                         output.accept(ModItems.XP_SCROLL.get()); // 永恒智慧卷轴
                         output.accept(ModItems.HEAVEN_SCROLL.get()); // 天堂之礼
+                        output.accept(ModItems.CURSED_SCROLL.get()); // 千咒卷轴
                     })
                     .build());
 

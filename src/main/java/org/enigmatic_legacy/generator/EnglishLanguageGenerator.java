@@ -455,6 +455,21 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.heaven_scroll.4", "While beacon-powered flight is available, negates fall damage.");
         // end
 
+        // 千咒卷轴
+        addItem(ModItems.CURSED_SCROLL, "Scroll of a Thousand Curses");
+
+        add("tooltip.enigmatic_legacy.cursed_scroll.1", "Grants bonuses based on the number of curse enchantments on your equipped items.");
+        add("tooltip.enigmatic_legacy.cursed_scroll.2", "Main hand, off hand, armor, and Curios equipment are counted.");
+        add("tooltip.enigmatic_legacy.cursed_scroll.3", "Each curse enchantment counts as one entry, regardless of its level.");
+        add("tooltip.enigmatic_legacy.cursed_scroll.4", "The Ring of the Seven Curses counts as 7 additional curses.");
+
+        add("tooltip.enigmatic_legacy.cursed_scroll.attack", "Per curse: +%s Attack Damage");
+        add("tooltip.enigmatic_legacy.cursed_scroll.mining", "Per curse: +%s Mining Speed");
+        add("tooltip.enigmatic_legacy.cursed_scroll.healing", "Per curse: +%s Healing Received");
+
+        add("tooltip.enigmatic_legacy.cursed_scroll.cursed_only", "Only bearers of the Seven Curses may use this item.");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");
     }

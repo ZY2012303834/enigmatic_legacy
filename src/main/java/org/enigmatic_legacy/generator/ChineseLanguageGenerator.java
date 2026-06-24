@@ -456,6 +456,19 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.heaven_scroll.4", "在信标范围内且未丧失飞行能力时免疫摔落伤害。");
         // end
 
+        addItem(ModItems.CURSED_SCROLL, "千咒卷轴");
+
+        add("tooltip.enigmatic_legacy.cursed_scroll.1", "根据你装备物品上的诅咒附魔项数提供加成。");
+        add("tooltip.enigmatic_legacy.cursed_scroll.2", "主手、副手、盔甲与饰品栏中的诅咒附魔都会被统计。");
+        add("tooltip.enigmatic_legacy.cursed_scroll.3", "每个诅咒附魔只按 1 项计算，附魔等级不会额外提高倍率。");
+        add("tooltip.enigmatic_legacy.cursed_scroll.4", "七咒之戒会被额外视为 7 项诅咒。");
+
+        add("tooltip.enigmatic_legacy.cursed_scroll.attack", "每项诅咒：+%s 攻击伤害");
+        add("tooltip.enigmatic_legacy.cursed_scroll.mining", "每项诅咒：+%s 挖掘速度");
+        add("tooltip.enigmatic_legacy.cursed_scroll.healing", "每项诅咒：+%s 生命恢复");
+
+        add("tooltip.enigmatic_legacy.cursed_scroll.cursed_only", "只有承受七咒之人才能使用。");
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5按住 §6Shift§5 查看详情。");
 

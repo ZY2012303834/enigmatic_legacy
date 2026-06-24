@@ -1,10 +1,11 @@
-// 1.21.1	2026-06-24T15:16:45.7092756	vanilla/Item Models: enigmatic_legacy
+// 1.21.1	2026-06-24T16:11:18.8881636	vanilla/Item Models: enigmatic_legacy
 79e416a4d6e90035107f541617b7d4a2d2d7abbb assets/enigmatic_legacy/models/item/angel_blessing.json
 71ad4196d7e8a842e7122ea637f5096bd1de67b7 assets/enigmatic_legacy/models/item/astral_dust.json
 baae1e9410c2ca95493c81ced390f9823be60e7d assets/enigmatic_legacy/models/item/blazing_core.json
 883d3ab1336b5915dde7ab6fc667910b9222b43a assets/enigmatic_legacy/models/item/bloodstained_valor_emblem.json
 a800b4eb7375f1b97f96baff0737b577c9df02a5 assets/enigmatic_legacy/models/item/cosmic_heart.json
 05e92afa49b30559cdf0273899d0933d14ae0156 assets/enigmatic_legacy/models/item/cursed_ring.json
+90c582e305e1cd6bca011ab923abdd332ef3a3f5 assets/enigmatic_legacy/models/item/cursed_scroll.json
 8fd53487262cb3693ab4d443a44884ffd6aecc67 assets/enigmatic_legacy/models/item/darkest_scroll.json
 db483d06c4aa7d2a5c5b56bf15524e7306755731 assets/enigmatic_legacy/models/item/dislocation_ring.json
 5f1a130d2a78a8cf92087e96831b3c25880f701e assets/enigmatic_legacy/models/item/earth_heart.json

@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:enchanted_book"
+    },
+    "F": {
+      "item": "minecraft:feather"
+    },
+    "I": {
+      "item": "minecraft:ink_sac"
+    },
+    "P": {
+      "item": "minecraft:phantom_membrane"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "S": {
+      "item": "enigmatic_legacy:darkest_scroll"
+    },
+    "T": {
+      "item": "enigmatic_legacy:twisted_heart"
+    }
+  },
+  "pattern": [
+    "PTP",
+    "ISF",
+    "RBR"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:cursed_scroll"
+  }
+}

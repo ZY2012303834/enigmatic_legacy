@@ -402,6 +402,7 @@ public class CuriosGenerator implements DataProvider {
         JsonArray values = new JsonArray();
         values.add(EnigmaticLegacy.MODID + ":xp_scroll");
         values.add(EnigmaticLegacy.MODID + ":heaven_scroll");
+        values.add(EnigmaticLegacy.MODID + ":cursed_scroll");
 
         json.add("values", values);
 

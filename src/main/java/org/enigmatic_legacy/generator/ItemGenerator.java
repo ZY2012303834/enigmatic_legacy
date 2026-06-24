@@ -87,6 +87,7 @@ public class ItemGenerator extends ItemModelProvider {
         // 卷轴
         basicItem(ModItems.XP_SCROLL.getId()); // 永恒智慧卷轴
         basicItem(ModItems.HEAVEN_SCROLL.getId()); // 天堂之礼
+        basicItem(ModItems.CURSED_SCROLL.getId()); // 千咒卷轴
 
     }
 
