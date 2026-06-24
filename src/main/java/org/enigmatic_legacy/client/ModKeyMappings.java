@@ -11,6 +11,8 @@ import org.lwjgl.glfw.GLFW;
 
 /**
  * 客户端按键注册。
+ * 默认：
+ * Shift + V = 启用 / 停用永恒智慧卷轴。
  */
 @EventBusSubscriber(
         modid = EnigmaticLegacy.MODID,

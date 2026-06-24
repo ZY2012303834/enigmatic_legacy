@@ -11,9 +11,8 @@ import org.enigmatic_legacy.network.ScrollUsePayload;
 
 /**
  * 客户端卷轴按键监听。
-
- * Shift + 卷轴按键：
- * 如果卷轴装备在 scroll 栏，则启用 / 停用。
+ * Shift + 绑定按键：
+ * 如果永恒智慧卷轴装备在奥秘卷轴栏，则启用 / 停用。
  */
 @EventBusSubscriber(
         modid = EnigmaticLegacy.MODID,
@@ -28,6 +27,11 @@ public final class ClientScrollKeyEvents {
         Minecraft minecraft = Minecraft.getInstance();
 
         if (minecraft.player == null) {
+            return;
+        }
+
+        // 打开聊天框、背包、菜单时，不触发快捷键。
+        if (minecraft.screen != null) {
             return;
         }
 

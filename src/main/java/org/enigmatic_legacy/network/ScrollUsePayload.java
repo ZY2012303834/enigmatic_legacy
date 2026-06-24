@@ -14,11 +14,11 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * 客户端按下“卷轴快捷键”后发给服务端。
-
- * 规则：
- * 必须装备在 scroll 栏；
- * 必须按住 Shift；
- * 触发后启用 / 停用卷轴。
+ * 触发条件：
+ * 客户端已经确认玩家按下 Shift + 绑定键。
+ * 服务端效果：
+ * 查找装备在奥秘卷轴栏的永恒智慧卷轴，
+ * 然后启用 / 停用它。
  */
 public record ScrollUsePayload() implements CustomPacketPayload {
     public static final Type<ScrollUsePayload> TYPE = new Type<>(
@@ -36,10 +36,6 @@ public record ScrollUsePayload() implements CustomPacketPayload {
     public static void handle(ScrollUsePayload payload, IPayloadContext context) {
         context.enqueueWork(() -> {
             if (!(context.player() instanceof ServerPlayer player)) {
-                return;
-            }
-
-            if (!player.isShiftKeyDown()) {
                 return;
             }
 

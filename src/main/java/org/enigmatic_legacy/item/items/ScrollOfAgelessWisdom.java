@@ -102,24 +102,6 @@ public class ScrollOfAgelessWisdom extends Item implements ICurioItem {
     }
 
     /**
-     * 检查玩家 Curios 里是否已经装备了永恒智慧卷轴。
-     * 用途：
-     * 奥秘卷轴栏位可以是 3 个，
-     * 但永恒智慧卷轴最多只能占其中 1 个。
-     */
-    private static boolean hasAnotherXpScrollEquipped(LivingEntity entity) {
-        if (entity == null) {
-            return true;
-        }
-
-        return CuriosApi.getCuriosInventory(entity)
-                .flatMap(handler -> handler.findFirstCurio(
-                        stack -> stack.is(ModItems.XP_SCROLL.get())
-                ))
-                .isEmpty();
-    }
-
-    /**
      * 判断是否允许装备永恒智慧卷轴。
      * 规则：
      * 奥秘卷轴栏位可以有 3 个，
