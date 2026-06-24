@@ -501,6 +501,7 @@ public class EnglishLanguageGenerator extends LanguageProvider {
 
     private void addEnglishCursedRingTooltips() {
         add("tooltip.enigmatic_legacy.void", " ");
+        add("message.enigmatic_legacy.cursed_ring.no_sleep", "The insomnia curse of the Ring of the Seven Curses prevents you from sleeping.");
         add("tooltip.enigmatic_legacy.eternallyBound1", "§5Once worn, it becomes a part of you.");
         add("tooltip.enigmatic_legacy.eternallyBound2", "§4This ring will persist with you forever.");
         add("tooltip.enigmatic_legacy.eternallyBound2_creative", "§6With the power of god, you can unequip it.");

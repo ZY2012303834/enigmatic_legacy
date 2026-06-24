@@ -505,6 +505,8 @@ public class ChineseLanguageGenerator extends LanguageProvider {
     private void addChineseCursedRingTooltips() {
         add("tooltip.enigmatic_legacy.void", "");
 
+        add("message.enigmatic_legacy.cursed_ring.no_sleep", "七咒之戒的失眠诅咒阻止了你的睡眠。");
+
         add("tooltip.enigmatic_legacy.eternallyBound1", "§5一旦佩戴，它便成为你的一部分。");
         add("tooltip.enigmatic_legacy.eternallyBound2", "§4这枚戒指将永远陪伴着你。");
         add("tooltip.enigmatic_legacy.eternallyBound2_creative", "§6需要神的能力才能取下它。");

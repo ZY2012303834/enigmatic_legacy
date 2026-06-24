@@ -1,6 +1,8 @@
 package org.enigmatic_legacy.event;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Difficulty;
@@ -52,6 +54,8 @@ import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingExperienceDropEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingKnockBackEvent;
+import net.neoforged.neoforge.event.entity.player.CanContinueSleepingEvent;
+import net.neoforged.neoforge.event.entity.player.CanPlayerSleepEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerSpawnPhantomsEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
@@ -307,6 +311,68 @@ public class CursedRingEvents {
         }
 
         event.setResult(PlayerSpawnPhantomsEvent.Result.ALLOW);
+    }
+
+    /**
+     * 七咒之戒的失眠诅咒：
+     * 佩戴七咒之戒时，玩家不能开始睡觉。
+     *
+     * 原项目行为：
+     * Trying to sleep with Ring of the Seven Curses now displays message indicating player can't sleep.
+     */
+    @SubscribeEvent
+    public static void onCanPlayerSleep(CanPlayerSleepEvent event) {
+        if (ConfigCommon.CURSED_RING_DISABLE_INSOMNIA.get()) {
+            return;
+        }
+
+        ServerPlayer player = event.getEntity();
+
+        if (!CursedRingHelper.hasCursedRing(player)) {
+            return;
+        }
+
+        /*
+         * OTHER_PROBLEM 会阻止进入睡眠。
+         * 同时主动给玩家发提示，复刻原项目“尝试睡觉时显示不能睡”的行为。
+         */
+        event.setProblem(Player.BedSleepingProblem.OTHER_PROBLEM);
+
+        player.displayClientMessage(
+                Component.translatable("message.enigmatic_legacy.cursed_ring.no_sleep")
+                        .withStyle(ChatFormatting.DARK_PURPLE),
+                true
+        );
+    }
+
+    /**
+     * 兜底：
+     * 如果玩家已经处于睡眠状态后才装备/获得七咒之戒，
+     * 或者被其他模组强制进入睡眠状态，这里会让他立刻不能继续睡。
+     *
+     * NeoForge 的 CanContinueSleepingEvent 用于覆盖“是否可以继续睡觉”的检查。
+     */
+    @SubscribeEvent
+    public static void onCanContinueSleeping(CanContinueSleepingEvent event) {
+        if (ConfigCommon.CURSED_RING_DISABLE_INSOMNIA.get()) {
+            return;
+        }
+
+        if (!(event.getEntity() instanceof ServerPlayer player)) {
+            return;
+        }
+
+        if (!CursedRingHelper.hasCursedRing(player)) {
+            return;
+        }
+
+        event.setContinueSleeping(false);
+
+        player.displayClientMessage(
+                Component.translatable("message.enigmatic_legacy.cursed_ring.no_sleep")
+                        .withStyle(ChatFormatting.DARK_PURPLE),
+                true
+        );
     }
 
     /**
