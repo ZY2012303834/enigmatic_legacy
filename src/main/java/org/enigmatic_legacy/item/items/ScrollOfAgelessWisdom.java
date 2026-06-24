@@ -34,8 +34,8 @@ import java.util.List;
 
  * 效果：
  * 1. 可以存储大量经验值；
- * 2. 右键切换吸收 / 提取模式；
- * 3. Shift + 右键启用 / 停用；
+ * 2. Shift + 右键切换吸收 / 提取模式；
+ * 3. 按卷轴快捷键启用 / 停用；
  * 4. 装备在 scroll 卷轴栏时，启用后自动执行当前模式；
  * 5. 启用时收集 16 格范围内的经验球。
  */
@@ -164,7 +164,7 @@ public class ScrollOfAgelessWisdom extends Item implements ICurioItem {
      * Shift + 右键：
      * 只切换吸收 / 提取模式，不进行装备。
      * 启用 / 停用：
-     * 装备在奥秘卷轴栏后，使用 Shift + 绑定按键触发。
+     * 装备在奥秘卷轴栏后，使用绑定按键触发。
      */
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(

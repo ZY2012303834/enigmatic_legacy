@@ -11,7 +11,7 @@ import org.enigmatic_legacy.network.ScrollUsePayload;
 
 /**
  * 客户端卷轴按键监听。
- * Shift + 绑定按键：
+ * 绑定按键：
  * 如果永恒智慧卷轴装备在奥秘卷轴栏，则启用 / 停用。
  */
 @EventBusSubscriber(
@@ -36,9 +36,7 @@ public final class ClientScrollKeyEvents {
         }
 
         while (ModKeyMappings.SCROLL_KEY.consumeClick()) {
-            if (minecraft.player.isShiftKeyDown()) {
-                PacketDistributor.sendToServer(new ScrollUsePayload());
-            }
+            PacketDistributor.sendToServer(new ScrollUsePayload());
         }
     }
 }
