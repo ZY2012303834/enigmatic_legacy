@@ -426,6 +426,9 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         // 永恒智慧卷轴
         addItem(ModItems.XP_SCROLL, "永恒智慧卷轴");
 
+        add("curios.identifier.scroll", "秘术卷轴");
+        add("curios.modifiers.scroll", "装备在秘术卷轴栏时：");
+
         add("key.enigmatic_legacy.scroll", "使用秘术卷轴");
 
         add("message.enigmatic_legacy.xp_scroll.enabled", "永恒智慧卷轴已启用。");

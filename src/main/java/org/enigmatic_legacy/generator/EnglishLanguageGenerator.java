@@ -425,6 +425,9 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         // 永恒智慧卷轴
         addItem(ModItems.XP_SCROLL, "Scroll of Ageless Wisdom");
 
+        add("curios.identifier.scroll", "Arcane Scroll");
+        add("curios.modifiers.scroll", "When worn as scroll:");
+
         add("key.enigmatic_legacy.scroll", "Use Mystic Scroll");
 
         add("message.enigmatic_legacy.xp_scroll.enabled", "Scroll of Ageless Wisdom enabled.");
