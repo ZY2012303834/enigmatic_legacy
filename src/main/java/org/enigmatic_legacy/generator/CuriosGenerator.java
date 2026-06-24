@@ -367,21 +367,18 @@ public class CuriosGenerator implements DataProvider {
     private CompletableFuture<?> generateScrollSlotType(CachedOutput cachedOutput) {
         JsonObject json = new JsonObject();
 
-        // 奥秘卷轴栏只能装备 1 个。
-        json.addProperty("size", 1);
+        // 奥秘卷轴栏位数量为 3。
+        // 注意：栏位有 3 个，但永恒智慧卷轴自身会限制最多只能装备 1 个。
+        json.addProperty("size", 3);
 
-        // SET 表示最终固定为 1 个栏位。
         json.addProperty("operation", "SET");
 
         // 排在 spellstone 后面。
         json.addProperty("order", 140);
 
-        /*
-         * 自定义奥秘卷轴空槽图标。
-         *
-         * 对应文件必须存在：
-         * src/main/resources/assets/enigmatic_legacy/textures/slot/empty_scroll_slot.png
-         */
+        // 使用 Plus 原项目的卷轴栏图标。
+        // 对应路径：
+        // src/main/resources/assets/enigmatic_legacy/textures/slot/empty_scroll_slot.png
         json.addProperty("icon", EnigmaticLegacy.MODID + ":slot/empty_scroll_slot");
 
         Path path = output.getOutputFolder(PackOutput.Target.DATA_PACK)
@@ -392,7 +389,6 @@ public class CuriosGenerator implements DataProvider {
 
         return DataProvider.saveStable(cachedOutput, json, path);
     }
-
     /**
      * 生成 curios:scroll 物品标签。
 

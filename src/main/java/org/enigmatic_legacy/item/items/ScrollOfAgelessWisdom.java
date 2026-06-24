@@ -18,8 +18,10 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
+import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.util.ExperienceHelper;
 import org.jetbrains.annotations.NotNull;
+import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
@@ -57,10 +59,10 @@ public class ScrollOfAgelessWisdom extends Item implements ICurioItem {
     }
 
     /**
-     * 普通右键可以直接装备到 Curios scroll 槽。
-
-     * 但是 Shift + 右键时禁止装备，
-     * 因为 Shift + 右键要用于切换吸收 / 提取模式。
+     * 普通右键可以直接装备到奥秘卷轴栏。
+     * 但是 Shift + 右键时必须禁止装备，
+     * 因为 Shift + 右键用于切换吸收 / 提取模式。
+     * 同时，永恒智慧卷轴最多只能装备 1 个。
      */
     @Override
     public boolean canEquipFromUse(SlotContext context, ItemStack stack) {
@@ -70,20 +72,52 @@ public class ScrollOfAgelessWisdom extends Item implements ICurioItem {
 
         LivingEntity entity = context.entity();
 
-        // 玩家按住 Shift 时，不允许右键装备，避免和模式切换冲突。
-        return !(entity instanceof Player player) || !player.isShiftKeyDown();
+        // Shift + 右键时，不允许 Curios 接管装备。
+        if (entity instanceof Player player && player.isShiftKeyDown()) {
+            return false;
+        }
+
+        // 奥秘卷轴栏有 3 个，但永恒智慧卷轴自身只能装备 1 个。
+        return !hasAnotherXpScrollEquipped(entity);
     }
 
     /**
-     * 限制只能放进 scroll 卷轴槽。
+     * 限制只能放进 scroll 奥秘卷轴栏。
+     * 奥秘卷轴栏可以有 3 个槽位，
+     * 但永恒智慧卷轴这个物品最多只能装备 1 个。
      */
     @Override
     public boolean canEquip(SlotContext context, ItemStack stack) {
-        return isScrollSlot(context);
+        if (!isScrollSlot(context)) {
+            return false;
+        }
+
+        return !hasAnotherXpScrollEquipped(context.entity());
     }
 
+    /**
+     * 判断当前 Curios 栏位是否为 scroll 奥秘卷轴栏。
+     */
     private static boolean isScrollSlot(SlotContext context) {
         return context != null && SCROLL_SLOT.equals(context.identifier());
+    }
+
+    /**
+     * 检查玩家 Curios 里是否已经装备了永恒智慧卷轴。
+     * 用途：
+     * 奥秘卷轴栏位可以是 3 个，
+     * 但永恒智慧卷轴最多只能占其中 1 个。
+     */
+    private static boolean hasAnotherXpScrollEquipped(LivingEntity entity) {
+        if (entity == null) {
+            return true;
+        }
+
+        return CuriosApi.getCuriosInventory(entity)
+                .flatMap(handler -> handler.findFirstCurio(
+                        stack -> stack.is(ModItems.XP_SCROLL.get())
+                ))
+                .isEmpty();
     }
 
     /**
@@ -128,7 +162,7 @@ public class ScrollOfAgelessWisdom extends Item implements ICurioItem {
      * 手持右键逻辑。
 
      * 普通右键：
-     * 交给 Curios 处理，让卷轴直接装备到奥秘卷轴栏。
+     * 返回 PASS，交给 Curios 处理，让卷轴直接装备到奥秘卷轴栏。
 
      * Shift + 右键：
      * 只切换吸收 / 提取模式，不进行装备。
@@ -144,7 +178,7 @@ public class ScrollOfAgelessWisdom extends Item implements ICurioItem {
     ) {
         ItemStack stack = player.getItemInHand(hand);
 
-        // Shift + 右键：切换模式，并阻止 Curios 右键装备。
+        // Shift + 右键：只切换模式，并阻止 Curios 继续装备。
         if (player.isShiftKeyDown()) {
             if (!level.isClientSide()) {
                 toggleMode(player, stack);
@@ -155,7 +189,7 @@ public class ScrollOfAgelessWisdom extends Item implements ICurioItem {
 
         /*
          * 普通右键：
-         * 返回 PASS，让 Curios 的 canEquipFromUse(...) 接管右键装备。
+         * 返回 PASS，交给 Curios 的 canEquipFromUse(...) 处理右键装备。
          */
         return InteractionResultHolder.pass(stack);
     }
