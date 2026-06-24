@@ -1,6 +1,6 @@
 {
-  "icon": "curios:slot/empty_curio_slot",
+  "icon": "enigmatic_legacy:slot/empty_scroll_slot",
   "operation": "SET",
   "order": 140,
-  "size": 3
+  "size": 1
 }

@@ -359,7 +359,7 @@ public class CuriosGenerator implements DataProvider {
     }
 
     /**
-     * 生成 scroll 卷轴栏位类型配置。
+     * 生成 scroll 奥秘卷轴栏位类型配置。
 
      * 路径：
      * src/generated/resources/data/enigmatic_legacy/curios/slots/scroll.json
@@ -367,16 +367,22 @@ public class CuriosGenerator implements DataProvider {
     private CompletableFuture<?> generateScrollSlotType(CachedOutput cachedOutput) {
         JsonObject json = new JsonObject();
 
-        json.addProperty("size", 3);
+        // 奥秘卷轴栏只能装备 1 个。
+        json.addProperty("size", 1);
+
+        // SET 表示最终固定为 1 个栏位。
         json.addProperty("operation", "SET");
+
+        // 排在 spellstone 后面。
         json.addProperty("order", 140);
 
         /*
-         * 这里先使用 Curios 通用空槽图标。
-         * 后面如果你想做自定义卷轴空槽贴图，可以改成：
-         * enigmatic_legacy:slot/empty_scroll_slot
+         * 自定义奥秘卷轴空槽图标。
+         *
+         * 对应文件必须存在：
+         * src/main/resources/assets/enigmatic_legacy/textures/slot/empty_scroll_slot.png
          */
-        json.addProperty("icon", "curios:slot/empty_curio_slot");
+        json.addProperty("icon", EnigmaticLegacy.MODID + ":slot/empty_scroll_slot");
 
         Path path = output.getOutputFolder(PackOutput.Target.DATA_PACK)
                 .resolve(EnigmaticLegacy.MODID)

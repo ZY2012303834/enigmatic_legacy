@@ -57,11 +57,21 @@ public class ScrollOfAgelessWisdom extends Item implements ICurioItem {
     }
 
     /**
-     * 允许右键直接装备到 Curios scroll 槽。
+     * 普通右键可以直接装备到 Curios scroll 槽。
+
+     * 但是 Shift + 右键时禁止装备，
+     * 因为 Shift + 右键要用于切换吸收 / 提取模式。
      */
     @Override
     public boolean canEquipFromUse(SlotContext context, ItemStack stack) {
-        return isScrollSlot(context);
+        if (!isScrollSlot(context)) {
+            return false;
+        }
+
+        LivingEntity entity = context.entity();
+
+        // 玩家按住 Shift 时，不允许右键装备，避免和模式切换冲突。
+        return !(entity instanceof Player player) || !player.isShiftKeyDown();
     }
 
     /**
@@ -117,8 +127,14 @@ public class ScrollOfAgelessWisdom extends Item implements ICurioItem {
     /**
      * 手持右键逻辑。
 
-     * 普通右键：切换模式。
-     * Shift + 右键：启用 / 停用。
+     * 普通右键：
+     * 交给 Curios 处理，让卷轴直接装备到奥秘卷轴栏。
+
+     * Shift + 右键：
+     * 只切换吸收 / 提取模式，不进行装备。
+
+     * 启用 / 停用：
+     * 装备在奥秘卷轴栏后，使用 Shift + 绑定按键触发。
      */
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(
@@ -128,17 +144,20 @@ public class ScrollOfAgelessWisdom extends Item implements ICurioItem {
     ) {
         ItemStack stack = player.getItemInHand(hand);
 
-        if (level.isClientSide()) {
-            return InteractionResultHolder.sidedSuccess(stack, true);
-        }
-
+        // Shift + 右键：切换模式，并阻止 Curios 右键装备。
         if (player.isShiftKeyDown()) {
-            toggleActive(player, stack);
-        } else {
-            toggleMode(player, stack);
+            if (!level.isClientSide()) {
+                toggleMode(player, stack);
+            }
+
+            return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
         }
 
-        return InteractionResultHolder.sidedSuccess(stack, false);
+        /*
+         * 普通右键：
+         * 返回 PASS，让 Curios 的 canEquipFromUse(...) 接管右键装备。
+         */
+        return InteractionResultHolder.pass(stack);
     }
 
     /**
