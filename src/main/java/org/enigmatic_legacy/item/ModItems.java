@@ -67,6 +67,7 @@ public final class ModItems {
 
     // 卷轴
     public static final DeferredItem<ScrollOfAgelessWisdom> XP_SCROLL = ITEMS.register("xp_scroll", ScrollOfAgelessWisdom::new); // 永恒智慧卷轴
+    public static final DeferredItem<GiftOfTheHeaven> HEAVEN_SCROLL = ITEMS.register("heaven_scroll", GiftOfTheHeaven::new); // 天堂之礼
 
 
     // 原版名为 storage_crystal，显示名是 Extradimensional Vessel / 超维容器。

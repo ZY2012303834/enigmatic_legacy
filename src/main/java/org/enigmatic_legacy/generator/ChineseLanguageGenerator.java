@@ -447,6 +447,15 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.xp_scroll.usage.3", "启用时会收集 %s 格内的经验球。");
         // end
 
+        // 天堂之礼
+        addItem(ModItems.HEAVEN_SCROLL, "天堂之礼");
+
+        add("tooltip.enigmatic_legacy.heaven_scroll.1", "在激活信标范围内给予自由飞行能力。");
+        add("tooltip.enigmatic_legacy.heaven_scroll.2", "飞行时会缓慢消耗经验值，并提高挖掘速度。");
+        add("tooltip.enigmatic_legacy.heaven_scroll.3", "离开信标范围后会失去飞行，并获得 8 秒缓降。");
+        add("tooltip.enigmatic_legacy.heaven_scroll.4", "在信标范围内且未丧失飞行能力时免疫摔落伤害。");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5按住 §6Shift§5 查看详情。");
 

@@ -71,6 +71,7 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(PearlOfTheVoidEvents.class);
         NeoForge.EVENT_BUS.register(NonEuclideanCubeEvents.class);
         NeoForge.EVENT_BUS.register(HeartOfCreationEvents.class);
+        NeoForge.EVENT_BUS.register(GiftOfTheHeavenEvents.class);
 
     }
 }

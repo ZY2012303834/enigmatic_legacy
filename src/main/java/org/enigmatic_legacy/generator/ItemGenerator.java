@@ -84,7 +84,9 @@ public class ItemGenerator extends ItemModelProvider {
         basicItem(ModItems.VOID_PEARL.getId()); // 虚空珍珠
         basicItem(ModItems.THE_CUBE.getId()); // 非欧立方
         basicItem(ModItems.HEART_OF_CREATION.getId()); // 创造之心
+        // 卷轴
         basicItem(ModItems.XP_SCROLL.getId()); // 永恒智慧卷轴
+        basicItem(ModItems.HEAVEN_SCROLL.getId()); // 天堂之礼
 
     }
 

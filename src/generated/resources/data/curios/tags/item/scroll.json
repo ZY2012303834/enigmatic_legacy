@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "enigmatic_legacy:xp_scroll"
+    "enigmatic_legacy:xp_scroll",
+    "enigmatic_legacy:heaven_scroll"
   ]
 }

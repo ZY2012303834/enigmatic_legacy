@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:experience_bottle"
+    },
+    "E": {
+      "item": "minecraft:ender_eye"
+    },
+    "F": {
+      "item": "minecraft:feather"
+    },
+    "G": {
+      "item": "minecraft:emerald"
+    },
+    "I": {
+      "item": "minecraft:ink_sac"
+    },
+    "X": {
+      "item": "enigmatic_legacy:thicc_scroll"
+    }
+  },
+  "pattern": [
+    "BEB",
+    "IXF",
+    "BGB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:xp_scroll"
+  }
+}

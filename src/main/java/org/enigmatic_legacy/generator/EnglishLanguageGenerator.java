@@ -446,6 +446,15 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.xp_scroll.usage.3", "While active, collects experience orbs within %s blocks.");
         // end
 
+        // 天堂之礼
+        addItem(ModItems.HEAVEN_SCROLL, "Gift of the Heaven");
+
+        add("tooltip.enigmatic_legacy.heaven_scroll.1", "Grants free flight while within range of an active beacon.");
+        add("tooltip.enigmatic_legacy.heaven_scroll.2", "Flying slowly consumes experience and increases mining speed.");
+        add("tooltip.enigmatic_legacy.heaven_scroll.3", "Leaving beacon range removes flight and grants Slow Falling for 8 seconds.");
+        add("tooltip.enigmatic_legacy.heaven_scroll.4", "While beacon-powered flight is available, negates fall damage.");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");
     }

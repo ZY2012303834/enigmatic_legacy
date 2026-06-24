@@ -63,6 +63,21 @@ public class RecipeGenerator extends RecipeProvider {
                 .unlockedBy("has_paper", has(Items.PAPER))
                 .save(output);
 
+        // 永恒智慧卷轴 / Scroll of Ageless Wisdom。
+        // 对齐原项目 xp_scroll 配方。
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.XP_SCROLL.get())
+                .pattern("BEB")
+                .pattern("IXF")
+                .pattern("BGB")
+                .define('B', Items.EXPERIENCE_BOTTLE)
+                .define('E', Items.ENDER_EYE)
+                .define('I', Items.INK_SAC)
+                .define('X', ModItems.THICC_SCROLL.get())
+                .define('F', Items.FEATHER)
+                .define('G', Items.EMERALD)
+                .unlockedBy("has_thicc_scroll", has(ModItems.THICC_SCROLL.get()))
+                .save(output);
+
         // 以太块
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ETHERIUM_BLOCK.get())
                 .pattern("III")
