@@ -1,8 +1,9 @@
-// 1.21.1	2026-06-24T16:49:39.1656987	vanilla/Recipes
+// 1.21.1	2026-06-24T17:48:27.8701174	vanilla/Recipes
 138cca5fc2d36a468976c88c266618e68aa51d88 data/enigmatic_legacy/advancement/recipes/building_blocks/astral_dust_sack.json
 75128c3d277fd90fca1df4cc9f996933af7f7241 data/enigmatic_legacy/advancement/recipes/building_blocks/etherium_block.json
 afc69a4ceaecd0685cc5f6ee8c892af17f05a22e data/enigmatic_legacy/advancement/recipes/decorations/lamps/big_lamp.json
 f0d876abfb4d231cd8cd0bca21b02c1f0caa053e data/enigmatic_legacy/advancement/recipes/decorations/lamps/big_shroomlamp.json
+4a6993b7056e8f412ed1bbbd1c69dcf56d9476fa data/enigmatic_legacy/advancement/recipes/misc/avarice_scroll.json
 94d1a138371805bfef8ef1eada28fc133984a8ed data/enigmatic_legacy/advancement/recipes/misc/bloodstained_valor_emblem.json
 1b98626a43928d7448ba4330e6bdef4c9cb7085f data/enigmatic_legacy/advancement/recipes/misc/cosmic_heart.json
 87a011569d6c9a2a7c5f39f27fdfdca37e67473f data/enigmatic_legacy/advancement/recipes/misc/cursed_scroll.json
@@ -27,6 +28,7 @@ b4bc3350ebdc21a63600169d4bdbb66abe888b29 data/enigmatic_legacy/advancement/recip
 8d08c2d75c90bc65ccf0a6cab6a7ebd4913c2143 data/enigmatic_legacy/advancement/recipes/misc/xp_scroll.json
 44184c796c476522c6aa3d1c9264d08810c28675 data/enigmatic_legacy/advancement/recipes/tools/twisted_mirror.json
 bc5104864582da074782dc6da572b03febea86de data/enigmatic_legacy/recipe/astral_dust_sack.json
+c07b678ca3933c34b2acb98d715a3661bdbc46db data/enigmatic_legacy/recipe/avarice_scroll.json
 461bff7973fdfaaaa4c4918c7a3eb08618d05e5d data/enigmatic_legacy/recipe/bloodstained_valor_emblem.json
 874378b1428b2e4f0b7923bec326928f7e37ba59 data/enigmatic_legacy/recipe/cosmic_heart.json
 a68e9f47121f7c2f4e9d9d83a3dc9b7c97b499c3 data/enigmatic_legacy/recipe/cursed_scroll.json

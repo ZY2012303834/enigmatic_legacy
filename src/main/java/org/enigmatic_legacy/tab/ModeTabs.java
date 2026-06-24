@@ -81,6 +81,7 @@ public final class ModeTabs {
                         output.accept(ModItems.HEAVEN_SCROLL.get()); // 天堂之礼
                         output.accept(ModItems.CURSED_SCROLL.get()); // 千咒卷轴
                         output.accept(ModItems.FABULOUS_SCROLL.get()); // 创造者的恩赐
+                        output.accept(ModItems.AVARICE_SCROLL.get()); // 无尽贪婪契约
                     })
                     .build());
 

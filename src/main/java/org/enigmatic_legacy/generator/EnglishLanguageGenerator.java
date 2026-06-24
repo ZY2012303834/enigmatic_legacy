@@ -484,6 +484,17 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.fabulous_scroll.4", "Compensates mining speed loss while flying and negates fall damage while flight remains available.");
         // end
 
+        // 无尽贪婪契约
+        addItem(ModItems.AVARICE_SCROLL, "Pact of Infinite Avarice");
+
+        add("tooltip.enigmatic_legacy.avarice_scroll.1", "+1 Fortune level.");
+        add("tooltip.enigmatic_legacy.avarice_scroll.2", "Piglins remain neutral to you, even under the Second Curse.");
+        add("tooltip.enigmatic_legacy.avarice_scroll.3", "Piglin bartering rewards are increased by 100%.");
+        add("tooltip.enigmatic_legacy.avarice_scroll.4", "Killing any creature has a 15% chance to drop an extra emerald.");
+        add("tooltip.enigmatic_legacy.avarice_scroll.5", "Villager trades receive a 35% discount.");
+        add("tooltip.enigmatic_legacy.avarice_scroll.cursed_only", "Only bearers of the Seven Curses may use this item.");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");
     }

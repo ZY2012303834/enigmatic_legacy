@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "F": {
+      "item": "minecraft:feather"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "I": {
+      "item": "minecraft:ink_sac"
+    },
+    "R": {
+      "item": "enigmatic_legacy:golden_ring"
+    },
+    "S": {
+      "item": "enigmatic_legacy:darkest_scroll"
+    },
+    "T": {
+      "item": "enigmatic_legacy:twisted_heart"
+    }
+  },
+  "pattern": [
+    "GRG",
+    "ISF",
+    "GTG"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:avarice_scroll"
+  }
+}

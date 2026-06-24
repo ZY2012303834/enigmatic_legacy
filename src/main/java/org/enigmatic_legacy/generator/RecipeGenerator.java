@@ -368,5 +368,20 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('B', Items.ELYTRA)
                 .unlockedBy("has_heaven_scroll", has(ModItems.HEAVEN_SCROLL.get()))
                 .save(output);
+
+        // 无尽贪婪契约 / Pact of Infinite Avarice。
+        // 原项目配方：金锭 * 4、精美戒指、墨囊、至暗卷轴、羽毛、扭曲之心。
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.AVARICE_SCROLL.get())
+                .pattern("GRG")
+                .pattern("ISF")
+                .pattern("GTG")
+                .define('G', Items.GOLD_INGOT)
+                .define('R', ModItems.EXQUISITE_RING.get())
+                .define('I', Items.INK_SAC)
+                .define('S', ModItems.DARKEST_SCROLL.get())
+                .define('F', Items.FEATHER)
+                .define('T', ModItems.TWISTED_HEART.get())
+                .unlockedBy("has_darkest_scroll", has(ModItems.DARKEST_SCROLL.get()))
+                .save(output);
     }
 }

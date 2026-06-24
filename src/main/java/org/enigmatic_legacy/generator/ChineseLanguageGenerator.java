@@ -485,6 +485,17 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.fabulous_scroll.4", "补偿飞行时的挖掘速度损失，并在未丧失飞行能力时免疫摔落伤害。");
         // end
 
+        // 无尽贪婪契约
+        addItem(ModItems.AVARICE_SCROLL, "无尽贪婪契约");
+
+        add("tooltip.enigmatic_legacy.avarice_scroll.1", "+1 时运等级。");
+        add("tooltip.enigmatic_legacy.avarice_scroll.2", "猪灵对你保持中立，即使你承受第二诅咒。");
+        add("tooltip.enigmatic_legacy.avarice_scroll.3", "猪灵以物易物收益增加 100%。");
+        add("tooltip.enigmatic_legacy.avarice_scroll.4", "杀死任意生物有 15% 概率额外掉落 1 枚绿宝石。");
+        add("tooltip.enigmatic_legacy.avarice_scroll.5", "村民交易提供 35% 折扣。");
+        add("tooltip.enigmatic_legacy.avarice_scroll.cursed_only", "只有承受七咒之人才能使用。");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5按住 §6Shift§5 查看详情。");
 

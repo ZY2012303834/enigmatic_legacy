@@ -127,7 +127,12 @@ public class CursedRingHelper {
             }
 
             // 猪灵使用原版仇恨 AI。
+            // 但如果玩家佩戴无尽贪婪契约，猪灵必须保持中立。
             if (entity instanceof Piglin piglin) {
+                if (PactOfInfiniteAvariceHelper.hasPact(player)) {
+                    continue;
+                }
+
                 if (piglin.getTarget() == null || !piglin.getTarget().isAlive()) {
                     angerPiglin(piglin, player);
                 }

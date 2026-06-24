@@ -70,6 +70,7 @@ public final class ModItems {
     public static final DeferredItem<GiftOfTheHeaven> HEAVEN_SCROLL = ITEMS.register("heaven_scroll", GiftOfTheHeaven::new); // 天堂之礼
     public static final DeferredItem<ScrollOfThousandCurses> CURSED_SCROLL = ITEMS.register("cursed_scroll", ScrollOfThousandCurses::new); // 千咒卷轴
     public static final DeferredItem<GraceOfTheCreator> FABULOUS_SCROLL = ITEMS.register("fabulous_scroll", GraceOfTheCreator::new); // 创造者的恩赐
+    public static final DeferredItem<PactOfInfiniteAvarice> AVARICE_SCROLL = ITEMS.register("avarice_scroll", PactOfInfiniteAvarice::new); // 无尽贪婪契约
 
 
     // 原版名为 storage_crystal，显示名是 Extradimensional Vessel / 超维容器。
