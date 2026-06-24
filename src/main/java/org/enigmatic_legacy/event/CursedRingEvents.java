@@ -1,6 +1,10 @@
 package org.enigmatic_legacy.event;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.Difficulty;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
@@ -54,6 +58,7 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.util.CursedRingHelper;
+import org.enigmatic_legacy.util.HeartOfCreationHelper;
 import top.theillusivec4.curios.api.event.DropRulesEvent;
 import top.theillusivec4.curios.api.type.capability.ICurio;
 
@@ -67,6 +72,14 @@ import top.theillusivec4.curios.api.type.capability.ICurio;
 public class CursedRingEvents {
     private static final String STARTING_CURSED_RING_GIVEN = "enigmatic_legacy_received_cursed_ring";
     private static final String LEGACY_STARTING_CURSED_RING_GIVEN = "EnigmaticLegacyStartingCursedRingGiven";
+
+    /**
+     * 创造之心会给予飞行能力。
+     * 为避免原版 PhantomSpawner 因飞行能力导致七咒幻翼压力失效，
+     * 这里给七咒之戒补一个独立的幻翼刷新冷却。
+     */
+    private static final String HEART_CREATION_PHANTOM_COOLDOWN_TAG =
+            "enigmatic_legacy_heart_creation_phantom_cooldown";
 
     /**
      * 玩家每秒处理一次七咒之戒的仇恨逻辑。
@@ -93,6 +106,10 @@ public class CursedRingEvents {
         }
 
         CursedRingHelper.tickCurses(player);
+
+        if (player instanceof ServerPlayer serverPlayer) {
+            tickHeartOfCreationPhantomSpawn(serverPlayer);
+        }
     }
 
     /**
@@ -290,6 +307,114 @@ public class CursedRingEvents {
         }
 
         event.setResult(PlayerSpawnPhantomsEvent.Result.ALLOW);
+    }
+
+    /**
+     * 创造之心兼容用幻翼刷新。
+     * 原逻辑只通过 PlayerSpawnPhantomsEvent 放行原版 PhantomSpawner。
+     * 但创造之心会授予飞行能力，可能导致原版幻翼刷新链不再稳定触发。
+     * 所以这里仅在：
+     * 1. 玩家佩戴七咒之戒；
+     * 2. 玩家装备创造之心；
+     * 3. 失眠诅咒未被配置禁用；
+     * 4. 当前为夜晚且头顶可见天空；
+     * 时，额外生成少量幻翼。
+     */
+    private static void tickHeartOfCreationPhantomSpawn(ServerPlayer player) {
+        if (ConfigCommon.CURSED_RING_DISABLE_INSOMNIA.get()) {
+            return;
+        }
+
+        if (!CursedRingHelper.hasCursedRing(player)) {
+            return;
+        }
+
+        if (!HeartOfCreationHelper.hasHeartOfCreationEquipped(player)) {
+            return;
+        }
+
+        if (player.isCreative() || player.isSpectator()) {
+            return;
+        }
+
+        if (!(player.level() instanceof ServerLevel level)) {
+            return;
+        }
+
+        if (level.getDifficulty() == Difficulty.PEACEFUL) {
+            return;
+        }
+
+        if (level.isDay()) {
+            return;
+        }
+
+        BlockPos playerPos = player.blockPosition();
+
+        if (!level.canSeeSky(playerPos)) {
+            return;
+        }
+
+        int cooldown = player.getPersistentData().getInt(HEART_CREATION_PHANTOM_COOLDOWN_TAG);
+
+        if (cooldown > 0) {
+            player.getPersistentData().putInt(
+                    HEART_CREATION_PHANTOM_COOLDOWN_TAG,
+                    Math.max(0, cooldown - 20)
+            );
+            return;
+        }
+
+        /*
+         * 不每次冷却结束都生成，避免过于密集。
+         * 每秒检查一次，25% 概率触发。
+         */
+        if (player.getRandom().nextDouble() > 0.25D) {
+            player.getPersistentData().putInt(HEART_CREATION_PHANTOM_COOLDOWN_TAG, 20 * 15);
+            return;
+        }
+
+        int count = 1 + player.getRandom().nextInt(2);
+
+        for (int i = 0; i < count; i++) {
+            spawnCursedPhantom(level, player);
+        }
+
+        /*
+         * 下一轮额外刷新间隔：
+         * 60 ~ 120 秒。
+         */
+        player.getPersistentData().putInt(
+                HEART_CREATION_PHANTOM_COOLDOWN_TAG,
+                20 * (60 + player.getRandom().nextInt(61))
+        );
+    }
+
+    /**
+     * 在玩家上方生成一只七咒幻翼。
+     */
+    private static void spawnCursedPhantom(ServerLevel level, ServerPlayer player) {
+        Phantom phantom = EntityType.PHANTOM.create(level);
+
+        if (phantom == null) {
+            return;
+        }
+
+        double x = player.getX() + (player.getRandom().nextDouble() - 0.5D) * 20.0D;
+        double y = player.getY() + 20.0D + player.getRandom().nextInt(10);
+        double z = player.getZ() + (player.getRandom().nextDouble() - 0.5D) * 20.0D;
+
+        phantom.moveTo(
+                x,
+                y,
+                z,
+                player.getRandom().nextFloat() * 360.0F,
+                0.0F
+        );
+
+        phantom.setTarget(player);
+
+        level.addFreshEntity(phantom);
     }
 
     /**
