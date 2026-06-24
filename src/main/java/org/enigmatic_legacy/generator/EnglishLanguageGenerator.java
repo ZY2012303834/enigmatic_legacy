@@ -441,8 +441,8 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.xp_scroll.inactive", "State: Inactive");
         add("tooltip.enigmatic_legacy.xp_scroll.mode_absorption", "Mode: Absorption");
         add("tooltip.enigmatic_legacy.xp_scroll.mode_extraction", "Mode: Extraction");
-        add("tooltip.enigmatic_legacy.xp_scroll.usage.1", "Right-click to switch between Absorption and Extraction Mode.");
-        add("tooltip.enigmatic_legacy.xp_scroll.usage.2", "Shift + right-click to enable or disable the scroll.");
+        add("tooltip.enigmatic_legacy.xp_scroll.usage.1", "Shift + right-click to switch between Absorption and Extraction Mode.");
+        add("tooltip.enigmatic_legacy.xp_scroll.usage.2", "Press the scroll key to enable or disable the scroll.");
         add("tooltip.enigmatic_legacy.xp_scroll.usage.3", "While active, collects experience orbs within %s blocks.");
         // end
 

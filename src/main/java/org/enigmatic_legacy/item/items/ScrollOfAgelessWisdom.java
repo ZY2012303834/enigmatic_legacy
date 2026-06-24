@@ -50,6 +50,7 @@ public class ScrollOfAgelessWisdom extends Item implements ICurioItem {
     public static final int MODE_EXTRACTION = 1;
 
     public static final double COLLECTION_RANGE = 16.0D;
+    private static final int MIN_XP_PORTION = 5;
 
     public ScrollOfAgelessWisdom() {
         super(new Item.Properties()
@@ -121,11 +122,9 @@ public class ScrollOfAgelessWisdom extends Item implements ICurioItem {
 
     /**
      * 卷轴装备在 Curios scroll 槽时，每 tick 执行。
-
      * 启用 + 吸收模式：
      * - 吸收玩家当前经验；
      * - 收集 16 格内经验球。
-
      * 启用 + 提取模式：
      * - 将全部存储经验返还给玩家；
      * - 自动停用。
@@ -146,14 +145,14 @@ public class ScrollOfAgelessWisdom extends Item implements ICurioItem {
             return;
         }
 
+        int experiencePortion = getExperiencePortion(player);
+
         if (getMode(stack) == MODE_EXTRACTION) {
-            extractAllExperience(player, stack);
-            setActive(stack, false);
-            playUseSound(player, 1.15F);
+            extractExperiencePortion(player, stack, experiencePortion);
             return;
         }
 
-        absorbPlayerExperience(player, stack);
+        absorbPlayerExperience(player, stack, experiencePortion);
         collectNearbyExperienceOrbs(player, stack);
     }
 
@@ -194,25 +193,11 @@ public class ScrollOfAgelessWisdom extends Item implements ICurioItem {
 
     /**
      * 切换启用 / 停用。
-     * 如果当前是提取模式，启用时会立即返还全部经验并自动停用。
+     * 具体吸收或返还逻辑由 curioTick 按当前模式持续处理。
      */
     public static void toggleActive(Player player, ItemStack stack) {
         boolean newState = !isActive(stack);
         setActive(stack, newState);
-
-        if (newState && getMode(stack) == MODE_EXTRACTION) {
-            extractAllExperience(player, stack);
-            setActive(stack, false);
-
-            player.displayClientMessage(
-                    Component.translatable("message.enigmatic_legacy.xp_scroll.extracted", getStoredExperience(stack))
-                            .withStyle(ChatFormatting.AQUA),
-                    true
-            );
-
-            playUseSound(player, 1.2F);
-            return;
-        }
 
         player.displayClientMessage(
                 Component.translatable(
@@ -246,17 +231,18 @@ public class ScrollOfAgelessWisdom extends Item implements ICurioItem {
     }
 
     /**
-     * 吸收玩家当前经验条内的全部经验。
+     * 按原项目逻辑，每 tick 只吸收当前等级经验条的一小份。
      */
-    private static void absorbPlayerExperience(Player player, ItemStack stack) {
+    private static void absorbPlayerExperience(Player player, ItemStack stack, int experiencePortion) {
         int experience = ExperienceHelper.getPlayerXP(player);
 
         if (experience <= 0) {
             return;
         }
 
-        ExperienceHelper.drainPlayerXP(player, experience);
-        addStoredExperience(stack, experience);
+        int amount = Math.min(experiencePortion, experience);
+        ExperienceHelper.drainPlayerXP(player, amount);
+        addStoredExperience(stack, amount);
     }
 
     /**
@@ -290,28 +276,46 @@ public class ScrollOfAgelessWisdom extends Item implements ICurioItem {
     }
 
     /**
-     * 将卷轴中的全部经验返还给玩家。
+     * 按原项目逻辑，每 tick 只返还当前等级经验条的一小份。
      */
-    private static void extractAllExperience(Player player, ItemStack stack) {
+    private static void extractExperiencePortion(Player player, ItemStack stack, int experiencePortion) {
         long stored = getStoredExperience(stack);
 
         if (stored <= 0L) {
             return;
         }
 
-        long remaining = stored;
+        int amount = (int) Math.min(experiencePortion, stored);
+        setStoredExperience(stack, stored - amount);
+        ExperienceHelper.addPlayerXP(player, amount);
+    }
 
-        /*
-         * giveExperiencePoints 接收 int。
-         * 这里分批返还，避免一次性转换溢出。
-         */
-        while (remaining > 0L) {
-            int amount = (int) Math.min(1_000_000L, remaining);
-            ExperienceHelper.addPlayerXP(player, amount);
-            remaining -= amount;
+    private static int getExperiencePortion(Player player) {
+        int level = Math.max(0, player.experienceLevel);
+        int levelExperience = getExperienceForLevel(level + 1) - getExperienceForLevel(level);
+        int portion = levelExperience / 5;
+
+        if (level > 100) {
+            portion *= 1 + level / 100;
         }
 
-        setStoredExperience(stack, 0L);
+        return Math.max(MIN_XP_PORTION, portion);
+    }
+
+    private static int getExperienceForLevel(int level) {
+        if (level <= 0) {
+            return 0;
+        }
+
+        if (level < 17) {
+            return level * level + 6 * level;
+        }
+
+        if (level < 32) {
+            return (int) (2.5D * level * level - 40.5D * level + 360.0D);
+        }
+
+        return (int) (4.5D * level * level - 162.5D * level + 2220.0D);
     }
 
     private static void playUseSound(Player player, float pitch) {

@@ -442,8 +442,8 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.xp_scroll.inactive", "状态：已停用");
         add("tooltip.enigmatic_legacy.xp_scroll.mode_absorption", "模式：吸收");
         add("tooltip.enigmatic_legacy.xp_scroll.mode_extraction", "模式：提取");
-        add("tooltip.enigmatic_legacy.xp_scroll.usage.1", "右键切换吸收 / 提取模式。");
-        add("tooltip.enigmatic_legacy.xp_scroll.usage.2", "Shift + 右键启用或停用卷轴。");
+        add("tooltip.enigmatic_legacy.xp_scroll.usage.1", "Shift + 右键切换吸收 / 提取模式。");
+        add("tooltip.enigmatic_legacy.xp_scroll.usage.2", "按卷轴快捷键启用或停用卷轴。");
         add("tooltip.enigmatic_legacy.xp_scroll.usage.3", "启用时会收集 %s 格内的经验球。");
         // end
 

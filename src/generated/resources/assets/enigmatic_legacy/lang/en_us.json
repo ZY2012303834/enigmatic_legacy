@@ -322,7 +322,7 @@
   "tooltip.enigmatic_legacy.xp_scroll.mode_absorption": "Mode: Absorption",
   "tooltip.enigmatic_legacy.xp_scroll.mode_extraction": "Mode: Extraction",
   "tooltip.enigmatic_legacy.xp_scroll.stored": "Stored Experience: %s",
-  "tooltip.enigmatic_legacy.xp_scroll.usage.1": "Right-click to switch between Absorption and Extraction Mode.",
-  "tooltip.enigmatic_legacy.xp_scroll.usage.2": "Shift + right-click to enable or disable the scroll.",
+  "tooltip.enigmatic_legacy.xp_scroll.usage.1": "Shift + right-click to switch between Absorption and Extraction Mode.",
+  "tooltip.enigmatic_legacy.xp_scroll.usage.2": "Press the scroll key to enable or disable the scroll.",
   "tooltip.enigmatic_legacy.xp_scroll.usage.3": "While active, collects experience orbs within %s blocks."
 }
