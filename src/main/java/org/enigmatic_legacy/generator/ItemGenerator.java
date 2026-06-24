@@ -76,6 +76,12 @@ public class ItemGenerator extends ItemModelProvider {
         enigmaticEye();
 
         basicItem(ModItems.THE_ACKNOWLEDGMENT.getId());
+
+        // 兼容某处错误引用的 enigmatic_legacy:item/item/the_acknowledgment。
+        // 不影响正常 the_acknowledgment 模型，只是防止资源加载警告。
+        withExistingParent("item/item/the_acknowledgment", mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/the_acknowledgment"));
+
         basicItem(ModItems.GOLEM_HEART.getId());
         basicItem(ModItems.ANGEL_BLESSING.getId());
         basicItem(ModItems.OCEAN_STONE.getId());
