@@ -101,7 +101,12 @@ public class GiftOfTheHeaven extends Item implements ICurioItem {
 
         return CuriosApi.getCuriosInventory(entity)
                 .flatMap(handler -> handler.findFirstCurio(
-                        equippedStack -> equippedStack.getItem() instanceof GiftOfTheHeaven && equippedStack != stack
+                        equippedStack ->
+                                equippedStack != stack
+                                        && (
+                                        equippedStack.getItem() instanceof GiftOfTheHeaven
+                                                || equippedStack.getItem() instanceof GraceOfTheCreator
+                                )
                 ))
                 .isEmpty();
     }

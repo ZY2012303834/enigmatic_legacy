@@ -98,7 +98,12 @@ public class GraceOfTheCreator extends Item implements ICurioItem {
 
         return CuriosApi.getCuriosInventory(entity)
                 .flatMap(handler -> handler.findFirstCurio(
-                        equippedStack -> equippedStack.getItem() instanceof GraceOfTheCreator && equippedStack != stack
+                        equippedStack ->
+                                equippedStack != stack
+                                        && (
+                                        equippedStack.getItem() instanceof GraceOfTheCreator
+                                                || equippedStack.getItem() instanceof GiftOfTheHeaven
+                                )
                 ))
                 .isEmpty();
     }
