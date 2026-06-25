@@ -83,7 +83,6 @@
   "message.enigmatic_legacy.ender_ring.no_access": "你需要末影之戒才能这么做。",
   "message.enigmatic_legacy.enigmatic_eye.awakened": "眼已苏醒。",
   "message.enigmatic_legacy.enigmatic_eye.awakening": "眼开始苏醒……",
-  "message.enigmatic_legacy.extradimensional_eye.already_bound": "这个超维之眼已经绑定过位置。",
   "message.enigmatic_legacy.extradimensional_eye.bound": "超维之眼已绑定当前位置：%s, %s, %s",
   "message.enigmatic_legacy.extradimensional_eye.not_bound": "这个超维之眼还没有绑定位置。",
   "message.enigmatic_legacy.extradimensional_eye.wrong_dimension": "目标不在绑定位置所在的维度。",

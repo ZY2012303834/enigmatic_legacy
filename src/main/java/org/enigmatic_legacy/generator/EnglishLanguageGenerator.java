@@ -522,7 +522,6 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.extradimensional_eye.dimension", "Dimension: %s");
 
         add("message.enigmatic_legacy.extradimensional_eye.bound", "Extradimensional Eye bound to: %s, %s, %s");
-        add("message.enigmatic_legacy.extradimensional_eye.already_bound", "This Extradimensional Eye is already bound.");
         add("message.enigmatic_legacy.extradimensional_eye.not_bound", "This Extradimensional Eye is not bound to any location.");
         add("message.enigmatic_legacy.extradimensional_eye.wrong_dimension", "The target is not in the same dimension as the bound location.");
         // end

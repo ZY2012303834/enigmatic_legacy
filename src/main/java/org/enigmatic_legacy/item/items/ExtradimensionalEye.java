@@ -59,15 +59,6 @@ public class ExtradimensionalEye extends Item {
         }
 
         if (!level.isClientSide()) {
-            if (isBound(stack)) {
-                player.displayClientMessage(
-                        Component.translatable("message.enigmatic_legacy.extradimensional_eye.already_bound")
-                                .withStyle(ChatFormatting.GOLD),
-                        true
-                );
-
-                return InteractionResultHolder.fail(stack);
-            }
 
             bindToPlayerPosition(stack, player);
 

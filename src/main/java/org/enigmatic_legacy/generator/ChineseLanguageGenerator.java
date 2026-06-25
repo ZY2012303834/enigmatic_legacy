@@ -523,7 +523,6 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.extradimensional_eye.dimension", "维度：%s");
 
         add("message.enigmatic_legacy.extradimensional_eye.bound", "超维之眼已绑定当前位置：%s, %s, %s");
-        add("message.enigmatic_legacy.extradimensional_eye.already_bound", "这个超维之眼已经绑定过位置。");
         add("message.enigmatic_legacy.extradimensional_eye.not_bound", "这个超维之眼还没有绑定位置。");
         add("message.enigmatic_legacy.extradimensional_eye.wrong_dimension", "目标不在绑定位置所在的维度。");
         // end
