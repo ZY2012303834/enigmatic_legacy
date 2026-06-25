@@ -116,6 +116,14 @@ public final class NonEuclideanCubeEvents {
 
         DamageSource source = event.getSource();
 
+        /*
+         * /kill 指令伤害必须穿透非欧立方。
+         * 非欧立方不能免疫、反弹或取消 generic_kill 类型伤害。
+         */
+        if (isKillDamage(source)) {
+            return;
+        }
+
         if (isImmuneDamage(source)) {
             event.setCanceled(true);
             return;
@@ -160,6 +168,14 @@ public final class NonEuclideanCubeEvents {
         }
 
         float damage = event.getNewDamage();
+
+        /*
+         * /kill 指令伤害必须可以杀死非欧立方佩戴者。
+         * 这里放在高额伤害阈值保护之前，否则 /kill 会被当作超高伤害清零。
+         */
+        if (isKillDamage(event.getSource())) {
+            return;
+        }
 
         // 高于阈值的伤害直接无视。
         if (damage > getHighDamageLimit(target)) {
@@ -267,6 +283,21 @@ public final class NonEuclideanCubeEvents {
                 || source.is(DamageTypes.LAVA)
                 || source.is(DamageTypeTags.IS_FIRE)
                 || isTeleportDamage(source);
+    }
+
+    /**
+     * 判断是否为 /kill 指令使用的强制击杀伤害。
+     * 这个伤害必须穿透非欧立方。
+     * 创造之心不在这里处理，保持它自己的不朽逻辑不变。
+     */
+    private static boolean isKillDamage(DamageSource source) {
+        return source.typeHolder()
+                .unwrapKey()
+                .map(key -> {
+                    String path = key.location().getPath();
+                    return path.equals("generic_kill") || path.equals("kill");
+                })
+                .orElse(false);
     }
 
     /**
