@@ -509,6 +509,25 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("message.enigmatic_legacy.abyssal_heart.unworthy", "深渊之心拒绝了你。当前七咒折磨时间：%s / 需要 99.5%。");
         // end
 
+        // 超维之眼
+        addItem(ModItems.EXTRADIMENSIONAL_EYE, "超维之眼");
+
+        add("tooltip.enigmatic_legacy.extradimensional_eye.1", "按住 Shift + 右键绑定你当前所在的位置。");
+        add("tooltip.enigmatic_legacy.extradimensional_eye.2", "手持它左键点击生物，可将目标传送到绑定位置。");
+        add("tooltip.enigmatic_legacy.extradimensional_eye.3", "只有目标和绑定点处于同一维度时才会生效。");
+        add("tooltip.enigmatic_legacy.extradimensional_eye.4", "使用后会消耗此物品。");
+        add("tooltip.enigmatic_legacy.extradimensional_eye.location", "已绑定位置：");
+        add("tooltip.enigmatic_legacy.extradimensional_eye.x", "X：%s");
+        add("tooltip.enigmatic_legacy.extradimensional_eye.y", "Y：%s");
+        add("tooltip.enigmatic_legacy.extradimensional_eye.z", "Z：%s");
+        add("tooltip.enigmatic_legacy.extradimensional_eye.dimension", "维度：%s");
+
+        add("message.enigmatic_legacy.extradimensional_eye.bound", "超维之眼已绑定当前位置：%s, %s, %s");
+        add("message.enigmatic_legacy.extradimensional_eye.already_bound", "这个超维之眼已经绑定过位置。");
+        add("message.enigmatic_legacy.extradimensional_eye.not_bound", "这个超维之眼还没有绑定位置。");
+        add("message.enigmatic_legacy.extradimensional_eye.wrong_dimension", "目标不在绑定位置所在的维度。");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5按住 §6Shift§5 查看详情。");
 

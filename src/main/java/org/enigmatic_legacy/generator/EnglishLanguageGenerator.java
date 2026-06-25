@@ -508,6 +508,25 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("message.enigmatic_legacy.abyssal_heart.unworthy", "The Heart of the Abyss rejects you. Current cursed time: %s / required 99.5%.");
         // end
 
+        // 超维之眼
+        addItem(ModItems.EXTRADIMENSIONAL_EYE, "Extradimensional Eye");
+
+        add("tooltip.enigmatic_legacy.extradimensional_eye.1", "Hold Shift and right-click to bind your current location.");
+        add("tooltip.enigmatic_legacy.extradimensional_eye.2", "Left-click a creature with it to teleport the target to the bound location.");
+        add("tooltip.enigmatic_legacy.extradimensional_eye.3", "It only works when the target is in the same dimension as the bound location.");
+        add("tooltip.enigmatic_legacy.extradimensional_eye.4", "This item is consumed on use.");
+        add("tooltip.enigmatic_legacy.extradimensional_eye.location", "Bound location:");
+        add("tooltip.enigmatic_legacy.extradimensional_eye.x", "X: %s");
+        add("tooltip.enigmatic_legacy.extradimensional_eye.y", "Y: %s");
+        add("tooltip.enigmatic_legacy.extradimensional_eye.z", "Z: %s");
+        add("tooltip.enigmatic_legacy.extradimensional_eye.dimension", "Dimension: %s");
+
+        add("message.enigmatic_legacy.extradimensional_eye.bound", "Extradimensional Eye bound to: %s, %s, %s");
+        add("message.enigmatic_legacy.extradimensional_eye.already_bound", "This Extradimensional Eye is already bound.");
+        add("message.enigmatic_legacy.extradimensional_eye.not_bound", "This Extradimensional Eye is not bound to any location.");
+        add("message.enigmatic_legacy.extradimensional_eye.wrong_dimension", "The target is not in the same dimension as the bound location.");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");
     }

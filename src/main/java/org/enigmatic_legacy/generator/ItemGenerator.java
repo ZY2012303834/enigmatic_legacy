@@ -76,6 +76,7 @@ public class ItemGenerator extends ItemModelProvider {
         enigmaticEye();
 
         basicItem(ModItems.THE_ACKNOWLEDGMENT.getId());
+        basicItem(ModItems.EXTRADIMENSIONAL_EYE.getId()); // 超维之眼
 
         // 兼容某处错误引用的 enigmatic_legacy:item/item/the_acknowledgment。
         // 不影响正常 the_acknowledgment 模型，只是防止资源加载警告。
@@ -97,7 +98,6 @@ public class ItemGenerator extends ItemModelProvider {
         basicItem(ModItems.FABULOUS_SCROLL.getId()); // 创造者的恩赐
         basicItem(ModItems.AVARICE_SCROLL.getId()); // 无尽贪婪契约
         basicItem(ModItems.ABYSSAL_HEART.getId()); // 深渊之心
-
     }
 
     private void enigmaticEye() {

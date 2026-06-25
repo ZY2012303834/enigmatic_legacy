@@ -77,6 +77,7 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(GraceOfTheCreatorEvents.class);
         NeoForge.EVENT_BUS.register(PactOfInfiniteAvariceEvents.class);
         NeoForge.EVENT_BUS.register(AbyssalHeartEvents.class);
+        NeoForge.EVENT_BUS.register(ExtradimensionalEyeEvents.class);
 
     }
 }
