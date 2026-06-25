@@ -132,6 +132,7 @@ public class CursedRingConfig {
                                 "minecraft:iron_golem",
                                 "guardvillagers:guard",
                                 "minecraft:bee",
+                                "minecraft:wolf",
                                 "resourcefulbees:*",
                                 "irons_spellbooks:pyromancer",
                                 "irons_spellbooks:cryomancer",
@@ -159,6 +160,15 @@ public class CursedRingConfig {
 
             if (trimmed.isEmpty()) {
                 return false;
+            }
+
+            if (trimmed.endsWith(":*")) {
+                String namespace = trimmed.substring(0, trimmed.length() - 2);
+                if (!ResourceLocation.isValidNamespace(namespace)) {
+                    return false;
+                }
+
+                continue;
             }
 
             if (ResourceLocation.tryParse(trimmed) == null) {
