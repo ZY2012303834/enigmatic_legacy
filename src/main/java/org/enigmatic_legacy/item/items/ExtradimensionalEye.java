@@ -5,6 +5,7 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -14,6 +15,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
+import org.enigmatic_legacy.sound.ModSounds;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -68,6 +70,19 @@ public class ExtradimensionalEye extends Item {
             }
 
             bindToPlayerPosition(stack, player);
+
+            /*
+             * 绑定成功时播放莫测之眼/休眠之眼激活音效。
+             * 与 EnigmaticEye 唤醒时使用同一个音效：misc.hhon。
+             */
+            level.playSound(
+                    null,
+                    player.blockPosition(),
+                    ModSounds.CHARGED_ON.get(),
+                    SoundSource.PLAYERS,
+                    1.0F,
+                    1.0F
+            );
 
             player.displayClientMessage(
                     Component.translatable(
