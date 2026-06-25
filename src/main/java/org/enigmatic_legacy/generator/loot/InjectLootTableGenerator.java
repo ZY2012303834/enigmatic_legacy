@@ -60,6 +60,9 @@ public class InjectLootTableGenerator implements DataProvider {
          */
         addUnholyGrailTables(cachedOutput, futures);
 
+        // 禁忌之果
+        addForbiddenFruitTables(cachedOutput, futures);
+
         /*
          * 等待所有 loot table 文件全部写入完成。
          */
@@ -237,6 +240,22 @@ public class InjectLootTableGenerator implements DataProvider {
         futures.add(saveTable(cachedOutput, "unholy_grail/overworld_epic_without_earth_heart", 1.0D, 2.0D,
                 itemEntry(ModItems.UNHOLY_GRAIL.get(), 1),
                 emptyEntry(223)
+        ));
+    }
+
+    /**
+     * 生成禁忌之果 loot table。
+     * 获取方式：
+     * 可以在猪灵堡垒中的堡垒桥和堡垒疣猪兽棚找到。
+     * 额外说明：
+     * 其它堡垒变种中也可能使用相近奖励池，
+     * 因此这里额外给 BASTION_OTHER 使用同一张注入表。
+     * 当前生成路径：
+     * data/enigmatic_legacy/loot_table/inject/chests/forbidden_fruit/bastion_common.json
+     */
+    private void addForbiddenFruitTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {
+        futures.add(saveTable(cachedOutput, "forbidden_fruit/bastion_common", 0.0D, 1.0D,
+                itemEntry(ModItems.FORBIDDEN_FRUIT.get(), 100)
         ));
     }
 

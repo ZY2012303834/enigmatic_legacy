@@ -38,6 +38,39 @@ public class GlobalLootModifierGenerator extends GlobalLootModifierProvider {
         addSpellstoneModifiers();
         addDarkestScrollModifiers();
         addUnholyGrailModifiers();
+        addForbiddenFruitModifiers();
+    }
+
+    /**
+     * 禁忌之果获取方式。
+     * 来源：
+     * - 堡垒桥：BASTION_BRIDGE
+     * - 堡垒疣猪兽棚：BASTION_HOGLIN_STABLE
+     * 兼容说明：
+     * Wiki 上还提到其它堡垒奖励池也可能获得，
+     * 这里额外加入 BASTION_OTHER，
+     * 用来覆盖没有独立居民区奖励池的堡垒变种。
+     * 不加入 BASTION_TREASURE：
+     * 藏宝室已经用于至暗卷轴，不把禁忌之果放进藏宝室池。
+     */
+    private void addForbiddenFruitModifiers() {
+        addTableModifier(
+                "forbidden_fruit_bastion_bridge",
+                BuiltInLootTables.BASTION_BRIDGE,
+                "inject/chests/forbidden_fruit/bastion_common"
+        );
+
+        addTableModifier(
+                "forbidden_fruit_bastion_hoglin_stable",
+                BuiltInLootTables.BASTION_HOGLIN_STABLE,
+                "inject/chests/forbidden_fruit/bastion_common"
+        );
+
+        addTableModifier(
+                "forbidden_fruit_bastion_other",
+                BuiltInLootTables.BASTION_OTHER,
+                "inject/chests/forbidden_fruit/bastion_common"
+        );
     }
 
     /**
