@@ -23,7 +23,6 @@ import java.util.List;
 
 /**
  * 召回药水。
- *
  * 注意：
  * 这是独立物品，不是原版 PotionContents 药水。
  * 这样 JEI 不会再自动生成喷溅型 / 滞留型召回药水配方。
@@ -46,6 +45,11 @@ public class RecallPotionItem extends Item {
         ItemStack stack = player.getItemInHand(hand);
         player.startUsingItem(hand);
         return InteractionResultHolder.consume(stack);
+    }
+
+    @Override
+    public boolean isFoil(@NotNull ItemStack stack) {
+        return true;
     }
 
     @Override
