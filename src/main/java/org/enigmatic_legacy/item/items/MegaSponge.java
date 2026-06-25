@@ -3,6 +3,7 @@ package org.enigmatic_legacy.item.items;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.SectionPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -23,6 +24,8 @@ import net.minecraft.world.level.block.BucketPickup;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.chunk.LevelChunk;
+import net.minecraft.world.level.chunk.status.ChunkStatus;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.AABB;
@@ -110,6 +113,44 @@ public class MegaSponge extends Item implements ICurioItem {
     }
 
     /**
+     * 检查指定方块范围对应的区块是否已经加载。
+     * 替代已弃用的：
+     * Level#hasChunksAt(int, int, int, int, int, int)
+     * 这里只检查区块是否已加载，不主动加载新区块。
+     */
+    private boolean hasLoadedChunks(
+            Level level,
+            int minX,
+            int minY,
+            int minZ,
+            int maxX,
+            int maxY,
+            int maxZ
+    ) {
+        /*
+         * 如果范围已经完全超出世界高度，直接视为不可用。
+         */
+        if (maxY <= level.getMinBuildHeight() || minY >= level.getMaxBuildHeight()) {
+            return false;
+        }
+
+        int minChunkX = SectionPos.blockToSectionCoord(minX);
+        int maxChunkX = SectionPos.blockToSectionCoord(maxX - 1);
+        int minChunkZ = SectionPos.blockToSectionCoord(minZ);
+        int maxChunkZ = SectionPos.blockToSectionCoord(maxZ - 1);
+
+        for (int chunkX = minChunkX; chunkX <= maxChunkX; chunkX++) {
+            for (int chunkZ = minChunkZ; chunkZ <= maxChunkZ; chunkZ++) {
+                if (!(level.getChunk(chunkX, chunkZ, ChunkStatus.FULL, false) instanceof LevelChunk)) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    /**
      * 寻找玩家碰撞箱内接触到的水。
      */
     private BlockPos getCollidedWater(TagKey<Fluid> fluidTag, Player player) {
@@ -124,7 +165,7 @@ public class MegaSponge extends Item implements ICurioItem {
 
         Level level = player.level();
 
-        if (!level.hasChunksAt(minX, minY, minZ, maxX, maxY, maxZ)) {
+        if (!hasLoadedChunks(level, minX, minY, minZ, maxX, maxY, maxZ))  {
             return null;
         }
 
