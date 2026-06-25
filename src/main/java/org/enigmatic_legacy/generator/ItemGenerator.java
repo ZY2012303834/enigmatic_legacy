@@ -96,6 +96,7 @@ public class ItemGenerator extends ItemModelProvider {
         basicItem(ModItems.CURSED_SCROLL.getId()); // 千咒卷轴
         basicItem(ModItems.FABULOUS_SCROLL.getId()); // 创造者的恩赐
         basicItem(ModItems.AVARICE_SCROLL.getId()); // 无尽贪婪契约
+        basicItem(ModItems.ABYSSAL_HEART.getId()); // 深渊之心
 
     }
 

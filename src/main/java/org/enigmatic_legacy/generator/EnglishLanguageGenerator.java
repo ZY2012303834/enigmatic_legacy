@@ -495,6 +495,19 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.avarice_scroll.cursed_only", "Only bearers of the Seven Curses may use this item.");
         // end
 
+        // 深渊之心
+        addItem(ModItems.ABYSSAL_HEART, "Heart of the Abyss");
+
+        add("tooltip.enigmatic_legacy.abyssal_heart.short", "A heart born from the abyss of the End.");
+        add("tooltip.enigmatic_legacy.abyssal_heart.1", "Generated after defeating the Ender Dragon while bearing the Ring of the Seven Curses.");
+        add("tooltip.enigmatic_legacy.abyssal_heart.2", "It floats where the Ender Dragon died.");
+        add("tooltip.enigmatic_legacy.abyssal_heart.3", "Only one truly tormented by the Seven Curses may touch it.");
+        add("tooltip.enigmatic_legacy.abyssal_heart.4", "You must spend 99.5% of your total playtime under the torment of the Ring of the Seven Curses.");
+        add("tooltip.enigmatic_legacy.abyssal_heart.requirement", "The unworthy cannot pick up or use this item.");
+
+        add("message.enigmatic_legacy.abyssal_heart.unworthy", "The Heart of the Abyss rejects you. Current cursed time: %s / required 99.5%.");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");
     }

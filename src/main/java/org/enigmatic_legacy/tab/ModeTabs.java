@@ -52,6 +52,8 @@ public final class ModeTabs {
                                 output.accept(ModItems.ENDER_RING.get());               // 末影之戒
                                 output.accept(ModItems.MAGNET_RING.get());              // 磁力戒指
                                 output.accept(ModItems.DISLOCATION_RING.get());         // 转位之戒
+                                output.accept(ModItems.ABYSSAL_HEART.get());            // 深渊之心
+
                                 // 护符
                                 output.accept(ModItems.ENIGMATIC_EYE.get());            // 莫测之眼
                                 output.accept(ModItems.THE_ACKNOWLEDGMENT.get());       // 全知之眼

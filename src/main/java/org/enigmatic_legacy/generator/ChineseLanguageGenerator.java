@@ -496,6 +496,19 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.avarice_scroll.cursed_only", "只有承受七咒之人才能使用。");
         // end
 
+        // 深渊之心
+        addItem(ModItems.ABYSSAL_HEART, "深渊之心");
+
+        add("tooltip.enigmatic_legacy.abyssal_heart.short", "来自终末深渊的心脏。");
+        add("tooltip.enigmatic_legacy.abyssal_heart.1", "佩戴七咒之戒击败末影龙后生成。");
+        add("tooltip.enigmatic_legacy.abyssal_heart.2", "它会悬浮在末影龙死亡的位置。");
+        add("tooltip.enigmatic_legacy.abyssal_heart.3", "只有真正承受七咒折磨之人才能触碰它。");
+        add("tooltip.enigmatic_legacy.abyssal_heart.4", "你必须在七咒之戒的折磨下度过总游戏时间的 99.5%。");
+        add("tooltip.enigmatic_legacy.abyssal_heart.requirement", "未达资格者无法捡起或使用。");
+
+        add("message.enigmatic_legacy.abyssal_heart.unworthy", "深渊之心拒绝了你。当前七咒折磨时间：%s / 需要 99.5%。");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5按住 §6Shift§5 查看详情。");
 
