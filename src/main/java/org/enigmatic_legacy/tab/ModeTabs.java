@@ -4,6 +4,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
@@ -17,6 +18,7 @@ import org.enigmatic_legacy.potion.ModPotions;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public final class ModeTabs {
 
@@ -51,7 +53,9 @@ public final class ModeTabs {
                                 output.accept(ModItems.FORBIDDEN_FRUIT.get());          // 禁忌之果
                                 output.accept(ModItems.TWISTED_MIRROR.get());           // 扭曲魔镜
                                 output.accept(createRecallPotionStack());               // 召回药水
-                                output.accept(createUltimateNightVisionPotionStack());  // 终极夜视药水
+                                output.accept(createUltimateNightVisionPotionStack(Items.POTION));              // 终极夜视药水
+                                output.accept(createUltimateNightVisionPotionStack(Items.SPLASH_POTION));       // 喷溅型终极夜视药水
+                                output.accept(createUltimateNightVisionPotionStack(Items.LINGERING_POTION));    // 滞留型终极夜视药水
                                 output.accept(ModItems.UNHOLY_GRAIL.get());             // 不洁圣杯
                                 output.accept(ModItems.GUARDIAN_HEART.get());           // 守卫者之心
                                 output.accept(ModItems.ENDER_RING.get());               // 末影之戒
@@ -107,6 +111,31 @@ public final class ModeTabs {
      */
     private static ItemStack createRecallPotionStack() {
         ItemStack stack = PotionContents.createItemStack(Items.POTION, ModPotions.RECALL);
+        stack.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
+        return stack;
+    }
+
+    private static final int ULTIMATE_NIGHT_VISION_COLOR = 0xC2FF66;
+
+    /**
+     * 创建终极夜视药水。
+     * 原项目效果：
+     * Night Vision, 19200 ticks。
+     * 这里强制写入原版新版夜视药水颜色 #C2FF66，
+     * 防止不同版本颜色混合结果不一致。
+     */
+    private static ItemStack createUltimateNightVisionPotionStack(Item potionItem) {
+        ItemStack stack = new ItemStack(potionItem);
+
+        stack.set(
+                DataComponents.POTION_CONTENTS,
+                new PotionContents(
+                        Optional.of(ModPotions.ULTIMATE_NIGHT_VISION),
+                        Optional.of(ULTIMATE_NIGHT_VISION_COLOR),
+                        List.of()
+                )
+        );
+
         stack.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
         return stack;
     }

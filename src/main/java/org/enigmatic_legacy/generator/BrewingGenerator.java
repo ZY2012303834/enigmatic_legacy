@@ -12,7 +12,9 @@ import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.potion.ModPotions;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * 酿造配方注册器。
@@ -58,10 +60,19 @@ public final class BrewingGenerator {
                 Potions.LONG_NIGHT_VISION
         );
 
-        ItemStack ultimateNightVisionPotion = PotionContents.createItemStack(
-                Items.POTION,
-                ModPotions.ULTIMATE_NIGHT_VISION
+        ItemStack ultimateNightVisionPotion = new ItemStack(Items.POTION);
+
+        ultimateNightVisionPotion.set(
+                DataComponents.POTION_CONTENTS,
+                new PotionContents(
+                        Optional.of(ModPotions.ULTIMATE_NIGHT_VISION),
+                        Optional.of(0xC2FF66),
+                        List.of()
+                )
         );
+
+// 终极药水加附魔光效，方便和普通药水区分。
+        ultimateNightVisionPotion.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
 
         // 终极药水加附魔光效，方便和普通药水区分。
         ultimateNightVisionPotion.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
