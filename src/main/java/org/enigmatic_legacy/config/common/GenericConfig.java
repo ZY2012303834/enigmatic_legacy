@@ -37,17 +37,15 @@ public class GenericConfig {
                 .comment(
                         "完整 Boss 列表。",
                         "后续实现 Boss 判断、特殊掉落或饰品效果时，可使用该列表。",
-                        "格式示例：minecraft:wither",
-                        "允许该列表为空；为空时表示不额外识别任何 Boss。"
+                        "格式示例：minecraft:wither"
                 )
-                .defineListAllowEmpty(
-                        List.of("CompleteBossList"),
+                .defineList(
+                        "CompleteBossList",
                         List.of(
                                 "minecraft:ender_dragon",
                                 "minecraft:wither",
                                 "minecraft:elder_guardian"
                         ),
-                        () -> "minecraft:wither",
                         value -> value instanceof String string
                                 && ResourceLocation.tryParse(string) != null
                 );

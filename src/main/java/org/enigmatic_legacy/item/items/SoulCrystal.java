@@ -4,6 +4,7 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -21,12 +22,14 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.WeakHashMap;
 
 /**
@@ -38,6 +41,7 @@ import java.util.WeakHashMap;
 public class SoulCrystal extends Item {
 
     public static final String LOST_SOUL_TAG = "enigmatic_legacy.lostsoulfragments";
+    private static final String OWNER_TAG = "Owner";
     public static final ResourceLocation LOST_SOUL_HEALTH_MODIFIER =
             ResourceLocation.fromNamespaceAndPath(EnigmaticLegacy.MODID, "lost_soul_health");
 
@@ -65,10 +69,17 @@ public class SoulCrystal extends Item {
 
     public ItemStack createCrystalFrom(Player player) {
         setLostCrystals(player, getLostCrystals(player) + 1);
-        return new ItemStack(this);
+
+        ItemStack stack = new ItemStack(this);
+        setOwner(stack, player.getUUID());
+        return stack;
     }
 
     public boolean retrieveSoulFromCrystal(Player player, ItemStack stack) {
+        if (!hasOwner(stack) || !canRetrieveCrystal(player, stack)) {
+            return false;
+        }
+
         int lostFragments = getLostCrystals(player);
 
         if (lostFragments <= 0) {
@@ -82,6 +93,21 @@ public class SoulCrystal extends Item {
         }
 
         return true;
+    }
+
+    private static boolean canRetrieveCrystal(Player player, ItemStack stack) {
+        CompoundTag tag = getTag(stack);
+        return player.getUUID().equals(tag.getUUID(OWNER_TAG));
+    }
+
+    public static boolean hasOwner(ItemStack stack) {
+        return getTag(stack).hasUUID(OWNER_TAG);
+    }
+
+    private static void setOwner(ItemStack stack, UUID owner) {
+        CompoundTag tag = getTag(stack);
+        tag.putUUID(OWNER_TAG, owner);
+        setTag(stack, tag);
     }
 
     public void setLostCrystals(Player player, int lost) {
@@ -129,9 +155,14 @@ public class SoulCrystal extends Item {
 
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level,
-                                                           @NotNull Player player,
-                                                           @NotNull InteractionHand usedHand) {
+                                                            @NotNull Player player,
+                                                            @NotNull InteractionHand usedHand) {
         ItemStack stack = player.getItemInHand(usedHand);
+
+        if (!hasOwner(stack)) {
+            stack.shrink(1);
+            return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
+        }
 
         if (retrieveSoulFromCrystal(player, stack)) {
             player.swing(usedHand);
@@ -140,5 +171,13 @@ public class SoulCrystal extends Item {
         }
 
         return new InteractionResultHolder<>(InteractionResult.PASS, stack);
+    }
+
+    private static CompoundTag getTag(ItemStack stack) {
+        return stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+    }
+
+    private static void setTag(ItemStack stack, CompoundTag tag) {
+        stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
     }
 }

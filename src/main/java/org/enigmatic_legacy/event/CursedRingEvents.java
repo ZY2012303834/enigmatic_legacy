@@ -52,13 +52,11 @@ import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingKnockBackEvent;
 import net.neoforged.neoforge.event.entity.player.CanContinueSleepingEvent;
 import net.neoforged.neoforge.event.entity.player.CanPlayerSleepEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerSpawnPhantomsEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.util.CursedRingHelper;
-import org.enigmatic_legacy.util.HeartOfCreationHelper;
 import top.theillusivec4.curios.api.event.DropRulesEvent;
 import top.theillusivec4.curios.api.type.capability.ICurio;
 
@@ -316,33 +314,6 @@ public class CursedRingEvents {
         } else if (killed instanceof EnderDragon) {
             addDrop(event, new ItemStack(ModItems.COSMIC_HEART.get()));
         }
-    }
-
-    /**
-     * 七咒之戒的失眠诅咒：允许幻翼按原版 PhantomSpawner 流程额外生成。
-     * <p>
-     * 创造之心兼容：
-     * 如果玩家佩戴创造之心，则不再额外刷新幻翼。
-     */
-    @SubscribeEvent
-    public static void onPlayerSpawnPhantoms(PlayerSpawnPhantomsEvent event) {
-        if (ConfigCommon.CURSED_RING_DISABLE_INSOMNIA.get()) {
-            return;
-        }
-
-        Player player = event.getEntity();
-
-        if (!CursedRingHelper.hasCursedRing(player)) {
-            return;
-        }
-
-        if (HeartOfCreationHelper.hasHeartOfCreationEquipped(player)) {
-            event.setResult(PlayerSpawnPhantomsEvent.Result.DENY);
-            event.setPhantomsToSpawn(0);
-            return;
-        }
-
-        event.setResult(PlayerSpawnPhantomsEvent.Result.ALLOW);
     }
 
     /**

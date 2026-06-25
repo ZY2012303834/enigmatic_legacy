@@ -177,6 +177,11 @@ public class PermanentItemEntity extends Entity {
         }
 
         if (item instanceof SoulCrystal soulCrystal) {
+            if (!SoulCrystal.hasOwner(stack)) {
+                this.finishPickup(player, item, 1);
+                return;
+            }
+
             if (!isOwner || !soulCrystal.retrieveSoulFromCrystal(player, stack)) {
                 return;
             }

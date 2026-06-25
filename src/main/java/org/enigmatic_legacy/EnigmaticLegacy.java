@@ -8,6 +8,7 @@ import net.neoforged.neoforge.common.NeoForge;
 import org.enigmatic_legacy.block.ModBlocks;
 import org.enigmatic_legacy.config.ConfigClient;
 import org.enigmatic_legacy.config.ConfigCommon;
+import org.enigmatic_legacy.config.ConfigFileHelper;
 import org.enigmatic_legacy.entity.ModEntities;
 import org.enigmatic_legacy.event.*;
 import org.enigmatic_legacy.generator.*;
@@ -25,7 +26,10 @@ public class EnigmaticLegacy {
     public static final String MODID = "enigmatic_legacy";
 
     public EnigmaticLegacy(IEventBus modEventBus, ModContainer modContainer) {
-        modContainer.registerConfig(ModConfig.Type.SERVER, ConfigCommon.SPEC, "enigmatic_legacy-server.toml");
+        ConfigFileHelper.ensureDefaultConfig("enigmatic_legacy-server.toml", ConfigCommon.SPEC);
+        ConfigFileHelper.ensureDefaultConfig("enigmatic_legacy-client.toml", ConfigClient.SPEC);
+
+        modContainer.registerConfig(ModConfig.Type.COMMON, ConfigCommon.SPEC, "enigmatic_legacy-server.toml");
         modContainer.registerConfig(ModConfig.Type.CLIENT, ConfigClient.SPEC, "enigmatic_legacy-client.toml");
 
         ModBlocks.register(modEventBus);
