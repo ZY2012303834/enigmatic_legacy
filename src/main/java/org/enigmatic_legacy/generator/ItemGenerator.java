@@ -81,7 +81,7 @@ public class ItemGenerator extends ItemModelProvider {
         basicItem(ModItems.CURSE_TRANSPOSER.getId()); // 噬咒之书
 
         withExistingParent("item/recall_potion", mcLoc("item/generated"))
-                .texture("layer0", mcLoc("item/potion"));
+                .texture("layer0", modLoc("item/recall_potion"));
 
         // 兼容某处错误引用的 enigmatic_legacy:item/item/the_acknowledgment。
         // 不影响正常 the_acknowledgment 模型，只是防止资源加载警告。

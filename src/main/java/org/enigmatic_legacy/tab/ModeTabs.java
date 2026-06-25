@@ -9,16 +9,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.potion.ModPotions;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 public final class ModeTabs {
 
@@ -104,41 +99,16 @@ public final class ModeTabs {
     private ModeTabs() {
     }
 
-    private static final int ULTIMATE_NIGHT_VISION_COLOR = 0xC2FF66;
-
     /**
      * 创建终极夜视药水。
      * 原项目效果：
      * Night Vision, 19200 ticks。
-     * 这里强制写入原版新版夜视药水颜色 #C2FF66，
-     * 防止不同版本颜色混合结果不一致。
      */
     private static ItemStack createUltimateNightVisionPotionStack(Item potionItem) {
-        ItemStack stack = new ItemStack(potionItem);
-
-        stack.set(
-                DataComponents.POTION_CONTENTS,
-                new PotionContents(
-                        Optional.of(ModPotions.ULTIMATE_NIGHT_VISION),
-                        Optional.of(ULTIMATE_NIGHT_VISION_COLOR),
-                        List.of()
-                )
-        );
-
-        stack.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
-        return stack;
-    }
-
-    /**
-     * 创建终极夜视药水物品栈。
-     * 终极药水不是独立物品，而是原版 Items.POTION + 本模组 PotionContents。
-     */
-    private static ItemStack createUltimateNightVisionPotionStack() {
         ItemStack stack = PotionContents.createItemStack(
-                Items.POTION,
+                potionItem,
                 ModPotions.ULTIMATE_NIGHT_VISION
         );
-
         stack.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
         return stack;
     }
