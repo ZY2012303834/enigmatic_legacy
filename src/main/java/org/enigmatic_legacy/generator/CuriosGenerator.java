@@ -92,8 +92,9 @@ public class CuriosGenerator implements DataProvider {
     private CompletableFuture<?> generateSpellstoneSlotType(CachedOutput cachedOutput) {
         JsonObject json = new JsonObject();
 
+        // 术石栏位
         json.addProperty("size", 1);
-        json.addProperty("operation", "ADD");
+        json.addProperty("operation", "SET");
         json.addProperty("order", 130);
 
 
@@ -152,11 +153,11 @@ public class CuriosGenerator implements DataProvider {
         JsonObject json = new JsonObject();
 
         // 神秘护身符同一时间只允许佩戴一个，所以 charm 槽位数量设为 1。
-        json.addProperty("size", 2);
+        json.addProperty("size", 1);
 
         // SET 表示直接设置最终数量。
         // 如果后续你希望兼容其他模组添加的 charm 槽，可以改成 ADD。
-        json.addProperty("operation", "ADD");
+        json.addProperty("operation", "SET");
 
         // 控制该槽位在 Curios GUI 中的排序。
         // 数字越小越靠前；这里让它排在 ring 后面。
@@ -271,7 +272,7 @@ public class CuriosGenerator implements DataProvider {
 
         // 设置玩家拥有的 ring 戒指栏数量。
         // 5 = 添加 5 个戒指栏位。
-        json.addProperty("size", 5);
+        json.addProperty("size", 4);
 
         // SET 表示直接设置最终数量。
         // 如果有其他数据包也修改 ring 槽位，SET 会覆盖为这里指定的数量。
@@ -369,7 +370,7 @@ public class CuriosGenerator implements DataProvider {
 
         // 奥秘卷轴栏位数量为 3。
         // 注意：栏位有 3 个，但永恒智慧卷轴自身会限制最多只能装备 1 个。
-        json.addProperty("size", 3);
+        json.addProperty("size", 2);
 
         json.addProperty("operation", "ADD");
 

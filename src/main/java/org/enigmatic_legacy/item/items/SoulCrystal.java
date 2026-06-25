@@ -160,14 +160,21 @@ public class SoulCrystal extends Item {
         ItemStack stack = player.getItemInHand(usedHand);
 
         if (!hasOwner(stack)) {
-            stack.shrink(1);
+            if (!level.isClientSide()) {
+                stack.shrink(1);
+            }
+
             return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
+        }
+
+        if (level.isClientSide()) {
+            return InteractionResultHolder.sidedSuccess(stack, true);
         }
 
         if (retrieveSoulFromCrystal(player, stack)) {
             player.swing(usedHand);
             stack.shrink(1);
-            return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
+            return InteractionResultHolder.sidedSuccess(stack, false);
         }
 
         return new InteractionResultHolder<>(InteractionResult.PASS, stack);

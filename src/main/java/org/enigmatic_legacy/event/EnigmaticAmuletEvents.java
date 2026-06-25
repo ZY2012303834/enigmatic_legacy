@@ -137,8 +137,26 @@ public final class EnigmaticAmuletEvents {
             return;
         }
 
+        if (hasAnyAmulet(player)) {
+            data.putBoolean(STARTER_KEY, true);
+            return;
+        }
+
+        ItemStack unwitnessedAmulet = new ItemStack(ModItems.UNWITNESSED_AMULET.get());
+
+        if (!player.addItem(unwitnessedAmulet)) {
+            player.drop(unwitnessedAmulet, false);
+        }
+
         data.putBoolean(STARTER_KEY, true);
-        player.addItem(new ItemStack(ModItems.UNWITNESSED_AMULET.get()));
+    }
+
+    @SubscribeEvent
+    public static void onPlayerClone(PlayerEvent.Clone event) {
+        if (event.getOriginal().getPersistentData().getBoolean(STARTER_KEY)
+                || hasAnyAmulet(event.getOriginal())) {
+            event.getEntity().getPersistentData().putBoolean(STARTER_KEY, true);
+        }
     }
 
     /**
@@ -297,6 +315,28 @@ public final class EnigmaticAmuletEvents {
         });
 
         return variant.get();
+    }
+
+    private static boolean hasAnyAmulet(Player player) {
+        for (int slot = 0; slot < player.getInventory().getContainerSize(); slot++) {
+            ItemStack stack = player.getInventory().getItem(slot);
+
+            if (isAnyAmulet(stack)) {
+                return true;
+            }
+        }
+
+        AtomicReference<Boolean> hasAmulet = new AtomicReference<>(false);
+        CuriosApi.getCuriosInventory(player)
+                .flatMap(handler -> handler.findFirstCurio(EnigmaticAmuletEvents::isAnyAmulet))
+                .ifPresent(slotResult -> hasAmulet.set(true));
+
+        return hasAmulet.get();
+    }
+
+    private static boolean isAnyAmulet(ItemStack stack) {
+        return stack.getItem() instanceof UnwitnessedAmulet
+                || stack.getItem() instanceof EnigmaticAmulet;
     }
 
     /**

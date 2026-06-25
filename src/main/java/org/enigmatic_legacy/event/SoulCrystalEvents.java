@@ -14,6 +14,9 @@ import org.enigmatic_legacy.item.items.SoulCrystal;
 import org.enigmatic_legacy.util.CursedRingHelper;
 
 import java.util.Collection;
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 超维容器和灵魂水晶的实体/死亡事件逻辑。
@@ -22,6 +25,7 @@ import java.util.Collection;
  * 因此这里同时处理“生成专用实体”和“维护灵魂损失属性”两部分。
  */
 public final class SoulCrystalEvents {
+    private static final Map<UUID, Integer> PENDING_LOST_CRYSTALS = new ConcurrentHashMap<>();
 
     private SoulCrystalEvents() {
     }
@@ -53,6 +57,10 @@ public final class SoulCrystalEvents {
                 ? ModItems.SOUL_CRYSTAL.get().createCrystalFrom(player)
                 : ItemStack.EMPTY;
 
+        if (!embeddedSoulCrystal.isEmpty()) {
+            PENDING_LOST_CRYSTALS.put(player.getUUID(), ModItems.SOUL_CRYSTAL.get().getLostCrystals(player));
+        }
+
         Collection<ItemEntity> drops = event.getDrops();
 
         if (!drops.isEmpty()) {
@@ -79,6 +87,7 @@ public final class SoulCrystalEvents {
         }
 
         ModItems.SOUL_CRYSTAL.get().copyLostCrystals(event.getOriginal(), event.getEntity());
+        applyPendingLostCrystals(event.getEntity(), false);
     }
 
     /**
@@ -94,6 +103,7 @@ public final class SoulCrystalEvents {
      */
     @SubscribeEvent
     public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
+        applyPendingLostCrystals(event.getEntity(), true);
         ModItems.SOUL_CRYSTAL.get().updatePlayerSoulMap(event.getEntity());
     }
 
@@ -101,6 +111,24 @@ public final class SoulCrystalEvents {
         SoulCrystal soulCrystal = ModItems.SOUL_CRYSTAL.get();
 
         return soulCrystal.getLostCrystals(player) < ConfigCommon.MAX_SOUL_CRYSTAL_LOSS.get();
+    }
+
+    private static void applyPendingLostCrystals(Player player, boolean clear) {
+        Integer pendingLostCrystals = PENDING_LOST_CRYSTALS.get(player.getUUID());
+
+        if (pendingLostCrystals == null) {
+            return;
+        }
+
+        SoulCrystal soulCrystal = ModItems.SOUL_CRYSTAL.get();
+
+        if (pendingLostCrystals > soulCrystal.getLostCrystals(player)) {
+            soulCrystal.setLostCrystals(player, pendingLostCrystals);
+        }
+
+        if (clear) {
+            PENDING_LOST_CRYSTALS.remove(player.getUUID());
+        }
     }
 
     private static void spawnPermanentItem(Player player, ItemStack stack, double yOffset) {
