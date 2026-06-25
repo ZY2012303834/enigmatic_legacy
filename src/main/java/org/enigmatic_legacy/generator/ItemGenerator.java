@@ -78,6 +78,7 @@ public class ItemGenerator extends ItemModelProvider {
         basicItem(ModItems.THE_ACKNOWLEDGMENT.getId());
         basicItem(ModItems.EXTRADIMENSIONAL_EYE.getId()); // 超维之眼
         basicItem(ModItems.ENCHANTMENT_TRANSPOSER.getId()); // 求知之书
+        basicItem(ModItems.CURSE_TRANSPOSER.getId()); // 噬咒之书
 
         // 兼容某处错误引用的 enigmatic_legacy:item/item/the_acknowledgment。
         // 不影响正常 the_acknowledgment 模型，只是防止资源加载警告。

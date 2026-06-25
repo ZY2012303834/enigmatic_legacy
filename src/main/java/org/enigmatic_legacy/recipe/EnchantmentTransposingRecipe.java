@@ -4,102 +4,59 @@ import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.crafting.CustomRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.Level;
 import org.enigmatic_legacy.item.ModItems;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * 求知之书特殊合成配方。
- * 合成方式：
- * 任意带附魔的物品 + 求知之书
- * 输出：
- * 带有原物品全部附魔的附魔书。
- * 注意：
- * 这是特殊合成配方，不是普通 shaped/shapeless recipe。
- * 因为输出附魔书需要动态读取输入物品上的附魔数据。
+ * 附魔转移特殊合成配方。
+ * 支持两种转移书：
+ * 1. 求知之书 / Tome of Hungering Knowledge
+ *    任意附魔物品或附魔书 + 求知之书
+ *    -> 转移全部附魔到附魔书。
+ * 2. 噬咒之书 / Tome of Devoured Malignancy
+ *    任意除附魔书以外的附魔物品 + 噬咒之书
+ *    -> 只转移全部诅咒附魔到附魔书。
  */
 public class EnchantmentTransposingRecipe extends CustomRecipe {
     public EnchantmentTransposingRecipe(CraftingBookCategory category) {
         super(category);
     }
 
-    /**
-     * 判断当前工作台输入是否符合配方。
-     * 条件：
-     * 1. 必须恰好有 1 本求知之书；
-     * 2. 必须恰好有 1 个带附魔的物品；
-     * 3. 不能有其它额外物品。
-     */
     @Override
     public boolean matches(@NotNull CraftingInput input, @NotNull Level level) {
-        int tomeCount = 0;
-        int enchantedItemCount = 0;
+        RecipeInputs inputs = findInputs(input);
 
-        for (int slot = 0; slot < input.size(); slot++) {
-            ItemStack stack = input.getItem(slot);
-
-            if (stack.isEmpty()) {
-                continue;
-            }
-
-            if (stack.is(ModItems.ENCHANTMENT_TRANSPOSER.get())) {
-                tomeCount++;
-                continue;
-            }
-
-            if (hasRealEnchantments(stack)) {
-                enchantedItemCount++;
-                continue;
-            }
-
+        if (!inputs.valid()) {
             return false;
         }
 
-        return tomeCount == 1 && enchantedItemCount == 1;
+        boolean cursesOnly = isCurseTransposer(inputs.transposer());
+        return hasTransposableEnchantments(inputs.enchantedItem(), cursesOnly);
     }
 
-    /**
-     * 生成合成结果。
-     * 把输入物品上的 ENCHANTMENTS / STORED_ENCHANTMENTS
-     * 写入输出附魔书的 STORED_ENCHANTMENTS。
-     */
     @Override
     public @NotNull ItemStack assemble(
             @NotNull CraftingInput input,
             @NotNull HolderLookup.Provider registries
     ) {
-        ItemStack enchantedItem = ItemStack.EMPTY;
+        RecipeInputs inputs = findInputs(input);
 
-        for (int slot = 0; slot < input.size(); slot++) {
-            ItemStack stack = input.getItem(slot);
-
-            if (stack.isEmpty()) {
-                continue;
-            }
-
-            if (stack.is(ModItems.ENCHANTMENT_TRANSPOSER.get())) {
-                continue;
-            }
-
-            if (hasRealEnchantments(stack)) {
-                enchantedItem = stack;
-                break;
-            }
-        }
-
-        if (enchantedItem.isEmpty()) {
+        if (!inputs.valid()) {
             return ItemStack.EMPTY;
         }
 
-        ItemEnchantments enchantments = collectEnchantments(enchantedItem);
+        boolean cursesOnly = isCurseTransposer(inputs.transposer());
+        ItemEnchantments enchantments = collectEnchantments(inputs.enchantedItem(), cursesOnly);
 
         if (enchantments.isEmpty()) {
             return ItemStack.EMPTY;
@@ -107,14 +64,9 @@ public class EnchantmentTransposingRecipe extends CustomRecipe {
 
         ItemStack book = new ItemStack(Items.ENCHANTED_BOOK);
         book.set(DataComponents.STORED_ENCHANTMENTS, enchantments);
-
         return book;
     }
 
-    /**
-     * 合成表显示用结果。
-     * 实际结果会在 assemble(...) 中根据输入动态生成。
-     */
     @Override
     public @NotNull ItemStack getResultItem(@NotNull HolderLookup.Provider registries) {
         return new ItemStack(Items.ENCHANTED_BOOK);
@@ -130,46 +82,98 @@ public class EnchantmentTransposingRecipe extends CustomRecipe {
         return ModRecipeSerializers.ENCHANTMENT_TRANSPOSING.get();
     }
 
-    /**
-     * 判断物品是否真的携带附魔。
-     * 普通工具、装备：
-     * DataComponents.ENCHANTMENTS
-     * 附魔书：
-     * DataComponents.STORED_ENCHANTMENTS
-     */
-    private static boolean hasRealEnchantments(ItemStack stack) {
-        return !stack.getOrDefault(DataComponents.ENCHANTMENTS, ItemEnchantments.EMPTY).isEmpty()
-                || !stack.getOrDefault(DataComponents.STORED_ENCHANTMENTS, ItemEnchantments.EMPTY).isEmpty();
+    private static RecipeInputs findInputs(CraftingInput input) {
+        ItemStack transposer = ItemStack.EMPTY;
+        ItemStack enchantedItem = ItemStack.EMPTY;
+
+        for (int slot = 0; slot < input.size(); slot++) {
+            ItemStack stack = input.getItem(slot);
+
+            if (stack.isEmpty()) {
+                continue;
+            }
+
+            if (isTransposer(stack)) {
+                if (!transposer.isEmpty()) {
+                    return RecipeInputs.INVALID;
+                }
+
+                transposer = stack;
+                continue;
+            }
+
+            if (!enchantedItem.isEmpty()) {
+                return RecipeInputs.INVALID;
+            }
+
+            enchantedItem = stack;
+        }
+
+        if (transposer.isEmpty() || enchantedItem.isEmpty()) {
+            return RecipeInputs.INVALID;
+        }
+
+        return new RecipeInputs(transposer, enchantedItem);
     }
 
-    /**
-     * 收集输入物品上的全部附魔。
-     * 同时兼容：
-     * 1. 普通物品上的 ENCHANTMENTS；
-     * 2. 附魔书上的 STORED_ENCHANTMENTS。
-     */
-    private static ItemEnchantments collectEnchantments(ItemStack stack) {
+    private static boolean isTransposer(ItemStack stack) {
+        return stack.is(ModItems.ENCHANTMENT_TRANSPOSER.get())
+                || stack.is(ModItems.CURSE_TRANSPOSER.get());
+    }
+
+    private static boolean isCurseTransposer(ItemStack stack) {
+        return stack.is(ModItems.CURSE_TRANSPOSER.get());
+    }
+
+    private static boolean hasTransposableEnchantments(ItemStack stack, boolean cursesOnly) {
+        if (cursesOnly && stack.is(Items.ENCHANTED_BOOK)) {
+            return false;
+        }
+
+        return !collectEnchantments(stack, cursesOnly).isEmpty();
+    }
+
+    private static ItemEnchantments collectEnchantments(ItemStack stack, boolean cursesOnly) {
         ItemEnchantments.Mutable mutable = new ItemEnchantments.Mutable(ItemEnchantments.EMPTY);
 
         copyEnchantments(
                 stack.getOrDefault(DataComponents.ENCHANTMENTS, ItemEnchantments.EMPTY),
-                mutable
+                mutable,
+                cursesOnly
         );
 
-        copyEnchantments(
-                stack.getOrDefault(DataComponents.STORED_ENCHANTMENTS, ItemEnchantments.EMPTY),
-                mutable
-        );
+        if (!cursesOnly) {
+            copyEnchantments(
+                    stack.getOrDefault(DataComponents.STORED_ENCHANTMENTS, ItemEnchantments.EMPTY),
+                    mutable,
+                    false
+            );
+        }
 
         return mutable.toImmutable();
     }
 
-    /**
-     * 把一组附魔复制到 Mutable ItemEnchantments 中。
-     */
-    private static void copyEnchantments(ItemEnchantments source, ItemEnchantments.Mutable target) {
+    private static void copyEnchantments(
+            ItemEnchantments source,
+            ItemEnchantments.Mutable target,
+            boolean cursesOnly
+    ) {
         for (Object2IntMap.Entry<Holder<Enchantment>> entry : source.entrySet()) {
-            target.set(entry.getKey(), entry.getIntValue());
+            Holder<Enchantment> enchantment = entry.getKey();
+
+            if (cursesOnly && !enchantment.is(EnchantmentTags.CURSE)) {
+                continue;
+            }
+
+            target.set(enchantment, entry.getIntValue());
+        }
+    }
+
+    private record RecipeInputs(ItemStack transposer, ItemStack enchantedItem) {
+        private static final RecipeInputs INVALID = new RecipeInputs(ItemStack.EMPTY, ItemStack.EMPTY);
+
+        private boolean valid() {
+            return !transposer.isEmpty() && !enchantedItem.isEmpty();
         }
     }
 }

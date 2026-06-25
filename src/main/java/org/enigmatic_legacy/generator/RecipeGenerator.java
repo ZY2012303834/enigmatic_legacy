@@ -398,13 +398,29 @@ public class RecipeGenerator extends RecipeProvider {
                 .unlockedBy("has_book", has(Items.BOOK))
                 .save(output);
 
-        // 求知之书附魔转移特殊配方。
+        // 求知之书 / 噬咒之书附魔转移特殊配方。
         // 该配方没有固定输入形状，逻辑由 EnchantmentTransposingRecipe 动态判断：
         // 求知之书 + 任意带附魔物品 -> 带有原物品全部附魔的附魔书。
+        // 噬咒之书 + 任意非附魔书的带诅咒附魔物品 -> 带有原物品全部诅咒附魔的附魔书。
         SpecialRecipeBuilder.special(EnchantmentTransposingRecipe::new)
                 .save(output, ResourceLocation.fromNamespaceAndPath(
                         EnigmaticLegacy.MODID,
                         "enchantment_transposing"
                 ));
+
+        // 噬咒之书 / Tome of Devoured Malignancy。
+        // 原项目 ID：curse_transposer。
+        // 原项目配方：红石 * 4、幻翼膜 * 2、恶魂之泪、极恶精华、求知之书。
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CURSE_TRANSPOSER.get())
+                .pattern("RTR")
+                .pattern("PXP")
+                .pattern("RER")
+                .define('R', Items.REDSTONE)
+                .define('T', Items.GHAST_TEAR)
+                .define('P', Items.PHANTOM_MEMBRANE)
+                .define('X', ModItems.ENCHANTMENT_TRANSPOSER.get())
+                .define('E', ModItems.EVIL_ESSENCE.get())
+                .unlockedBy("has_enchantment_transposer", has(ModItems.ENCHANTMENT_TRANSPOSER.get()))
+                .save(output);
     }
 }

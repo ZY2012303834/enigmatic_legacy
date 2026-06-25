@@ -534,6 +534,13 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.enchantment_transposer.3", "Knowledge is never lost. It merely finds another vessel.");
         // end
 
+        // 噬咒之书
+        addItem(ModItems.CURSE_TRANSPOSER, "噬咒之书");
+        add("tooltip.enigmatic_legacy.curse_transposer.1", "与任意除附魔书以外的附魔物品合成。");
+        add("tooltip.enigmatic_legacy.curse_transposer.2", "会消耗该物品，并将其全部诅咒附魔转移到一本附魔书上。");
+        add("tooltip.enigmatic_legacy.curse_transposer.3", "恶咒被吞噬，而非净化。");
+        add("tooltip.enigmatic_legacy.curse_transposer.cursed_only", "只有承受七咒之人才能使用该物品。");
+        // end
 
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");

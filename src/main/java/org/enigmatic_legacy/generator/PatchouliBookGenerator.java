@@ -391,13 +391,48 @@ public class PatchouliBookGenerator implements DataProvider {
     }
 
     private void addRelicEntriesEn(CachedOutput output, List<CompletableFuture<?>> futures) {
-        futures.add(save(output, "en_us", "entries/relics/the_acknowledgment", recipeEntry(
+        futures.add(save(output, "en_us", "entries/relics/the_acknowledgment", entry(
                 "The Acknowledgment",
                 "relics",
                 "enigmatic_legacy:the_acknowledgment",
                 0,
-                "A guidebook for enigmatic relics. Despite being a book, it can also be used as a weapon and sets struck enemies aflame.",
-                "enigmatic_legacy:the_acknowledgment"
+                spotlightPage(
+                        "enigmatic_legacy:the_acknowledgment",
+                        "The Acknowledgment",
+                        "The Acknowledgment is both a mysterious guidebook and an ancient relic.$(br2)" +
+                                "Right-clicking it opens a manual that records relics, stones, scrolls, curses, and hidden knowledge.$(br2)" +
+                                "When you do not know what to seek next, this book is the safest place to begin."
+                ),
+                textPage(
+                        "As a Guide",
+                        "The Acknowledgment is not consumed and does not need to be equipped in a Curios slot. Hold it and right-click to read the knowledge currently recorded within.$(br2)" +
+                                "It contains material sources, relic uses, exploration goals, and important hints related to the Ring of the Seven Curses."
+                ),
+                textPage(
+                        "As a Weapon",
+                        "The Acknowledgment is not only a book. It can be swung like a weapon, setting struck enemies aflame.$(br2)" +
+                                "Current values:$(br)" +
+                                "$(li)Attack Damage: 3.5" +
+                                "$(li)Attack Speed: -2.1" +
+                                "$(li)Ignites target: 4 seconds$(br2)" +
+                                "It can also be enchanted, with an enchantability value of 24."
+                ),
+                textPage(
+                        "Curse Resonance",
+                        "When the bearer suffers under the Ring of the Seven Curses, The Acknowledgment weakens the pain of the Fourth Curse.$(br2)" +
+                                "Current effect:$(br)" +
+                                "$(li)Reduces the Fourth Curse's extra incoming damage penalty by 20%$(br2)" +
+                                "It does not remove the curse completely, but it makes survival slightly more forgiving."
+                ),
+                textPage(
+                        "Usage Advice",
+                        "It is recommended to craft The Acknowledgment early. It lets you check relic functions at any time and can serve as an emergency weapon.$(br2)" +
+                                "If you are wearing the Ring of the Seven Curses, keeping it in your inventory is strongly advised."
+                ),
+                craftingPage(
+                        "enigmatic_legacy:the_acknowledgment",
+                        "Craft The Acknowledgment, then right-click it to open this manual."
+                )
         )));
 
         futures.add(save(output, "en_us", "entries/relics/iron_ring", recipeEntry(
@@ -577,13 +612,48 @@ public class PatchouliBookGenerator implements DataProvider {
     }
 
     private void addRelicEntriesZh(CachedOutput output, List<CompletableFuture<?>> futures) {
-        futures.add(save(output, "zh_cn", "entries/relics/the_acknowledgment", recipeEntry(
+        futures.add(save(output, "zh_cn", "entries/relics/the_acknowledgment", entry(
                 "启示之证",
                 "relics",
                 "enigmatic_legacy:the_acknowledgment",
                 0,
-                "一本记录神秘遗物知识的指南书。尽管它是书，也能作为武器使用，使被击中的敌人燃烧。",
-                "enigmatic_legacy:the_acknowledgment"
+                spotlightPage(
+                        "enigmatic_legacy:the_acknowledgment",
+                        "启示之证",
+                        "启示之证既是一本神秘指南，也是一件古老遗物。$(br2)" +
+                                "右键使用时，它会打开这本记录遗物、术石、卷轴与诅咒知识的手册。$(br2)" +
+                                "若你不知道下一步该寻找什么，它就是最可靠的起点。"
+                ),
+                textPage(
+                        "作为指南",
+                        "启示之证不会被消耗，也不需要放在饰品栏。只要手持右键，就能随时翻阅当前已记录的知识。$(br2)" +
+                                "其中包含材料来源、遗物用途、世界探索目标，以及一些和七咒之戒相关的重要提示。"
+                ),
+                textPage(
+                        "作为武器",
+                        "启示之证并不只是书。它可以像武器一样挥动，命中敌人时会点燃目标。$(br2)" +
+                                "当前数值：$(br)" +
+                                "$(li)攻击伤害：3.5" +
+                                "$(li)攻击速度：-2.1" +
+                                "$(li)命中点燃：4 秒$(br2)" +
+                                "它也可以被附魔，附魔能力为 24。"
+                ),
+                textPage(
+                        "七咒共鸣",
+                        "当持有者承受七咒之戒时，启示之证会削弱第四诅咒带来的痛苦。$(br2)" +
+                                "当前效果：$(br)" +
+                                "$(li)削弱第四诅咒的额外受伤惩罚 20%$(br2)" +
+                                "它不会完全消除诅咒，只会让佩戴七咒之戒时的生存压力稍微降低。"
+                ),
+                textPage(
+                        "使用建议",
+                        "建议你在前期尽快制作启示之证。它能让你随时确认遗物用途，也能在没有合适武器时临时防身。$(br2)" +
+                                "如果你正在佩戴七咒之戒，最好把它长期留在背包中，以获得第四诅咒削弱效果。"
+                ),
+                craftingPage(
+                        "enigmatic_legacy:the_acknowledgment",
+                        "制作启示之证后，右键即可打开本手册。"
+                )
         )));
 
         futures.add(save(output, "zh_cn", "entries/relics/iron_ring", recipeEntry(

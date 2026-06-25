@@ -72,6 +72,42 @@ import top.theillusivec4.curios.api.type.capability.ICurio;
 public class CursedRingEvents {
     private static final String STARTING_CURSED_RING_GIVEN = "enigmatic_legacy_received_cursed_ring";
     private static final String LEGACY_STARTING_CURSED_RING_GIVEN = "EnigmaticLegacyStartingCursedRingGiven";
+
+    /**
+     * 启示之证削弱第四诅咒的比例。
+     * 20% 代表只削弱“额外受伤惩罚”的 20%，不直接砍基础伤害。
+     * 例如：
+     * 七咒之戒默认受伤倍率 200%：
+     * 没有启示之证：2.0 倍伤害
+     * 有启示之证：1.8 倍伤害
+     */
+    private static final float THE_ACKNOWLEDGMENT_FOURTH_CURSE_REDUCTION = 0.20F;
+
+    private static float applyAcknowledgmentFourthCurseReduction(Player player, float multiplier) {
+        if (multiplier <= 1.0F) {
+            return multiplier;
+        }
+
+        if (!hasTheAcknowledgment(player)) {
+            return multiplier;
+        }
+
+        float extraPenalty = multiplier - 1.0F;
+        return 1.0F + extraPenalty * (1.0F - THE_ACKNOWLEDGMENT_FOURTH_CURSE_REDUCTION);
+    }
+
+    private static boolean hasTheAcknowledgment(Player player) {
+        for (int slot = 0; slot < player.getInventory().getContainerSize(); slot++) {
+            ItemStack stack = player.getInventory().getItem(slot);
+
+            if (stack.is(ModItems.THE_ACKNOWLEDGMENT.get())) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     /**
      * 玩家每秒处理一次七咒之戒的仇恨逻辑。
      * <p>
@@ -113,6 +149,8 @@ public class CursedRingEvents {
 
         if (target instanceof Player player && CursedRingHelper.hasCursedRing(player)) {
             float multiplier = ConfigCommon.CURSED_RING_PAIN_MODIFIER.get() / 100.0F;
+            multiplier = applyAcknowledgmentFourthCurseReduction(player, multiplier);
+
             event.setAmount(event.getAmount() * multiplier);
 
             float armorDebuff = ConfigCommon.CURSED_RING_ARMOR_DEBUFF.get() / 100.0F;
