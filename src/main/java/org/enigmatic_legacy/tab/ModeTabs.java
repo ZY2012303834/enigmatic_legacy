@@ -22,7 +22,7 @@ public final class ModeTabs {
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> ENIGMATIC_LEGACY =
             CREATIVE_MODE_TABS.register("enigmatic_legacy", () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.enigmatic_legacy"))
-                    .icon(() -> ModItems.ASTRAL_DUST.get().getDefaultInstance())
+                    .icon(() -> ModItems.HEART_OF_CREATION.get().getDefaultInstance())
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.ASTRAL_DUST.get());
                         output.accept(ModItems.ENDER_ROD.get());
