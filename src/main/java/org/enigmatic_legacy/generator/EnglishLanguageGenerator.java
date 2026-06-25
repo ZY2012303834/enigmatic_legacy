@@ -542,6 +542,13 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.curse_transposer.cursed_only", "只有承受七咒之人才能使用该物品。");
         // end
 
+        // 终极夜视药水
+        add("item.minecraft.potion.effect.ultimate_night_vision", "Ultimate Night Vision Potion");
+        add("item.minecraft.splash_potion.effect.ultimate_night_vision", "Splash Potion of Ultimate Night Vision");
+        add("item.minecraft.lingering_potion.effect.ultimate_night_vision", "Lingering Potion of Ultimate Night Vision");
+        add("item.minecraft.tipped_arrow.effect.ultimate_night_vision", "Arrow of Ultimate Night Vision");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");
     }

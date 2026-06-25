@@ -9,7 +9,10 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.common.crafting.DataComponentIngredient;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
+import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.potion.ModPotions;
+
+import java.util.Objects;
 
 /**
  * 酿造配方注册器。
@@ -48,6 +51,32 @@ public final class BrewingGenerator {
                 awkwardPotionIngredient,
                 Ingredient.of(Items.ENDER_EYE),
                 recallPotion
+        );
+
+        ItemStack longNightVisionPotion = PotionContents.createItemStack(
+                Items.POTION,
+                Potions.LONG_NIGHT_VISION
+        );
+
+        ItemStack ultimateNightVisionPotion = PotionContents.createItemStack(
+                Items.POTION,
+                ModPotions.ULTIMATE_NIGHT_VISION
+        );
+
+        // 终极药水加附魔光效，方便和普通药水区分。
+        ultimateNightVisionPotion.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
+
+        Ingredient longNightVisionPotionIngredient = DataComponentIngredient.of(
+                false,
+                DataComponents.POTION_CONTENTS,
+                Objects.requireNonNull(longNightVisionPotion.get(DataComponents.POTION_CONTENTS)),
+                Items.POTION
+        );
+
+        event.getBuilder().addRecipe(
+                longNightVisionPotionIngredient,
+                Ingredient.of(ModItems.ASTRAL_DUST.get()),
+                ultimateNightVisionPotion
         );
     }
 }

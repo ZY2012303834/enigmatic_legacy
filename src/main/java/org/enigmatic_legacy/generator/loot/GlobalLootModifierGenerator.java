@@ -39,6 +39,25 @@ public class GlobalLootModifierGenerator extends GlobalLootModifierProvider {
         addDarkestScrollModifiers();
         addUnholyGrailModifiers();
         addForbiddenFruitModifiers();
+        addAstralDustModifiers();
+
+    }
+
+    /**
+     * 星尘获取方式。
+     * 原项目：
+     * 星尘可以在末地城宝藏箱子中找到。
+     * 原项目数据：
+     * - 注入目标：minecraft:chests/end_city_treasure
+     * - 星尘权重：85
+     * - 数量：1 ~ 4
+     */
+    private void addAstralDustModifiers() {
+        addTableModifier(
+                "astral_dust_end_city_treasure",
+                BuiltInLootTables.END_CITY_TREASURE,
+                "inject/chests/astral_dust/end_city_treasure"
+        );
     }
 
     /**
@@ -71,6 +90,8 @@ public class GlobalLootModifierGenerator extends GlobalLootModifierProvider {
                 BuiltInLootTables.BASTION_OTHER,
                 "inject/chests/forbidden_fruit/bastion_common"
         );
+
+
     }
 
     /**

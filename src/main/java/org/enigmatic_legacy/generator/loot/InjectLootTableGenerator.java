@@ -63,6 +63,9 @@ public class InjectLootTableGenerator implements DataProvider {
         // 禁忌之果
         addForbiddenFruitTables(cachedOutput, futures);
 
+        // 星尘
+        addAstralDustTables(cachedOutput, futures);
+
         /*
          * 等待所有 loot table 文件全部写入完成。
          */
@@ -260,6 +263,28 @@ public class InjectLootTableGenerator implements DataProvider {
     }
 
     /**
+     * 生成星尘 loot table。
+     * 原项目末地城 epic 池：
+     * - rolls：1 ~ 2
+     * - 星尘权重：85
+     * - 星尘数量：1 ~ 4
+     * 这里没有把原项目整个末地城 epic 池全部搬进来，
+     * 而是使用 empty 条目补足原始总权重，保持星尘出现概率接近原项目。
+     * 原项目末地城 epic 池总权重约 407：
+     * 星尘 85 + 其它条目 322。
+     */
+    private void addAstralDustTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {
+        futures.add(saveTable(
+                cachedOutput,
+                "astral_dust/end_city_treasure",
+                1.0D,
+                2.0D,
+                itemEntry(ModItems.ASTRAL_DUST.get(), 85, 1.0D, 4.0D),
+                emptyEntry(322)
+        ));
+    }
+
+    /**
      * 保存一个注入用 loot table。
      * 参数说明：
      * path：
@@ -348,6 +373,39 @@ public class InjectLootTableGenerator implements DataProvider {
         entry.addProperty("name", BuiltInRegistries.ITEM.getKey(item.asItem()).toString());
         entry.addProperty("weight", weight);
 
+        return entry;
+    }
+
+    /**
+     * 创建一个带随机数量的物品条目。
+     * 生成格式：
+     * functions: [
+     *   {
+     *     function: minecraft:set_count,
+     *     count: {
+     *       type: minecraft:uniform,
+     *       min: x,
+     *       max: y
+     *     }
+     *   }
+     * ]
+     */
+    private static JsonObject itemEntry(ItemLike item, int weight, double minCount, double maxCount) {
+        JsonObject entry = itemEntry(item, weight);
+
+        JsonObject count = new JsonObject();
+        count.addProperty("type", "minecraft:uniform");
+        count.addProperty("min", minCount);
+        count.addProperty("max", maxCount);
+
+        JsonObject setCount = new JsonObject();
+        setCount.addProperty("function", "minecraft:set_count");
+        setCount.add("count", count);
+
+        JsonArray functions = new JsonArray();
+        functions.add(setCount);
+
+        entry.add("functions", functions);
         return entry;
     }
 

@@ -34,7 +34,8 @@
     "enigmatic_legacy:unholy_grail_pillager_outpost",
     "enigmatic_legacy:forbidden_fruit_bastion_bridge",
     "enigmatic_legacy:forbidden_fruit_bastion_hoglin_stable",
-    "enigmatic_legacy:forbidden_fruit_bastion_other"
+    "enigmatic_legacy:forbidden_fruit_bastion_other",
+    "enigmatic_legacy:astral_dust_end_city_treasure"
   ],
   "replace": false
 }

@@ -543,6 +543,13 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.curse_transposer.cursed_only", "只有承受七咒之人才能使用该物品。");
         // end
 
+        // 终极夜视药水
+        add("item.minecraft.potion.effect.ultimate_night_vision", "终极夜视药水");
+        add("item.minecraft.splash_potion.effect.ultimate_night_vision", "喷溅型终极夜视药水");
+        add("item.minecraft.lingering_potion.effect.ultimate_night_vision", "滞留型终极夜视药水");
+        add("item.minecraft.tipped_arrow.effect.ultimate_night_vision", "终极夜视之箭");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5按住 §6Shift§5 查看详情。");
 

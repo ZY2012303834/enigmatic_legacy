@@ -2,6 +2,7 @@ package org.enigmatic_legacy.potion;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.alchemy.Potion;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -32,6 +33,19 @@ public final class ModPotions {
 
     private ModPotions() {
     }
+
+    /**
+     * 终极夜视药水。
+     * 原项目：
+     * ULTIMATE_NIGHT_VISION = Night Vision, 19200 ticks
+     */
+    public static final DeferredHolder<Potion, Potion> ULTIMATE_NIGHT_VISION = POTIONS.register(
+            "ultimate_night_vision",
+            () -> new Potion(
+                    "ultimate_night_vision",
+                    new MobEffectInstance(MobEffects.NIGHT_VISION, 19200)
+            )
+    );
 
     public static void register(IEventBus eventBus) {
         POTIONS.register(eventBus);
