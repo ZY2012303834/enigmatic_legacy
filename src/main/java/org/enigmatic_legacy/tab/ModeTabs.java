@@ -52,7 +52,7 @@ public final class ModeTabs {
                                 output.accept(ModItems.SOUL_CRYSTAL.get());             // 灵魂水晶
                                 output.accept(ModItems.FORBIDDEN_FRUIT.get());          // 禁忌之果
                                 output.accept(ModItems.TWISTED_MIRROR.get());           // 扭曲魔镜
-                                output.accept(createRecallPotionStack());               // 召回药水
+                                output.accept(ModItems.RECALL_POTION.get());            // 召回药水
                                 output.accept(createUltimateNightVisionPotionStack(Items.POTION));              // 终极夜视药水
                                 output.accept(createUltimateNightVisionPotionStack(Items.SPLASH_POTION));       // 喷溅型终极夜视药水
                                 output.accept(createUltimateNightVisionPotionStack(Items.LINGERING_POTION));    // 滞留型终极夜视药水
@@ -104,17 +104,6 @@ public final class ModeTabs {
     private ModeTabs() {
     }
 
-    /**
-     * 创建召回药水物品栈。
-     * 这里不是普通物品注册项，而是基于原版药水物品 Items.POTION，
-     * 写入本模组的 RECALL 药水效果，并强制显示附魔光效。
-     */
-    private static ItemStack createRecallPotionStack() {
-        ItemStack stack = PotionContents.createItemStack(Items.POTION, ModPotions.RECALL);
-        stack.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
-        return stack;
-    }
-
     private static final int ULTIMATE_NIGHT_VISION_COLOR = 0xC2FF66;
 
     /**
@@ -152,47 +141,6 @@ public final class ModeTabs {
 
         stack.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
         return stack;
-    }
-
-    /**
-     * 从创造模式物品栏中移除召回药水的喷溅型、滞留型和药箭。
-     * NeoForge 21.1.x 没有 getEntries()。
-     * 需要分别检查父标签页与搜索标签页，然后用 event.remove(...) 移除。
-     */
-    public static void buildCreativeTabContents(BuildCreativeModeTabContentsEvent event) {
-        List<ItemStack> parentStacksToRemove = new ArrayList<>();
-        List<ItemStack> searchStacksToRemove = new ArrayList<>();
-
-        for (ItemStack stack : event.getParentEntries()) {
-            if (isForbiddenRecallVariant(stack)) {
-                parentStacksToRemove.add(stack);
-            }
-        }
-
-        for (ItemStack stack : event.getSearchEntries()) {
-            if (isForbiddenRecallVariant(stack)) {
-                searchStacksToRemove.add(stack);
-            }
-        }
-
-        for (ItemStack stack : parentStacksToRemove) {
-            event.remove(stack, CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
-        }
-
-        for (ItemStack stack : searchStacksToRemove) {
-            event.remove(stack, CreativeModeTab.TabVisibility.SEARCH_TAB_ONLY);
-        }
-    }
-
-    private static boolean isForbiddenRecallVariant(ItemStack stack) {
-        if (!stack.is(Items.SPLASH_POTION)
-                && !stack.is(Items.LINGERING_POTION)
-                && !stack.is(Items.TIPPED_ARROW)) {
-            return false;
-        }
-
-        PotionContents contents = stack.get(DataComponents.POTION_CONTENTS);
-        return contents != null && contents.is(ModPotions.RECALL);
     }
 
     public static void register(IEventBus eventBus) {

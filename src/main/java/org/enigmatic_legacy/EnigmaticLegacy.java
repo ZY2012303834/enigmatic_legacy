@@ -37,8 +37,6 @@ public class EnigmaticLegacy {
         ModPotions.register(modEventBus);
         ModSounds.SOUND_EVENTS.register(modEventBus);
 
-        modEventBus.addListener(ModeTabs::buildCreativeTabContents);
-
         modEventBus.addListener(ModNetwork::registerPayloads);
         modEventBus.addListener(BlockGenerator::gatherData);
         modEventBus.addListener(ItemGenerator::gatherData);
@@ -71,7 +69,6 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(SoulCrystalEvents.class);
         NeoForge.EVENT_BUS.register(ForbiddenFruitEvents.class);
         NeoForge.EVENT_BUS.register(GolemHeartEvents.class);
-        NeoForge.EVENT_BUS.register(RecallPotionEvents.class);
         NeoForge.EVENT_BUS.register(AngelBlessingEvents.class);
         NeoForge.EVENT_BUS.register(OceanStoneEvents.class);
         NeoForge.EVENT_BUS.register(BlazingCoreEvents.class);

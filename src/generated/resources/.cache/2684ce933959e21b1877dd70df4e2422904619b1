@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-25T15:28:11.0193071	vanilla/Recipes
+// 1.21.1	2026-06-25T17:10:52.8318642	vanilla/Recipes
 138cca5fc2d36a468976c88c266618e68aa51d88 data/enigmatic_legacy/advancement/recipes/building_blocks/astral_dust_sack.json
 75128c3d277fd90fca1df4cc9f996933af7f7241 data/enigmatic_legacy/advancement/recipes/building_blocks/etherium_block.json
 afc69a4ceaecd0685cc5f6ee8c892af17f05a22e data/enigmatic_legacy/advancement/recipes/decorations/lamps/big_lamp.json
@@ -58,5 +58,5 @@ b7ff29e9a057ae6829ace5151db9d21fc64eda65 data/enigmatic_legacy/recipe/magnet_rin
 9d1164ba211257b9b0a8afceac161910f5403ce6 data/enigmatic_legacy/recipe/thicc_scroll.json
 356776aabc4bdd1b8cc93bc0ced18e8d0172d019 data/enigmatic_legacy/recipe/treasure_hunter_charm.json
 8cfad9fa5459bfbf9f4230a1168be6e1c4093d45 data/enigmatic_legacy/recipe/twisted_heart.json
-6b97c26818db70de9c31c4ee5d28db679fcdacd6 data/enigmatic_legacy/recipe/twisted_mirror.json
+4ca1bd5fcf198a1eee54329052066c42fcc6aea9 data/enigmatic_legacy/recipe/twisted_mirror.json
 98beaaf56949fbd5da24f3ae8806c63481ba8968 data/enigmatic_legacy/recipe/xp_scroll.json

@@ -180,18 +180,6 @@ public class RecipeGenerator extends RecipeProvider {
                 .unlockedBy("has_evil_essence", has(ModItems.EVIL_ESSENCE.get()))
                 .save(output);
 
-        // 扭曲魔镜
-        ItemStack recallPotion = PotionContents.createItemStack(
-                Items.POTION,
-                ModPotions.RECALL
-        );
-        recallPotion.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
-
-        Ingredient recallPotionIngredient = DataComponentIngredient.of(
-                false,
-                recallPotion
-        );
-
         // 扭曲之心
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.TWISTED_MIRROR.get())
                 .pattern("IGI")
@@ -199,7 +187,7 @@ public class RecipeGenerator extends RecipeProvider {
                 .pattern(" I ")
                 .define('I', Items.IRON_INGOT)
                 .define('G', Items.GLASS_PANE)
-                .define('P', recallPotionIngredient)
+                .define('P', ModItems.RECALL_POTION.get())
                 .define('X', ModItems.TWISTED_HEART.get())
                 .unlockedBy("has_twisted_heart", has(ModItems.TWISTED_HEART.get()))
                 .save(output);

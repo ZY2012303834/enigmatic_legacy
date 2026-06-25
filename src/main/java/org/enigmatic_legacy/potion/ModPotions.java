@@ -20,16 +20,6 @@ public final class ModPotions {
     public static final DeferredRegister<Potion> POTIONS =
             DeferredRegister.create(Registries.POTION, EnigmaticLegacy.MODID);
 
-    /**
-     * 召回药水。
-     *
-     * <p>这是一个只有 1 tick 的瞬时效果药水。
-     */
-    public static final DeferredHolder<Potion, Potion> RECALL =
-            POTIONS.register("recall", () -> new Potion(
-                    "recall",
-                    new MobEffectInstance(ModEffects.RECALL, 1)
-            ));
 
     private ModPotions() {
     }

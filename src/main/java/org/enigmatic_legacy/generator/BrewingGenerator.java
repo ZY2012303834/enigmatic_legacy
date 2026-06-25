@@ -34,10 +34,7 @@ public final class BrewingGenerator {
                 Potions.AWKWARD
         );
 
-        ItemStack recallPotion = PotionContents.createItemStack(
-                Items.POTION,
-                ModPotions.RECALL
-        );
+        ItemStack recallPotion = new ItemStack(ModItems.RECALL_POTION.get());
 
         // 给召回药水强制添加附魔光效。
         recallPotion.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
@@ -45,7 +42,7 @@ public final class BrewingGenerator {
         Ingredient awkwardPotionIngredient = DataComponentIngredient.of(
                 false,
                 DataComponents.POTION_CONTENTS,
-                awkwardPotion.get(DataComponents.POTION_CONTENTS),
+                Objects.requireNonNull(awkwardPotion.get(DataComponents.POTION_CONTENTS)),
                 Items.POTION
         );
 
