@@ -1,4 +1,4 @@
-package org.enigmatic_legacy.generator;
+package org.enigmatic_legacy.generator.loot;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -16,13 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-/**
- * 天使之祝额外战利品表数据生成器。
- */
-public class AngelBlessingLootTableGenerator implements DataProvider {
+public class SpellstoneLootTableGenerator implements DataProvider {
     private final PackOutput output;
 
-    public AngelBlessingLootTableGenerator(PackOutput output) {
+    public SpellstoneLootTableGenerator(PackOutput output) {
         this.output = output;
     }
 
@@ -112,13 +109,13 @@ public class AngelBlessingLootTableGenerator implements DataProvider {
 
     @Override
     public @NotNull String getName() {
-        return "Angel Blessing Inject Loot Table";
+        return "Spellstone Dungeon Loot Tables";
     }
 
     public static void gatherData(GatherDataEvent event) {
         event.getGenerator().addProvider(
                 event.includeServer(),
-                new AngelBlessingLootTableGenerator(event.getGenerator().getPackOutput())
+                new SpellstoneLootTableGenerator(event.getGenerator().getPackOutput())
         );
     }
 }

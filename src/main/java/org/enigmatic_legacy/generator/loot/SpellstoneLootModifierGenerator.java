@@ -1,4 +1,4 @@
-package org.enigmatic_legacy.generator;
+package org.enigmatic_legacy.generator.loot;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -16,11 +16,8 @@ import org.enigmatic_legacy.EnigmaticLegacy;
 
 import java.util.concurrent.CompletableFuture;
 
-/**
- * 天使之祝全局战利品修饰器数据生成器。
- */
-public class AngelBlessingLootModifierGenerator extends GlobalLootModifierProvider {
-    public AngelBlessingLootModifierGenerator(
+public class SpellstoneLootModifierGenerator extends GlobalLootModifierProvider {
+    public SpellstoneLootModifierGenerator(
             PackOutput output,
             CompletableFuture<HolderLookup.Provider> lookupProvider
     ) {
@@ -77,7 +74,7 @@ public class AngelBlessingLootModifierGenerator extends GlobalLootModifierProvid
     public static void gatherData(GatherDataEvent event) {
         event.getGenerator().addProvider(
                 event.includeServer(),
-                new AngelBlessingLootModifierGenerator(
+                new SpellstoneLootModifierGenerator(
                         event.getGenerator().getPackOutput(),
                         event.getLookupProvider()
                 )
