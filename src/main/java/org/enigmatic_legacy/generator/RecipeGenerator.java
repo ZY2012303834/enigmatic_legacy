@@ -5,11 +5,7 @@ import java.util.concurrent.CompletableFuture;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -21,6 +17,8 @@ import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.block.ModBlocks;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.potion.ModPotions;
+import org.enigmatic_legacy.recipe.EnchantmentTransposingRecipe;
+import org.enigmatic_legacy.recipe.ModRecipeSerializers;
 import org.jetbrains.annotations.NotNull;
 
 public class RecipeGenerator extends RecipeProvider {
@@ -383,5 +381,30 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('T', ModItems.TWISTED_HEART.get())
                 .unlockedBy("has_darkest_scroll", has(ModItems.DARKEST_SCROLL.get()))
                 .save(output);
+
+        // 求知之书 / Tome of Hungering Knowledge。
+        // 原项目 ID：enchantment_transposer。
+        // 原项目配方：海晶砂粒 * 2、金粒、青金石 * 2、书、烈焰粉 * 2、红石粉。
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ENCHANTMENT_TRANSPOSER.get())
+                .pattern("PNP")
+                .pattern("LXL")
+                .pattern("BRB")
+                .define('P', Items.PRISMARINE_CRYSTALS)
+                .define('N', Items.GOLD_NUGGET)
+                .define('L', Items.LAPIS_LAZULI)
+                .define('X', Items.BOOK)
+                .define('B', Items.BLAZE_POWDER)
+                .define('R', Items.REDSTONE)
+                .unlockedBy("has_book", has(Items.BOOK))
+                .save(output);
+
+        // 求知之书附魔转移特殊配方。
+        // 该配方没有固定输入形状，逻辑由 EnchantmentTransposingRecipe 动态判断：
+        // 求知之书 + 任意带附魔物品 -> 带有原物品全部附魔的附魔书。
+        SpecialRecipeBuilder.special(EnchantmentTransposingRecipe::new)
+                .save(output, ResourceLocation.fromNamespaceAndPath(
+                        EnigmaticLegacy.MODID,
+                        "enchantment_transposing"
+                ));
     }
 }

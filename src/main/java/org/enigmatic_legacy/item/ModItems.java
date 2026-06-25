@@ -39,6 +39,7 @@ public final class ModItems {
     public static final DeferredItem<DislocationRing> DISLOCATION_RING = ITEMS.register("dislocation_ring", DislocationRing::new); // 转位之戒
     public static final DeferredItem<AbyssalHeart> ABYSSAL_HEART = ITEMS.register("abyssal_heart", AbyssalHeart::new); // 深渊之心
     public static final DeferredItem<ExtradimensionalEye> EXTRADIMENSIONAL_EYE = ITEMS.register("extradimensional_eye", ExtradimensionalEye::new); // 超维之眼
+    public static final DeferredItem<TomeOfHungeringKnowledge> ENCHANTMENT_TRANSPOSER = ITEMS.register("enchantment_transposer", TomeOfHungeringKnowledge::new); // 求知之书
 
     public static final DeferredItem<UnwitnessedAmulet> UNWITNESSED_AMULET = ITEMS.register("unwitnessed_amulet", UnwitnessedAmulet::new);
     public static final DeferredItem<EnigmaticAmulet> ENIGMATIC_AMULET_RED = ITEMS.register("enigmatic_amulet_red", () -> new EnigmaticAmulet(AmuletVariant.RED));

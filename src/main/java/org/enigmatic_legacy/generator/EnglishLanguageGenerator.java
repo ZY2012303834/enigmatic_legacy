@@ -526,6 +526,15 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("message.enigmatic_legacy.extradimensional_eye.wrong_dimension", "The target is not in the same dimension as the bound location.");
         // end
 
+        // 求知之书
+        addItem(ModItems.ENCHANTMENT_TRANSPOSER, "Tome of Hungering Knowledge");
+
+        add("tooltip.enigmatic_legacy.enchantment_transposer.1", "Craft it with any enchanted item.");
+        add("tooltip.enigmatic_legacy.enchantment_transposer.2", "It consumes the item and transfers all of its enchantments onto an enchanted book.");
+        add("tooltip.enigmatic_legacy.enchantment_transposer.3", "Knowledge is never lost. It merely finds another vessel.");
+        // end
+
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");
     }

@@ -527,6 +527,14 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("message.enigmatic_legacy.extradimensional_eye.wrong_dimension", "目标不在绑定位置所在的维度。");
         // end
 
+        // 求知之书
+        addItem(ModItems.ENCHANTMENT_TRANSPOSER, "求知之书");
+
+        add("tooltip.enigmatic_legacy.enchantment_transposer.1", "与任意带附魔的物品一起合成。");
+        add("tooltip.enigmatic_legacy.enchantment_transposer.2", "会吞噬该物品，并将其全部附魔转移到一本附魔书上。");
+        add("tooltip.enigmatic_legacy.enchantment_transposer.3", "知识从不消失，它只是换了一种载体。");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5按住 §6Shift§5 查看详情。");
 

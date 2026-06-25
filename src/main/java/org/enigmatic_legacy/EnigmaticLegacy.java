@@ -16,6 +16,7 @@ import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.network.ModNetwork;
 import org.enigmatic_legacy.potion.ModEffects;
 import org.enigmatic_legacy.potion.ModPotions;
+import org.enigmatic_legacy.recipe.ModRecipeSerializers;
 import org.enigmatic_legacy.sound.ModSounds;
 import org.enigmatic_legacy.tab.ModeTabs;
 
@@ -49,6 +50,8 @@ public class EnigmaticLegacy {
 
         modEventBus.addListener(InjectLootTableGenerator::gatherData);
         modEventBus.addListener(GlobalLootModifierGenerator::gatherData);
+
+        ModRecipeSerializers.register(modEventBus);
 
         NeoForge.EVENT_BUS.register(MonsterCharmEvents.class);
         NeoForge.EVENT_BUS.register(EnchanterPearlEvents.class);

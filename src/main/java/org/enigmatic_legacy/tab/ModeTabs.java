@@ -54,6 +54,7 @@ public final class ModeTabs {
                                 output.accept(ModItems.DISLOCATION_RING.get());         // 转位之戒
                                 output.accept(ModItems.ABYSSAL_HEART.get());            // 深渊之心
                                 output.accept(ModItems.EXTRADIMENSIONAL_EYE.get());     // 超维之眼
+                                output.accept(ModItems.ENCHANTMENT_TRANSPOSER.get());   // 求知之书
 
                                 // 护符
                                 output.accept(ModItems.ENIGMATIC_EYE.get());            // 莫测之眼
