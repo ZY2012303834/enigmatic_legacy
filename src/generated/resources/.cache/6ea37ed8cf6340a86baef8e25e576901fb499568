@@ -1,0 +1,11 @@
+// 1.21.1	2026-06-25T11:00:19.9004739	Injected Chest Loot Tables
+e67cb0a1be2005a07fedbf435de0cc424c24acfd data/enigmatic_legacy/loot_table/inject/chests/darkest_scroll/bastion_treasure.json
+c51be9953b2ed2b932bca23e06a2cecb0a9a390b data/enigmatic_legacy/loot_table/inject/chests/spellstones/air.json
+d8e2509a6bb06e47c21a283f0ef1ce080faf9b54 data/enigmatic_legacy/loot_table/inject/chests/spellstones/air_earthen.json
+7235ee76a571211de120068642ab668a740be3d7 data/enigmatic_legacy/loot_table/inject/chests/spellstones/earthen.json
+9d75123f307d4bf526d1f50501cd4af045b87619 data/enigmatic_legacy/loot_table/inject/chests/spellstones/ender.json
+bc17c2e63feb7257a32b3664439fe421f4718ebb data/enigmatic_legacy/loot_table/inject/chests/spellstones/ender_earthen.json
+89a810e5b7e86be73cd59fd4ffe9041199aaf6d0 data/enigmatic_legacy/loot_table/inject/chests/spellstones/nether.json
+c9d4c33c3d6780c1bd3497724e7c7e98ee78c3ae data/enigmatic_legacy/loot_table/inject/chests/spellstones/water.json
+452da921c8e2071c0054b00d8d7bbf6117560356 data/enigmatic_legacy/loot_table/inject/chests/unholy_grail/overworld_epic.json
+7906ec128d7134197164a37e3dd3ee1f66209a86 data/enigmatic_legacy/loot_table/inject/chests/unholy_grail/overworld_epic_without_earth_heart.json

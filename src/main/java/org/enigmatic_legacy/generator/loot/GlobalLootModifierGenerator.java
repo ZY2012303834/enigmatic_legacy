@@ -1,0 +1,149 @@
+package org.enigmatic_legacy.generator.loot;
+
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.storage.loot.BuiltInLootTables;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.neoforged.neoforge.common.data.GlobalLootModifierProvider;
+import net.neoforged.neoforge.common.loot.AddTableLootModifier;
+import net.neoforged.neoforge.common.loot.LootTableIdCondition;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
+import org.enigmatic_legacy.EnigmaticLegacy;
+
+import java.util.concurrent.CompletableFuture;
+
+/**
+ * 全局战利品注入生成器。
+ * 注意：
+ * 同一个 modid 只能注册一个 GlobalLootModifierProvider，
+ * 否则 runData 会报：
+ * Duplicate provider: Global Loot Modifiers : enigmatic_legacy
+ * 所以术石、至暗卷轴、不洁圣杯的 loot modifier
+ * 都统一放在这个 Provider 里生成。
+ */
+public class GlobalLootModifierGenerator extends GlobalLootModifierProvider {
+    public GlobalLootModifierGenerator(
+            PackOutput output,
+            CompletableFuture<HolderLookup.Provider> lookupProvider
+    ) {
+        super(output, lookupProvider, EnigmaticLegacy.MODID);
+    }
+
+    @Override
+    protected void start() {
+        addSpellstoneModifiers();
+        addDarkestScrollModifiers();
+        addUnholyGrailModifiers();
+    }
+
+    /**
+     * 术石战利品注入。
+     */
+    private void addSpellstoneModifiers() {
+        addTableModifier("spellstones_air_earthen_desert_pyramid", BuiltInLootTables.DESERT_PYRAMID, "inject/chests/spellstones/air_earthen");
+        addTableModifier("spellstones_air_earthen_jungle_temple", BuiltInLootTables.JUNGLE_TEMPLE, "inject/chests/spellstones/air_earthen");
+
+        addTableModifier("spellstones_ender_earthen_stronghold_corridor", BuiltInLootTables.STRONGHOLD_CORRIDOR, "inject/chests/spellstones/ender_earthen");
+        addTableModifier("spellstones_ender_earthen_stronghold_crossing", BuiltInLootTables.STRONGHOLD_CROSSING, "inject/chests/spellstones/ender_earthen");
+
+        addTableModifier("spellstones_air_village_temple", BuiltInLootTables.VILLAGE_TEMPLE, "inject/chests/spellstones/air");
+
+        addTableModifier("spellstones_earthen_simple_dungeon", BuiltInLootTables.SIMPLE_DUNGEON, "inject/chests/spellstones/earthen");
+        addTableModifier("spellstones_earthen_abandoned_mineshaft", BuiltInLootTables.ABANDONED_MINESHAFT, "inject/chests/spellstones/earthen");
+        addTableModifier("spellstones_earthen_village_armorer", BuiltInLootTables.VILLAGE_ARMORER, "inject/chests/spellstones/earthen");
+
+        addTableModifier("spellstones_nether_bridge", BuiltInLootTables.NETHER_BRIDGE, "inject/chests/spellstones/nether");
+        addTableModifier("spellstones_nether_bastion_treasure", BuiltInLootTables.BASTION_TREASURE, "inject/chests/spellstones/nether");
+        addTableModifier("spellstones_nether_bastion_other", BuiltInLootTables.BASTION_OTHER, "inject/chests/spellstones/nether");
+        addTableModifier("spellstones_nether_bastion_bridge", BuiltInLootTables.BASTION_BRIDGE, "inject/chests/spellstones/nether");
+        addTableModifier("spellstones_nether_bastion_hoglin_stable", BuiltInLootTables.BASTION_HOGLIN_STABLE, "inject/chests/spellstones/nether");
+        addTableModifier("spellstones_nether_ruined_portal", BuiltInLootTables.RUINED_PORTAL, "inject/chests/spellstones/nether");
+
+        addTableModifier("spellstones_water_underwater_ruin_big", BuiltInLootTables.UNDERWATER_RUIN_BIG, "inject/chests/spellstones/water");
+        addTableModifier("spellstones_water_underwater_ruin_small", BuiltInLootTables.UNDERWATER_RUIN_SMALL, "inject/chests/spellstones/water");
+        addTableModifier("spellstones_water_shipwreck_treasure", BuiltInLootTables.SHIPWRECK_TREASURE, "inject/chests/spellstones/water");
+        addTableModifier("spellstones_water_buried_treasure", BuiltInLootTables.BURIED_TREASURE, "inject/chests/spellstones/water");
+
+        addTableModifier("spellstones_ender_end_city_treasure", BuiltInLootTables.END_CITY_TREASURE, "inject/chests/spellstones/ender");
+    }
+
+    /**
+     * 至暗卷轴获取方式。
+     * 原项目：
+     * 至暗卷轴只注入堡垒遗迹藏宝室箱子。
+     * 对应自定义表：
+     * data/enigmatic_legacy/loot_table/inject/chests/darkest_scroll/bastion_treasure.json
+     */
+    private void addDarkestScrollModifiers() {
+        addTableModifier(
+                "darkest_scroll_bastion_treasure",
+                BuiltInLootTables.BASTION_TREASURE,
+                "inject/chests/darkest_scroll/bastion_treasure"
+        );
+    }
+
+    /**
+     * 不洁圣杯获取方式。
+     * 原项目：
+     * 不洁圣杯加入主世界类地牢箱子的稀有战利品池。
+     */
+    private void addUnholyGrailModifiers() {
+        addTableModifier("unholy_grail_simple_dungeon", BuiltInLootTables.SIMPLE_DUNGEON, "inject/chests/unholy_grail/overworld_epic");
+        addTableModifier("unholy_grail_abandoned_mineshaft", BuiltInLootTables.ABANDONED_MINESHAFT, "inject/chests/unholy_grail/overworld_epic");
+        addTableModifier("unholy_grail_stronghold_crossing", BuiltInLootTables.STRONGHOLD_CROSSING, "inject/chests/unholy_grail/overworld_epic");
+        addTableModifier("unholy_grail_stronghold_corridor", BuiltInLootTables.STRONGHOLD_CORRIDOR, "inject/chests/unholy_grail/overworld_epic");
+        addTableModifier("unholy_grail_desert_pyramid", BuiltInLootTables.DESERT_PYRAMID, "inject/chests/unholy_grail/overworld_epic");
+        addTableModifier("unholy_grail_jungle_temple", BuiltInLootTables.JUNGLE_TEMPLE, "inject/chests/unholy_grail/overworld_epic");
+        addTableModifier("unholy_grail_igloo_chest", BuiltInLootTables.IGLOO_CHEST, "inject/chests/unholy_grail/overworld_epic");
+        addTableModifier("unholy_grail_woodland_mansion", BuiltInLootTables.WOODLAND_MANSION, "inject/chests/unholy_grail/overworld_epic");
+        addTableModifier("unholy_grail_shipwreck_supply", BuiltInLootTables.SHIPWRECK_SUPPLY, "inject/chests/unholy_grail/overworld_epic");
+
+        addTableModifier("unholy_grail_underwater_ruin_small", BuiltInLootTables.UNDERWATER_RUIN_SMALL, "inject/chests/unholy_grail/overworld_epic_without_earth_heart");
+        addTableModifier("unholy_grail_underwater_ruin_big", BuiltInLootTables.UNDERWATER_RUIN_BIG, "inject/chests/unholy_grail/overworld_epic_without_earth_heart");
+        addTableModifier("unholy_grail_pillager_outpost", BuiltInLootTables.PILLAGER_OUTPOST, "inject/chests/unholy_grail/overworld_epic_without_earth_heart");
+    }
+
+    /**
+     * 添加一个战利品表注入规则。
+     * name：
+     * 生成的 loot modifier 文件名。
+     * targetTable：
+     * 被注入的原版箱子战利品表。
+     * injectPath：
+     * 要追加进去的自定义 loot table 路径，不带 .json 后缀。
+     */
+    private void addTableModifier(String name, ResourceKey<LootTable> targetTable, String injectPath) {
+        add(
+                name,
+                new AddTableLootModifier(
+                        new LootItemCondition[]{
+                                LootTableIdCondition.builder(targetTable.location()).build()
+                        },
+                        ResourceKey.create(
+                                Registries.LOOT_TABLE,
+                                ResourceLocation.fromNamespaceAndPath(
+                                        EnigmaticLegacy.MODID,
+                                        injectPath
+                                )
+                        )
+                )
+        );
+    }
+
+    /**
+     * 注册唯一的 GlobalLootModifierProvider。
+     */
+    public static void gatherData(GatherDataEvent event) {
+        event.getGenerator().addProvider(
+                event.includeServer(),
+                new GlobalLootModifierGenerator(
+                        event.getGenerator().getPackOutput(),
+                        event.getLookupProvider()
+                )
+        );
+    }
+}

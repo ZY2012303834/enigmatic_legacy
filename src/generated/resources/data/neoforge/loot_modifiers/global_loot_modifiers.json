@@ -18,7 +18,20 @@
     "enigmatic_legacy:spellstones_water_underwater_ruin_small",
     "enigmatic_legacy:spellstones_water_shipwreck_treasure",
     "enigmatic_legacy:spellstones_water_buried_treasure",
-    "enigmatic_legacy:spellstones_ender_end_city_treasure"
+    "enigmatic_legacy:spellstones_ender_end_city_treasure",
+    "enigmatic_legacy:darkest_scroll_bastion_treasure",
+    "enigmatic_legacy:unholy_grail_simple_dungeon",
+    "enigmatic_legacy:unholy_grail_abandoned_mineshaft",
+    "enigmatic_legacy:unholy_grail_stronghold_crossing",
+    "enigmatic_legacy:unholy_grail_stronghold_corridor",
+    "enigmatic_legacy:unholy_grail_desert_pyramid",
+    "enigmatic_legacy:unholy_grail_jungle_temple",
+    "enigmatic_legacy:unholy_grail_igloo_chest",
+    "enigmatic_legacy:unholy_grail_woodland_mansion",
+    "enigmatic_legacy:unholy_grail_shipwreck_supply",
+    "enigmatic_legacy:unholy_grail_underwater_ruin_small",
+    "enigmatic_legacy:unholy_grail_underwater_ruin_big",
+    "enigmatic_legacy:unholy_grail_pillager_outpost"
   ],
   "replace": false
 }

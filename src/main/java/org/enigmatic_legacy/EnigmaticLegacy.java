@@ -11,8 +11,7 @@ import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.entity.ModEntities;
 import org.enigmatic_legacy.event.*;
 import org.enigmatic_legacy.generator.*;
-import org.enigmatic_legacy.generator.loot.SpellstoneLootModifierGenerator;
-import org.enigmatic_legacy.generator.loot.SpellstoneLootTableGenerator;
+import org.enigmatic_legacy.generator.loot.*;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.network.ModNetwork;
 import org.enigmatic_legacy.potion.ModEffects;
@@ -46,9 +45,10 @@ public class EnigmaticLegacy {
         modEventBus.addListener(SoundGenerator::gatherData);
         modEventBus.addListener(PatchouliBookGenerator::gatherData);
         modEventBus.addListener(DamageTagGenerator::gatherData);
-        modEventBus.addListener(SpellstoneLootTableGenerator::gatherData);
-        modEventBus.addListener(SpellstoneLootModifierGenerator::gatherData);
         modEventBus.addListener(DamageTypeGenerator::gatherData);
+
+        modEventBus.addListener(InjectLootTableGenerator::gatherData);
+        modEventBus.addListener(GlobalLootModifierGenerator::gatherData);
 
         NeoForge.EVENT_BUS.register(MonsterCharmEvents.class);
         NeoForge.EVENT_BUS.register(EnchanterPearlEvents.class);

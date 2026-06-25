@@ -5,14 +5,18 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "enigmatic_legacy:angel_blessing",
-          "weight": 100
+          "name": "enigmatic_legacy:unholy_grail",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 230
         }
       ],
       "rolls": {
         "type": "minecraft:uniform",
-        "max": 1.0,
-        "min": 0.0
+        "max": 2.0,
+        "min": 1.0
       }
     }
   ]
