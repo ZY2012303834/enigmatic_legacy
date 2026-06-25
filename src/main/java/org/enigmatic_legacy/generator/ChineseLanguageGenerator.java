@@ -65,9 +65,6 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("effect.enigmatic_legacy.forbidden_fruit", "§5禁忌之果");
 
         add("item.minecraft.potion.effect.recall", "召回药水");
-        add("item.minecraft.splash_potion.effect.recall", "喷溅型召回药水");
-        add("item.minecraft.lingering_potion.effect.recall", "滞留型召回药水");
-        add("item.minecraft.tipped_arrow.effect.recall", "召回之箭");
 
         addItem(ModItems.UNHOLY_GRAIL, "不洁圣杯");
         add("tooltip.enigmatic_legacy.unholy_grail1", "饮下其中之物，以汲取禁忌之力。");

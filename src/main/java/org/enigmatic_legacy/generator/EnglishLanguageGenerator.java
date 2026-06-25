@@ -66,9 +66,6 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("effect.enigmatic_legacy.forbidden_fruit", "§5The Forbidden Fruit");
 
         add("item.minecraft.potion.effect.recall", "Potion of Recall");
-        add("item.minecraft.splash_potion.effect.recall", "Splash Potion of Recall");
-        add("item.minecraft.lingering_potion.effect.recall", "Lingering Potion of Recall");
-        add("item.minecraft.tipped_arrow.effect.recall", "Arrow of Recall");
 
         addItem(ModItems.UNHOLY_GRAIL, "Unholy Grail");
         add("tooltip.enigmatic_legacy.unholy_grail1", "Drink from it to draw upon forbidden power.");

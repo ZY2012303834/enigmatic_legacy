@@ -8,11 +8,15 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.potion.ModPotions;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public final class ModeTabs {
 
@@ -47,6 +51,7 @@ public final class ModeTabs {
                                 output.accept(ModItems.FORBIDDEN_FRUIT.get());          // 禁忌之果
                                 output.accept(ModItems.TWISTED_MIRROR.get());           // 扭曲魔镜
                                 output.accept(createRecallPotionStack());               // 召回药水
+                                output.accept(createUltimateNightVisionPotionStack());  // 终极夜视药水
                                 output.accept(ModItems.UNHOLY_GRAIL.get());             // 不洁圣杯
                                 output.accept(ModItems.GUARDIAN_HEART.get());           // 守卫者之心
                                 output.accept(ModItems.ENDER_RING.get());               // 末影之戒
@@ -104,6 +109,61 @@ public final class ModeTabs {
         ItemStack stack = PotionContents.createItemStack(Items.POTION, ModPotions.RECALL);
         stack.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
         return stack;
+    }
+
+    /**
+     * 创建终极夜视药水物品栈。
+     * 终极药水不是独立物品，而是原版 Items.POTION + 本模组 PotionContents。
+     */
+    private static ItemStack createUltimateNightVisionPotionStack() {
+        ItemStack stack = PotionContents.createItemStack(
+                Items.POTION,
+                ModPotions.ULTIMATE_NIGHT_VISION
+        );
+
+        stack.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
+        return stack;
+    }
+
+    /**
+     * 从创造模式物品栏中移除召回药水的喷溅型、滞留型和药箭。
+     * NeoForge 21.1.x 没有 getEntries()。
+     * 需要分别检查父标签页与搜索标签页，然后用 event.remove(...) 移除。
+     */
+    public static void buildCreativeTabContents(BuildCreativeModeTabContentsEvent event) {
+        List<ItemStack> parentStacksToRemove = new ArrayList<>();
+        List<ItemStack> searchStacksToRemove = new ArrayList<>();
+
+        for (ItemStack stack : event.getParentEntries()) {
+            if (isForbiddenRecallVariant(stack)) {
+                parentStacksToRemove.add(stack);
+            }
+        }
+
+        for (ItemStack stack : event.getSearchEntries()) {
+            if (isForbiddenRecallVariant(stack)) {
+                searchStacksToRemove.add(stack);
+            }
+        }
+
+        for (ItemStack stack : parentStacksToRemove) {
+            event.remove(stack, CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
+        }
+
+        for (ItemStack stack : searchStacksToRemove) {
+            event.remove(stack, CreativeModeTab.TabVisibility.SEARCH_TAB_ONLY);
+        }
+    }
+
+    private static boolean isForbiddenRecallVariant(ItemStack stack) {
+        if (!stack.is(Items.SPLASH_POTION)
+                && !stack.is(Items.LINGERING_POTION)
+                && !stack.is(Items.TIPPED_ARROW)) {
+            return false;
+        }
+
+        PotionContents contents = stack.get(DataComponents.POTION_CONTENTS);
+        return contents != null && contents.is(ModPotions.RECALL);
     }
 
     public static void register(IEventBus eventBus) {
