@@ -4,6 +4,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import org.enigmatic_legacy.config.common.*;
 
+import java.util.List;
+
 /**
  * 神秘遗物服务器配置总入口。
  *
@@ -78,6 +80,7 @@ public final class ConfigCommon {
     public static final ModConfigSpec.BooleanValue CURSED_RING_ULTRA_HARDCORE;
     public static final ModConfigSpec.BooleanValue CURSED_RING_SPECIAL_DROPS_ENABLED;
     public static final ModConfigSpec.BooleanValue CURSED_RING_DISABLE_INSOMNIA;
+    public static final ModConfigSpec.ConfigValue<List<String>> CURSED_RING_NEUTRAL_ANGER_BLACKLIST;
 
     // ==============================
     // 旧字段兼容别名：禁果
@@ -204,6 +207,7 @@ public final class ConfigCommon {
         THICC_SCROLL_ENABLED = ITEM_OPTIONS.thiccScrollEnabled;
         DARKEST_SCROLL_ENABLED = ITEM_OPTIONS.darkestScrollEnabled;
 
+        // 七咒之戒
         CURSED_RING_PAIN_MODIFIER = CURSED_RING.painModifier;
         CURSED_RING_MONSTER_DAMAGE_DEBUFF = CURSED_RING.monsterDamageDebuff;
         CURSED_RING_ARMOR_DEBUFF = CURSED_RING.armorDebuff;
@@ -221,6 +225,8 @@ public final class ConfigCommon {
         CURSED_RING_ULTRA_HARDCORE = CURSED_RING.ultraHardcore;
         CURSED_RING_SPECIAL_DROPS_ENABLED = CURSED_RING.specialDropsEnabled;
         CURSED_RING_DISABLE_INSOMNIA = CURSED_RING.disableInsomnia;
+        CURSED_RING_NEUTRAL_ANGER_BLACKLIST = CURSED_RING.neutralAngerBlacklist;
+        // end
 
         FORBIDDEN_FRUIT_REGENERATION_SUBTRACTION = FORBIDDEN_FRUIT.regenerationSubtraction;
         FORBIDDEN_FRUIT_DEBUFF_DURATION_MULTIPLIER = FORBIDDEN_FRUIT.debuffDurationMultiplier;

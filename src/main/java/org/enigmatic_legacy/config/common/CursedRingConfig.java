@@ -1,6 +1,9 @@
 package org.enigmatic_legacy.config.common;
 
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.common.ModConfigSpec;
+
+import java.util.List;
 
 /**
  * 七咒之戒配置。
@@ -25,6 +28,7 @@ public class CursedRingConfig {
     public final ModConfigSpec.BooleanValue ultraHardcore;
     public final ModConfigSpec.BooleanValue specialDropsEnabled;
     public final ModConfigSpec.BooleanValue disableInsomnia;
+    public final ModConfigSpec.ConfigValue<List<String>> neutralAngerBlacklist;
 
     public CursedRingConfig(ModConfigSpec.Builder builder) {
         builder.comment(
@@ -100,6 +104,69 @@ public class CursedRingConfig {
                 .comment("是否禁用七咒之戒的失眠诅咒效果。")
                 .define("CursedRingDisableInsomnia", false);
 
+        neutralAngerBlacklist = builder
+                .comment(
+                        "七咒之戒第二诅咒的中立生物仇恨黑名单。",
+                        "列表中的实体不会被七咒之戒激怒。",
+                        "格式：TOML 字符串数组。",
+                        "两个实体之间使用英文逗号 , 隔开。",
+                        "允许换行和空格。",
+                        "支持两种写法：",
+                        "1. 精确实体 ID，例如：minecraft:bee",
+                        "2. 整个命名空间通配，例如：resourcefulbees:*",
+                        "示例：",
+                        "CursedRingNeutralAngerBlacklist = [",
+                        "    \"minecraft:iron_golem\",",
+                        "    \"guardvillagers:guard\",",
+                        "    \"minecraft:bee\",",
+                        "    \"resourcefulbees:*\",",
+                        "    \"irons_spellbooks:pyromancer\",",
+                        "    \"irons_spellbooks:cryomancer\",",
+                        "    \"irons_spellbooks:priest\",",
+                        "    \"irons_spellbooks:apothecarist\"",
+                        "]"
+                )
+                .define(
+                        "CursedRingNeutralAngerBlacklist",
+                        List.of(
+                                "minecraft:iron_golem",
+                                "guardvillagers:guard",
+                                "minecraft:bee",
+                                "resourcefulbees:*",
+                                "irons_spellbooks:pyromancer",
+                                "irons_spellbooks:cryomancer",
+                                "irons_spellbooks:priest",
+                                "irons_spellbooks:apothecarist",
+                                "the_bumblezone:bee_queen"
+                        ),
+                        CursedRingConfig::isValidEntityIdList
+                );
+
         builder.pop();
     }
+
+    private static boolean isValidEntityIdList(Object value) {
+        if (!(value instanceof List<?> list)) {
+            return false;
+        }
+
+        for (Object element : list) {
+            if (!(element instanceof String string)) {
+                return false;
+            }
+
+            String trimmed = string.trim();
+
+            if (trimmed.isEmpty()) {
+                return false;
+            }
+
+            if (ResourceLocation.tryParse(trimmed) == null) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
 }

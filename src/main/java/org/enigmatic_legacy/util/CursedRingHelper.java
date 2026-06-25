@@ -246,11 +246,35 @@ public class CursedRingHelper {
 
     /**
      * 中立生物仇恨黑名单。
-     * <p>
-     * 原项目默认排除了 Bumblezone 的 bee_queen。
-     * 这里先硬编码保留该兼容项，后续可以改成配置列表。
+     * 用途：
+     * 七咒之戒第二诅咒会激怒周围中立生物。
+     * 但部分生物不应该被激怒，例如：
+     * - 其它模组的重要 NPC；
+     * - Boss 型中立实体；
+     * - the_bumblezone:bee_queen；
+     * - 玩家希望保护的特定生物。
+     * 配置项：
+     * CursedRingNeutralAngerBlacklist
+     * 格式：
+     * namespace:entity_id
      */
     private static boolean isNeutralAngerBlacklisted(ResourceLocation entityId) {
-        return entityId.equals(ResourceLocation.fromNamespaceAndPath("the_bumblezone", "bee_queen"));
+        if (entityId == null) {
+            return false;
+        }
+
+        for (String rawId : ConfigCommon.CURSED_RING_NEUTRAL_ANGER_BLACKLIST.get()) {
+            ResourceLocation blacklistedId = ResourceLocation.tryParse(rawId.trim());
+
+            if (blacklistedId == null) {
+                continue;
+            }
+
+            if (entityId.equals(blacklistedId)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
