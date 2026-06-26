@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:twisted_heart",
       "link_recipe": true,
-      "text": "被敌意能量扭曲的心脏。它很危险，但许多遗物恰恰需要危险的材料。",
+      "text": "被敌意能量扭曲的心脏。$(br2)它很危险，但许多遗物都需要危险的材料。",
       "title": "扭曲之心"
     },
     {

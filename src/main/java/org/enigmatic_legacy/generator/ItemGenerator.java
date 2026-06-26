@@ -96,10 +96,10 @@ public class ItemGenerator extends ItemModelProvider {
 
         // 行刑者之斧模型。
         // 这里使用 item/handheld，表示它是剑、斧、镐这类手持武器/工具模型。
-        // 数据生成后会自动生成：
-        // src/generated/resources/assets/enigmatic_legacy/models/item/axe_of_executioner.json
         withExistingParent("item/axe_of_executioner", mcLoc("item/handheld"))
                 .texture("layer0", modLoc("item/axe_of_executioner")); // 行刑者之斧
+
+        basicItem(ModItems.MENDING_MIXTURE.getId());    // 修补混合物
 
         basicItem(ModItems.ETHERIUM_HELMET.getId());
         basicItem(ModItems.ETHERIUM_CHESTPLATE.getId());

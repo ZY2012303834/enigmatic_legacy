@@ -1,14 +1,14 @@
 {
   "category": "enigmatic_legacy:relics",
   "icon": "enigmatic_legacy:golden_ring",
-  "name": "精美戒指",
+  "name": "精致戒指",
   "pages": [
     {
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:golden_ring",
       "link_recipe": true,
-      "text": "以贵重材料精制而成的戒指，适合作为附魔与进一步转化的载体。",
-      "title": "精美戒指"
+      "text": "拥有更珍贵框架的精炼戒指，适合进一步附魔或转化。",
+      "title": "精致戒指"
     },
     {
       "type": "patchouli:crafting",

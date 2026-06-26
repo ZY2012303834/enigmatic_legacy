@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:monster_charm",
       "link_recipe": true,
-      "text": "献给怪物猎人的勋章。它提升对敌对生物的伤害，并带来额外战利品。",
+      "text": "献给猎杀怪物者的勋章。$(br2)它强化对敌对生物的战斗，并可能带来额外收益。",
       "title": "怪物猎人勋章"
     },
     {
@@ -19,5 +19,5 @@
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 70
+  "sortnum": 90
 }

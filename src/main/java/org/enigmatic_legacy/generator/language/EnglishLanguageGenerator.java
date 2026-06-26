@@ -609,6 +609,19 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.axe_of_executioner.2", "Each level of Looting increases beheading chance by %s.");
         //end
 
+        // 修补混合物
+        addItem(ModItems.MENDING_MIXTURE, "Mending Mixture");
+
+        add("tooltip.enigmatic_legacy.mending_mixture.1",
+                "Fully repairs a damaged item when combined with it in a crafting grid.");
+
+        add("tooltip.enigmatic_legacy.mending_mixture.2",
+                "The repaired item keeps its enchantments, name, and other data.");
+
+        add("tooltip.enigmatic_legacy.mending_mixture.3",
+                "Do not drink it.");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");
     }

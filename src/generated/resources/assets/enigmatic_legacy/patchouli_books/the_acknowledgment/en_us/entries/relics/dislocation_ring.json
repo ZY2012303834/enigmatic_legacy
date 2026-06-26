@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:dislocation_ring",
       "link_recipe": true,
-      "text": "A stronger magnetic ring. Instead of slowly dragging items, it dislocates nearby drops directly into reach.",
+      "text": "A stronger magnetic ring.$(br2)Instead of slowly dragging drops, it dislocates nearby items directly into reach.",
       "title": "Dislocation Ring"
     },
     {

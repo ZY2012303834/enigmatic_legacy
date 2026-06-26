@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:monster_charm",
       "link_recipe": true,
-      "text": "An emblem devoted to hunting monsters. It increases damage against hostile creatures and grants additional rewards.",
+      "text": "An emblem devoted to hunting monsters.$(br2)It improves combat against hostile creatures and can grant additional rewards.",
       "title": "Emblem of Monster Slayer"
     },
     {
@@ -19,5 +19,5 @@
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 70
+  "sortnum": 90
 }

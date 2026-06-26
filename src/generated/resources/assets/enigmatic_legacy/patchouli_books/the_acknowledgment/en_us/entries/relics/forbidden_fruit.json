@@ -7,11 +7,11 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:forbidden_fruit",
       "link_recipe": true,
-      "text": "A fruit whose sweetness promises more than it should.",
+      "text": "A fruit whose sweetness promises more than it should.$(br2)Its gift is powerful, but the price should never be ignored.",
       "title": "Forbidden Fruit"
     }
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 160
+  "sortnum": 210
 }

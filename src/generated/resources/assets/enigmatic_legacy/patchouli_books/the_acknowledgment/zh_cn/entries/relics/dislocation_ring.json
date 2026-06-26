@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:dislocation_ring",
       "link_recipe": true,
-      "text": "更强大的磁性戒指。它并非缓慢拖动物品，而是让附近掉落物直接进入可拾取范围。",
+      "text": "更强的磁力戒指。$(br2)它不只是慢慢吸引掉落物，而是将其直接转位到触手可及的位置。",
       "title": "转位之戒"
     },
     {

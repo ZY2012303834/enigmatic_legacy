@@ -10,8 +10,8 @@
     },
     {
       "type": "patchouli:text",
-      "text": "In the original design, this knowledge was deliberately hidden. In this book, the hint is visible, but the item itself is not generated until it is registered in the mod.",
-      "title": "Not Hidden Here"
+      "text": "The Acknowledgment records only fragments of this truth.$(br2)Some knowledge must be earned through exploration, curses, and survival.",
+      "title": "Hint"
     }
   ],
   "read_by_default": true,

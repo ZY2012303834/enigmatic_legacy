@@ -52,6 +52,9 @@ public final class ModItems {
     public static final DeferredItem<TomeOfHungeringKnowledge> ENCHANTMENT_TRANSPOSER = ITEMS.register("enchantment_transposer", TomeOfHungeringKnowledge::new); // 求知之书
     public static final DeferredItem<TomeOfDevouredMalignancy> CURSE_TRANSPOSER = ITEMS.register("curse_transposer", TomeOfDevouredMalignancy::new); // 噬咒之书
     public static final DeferredItem<RecallPotionItem> RECALL_POTION = ITEMS.register("recall_potion", RecallPotionItem::new); // 召回药水
+    // 修补混合物
+// 用于在工作台中完全修复任意受损的可损坏物品。
+    public static final DeferredItem<MendingMixture> MENDING_MIXTURE = ITEMS.register("mending_mixture", MendingMixture::new);
 
     public static final DeferredItem<UnwitnessedAmulet> UNWITNESSED_AMULET = ITEMS.register("unwitnessed_amulet", UnwitnessedAmulet::new);
     public static final DeferredItem<EnigmaticAmulet> ENIGMATIC_AMULET_RED = ITEMS.register("enigmatic_amulet_red", () -> new EnigmaticAmulet(AmuletVariant.RED));

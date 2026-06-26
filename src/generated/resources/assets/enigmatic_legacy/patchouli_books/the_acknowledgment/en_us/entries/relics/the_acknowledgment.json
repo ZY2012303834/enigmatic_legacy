@@ -7,28 +7,23 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:the_acknowledgment",
       "link_recipe": true,
-      "text": "The Acknowledgment is both a mysterious guidebook and an ancient relic.$(br2)Right-clicking it opens a manual that records relics, stones, scrolls, curses, and hidden knowledge.$(br2)When you do not know what to seek next, this book is the safest place to begin.",
+      "text": "The Acknowledgment is both a mysterious guidebook and an ancient relic.$(br2)Right-clicking it opens this manual, which records relics, stones, scrolls, curses, and hidden knowledge.",
       "title": "The Acknowledgment"
     },
     {
       "type": "patchouli:text",
-      "text": "The Acknowledgment is not consumed and does not need to be equipped in a Curios slot. Hold it and right-click to read the knowledge currently recorded within.$(br2)It contains material sources, relic uses, exploration goals, and important hints related to the Ring of the Seven Curses.",
+      "text": "The Acknowledgment is not consumed and does not need to be equipped.$(br2)Hold it and right-click to read its current knowledge.",
       "title": "As a Guide"
     },
     {
       "type": "patchouli:text",
-      "text": "The Acknowledgment is not only a book. It can be swung like a weapon, setting struck enemies aflame.$(br2)Current values:$(br)$(li)Attack Damage: 3.5$(li)Attack Speed: -2.1$(li)Ignites target: 4 seconds$(br2)It can also be enchanted, with an enchantability value of 24.",
+      "text": "The Acknowledgment can also be swung like a weapon.$(br2)It deals modest damage, ignites struck enemies, and can be enchanted.",
       "title": "As a Weapon"
     },
     {
       "type": "patchouli:text",
-      "text": "When the bearer suffers under the Ring of the Seven Curses, The Acknowledgment weakens the pain of the Fourth Curse.$(br2)Current effect:$(br)$(li)Reduces the Fourth Curse's extra incoming damage penalty by 20%$(br2)It does not remove the curse completely, but it makes survival slightly more forgiving.",
+      "text": "When the bearer suffers under the Ring of the Seven Curses, The Acknowledgment softens part of the curse's pain.$(br2)It does not remove the curse, but it makes survival slightly more forgiving.",
       "title": "Curse Resonance"
-    },
-    {
-      "type": "patchouli:text",
-      "text": "It is recommended to craft The Acknowledgment early. It lets you check relic functions at any time and can serve as an emergency weapon.$(br2)If you are wearing the Ring of the Seven Curses, keeping it in your inventory is strongly advised.",
-      "title": "Usage Advice"
     },
     {
       "type": "patchouli:crafting",

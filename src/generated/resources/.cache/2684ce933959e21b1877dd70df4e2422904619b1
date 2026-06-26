@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-26T16:19:32.4709232	vanilla/Recipes
+// 1.21.1	2026-06-27T07:08:41.9015267	vanilla/Recipes
 138cca5fc2d36a468976c88c266618e68aa51d88 data/enigmatic_legacy/advancement/recipes/building_blocks/astral_dust_sack.json
 75128c3d277fd90fca1df4cc9f996933af7f7241 data/enigmatic_legacy/advancement/recipes/building_blocks/etherium_block.json
 70a559dbe3db33a763c165b60a23730d9e9f955b data/enigmatic_legacy/advancement/recipes/combat/axe_of_executioner.json
@@ -28,6 +28,7 @@ c42014eeb94e52f8cd0ec999471820c210701d1b data/enigmatic_legacy/advancement/recip
 67afc31468041d604544d2ef7e517776de057341 data/enigmatic_legacy/advancement/recipes/misc/iron_ring.json
 e6d68748b75ff98fe29f25cf84a97c858267a267 data/enigmatic_legacy/advancement/recipes/misc/magnet_ring.json
 b4bc3350ebdc21a63600169d4bdbb66abe888b29 data/enigmatic_legacy/advancement/recipes/misc/mega_sponge.json
+efa03204eb4f91704aaec8cc30cbc62cf62dc9ed data/enigmatic_legacy/advancement/recipes/misc/mending_mixture.json
 03d4356a380943e7d1952c0b1149bc38da4bccc7 data/enigmatic_legacy/advancement/recipes/misc/monster_charm.json
 501be4947ff26e2ed6d5e41e09162300a7fffed6 data/enigmatic_legacy/advancement/recipes/misc/the_acknowledgment.json
 0165b94e6e6f736530ee29fc3acd60355868f04e data/enigmatic_legacy/advancement/recipes/misc/the_cube.json
@@ -70,6 +71,8 @@ b7c1d5bc5ea6a00dba1fbcc0656e65bc1b07e93c data/enigmatic_legacy/recipe/lamps/big_
 d65d6289f4b2aa74e1d51ee5e48c5286a303ae47 data/enigmatic_legacy/recipe/lamps/big_shroomlamp.json
 b7ff29e9a057ae6829ace5151db9d21fc64eda65 data/enigmatic_legacy/recipe/magnet_ring.json
 1a7fcaac2a30e1ae84d8113fa331190680d7c92d data/enigmatic_legacy/recipe/mega_sponge.json
+0d57ca57cc9ce8c4ec5c8ab5166642cc390c5bbf data/enigmatic_legacy/recipe/mending_mixture.json
+d7ac2e0da59059256e77bc61b36e3925d2b5c44f data/enigmatic_legacy/recipe/mending_mixture_repair.json
 73dffe23d0416988f96b69e6853bf9014071a213 data/enigmatic_legacy/recipe/monster_charm.json
 516862b7044c46c4e7294da1ab7aafe5196ee822 data/enigmatic_legacy/recipe/the_acknowledgment.json
 37833edd533983868b64f9e92e785dfe87090cf6 data/enigmatic_legacy/recipe/the_cube.json

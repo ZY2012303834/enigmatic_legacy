@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:evil_essence",
       "link_recipe": true,
-      "text": "Condensed malice given form. It is unstable, corruptive, and useful.",
+      "text": "Condensed malice given form.$(br2)It is unstable, corruptive, and useful.",
       "title": "Evil Essence"
     }
   ],

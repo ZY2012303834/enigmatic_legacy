@@ -1,4 +1,5 @@
 package org.enigmatic_legacy.generator.patchouli;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import net.minecraft.data.CachedOutput;
@@ -7,35 +8,68 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.jetbrains.annotations.NotNull;
+
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+
 /**
- * Patchouli ????????????
+ * Patchouli 手册内容生成器抽象基类。
+ * 作用：
+ * - EnglishPatchouliBookGenerator 和 ChinesePatchouliBookGenerator 都继承这个类。
+ * - 这里提供通用的 JSON 构建方法，例如分类、条目、文本页、展示页、合成页。
+ * 输出结构：
+ * - book.json 位于 data 包，由 PatchouliBookDataGenerator 生成。
+ * - 分类和书页位于 assets 包，由本类子类生成。
  */
 abstract class AbstractPatchouliBookContentGenerator implements DataProvider {
+    /**
+     * Patchouli 书本 ID。
+     * 对应：the_acknowledgment
+     */
     protected static final String BOOK = "the_acknowledgment";
+
+    /**
+     * assets 资源路径提供器。
+     */
     private final PackOutput.PathProvider assetPathProvider;
+
     protected AbstractPatchouliBookContentGenerator(PackOutput output) {
         this.assetPathProvider = output.createPathProvider(
                 PackOutput.Target.RESOURCE_PACK,
                 "patchouli_books"
         );
     }
+
+    /**
+     * 数据生成执行入口。
+     */
     @Override
     public final @NotNull CompletableFuture<?> run(@NotNull CachedOutput output) {
         List<CompletableFuture<?>> futures = new ArrayList<>();
         addContent(output, futures);
         return CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new));
     }
+
+    /**
+     * 子类在这里添加分类和条目。
+     */
     protected abstract void addContent(CachedOutput output, List<CompletableFuture<?>> futures);
+
+    /**
+     * 生成 assets 下的输出路径。
+     */
     private Path getAssetPath(String language, String relativePath) {
         return this.assetPathProvider.json(ResourceLocation.fromNamespaceAndPath(
                 EnigmaticLegacy.MODID,
                 BOOK + "/" + language + "/" + relativePath
         ));
     }
+
+    /**
+     * 保存一个 Patchouli 分类或条目 JSON。
+     */
     protected CompletableFuture<?> save(
             CachedOutput output,
             String language,
@@ -48,6 +82,10 @@ abstract class AbstractPatchouliBookContentGenerator implements DataProvider {
                 getAssetPath(language, relativePath)
         );
     }
+
+    /**
+     * 生成基础三大分类：世界、材料、遗物。
+     */
     protected void addCategories(
             CachedOutput output,
             List<CompletableFuture<?>> futures,
@@ -80,6 +118,10 @@ abstract class AbstractPatchouliBookContentGenerator implements DataProvider {
                 20
         )));
     }
+
+    /**
+     * 生成 Patchouli 的 book.json。
+     */
     protected static JsonObject createBookJson() {
         JsonObject book = new JsonObject();
 
@@ -92,6 +134,7 @@ abstract class AbstractPatchouliBookContentGenerator implements DataProvider {
         book.addProperty("book_texture", "enigmatic_legacy:textures/gui/the_acknowledgment.png");
         book.addProperty("model", "enigmatic_legacy:item/the_acknowledgment");
 
+        // 不让 Patchouli 自动生成书本物品，使用本模组自己的启示之证。
         book.addProperty("dont_generate_book", true);
         book.addProperty("custom_book_item", "enigmatic_legacy:the_acknowledgment");
         book.addProperty("i18n", true);
@@ -111,6 +154,10 @@ abstract class AbstractPatchouliBookContentGenerator implements DataProvider {
 
         return book;
     }
+
+    /**
+     * 创建分类 JSON。
+     */
     protected static JsonObject category(String name, String description, String icon, int sortnum) {
         JsonObject json = new JsonObject();
         json.addProperty("name", name);
@@ -120,6 +167,10 @@ abstract class AbstractPatchouliBookContentGenerator implements DataProvider {
         json.addProperty("secret", false);
         return json;
     }
+
+    /**
+     * 创建只有一个 spotlight 页面的简单条目。
+     */
     protected static JsonObject simpleSpotlight(
             String name,
             String category,
@@ -135,6 +186,10 @@ abstract class AbstractPatchouliBookContentGenerator implements DataProvider {
                 spotlightPage(icon, name, text)
         );
     }
+
+    /**
+     * 创建带合成配方页的条目。
+     */
     protected static JsonObject recipeEntry(
             String name,
             String category,
@@ -152,6 +207,10 @@ abstract class AbstractPatchouliBookContentGenerator implements DataProvider {
                 craftingPage(recipe, "合成配方 / Crafting Recipe")
         );
     }
+
+    /**
+     * 创建普通 Patchouli 条目。
+     */
     protected static JsonObject entry(
             String name,
             String category,
@@ -178,6 +237,10 @@ abstract class AbstractPatchouliBookContentGenerator implements DataProvider {
 
         return json;
     }
+
+    /**
+     * 创建文本页。
+     */
     protected static JsonObject textPage(String title, String text) {
         JsonObject page = new JsonObject();
         page.addProperty("type", "patchouli:text");
@@ -185,6 +248,10 @@ abstract class AbstractPatchouliBookContentGenerator implements DataProvider {
         page.addProperty("text", text);
         return page;
     }
+
+    /**
+     * 创建物品展示页。
+     */
     protected static JsonObject spotlightPage(String item, String title, String text) {
         JsonObject page = new JsonObject();
         page.addProperty("type", "patchouli:spotlight");
@@ -194,6 +261,10 @@ abstract class AbstractPatchouliBookContentGenerator implements DataProvider {
         page.addProperty("text", text);
         return page;
     }
+
+    /**
+     * 创建合成配方页。
+     */
     protected static JsonObject craftingPage(String recipe, String text) {
         JsonObject page = new JsonObject();
         page.addProperty("type", "patchouli:crafting");

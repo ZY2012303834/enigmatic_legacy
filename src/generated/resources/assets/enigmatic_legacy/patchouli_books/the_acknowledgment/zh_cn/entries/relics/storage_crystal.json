@@ -7,11 +7,11 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:storage_crystal",
       "link_recipe": true,
-      "text": "承载被中断生命的容器。当七咒之戒救回佩戴者时，它保存本该失去之物。",
+      "text": "用于容纳被打断生命的容器。$(br2)它会保存那些被七咒拯救时本该失去的东西。",
       "title": "超维容器"
     }
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 140
+  "sortnum": 190
 }

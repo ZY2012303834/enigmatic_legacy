@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:cosmic_heart",
       "link_recipe": true,
-      "text": "A heart-shaped concentration of cosmic potential. It is a crucial ingredient for artifacts tied to space and distance.",
+      "text": "A heart-shaped concentration of cosmic potential.$(br2)It is a crucial ingredient for artifacts tied to space and distance.",
       "title": "Cosmic Heart"
     },
     {

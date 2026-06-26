@@ -1,0 +1,17 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:curse_transposer",
+  "name": "噬咒之书",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:curse_transposer",
+      "link_recipe": true,
+      "text": "吞食恶意与诅咒的书。$(br2)它与诅咒，以及愿意处理诅咒知识的人相关。",
+      "title": "噬咒之书"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 170
+}

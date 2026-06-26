@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:iron_ring",
       "link_recipe": true,
-      "text": "A simple ring base. Many stronger rings begin as something this plain.",
+      "text": "A simple ring base.$(br2)Many stronger rings begin as something this plain.",
       "title": "Iron Ring"
     },
     {

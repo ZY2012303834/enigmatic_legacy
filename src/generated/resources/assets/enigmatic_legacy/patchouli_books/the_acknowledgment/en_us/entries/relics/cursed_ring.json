@@ -1,0 +1,17 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:cursed_ring",
+  "name": "Ring of the Seven Curses",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:cursed_ring",
+      "link_recipe": true,
+      "text": "A cursed ring that binds the bearer to seven punishments.$(br2)Many powerful relics answer only to those who endure its burden.",
+      "title": "Ring of the Seven Curses"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 5
+}

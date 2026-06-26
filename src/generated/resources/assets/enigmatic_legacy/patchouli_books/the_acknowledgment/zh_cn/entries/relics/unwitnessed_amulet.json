@@ -7,16 +7,16 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:unwitnessed_amulet",
       "link_recipe": true,
-      "text": "尚未被见证其本质的护符。使用后会揭示其神秘变体之一。",
+      "text": "性质尚未被见证的护符。$(br2)使用它可以揭示其中一种神秘变体。",
       "title": "未见之护符"
     },
     {
       "type": "patchouli:text",
-      "text": "每种显现出的护符都拥有不同颜色与能力：伤害、速度、弹射物偏转、重力、挖掘、吸血或游泳。",
+      "text": "每种显现护符都有不同颜色与能力：伤害、速度、弹射物偏转、重力、挖掘、吸血或游泳。",
       "title": "显现形态"
     }
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 130
+  "sortnum": 180
 }

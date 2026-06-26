@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:ender_rod",
       "link_recipe": true,
-      "text": "注入末影共鸣的细棒，可作为更奇异构造的稳定部件。",
+      "text": "灌注末影共鸣的棒材。$(br2)它常作为奇异造物的稳定组件。",
       "title": "末影棒"
     },
     {

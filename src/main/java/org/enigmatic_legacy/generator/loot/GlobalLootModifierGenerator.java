@@ -41,7 +41,24 @@ public class GlobalLootModifierGenerator extends GlobalLootModifierProvider {
         addForbiddenFruitModifiers();
         addAstralDustModifiers();
         addEtheriumOreModifiers();
+        addMendingMixtureModifiers();
+    }
 
+    /**
+     * 修补混合物箱子注入。
+     * 原版设定：
+     * - 修补混合物可以小概率在末地城宝藏箱中找到。
+     * 注意：
+     * - 这里只决定“出现在哪类箱子”。
+     * - 实际概率在 InjectLootTableGenerator 的
+     *   mending_mixture/end_city_treasure 表中控制。
+     */
+    private void addMendingMixtureModifiers() {
+        addTableModifier(
+                "mending_mixture_end_city_treasure",
+                BuiltInLootTables.END_CITY_TREASURE,
+                "inject/chests/mending_mixture/end_city_treasure"
+        );
     }
 
     /**

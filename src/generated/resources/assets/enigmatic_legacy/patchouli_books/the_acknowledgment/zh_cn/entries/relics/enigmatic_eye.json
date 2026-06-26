@@ -1,22 +1,22 @@
 {
   "category": "enigmatic_legacy:relics",
   "icon": "enigmatic_legacy:enigmatic_eye",
-  "name": "全知之眼",
+  "name": "休眠之眼 / 全知之眼",
   "pages": [
     {
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:enigmatic_eye",
       "link_recipe": true,
-      "text": "此眼沉睡着，直到被唤醒。苏醒后，它可以作为护符佩戴。",
+      "text": "这只眼在被唤醒前沉睡着。$(br2)它只会为每名玩家出现一次，通常来自玩家第一次发现的合适战利品。",
       "title": "休眠之眼"
     },
     {
       "type": "patchouli:text",
-      "text": "佩戴已唤醒的全知之眼时，会额外提供一个护符栏位，并提高方块交互距离。它也可能让观察者发声。",
-      "title": "苏醒之视"
+      "text": "唤醒后，它可以作为护符装备。$(br2)它提供额外护符栏位，增加交互距离，并可能让观察者发声。",
+      "title": "醒来的视线"
     }
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 120
+  "sortnum": 140
 }

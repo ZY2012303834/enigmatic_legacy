@@ -36,7 +36,8 @@
     "enigmatic_legacy:forbidden_fruit_bastion_hoglin_stable",
     "enigmatic_legacy:forbidden_fruit_bastion_other",
     "enigmatic_legacy:astral_dust_end_city_treasure",
-    "enigmatic_legacy:etherium_ore_end_city_treasure"
+    "enigmatic_legacy:etherium_ore_end_city_treasure",
+    "enigmatic_legacy:mending_mixture_end_city_treasure"
   ],
   "replace": false
 }

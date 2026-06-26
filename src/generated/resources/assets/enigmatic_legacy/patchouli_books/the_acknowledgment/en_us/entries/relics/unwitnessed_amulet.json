@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:unwitnessed_amulet",
       "link_recipe": true,
-      "text": "An amulet whose nature is not yet witnessed. Use it to reveal one of its enigmatic variants.",
+      "text": "An amulet whose nature is not yet witnessed.$(br2)Use it to reveal one of its enigmatic variants.",
       "title": "Unwitnessed Amulet"
     },
     {
@@ -18,5 +18,5 @@
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 130
+  "sortnum": 180
 }

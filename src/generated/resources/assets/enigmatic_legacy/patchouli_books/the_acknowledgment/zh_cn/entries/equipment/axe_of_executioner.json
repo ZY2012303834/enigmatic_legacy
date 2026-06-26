@@ -1,0 +1,23 @@
+{
+  "category": "enigmatic_legacy:equipment",
+  "icon": "enigmatic_legacy:axe_of_executioner",
+  "name": "行刑者之斧",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:axe_of_executioner",
+      "link_recipe": true,
+      "text": "一把残酷的斧头，有概率砍下被击杀者的头颅。$(br2)基础斩首概率为 15%，每级抢夺额外增加 5%。",
+      "title": "行刑者之斧"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:axe_of_executioner",
+      "text": "合成配方 / Crafting Recipe",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 0
+}

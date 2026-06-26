@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:enchanter_pearl",
       "link_recipe": true,
-      "text": "A pearl useful only to cursed bearers. While equipped, it grants an additional charm slot.",
+      "text": "A pearl useful only to cursed bearers.$(br2)While equipped, it grants an additional charm slot.",
       "title": "Enchanter's Pearl"
     },
     {
@@ -19,5 +19,5 @@
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 110
+  "sortnum": 130
 }

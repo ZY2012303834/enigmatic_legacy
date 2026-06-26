@@ -1,14 +1,14 @@
 {
   "category": "enigmatic_legacy:materials",
   "icon": "enigmatic_legacy:thicc_scroll",
-  "name": "空卷轴",
+  "name": "厚重卷轴",
   "pages": [
     {
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:thicc_scroll",
       "link_recipe": true,
-      "text": "一张空白却异常厚实的卷轴。它能承载普通纸张无法容纳的知识。",
-      "title": "空卷轴"
+      "text": "一张空白却异常坚韧的卷轴。$(br2)它能承载普通纸张无法容纳的知识。",
+      "title": "厚重卷轴"
     },
     {
       "type": "patchouli:crafting",

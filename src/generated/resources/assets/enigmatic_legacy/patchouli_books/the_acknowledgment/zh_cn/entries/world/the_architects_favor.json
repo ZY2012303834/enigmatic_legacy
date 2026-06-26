@@ -1,17 +1,17 @@
 {
   "category": "enigmatic_legacy:world",
   "icon": "minecraft:structure_block",
-  "name": "建筑师的青睐",
+  "name": "造物者的眷顾",
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "在寻常合成与寻常奖赏之外，存在着某种并非所有人都该看见的青睐。",
-      "title": "建筑师的青睐"
+      "text": "在普通合成与普通奖励之外，存在着并非人人都能看见的眷顾。",
+      "title": "造物者的眷顾"
     },
     {
       "type": "patchouli:text",
-      "text": "原设计中，这份知识被刻意隐藏。现在手册会显示这条提示；但在物品真正注册前，不会生成对应物品页与配方页。",
-      "title": "此处不再隐藏"
+      "text": "启示之证只记录这份真相的一部分。$(br2)有些知识必须通过探索、诅咒与生存来获得。",
+      "title": "提示"
     }
   ],
   "read_by_default": true,

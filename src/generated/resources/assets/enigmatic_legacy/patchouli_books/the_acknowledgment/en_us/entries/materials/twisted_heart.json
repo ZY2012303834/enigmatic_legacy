@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:twisted_heart",
       "link_recipe": true,
-      "text": "A heart distorted by hostile energies. It is dangerous, but many relics demand dangerous components.",
+      "text": "A heart distorted by hostile energies.$(br2)It is dangerous, but many relics demand dangerous components.",
       "title": "Twisted Heart"
     },
     {

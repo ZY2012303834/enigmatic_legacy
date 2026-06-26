@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:ocean_stone",
       "link_recipe": true,
-      "text": "水域属性的术石，适合水下探索。$(br2)它强化水中的移动与生存能力，但其力量与火焰相冲。",
+      "text": "水域属性术石，适合水下探索。$(br2)它强化水中的移动与生存能力，但其力量与火焰相冲。",
       "title": "海洋意志"
     },
     {

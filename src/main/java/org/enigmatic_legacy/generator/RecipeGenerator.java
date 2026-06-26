@@ -12,6 +12,7 @@ import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.block.ModBlocks;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.recipe.EnchantmentTransposingRecipe;
+import org.enigmatic_legacy.recipe.MendingMixtureRepairRecipe;
 import org.jetbrains.annotations.NotNull;
 
 public class RecipeGenerator extends RecipeProvider {
@@ -503,5 +504,39 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('R', Items.BLAZE_ROD)
                 .unlockedBy("has_wither_skeleton_skull", has(Items.WITHER_SKELETON_SKULL))
                 .save(output);
+
+        // 修补混合物 / Mending Mixture
+        //
+        // 复刻设定：
+        // - 无序合成；
+        // - 使用龙息、恶魂之泪、幻翼膜和玻璃瓶制作；
+        // - 后续可与任意受损可损坏物品合成，完全修复耐久。
+        //
+        // 数据生成后会生成：
+        // data/enigmatic_legacy/recipe/mending_mixture.json
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MENDING_MIXTURE.get())
+                .requires(Items.DRAGON_BREATH)
+                .requires(Items.GHAST_TEAR)
+                .requires(Items.PHANTOM_MEMBRANE)
+                .requires(Items.GLASS_BOTTLE)
+                .unlockedBy("has_dragon_breath", has(Items.DRAGON_BREATH))
+                .save(output);
+
+        // 修补混合物特殊修复配方。
+        //
+        // 这个配方没有固定输入 JSON。
+        // 它由 MendingMixtureRepairRecipe 动态判断：
+        // - 1 个修补混合物；
+        // - 1 个任意受损可损坏物品；
+        // - 输出同一物品的满耐久副本；
+        // - 修补混合物留下空玻璃瓶。
+        //
+        // 数据生成后会生成：
+        // data/enigmatic_legacy/recipe/mending_mixture_repair.json
+        SpecialRecipeBuilder.special(MendingMixtureRepairRecipe::new)
+                .save(output, ResourceLocation.fromNamespaceAndPath(
+                        EnigmaticLegacy.MODID,
+                        "mending_mixture_repair"
+                ));
     }
 }

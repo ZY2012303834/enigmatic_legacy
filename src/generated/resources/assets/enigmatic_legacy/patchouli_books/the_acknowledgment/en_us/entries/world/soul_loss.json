@@ -5,7 +5,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Death is rarely without consequence. Some forces return what was lost, but never without reminding you that the world keeps count.",
+      "text": "Death is rarely without consequence.$(br2)Some forces return what was lost, but never without reminding you that the world keeps count.",
       "title": "Soul Loss"
     }
   ],

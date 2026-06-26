@@ -1,0 +1,17 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:extradimensional_eye",
+  "name": "超维之眼",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:extradimensional_eye",
+      "link_recipe": true,
+      "text": "窥视普通空间之外的高阶眼睛。$(br2)它与额外交互距离、隐藏容器和异样感知相关。",
+      "title": "超维之眼"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 150
+}

@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:twisted_mirror",
       "link_recipe": true,
-      "text": "A mirror that bends return and remembrance. It is crafted around a recall potion and a Twisted Heart.",
+      "text": "A mirror that bends return and remembrance.$(br2)It is crafted around a recall potion and a Twisted Heart.",
       "title": "Twisted Mirror"
     },
     {

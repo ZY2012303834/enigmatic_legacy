@@ -69,10 +69,37 @@ public class InjectLootTableGenerator implements DataProvider {
         // 以太矿石
         addEtheriumOreTables(cachedOutput, futures);
 
+        // 修补混合物
+        addMendingMixtureTables(cachedOutput, futures);
+
         /*
          * 等待所有 loot table 文件全部写入完成。
          */
         return CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new));
+    }
+
+    /**
+     * 生成修补混合物 loot table。
+     * 原版获取方式：
+     * - 修补混合物可以小概率在末地城箱子中找到。
+     * 设计：
+     * - rolls 固定为 1。
+     * - 修补混合物权重 = 1。
+     * - empty 空条目权重 = 19。
+     * 概率：
+     * - 1 / (1 + 19) = 5%
+     * 生成路径：
+     * data/enigmatic_legacy/loot_table/inject/chests/mending_mixture/end_city_treasure.json
+     */
+    private void addMendingMixtureTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {
+        futures.add(saveTable(
+                cachedOutput,
+                "mending_mixture/end_city_treasure",
+                1.0D,
+                1.0D,
+                itemEntry(ModItems.MENDING_MIXTURE.get(), 1),
+                emptyEntry(19)
+        ));
     }
 
     /**

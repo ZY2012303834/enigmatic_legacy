@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-26T15:57:05.1155745	vanilla/Item Models: enigmatic_legacy
+// 1.21.1	2026-06-27T07:08:41.8903349	vanilla/Item Models: enigmatic_legacy
 aaf9eff73642636d85d6ecd1627b8303f5153a76 assets/enigmatic_legacy/models/item/abyssal_heart.json
 79e416a4d6e90035107f541617b7d4a2d2d7abbb assets/enigmatic_legacy/models/item/angel_blessing.json
 71ad4196d7e8a842e7122ea637f5096bd1de67b7 assets/enigmatic_legacy/models/item/astral_dust.json
@@ -54,6 +54,7 @@ e9b89a174a55e8ae199acedfccbc959497d7b814 assets/enigmatic_legacy/models/item/iro
 4258deb1634fc563d998d09104830123622e1b09 assets/enigmatic_legacy/models/item/item/the_acknowledgment.json
 605ecdfd8e7c0a82ef87dabbff6105e8320fb367 assets/enigmatic_legacy/models/item/magnet_ring.json
 3cc83dfa20f9d0d9ec2f0fde7b803b1fa8326477 assets/enigmatic_legacy/models/item/mega_sponge.json
+79d82a21647e0c55bf0a6bab13535800f169d97c assets/enigmatic_legacy/models/item/mending_mixture.json
 976082ecddc4955efb4fd7527f3124871d3ff06f assets/enigmatic_legacy/models/item/monster_charm.json
 4f4071a2cea28cee7982429764404f03b2e1f0fa assets/enigmatic_legacy/models/item/ocean_stone.json
 70a49ada3e49d884eb2a05756d29b94c85d78f5f assets/enigmatic_legacy/models/item/recall_potion.json

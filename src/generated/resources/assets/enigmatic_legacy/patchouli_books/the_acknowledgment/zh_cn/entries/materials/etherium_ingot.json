@@ -7,13 +7,13 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:etherium_ingot",
       "link_recipe": true,
-      "text": "以太是一种经过精炼的材料，用于更高阶遗物的构造。",
-      "title": "以太"
+      "text": "用于高级遗物构造的精炼材料。$(br2)它常被用于制作以太工具、武器与护甲。",
+      "title": "以太锭"
     },
     {
       "type": "patchouli:crafting",
       "recipe": "enigmatic_legacy:etherium_block_uncrafting",
-      "text": "以太块可以重新拆回以太锭。",
+      "text": "以太块可以分解回以太锭。",
       "title": " "
     }
   ],

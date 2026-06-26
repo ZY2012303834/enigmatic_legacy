@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:treasure_hunter_charm",
       "link_recipe": true,
-      "text": "A charm for miners and explorers. It improves mining, grants fortune, and can maintain night vision.",
+      "text": "A charm for miners and explorers.$(br2)It improves mining, fortune, and exploration comfort.",
       "title": "Charm of Treasure Hunter"
     },
     {
@@ -19,5 +19,5 @@
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 80
+  "sortnum": 100
 }

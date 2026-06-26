@@ -1,0 +1,17 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:cursed_ring",
+  "name": "七咒之戒",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:cursed_ring",
+      "link_recipe": true,
+      "text": "将佩戴者绑定到七重惩罚的诅咒戒指。$(br2)许多强大遗物只会回应能够承受其负担的人。",
+      "title": "七咒之戒"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 5
+}

@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:magnet_ring",
       "link_recipe": true,
-      "text": "这枚戒指会将附近掉落物吸向佩戴者。可在物品栏界面切换启用状态。",
+      "text": "会将附近掉落物吸向佩戴者的戒指。$(br2)采矿、刷怪或清理大量掉落物时尤其方便。",
       "title": "磁力之戒"
     },
     {

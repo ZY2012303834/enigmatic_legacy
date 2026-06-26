@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:ender_ring",
       "link_recipe": true,
-      "text": "A ring linked to ender storage. It grants convenient access to an Ender Chest through its own interface.",
+      "text": "A ring linked to ender storage.$(br2)It grants convenient access to an Ender Chest through its own interface.",
       "title": "Ender Ring"
     },
     {

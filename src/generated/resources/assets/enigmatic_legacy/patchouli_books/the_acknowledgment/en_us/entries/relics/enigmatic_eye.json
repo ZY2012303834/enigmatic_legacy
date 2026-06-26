@@ -1,22 +1,22 @@
 {
   "category": "enigmatic_legacy:relics",
   "icon": "enigmatic_legacy:enigmatic_eye",
-  "name": "Inscrutable Eye",
+  "name": "Dormant Eye / Inscrutable Eye",
   "pages": [
     {
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:enigmatic_eye",
       "link_recipe": true,
-      "text": "The Eye sleeps until awakened. Once awakened, it may be worn as a charm.",
+      "text": "The Eye sleeps until awakened.$(br2)It appears only once for a player, when they first discover the right kind of loot.",
       "title": "Dormant Eye"
     },
     {
       "type": "patchouli:text",
-      "text": "When equipped, the awakened Eye grants an additional charm slot and increases block interaction range. It may also give voice to the Watcher.",
+      "text": "Once awakened, the Eye may be worn as a charm.$(br2)It grants an additional charm slot, increases interaction range, and may give voice to the Watcher.",
       "title": "Awakened Sight"
     }
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 120
+  "sortnum": 140
 }

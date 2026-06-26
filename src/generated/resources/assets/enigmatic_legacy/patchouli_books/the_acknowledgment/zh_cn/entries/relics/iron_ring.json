@@ -1,14 +1,14 @@
 {
   "category": "enigmatic_legacy:relics",
   "icon": "enigmatic_legacy:iron_ring",
-  "name": "铁指环",
+  "name": "铁戒指",
   "pages": [
     {
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:iron_ring",
       "link_recipe": true,
-      "text": "最朴素的戒指基底。许多更强大的戒指都始于这样平凡的形态。",
-      "title": "铁指环"
+      "text": "朴素的戒指基底。$(br2)许多更强大的戒指都从这类普通形态开始。",
+      "title": "铁戒指"
     },
     {
       "type": "patchouli:crafting",

@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:bloodstained_valor_emblem",
       "link_recipe": true,
-      "text": "An emblem for cursed bearers. The closer its wearer is to death, the more violently it answers.",
+      "text": "An emblem for cursed bearers.$(br2)The closer its wearer is to death, the more violently it answers.",
       "title": "Emblem of Bloodstained Valor"
     },
     {
@@ -19,5 +19,5 @@
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 90
+  "sortnum": 110
 }

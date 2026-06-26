@@ -1,0 +1,17 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:guardian_heart",
+  "name": "守卫者之心",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:guardian_heart",
+      "link_recipe": true,
+      "text": "承载远古守卫记忆的心脏。$(br2)它与防护、耐久和深海有关。",
+      "title": "守卫者之心"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 80
+}

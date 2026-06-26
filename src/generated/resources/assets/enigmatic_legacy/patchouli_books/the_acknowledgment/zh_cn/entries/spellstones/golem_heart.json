@@ -7,13 +7,13 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:golem_heart",
       "link_recipe": true,
-      "text": "一种防御型术石，会让佩戴者变得更接近铁魔像。$(br2)它提供护甲、护甲韧性、击退抗性，并在未穿护甲时给予更强保护。",
+      "text": "防御型术石，会让佩戴者变得更接近铁魔像。$(br2)它提供护甲、护甲韧性、击退抗性，并在未穿护甲时给予特殊保护。",
       "title": "魔像之心"
     },
     {
       "type": "patchouli:text",
       "text": "强大的防护并非没有代价。$(br2)魔法、中毒、凋零等效果会变得更加危险。",
-      "title": "代价"
+      "title": "弱点"
     }
   ],
   "read_by_default": true,

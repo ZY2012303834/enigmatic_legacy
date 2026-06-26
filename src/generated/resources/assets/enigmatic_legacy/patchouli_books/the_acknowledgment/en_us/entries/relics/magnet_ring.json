@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:magnet_ring",
       "link_recipe": true,
-      "text": "This ring pulls nearby items toward its bearer. It can be toggled from the inventory screen.",
+      "text": "This ring pulls nearby items toward its bearer.$(br2)It is useful while mining, farming, or fighting around many drops.",
       "title": "Magnet Ring"
     },
     {

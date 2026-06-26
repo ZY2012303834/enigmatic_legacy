@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:ender_rod",
       "link_recipe": true,
-      "text": "A rod infused with ender resonance. It serves as a stabilizing component for stranger constructions.",
+      "text": "A rod infused with ender resonance.$(br2)It serves as a stabilizing component for stranger constructions.",
       "title": "Ender Rod"
     },
     {

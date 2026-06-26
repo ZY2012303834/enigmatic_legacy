@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:heaven_scroll",
       "link_recipe": true,
-      "text": "一种在信标范围内赋予飞行能力的卷轴。$(br2)飞行会消耗经验，并在满足条件时免疫摔落伤害。",
+      "text": "在信标范围内赋予飞行能力的卷轴。$(br2)飞行会消耗经验，并在满足条件时免疫摔落伤害。",
       "title": "天堂之礼"
     },
     {

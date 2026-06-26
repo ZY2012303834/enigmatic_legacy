@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:treasure_hunter_charm",
       "link_recipe": true,
-      "text": "属于矿工与探险者的护符。它强化挖掘，提供时运，并能维持夜视。",
+      "text": "适合矿工和探险家的护符。$(br2)它提升挖掘、时运与探索舒适度。",
       "title": "猎宝者护符"
     },
     {
@@ -19,5 +19,5 @@
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 80
+  "sortnum": 100
 }

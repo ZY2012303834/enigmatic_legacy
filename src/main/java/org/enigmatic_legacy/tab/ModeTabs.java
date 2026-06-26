@@ -60,6 +60,7 @@ public final class ModeTabs {
                                 output.accept(ModItems.EXTRADIMENSIONAL_EYE.get());     // 超维之眼
                                 output.accept(ModItems.ENCHANTMENT_TRANSPOSER.get());   // 求知之书
                                 output.accept(ModItems.CURSE_TRANSPOSER.get());         // 噬咒之书
+                                output.accept(ModItems.MENDING_MIXTURE.get());          // 修补混合物
 
                                 // 武器工具
                                 output.accept(ModItems.THE_ACKNOWLEDGMENT.get());       // 启示之证
