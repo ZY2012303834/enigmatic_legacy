@@ -72,10 +72,70 @@ public class InjectLootTableGenerator implements DataProvider {
         // 修补混合物
         addMendingMixtureTables(cachedOutput, futures);
 
+        // 大地之心
+        // 按原作者项目的 Overworld epic 池概率生成。
+        // 这里只生成注入用 loot table，具体注入到哪些奖励箱，
+        // 在 GlobalLootModifierGenerator 中处理。
+        addEarthHeartTables(cachedOutput, futures);
+
+        // 大地之心碎片
+        // 按 Enigmatic Addons 的逻辑：
+        // 需要玩家佩戴七咒之戒时，才会从主世界地牢 / 遗迹奖励箱中出现。
+        // 这里只生成注入用 loot table，具体注入位置在 GlobalLootModifierGenerator 中处理。
+        addEarthHeartFragmentTables(cachedOutput, futures);
+
+
+
         /*
          * 等待所有 loot table 文件全部写入完成。
          */
         return CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new));
+    }
+
+    /**
+     * 生成大地之心碎片 loot table。
+     * 按大地之心同类 Overworld epic 池概率复刻：
+     * - rolls = 1 ~ 2
+     * - 大地之心碎片权重 = 7
+     * - empty 权重 = 224
+     * - 总权重 = 231
+     * 单次抽取概率：
+     * - 7 / 231 ≈ 3.03%
+     * 综合概率：
+     * - rolls = 1 ~ 2，约 4.5%。
+     */
+    private void addEarthHeartFragmentTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {
+        futures.add(saveTable(
+                cachedOutput,
+                "earth_heart_fragment/overworld_epic",
+                1.0D,
+                2.0D,
+                itemEntry(ModItems.EARTH_HEART_FRAGMENT.get(), 7),
+                emptyEntry(224)
+        ));
+    }
+
+    /**
+     * 生成大地之心 loot table。
+     * 按原作者项目 Overworld epic 池概率复刻：
+     * - rolls = 1 ~ 2
+     * - 大地之心权重 = 7
+     * - empty 权重 = 224
+     * - 总权重 = 231
+     * 单次抽取概率：
+     * - 7 / 231 ≈ 3.03%
+     * 综合概率：
+     * - rolls = 1 ~ 2，约 4.5%。
+     */
+    private void addEarthHeartTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {
+        futures.add(saveTable(
+                cachedOutput,
+                "earth_heart/overworld_epic",
+                1.0D,
+                2.0D,
+                itemEntry(ModItems.EARTH_HEART.get(), 7),
+                emptyEntry(224)
+        ));
     }
 
     /**

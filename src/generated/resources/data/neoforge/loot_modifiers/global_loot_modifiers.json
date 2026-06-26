@@ -37,7 +37,25 @@
     "enigmatic_legacy:forbidden_fruit_bastion_other",
     "enigmatic_legacy:astral_dust_end_city_treasure",
     "enigmatic_legacy:etherium_ore_end_city_treasure",
-    "enigmatic_legacy:mending_mixture_end_city_treasure"
+    "enigmatic_legacy:mending_mixture_end_city_treasure",
+    "enigmatic_legacy:earth_heart_simple_dungeon",
+    "enigmatic_legacy:earth_heart_abandoned_mineshaft",
+    "enigmatic_legacy:earth_heart_stronghold_crossing",
+    "enigmatic_legacy:earth_heart_stronghold_corridor",
+    "enigmatic_legacy:earth_heart_desert_pyramid",
+    "enigmatic_legacy:earth_heart_jungle_temple",
+    "enigmatic_legacy:earth_heart_igloo_chest",
+    "enigmatic_legacy:earth_heart_woodland_mansion",
+    "enigmatic_legacy:earth_heart_shipwreck_supply",
+    "enigmatic_legacy:earth_heart_fragment_simple_dungeon",
+    "enigmatic_legacy:earth_heart_fragment_abandoned_mineshaft",
+    "enigmatic_legacy:earth_heart_fragment_stronghold_crossing",
+    "enigmatic_legacy:earth_heart_fragment_stronghold_corridor",
+    "enigmatic_legacy:earth_heart_fragment_desert_pyramid",
+    "enigmatic_legacy:earth_heart_fragment_jungle_temple",
+    "enigmatic_legacy:earth_heart_fragment_igloo_chest",
+    "enigmatic_legacy:earth_heart_fragment_woodland_mansion",
+    "enigmatic_legacy:earth_heart_fragment_shipwreck_supply"
   ],
   "replace": false
 }

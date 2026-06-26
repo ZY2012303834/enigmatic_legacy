@@ -42,6 +42,15 @@ public class GlobalLootModifierGenerator extends GlobalLootModifierProvider {
         addAstralDustModifiers();
         addEtheriumOreModifiers();
         addMendingMixtureModifiers();
+
+        // 大地之心奖励箱获取方式。
+        // 按原作者项目的 Overworld epic 池注入范围复刻。
+        addEarthHeartModifiers();
+
+        // 大地之心碎片奖励箱获取方式
+        // 先按原项目奖励箱范围与概率注入，保证编译与数据生成正常。
+        addEarthHeartFragmentModifiers();
+
     }
 
     /**
@@ -177,6 +186,149 @@ public class GlobalLootModifierGenerator extends GlobalLootModifierProvider {
     }
 
     /**
+     * 大地之心奖励箱获取方式。
+     * 按原作者项目 Overworld epic 池复刻。
+     * 出现奖励箱：
+     * - 地牢
+     * - 废弃矿井
+     * - 要塞十字路口
+     * - 要塞走廊
+     * - 沙漠神殿
+     * - 丛林神庙
+     * - 雪屋地下室
+     * - 林地府邸
+     * - 沉船补给箱
+     * 概率：
+     * - 由 InjectLootTableGenerator 中的
+     *   earth_heart/overworld_epic 表控制。
+     * - 单次抽取约 3.03%。
+     * - rolls = 1 ~ 2，综合约 4.5%。
+     */
+    private void addEarthHeartModifiers() {
+        addTableModifier(
+                "earth_heart_simple_dungeon",
+                BuiltInLootTables.SIMPLE_DUNGEON,
+                "inject/chests/earth_heart/overworld_epic"
+        );
+
+        addTableModifier(
+                "earth_heart_abandoned_mineshaft",
+                BuiltInLootTables.ABANDONED_MINESHAFT,
+                "inject/chests/earth_heart/overworld_epic"
+        );
+
+        addTableModifier(
+                "earth_heart_stronghold_crossing",
+                BuiltInLootTables.STRONGHOLD_CROSSING,
+                "inject/chests/earth_heart/overworld_epic"
+        );
+
+        addTableModifier(
+                "earth_heart_stronghold_corridor",
+                BuiltInLootTables.STRONGHOLD_CORRIDOR,
+                "inject/chests/earth_heart/overworld_epic"
+        );
+
+        addTableModifier(
+                "earth_heart_desert_pyramid",
+                BuiltInLootTables.DESERT_PYRAMID,
+                "inject/chests/earth_heart/overworld_epic"
+        );
+
+        addTableModifier(
+                "earth_heart_jungle_temple",
+                BuiltInLootTables.JUNGLE_TEMPLE,
+                "inject/chests/earth_heart/overworld_epic"
+        );
+
+        addTableModifier(
+                "earth_heart_igloo_chest",
+                BuiltInLootTables.IGLOO_CHEST,
+                "inject/chests/earth_heart/overworld_epic"
+        );
+
+        addTableModifier(
+                "earth_heart_woodland_mansion",
+                BuiltInLootTables.WOODLAND_MANSION,
+                "inject/chests/earth_heart/overworld_epic"
+        );
+
+        addTableModifier(
+                "earth_heart_shipwreck_supply",
+                BuiltInLootTables.SHIPWRECK_SUPPLY,
+                "inject/chests/earth_heart/overworld_epic"
+        );
+    }
+
+    /**
+     * 大地之心碎片奖励箱获取方式。
+     * 按原项目同类 Overworld epic 池概率复刻。
+     * 注意：
+     * - 这里先使用和大地之心相同的奖励箱范围。
+     * - 概率由 InjectLootTableGenerator 中的
+     *   earth_heart_fragment/overworld_epic 表控制。
+     * - 不在这里写 JsonObject 条件，否则会导致 GlobalLootModifierProvider 编译失败。
+     * 概率：
+     * - 单次抽取约 3.03%。
+     * - rolls = 1 ~ 2，综合约 4.5%。
+     */
+    private void addEarthHeartFragmentModifiers() {
+        addTableModifier(
+                "earth_heart_fragment_simple_dungeon",
+                BuiltInLootTables.SIMPLE_DUNGEON,
+                "inject/chests/earth_heart_fragment/overworld_epic"
+        );
+
+        addTableModifier(
+                "earth_heart_fragment_abandoned_mineshaft",
+                BuiltInLootTables.ABANDONED_MINESHAFT,
+                "inject/chests/earth_heart_fragment/overworld_epic"
+        );
+
+        addTableModifier(
+                "earth_heart_fragment_stronghold_crossing",
+                BuiltInLootTables.STRONGHOLD_CROSSING,
+                "inject/chests/earth_heart_fragment/overworld_epic"
+        );
+
+        addTableModifier(
+                "earth_heart_fragment_stronghold_corridor",
+                BuiltInLootTables.STRONGHOLD_CORRIDOR,
+                "inject/chests/earth_heart_fragment/overworld_epic"
+        );
+
+        addTableModifier(
+                "earth_heart_fragment_desert_pyramid",
+                BuiltInLootTables.DESERT_PYRAMID,
+                "inject/chests/earth_heart_fragment/overworld_epic"
+        );
+
+        addTableModifier(
+                "earth_heart_fragment_jungle_temple",
+                BuiltInLootTables.JUNGLE_TEMPLE,
+                "inject/chests/earth_heart_fragment/overworld_epic"
+        );
+
+        addTableModifier(
+                "earth_heart_fragment_igloo_chest",
+                BuiltInLootTables.IGLOO_CHEST,
+                "inject/chests/earth_heart_fragment/overworld_epic"
+        );
+
+        addTableModifier(
+                "earth_heart_fragment_woodland_mansion",
+                BuiltInLootTables.WOODLAND_MANSION,
+                "inject/chests/earth_heart_fragment/overworld_epic"
+        );
+
+        addTableModifier(
+                "earth_heart_fragment_shipwreck_supply",
+                BuiltInLootTables.SHIPWRECK_SUPPLY,
+                "inject/chests/earth_heart_fragment/overworld_epic"
+        );
+    }
+
+    /**
      * 不洁圣杯获取方式。
      * 原项目：
      * 不洁圣杯加入主世界类地牢箱子的稀有战利品池。
@@ -200,11 +352,12 @@ public class GlobalLootModifierGenerator extends GlobalLootModifierProvider {
     /**
      * 添加一个战利品表注入规则。
      * name：
-     * 生成的 loot modifier 文件名。
+     * - 生成的 loot modifier 文件名。
      * targetTable：
-     * 被注入的原版箱子战利品表。
+     * - 被注入的原版箱子战利品表。
+     * - 1.21.1 中 BuiltInLootTables 返回的是 ResourceKey<LootTable>。
      * injectPath：
-     * 要追加进去的自定义 loot table 路径，不带 .json 后缀。
+     * - 要追加进去的自定义 loot table 路径，不带 .json 后缀。
      */
     private void addTableModifier(String name, ResourceKey<LootTable> targetTable, String injectPath) {
         add(
