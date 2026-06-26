@@ -185,47 +185,82 @@ public final class EnigmaticEyeObtainEvents {
 
     /**
      * 发放休眠之眼。
-     * 优先级：
-     * 1. 放入玩家正在打开的战利品容器；
-     * 2. 容器满了，放进玩家背包；
-     * 3. 背包也满了，掉落在玩家脚下。
-     * 重要修复：
-     * - 奖励箱可能出现“休眠之眼已经在箱子里，但打开界面看不到”的问题。
-     * - 原因是服务端容器内容变化后，没有及时同步到客户端界面。
-     * - 所以成功塞入容器后，需要主动调用 syncContainerToClient(...)。
+     * 新逻辑：
+     * 1. 优先放入玩家正在打开的战利品容器；
+     * 2. 如果容器已经满了，不再直接给予玩家；
+     * 3. 而是随机替换容器中的一个物品。
+     * 为什么这样改：
+     * - 原版逻辑更像“休眠之眼出现在第一个战利品箱中”；
+     * - 如果箱子满了却直接给玩家，会让获取方式看起来不像箱子奖励；
+     * - 所以满箱时直接随机替换箱子中的一个格子。
+     * 注意：
+     * - 被替换掉的物品会消失；
+     * - 休眠之眼仍然只会生成一次；
+     * - 不会额外进入玩家背包。
      */
     private static void giveDormantEye(ServerPlayer player, BlockPos containerPos, Container container, ItemStack dormantEye) {
-        // 优先尝试放进战利品容器。
+        // 优先尝试放进战利品容器的空格子。
         if (tryInsertIntoContainer(container, dormantEye)) {
             // 标记容器内容已经改变。
             container.setChanged();
 
             // 主动同步容器和方块到客户端。
-            // 修复“打开箱子看不到，破坏箱子才掉出来”的问题。
+            // 修复“服务端有物品，客户端界面不刷新”的问题。
             syncContainerToClient(player, containerPos);
 
             return;
         }
 
-        // 如果箱子满了，尝试放进玩家背包。
-        if (player.getInventory().add(dormantEye)) {
-            // 同步玩家背包，避免客户端背包不立即刷新。
-            player.containerMenu.broadcastChanges();
-            player.inventoryMenu.broadcastChanges();
+        /*
+         * 如果走到这里，说明箱子已经满了。
+         *
+         * 旧逻辑：
+         * - 放进玩家背包；
+         * - 背包满了再掉落。
+         *
+         * 新逻辑：
+         * - 不再给玩家；
+         * - 直接随机替换箱子里的一个格子。
+         */
+        replaceRandomContainerItem(player, container, dormantEye);
+
+        // 标记容器内容已经改变。
+        container.setChanged();
+
+        // 同步容器内容到客户端。
+        // 这样玩家打开箱子时能直接看到休眠之眼。
+        syncContainerToClient(player, containerPos);
+    }
+
+    /**
+     * 随机替换容器中的一个物品。
+     * 用途：
+     * - 当奖励箱已经满了，没有空格子可以放入休眠之眼时调用。
+     * 逻辑：
+     * - 从容器所有格子中随机选择一个格子；
+     * - 用休眠之眼替换该格子中的原物品；
+     * - 原物品不会掉落，也不会返还给玩家。
+     * 为什么不掉落被替换物：
+     * - 用户要求“随机替换其中的一个物品”；
+     * - 替换意味着箱子中的某个奖励被休眠之眼取代。
+     */
+    private static void replaceRandomContainerItem(ServerPlayer player, Container container, ItemStack dormantEye) {
+        // 获取容器格子数量。
+        int containerSize = container.getContainerSize();
+
+        // 安全判断。
+        // 正常箱子、奖励箱、木桶等容器不会出现 size <= 0。
+        // 这里是为了避免极端情况下随机数报错。
+        if (containerSize <= 0) {
             return;
         }
 
-        // 如果背包也满了，就掉在玩家脚下。
-        ItemEntity droppedEye = new ItemEntity(
-                player.level(),
-                player.getX(),
-                player.getY(),
-                player.getZ(),
-                dormantEye
-        );
+        // 随机选择一个格子。
+        int randomSlot = player.getRandom().nextInt(containerSize);
 
-        droppedEye.setDefaultPickUpDelay();
-        player.level().addFreshEntity(droppedEye);
+        // 用休眠之眼替换该格子中的原物品。
+        // 使用 copy()，避免外部 ItemStack 引用被后续逻辑意外修改。
+        container.setItem(randomSlot, dormantEye.copy());
     }
 
     /**
