@@ -1,0 +1,22 @@
+{
+  "category": "enigmatic_legacy:spellstones",
+  "icon": "enigmatic_legacy:ocean_stone",
+  "name": "海洋意志",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:ocean_stone",
+      "link_recipe": true,
+      "text": "水域属性的术石，适合水下探索。$(br2)它强化水中的移动与生存能力，但其力量与火焰相冲。",
+      "title": "海洋意志"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "佩戴时火焰与高温会变得更加危险。",
+      "title": "警告"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 20
+}

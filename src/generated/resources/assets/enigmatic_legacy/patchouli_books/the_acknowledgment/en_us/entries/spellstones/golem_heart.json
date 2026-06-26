@@ -1,0 +1,22 @@
+{
+  "category": "enigmatic_legacy:spellstones",
+  "icon": "enigmatic_legacy:golem_heart",
+  "name": "Heart of the Golem",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:golem_heart",
+      "link_recipe": true,
+      "text": "A defensive spellstone that turns the bearer into something closer to an iron golem.$(br2)It grants armor, toughness, knockback resistance, and special protection when the bearer wears no armor.",
+      "title": "Heart of the Golem"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Its strength has a price.$(br2)Magic, poison, wither, and similar effects become more dangerous while this stone is worn.",
+      "title": "Weakness"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 0
+}

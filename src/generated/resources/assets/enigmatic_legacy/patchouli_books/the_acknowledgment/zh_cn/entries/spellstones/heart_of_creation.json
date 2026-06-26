@@ -1,0 +1,22 @@
+{
+  "category": "enigmatic_legacy:spellstones",
+  "icon": "enigmatic_legacy:heart_of_creation",
+  "name": "创造之心",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:heart_of_creation",
+      "link_recipe": true,
+      "text": "与创造和生存相连的至高术石。$(br2)它提供飞行，抵御多种伤害，并能向附近敌人召下雷霆。",
+      "title": "创造之心"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "携带或佩戴时，它可以在死亡边缘保住佩戴者的生命。$(br2)这份保护很强大，但并不意味着可以鲁莽行事。",
+      "title": "不朽"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 70
+}

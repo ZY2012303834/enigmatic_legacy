@@ -1,0 +1,22 @@
+{
+  "category": "enigmatic_legacy:scrolls",
+  "icon": "enigmatic_legacy:xp_scroll",
+  "name": "Scroll of Ageless Wisdom",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:xp_scroll",
+      "link_recipe": true,
+      "text": "An arcane scroll that stores experience.$(br2)When active, it can absorb nearby experience or return stored experience to the bearer.",
+      "title": "Scroll of Ageless Wisdom"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Use Shift + Right Click to toggle its mode.$(br2)It is best carried when mining, enchanting, or preparing for dangerous fights.",
+      "title": "Use"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 0
+}

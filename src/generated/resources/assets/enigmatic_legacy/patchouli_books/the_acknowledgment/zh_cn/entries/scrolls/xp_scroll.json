@@ -1,0 +1,22 @@
+{
+  "category": "enigmatic_legacy:scrolls",
+  "icon": "enigmatic_legacy:xp_scroll",
+  "name": "永恒智慧卷轴",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:xp_scroll",
+      "link_recipe": true,
+      "text": "一种用于储存经验的奥秘卷轴。$(br2)启用后，它可以吸收附近经验，也能将储存经验返还给持有者。",
+      "title": "永恒智慧卷轴"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "使用 Shift + 右键切换模式。$(br2)适合采矿、附魔或进入危险战斗前携带。",
+      "title": "使用"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 0
+}

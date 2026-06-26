@@ -1,0 +1,23 @@
+{
+  "category": "enigmatic_legacy:equipment",
+  "icon": "enigmatic_legacy:etherium_sword",
+  "name": "Etherium Broadsword",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:etherium_sword",
+      "link_recipe": true,
+      "text": "A heavy etherium blade forged for direct combat.",
+      "title": "Etherium Broadsword"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:etherium_sword",
+      "text": "合成配方 / Crafting Recipe",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 0
+}

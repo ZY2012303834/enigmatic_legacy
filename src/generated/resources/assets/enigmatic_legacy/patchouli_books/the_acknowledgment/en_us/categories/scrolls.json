@@ -1,0 +1,7 @@
+{
+  "description": "Scrolls and pacts that alter flight, experience, curses, and rewards.",
+  "icon": "enigmatic_legacy:xp_scroll",
+  "name": "Arcane Scrolls",
+  "secret": false,
+  "sortnum": 40
+}

@@ -1,0 +1,22 @@
+{
+  "category": "enigmatic_legacy:spellstones",
+  "icon": "enigmatic_legacy:the_cube",
+  "name": "Non-Euclidean Cube",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:the_cube",
+      "link_recipe": true,
+      "text": "A geometry-breaking spellstone.$(br2)It improves movement, mining, attack speed, luck, and fortune while bending the rules of incoming damage.",
+      "title": "Non-Euclidean Cube"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Its active ability sends the bearer toward a random structure within the current dimension.$(br2)Use it carefully. Non-Euclidean travel rarely cares about comfort.",
+      "title": "Active Power"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 60
+}

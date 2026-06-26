@@ -1,0 +1,22 @@
+{
+  "category": "enigmatic_legacy:scrolls",
+  "icon": "enigmatic_legacy:cursed_scroll",
+  "name": "千咒卷轴",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:cursed_scroll",
+      "link_recipe": true,
+      "text": "只有承受七咒之人才能使用的卷轴。$(br2)它的加成会随装备上的诅咒附魔数量提升。",
+      "title": "千咒卷轴"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "它提升攻击、挖掘速度与生命恢复。$(br2)装备越受诅咒，卷轴回应得越强。",
+      "title": "成长"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 20
+}

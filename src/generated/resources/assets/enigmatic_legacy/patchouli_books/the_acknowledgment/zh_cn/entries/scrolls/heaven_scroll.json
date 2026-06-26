@@ -1,0 +1,22 @@
+{
+  "category": "enigmatic_legacy:scrolls",
+  "icon": "enigmatic_legacy:heaven_scroll",
+  "name": "天堂之礼",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:heaven_scroll",
+      "link_recipe": true,
+      "text": "一种在信标范围内赋予飞行能力的卷轴。$(br2)飞行会消耗经验，并在满足条件时免疫摔落伤害。",
+      "title": "天堂之礼"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "离开信标范围会失去飞行，并短暂获得缓降。$(br2)如果缓降结束后仍未落地，重力会重新索取代价。",
+      "title": "信标限制"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 10
+}

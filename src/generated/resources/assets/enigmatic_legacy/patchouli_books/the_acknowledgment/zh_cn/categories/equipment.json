@@ -1,0 +1,7 @@
+{
+  "description": "由异常材料锻造而成的武器、工具与护甲。",
+  "icon": "enigmatic_legacy:etherium_sword",
+  "name": "装备",
+  "secret": false,
+  "sortnum": 50
+}

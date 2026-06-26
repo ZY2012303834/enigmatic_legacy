@@ -1,0 +1,22 @@
+{
+  "category": "enigmatic_legacy:spellstones",
+  "icon": "enigmatic_legacy:blazing_core",
+  "name": "Blazing Core",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:blazing_core",
+      "link_recipe": true,
+      "text": "A fire-aspected spellstone connected to flame, lava, and the Nether.$(br2)It grants strong protection against heat, but its power is not without limits.",
+      "title": "Blazing Core"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Do not mistake resistance for invulnerability.$(br2)If the core is pushed too far, the bearer may still suffer the consequences of fire and lava.",
+      "title": "Overheat"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 30
+}

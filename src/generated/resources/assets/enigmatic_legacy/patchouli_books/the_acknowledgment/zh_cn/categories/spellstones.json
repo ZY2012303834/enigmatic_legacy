@@ -1,0 +1,7 @@
+{
+  "description": "佩戴后提供主动与被动能力的强大遗物。",
+  "icon": "enigmatic_legacy:golem_heart",
+  "name": "术石",
+  "secret": false,
+  "sortnum": 30
+}

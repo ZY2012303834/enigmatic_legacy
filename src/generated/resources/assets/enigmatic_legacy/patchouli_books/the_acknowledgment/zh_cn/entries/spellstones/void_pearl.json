@@ -1,0 +1,22 @@
+{
+  "category": "enigmatic_legacy:spellstones",
+  "icon": "enigmatic_legacy:void_pearl",
+  "name": "虚空珍珠",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:void_pearl",
+      "link_recipe": true,
+      "text": "禁忌的术石，会让佩戴者更接近虚空。$(br2)它移除呼吸需求，并抵抗大多数状态效果。",
+      "title": "虚空珍珠"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "黑暗中靠近佩戴者的敌人可能受到虚空伤害和多种削弱效果。$(br2)它也可能帮助佩戴者抵挡一次致命伤害。",
+      "title": "黑暗"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 50
+}

@@ -1,0 +1,22 @@
+{
+  "category": "enigmatic_legacy:spellstones",
+  "icon": "enigmatic_legacy:void_pearl",
+  "name": "Pearl of the Void",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:void_pearl",
+      "link_recipe": true,
+      "text": "A forbidden spellstone that makes the bearer closer to the void.$(br2)It removes the need to breathe and protects against most status effects.",
+      "title": "Pearl of the Void"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Enemies that remain too close in darkness may suffer void damage and crippling effects.$(br2)It can also help the bearer survive otherwise fatal damage.",
+      "title": "Darkness"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 50
+}

@@ -1,0 +1,22 @@
+{
+  "category": "enigmatic_legacy:spellstones",
+  "icon": "enigmatic_legacy:angel_blessing",
+  "name": "天使之祝",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:angel_blessing",
+      "link_recipe": true,
+      "text": "与空气和轻盈相关的机动型术石。$(br2)它能帮助佩戴者更安全地移动、坠落与探索。",
+      "title": "天使之祝"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "适合探索峭壁、高山、浮岛和各种垂直空间。",
+      "title": "用途"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 10
+}

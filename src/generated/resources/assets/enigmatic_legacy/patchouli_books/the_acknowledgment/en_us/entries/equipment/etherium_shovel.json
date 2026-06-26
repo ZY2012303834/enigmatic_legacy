@@ -1,0 +1,23 @@
+{
+  "category": "enigmatic_legacy:equipment",
+  "icon": "enigmatic_legacy:etherium_shovel",
+  "name": "Etherium Shovel",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:etherium_shovel",
+      "link_recipe": true,
+      "text": "A shovel forged from etherium for fast excavation.",
+      "title": "Etherium Shovel"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:etherium_shovel",
+      "text": "合成配方 / Crafting Recipe",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 20
+}

@@ -1,0 +1,22 @@
+{
+  "category": "enigmatic_legacy:scrolls",
+  "icon": "enigmatic_legacy:fabulous_scroll",
+  "name": "创造者的恩赐",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:fabulous_scroll",
+      "link_recipe": true,
+      "text": "更高阶的飞行卷轴。$(br2)它允许在任何地方飞行；若不在信标范围内，会持续消耗经验。",
+      "title": "创造者的恩赐"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "它不能与天堂之礼同时佩戴。$(br2)二者都赐予飞行，但恩赐不会彼此叠加。",
+      "title": "限制"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 30
+}

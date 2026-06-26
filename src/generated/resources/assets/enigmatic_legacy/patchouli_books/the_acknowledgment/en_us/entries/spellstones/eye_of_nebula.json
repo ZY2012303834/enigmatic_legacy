@@ -1,0 +1,22 @@
+{
+  "category": "enigmatic_legacy:spellstones",
+  "icon": "enigmatic_legacy:eye_of_nebula",
+  "name": "Eye of the Nebula",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:eye_of_nebula",
+      "link_recipe": true,
+      "text": "A teleportation spellstone linked to distant space.$(br2)Its active power moves the bearer behind the creature they are looking at.",
+      "title": "Eye of the Nebula"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "After teleporting, the next attack becomes far more dangerous.$(br2)It also improves magical offense and resistance, but water makes incoming damage much harsher.",
+      "title": "Combat Use"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 40
+}

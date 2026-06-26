@@ -1,0 +1,22 @@
+{
+  "category": "enigmatic_legacy:spellstones",
+  "icon": "enigmatic_legacy:blazing_core",
+  "name": "烈焰核心",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:blazing_core",
+      "link_recipe": true,
+      "text": "与火焰、岩浆和下界相关的术石。$(br2)它提供强大的高温防护，但这种防护并非没有极限。",
+      "title": "烈焰核心"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "不要把抗性误认为无敌。$(br2)如果烈焰核心被推到极限，佩戴者仍可能承受火焰和岩浆的后果。",
+      "title": "过热"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 30
+}

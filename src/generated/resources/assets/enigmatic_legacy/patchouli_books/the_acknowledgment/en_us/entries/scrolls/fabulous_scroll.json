@@ -1,0 +1,22 @@
+{
+  "category": "enigmatic_legacy:scrolls",
+  "icon": "enigmatic_legacy:fabulous_scroll",
+  "name": "Grace of the Creator",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:fabulous_scroll",
+      "link_recipe": true,
+      "text": "A superior flight scroll.$(br2)It allows flight anywhere, consuming experience unless the bearer remains within beacon range.",
+      "title": "Grace of the Creator"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "It cannot be worn together with Gift of the Heaven.$(br2)Both grant flight, but their blessings do not stack.",
+      "title": "Limit"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 30
+}

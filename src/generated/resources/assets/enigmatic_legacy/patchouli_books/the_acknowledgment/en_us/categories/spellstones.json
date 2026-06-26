@@ -1,0 +1,7 @@
+{
+  "description": "Powerful stones that grant active and passive abilities when equipped.",
+  "icon": "enigmatic_legacy:golem_heart",
+  "name": "Spellstones",
+  "secret": false,
+  "sortnum": 30
+}

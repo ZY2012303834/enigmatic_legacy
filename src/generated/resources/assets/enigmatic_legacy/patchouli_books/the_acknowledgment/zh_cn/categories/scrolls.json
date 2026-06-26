@@ -1,0 +1,7 @@
+{
+  "description": "改变飞行、经验、诅咒与收益规则的卷轴和契约。",
+  "icon": "enigmatic_legacy:xp_scroll",
+  "name": "奥秘卷轴",
+  "secret": false,
+  "sortnum": 40
+}

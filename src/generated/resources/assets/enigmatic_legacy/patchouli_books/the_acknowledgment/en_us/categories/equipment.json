@@ -1,0 +1,7 @@
+{
+  "description": "Weapons, tools, and armor forged from unusual materials.",
+  "icon": "enigmatic_legacy:etherium_sword",
+  "name": "Equipment",
+  "secret": false,
+  "sortnum": 50
+}

@@ -1,0 +1,22 @@
+{
+  "category": "enigmatic_legacy:spellstones",
+  "icon": "enigmatic_legacy:the_cube",
+  "name": "非欧立方",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:the_cube",
+      "link_recipe": true,
+      "text": "打破几何规则的术石。$(br2)它提升移动、挖掘、攻击速度、幸运与时运，并扭曲部分伤害规则。",
+      "title": "非欧立方"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "主动使用时，会将佩戴者送往当前维度中的随机结构。$(br2)谨慎使用。非欧旅行从不保证舒适。",
+      "title": "主动能力"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 60
+}

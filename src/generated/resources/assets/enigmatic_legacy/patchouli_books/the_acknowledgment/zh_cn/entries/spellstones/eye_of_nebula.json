@@ -1,0 +1,22 @@
+{
+  "category": "enigmatic_legacy:spellstones",
+  "icon": "enigmatic_legacy:eye_of_nebula",
+  "name": "星云之眼",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:eye_of_nebula",
+      "link_recipe": true,
+      "text": "与遥远空间相连的传送术石。$(br2)主动使用时，会将佩戴者传送到其注视生物的身后。",
+      "title": "星云之眼"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "传送之后，下一次攻击会变得更危险。$(br2)它也强化魔法伤害与魔法抗性，但在水中受到的伤害会更加严重。",
+      "title": "战斗用途"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 40
+}
