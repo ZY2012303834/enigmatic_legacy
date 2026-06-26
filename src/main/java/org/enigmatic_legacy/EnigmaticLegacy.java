@@ -12,6 +12,7 @@ import org.enigmatic_legacy.config.ConfigFileHelper;
 import org.enigmatic_legacy.entity.ModEntities;
 import org.enigmatic_legacy.event.*;
 import org.enigmatic_legacy.generator.*;
+import org.enigmatic_legacy.generator.language.LanguageGenerator;
 import org.enigmatic_legacy.generator.loot.*;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.network.ModNetwork;
@@ -44,7 +45,7 @@ public class EnigmaticLegacy {
         modEventBus.addListener(ModNetwork::registerPayloads);
         modEventBus.addListener(BlockGenerator::gatherData);
         modEventBus.addListener(ItemGenerator::gatherData);
-        modEventBus.addListener(LanguageGenerator::gatherData);
+        modEventBus.addListener(LanguageGenerator::gatherData);     // 语言文件
         modEventBus.addListener(RecipeGenerator::gatherData);
         modEventBus.addListener(FurnaceRecipeGenerator::gatherData);
         modEventBus.addListener(CuriosGenerator::gatherData);

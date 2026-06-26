@@ -1,4 +1,4 @@
-package org.enigmatic_legacy.generator;
+package org.enigmatic_legacy.generator.language;
 
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
