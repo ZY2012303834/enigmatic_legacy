@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-25T17:19:15.7287125	vanilla/Item Models: enigmatic_legacy
+// 1.21.1	2026-06-26T09:35:32.7507404	vanilla/Item Models: enigmatic_legacy
 aaf9eff73642636d85d6ecd1627b8303f5153a76 assets/enigmatic_legacy/models/item/abyssal_heart.json
 79e416a4d6e90035107f541617b7d4a2d2d7abbb assets/enigmatic_legacy/models/item/angel_blessing.json
 71ad4196d7e8a842e7122ea637f5096bd1de67b7 assets/enigmatic_legacy/models/item/astral_dust.json
@@ -30,6 +30,7 @@ ceb5e49f22170948b7cdd6a842e3efc27a78dc8f assets/enigmatic_legacy/models/item/eni
 45e31c85ea0237b6ba9056e7bdec865be27c79b3 assets/enigmatic_legacy/models/item/enigmatic_eye_dormant_2.json
 25fd4c3fc52e68aad5da239a21e0a082169e9549 assets/enigmatic_legacy/models/item/etherium_ingot.json
 bdc03bfeb7cbc98752a6b9cc2a2e847293499d31 assets/enigmatic_legacy/models/item/etherium_ore.json
+875540978d85f8db3e30cf19ce652c7cd487b646 assets/enigmatic_legacy/models/item/etherium_sword.json
 15a01771a4171a3b505cdfd801de2ae4dab011d4 assets/enigmatic_legacy/models/item/evil_essence.json
 d4e1214ce79dce9e287d896be997bc5972536f9c assets/enigmatic_legacy/models/item/evil_ingot.json
 c74930722dc21b8662dec43bde454c7ee9dfd701 assets/enigmatic_legacy/models/item/extradimensional_eye.json

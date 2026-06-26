@@ -10,7 +10,6 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * 以太工具材料。
- *
  * 原项目定位：强于下界合金的后期材料。
  */
 public enum EtheriumToolMaterial implements Tier {
