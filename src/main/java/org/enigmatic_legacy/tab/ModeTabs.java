@@ -67,6 +67,10 @@ public final class ModeTabs {
                                 output.accept(ModItems.ETHERIUM_PICKAXE.get());         // 以太镐
                                 output.accept(ModItems.ETHERIUM_SHOVEL.get());          // 以太锹
                                 output.accept(ModItems.ETHERIUM_AXE.get());             // 以太斧
+                                output.accept(ModItems.ETHERIUM_HELMET.get());          // 以太头盔
+                                output.accept(ModItems.ETHERIUM_CHESTPLATE.get());      // 以太胸甲
+                                output.accept(ModItems.ETHERIUM_LEGGINGS.get());        // 以太护腿
+                                output.accept(ModItems.ETHERIUM_BOOTS.get());           // 以太靴子
                                 // 护符
                                 output.accept(ModItems.ENIGMATIC_EYE.get());            // 莫测之眼
                                 output.accept(ModItems.MONSTER_CHARM.get());            // 怪物猎人勋章

@@ -451,5 +451,38 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('R', ModItems.ENDER_ROD.get())
                 .unlockedBy("has_etherium_ingot", has(ModItems.ETHERIUM_INGOT.get()))
                 .save(output);
+        // 以太头盔 / Etherium Helmet
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.ETHERIUM_HELMET.get())
+                .pattern("EEE")
+                .pattern("E E")
+                .define('E', ModItems.ETHERIUM_INGOT.get())
+                .unlockedBy("has_etherium_ingot", has(ModItems.ETHERIUM_INGOT.get()))
+                .save(output);
+
+        // 以太胸甲 / Etherium Chestplate
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.ETHERIUM_CHESTPLATE.get())
+                .pattern("E E")
+                .pattern("EEE")
+                .pattern("EEE")
+                .define('E', ModItems.ETHERIUM_INGOT.get())
+                .unlockedBy("has_etherium_ingot", has(ModItems.ETHERIUM_INGOT.get()))
+                .save(output);
+
+        // 以太护腿 / Etherium Leggings
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.ETHERIUM_LEGGINGS.get())
+                .pattern("EEE")
+                .pattern("E E")
+                .pattern("E E")
+                .define('E', ModItems.ETHERIUM_INGOT.get())
+                .unlockedBy("has_etherium_ingot", has(ModItems.ETHERIUM_INGOT.get()))
+                .save(output);
+
+        // 以太靴子 / Etherium Boots
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.ETHERIUM_BOOTS.get())
+                .pattern("E E")
+                .pattern("E E")
+                .define('E', ModItems.ETHERIUM_INGOT.get())
+                .unlockedBy("has_etherium_ingot", has(ModItems.ETHERIUM_INGOT.get()))
+                .save(output);
     }
 }

@@ -86,6 +86,7 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(PactOfInfiniteAvariceEvents.class);
         NeoForge.EVENT_BUS.register(AbyssalHeartEvents.class);
         NeoForge.EVENT_BUS.register(ExtradimensionalEyeEvents.class);
+        NeoForge.EVENT_BUS.register(EtheriumArmorEvents.class);     //以太装甲
 
     }
 }

@@ -93,6 +93,10 @@ public class ItemGenerator extends ItemModelProvider {
         basicItem(ModItems.ETHERIUM_SHOVEL.getId());  // 以太锹
         withExistingParent("item/etherium_axe", mcLoc("item/handheld"))
                 .texture("layer0", modLoc("item/etherium_waraxe")); // 以太斧
+        basicItem(ModItems.ETHERIUM_HELMET.getId());
+        basicItem(ModItems.ETHERIUM_CHESTPLATE.getId());
+        basicItem(ModItems.ETHERIUM_LEGGINGS.getId());
+        basicItem(ModItems.ETHERIUM_BOOTS.getId());
 
         basicItem(ModItems.GOLEM_HEART.getId());
         basicItem(ModItems.ANGEL_BLESSING.getId());

@@ -1,5 +1,6 @@
 package org.enigmatic_legacy.item;
 
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
@@ -8,6 +9,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.block.ModBlocks;
 import org.enigmatic_legacy.item.items.*;
+import org.enigmatic_legacy.item.items.armor.EtheriumArmorItem;
 import org.enigmatic_legacy.item.items.charm.*;
 import org.enigmatic_legacy.item.items.scroll.*;
 import org.enigmatic_legacy.item.items.spellstone.*;
@@ -72,6 +74,10 @@ public final class ModItems {
     public static final DeferredItem<Item> ETHERIUM_PICKAXE = ITEMS.register("etherium_pickaxe", EtheriumPickaxe::new); // 以太镐
     public static final DeferredItem<EtheriumShovel> ETHERIUM_SHOVEL = ITEMS.register("etherium_shovel", EtheriumShovel::new); // 以太锹
     public static final DeferredItem<Item> ETHERIUM_AXE = ITEMS.register("etherium_axe", EtheriumWaraxe::new); // 以太斧
+    public static final DeferredItem<EtheriumArmorItem> ETHERIUM_HELMET = ITEMS.register("etherium_helmet", () -> new EtheriumArmorItem(ArmorItem.Type.HELMET)); // 以太头盔
+    public static final DeferredItem<EtheriumArmorItem> ETHERIUM_CHESTPLATE = ITEMS.register("etherium_chestplate", () -> new EtheriumArmorItem(ArmorItem.Type.CHESTPLATE)); // 以太胸甲
+    public static final DeferredItem<EtheriumArmorItem> ETHERIUM_LEGGINGS = ITEMS.register("etherium_leggings", () -> new EtheriumArmorItem(ArmorItem.Type.LEGGINGS)); // 以太护腿
+    public static final DeferredItem<EtheriumArmorItem> ETHERIUM_BOOTS = ITEMS.register("etherium_boots", () -> new EtheriumArmorItem(ArmorItem.Type.BOOTS)); // 以太靴子
 
     // 术石
     public static final DeferredItem<GolemHeart> GOLEM_HEART = ITEMS.register("golem_heart", GolemHeart::new); // 魔像之心

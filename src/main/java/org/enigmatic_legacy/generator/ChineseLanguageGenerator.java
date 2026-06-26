@@ -584,6 +584,19 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("message.enigmatic_legacy.etherium_shovel.area_disabled", "以太锹区域挖掘：已关闭");
         // end
 
+        // 以太套装
+        addItem(ModItems.ETHERIUM_HELMET, "以太头盔");
+        addItem(ModItems.ETHERIUM_CHESTPLATE, "以太胸甲");
+        addItem(ModItems.ETHERIUM_LEGGINGS, "以太护腿");
+        addItem(ModItems.ETHERIUM_BOOTS, "以太靴子");
+
+        add("tooltip.enigmatic_legacy.etherium_armor.single", "单件效果：穿戴时不显示。");
+        add("tooltip.enigmatic_legacy.etherium_armor.set.1", "套装效果：生命值低于 40% 时生成强力护盾。");
+        add("tooltip.enigmatic_legacy.etherium_armor.set.2", "护盾会反弹大多数弹射物。");
+        add("tooltip.enigmatic_legacy.etherium_armor.set.3", "护盾激活时获得 50% 伤害抗性。");
+        add("tooltip.enigmatic_legacy.etherium_armor.set.4", "攻击你的生物会被击退。");
+        // end
+
         // 以太斧
         addItem(ModItems.ETHERIUM_AXE, "以太斧");
 

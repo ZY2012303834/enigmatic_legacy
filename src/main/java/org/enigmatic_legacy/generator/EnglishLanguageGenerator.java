@@ -588,6 +588,19 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.etherium_axe.1", "A waraxe forged from etherium, lighter than an ordinary axe.");
         // end
 
+        // 以太套装
+        addItem(ModItems.ETHERIUM_HELMET, "Etherium Helmet");
+        addItem(ModItems.ETHERIUM_CHESTPLATE, "Etherium Chestplate");
+        addItem(ModItems.ETHERIUM_LEGGINGS, "Etherium Leggings");
+        addItem(ModItems.ETHERIUM_BOOTS, "Etherium Boots");
+
+        add("tooltip.enigmatic_legacy.etherium_armor.single", "Single-piece effect: invisible when worn.");
+        add("tooltip.enigmatic_legacy.etherium_armor.set.1", "Set effect: creates a powerful shield while below 40% health.");
+        add("tooltip.enigmatic_legacy.etherium_armor.set.2", "The shield reflects most projectiles.");
+        add("tooltip.enigmatic_legacy.etherium_armor.set.3", "While active, the shield grants 50% damage resistance.");
+        add("tooltip.enigmatic_legacy.etherium_armor.set.4", "Creatures that attack you are knocked back.");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");
     }

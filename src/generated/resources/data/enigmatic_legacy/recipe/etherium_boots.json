@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "E": {
+      "item": "enigmatic_legacy:etherium_ingot"
+    }
+  },
+  "pattern": [
+    "E E",
+    "E E"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:etherium_boots"
+  }
+}
