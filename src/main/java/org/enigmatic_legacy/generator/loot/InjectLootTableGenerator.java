@@ -447,17 +447,6 @@ public class InjectLootTableGenerator implements DataProvider {
 
     /**
      * 创建一个带随机数量的物品条目。
-     * 生成格式：
-     * functions: [
-     *   {
-     *     function: minecraft:set_count,
-     *     count: {
-     *       type: minecraft:uniform,
-     *       min: x,
-     *       max: y
-     *     }
-     *   }
-     * ]
      */
     private static JsonObject itemEntry(ItemLike item, int weight, double minCount, double maxCount) {
         JsonObject entry = itemEntry(item, weight);
