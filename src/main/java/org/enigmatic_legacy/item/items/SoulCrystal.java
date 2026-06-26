@@ -10,9 +10,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -23,7 +20,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.CustomData;
-import net.minecraft.world.level.Level;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.jetbrains.annotations.NotNull;
 
@@ -36,7 +32,7 @@ import java.util.WeakHashMap;
  * 灵魂水晶 / Soul Crystal。
  *
  * <p>玩家死亡时可能损失一枚灵魂水晶，每枚会让最大生命值降低 10%。
- * 使用灵魂水晶可以恢复一枚已损失的灵魂碎片。
+ * 取回死亡时生成的灵魂水晶可以恢复一枚已损失的灵魂碎片。
  */
 public class SoulCrystal extends Item {
 
@@ -151,33 +147,6 @@ public class SoulCrystal extends Item {
 
         Multimap<Attribute, AttributeModifier> soulMap = HashMultimap.create();
         this.attributeDispatcher.put(player, soulMap);
-    }
-
-    @Override
-    public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level,
-                                                            @NotNull Player player,
-                                                            @NotNull InteractionHand usedHand) {
-        ItemStack stack = player.getItemInHand(usedHand);
-
-        if (!hasOwner(stack)) {
-            if (!level.isClientSide()) {
-                stack.shrink(1);
-            }
-
-            return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
-        }
-
-        if (level.isClientSide()) {
-            return InteractionResultHolder.sidedSuccess(stack, true);
-        }
-
-        if (retrieveSoulFromCrystal(player, stack)) {
-            player.swing(usedHand);
-            stack.shrink(1);
-            return InteractionResultHolder.sidedSuccess(stack, false);
-        }
-
-        return new InteractionResultHolder<>(InteractionResult.PASS, stack);
     }
 
     private static CompoundTag getTag(ItemStack stack) {

@@ -93,8 +93,8 @@ public class CuriosGenerator implements DataProvider {
         JsonObject json = new JsonObject();
 
         // 术石栏位
-        json.addProperty("size", 1);
-        json.addProperty("operation", "SET");
+        json.addProperty("size", 2);
+        json.addProperty("operation", "ADD");
         json.addProperty("order", 130);
 
 
@@ -152,8 +152,8 @@ public class CuriosGenerator implements DataProvider {
     private CompletableFuture<?> generateCharmSlotType(CachedOutput cachedOutput) {
         JsonObject json = new JsonObject();
 
-        // 神秘护身符同一时间只允许佩戴一个，所以 charm 槽位数量设为 1。
-        json.addProperty("size", 1);
+        // 护符栏位
+        json.addProperty("size", 2);
 
         // SET 表示直接设置最终数量。
         // 如果后续你希望兼容其他模组添加的 charm 槽，可以改成 ADD。

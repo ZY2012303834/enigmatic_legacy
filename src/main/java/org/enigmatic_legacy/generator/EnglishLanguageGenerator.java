@@ -54,7 +54,7 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.storageCrystal3", "Stored experience: %1$s");
 
         addItem(ModItems.SOUL_CRYSTAL, "Soul Crystal");
-        add("tooltip.enigmatic_legacy.soulCrystal1", "Right-Click to absorb the crystal and");
+        add("tooltip.enigmatic_legacy.soulCrystal1", "Recover this crystal after death to");
         add("tooltip.enigmatic_legacy.soulCrystal2", "restore one of your lost Soul Crystals.");
 
         addItem(ModItems.TWISTED_MIRROR, "Twisted Mirror");

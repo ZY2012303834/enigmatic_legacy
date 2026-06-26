@@ -345,7 +345,7 @@
   "tooltip.enigmatic_legacy.ocean_stone.passive.4": "Makes you more vulnerable to fire damage.",
   "tooltip.enigmatic_legacy.recall_potion.1": "Drink to return to your respawn point.",
   "tooltip.enigmatic_legacy.recall_potion.2": "When used in the End, teleports you near the main island platform.",
-  "tooltip.enigmatic_legacy.soulCrystal1": "Right-Click to absorb the crystal and",
+  "tooltip.enigmatic_legacy.soulCrystal1": "Recover this crystal after death to",
   "tooltip.enigmatic_legacy.soulCrystal2": "restore one of your lost Soul Crystals.",
   "tooltip.enigmatic_legacy.spellstone.active": "Active Ability:",
   "tooltip.enigmatic_legacy.spellstone.cooldown": "Cooldown: %s seconds.",
