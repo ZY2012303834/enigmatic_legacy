@@ -6,7 +6,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
-import org.enigmatic_legacy.item.items.EnchanterPearl;
+import org.enigmatic_legacy.item.items.charm.EnchanterPearl;
 import org.enigmatic_legacy.util.EnchanterPearlHelper;
 
 public final class EnchanterPearlEvents {

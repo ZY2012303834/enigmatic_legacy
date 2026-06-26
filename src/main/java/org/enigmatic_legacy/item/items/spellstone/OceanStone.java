@@ -1,4 +1,4 @@
-package org.enigmatic_legacy.item.items;
+package org.enigmatic_legacy.item.items.spellstone;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
@@ -33,17 +33,41 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 
 import java.util.List;
 
+/**
+ * 海洋意志 / Ocean Stone。
+ * 定位：术石 spellstone。
+ * 主动技能：
+ * 在主世界消耗经验召唤雷暴。
+ * 被动效果：
+ * 1. 提高游泳速度；
+ * 2. 在水中补满氧气并获得水下呼吸；
+ * 3. 在水中提供夜视；
+ * 4. 在水中抵消重力，增强水下机动；
+ * 5. 提高受到的火焰伤害，具体伤害修正由 OceanStoneEvents 处理。
+ */
 public class OceanStone extends Item implements ICurioItem {
     private static final String SPELLSTONE_SLOT = "spellstone";
 
+    /**
+     * 游泳速度属性修饰器 ID。
+     * 每 tick 先移除再添加，避免重复叠加。
+     */
     private static final ResourceLocation SWIM_SPEED_ID = ResourceLocation.fromNamespaceAndPath(
             EnigmaticLegacy.MODID, "ocean_stone_swim_speed"
     );
 
+    /**
+     * 水中重力属性修饰器 ID。
+     * 只在眼部处于水中时添加。
+     */
     private static final ResourceLocation UNDERWATER_GRAVITY_ID = ResourceLocation.fromNamespaceAndPath(
             EnigmaticLegacy.MODID, "ocean_stone_underwater_gravity"
     );
 
+    /**
+     * 召唤雷暴的基础经验消耗。
+     * 实际消耗会乘以配置中的 OceanStoneXpCostModifier，并带有随机浮动。
+     */
     private static final int XP_COST_BASE = 150;
 
     public OceanStone() {
@@ -64,6 +88,10 @@ public class OceanStone extends Item implements ICurioItem {
         return context != null && SPELLSTONE_SLOT.equals(context.identifier());
     }
 
+    /**
+     * 被动效果刷新。
+     * 游泳速度常驻；水下重力、水下呼吸、夜视只在眼部处于水中时生效。
+     */
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         LivingEntity entity = slotContext.entity();
@@ -98,10 +126,17 @@ public class OceanStone extends Item implements ICurioItem {
         }
     }
 
+    /**
+     * NeoForge 流体类型检查。
+     * 使用眼部流体可以避免只踩水边时误判为完全入水。
+     */
     private static boolean isEyeInWater(LivingEntity entity) {
         return entity.getEyeInFluidType() == NeoForgeMod.WATER_TYPE.value();
     }
 
+    /**
+     * 卸下术石时清理本物品添加过的瞬时属性修饰器。
+     */
     @Override
     public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
         LivingEntity entity = slotContext.entity();
@@ -112,6 +147,9 @@ public class OceanStone extends Item implements ICurioItem {
         ICurioItem.super.onUnequip(slotContext, newStack, stack);
     }
 
+    /**
+     * 构建游泳速度加成。
+     */
     private static Multimap<Holder<Attribute>, AttributeModifier> getSwimSpeedModifiers() {
         Multimap<Holder<Attribute>, AttributeModifier> modifiers = HashMultimap.create();
 
@@ -127,6 +165,9 @@ public class OceanStone extends Item implements ICurioItem {
         return modifiers;
     }
 
+    /**
+     * 构建水下重力修饰器。
+     */
     private static Multimap<Holder<Attribute>, AttributeModifier> getUnderwaterGravityModifiers() {
         Multimap<Holder<Attribute>, AttributeModifier> modifiers = HashMultimap.create();
 
@@ -142,6 +183,10 @@ public class OceanStone extends Item implements ICurioItem {
         return modifiers;
     }
 
+    /**
+     * 主动技能：消耗经验并召唤雷暴。
+     * 只允许在主世界使用；下界和末地没有天气系统，因此直接拒绝。
+     */
     public void triggerActiveAbility(ServerLevel level, ServerPlayer player, ItemStack stack) {
         if (player.getCooldowns().isOnCooldown(this)) {
             return;
@@ -206,11 +251,17 @@ public class OceanStone extends Item implements ICurioItem {
         );
     }
 
+    /**
+     * 计算玩家当前总经验点数。
+     */
     private static int getTotalExperience(ServerPlayer player) {
         return getExperienceForLevel(player.experienceLevel)
                 + Math.round(player.experienceProgress * player.getXpNeededForNextLevel());
     }
 
+    /**
+     * 原版 1.21 经验等级曲线。
+     */
     private static int getExperienceForLevel(int level) {
         if (level <= 16) {
             return level * level + 6 * level;
@@ -244,8 +295,7 @@ public class OceanStone extends Item implements ICurioItem {
                     SpellstoneTooltip.number(ConfigCommon.OCEAN_STONE_SWIM_SPEED_BONUS.get() + "%")));
             tooltip.add(SpellstoneTooltip.negative("tooltip.enigmatic_legacy.ocean_stone.passive.4"));
         } else {
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hold_shift")
-                    .withStyle(ChatFormatting.DARK_GRAY));
+            tooltip.add(SpellstoneTooltip.holdShift());
         }
     }
 }

@@ -93,8 +93,8 @@ public class CuriosGenerator implements DataProvider {
         JsonObject json = new JsonObject();
 
         // 术石栏位
-        json.addProperty("size", 2);
-        json.addProperty("operation", "ADD");
+        json.addProperty("size", 1);
+        json.addProperty("operation", "SET");
         json.addProperty("order", 130);
 
 
@@ -157,7 +157,7 @@ public class CuriosGenerator implements DataProvider {
 
         // SET 表示直接设置最终数量。
         // 如果后续你希望兼容其他模组添加的 charm 槽，可以改成 ADD。
-        json.addProperty("operation", "SET");
+        json.addProperty("operation", "ADD");
 
         // 控制该槽位在 Curios GUI 中的排序。
         // 数字越小越靠前；这里让它排在 ring 后面。

@@ -450,7 +450,7 @@ public class EnglishLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.heaven_scroll.1", "Grants free flight while within range of an active beacon.");
         add("tooltip.enigmatic_legacy.heaven_scroll.2", "Flying slowly consumes experience and increases mining speed.");
-        add("tooltip.enigmatic_legacy.heaven_scroll.3", "Leaving beacon range removes flight and grants Slow Falling for 8 seconds.");
+        add("tooltip.enigmatic_legacy.heaven_scroll.3", "Leaving beacon range removes flight and grants Slow Falling for %s seconds.");
         add("tooltip.enigmatic_legacy.heaven_scroll.4", "While beacon-powered flight is available, negates fall damage.");
         // end
 
@@ -459,8 +459,8 @@ public class EnglishLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.cursed_scroll.1", "Grants bonuses based on the number of curse enchantments on your equipped items.");
         add("tooltip.enigmatic_legacy.cursed_scroll.2", "Main hand, off hand, armor, and Curios equipment are counted.");
-        add("tooltip.enigmatic_legacy.cursed_scroll.3", "Each curse enchantment counts as one entry, regardless of its level.");
-        add("tooltip.enigmatic_legacy.cursed_scroll.4", "The Ring of the Seven Curses counts as 7 additional curses.");
+        add("tooltip.enigmatic_legacy.cursed_scroll.3", "Each curse enchantment counts as %s entry, regardless of its level.");
+        add("tooltip.enigmatic_legacy.cursed_scroll.4", "The Ring of the Seven Curses counts as %s additional curses.");
 
         add("tooltip.enigmatic_legacy.cursed_scroll.attack", "Per curse: +%s Attack Damage");
         add("tooltip.enigmatic_legacy.cursed_scroll.mining", "Per curse: +%s Mining Speed");
@@ -486,11 +486,11 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         // 无尽贪婪契约
         addItem(ModItems.AVARICE_SCROLL, "Pact of Infinite Avarice");
 
-        add("tooltip.enigmatic_legacy.avarice_scroll.1", "+1 Fortune level.");
+        add("tooltip.enigmatic_legacy.avarice_scroll.1", "%s Fortune level.");
         add("tooltip.enigmatic_legacy.avarice_scroll.2", "Piglins remain neutral to you, even under the Second Curse.");
-        add("tooltip.enigmatic_legacy.avarice_scroll.3", "Piglin bartering rewards are increased by 100%.");
-        add("tooltip.enigmatic_legacy.avarice_scroll.4", "Killing any creature has a 15% chance to drop an extra emerald.");
-        add("tooltip.enigmatic_legacy.avarice_scroll.5", "Villager trades receive a 35% discount.");
+        add("tooltip.enigmatic_legacy.avarice_scroll.3", "Piglin bartering rewards are increased by %s.");
+        add("tooltip.enigmatic_legacy.avarice_scroll.4", "Killing any creature has a %s chance to drop %s extra emerald.");
+        add("tooltip.enigmatic_legacy.avarice_scroll.5", "Villager trades receive a %s discount.");
         add("tooltip.enigmatic_legacy.avarice_scroll.cursed_only", "Only bearers of the Seven Curses may use this item.");
         // end
 

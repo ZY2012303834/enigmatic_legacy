@@ -1,6 +1,5 @@
 package org.enigmatic_legacy.item.items;
 
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
@@ -14,6 +13,7 @@ import net.minecraft.world.item.component.CustomData;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.util.CursedRingHelper;
 import org.enigmatic_legacy.util.ScrollOfThousandCursesHelper;
+import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
@@ -151,60 +151,51 @@ public class ScrollOfThousandCurses extends Item implements ICurioItem {
             @NotNull List<Component> tooltip,
             @NotNull TooltipFlag flag
     ) {
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+        tooltip.add(SpellstoneTooltip.empty());
 
         if (Screen.hasShiftDown()) {
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.cursed_scroll.1")
-                    .withStyle(ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.cursed_scroll.2")
-                    .withStyle(ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.cursed_scroll.3")
-                    .withStyle(ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.cursed_scroll.4")
-                    .withStyle(ChatFormatting.GRAY));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.cursed_scroll.1"));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.cursed_scroll.2"));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.cursed_scroll.3", SpellstoneTooltip.number("1")));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.cursed_scroll.4", SpellstoneTooltip.number("7")));
 
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+            tooltip.add(SpellstoneTooltip.empty());
 
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.cursed_scroll.attack", "4%")
-                    .withStyle(ChatFormatting.GOLD));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.cursed_scroll.mining", "7%")
-                    .withStyle(ChatFormatting.GOLD));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.cursed_scroll.healing", "4%")
-                    .withStyle(ChatFormatting.GOLD));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.cursed_scroll.attack", SpellstoneTooltip.percent("4%")));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.cursed_scroll.mining", SpellstoneTooltip.percent("7%")));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.cursed_scroll.healing", SpellstoneTooltip.percent("4%")));
 
             int curseFactor = getCachedCurseFactor(stack);
 
             if (curseFactor > 0) {
-                tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+                tooltip.add(SpellstoneTooltip.empty());
 
-                tooltip.add(Component.translatable(
+                tooltip.add(SpellstoneTooltip.text(
                         "tooltip.enigmatic_legacy.cursed_scroll.current.factor",
-                        curseFactor
-                ).withStyle(ChatFormatting.AQUA));
+                        SpellstoneTooltip.number(curseFactor)
+                ));
 
-                tooltip.add(Component.translatable(
+                tooltip.add(SpellstoneTooltip.text(
                         "tooltip.enigmatic_legacy.cursed_scroll.current.attack",
-                        formatPercent(curseFactor * 0.04D)
-                ).withStyle(ChatFormatting.LIGHT_PURPLE));
+                        SpellstoneTooltip.percent(formatPercent(curseFactor * 0.04D))
+                ));
 
-                tooltip.add(Component.translatable(
+                tooltip.add(SpellstoneTooltip.text(
                         "tooltip.enigmatic_legacy.cursed_scroll.current.mining",
-                        formatPercent(curseFactor * 0.07D)
-                ).withStyle(ChatFormatting.LIGHT_PURPLE));
+                        SpellstoneTooltip.percent(formatPercent(curseFactor * 0.07D))
+                ));
 
-                tooltip.add(Component.translatable(
+                tooltip.add(SpellstoneTooltip.text(
                         "tooltip.enigmatic_legacy.cursed_scroll.current.healing",
-                        formatPercent(curseFactor * 0.04D)
-                ).withStyle(ChatFormatting.LIGHT_PURPLE));
+                        SpellstoneTooltip.percent(formatPercent(curseFactor * 0.04D))
+                ));
             }
 
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+            tooltip.add(SpellstoneTooltip.empty());
 
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.cursed_scroll.cursed_only")
-                    .withStyle(ChatFormatting.DARK_RED));
+            tooltip.add(SpellstoneTooltip.negative("tooltip.enigmatic_legacy.cursed_scroll.cursed_only"));
         } else {
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hold_shift")
-                    .withStyle(ChatFormatting.DARK_GRAY));
+            tooltip.add(SpellstoneTooltip.holdShift());
         }
     }
 }

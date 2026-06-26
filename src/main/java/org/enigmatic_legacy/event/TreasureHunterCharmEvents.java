@@ -16,7 +16,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.enigmatic_legacy.config.ConfigCommon;
-import org.enigmatic_legacy.item.items.TreasureHunterCharm;
+import org.enigmatic_legacy.item.items.charm.TreasureHunterCharm;
 import org.enigmatic_legacy.util.TreasureHunterCharmHelper;
 
 import java.util.HashMap;

@@ -17,7 +17,7 @@ import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import org.enigmatic_legacy.damage.ModDamageTypes;
-import org.enigmatic_legacy.item.items.PearlOfTheVoid;
+import org.enigmatic_legacy.item.items.spellstone.PearlOfTheVoid;
 import org.enigmatic_legacy.potion.ModEffects;
 import org.enigmatic_legacy.util.PearlOfTheVoidHelper;
 import org.enigmatic_legacy.util.TreasureHunterCharmHelper;

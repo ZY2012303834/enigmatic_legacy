@@ -16,7 +16,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
-import org.enigmatic_legacy.item.items.EyeOfNebula;
+import org.enigmatic_legacy.item.items.spellstone.EyeOfNebula;
 import org.enigmatic_legacy.util.EyeOfNebulaHelper;
 
 /**

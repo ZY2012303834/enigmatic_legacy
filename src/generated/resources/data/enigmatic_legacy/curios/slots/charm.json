@@ -1,6 +1,6 @@
 {
   "icon": "curios:slot/empty_charm_slot",
-  "operation": "SET",
+  "operation": "ADD",
   "order": 120,
   "size": 2
 }

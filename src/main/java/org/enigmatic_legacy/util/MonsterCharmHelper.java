@@ -3,7 +3,7 @@ package org.enigmatic_legacy.util;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import org.enigmatic_legacy.item.items.MonsterCharm;
+import org.enigmatic_legacy.item.items.charm.MonsterCharm;
 import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.Optional;

@@ -7,6 +7,8 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.block.ModBlocks;
 import org.enigmatic_legacy.item.items.*;
+import org.enigmatic_legacy.item.items.charm.*;
+import org.enigmatic_legacy.item.items.spellstone.*;
 
 public final class ModItems {
 

@@ -1,4 +1,4 @@
-package org.enigmatic_legacy.item.items;
+package org.enigmatic_legacy.item.items.charm;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;

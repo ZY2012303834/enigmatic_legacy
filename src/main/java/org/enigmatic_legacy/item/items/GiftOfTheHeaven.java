@@ -1,6 +1,5 @@
 package org.enigmatic_legacy.item.items;
 
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -18,6 +17,7 @@ import net.minecraft.world.level.block.entity.BeaconBlockEntity;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.level.chunk.status.ChunkStatus;
 import org.enigmatic_legacy.util.ExperienceHelper;
+import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
@@ -298,15 +298,11 @@ public class GiftOfTheHeaven extends Item implements ICurioItem {
             @NotNull List<Component> tooltip,
             @NotNull TooltipFlag flag
     ) {
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+        tooltip.add(SpellstoneTooltip.empty());
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.heaven_scroll.1")
-                .withStyle(ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.heaven_scroll.2")
-                .withStyle(ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.heaven_scroll.3")
-                .withStyle(ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.heaven_scroll.4")
-                .withStyle(ChatFormatting.GRAY));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.heaven_scroll.1"));
+        tooltip.add(SpellstoneTooltip.negative("tooltip.enigmatic_legacy.heaven_scroll.2"));
+        tooltip.add(SpellstoneTooltip.negative("tooltip.enigmatic_legacy.heaven_scroll.3", SpellstoneTooltip.number("8")));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.heaven_scroll.4"));
     }
 }

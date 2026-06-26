@@ -5,7 +5,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.item.ModItems;
-import org.enigmatic_legacy.item.items.EnigmaticEye;
+import org.enigmatic_legacy.item.items.charm.EnigmaticEye;
 import org.enigmatic_legacy.item.items.TwistedHeart;
 
 public final class ClientItemProperties {

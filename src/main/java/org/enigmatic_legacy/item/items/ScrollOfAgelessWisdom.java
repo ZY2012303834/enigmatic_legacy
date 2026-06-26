@@ -20,6 +20,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.util.ExperienceHelper;
+import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
@@ -400,32 +401,29 @@ public class ScrollOfAgelessWisdom extends Item implements ICurioItem {
         boolean active = isActive(stack);
         int mode = getMode(stack);
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+        tooltip.add(SpellstoneTooltip.empty());
 
         tooltip.add(Component.translatable(
                 "tooltip.enigmatic_legacy.xp_scroll.stored",
-                stored
-        ).withStyle(ChatFormatting.AQUA));
+                SpellstoneTooltip.number(stored)
+        ).withStyle(ChatFormatting.DARK_PURPLE));
 
         tooltip.add(Component.translatable(
                 active
                         ? "tooltip.enigmatic_legacy.xp_scroll.active"
                         : "tooltip.enigmatic_legacy.xp_scroll.inactive"
-        ).withStyle(active ? ChatFormatting.GREEN : ChatFormatting.RED));
+        ).withStyle(active ? ChatFormatting.DARK_PURPLE : ChatFormatting.RED));
 
         tooltip.add(Component.translatable(
                 mode == MODE_ABSORPTION
                         ? "tooltip.enigmatic_legacy.xp_scroll.mode_absorption"
                         : "tooltip.enigmatic_legacy.xp_scroll.mode_extraction"
-        ).withStyle(ChatFormatting.GOLD));
+        ).withStyle(ChatFormatting.DARK_PURPLE));
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+        tooltip.add(SpellstoneTooltip.empty());
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.xp_scroll.usage.1")
-                .withStyle(ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.xp_scroll.usage.2")
-                .withStyle(ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.xp_scroll.usage.3", "16")
-                .withStyle(ChatFormatting.GRAY));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.xp_scroll.usage.1"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.xp_scroll.usage.2"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.xp_scroll.usage.3", SpellstoneTooltip.number("16")));
     }
 }

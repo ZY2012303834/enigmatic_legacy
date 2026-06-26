@@ -1,13 +1,11 @@
-package org.enigmatic_legacy.item.items;
+package org.enigmatic_legacy.item.items.spellstone;
 
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
@@ -25,10 +23,8 @@ import java.util.List;
 
 /**
  * 天使之祝 / Angel's Blessing。
- *
  * 术石主动技能：
  * 向视野方向加速。
- *
  * 被动：
  * 免疫摔落和碰撞伤害；
  * 反射接近弹射物；

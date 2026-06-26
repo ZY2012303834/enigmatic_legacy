@@ -1,6 +1,5 @@
 package org.enigmatic_legacy.item.items;
 
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
@@ -10,6 +9,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.util.CursedRingHelper;
+import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
@@ -99,27 +99,20 @@ public class PactOfInfiniteAvarice extends Item implements ICurioItem {
             @NotNull List<Component> tooltip,
             @NotNull TooltipFlag flag
     ) {
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+        tooltip.add(SpellstoneTooltip.empty());
 
         if (Screen.hasShiftDown()) {
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.avarice_scroll.1")
-                    .withStyle(ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.avarice_scroll.2")
-                    .withStyle(ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.avarice_scroll.3")
-                    .withStyle(ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.avarice_scroll.4")
-                    .withStyle(ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.avarice_scroll.5")
-                    .withStyle(ChatFormatting.GRAY));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.avarice_scroll.1", SpellstoneTooltip.number("+1")));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.avarice_scroll.2"));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.avarice_scroll.3", SpellstoneTooltip.percent("100%")));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.avarice_scroll.4", SpellstoneTooltip.percent("15%"), SpellstoneTooltip.number("1")));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.avarice_scroll.5", SpellstoneTooltip.percent("35%")));
 
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+            tooltip.add(SpellstoneTooltip.empty());
 
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.avarice_scroll.cursed_only")
-                    .withStyle(ChatFormatting.DARK_RED));
+            tooltip.add(SpellstoneTooltip.negative("tooltip.enigmatic_legacy.avarice_scroll.cursed_only"));
         } else {
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hold_shift")
-                    .withStyle(ChatFormatting.DARK_GRAY));
+            tooltip.add(SpellstoneTooltip.holdShift());
         }
     }
 }

@@ -19,7 +19,7 @@ import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
-import org.enigmatic_legacy.item.items.NonEuclideanCube;
+import org.enigmatic_legacy.item.items.spellstone.NonEuclideanCube;
 import org.enigmatic_legacy.sound.ModSounds;
 import org.enigmatic_legacy.util.CursedRingHelper;
 import org.enigmatic_legacy.util.NonEuclideanCubeHelper;

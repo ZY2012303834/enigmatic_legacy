@@ -9,7 +9,7 @@ import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import org.enigmatic_legacy.config.ConfigCommon;
-import org.enigmatic_legacy.item.items.GolemHeart;
+import org.enigmatic_legacy.item.items.spellstone.GolemHeart;
 import org.enigmatic_legacy.util.GolemHeartHelper;
 
 /**

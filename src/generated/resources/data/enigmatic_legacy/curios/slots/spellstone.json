@@ -1,6 +1,6 @@
 {
   "icon": "enigmatic_legacy:slot/empty_spellstone_slot",
-  "operation": "ADD",
+  "operation": "SET",
   "order": 130,
-  "size": 2
+  "size": 1
 }

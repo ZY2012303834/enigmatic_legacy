@@ -452,7 +452,7 @@ public class ChineseLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.heaven_scroll.1", "在激活信标范围内给予自由飞行能力。");
         add("tooltip.enigmatic_legacy.heaven_scroll.2", "飞行时会缓慢消耗经验值，并提高挖掘速度。");
-        add("tooltip.enigmatic_legacy.heaven_scroll.3", "离开信标范围后会失去飞行，并获得 8 秒缓降。");
+        add("tooltip.enigmatic_legacy.heaven_scroll.3", "离开信标范围后会失去飞行，并获得 %s 秒缓降。");
         add("tooltip.enigmatic_legacy.heaven_scroll.4", "在信标范围内且未丧失飞行能力时免疫摔落伤害。");
         // end
 
@@ -461,8 +461,8 @@ public class ChineseLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.cursed_scroll.1", "根据你装备物品上的诅咒附魔项数提供加成。");
         add("tooltip.enigmatic_legacy.cursed_scroll.2", "主手、副手、盔甲与饰品栏中的诅咒附魔都会被统计。");
-        add("tooltip.enigmatic_legacy.cursed_scroll.3", "每个诅咒附魔只按 1 项计算，附魔等级不会额外提高倍率。");
-        add("tooltip.enigmatic_legacy.cursed_scroll.4", "七咒之戒会被额外视为 7 项诅咒。");
+        add("tooltip.enigmatic_legacy.cursed_scroll.3", "每个诅咒附魔只按 %s 项计算，附魔等级不会额外提高倍率。");
+        add("tooltip.enigmatic_legacy.cursed_scroll.4", "七咒之戒会被额外视为 %s 项诅咒。");
 
         add("tooltip.enigmatic_legacy.cursed_scroll.attack", "每项诅咒：+%s 攻击伤害");
         add("tooltip.enigmatic_legacy.cursed_scroll.mining", "每项诅咒：+%s 挖掘速度");
@@ -488,11 +488,11 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         // 无尽贪婪契约
         addItem(ModItems.AVARICE_SCROLL, "无尽贪婪契约");
 
-        add("tooltip.enigmatic_legacy.avarice_scroll.1", "+1 时运等级。");
+        add("tooltip.enigmatic_legacy.avarice_scroll.1", "%s 时运等级。");
         add("tooltip.enigmatic_legacy.avarice_scroll.2", "猪灵对你保持中立，即使你承受第二诅咒。");
-        add("tooltip.enigmatic_legacy.avarice_scroll.3", "猪灵以物易物收益增加 100%。");
-        add("tooltip.enigmatic_legacy.avarice_scroll.4", "杀死任意生物有 15% 概率额外掉落 1 枚绿宝石。");
-        add("tooltip.enigmatic_legacy.avarice_scroll.5", "村民交易提供 35% 折扣。");
+        add("tooltip.enigmatic_legacy.avarice_scroll.3", "猪灵以物易物收益增加 %s。");
+        add("tooltip.enigmatic_legacy.avarice_scroll.4", "杀死任意生物有 %s 概率额外掉落 %s 枚绿宝石。");
+        add("tooltip.enigmatic_legacy.avarice_scroll.5", "村民交易提供 %s 折扣。");
         add("tooltip.enigmatic_legacy.avarice_scroll.cursed_only", "只有承受七咒之人才能使用。");
         // end
 

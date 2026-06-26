@@ -10,6 +10,7 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.item.items.*;
+import org.enigmatic_legacy.item.items.spellstone.*;
 import org.enigmatic_legacy.util.*;
 import org.jetbrains.annotations.NotNull;
 

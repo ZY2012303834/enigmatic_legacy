@@ -1,4 +1,4 @@
-package org.enigmatic_legacy.item.items;
+package org.enigmatic_legacy.item.items.charm;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;

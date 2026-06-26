@@ -1,4 +1,4 @@
-package org.enigmatic_legacy.item.items;
+package org.enigmatic_legacy.item.items.spellstone;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;

@@ -1,10 +1,10 @@
-// 1.21.1	2026-06-26T08:05:18.3595526	Curios 数据生成器
+// 1.21.1	2026-06-26T09:00:48.7317418	Curios 数据生成器
 2d467348b56cc6a86fc562f756a58d86414933d1 data/curios/tags/item/charm.json
 90c2ac4c24b452435d41d62fd01727f7aac708dd data/curios/tags/item/ring.json
 d3f7fa03b17ec082e9f4331d5d0ba8ff13000d4c data/curios/tags/item/scroll.json
 62acd923d4955fef1e4f8daaab562bff69aa6f22 data/curios/tags/item/spellstone.json
 9f299a78b32a6dd6ef1dd601a1c8efd861f43103 data/enigmatic_legacy/curios/entities/player.json
-1b627e2e23a1d7d6b136202039eaf4c546d57840 data/enigmatic_legacy/curios/slots/charm.json
+8242fffd84eae9143d93c2fb393582e147184e95 data/enigmatic_legacy/curios/slots/charm.json
 91608508fa176378ea675a39c0d6605ff2f7e4d5 data/enigmatic_legacy/curios/slots/ring.json
 038a96190dc2bd8047f48bcefec6d875a738f520 data/enigmatic_legacy/curios/slots/scroll.json
-4138a9aa6b7f5d011e8c49a02f1e6ffcae56ddb2 data/enigmatic_legacy/curios/slots/spellstone.json
+bcc2ffa480e01436c5add5b6069d137b0a582864 data/enigmatic_legacy/curios/slots/spellstone.json

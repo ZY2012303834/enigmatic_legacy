@@ -23,9 +23,9 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.item.ModItems;
-import org.enigmatic_legacy.item.items.AmuletVariant;
-import org.enigmatic_legacy.item.items.EnigmaticAmulet;
-import org.enigmatic_legacy.item.items.UnwitnessedAmulet;
+import org.enigmatic_legacy.item.items.charm.AmuletVariant;
+import org.enigmatic_legacy.item.items.charm.EnigmaticAmulet;
+import org.enigmatic_legacy.item.items.charm.UnwitnessedAmulet;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.event.CurioCanEquipEvent;
 
