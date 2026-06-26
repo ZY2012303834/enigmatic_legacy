@@ -52,6 +52,7 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.storageCrystal1", "保存死亡时遗失的物品与经验。");
         add("tooltip.enigmatic_legacy.storageCrystal2", "已保存物品堆：%1$s");
         add("tooltip.enigmatic_legacy.storageCrystal3", "已保存经验：%1$s");
+
         addItem(ModItems.SOUL_CRYSTAL, "灵魂水晶");
         add("tooltip.enigmatic_legacy.soulCrystal1", "死亡后取回水晶，");
         add("tooltip.enigmatic_legacy.soulCrystal2", "即可恢复一颗破碎的灵魂水晶。");

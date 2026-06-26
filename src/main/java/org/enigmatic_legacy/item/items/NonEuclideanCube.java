@@ -372,7 +372,7 @@ public class NonEuclideanCube extends Item implements ICurioItem {
                 SpellstoneTooltip.number("150")));
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.non_euclidean_cube.passive.4",
                 SpellstoneTooltip.number("35%")));
-        tooltip.add(SpellstoneTooltip.negative("tooltip.enigmatic_legacy.non_euclidean_cube.passive.5"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.non_euclidean_cube.passive.5"));
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.non_euclidean_cube.passive.6"));
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.non_euclidean_cube.passive.7"));
     }
