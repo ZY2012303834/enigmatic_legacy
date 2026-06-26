@@ -1,6 +1,7 @@
-// 1.21.1	2026-06-26T12:27:03.6731526	vanilla/Recipes
+// 1.21.1	2026-06-26T16:19:32.4709232	vanilla/Recipes
 138cca5fc2d36a468976c88c266618e68aa51d88 data/enigmatic_legacy/advancement/recipes/building_blocks/astral_dust_sack.json
 75128c3d277fd90fca1df4cc9f996933af7f7241 data/enigmatic_legacy/advancement/recipes/building_blocks/etherium_block.json
+70a559dbe3db33a763c165b60a23730d9e9f955b data/enigmatic_legacy/advancement/recipes/combat/axe_of_executioner.json
 7472e63295f55aa04be870eb8e30e7f202e9fa38 data/enigmatic_legacy/advancement/recipes/combat/etherium_axe.json
 637101299415463cf05a1183f0715c8bbfb9386d data/enigmatic_legacy/advancement/recipes/combat/etherium_boots.json
 5d9af61a64d9292a166c9e87e447c200bf060869 data/enigmatic_legacy/advancement/recipes/combat/etherium_chestplate.json
@@ -39,6 +40,7 @@ b851f0a5251fe317a2a1215e9a5a9478b5b0c51f data/enigmatic_legacy/advancement/recip
 44184c796c476522c6aa3d1c9264d08810c28675 data/enigmatic_legacy/advancement/recipes/tools/twisted_mirror.json
 bc5104864582da074782dc6da572b03febea86de data/enigmatic_legacy/recipe/astral_dust_sack.json
 c07b678ca3933c34b2acb98d715a3661bdbc46db data/enigmatic_legacy/recipe/avarice_scroll.json
+fb27980e68235d55440fe805245fb1b9e16ced28 data/enigmatic_legacy/recipe/axe_of_executioner.json
 461bff7973fdfaaaa4c4918c7a3eb08618d05e5d data/enigmatic_legacy/recipe/bloodstained_valor_emblem.json
 874378b1428b2e4f0b7923bec326928f7e37ba59 data/enigmatic_legacy/recipe/cosmic_heart.json
 a68e9f47121f7c2f4e9d9d83a3dc9b7c97b499c3 data/enigmatic_legacy/recipe/cursed_scroll.json

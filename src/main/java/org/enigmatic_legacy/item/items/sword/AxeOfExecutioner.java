@@ -50,7 +50,7 @@ public class AxeOfExecutioner extends AxeItem {
      * 基础斩首概率。
      * 0.15F = 15%
      */
-    private static final float BASE_BEHEADING_CHANCE = 1.0F;
+    private static final float BASE_BEHEADING_CHANCE = 0.15F;
 
     /**
      * 每一级抢夺附魔增加的斩首概率。
@@ -129,7 +129,7 @@ public class AxeOfExecutioner extends AxeItem {
      * 新逻辑：
      * 1. 玩家主手拿着行刑者之斧杀死生物，可以掉落头颅。
      * 2. 非玩家生物主手拿着行刑者之斧杀死生物，也可以掉落头颅。
-     *    例如：僵尸、猪灵、骷髅等，只要主手装备了这把斧头并完成击杀，就能触发。
+     * 例如：僵尸、猪灵、骷髅等，只要主手装备了这把斧头并完成击杀，就能触发。
      * 3. 如果被杀死的是玩家，则掉落该玩家自己的玩家头颅。
      * 注意：
      * - 必须是“主手”拿着行刑者之斧。

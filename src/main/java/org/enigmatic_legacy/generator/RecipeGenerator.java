@@ -479,5 +479,29 @@ public class RecipeGenerator extends RecipeProvider {
                 .save(output);
 
 
+        // 行刑者之斧 / Axe of Executioner
+        // 说明：
+        // - 这个配方对齐原作者 forbidden_axe 的合成逻辑。
+        // - 原作者配方结构：
+        //   I S I
+        //   P X P
+        //     R
+        // 材料含义：
+        // - X = 钻石斧，作为行刑者之斧的基础武器。
+        // - S = 凋灵骷髅头颅，对应“斩首/处刑”的主题。
+        // - I = 下界合金锭，用于提升武器强度和稀有度。
+        // - P = 烈焰粉，用于强化地狱/邪术风格。
+        // - R = 烈焰棒，作为斧柄核心材料。
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.AXE_OF_EXECUTIONER.get())
+                .pattern("ISI")
+                .pattern("PXP")
+                .pattern(" R ")
+                .define('I', Items.NETHERITE_INGOT)
+                .define('S', Items.WITHER_SKELETON_SKULL)
+                .define('P', Items.BLAZE_POWDER)
+                .define('X', Items.DIAMOND_AXE)
+                .define('R', Items.BLAZE_ROD)
+                .unlockedBy("has_wither_skeleton_skull", has(Items.WITHER_SKELETON_SKULL))
+                .save(output);
     }
 }

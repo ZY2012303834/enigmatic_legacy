@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "I": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "P": {
+      "item": "minecraft:blaze_powder"
+    },
+    "R": {
+      "item": "minecraft:blaze_rod"
+    },
+    "S": {
+      "item": "minecraft:wither_skeleton_skull"
+    },
+    "X": {
+      "item": "minecraft:diamond_axe"
+    }
+  },
+  "pattern": [
+    "ISI",
+    "PXP",
+    " R "
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:axe_of_executioner"
+  }
+}
