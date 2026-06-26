@@ -12,7 +12,6 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerContainerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import org.enigmatic_legacy.item.ModItems;
@@ -20,15 +19,21 @@ import org.enigmatic_legacy.item.items.charm.EnigmaticEye;
 
 /**
  * 休眠之眼获取事件。
- * 复刻原版逻辑：
- * - 玩家第一次打开战利品箱时，生成 1 个休眠之眼。
+ * 复刻逻辑：
+ * - 玩家第一次打开真正的战利品箱时，生成 1 个休眠之眼。
  * - 每个玩家只会生成 1 次。
- * - 即使玩家死亡、换维度，也不会再次生成。
- * 实现思路：
- * 1. 玩家右键方块时，先判断这个方块是不是带战利品表的容器。
- * 2. 如果是，就把这个容器的位置临时记录到玩家 NBT。
- * 3. 等容器真正打开后，再往这个容器里塞入 1 个休眠之眼。
- * 4. 成功生成后，给玩家写入永久标记，防止以后再次生成。
+ * - 生成后永久记录，不会在其它战利品箱里继续生成。
+ * 重要修正版：
+ * - 之前版本使用 RightClickBlock 记录位置，再等 PlayerContainerEvent.Open 塞入物品。
+ * - 实测在当前 1.21.1 NeoForge 中不稳定，可能导致休眠之眼没有生成。
+ * - 现在改为在玩家右键战利品容器时：
+ *   1. 先手动展开原版战利品表；
+ *   2. 再立即把休眠之眼放入容器；
+ *   3. 成功后写入玩家永久标记。
+ * 这样可以保证：
+ * - 不会被原版战利品生成覆盖；
+ * - 不依赖容器打开事件；
+ * - 只生成一次。
  */
 public final class EnigmaticEyeObtainEvents {
 
@@ -36,47 +41,31 @@ public final class EnigmaticEyeObtainEvents {
      * 永久标记：
      * 记录玩家是否已经生成过休眠之眼。
      * 只要这个值为 true，
-     * 以后不管玩家再打开多少战利品箱，都不会再生成休眠之眼。
+     * 以后这个玩家再打开任何战利品箱，都不会再生成休眠之眼。
      */
     private static final String HAS_GENERATED_DORMANT_EYE_TAG =
             "EnigmaticLegacyHasGeneratedDormantEye";
-
-    /**
-     * 临时标记：
-     * 记录玩家刚刚右键的战利品容器位置。
-     * 为什么需要临时标记：
-     * - RightClickBlock 发生在容器真正打开之前。
-     * - PlayerContainerEvent.Open 发生在容器真正打开之后。
-     * - 我们需要先记住“玩家点的是哪个战利品箱”，
-     *   然后等箱子打开后再把休眠之眼放进去。
-     */
-    private static final String PENDING_LOOT_CONTAINER_POS_TAG =
-            "EnigmaticLegacyPendingDormantEyeContainerPos";
 
     private EnigmaticEyeObtainEvents() {
     }
 
     /**
      * 玩家右键方块事件。
-     * 这个事件会在玩家真正打开箱子之前触发。
-     * 所以我们在这里判断：
-     * 1. 玩家是不是服务端玩家；
-     * 2. 玩家是否已经生成过休眠之眼；
-     * 3. 右键的方块是不是带战利品表的容器；
-     * 4. 如果满足条件，就先把容器位置记下来。
-     * 注意：
-     * 这里不会直接发放休眠之眼。
-     * 真正发放在 onOpenContainer(...) 里处理。
+     * 触发时机：
+     * - 玩家右键箱子、木桶、发射器、投掷器等方块时触发。
+     * 本方法只处理“带战利品表的容器”。
+     * 普通玩家自己放的箱子没有 LootTable，不会触发。
      */
-    @SubscribeEvent(priority = EventPriority.LOWEST)
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
-        // 只处理主手，避免主手和副手各触发一次导致逻辑重复。
+        // 只处理主手。
+        // 否则主手、副手可能各触发一次，导致逻辑重复。
         if (event.getHand() != InteractionHand.MAIN_HAND) {
             return;
         }
 
-        // 只在服务端处理。
-        // 客户端只负责显示，不能生成真实物品。
+        // 只在服务端执行。
+        // 客户端不能真正生成物品。
         Level level = event.getLevel();
         if (level.isClientSide()) {
             return;
@@ -87,153 +76,119 @@ public final class EnigmaticEyeObtainEvents {
             return;
         }
 
-        // 如果玩家已经生成过休眠之眼，则直接退出。
-        // 这是防止重复生成的核心判断。
+        // 如果玩家已经生成过休眠之眼，直接退出。
+        // 这是保证“只生成一个”的核心。
         if (hasGeneratedDormantEye(player)) {
             return;
         }
 
-        // 获取玩家右键的方块实体。
+        // 获取玩家右键的方块位置。
         BlockPos pos = event.getPos();
+
+        // 获取这个位置的方块实体。
         BlockEntity blockEntity = level.getBlockEntity(pos);
 
-        // RandomizableContainerBlockEntity 是原版“可带战利品表的容器”基类。
-        // 箱子、木桶、发射器、投掷器、漏斗、潜影盒等都可能属于这个体系。
+        // RandomizableContainerBlockEntity 是原版可带战利品表容器的基类。
+        // 地牢箱、神殿箱、沉船箱、村庄箱等战利品箱通常属于这个体系。
         if (!(blockEntity instanceof RandomizableContainerBlockEntity container)) {
             return;
         }
 
-        // 只有真正带 LootTable 的容器才算“战利品箱”。
-        // 玩家自己放的普通箱子没有 loot table，不会触发。
+        // 如果没有 LootTable，说明它不是未打开过的战利品箱。
+        // 玩家自己放置的普通箱子也会走到这里并直接 return。
         if (container.getLootTable() == null) {
             return;
         }
 
-        // 如果容器因为锁、权限或其它原因不能打开，则不记录。
+        // 如果容器因为锁或其它原因不能打开，就不生成。
         if (!container.canOpen(player)) {
             return;
         }
 
-        // 到这里说明：
-        // 玩家右键的是一个“尚未生成内容的战利品容器”。
-        // 先把容器位置记到玩家身上，等容器真正打开后再生成休眠之眼。
-        player.getPersistentData().putLong(PENDING_LOOT_CONTAINER_POS_TAG, pos.asLong());
-    }
-
-    /**
-     * 玩家打开容器事件。
-     * 当玩家真正打开容器后，才把休眠之眼放进去。
-     * 为什么不在 RightClickBlock 里直接放：
-     * - 因为战利品箱的原版战利品通常会在打开时才展开。
-     * - 如果太早塞物品，可能被原版战利品生成覆盖。
-     * - 所以这里等容器真正打开后再放，最稳。
-     */
-    @SubscribeEvent
-    public static void onOpenContainer(PlayerContainerEvent.Open event) {
-        // 只处理服务端玩家。
-        if (!(event.getEntity() instanceof ServerPlayer player)) {
-            return;
-        }
-
-        CompoundTag playerData = player.getPersistentData();
-
-        // 如果玩家已经生成过休眠之眼，则清掉临时标记并退出。
-        if (hasGeneratedDormantEye(player)) {
-            playerData.remove(PENDING_LOOT_CONTAINER_POS_TAG);
-            return;
-        }
-
-        // 如果没有临时记录，说明这次打开的不是战利品容器。
-        if (!playerData.contains(PENDING_LOOT_CONTAINER_POS_TAG)) {
-            return;
-        }
-
-        // 读取之前记录的战利品容器位置。
-        BlockPos pos = BlockPos.of(playerData.getLong(PENDING_LOOT_CONTAINER_POS_TAG));
-
-        // 临时标记只用一次，用完立刻删除。
-        // 防止玩家之后打开其它容器时误触发。
-        playerData.remove(PENDING_LOOT_CONTAINER_POS_TAG);
-
-        // 获取这个位置当前的方块实体。
-        BlockEntity blockEntity = player.level().getBlockEntity(pos);
-
-        // 再确认一次它是可带战利品表的容器。
-        if (!(blockEntity instanceof RandomizableContainerBlockEntity container)) {
-            return;
-        }
-
-        // 再确认一次玩家现在仍然可以打开它。
-        if (!container.canOpen(player)) {
-            return;
-        }
+        /*
+         * 关键修复：
+         *
+         * 主动展开原版战利品表。
+         *
+         * 原版战利品箱的内容不是生成世界时就确定的，
+         * 而是玩家第一次打开时才根据 LootTable 展开。
+         *
+         * 如果我们在战利品表展开之前直接往容器里塞物品，
+         * 可能会被原版战利品生成流程覆盖。
+         *
+         * 所以这里先调用 unpackLootTable(player)，
+         * 让原版战利品先生成完毕，
+         * 然后我们再把休眠之眼塞进去。
+         */
+        container.unpackLootTable(player);
 
         // 创建休眠之眼。
         ItemStack dormantEye = createDormantEye();
 
-        // 尝试把休眠之眼放进容器里。
-        // 如果箱子满了，就放进玩家背包。
-        // 如果玩家背包也满了，就掉落到玩家脚下。
+        // 发放休眠之眼。
+        // 优先放进这个战利品容器；
+        // 如果容器满了，就放进玩家背包；
+        // 如果背包也满了，就掉在玩家脚下。
         giveDormantEye(player, container, dormantEye);
 
         // 写入永久标记。
-        // 这是最关键的一步：
-        // 从现在开始，这名玩家再也不会触发休眠之眼生成。
+        // 从这一刻开始，这个玩家不会再生成第二个休眠之眼。
         setGeneratedDormantEye(player);
     }
 
     /**
      * 玩家克隆事件。
-     * 玩家死亡重生、从末地回主世界等情况可能会创建新的玩家实体。
-     * 为了保证“已经生成过休眠之眼”的记录不会丢失，
-     * 这里把旧玩家身上的标记复制到新玩家身上。
+     * 玩家死亡重生、从末地回主世界等情况，
+     * 可能会创建一个新的玩家实体。
+     * 这里把旧玩家身上的“已经生成过休眠之眼”标记复制给新玩家，
+     * 防止玩家死亡后再次打开战利品箱又生成一个。
      */
     @SubscribeEvent
     public static void onPlayerClone(PlayerEvent.Clone event) {
         CompoundTag oldData = event.getOriginal().getPersistentData();
         CompoundTag newData = event.getEntity().getPersistentData();
 
-        // 复制永久生成标记。
-        // 只要旧玩家生成过，新玩家也算生成过。
+        // 如果旧玩家已经生成过休眠之眼，
+        // 新玩家也继承这个状态。
         if (oldData.getBoolean(HAS_GENERATED_DORMANT_EYE_TAG)) {
             newData.putBoolean(HAS_GENERATED_DORMANT_EYE_TAG, true);
         }
     }
 
     /**
-     * 创建一个“休眠状态”的休眠之眼。
-     * EnigmaticEye 默认没有写入 NBT 时就会被视为休眠状态。
-     * 这里仍然显式调用 setDormant(true)，让生成结果更明确。
+     * 创建一个休眠状态的休眠之眼。
+     * EnigmaticEye 默认没有数据时就是休眠状态。
+     * 这里仍然显式写入休眠状态，避免以后逻辑变化。
      */
     private static ItemStack createDormantEye() {
         ItemStack stack = new ItemStack(ModItems.ENIGMATIC_EYE.get());
 
-        // 显式设置为休眠状态。
+        // 显式设置为休眠。
         EnigmaticEye.setDormant(stack, true);
 
         return stack;
     }
 
     /**
-     * 把休眠之眼发放给玩家。
+     * 发放休眠之眼。
      * 优先级：
-     * 1. 优先放进玩家打开的战利品容器里；
-     * 2. 如果容器满了，放进玩家背包；
-     * 3. 如果背包也满了，掉落到玩家脚下。
+     * 1. 放入玩家正在打开的战利品容器；
+     * 2. 容器满了，放进玩家背包；
+     * 3. 背包也满了，掉落在玩家脚下。
      */
     private static void giveDormantEye(ServerPlayer player, Container container, ItemStack dormantEye) {
-        // 先尝试放入容器。
+        // 优先尝试放进战利品容器。
         if (tryInsertIntoContainer(container, dormantEye)) {
             container.setChanged();
             return;
         }
 
-        // 如果容器没有空位，就尝试放进玩家背包。
+        // 如果箱子满了，尝试放进玩家背包。
         if (player.getInventory().add(dormantEye)) {
             return;
         }
 
-        // 如果背包也满了，就掉落到玩家脚下。
+        // 如果背包也满了，就掉在玩家脚下。
         ItemEntity droppedEye = new ItemEntity(
                 player.level(),
                 player.getX(),
@@ -251,7 +206,7 @@ public final class EnigmaticEyeObtainEvents {
      * 返回 true：
      * - 成功放入容器。
      * 返回 false：
-     * - 容器没有空位。
+     * - 容器没有空格。
      */
     private static boolean tryInsertIntoContainer(Container container, ItemStack stack) {
         for (int slot = 0; slot < container.getContainerSize(); slot++) {

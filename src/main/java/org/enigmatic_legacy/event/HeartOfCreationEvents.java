@@ -39,6 +39,9 @@ import java.util.List;
  * 6. 装备或放在物品栏中时不朽。
  */
 public final class HeartOfCreationEvents {
+    private static final int EFFECT_CLEANUP_INTERVAL_TICKS = 5;
+    private static final float FLYING_BREAK_SPEED_MULTIPLIER = 5.0F;
+
     /**
      * 用于记录创造之心是否曾经给玩家开启过飞行。
 
@@ -67,9 +70,18 @@ public final class HeartOfCreationEvents {
 
         if (equipped) {
             grantFlight(player);
-            player.setAirSupply(player.getMaxAirSupply());
-            player.clearFire();
-            removeNegativeEffects(player);
+
+            if (player.getAirSupply() < player.getMaxAirSupply()) {
+                player.setAirSupply(player.getMaxAirSupply());
+            }
+
+            if (player.isOnFire()) {
+                player.clearFire();
+            }
+
+            if (player.tickCount % EFFECT_CLEANUP_INTERVAL_TICKS == 0) {
+                removeNegativeEffects(player);
+            }
         } else {
             revokeFlightIfGranted(player);
         }
@@ -84,9 +96,8 @@ public final class HeartOfCreationEvents {
     public static void onBreakSpeed(PlayerEvent.BreakSpeed event) {
         Player player = event.getEntity();
 
-        if (HeartOfCreationHelper.hasHeartOfCreationEquipped(player)
-                && player.getAbilities().flying) {
-            event.setNewSpeed(event.getNewSpeed() * 5.0F);
+        if (player.getAbilities().flying && HeartOfCreationHelper.hasHeartOfCreationEquipped(player)) {
+            event.setNewSpeed(event.getNewSpeed() * FLYING_BREAK_SPEED_MULTIPLIER);
         }
     }
 
@@ -111,13 +122,13 @@ public final class HeartOfCreationEvents {
      */
     @SubscribeEvent
     public static void onIncomingDamage(LivingIncomingDamageEvent event) {
-        LivingEntity target = event.getEntity();
-
-        if (!HeartOfCreationHelper.hasHeartOfCreationEquipped(target)) {
+        if (!isImmuneDamage(event.getSource())) {
             return;
         }
 
-        if (isImmuneDamage(event.getSource())) {
+        LivingEntity target = event.getEntity();
+
+        if (HeartOfCreationHelper.hasHeartOfCreationEquipped(target)) {
             event.setCanceled(true);
         }
     }
@@ -132,22 +143,20 @@ public final class HeartOfCreationEvents {
      */
     @SubscribeEvent
     public static void onLivingDamage(LivingDamageEvent.Pre event) {
-        LivingEntity target = event.getEntity();
-
-        if (!HeartOfCreationHelper.hasCreationImmortality(target)) {
-            return;
-        }
-
         float damage = event.getNewDamage();
 
         if (damage <= 0.0F) {
             return;
         }
 
-        float health = target.getHealth();
+        LivingEntity target = event.getEntity();
 
         // 如果这次伤害不会把生命压到 1 点以下，正常结算。
-        if (health - damage > 1.0F) {
+        if (target.getHealth() - damage > 1.0F) {
+            return;
+        }
+
+        if (!HeartOfCreationHelper.hasCreationImmortality(target)) {
             return;
         }
 
@@ -183,12 +192,20 @@ public final class HeartOfCreationEvents {
      * 给玩家开启飞行能力。
      */
     private static void grantFlight(ServerPlayer player) {
+        boolean changed = false;
+
         if (!player.getAbilities().mayfly) {
             player.getAbilities().mayfly = true;
-            player.onUpdateAbilities();
+            changed = true;
         }
 
-        player.getPersistentData().putBoolean(GRANTED_FLIGHT_TAG, true);
+        if (!player.getPersistentData().getBoolean(GRANTED_FLIGHT_TAG)) {
+            player.getPersistentData().putBoolean(GRANTED_FLIGHT_TAG, true);
+        }
+
+        if (changed) {
+            player.onUpdateAbilities();
+        }
     }
 
     /**
@@ -214,6 +231,10 @@ public final class HeartOfCreationEvents {
      * 创造之心保留正面效果，只清除 debuff。
      */
     private static void removeNegativeEffects(LivingEntity entity) {
+        if (entity.getActiveEffects().isEmpty()) {
+            return;
+        }
+
         List<Holder<MobEffect>> toRemove = new ArrayList<>();
 
         for (MobEffectInstance instance : entity.getActiveEffects()) {

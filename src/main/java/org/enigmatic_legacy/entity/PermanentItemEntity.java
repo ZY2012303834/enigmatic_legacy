@@ -86,7 +86,7 @@ public class PermanentItemEntity extends Entity {
         this.setPortalCooldown();
         this.age++;
 
-        if (this.level().isClientSide) {
+        if (this.level().isClientSide && this.age % 2 == 0) {
             this.level().addParticle(
                     ParticleTypes.PORTAL,
                     this.getX(),

@@ -43,6 +43,11 @@ public class MagnetRing extends Item implements ICurioItem {
     private static final int MAX_PULLED_ITEMS_PER_TICK = 200;
 
     /**
+     * 附近掉落物扫描比较重，隔 tick 执行仍然足够顺滑。
+     */
+    private static final int PULL_INTERVAL_TICKS = 2;
+
+    /**
      * 基础吸取速度。
      * 距离越远会稍微加速，但不会无限变快。
      */
@@ -114,6 +119,10 @@ public class MagnetRing extends Item implements ICurioItem {
 
         // 按下潜行键时，磁力之戒不生效。
         if (player.isShiftKeyDown() && !ConfigCommon.DISABLE_AOE_SHIFT_SUPPRESSION.get()) {
+            return;
+        }
+
+        if (player.tickCount % PULL_INTERVAL_TICKS != 0) {
             return;
         }
 

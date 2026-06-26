@@ -46,7 +46,11 @@ public final class BlazingCoreEvents {
 
     @SubscribeEvent
     public static void onEntityTick(EntityTickEvent.Post event) {
-        if (!(event.getEntity() instanceof LivingEntity entity)) {
+        if (!(event.getEntity() instanceof Player entity)) {
+            return;
+        }
+
+        if (entity.level().isClientSide()) {
             return;
         }
 
