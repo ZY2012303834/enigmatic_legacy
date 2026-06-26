@@ -40,7 +40,26 @@ public class GlobalLootModifierGenerator extends GlobalLootModifierProvider {
         addUnholyGrailModifiers();
         addForbiddenFruitModifiers();
         addAstralDustModifiers();
+        addEtheriumOreModifiers();
 
+    }
+
+    /**
+     * 以太矿石获取方式。
+     * 原项目：
+     * 以太矿石可以在末地城宝藏箱子中找到。
+     * 原项目数据：
+     * - 注入目标：minecraft:chests/end_city_treasure
+     * - rolls：-11 ~ 2
+     * - 以太矿石权重：60
+     * - 数量：1 ~ 2
+     */
+    private void addEtheriumOreModifiers() {
+        addTableModifier(
+                "etherium_ore_end_city_treasure",
+                BuiltInLootTables.END_CITY_TREASURE,
+                "inject/chests/etherium_ore/end_city_treasure"
+        );
     }
 
     /**

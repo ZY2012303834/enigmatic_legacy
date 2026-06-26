@@ -66,10 +66,33 @@ public class InjectLootTableGenerator implements DataProvider {
         // 星尘
         addAstralDustTables(cachedOutput, futures);
 
+        // 以太矿石
+        addEtheriumOreTables(cachedOutput, futures);
+
         /*
          * 等待所有 loot table 文件全部写入完成。
          */
         return CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new));
+    }
+
+    /**
+     * 生成以太矿石 loot table。
+     * 原项目 EtheriumEventHandler：
+     * - 目标：minecraft:chests/end_city_treasure
+     * - pool name：etherium
+     * - rolls：-11 ~ 2
+     * - etherium ore 权重：60
+     * - 数量：1 ~ 2
+     * 这里直接按原项目概率复刻。
+     */
+    private void addEtheriumOreTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {
+        futures.add(saveTable(
+                cachedOutput,
+                "etherium_ore/end_city_treasure",
+                -11.0D,
+                2.0D,
+                itemEntry(ModItems.ETHERIUM_ORE.get(), 60, 1.0D, 4.0D)
+        ));
     }
 
     /**
