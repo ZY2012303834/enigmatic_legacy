@@ -569,6 +569,25 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("message.enigmatic_legacy.etherium_pickaxe.area_disabled", "Etherium Pickaxe area mining: disabled");
         // end
 
+        // 以太锹
+        addItem(ModItems.ETHERIUM_SHOVEL, "Etherium Shovel");
+
+        add("tooltip.enigmatic_legacy.etherium_shovel.1", "Mines blocks in a 3×3×1 area.");
+        add("tooltip.enigmatic_legacy.etherium_shovel.2", "Area mining does not trigger while sneaking.");
+        add("tooltip.enigmatic_legacy.etherium_shovel.3", "Sneak-right-click to toggle the area mining effect.");
+        add("tooltip.enigmatic_legacy.etherium_shovel.4", "Area mining is enabled by default.");
+        add("tooltip.enigmatic_legacy.etherium_shovel.disabled", "Area mining is currently disabled.");
+
+        add("message.enigmatic_legacy.etherium_shovel.area_enabled", "Etherium Shovel area mining: enabled");
+        add("message.enigmatic_legacy.etherium_shovel.area_disabled", "Etherium Shovel area mining: disabled");
+        // end
+
+        // 以太斧
+        addItem(ModItems.ETHERIUM_AXE, "Etherium Waraxe");
+
+        add("tooltip.enigmatic_legacy.etherium_axe.1", "A waraxe forged from etherium, lighter than an ordinary axe.");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");
     }

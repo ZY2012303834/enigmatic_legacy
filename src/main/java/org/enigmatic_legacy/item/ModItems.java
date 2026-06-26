@@ -13,6 +13,8 @@ import org.enigmatic_legacy.item.items.scroll.*;
 import org.enigmatic_legacy.item.items.spellstone.*;
 import org.enigmatic_legacy.item.items.sword.EtheriumBroadsword;
 import org.enigmatic_legacy.item.items.tool.EtheriumPickaxe;
+import org.enigmatic_legacy.item.items.tool.EtheriumShovel;
+import org.enigmatic_legacy.item.items.tool.EtheriumWaraxe;
 
 public final class ModItems {
 
@@ -68,6 +70,8 @@ public final class ModItems {
     public static final DeferredItem<TheAcknowledgment> THE_ACKNOWLEDGMENT = ITEMS.register("the_acknowledgment", TheAcknowledgment::new); // 启示之证 / The Acknowledgment
     public static final DeferredItem<EtheriumBroadsword> ETHERIUM_SWORD = ITEMS.register("etherium_sword", EtheriumBroadsword::new); // 以太阔剑
     public static final DeferredItem<Item> ETHERIUM_PICKAXE = ITEMS.register("etherium_pickaxe", EtheriumPickaxe::new); // 以太镐
+    public static final DeferredItem<EtheriumShovel> ETHERIUM_SHOVEL = ITEMS.register("etherium_shovel", EtheriumShovel::new); // 以太锹
+    public static final DeferredItem<Item> ETHERIUM_AXE = ITEMS.register("etherium_axe", EtheriumWaraxe::new); // 以太斧
 
     // 术石
     public static final DeferredItem<GolemHeart> GOLEM_HEART = ITEMS.register("golem_heart", GolemHeart::new); // 魔像之心

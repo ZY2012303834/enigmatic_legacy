@@ -571,6 +571,25 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("message.enigmatic_legacy.etherium_pickaxe.area_disabled", "以太镐区域挖掘：已关闭");
         // end
 
+        // 以太锹
+        addItem(ModItems.ETHERIUM_SHOVEL, "以太锹");
+
+        add("tooltip.enigmatic_legacy.etherium_shovel.1", "挖掘时会破坏 3×3×1 范围内的方块。");
+        add("tooltip.enigmatic_legacy.etherium_shovel.2", "潜行挖掘时，区域挖掘不会生效。");
+        add("tooltip.enigmatic_legacy.etherium_shovel.3", "潜行右键可以切换区域挖掘效果。");
+        add("tooltip.enigmatic_legacy.etherium_shovel.4", "默认启用区域挖掘。");
+        add("tooltip.enigmatic_legacy.etherium_shovel.disabled", "区域挖掘当前已关闭。");
+
+        add("message.enigmatic_legacy.etherium_shovel.area_enabled", "以太锹区域挖掘：已启用");
+        add("message.enigmatic_legacy.etherium_shovel.area_disabled", "以太锹区域挖掘：已关闭");
+        // end
+
+        // 以太斧
+        addItem(ModItems.ETHERIUM_AXE, "以太斧");
+
+        add("tooltip.enigmatic_legacy.etherium_axe.1", "以太制成的战斧,比普通斧头轻便");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5按住 §6Shift§5 查看详情。");
 

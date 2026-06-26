@@ -431,5 +431,25 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('R', ModItems.ENDER_ROD.get())
                 .unlockedBy("has_etherium_ingot", has(ModItems.ETHERIUM_INGOT.get()))
                 .save(output);
+
+        // 以太锹 / Etherium Shovel
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.ETHERIUM_SHOVEL.get())
+                .pattern(" E ")
+                .pattern(" R ")
+                .pattern(" R ")
+                .define('E', ModItems.ETHERIUM_INGOT.get())
+                .define('R', ModItems.ENDER_ROD.get())
+                .unlockedBy("has_etherium_ingot", has(ModItems.ETHERIUM_INGOT.get()))
+                .save(output);
+
+        // 以太斧 / Etherium Waraxe
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.ETHERIUM_AXE.get())
+                .pattern("E E")
+                .pattern("ERE")
+                .pattern(" R ")
+                .define('E', ModItems.ETHERIUM_INGOT.get())
+                .define('R', ModItems.ENDER_ROD.get())
+                .unlockedBy("has_etherium_ingot", has(ModItems.ETHERIUM_INGOT.get()))
+                .save(output);
     }
 }

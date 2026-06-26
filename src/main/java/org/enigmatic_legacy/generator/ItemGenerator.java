@@ -90,6 +90,9 @@ public class ItemGenerator extends ItemModelProvider {
 
         basicItem(ModItems.ETHERIUM_SWORD.getId()); // 以太阔剑
         basicItem(ModItems.ETHERIUM_PICKAXE.getId()); // 以太搞
+        basicItem(ModItems.ETHERIUM_SHOVEL.getId());  // 以太锹
+        withExistingParent("item/etherium_axe", mcLoc("item/handheld"))
+                .texture("layer0", modLoc("item/etherium_waraxe")); // 以太斧
 
         basicItem(ModItems.GOLEM_HEART.getId());
         basicItem(ModItems.ANGEL_BLESSING.getId());

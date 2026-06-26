@@ -64,7 +64,9 @@ public final class ModeTabs {
                                 // 武器工具
                                 output.accept(ModItems.THE_ACKNOWLEDGMENT.get());       // 启示之证
                                 output.accept(ModItems.ETHERIUM_SWORD.get());           // 以太阔剑
-                                output.accept(ModItems.ETHERIUM_PICKAXE.get()); // 以太镐
+                                output.accept(ModItems.ETHERIUM_PICKAXE.get());         // 以太镐
+                                output.accept(ModItems.ETHERIUM_SHOVEL.get());          // 以太锹
+                                output.accept(ModItems.ETHERIUM_AXE.get());             // 以太斧
                                 // 护符
                                 output.accept(ModItems.ENIGMATIC_EYE.get());            // 莫测之眼
                                 output.accept(ModItems.MONSTER_CHARM.get());            // 怪物猎人勋章
