@@ -3,22 +3,15 @@ package org.enigmatic_legacy.generator;
 import java.util.concurrent.CompletableFuture;
 
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.neoforged.neoforge.common.crafting.DataComponentIngredient;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.block.ModBlocks;
 import org.enigmatic_legacy.item.ModItems;
-import org.enigmatic_legacy.potion.ModPotions;
 import org.enigmatic_legacy.recipe.EnchantmentTransposingRecipe;
-import org.enigmatic_legacy.recipe.ModRecipeSerializers;
 import org.jetbrains.annotations.NotNull;
 
 public class RecipeGenerator extends RecipeProvider {
@@ -484,5 +477,7 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('E', ModItems.ETHERIUM_INGOT.get())
                 .unlockedBy("has_etherium_ingot", has(ModItems.ETHERIUM_INGOT.get()))
                 .save(output);
+
+
     }
 }

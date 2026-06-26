@@ -603,6 +603,13 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.etherium_axe.1", "以太制成的战斧,比普通斧头轻便");
         // end
 
+        // 行刑者之斧
+        addItem(ModItems.AXE_OF_EXECUTIONER, "行刑者之斧");
+
+        add("tooltip.enigmatic_legacy.axe_of_executioner.1", "击杀可斩首怪物时，有 %s 的概率砍下其头颅。");
+
+        add("tooltip.enigmatic_legacy.axe_of_executioner.2", "每级抢夺都会额外增加 %s 斩首概率。");
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5按住 §6Shift§5 查看详情。");
 

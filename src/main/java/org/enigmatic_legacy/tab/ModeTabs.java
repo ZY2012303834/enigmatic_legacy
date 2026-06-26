@@ -63,6 +63,7 @@ public final class ModeTabs {
 
                                 // 武器工具
                                 output.accept(ModItems.THE_ACKNOWLEDGMENT.get());       // 启示之证
+                                output.accept(ModItems.AXE_OF_EXECUTIONER.get());       // 行刑者之斧
                                 output.accept(ModItems.ETHERIUM_SWORD.get());           // 以太阔剑
                                 output.accept(ModItems.ETHERIUM_PICKAXE.get());         // 以太镐
                                 output.accept(ModItems.ETHERIUM_SHOVEL.get());          // 以太锹

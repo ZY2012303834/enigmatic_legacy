@@ -601,6 +601,14 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.etherium_armor.set.4", "Creatures that attack you are knocked back.");
         // end
 
+        // 行刑者之斧
+        addItem(ModItems.AXE_OF_EXECUTIONER, "Axe of Executioner");
+
+        add("tooltip.enigmatic_legacy.axe_of_executioner.1", "Has a %s chance to behead beheadable monsters slain with this weapon.");
+
+        add("tooltip.enigmatic_legacy.axe_of_executioner.2", "Each level of Looting increases beheading chance by %s.");
+        //end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");
     }

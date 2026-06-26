@@ -93,6 +93,14 @@ public class ItemGenerator extends ItemModelProvider {
         basicItem(ModItems.ETHERIUM_SHOVEL.getId());  // 以太锹
         withExistingParent("item/etherium_axe", mcLoc("item/handheld"))
                 .texture("layer0", modLoc("item/etherium_waraxe")); // 以太斧
+
+        // 行刑者之斧模型。
+        // 这里使用 item/handheld，表示它是剑、斧、镐这类手持武器/工具模型。
+        // 数据生成后会自动生成：
+        // src/generated/resources/assets/enigmatic_legacy/models/item/axe_of_executioner.json
+        withExistingParent("item/axe_of_executioner", mcLoc("item/handheld"))
+                .texture("layer0", modLoc("item/axe_of_executioner")); // 行刑者之斧
+
         basicItem(ModItems.ETHERIUM_HELMET.getId());
         basicItem(ModItems.ETHERIUM_CHESTPLATE.getId());
         basicItem(ModItems.ETHERIUM_LEGGINGS.getId());
@@ -100,6 +108,7 @@ public class ItemGenerator extends ItemModelProvider {
 
         basicItem(ModItems.GOLEM_HEART.getId());
         basicItem(ModItems.ANGEL_BLESSING.getId());
+
         basicItem(ModItems.OCEAN_STONE.getId());
         basicItem(ModItems.BLAZING_CORE.getId());   // 烈焰之核
         basicItem(ModItems.EYE_OF_NEBULA.getId()); // 星云之眼
