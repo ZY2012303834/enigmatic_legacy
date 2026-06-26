@@ -266,7 +266,8 @@ public final class EnigmaticAmuletEvents {
             return;
         }
 
-        if (hasVariant(player, AmuletVariant.VIOLET)) {
+        // 只有佩戴紫色神秘护符时，才有概率偏转弹射物。
+        if (!hasVariant(player, AmuletVariant.VIOLET)) {
             return;
         }
 
@@ -287,7 +288,8 @@ public final class EnigmaticAmuletEvents {
             return;
         }
 
-        if (hasVariant(player, AmuletVariant.BLACK)) {
+        // 只有佩戴黑色神秘护符时，才按造成伤害回血。
+        if (!hasVariant(player, AmuletVariant.BLACK)) {
             return;
         }
 
@@ -298,8 +300,15 @@ public final class EnigmaticAmuletEvents {
         }
     }
 
+    /**
+     * 判断玩家当前佩戴的神秘护身符是否为指定颜色。
+     * 修复说明：
+     * - 之前这里写成了 !=，含义变成了“不是这个颜色”。
+     * - 这会导致品红护符跳跃逻辑、紫色护符弹射物逻辑、黑色护符吸血逻辑判断混乱。
+     * - 正确逻辑应该是：当前佩戴颜色 == 指定颜色。
+     */
     private static boolean hasVariant(Player player, AmuletVariant variant) {
-        return getEquippedVariant(player) != variant;
+        return getEquippedVariant(player) == variant;
     }
 
     /**
