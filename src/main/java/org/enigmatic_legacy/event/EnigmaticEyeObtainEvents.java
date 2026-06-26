@@ -2,6 +2,8 @@ package org.enigmatic_legacy.event;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
 import net.minecraft.world.InteractionHand;
@@ -10,6 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
@@ -76,6 +79,12 @@ public final class EnigmaticEyeObtainEvents {
             return;
         }
 
+        // 如果玩家正在潜行，不处理。
+        // 这样可以避免和 Carry On 这类“潜行右键搬箱子”的模组发生冲突。
+        if (player.isShiftKeyDown()) {
+            return;
+        }
+
         // 如果玩家已经生成过休眠之眼，直接退出。
         // 这是保证“只生成一个”的核心。
         if (hasGeneratedDormantEye(player)) {
@@ -129,7 +138,12 @@ public final class EnigmaticEyeObtainEvents {
         // 优先放进这个战利品容器；
         // 如果容器满了，就放进玩家背包；
         // 如果背包也满了，就掉在玩家脚下。
-        giveDormantEye(player, container, dormantEye);
+        //
+        // 注意：这里额外传入 pos。
+        // 因为奖励箱这类容器可能会出现“服务端已经塞入物品，
+        // 但客户端打开界面没有立即刷新”的情况。
+        // 后面会用 pos 主动同步方块和容器界面。
+        giveDormantEye(player, pos, container, dormantEye);
 
         // 写入永久标记。
         // 从这一刻开始，这个玩家不会再生成第二个休眠之眼。
@@ -175,16 +189,29 @@ public final class EnigmaticEyeObtainEvents {
      * 1. 放入玩家正在打开的战利品容器；
      * 2. 容器满了，放进玩家背包；
      * 3. 背包也满了，掉落在玩家脚下。
+     * 重要修复：
+     * - 奖励箱可能出现“休眠之眼已经在箱子里，但打开界面看不到”的问题。
+     * - 原因是服务端容器内容变化后，没有及时同步到客户端界面。
+     * - 所以成功塞入容器后，需要主动调用 syncContainerToClient(...)。
      */
-    private static void giveDormantEye(ServerPlayer player, Container container, ItemStack dormantEye) {
+    private static void giveDormantEye(ServerPlayer player, BlockPos containerPos, Container container, ItemStack dormantEye) {
         // 优先尝试放进战利品容器。
         if (tryInsertIntoContainer(container, dormantEye)) {
+            // 标记容器内容已经改变。
             container.setChanged();
+
+            // 主动同步容器和方块到客户端。
+            // 修复“打开箱子看不到，破坏箱子才掉出来”的问题。
+            syncContainerToClient(player, containerPos);
+
             return;
         }
 
         // 如果箱子满了，尝试放进玩家背包。
         if (player.getInventory().add(dormantEye)) {
+            // 同步玩家背包，避免客户端背包不立即刷新。
+            player.containerMenu.broadcastChanges();
+            player.inventoryMenu.broadcastChanges();
             return;
         }
 
@@ -199,6 +226,51 @@ public final class EnigmaticEyeObtainEvents {
 
         droppedEye.setDefaultPickUpDelay();
         player.level().addFreshEntity(droppedEye);
+    }
+
+    /**
+     * 主动同步容器内容到客户端。
+     * 重要说明：
+     * - 这个方法会延迟 1 tick 执行。
+     * - 原因是 RightClickBlock 事件触发时，箱子菜单通常还没有真正打开。
+     * - 如果此时立刻 broadcastChanges，可能同步的是玩家背包菜单，不是箱子菜单。
+     * 延迟 1 tick 后：
+     * - 玩家已经打开箱子界面；
+     * - player.containerMenu 才会变成真正的箱子菜单；
+     * - 此时再 broadcastChanges，客户端才能看到刚刚塞进去的休眠之眼。
+     */
+    private static void syncContainerToClient(ServerPlayer player, BlockPos containerPos) {
+        // 获取服务器实例。
+        MinecraftServer server = player.getServer();
+
+        // 理论上服务端玩家一定有 server，但这里做一次安全判断。
+        if (server == null) {
+            return;
+        }
+
+        // 延迟到下一 tick 执行同步。
+        server.execute(() -> {
+            // 当前逻辑只应该在服务端执行。
+            if (!(player.level() instanceof ServerLevel serverLevel)) {
+                return;
+            }
+
+            // 获取容器所在方块状态。
+            BlockState state = serverLevel.getBlockState(containerPos);
+
+            // 通知客户端这个方块状态需要刷新。
+            // flags = 3 表示：
+            // - 更新客户端；
+            // - 通知邻近方块。
+            serverLevel.sendBlockUpdated(containerPos, state, state, 3);
+
+            // 同步玩家当前打开的菜单。
+            // 延迟 1 tick 后，这里通常已经是箱子菜单。
+            player.containerMenu.broadcastChanges();
+
+            // 同步玩家背包菜单。
+            player.inventoryMenu.broadcastChanges();
+        });
     }
 
     /**
