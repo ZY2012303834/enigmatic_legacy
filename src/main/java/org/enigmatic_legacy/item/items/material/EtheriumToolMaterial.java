@@ -17,7 +17,7 @@ public enum EtheriumToolMaterial implements Tier {
 
     @Override
     public int getUses() {
-        return 4096;
+        return 8192;
     }
 
     @Override

@@ -31,7 +31,7 @@ public class EtheriumArmorItem extends ArmorItem {
                         .stacksTo(1)
                         .fireResistant()
                         .rarity(Rarity.EPIC)
-                        .durability(type.getDurability(37))
+                        .durability(type.getDurability(74))
         );
     }
 

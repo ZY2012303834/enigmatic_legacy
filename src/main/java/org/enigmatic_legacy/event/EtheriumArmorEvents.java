@@ -1,6 +1,7 @@
 package org.enigmatic_legacy.event;
 
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -13,7 +14,10 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
+import net.neoforged.neoforge.network.PacketDistributor;
 import org.enigmatic_legacy.item.ModItems;
+import org.enigmatic_legacy.network.HeartOfCreationGuardPayload;
+import org.enigmatic_legacy.sound.ModSounds;
 
 /**
  * 以太套装护盾事件。
@@ -158,23 +162,33 @@ public final class EtheriumArmorEvents {
             return;
         }
 
+        /*
+         * 原作者护盾保护音效。
+         * 这里不要用 SoundEvents.SHIELD_BLOCK，
+         * 要用项目里已经注册的 misc.shield_trigger。
+         */
         player.level().playSound(
                 null,
                 player.blockPosition(),
-                SoundEvents.SHIELD_BLOCK,
+                ModSounds.SHIELD_TRIGGER.get(),
                 SoundSource.PLAYERS,
-                1.0F,
-                0.85F + player.getRandom().nextFloat() * 0.25F
+                1.35F,
+                0.85F + player.getRandom().nextFloat() * 0.2F
         );
 
         /*
-         * 给玩家一个受击闪烁反馈，表示护盾触发。
+         * 实体受击闪烁反馈。
          */
-        player.hurtTime = Math.max(player.hurtTime, 6);
-        player.hurtDuration = Math.max(player.hurtDuration, 6);
+        player.hurtTime = Math.max(player.hurtTime, 10);
+        player.hurtDuration = Math.max(player.hurtDuration, 10);
+        player.invulnerableTime = Math.max(player.invulnerableTime, 10);
+        player.level().broadcastEntityEvent(player, (byte) 2);
 
-        if (player.level() instanceof ServerLevel serverLevel) {
-            serverLevel.broadcastEntityEvent(player, (byte) 2);
+        /*
+         * 复用创造之心血条 GUI 保护特效。
+         */
+        if (player instanceof ServerPlayer serverPlayer) {
+            PacketDistributor.sendToPlayer(serverPlayer, new HeartOfCreationGuardPayload());
         }
     }
 }
