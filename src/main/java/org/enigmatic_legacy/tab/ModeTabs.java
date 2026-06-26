@@ -61,9 +61,11 @@ public final class ModeTabs {
                                 output.accept(ModItems.ENCHANTMENT_TRANSPOSER.get());   // 求知之书
                                 output.accept(ModItems.CURSE_TRANSPOSER.get());         // 噬咒之书
 
+                                // 武器工具
+                                output.accept(ModItems.THE_ACKNOWLEDGMENT.get());       // 启示之证
+                                output.accept(ModItems.ETHERIUM_SWORD.get());           // 以太阔剑
                                 // 护符
                                 output.accept(ModItems.ENIGMATIC_EYE.get());            // 莫测之眼
-                                output.accept(ModItems.THE_ACKNOWLEDGMENT.get());       // 全知之眼
                                 output.accept(ModItems.MONSTER_CHARM.get());            // 怪物猎人勋章
                                 output.accept(ModItems.TREASURE_HUNTER_CHARM.get());    // 猎宝者护符
                                 output.accept(ModItems.MEGA_SPONGE.get());              // 吸水海绵

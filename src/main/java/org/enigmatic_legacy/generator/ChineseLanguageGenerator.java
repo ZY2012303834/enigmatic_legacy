@@ -550,6 +550,14 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("item.minecraft.tipped_arrow.effect.ultimate_night_vision", "终极夜视之箭");
         // end
 
+        // 以太阔剑
+        addItem(ModItems.ETHERIUM_SWORD, "以太阔剑");
+
+        add("tooltip.enigmatic_legacy.etherium_sword.1", "右键使用以向后跃退。");
+        add("tooltip.enigmatic_legacy.etherium_sword.2", "冷却时间：%s 秒。");
+        add("tooltip.enigmatic_legacy.etherium_sword.3", "副手持盾时不会触发主动能力。");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5按住 §6Shift§5 查看详情。");
 

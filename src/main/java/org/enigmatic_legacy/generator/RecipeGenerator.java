@@ -410,5 +410,17 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('E', ModItems.EVIL_ESSENCE.get())
                 .unlockedBy("has_enchantment_transposer", has(ModItems.ENCHANTMENT_TRANSPOSER.get()))
                 .save(output);
+
+        // 以太阔剑 / Etherium Broadsword
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.ETHERIUM_SWORD.get())
+                .pattern("EDE")
+                .pattern(" D ")
+                .pattern(" R ")
+                .define('E', ModItems.ETHERIUM_INGOT.get())
+                .define('D', Items.DIAMOND)
+                .define('R', ModItems.ENDER_ROD.get())
+                .unlockedBy("has_etherium_ingot", has(ModItems.ETHERIUM_INGOT.get()))
+                .save(output);
+
     }
 }

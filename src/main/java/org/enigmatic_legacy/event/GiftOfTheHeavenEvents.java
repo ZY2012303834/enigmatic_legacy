@@ -8,7 +8,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
-import org.enigmatic_legacy.item.items.GiftOfTheHeaven;
+import org.enigmatic_legacy.item.items.scroll.GiftOfTheHeaven;
 import org.enigmatic_legacy.util.GiftOfTheHeavenHelper;
 
 /**

@@ -8,7 +8,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
-import org.enigmatic_legacy.item.items.GraceOfTheCreator;
+import org.enigmatic_legacy.item.items.scroll.GraceOfTheCreator;
 import org.enigmatic_legacy.util.GraceOfTheCreatorHelper;
 
 /**

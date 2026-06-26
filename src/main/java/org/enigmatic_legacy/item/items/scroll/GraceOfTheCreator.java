@@ -1,11 +1,9 @@
-package org.enigmatic_legacy.item.items;
+package org.enigmatic_legacy.item.items.scroll;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -26,51 +24,50 @@ import top.theillusivec4.curios.api.type.capability.ICurioItem;
 import java.util.List;
 
 /**
- * 天堂之礼 / Gift of the Heaven。
- * 类型：奥秘卷轴 scroll。
+ * 创造者的恩赐 / Grace of the Creator。
+ * 栏位：奥秘卷轴 scroll。
  * 效果：
- * 1. 在激活信标范围内给予飞行能力；
- * 2. 飞行时缓慢消耗经验；
- * 3. 飞行时增加挖掘速度；
- * 4. 离开信标范围后移除飞行，并给予 8 秒缓降；
- * 5. 在信标范围内且飞行能力未丧失时免疫摔落伤害。
+ * 1. 给予飞行能力；
+ * 2. 飞行会快速消耗经验；
+ * 3. 在激活信标范围内飞行不消耗经验；
+ * 4. 补偿飞行时挖掘速度损失；
+ * 5. 在未丧失飞行能力时免疫摔落伤害。
  */
-public class GiftOfTheHeaven extends Item implements ICurioItem {
+public class GraceOfTheCreator extends Item implements ICurioItem {
     private static final String SCROLL_SLOT = "scroll";
 
     /**
-     * 记录飞行能力是否由天堂之礼授予。
+     * 记录飞行能力是否由创造者的恩赐授予。
      * 避免取下卷轴后误删创造模式 / 旁观模式飞行。
      */
-    public static final String GRANTED_FLIGHT_TAG = "enigmatic_legacy_heaven_scroll_granted_flight";
+    public static final String GRANTED_FLIGHT_TAG = "enigmatic_legacy_grace_scroll_granted_flight";
 
     /**
-     * 记录上一 tick 是否拥有信标飞行资格。
-     * 用于离开范围时只触发一次缓降。
+     * 创造之心的飞行标记。
+     * 这里用来避免玩家同时拥有创造之心时，
+     * 取下创造者的恩赐错误关闭飞行。
      */
-    private static final String HAD_BEACON_POWER_TAG = "enigmatic_legacy_heaven_scroll_had_beacon_power";
+    private static final String HEART_OF_CREATION_FLIGHT_TAG = "enigmatic_legacy_heart_of_creation_granted_flight";
 
     /**
      * 最大信标搜索半径。
-     * 原版满级信标范围是 50 格，所以这里扫描 50 格内的信标。
+     * 原版满级信标范围是 50 格。
      */
     private static final int MAX_BEACON_SEARCH_RADIUS = 50;
 
     /**
-     * 失去信标范围后给予 8 秒缓降。
+     * 创造者的恩赐比天堂之礼消耗更快。
+     * 这里设置为：
+     * 每 5 tick 消耗 1 点经验。
+     * 也就是每秒大约 4 点经验。
      */
-    private static final int SLOW_FALLING_TICKS = 8 * 20;
-
-    /**
-     * 飞行时每秒消耗经验。
-     */
-    private static final int XP_COST_INTERVAL = 20;
+    private static final int XP_COST_INTERVAL = 5;
     private static final int XP_COST_AMOUNT = 1;
 
-    public GiftOfTheHeaven() {
+    public GraceOfTheCreator() {
         super(new Item.Properties()
                 .stacksTo(1)
-                .rarity(Rarity.RARE)
+                .rarity(Rarity.EPIC)
                 .fireResistant());
     }
 
@@ -85,7 +82,7 @@ public class GiftOfTheHeaven extends Item implements ICurioItem {
     /**
      * 只能放进 scroll 奥秘卷轴栏。
      * 奥秘卷轴栏可以有 3 个槽位，
-     * 但天堂之礼最多只能装备 1 个。
+     * 但创造者的恩赐最多只能装备 1 个。
      */
     @Override
     public boolean canEquip(SlotContext context, ItemStack stack) {
@@ -104,8 +101,8 @@ public class GiftOfTheHeaven extends Item implements ICurioItem {
                         equippedStack ->
                                 equippedStack != stack
                                         && (
-                                        equippedStack.getItem() instanceof GiftOfTheHeaven
-                                                || equippedStack.getItem() instanceof GraceOfTheCreator
+                                        equippedStack.getItem() instanceof GraceOfTheCreator
+                                                || equippedStack.getItem() instanceof GiftOfTheHeaven
                                 )
                 ))
                 .isEmpty();
@@ -113,77 +110,48 @@ public class GiftOfTheHeaven extends Item implements ICurioItem {
 
     /**
      * 每 tick 由事件类调用。
-     * 注意：
-     * 不直接依赖 curioTick 做移除逻辑。
-     * 因为玩家取下卷轴后 curioTick 不再执行，
-     * 如果只靠 curioTick，飞行能力可能不会被正确移除。
+     * 逻辑：
+     * 1. 装备后直接给予飞行能力；
+     * 2. 玩家正在飞行时，如果不在信标范围内，快速消耗经验；
+     * 3. 如果没有经验且不在信标范围内，失去飞行能力；
+     * 4. 在信标范围内飞行不消耗经验。
      */
     public static void serverTick(ServerPlayer player, ItemStack stack) {
         boolean hasBeaconPower = hasBeaconPower(player);
-        boolean hasExperience = ExperienceHelper.getPlayerXP(player) > 0;
 
-        if (hasBeaconPower && hasExperience) {
+        if (hasBeaconPower) {
             grantFlight(player);
-            player.getPersistentData().putBoolean(HAD_BEACON_POWER_TAG, true);
-
-            if (player.getAbilities().flying && player.tickCount % XP_COST_INTERVAL == 0) {
-                consumeFlightExperience(player);
-            }
-
             return;
         }
 
-        boolean hadBeaconPower = player.getPersistentData().getBoolean(HAD_BEACON_POWER_TAG);
+        int playerExperience = ExperienceHelper.getPlayerXP(player);
 
-        revokeFlightIfGranted(player);
-
-        if (hadBeaconPower && !player.onGround()) {
-            player.addEffect(new MobEffectInstance(
-                    MobEffects.SLOW_FALLING,
-                    SLOW_FALLING_TICKS,
-                    0,
-                    false,
-                    true,
-                    true
-            ));
+        if (playerExperience <= 0) {
+            revokeFlightIfGranted(player);
+            return;
         }
 
-        player.getPersistentData().putBoolean(HAD_BEACON_POWER_TAG, false);
+        grantFlight(player);
+
+        if (player.getAbilities().flying && player.tickCount % XP_COST_INTERVAL == 0) {
+            consumeFlightExperience(player);
+        }
     }
 
     /**
-     * 玩家是否仍然拥有天堂之礼授予的安全飞行资格。
-     * 用于摔落伤害免疫判断。
-     */
-    public static boolean hasSafeBeaconFlight(Player player) {
-        return player.getPersistentData().getBoolean(GRANTED_FLIGHT_TAG)
-                && player.getPersistentData().getBoolean(HAD_BEACON_POWER_TAG);
-    }
-
-    /**
-     * 玩家没有装备天堂之礼时调用。
-     * 作用：
-     * 取下卷轴后立刻移除由天堂之礼授予的飞行能力。
+     * 玩家没有装备创造者的恩赐时调用。
+     * 取下卷轴后移除由创造者的恩赐授予的飞行能力。
      */
     public static void revokeWhenMissing(ServerPlayer player) {
-        if (!player.getPersistentData().getBoolean(GRANTED_FLIGHT_TAG)) {
-            return;
-        }
-
         revokeFlightIfGranted(player);
+    }
 
-        if (!player.onGround()) {
-            player.addEffect(new MobEffectInstance(
-                    MobEffects.SLOW_FALLING,
-                    SLOW_FALLING_TICKS,
-                    0,
-                    false,
-                    true,
-                    true
-            ));
-        }
-
-        player.getPersistentData().putBoolean(HAD_BEACON_POWER_TAG, false);
+    /**
+     * 玩家是否仍然拥有创造者的恩赐授予的飞行能力。
+     * 用于免疫摔落伤害。
+     */
+    public static boolean hasGraceFlight(Player player) {
+        return player.getPersistentData().getBoolean(GRANTED_FLIGHT_TAG);
     }
 
     private static void grantFlight(ServerPlayer player) {
@@ -202,11 +170,22 @@ public class GiftOfTheHeaven extends Item implements ICurioItem {
 
         player.getPersistentData().remove(GRANTED_FLIGHT_TAG);
 
-        if (!player.isCreative() && !player.isSpectator()) {
-            player.getAbilities().mayfly = false;
-            player.getAbilities().flying = false;
-            player.onUpdateAbilities();
+        if (player.isCreative() || player.isSpectator()) {
+            return;
         }
+
+        /*
+         * 如果其它遗物仍然授予飞行，不要关闭 mayfly。
+         * 例如：天堂之礼、创造之心。
+         */
+        if (player.getPersistentData().getBoolean(GiftOfTheHeaven.GRANTED_FLIGHT_TAG)
+                || player.getPersistentData().getBoolean(HEART_OF_CREATION_FLIGHT_TAG)) {
+            return;
+        }
+
+        player.getAbilities().mayfly = false;
+        player.getAbilities().flying = false;
+        player.onUpdateAbilities();
     }
 
     private static void consumeFlightExperience(ServerPlayer player) {
@@ -272,9 +251,15 @@ public class GiftOfTheHeaven extends Item implements ICurioItem {
         return false;
     }
 
+    /**
+     * 计算信标底座层数。
+     * 不直接依赖 BeaconBlockEntity#getLevels，
+     * 避免不同映射环境中访问问题。
+     */
     private static int getBeaconLevels(Level level, BlockPos beaconPos) {
         for (int beaconLevel = 1; beaconLevel <= 4; beaconLevel++) {
             int y = beaconPos.getY() - beaconLevel;
+
             if (y < level.getMinBuildHeight()) {
                 return beaconLevel - 1;
             }
@@ -300,9 +285,9 @@ public class GiftOfTheHeaven extends Item implements ICurioItem {
     ) {
         tooltip.add(SpellstoneTooltip.empty());
 
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.heaven_scroll.1"));
-        tooltip.add(SpellstoneTooltip.negative("tooltip.enigmatic_legacy.heaven_scroll.2"));
-        tooltip.add(SpellstoneTooltip.negative("tooltip.enigmatic_legacy.heaven_scroll.3", SpellstoneTooltip.number("8")));
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.heaven_scroll.4"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.fabulous_scroll.1"));
+        tooltip.add(SpellstoneTooltip.negative("tooltip.enigmatic_legacy.fabulous_scroll.2"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.fabulous_scroll.3"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.fabulous_scroll.4"));
     }
 }

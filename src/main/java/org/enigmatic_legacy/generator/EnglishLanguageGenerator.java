@@ -548,6 +548,14 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("item.minecraft.tipped_arrow.effect.ultimate_night_vision", "Arrow of Ultimate Night Vision");
         // end
 
+        // 以太阔剑
+        addItem(ModItems.ETHERIUM_SWORD, "Etherium Broadsword");
+
+        add("tooltip.enigmatic_legacy.etherium_sword.1", "Right-click to leap backwards.");
+        add("tooltip.enigmatic_legacy.etherium_sword.2", "Cooldown: %s seconds.");
+        add("tooltip.enigmatic_legacy.etherium_sword.3", "The active ability will not trigger while holding a shield in the offhand.");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");
     }

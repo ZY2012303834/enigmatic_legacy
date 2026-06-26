@@ -1,4 +1,4 @@
-package org.enigmatic_legacy.item.items;
+package org.enigmatic_legacy.item.items.scroll;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
