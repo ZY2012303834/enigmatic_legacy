@@ -16,16 +16,16 @@
             }
           ],
           "name": "enigmatic_legacy:astral_dust",
-          "weight": 85
+          "weight": 1
         },
         {
           "type": "minecraft:empty",
-          "weight": 322
+          "weight": 9
         }
       ],
       "rolls": {
         "type": "minecraft:uniform",
-        "max": 2.0,
+        "max": 1.0,
         "min": 1.0
       }
     }

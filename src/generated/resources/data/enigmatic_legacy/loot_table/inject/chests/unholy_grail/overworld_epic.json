@@ -10,12 +10,12 @@
         },
         {
           "type": "minecraft:empty",
-          "weight": 230
+          "weight": 49
         }
       ],
       "rolls": {
         "type": "minecraft:uniform",
-        "max": 2.0,
+        "max": 1.0,
         "min": 1.0
       }
     }

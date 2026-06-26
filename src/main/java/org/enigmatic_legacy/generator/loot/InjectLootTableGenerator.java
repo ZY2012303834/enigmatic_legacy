@@ -77,21 +77,32 @@ public class InjectLootTableGenerator implements DataProvider {
 
     /**
      * 生成以太矿石 loot table。
-     * 原项目 EtheriumEventHandler：
-     * - 目标：minecraft:chests/end_city_treasure
-     * - pool name：etherium
-     * - rolls：-11 ~ 2
-     * - etherium ore 权重：60
-     * - 数量：1 ~ 2
-     * 这里直接按原项目概率复刻。
+     * 获取方式：
+     * - 末地城宝藏箱。
+     * 调整原因：
+     * - 原来的 rolls 是 -11 ~ 2。
+     * - 这种写法不直观，实测概率也不好判断。
+     * - 原注释写数量 1~2，但代码实际是 1~4。
+     * 新设计：
+     * - rolls 固定为 1。
+     * - 以太矿石权重 = 1。
+     * - empty 空条目权重 = 19。
+     * 概率：
+     * - 1 / (1 + 19) = 5%
+     * 数量：
+     * - 1~2 个。
+     * 注意：
+     * - 不改变出现箱子。
+     * - 仍然只注入到末地城宝藏箱。
      */
     private void addEtheriumOreTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {
         futures.add(saveTable(
                 cachedOutput,
                 "etherium_ore/end_city_treasure",
-                -11.0D,
-                2.0D,
-                itemEntry(ModItems.ETHERIUM_ORE.get(), 60, 1.0D, 4.0D)
+                1.0D,
+                1.0D,
+                itemEntry(ModItems.ETHERIUM_ORE.get(), 1, 1.0D, 2.0D),
+                emptyEntry(19)
         ));
     }
 
@@ -139,7 +150,7 @@ public class InjectLootTableGenerator implements DataProvider {
         futures.add(saveTable(cachedOutput, "spellstones/air_earthen", 1.0D, 1.0D,
                 itemEntry(ModItems.GOLEM_HEART.get(), 35),
                 itemEntry(ModItems.ANGEL_BLESSING.get(), 65),
-                emptyEntry(1900)
+                emptyEntry(900)
         ));
 
         /*
@@ -159,7 +170,7 @@ public class InjectLootTableGenerator implements DataProvider {
         futures.add(saveTable(cachedOutput, "spellstones/ender_earthen", 1.0D, 1.0D,
                 itemEntry(ModItems.EYE_OF_NEBULA.get(), 35),
                 itemEntry(ModItems.GOLEM_HEART.get(), 65),
-                emptyEntry(1900)
+                emptyEntry(900)
         ));
 
         /*
@@ -173,7 +184,7 @@ public class InjectLootTableGenerator implements DataProvider {
          */
         futures.add(saveTable(cachedOutput, "spellstones/air", 1.0D, 1.0D,
                 itemEntry(ModItems.ANGEL_BLESSING.get(), 100),
-                emptyEntry(1900)
+                emptyEntry(900)
         ));
 
         /*
@@ -189,7 +200,7 @@ public class InjectLootTableGenerator implements DataProvider {
          */
         futures.add(saveTable(cachedOutput, "spellstones/earthen", 1.0D, 1.0D,
                 itemEntry(ModItems.GOLEM_HEART.get(), 100),
-                emptyEntry(1900)
+                emptyEntry(900)
         ));
 
         /*
@@ -205,7 +216,7 @@ public class InjectLootTableGenerator implements DataProvider {
          */
         futures.add(saveTable(cachedOutput, "spellstones/nether", 1.0D, 1.0D,
                 itemEntry(ModItems.BLAZING_CORE.get(), 100),
-                emptyEntry(1900)
+                emptyEntry(900)
         ));
 
         /*
@@ -222,7 +233,7 @@ public class InjectLootTableGenerator implements DataProvider {
          */
         futures.add(saveTable(cachedOutput, "spellstones/water", 1.0D, 1.0D,
                 itemEntry(ModItems.OCEAN_STONE.get(), 100),
-                emptyEntry(1900)
+                emptyEntry(900)
         ));
 
         /*
@@ -245,66 +256,82 @@ public class InjectLootTableGenerator implements DataProvider {
         futures.add(saveTable(cachedOutput, "spellstones/ender", 1.0D, 1.0D,
                 itemEntry(ModItems.EYE_OF_NEBULA.get(), 90),
                 itemEntry(ModItems.VOID_PEARL.get(), 10),
-                emptyEntry(1900)
+                emptyEntry(900)
         ));
     }
+
     /**
      * 生成至暗卷轴 loot table。
-     * 原项目获取方式：
-     * 至暗卷轴只会在堡垒遗迹藏宝室箱子中概率生成。
-     * 当前生成路径：
-     * data/enigmatic_legacy/loot_table/inject/chests/darkest_scroll/bastion_treasure.json
-     * 注入目标：
-     * BuiltInLootTables.BASTION_TREASURE
+     * 获取方式：
+     * - 只会在堡垒遗迹藏宝室箱子中概率生成。
+     * 调整原因：
+     * - 之前只有至暗卷轴条目，没有 empty 空条目。
+     * - 一旦该注入表发生抽取，就会直接生成至暗卷轴。
+     * - 实测容易显得过多。
+     * 新设计：
+     * - rolls 固定为 1。
+     * - 至暗卷轴权重 = 1。
+     * - empty 空条目权重 = 49。
+     * 概率：
+     * - 1 / (1 + 49) = 2%
+     * 注意：
+     * - 不改变出现箱子。
+     * - 仍然只注入到 BuiltInLootTables.BASTION_TREASURE。
      */
     private void addDarkestScrollTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {
-        futures.add(saveTable(cachedOutput, "darkest_scroll/bastion_treasure", 0.0D, 1.0D,
-                itemEntry(ModItems.DARKEST_SCROLL.get(), 100)
+        futures.add(saveTable(cachedOutput, "darkest_scroll/bastion_treasure", 1.0D, 1.0D,
+                itemEntry(ModItems.DARKEST_SCROLL.get(), 1),
+                emptyEntry(24)
         ));
     }
 
     /**
      * 生成不洁圣杯 loot table。
-     * 原项目获取方式：
-     * 不洁圣杯加入主世界类地牢箱子的稀有战利品池。
-     * 这里使用：
-     * - 不洁圣杯条目；
-     * - minecraft:empty 空条目；
-     * 通过空条目稀释概率，
-     * 避免把原项目整个 epic 池全部复制进来。
+     * 获取方式：
+     * - 不改变原本出现的箱子条目。
+     * - 仍然由 GlobalLootModifierGenerator 注入到对应主世界类战利品箱中。
+     * 调整原因：
+     * - 原来的圣杯概率过低：
+     *   不洁圣杯权重 = 1
+     *   empty 权重 = 230 或 223
+     * - 单次抽取概率不到 0.5%。
+     * 新设计：
+     * - rolls 固定为 1。
+     * - 不洁圣杯权重 = 1。
+     * - empty 空条目权重 = 49。
+     * 概率：
+     * - 1 / (1 + 49) = 2%
+     * 效果：
+     * - 圣杯仍然是稀有物品；
+     * - 但不会像之前那样几乎看不到；
+     * - 每个被注入的目标箱子约 2% 概率生成不洁圣杯；
+     * - rolls 改为 1，可以避免同一个箱子里重复刷出多个圣杯。
      */
     private void addUnholyGrailTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {
         /*
          * 普通主世界 epic 池。
          *
-         * 设计：
+         * 新概率：
          * - 不洁圣杯：1 权重
-         * - 空条目：230 权重
-         *
-         * rolls：
-         * - 1 ~ 2
-         *
-         * 作用：
-         * 保持不洁圣杯极低概率出现。
+         * - 空条目：49 权重
+         * - 总概率：2%
          */
-        futures.add(saveTable(cachedOutput, "unholy_grail/overworld_epic", 1.0D, 2.0D,
+        futures.add(saveTable(cachedOutput, "unholy_grail/overworld_epic", 1.0D, 1.0D,
                 itemEntry(ModItems.UNHOLY_GRAIL.get(), 1),
-                emptyEntry(230)
+                emptyEntry(49)
         ));
 
         /*
          * 不包含大地之心权重的主世界 epic 池。
          *
-         * 设计：
+         * 新概率：
          * - 不洁圣杯：1 权重
-         * - 空条目：223 权重
-         *
-         * 用于部分原项目中不加入 Earth Heart 的箱子类别，
-         * 例如水下遗迹、掠夺者前哨站等。
+         * - 空条目：49 权重
+         * - 总概率：2%
          */
-        futures.add(saveTable(cachedOutput, "unholy_grail/overworld_epic_without_earth_heart", 1.0D, 2.0D,
+        futures.add(saveTable(cachedOutput, "unholy_grail/overworld_epic_without_earth_heart", 1.0D, 1.0D,
                 itemEntry(ModItems.UNHOLY_GRAIL.get(), 1),
-                emptyEntry(223)
+                emptyEntry(49)
         ));
     }
 
@@ -333,23 +360,33 @@ public class InjectLootTableGenerator implements DataProvider {
 
     /**
      * 生成星尘 loot table。
-     * 原项目末地城 epic 池：
-     * - rolls：1 ~ 2
-     * - 星尘权重：85
-     * - 星尘数量：1 ~ 4
-     * 这里没有把原项目整个末地城 epic 池全部搬进来，
-     * 而是使用 empty 条目补足原始总权重，保持星尘出现概率接近原项目。
-     * 原项目末地城 epic 池总权重约 407：
-     * 星尘 85 + 其它条目 322。
+     * 获取方式：
+     * - 末地城宝藏箱。
+     * 调整原因：
+     * - 原来星尘权重为 85，empty 权重为 322。
+     * - 单次抽取概率约 20.9%。
+     * - 并且 rolls 是 1~2，实际出现率会更高。
+     * - 对稀有材料来说偏高。
+     * 新设计：
+     * - rolls 固定为 1。
+     * - 星尘权重 = 1。
+     * - empty 空条目权重 = 9。
+     * 概率：
+     * - 1 / (1 + 9) = 10%
+     * 数量：
+     * - 保持 1~4 个。
+     * 注意：
+     * - 不改变出现箱子。
+     * - 仍然只注入到末地城宝藏箱。
      */
     private void addAstralDustTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {
         futures.add(saveTable(
                 cachedOutput,
                 "astral_dust/end_city_treasure",
                 1.0D,
-                2.0D,
-                itemEntry(ModItems.ASTRAL_DUST.get(), 85, 1.0D, 4.0D),
-                emptyEntry(322)
+                1.0D,
+                itemEntry(ModItems.ASTRAL_DUST.get(), 1, 1.0D, 4.0D),
+                emptyEntry(9)
         ));
     }
 
