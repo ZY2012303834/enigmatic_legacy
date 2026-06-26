@@ -88,7 +88,8 @@ public class ItemGenerator extends ItemModelProvider {
         withExistingParent("item/item/the_acknowledgment", mcLoc("item/generated"))
                 .texture("layer0", modLoc("item/the_acknowledgment"));
 
-        basicItem(ModItems.ETHERIUM_SWORD.getId()); //以太阔剑
+        basicItem(ModItems.ETHERIUM_SWORD.getId()); // 以太阔剑
+        basicItem(ModItems.ETHERIUM_PICKAXE.getId()); // 以太搞
 
         basicItem(ModItems.GOLEM_HEART.getId());
         basicItem(ModItems.ANGEL_BLESSING.getId());

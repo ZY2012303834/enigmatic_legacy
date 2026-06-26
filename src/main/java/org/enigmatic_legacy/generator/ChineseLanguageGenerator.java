@@ -558,6 +558,19 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.etherium_sword.3", "副手持盾时不会触发主动能力。");
         // end
 
+        // 以太镐
+        addItem(ModItems.ETHERIUM_PICKAXE, "以太镐");
+
+        add("tooltip.enigmatic_legacy.etherium_pickaxe.1", "挖掘时会破坏 3×3×1 范围内的方块。");
+        add("tooltip.enigmatic_legacy.etherium_pickaxe.2", "潜行挖掘时，区域挖掘不会生效。");
+        add("tooltip.enigmatic_legacy.etherium_pickaxe.3", "潜行右键可以切换区域挖掘效果。");
+        add("tooltip.enigmatic_legacy.etherium_pickaxe.4", "默认启用区域挖掘。");
+        add("tooltip.enigmatic_legacy.etherium_pickaxe.disabled", "区域挖掘当前已关闭。");
+
+        add("message.enigmatic_legacy.etherium_pickaxe.area_enabled", "以太镐区域挖掘：已启用");
+        add("message.enigmatic_legacy.etherium_pickaxe.area_disabled", "以太镐区域挖掘：已关闭");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5按住 §6Shift§5 查看详情。");
 

@@ -422,5 +422,14 @@ public class RecipeGenerator extends RecipeProvider {
                 .unlockedBy("has_etherium_ingot", has(ModItems.ETHERIUM_INGOT.get()))
                 .save(output);
 
+        // 以太镐 / Etherium Pickaxe
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.ETHERIUM_PICKAXE.get())
+                .pattern("EEE")
+                .pattern(" R ")
+                .pattern(" R ")
+                .define('E', ModItems.ETHERIUM_INGOT.get())
+                .define('R', ModItems.ENDER_ROD.get())
+                .unlockedBy("has_etherium_ingot", has(ModItems.ETHERIUM_INGOT.get()))
+                .save(output);
     }
 }

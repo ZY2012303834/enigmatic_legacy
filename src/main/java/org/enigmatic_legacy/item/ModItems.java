@@ -1,6 +1,7 @@
 package org.enigmatic_legacy.item;
 
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -11,6 +12,7 @@ import org.enigmatic_legacy.item.items.charm.*;
 import org.enigmatic_legacy.item.items.scroll.*;
 import org.enigmatic_legacy.item.items.spellstone.*;
 import org.enigmatic_legacy.item.items.sword.EtheriumBroadsword;
+import org.enigmatic_legacy.item.items.tool.EtheriumPickaxe;
 
 public final class ModItems {
 
@@ -65,6 +67,7 @@ public final class ModItems {
     // 武器工具
     public static final DeferredItem<TheAcknowledgment> THE_ACKNOWLEDGMENT = ITEMS.register("the_acknowledgment", TheAcknowledgment::new); // 启示之证 / The Acknowledgment
     public static final DeferredItem<EtheriumBroadsword> ETHERIUM_SWORD = ITEMS.register("etherium_sword", EtheriumBroadsword::new); // 以太阔剑
+    public static final DeferredItem<Item> ETHERIUM_PICKAXE = ITEMS.register("etherium_pickaxe", EtheriumPickaxe::new); // 以太镐
 
     // 术石
     public static final DeferredItem<GolemHeart> GOLEM_HEART = ITEMS.register("golem_heart", GolemHeart::new); // 魔像之心

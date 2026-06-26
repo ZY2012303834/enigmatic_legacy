@@ -556,6 +556,19 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.etherium_sword.3", "The active ability will not trigger while holding a shield in the offhand.");
         // end
 
+        // 以太镐
+        addItem(ModItems.ETHERIUM_PICKAXE, "Etherium Pickaxe");
+
+        add("tooltip.enigmatic_legacy.etherium_pickaxe.1", "Mines blocks in a 3×3×1 area.");
+        add("tooltip.enigmatic_legacy.etherium_pickaxe.2", "Area mining does not trigger while sneaking.");
+        add("tooltip.enigmatic_legacy.etherium_pickaxe.3", "Sneak-right-click to toggle the area mining effect.");
+        add("tooltip.enigmatic_legacy.etherium_pickaxe.4", "Area mining is enabled by default.");
+        add("tooltip.enigmatic_legacy.etherium_pickaxe.disabled", "Area mining is currently disabled.");
+
+        add("message.enigmatic_legacy.etherium_pickaxe.area_enabled", "Etherium Pickaxe area mining: enabled");
+        add("message.enigmatic_legacy.etherium_pickaxe.area_disabled", "Etherium Pickaxe area mining: disabled");
+        // end
+
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");
     }
