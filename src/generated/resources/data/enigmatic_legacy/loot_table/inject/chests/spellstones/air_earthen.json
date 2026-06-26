@@ -12,12 +12,16 @@
           "type": "minecraft:item",
           "name": "enigmatic_legacy:angel_blessing",
           "weight": 65
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 1900
         }
       ],
       "rolls": {
         "type": "minecraft:uniform",
         "max": 1.0,
-        "min": 0.0
+        "min": 1.0
       }
     }
   ]

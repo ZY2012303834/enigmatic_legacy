@@ -97,9 +97,29 @@ public class InjectLootTableGenerator implements DataProvider {
 
     /**
      * 生成术石类 loot table。
-     * 这些表会由 GlobalLootModifierGenerator 注入到不同地牢、神殿、遗迹、堡垒和末地城箱子中。
-     * 路径示例：
-     * data/enigmatic_legacy/loot_table/inject/chests/spellstones/air_earthen.json
+     * 重要调整：
+     * - 之前术石出现概率过高。
+     * - 原因是每张术石注入表只有术石条目，没有 minecraft:empty 空条目。
+     * - 这样只要注入表被抽取，就很容易直接给术石。
+     * 新设计：
+     * - 每张术石表固定 rolls = 1。
+     * - 术石总权重 = 100。
+     * - 空条目权重 = 1900。
+     * - 所以每次打开对应战利品箱时，术石总出现概率约为：
+     *   100 / (100 + 1900) = 5%
+     * 效果：
+     * - 术石仍然可以从对应结构中获得；
+     * - 但不会像之前那样频繁出现；
+     * - 多个术石共用一张表时，仍然按原来的内部比例分配。
+     * 举例：
+     * - air_earthen 表中：
+     *   魔像之心 35 权重
+     *   天使之祝 65 权重
+     *   empty 1900 权重
+     *   总术石概率约 5%。
+     *   在成功抽中术石的情况下：
+     *   魔像之心占 35%
+     *   天使之祝占 65%
      */
     private void addSpellstoneTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {
         /*
@@ -109,13 +129,17 @@ public class InjectLootTableGenerator implements DataProvider {
          * - 沙漠神殿
          * - 丛林神庙
          *
-         * 条目：
-         * - 魔像之心：35 权重
-         * - 天使之祝：65 权重
+         * 总出现率：
+         * - 约 5%
+         *
+         * 成功出现术石后：
+         * - 魔像之心：35%
+         * - 天使之祝：65%
          */
-        futures.add(saveTable(cachedOutput, "spellstones/air_earthen", 0.0D, 1.0D,
+        futures.add(saveTable(cachedOutput, "spellstones/air_earthen", 1.0D, 1.0D,
                 itemEntry(ModItems.GOLEM_HEART.get(), 35),
-                itemEntry(ModItems.ANGEL_BLESSING.get(), 65)
+                itemEntry(ModItems.ANGEL_BLESSING.get(), 65),
+                emptyEntry(1900)
         ));
 
         /*
@@ -125,13 +149,17 @@ public class InjectLootTableGenerator implements DataProvider {
          * - 要塞走廊
          * - 要塞十字路口
          *
-         * 条目：
-         * - 星云之眼：35 权重
-         * - 魔像之心：65 权重
+         * 总出现率：
+         * - 约 5%
+         *
+         * 成功出现术石后：
+         * - 星云之眼：35%
+         * - 魔像之心：65%
          */
-        futures.add(saveTable(cachedOutput, "spellstones/ender_earthen", 0.0D, 1.0D,
+        futures.add(saveTable(cachedOutput, "spellstones/ender_earthen", 1.0D, 1.0D,
                 itemEntry(ModItems.EYE_OF_NEBULA.get(), 35),
-                itemEntry(ModItems.GOLEM_HEART.get(), 65)
+                itemEntry(ModItems.GOLEM_HEART.get(), 65),
+                emptyEntry(1900)
         ));
 
         /*
@@ -140,11 +168,12 @@ public class InjectLootTableGenerator implements DataProvider {
          * 当前用于：
          * - 村庄教堂箱子
          *
-         * 条目：
-         * - 天使之祝：100 权重
+         * 总出现率：
+         * - 约 5%
          */
-        futures.add(saveTable(cachedOutput, "spellstones/air", 0.0D, 1.0D,
-                itemEntry(ModItems.ANGEL_BLESSING.get(), 100)
+        futures.add(saveTable(cachedOutput, "spellstones/air", 1.0D, 1.0D,
+                itemEntry(ModItems.ANGEL_BLESSING.get(), 100),
+                emptyEntry(1900)
         ));
 
         /*
@@ -155,11 +184,12 @@ public class InjectLootTableGenerator implements DataProvider {
          * - 废弃矿井
          * - 村庄盔甲匠箱子
          *
-         * 条目：
-         * - 魔像之心：100 权重
+         * 总出现率：
+         * - 约 5%
          */
-        futures.add(saveTable(cachedOutput, "spellstones/earthen", 0.0D, 1.0D,
-                itemEntry(ModItems.GOLEM_HEART.get(), 100)
+        futures.add(saveTable(cachedOutput, "spellstones/earthen", 1.0D, 1.0D,
+                itemEntry(ModItems.GOLEM_HEART.get(), 100),
+                emptyEntry(1900)
         ));
 
         /*
@@ -170,11 +200,12 @@ public class InjectLootTableGenerator implements DataProvider {
          * - 堡垒遗迹各类箱子
          * - 废弃传送门箱子
          *
-         * 条目：
-         * - 烈焰核心：100 权重
+         * 总出现率：
+         * - 约 5%
          */
-        futures.add(saveTable(cachedOutput, "spellstones/nether", 0.0D, 1.0D,
-                itemEntry(ModItems.BLAZING_CORE.get(), 100)
+        futures.add(saveTable(cachedOutput, "spellstones/nether", 1.0D, 1.0D,
+                itemEntry(ModItems.BLAZING_CORE.get(), 100),
+                emptyEntry(1900)
         ));
 
         /*
@@ -186,11 +217,12 @@ public class InjectLootTableGenerator implements DataProvider {
          * - 沉船宝藏
          * - 埋藏的宝藏
          *
-         * 条目：
-         * - 海洋意志：100 权重
+         * 总出现率：
+         * - 约 5%
          */
-        futures.add(saveTable(cachedOutput, "spellstones/water", 0.0D, 1.0D,
-                itemEntry(ModItems.OCEAN_STONE.get(), 100)
+        futures.add(saveTable(cachedOutput, "spellstones/water", 1.0D, 1.0D,
+                itemEntry(ModItems.OCEAN_STONE.get(), 100),
+                emptyEntry(1900)
         ));
 
         /*
@@ -199,16 +231,23 @@ public class InjectLootTableGenerator implements DataProvider {
          * 当前用于：
          * - 末地城宝藏
          *
-         * 条目：
-         * - 星云之眼：90 权重
-         * - 虚空珍珠：10 权重
+         * 总出现率：
+         * - 约 5%
+         *
+         * 成功出现术石后：
+         * - 星云之眼：90%
+         * - 虚空珍珠：10%
+         *
+         * 也就是说：
+         * - 星云之眼实际约 4.5%
+         * - 虚空珍珠实际约 0.5%
          */
-        futures.add(saveTable(cachedOutput, "spellstones/ender", 0.0D, 1.0D,
+        futures.add(saveTable(cachedOutput, "spellstones/ender", 1.0D, 1.0D,
                 itemEntry(ModItems.EYE_OF_NEBULA.get(), 90),
-                itemEntry(ModItems.VOID_PEARL.get(), 10)
+                itemEntry(ModItems.VOID_PEARL.get(), 10),
+                emptyEntry(1900)
         ));
     }
-
     /**
      * 生成至暗卷轴 loot table。
      * 原项目获取方式：
@@ -271,17 +310,24 @@ public class InjectLootTableGenerator implements DataProvider {
 
     /**
      * 生成禁忌之果 loot table。
-     * 获取方式：
-     * 可以在猪灵堡垒中的堡垒桥和堡垒疣猪兽棚找到。
-     * 额外说明：
-     * 其它堡垒变种中也可能使用相近奖励池，
-     * 因此这里额外给 BASTION_OTHER 使用同一张注入表。
-     * 当前生成路径：
-     * data/enigmatic_legacy/loot_table/inject/chests/forbidden_fruit/bastion_common.json
+     * 调整原因：
+     * - 之前禁忌之果概率过高。
+     * - 原来的表只有禁忌之果，没有 minecraft:empty 空条目。
+     * - 只要这个注入表被抽中，就很容易直接生成禁忌之果。
+     * 新设计：
+     * - rolls 固定为 1。
+     * - 禁忌之果权重 = 1。
+     * - 空条目权重 = 49。
+     * 概率：
+     * - 1 / (1 + 49) = 2%
+     * 也就是说：
+     * - 每个被注入的堡垒箱子，约 2% 概率额外出现禁忌之果。
+     * - 不再像之前那样频繁出现。
      */
     private void addForbiddenFruitTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {
-        futures.add(saveTable(cachedOutput, "forbidden_fruit/bastion_common", 0.0D, 1.0D,
-                itemEntry(ModItems.FORBIDDEN_FRUIT.get(), 100)
+        futures.add(saveTable(cachedOutput, "forbidden_fruit/bastion_common", 1.0D, 1.0D,
+                itemEntry(ModItems.FORBIDDEN_FRUIT.get(), 1),
+                emptyEntry(49)
         ));
     }
 

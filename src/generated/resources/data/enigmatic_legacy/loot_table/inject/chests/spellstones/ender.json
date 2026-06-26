@@ -12,12 +12,16 @@
           "type": "minecraft:item",
           "name": "enigmatic_legacy:void_pearl",
           "weight": 10
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 1900
         }
       ],
       "rolls": {
         "type": "minecraft:uniform",
         "max": 1.0,
-        "min": 0.0
+        "min": 1.0
       }
     }
   ]
