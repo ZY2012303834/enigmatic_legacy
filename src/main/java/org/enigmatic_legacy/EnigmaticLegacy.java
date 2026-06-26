@@ -14,6 +14,7 @@ import org.enigmatic_legacy.event.*;
 import org.enigmatic_legacy.generator.*;
 import org.enigmatic_legacy.generator.language.LanguageGenerator;
 import org.enigmatic_legacy.generator.loot.*;
+import org.enigmatic_legacy.generator.patchouli.PatchouliBookGenerator;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.network.ModNetwork;
 import org.enigmatic_legacy.potion.ModEffects;
