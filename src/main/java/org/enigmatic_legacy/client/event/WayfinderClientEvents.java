@@ -156,12 +156,36 @@ public final class WayfinderClientEvents {
         double playerYaw = Mth.positiveModulo(actualEntity.getYRot() / 360.0D, 1.0D);
 
         /*
-         * 转换为模型 override 需要的 0~1 角度。
+         * 修正指针方向反向的问题。
          *
-         * 0.25D 是指南针模型方向修正值。
+         * 原本计算出来的 rawAngle 与贴图帧方向相差 180°，
+         * 所以会出现：
+         * - 目标在东边，指针指向西边；
+         * - 目标在南边，指针指向北边。
+         *
+         * 解决方法：
+         * - 在最终角度上 +0.5F；
+         * - 0.5F 在 0~1 的角度系统里正好等于 180°。
          */
         float rawAngle = (float) (0.5D - (playerYaw - 0.25D - targetAngle));
-        rawAngle = Mth.positiveModulo(rawAngle, 1.0F);
+
+        /*
+         * 角度校准：
+         *
+         * 之前 +0.5F 用来修正 180° 反向问题。
+         * 现在实测指针仍然偏右约 45°。
+         *
+         * 45° = 45 / 360 = 0.125F。
+         *
+         * 所以这里从 0.5F 中减去 0.125F：
+         * 0.5F - 0.125F = 0.375F。
+         *
+         * 最终效果：
+         * - 保留 180° 反向修正；
+         * - 额外向左校准约 45°；
+         * - 让指针更准确指向灵魂水晶。
+         */
+        rawAngle = Mth.positiveModulo(rawAngle + 0.375F, 1.0F);
 
         return wobbleTowardTarget(actualLevel, rawAngle);
     }
