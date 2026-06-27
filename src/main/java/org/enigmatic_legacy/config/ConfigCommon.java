@@ -81,6 +81,7 @@ public final class ConfigCommon {
     public static final ModConfigSpec.BooleanValue CURSED_RING_SPECIAL_DROPS_ENABLED;
     public static final ModConfigSpec.BooleanValue CURSED_RING_DISABLE_INSOMNIA;
     public static final ModConfigSpec.ConfigValue<List<String>> CURSED_RING_NEUTRAL_ANGER_BLACKLIST;
+    public static final ModConfigSpec.ConfigValue<List<String>> ANIMAL_GUIDE_ANIMAL_EXCLUSION_LIST;
 
     // ==============================
     // 旧字段兼容别名：禁果
@@ -226,6 +227,7 @@ public final class ConfigCommon {
         CURSED_RING_SPECIAL_DROPS_ENABLED = CURSED_RING.specialDropsEnabled;
         CURSED_RING_DISABLE_INSOMNIA = CURSED_RING.disableInsomnia;
         CURSED_RING_NEUTRAL_ANGER_BLACKLIST = CURSED_RING.neutralAngerBlacklist;
+        ANIMAL_GUIDE_ANIMAL_EXCLUSION_LIST = CURSED_RING.animalGuideAnimalExclusionList;
         // end
 
         FORBIDDEN_FRUIT_REGENERATION_SUBTRACTION = FORBIDDEN_FRUIT.regenerationSubtraction;

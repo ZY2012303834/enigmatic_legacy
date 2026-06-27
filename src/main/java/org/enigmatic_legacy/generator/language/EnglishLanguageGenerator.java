@@ -290,6 +290,19 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.the_acknowledgment.shift.2", "The Fourth Curse is weakened by %s.");
         // end
 
+        // Guide to Animal Companionship
+        addItem(ModItems.ANIMAL_GUIDEBOOK, "Guide to Animal Companionship");
+        add("tooltip.enigmatic_legacy.animal_guidebook.1", "While in your inventory, your attacks can't");
+        add("tooltip.enigmatic_legacy.animal_guidebook.2", "deal damage to animals.");
+        add("tooltip.enigmatic_legacy.animal_guidebook.3", "Hoglins around you are rendered passive.");
+        add("tooltip.enigmatic_legacy.animal_guidebook.4", "Alteration of the Second Curse:");
+        add("tooltip.enigmatic_legacy.animal_guidebook.5", "- Tamable animals stay neutral towards you.");
+        add("tooltip.enigmatic_legacy.animal_guidebook.creative.1", "Right-click any entity to see whether it is");
+        add("tooltip.enigmatic_legacy.animal_guidebook.creative.2", "considered tamable for curse-altering effect.");
+        add("message.enigmatic_legacy.animal_guidebook.tamable", "Yep, this animal seems tamable.");
+        add("message.enigmatic_legacy.animal_guidebook.not_tamable", "Nope, this animal is not considered tamable.");
+        // end
+
         // 术石
         add("curios.identifier.spellstone", "Spellstone");
 

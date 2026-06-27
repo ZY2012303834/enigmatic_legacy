@@ -104,6 +104,9 @@ public class ItemGenerator extends ItemModelProvider {
 
         basicItem(ModItems.MENDING_MIXTURE.getId());    // 修补混合物
 
+        // 兽友指南使用原项目手写 3D separate-transforms 模型。
+        // 入口 JSON 位于 src/main/resources，避免 datagen 覆盖成普通 2D。
+
         // 使用 32 帧 compass_00 ~ compass_31 贴图。
         // angle 属性由 WayfinderClientEvents 在客户端注册。
         wayfinderOfTheDamned();    // 被诅咒者的寻路指针

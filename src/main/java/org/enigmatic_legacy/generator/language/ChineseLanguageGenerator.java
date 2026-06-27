@@ -292,6 +292,19 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.the_acknowledgment.shift.2", "第四诅咒削弱 %s。");
         // end
 
+        // 兽友指南
+        addItem(ModItems.ANIMAL_GUIDEBOOK, "兽友指南");
+        add("tooltip.enigmatic_legacy.animal_guidebook.1", "放在物品栏中时，你的攻击不会");
+        add("tooltip.enigmatic_legacy.animal_guidebook.2", "对动物造成伤害。");
+        add("tooltip.enigmatic_legacy.animal_guidebook.3", "你周围的疣猪兽会保持被动。");
+        add("tooltip.enigmatic_legacy.animal_guidebook.4", "第二诅咒的修正：");
+        add("tooltip.enigmatic_legacy.animal_guidebook.5", "- 可驯服动物会对你保持中立。");
+        add("tooltip.enigmatic_legacy.animal_guidebook.creative.1", "右键任意实体，查看它是否会被");
+        add("tooltip.enigmatic_legacy.animal_guidebook.creative.2", "视为可削弱诅咒效果的可驯服动物。");
+        add("message.enigmatic_legacy.animal_guidebook.tamable", "是的，这个动物似乎可以驯服。");
+        add("message.enigmatic_legacy.animal_guidebook.not_tamable", "不，这个动物不会被视为可驯服。");
+        // end
+
         // 术石
         add("curios.identifier.spellstone", "术石");
 

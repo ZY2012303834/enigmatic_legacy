@@ -302,6 +302,19 @@ public class RecipeGenerator extends RecipeProvider {
                 .unlockedBy("has_book", has(Items.BOOK))
                 .save(output);
 
+        // 兽友指南 / Guide to Animal Companionship。
+        // 对齐原项目 animal_guidebook 配方。
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ANIMAL_GUIDEBOOK.get())
+                .pattern(" n ")
+                .pattern("fXf")
+                .pattern(" a ")
+                .define('n', Items.GOLD_NUGGET)
+                .define('f', Items.DANDELION)
+                .define('X', Items.BOOK)
+                .define('a', Items.APPLE)
+                .unlockedBy("has_book", has(Items.BOOK))
+                .save(output);
+
         // 非欧立方 / Non-Euclidean Cube。
         // 按原版材料逻辑：魔像之心、寰宇之心 x2、烈焰核心、天使之祝、黑曜石、星云之眼、海洋意志、虚空珍珠。
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.THE_CUBE.get())

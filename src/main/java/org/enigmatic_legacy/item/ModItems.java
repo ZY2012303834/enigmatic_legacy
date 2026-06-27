@@ -60,6 +60,7 @@ public final class ModItems {
     // 只有佩戴七咒之戒的玩家可以使用。
     // 用于定位当前维度内最近的灵魂水晶或装有死亡掉落的超维容器。
     public static final DeferredItem<WayfinderOfTheDamned> WAYFINDER_OF_THE_DAMNED = ITEMS.register("wayfinder_of_the_damned", WayfinderOfTheDamned::new);
+    public static final DeferredItem<AnimalGuidebook> ANIMAL_GUIDEBOOK = ITEMS.register("animal_guidebook", AnimalGuidebook::new);
 
     public static final DeferredItem<UnwitnessedAmulet> UNWITNESSED_AMULET = ITEMS.register("unwitnessed_amulet", UnwitnessedAmulet::new);
     public static final DeferredItem<EnigmaticAmulet> ENIGMATIC_AMULET_RED = ITEMS.register("enigmatic_amulet_red", () -> new EnigmaticAmulet(AmuletVariant.RED));

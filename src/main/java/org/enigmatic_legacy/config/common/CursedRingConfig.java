@@ -29,6 +29,7 @@ public class CursedRingConfig {
     public final ModConfigSpec.BooleanValue specialDropsEnabled;
     public final ModConfigSpec.BooleanValue disableInsomnia;
     public final ModConfigSpec.ConfigValue<List<String>> neutralAngerBlacklist;
+    public final ModConfigSpec.ConfigValue<List<String>> animalGuideAnimalExclusionList;
 
     public CursedRingConfig(ModConfigSpec.Builder builder) {
         builder.comment(
@@ -143,6 +144,23 @@ public class CursedRingConfig {
                         CursedRingConfig::isValidEntityIdList
                 );
 
+        animalGuideAnimalExclusionList = builder
+                .comment(
+                        "兽友指南额外保护实体列表。",
+                        "列表中的实体会被兽友指南视为可驯服动物，用于削弱七咒之戒第二诅咒。",
+                        "格式：TOML 字符串数组。",
+                        "示例：",
+                        "AnimalGuideAnimalExclusionList = [",
+                        "    \"minecraft:iron_golem\",",
+                        "    \"minecraft:zombified_piglin\"",
+                        "]"
+                )
+                .define(
+                        "AnimalGuideAnimalExclusionList",
+                        List.of(),
+                        CursedRingConfig::isValidExactEntityIdList
+                );
+
         builder.pop();
     }
 
@@ -172,6 +190,24 @@ public class CursedRingConfig {
             }
 
             if (ResourceLocation.tryParse(trimmed) == null) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private static boolean isValidExactEntityIdList(Object value) {
+        if (!(value instanceof List<?> list)) {
+            return false;
+        }
+
+        for (Object element : list) {
+            if (!(element instanceof String string)) {
+                return false;
+            }
+
+            if (ResourceLocation.tryParse(string.trim()) == null) {
                 return false;
             }
         }

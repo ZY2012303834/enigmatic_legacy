@@ -19,6 +19,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
+import org.enigmatic_legacy.item.items.AnimalGuidebook;
 import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.List;
@@ -141,6 +142,10 @@ public class CursedRingHelper {
             }
 
             if (!(entity instanceof NeutralMob)) {
+                continue;
+            }
+
+            if (AnimalGuidebook.hasGuidebook(player) && AnimalGuidebook.isTamableAnimal(entity)) {
                 continue;
             }
 

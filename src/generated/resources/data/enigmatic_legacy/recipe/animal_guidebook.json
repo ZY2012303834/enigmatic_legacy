@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": {
+      "item": "minecraft:book"
+    },
+    "a": {
+      "item": "minecraft:apple"
+    },
+    "f": {
+      "item": "minecraft:dandelion"
+    },
+    "n": {
+      "item": "minecraft:gold_nugget"
+    }
+  },
+  "pattern": [
+    " n ",
+    "fXf",
+    " a "
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:animal_guidebook"
+  }
+}

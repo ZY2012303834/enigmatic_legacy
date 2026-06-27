@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-27T13:44:10.221073	vanilla/Recipes
+// 1.21.1	2026-06-27T14:36:26.9049224	vanilla/Recipes
 138cca5fc2d36a468976c88c266618e68aa51d88 data/enigmatic_legacy/advancement/recipes/building_blocks/astral_dust_sack.json
 75128c3d277fd90fca1df4cc9f996933af7f7241 data/enigmatic_legacy/advancement/recipes/building_blocks/etherium_block.json
 70a559dbe3db33a763c165b60a23730d9e9f955b data/enigmatic_legacy/advancement/recipes/combat/axe_of_executioner.json
@@ -14,6 +14,7 @@ be1652cc9a1a674b15883e0ade8abacb47c67f24 data/enigmatic_legacy/advancement/recip
 a6bb0afb6b61b2396d419e9da68a2a7a445c741b data/enigmatic_legacy/advancement/recipes/combat/the_twist.json
 afc69a4ceaecd0685cc5f6ee8c892af17f05a22e data/enigmatic_legacy/advancement/recipes/decorations/lamps/big_lamp.json
 f0d876abfb4d231cd8cd0bca21b02c1f0caa053e data/enigmatic_legacy/advancement/recipes/decorations/lamps/big_shroomlamp.json
+3409815f9f0c59b03d9674365cfe59690d6d813f data/enigmatic_legacy/advancement/recipes/misc/animal_guidebook.json
 4a6993b7056e8f412ed1bbbd1c69dcf56d9476fa data/enigmatic_legacy/advancement/recipes/misc/avarice_scroll.json
 94d1a138371805bfef8ef1eada28fc133984a8ed data/enigmatic_legacy/advancement/recipes/misc/bloodstained_valor_emblem.json
 1b98626a43928d7448ba4330e6bdef4c9cb7085f data/enigmatic_legacy/advancement/recipes/misc/cosmic_heart.json
@@ -44,6 +45,7 @@ c6295f237fb11b8d79e1c7431c79953733f7e354 data/enigmatic_legacy/advancement/recip
 b851f0a5251fe317a2a1215e9a5a9478b5b0c51f data/enigmatic_legacy/advancement/recipes/tools/etherium_shovel.json
 44184c796c476522c6aa3d1c9264d08810c28675 data/enigmatic_legacy/advancement/recipes/tools/twisted_mirror.json
 7244f883c54c102cda8fd9e2d3ca01c98f7c23ce data/enigmatic_legacy/advancement/recipes/tools/wayfinder_of_the_damned.json
+030bddc17c42b82bc536614a65c6b8e452cba943 data/enigmatic_legacy/recipe/animal_guidebook.json
 bc5104864582da074782dc6da572b03febea86de data/enigmatic_legacy/recipe/astral_dust_sack.json
 c07b678ca3933c34b2acb98d715a3661bdbc46db data/enigmatic_legacy/recipe/avarice_scroll.json
 fb27980e68235d55440fe805245fb1b9e16ced28 data/enigmatic_legacy/recipe/axe_of_executioner.json
