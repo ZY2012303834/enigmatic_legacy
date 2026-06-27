@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "E": {
+      "item": "enigmatic_legacy:evil_essence"
+    },
+    "H": {
+      "item": "enigmatic_legacy:abyssal_heart"
+    },
+    "I": {
+      "item": "enigmatic_legacy:evil_ingot"
+    },
+    "R": {
+      "item": "enigmatic_legacy:ender_rod"
+    },
+    "S": {
+      "item": "enigmatic_legacy:void_pearl"
+    },
+    "T": {
+      "item": "minecraft:ghast_tear"
+    }
+  },
+  "pattern": [
+    "ESE",
+    "IHI",
+    "TRT"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:eldritch_pan"
+  }
+}

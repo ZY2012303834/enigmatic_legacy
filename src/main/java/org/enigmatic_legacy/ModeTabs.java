@@ -67,6 +67,7 @@ public final class ModeTabs {
                                 output.accept(ModItems.AXE_OF_EXECUTIONER.get());       // 行刑者之斧
                                 output.accept(ModItems.ENDER_SLAYER.get());             // 末影之屠
                                 output.accept(ModItems.BULWARK_OF_BLAZING_PRIDE.get()); // 烈焰之傲壁垒
+                                output.accept(ModItems.VORACIOUS_PAN.get());            // 饕餮之锅
                                 output.accept(ModItems.ETHERIUM_SWORD.get());           // 以太阔剑
                                 output.accept(ModItems.ETHERIUM_PICKAXE.get());         // 以太镐
                                 output.accept(ModItems.ETHERIUM_SHOVEL.get());          // 以太锹

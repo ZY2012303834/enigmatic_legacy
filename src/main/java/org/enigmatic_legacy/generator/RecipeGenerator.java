@@ -589,5 +589,25 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('B', ModItems.BLAZING_CORE.get())
                 .unlockedBy("has_blazing_core", has(ModItems.BLAZING_CORE.get()))
                 .save(output);
+
+        // 饕餮之锅 / The Voracious Pan
+        // 原项目配方形状：
+        // ESE
+        // IHI
+        // TRT
+        // 原项目 S 使用 void_stone。
+        // 当前项目没有 void_stone，所以这里暂时使用虚空珍珠替代。
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.VORACIOUS_PAN.get())
+                .pattern("ESE")
+                .pattern("IHI")
+                .pattern("TRT")
+                .define('E', ModItems.EVIL_ESSENCE.get())
+                .define('S', ModItems.VOID_PEARL.get())
+                .define('I', ModItems.EVIL_INGOT.get())
+                .define('H', ModItems.ABYSSAL_HEART.get())
+                .define('T', Items.GHAST_TEAR)
+                .define('R', ModItems.ENDER_ROD.get())
+                .unlockedBy("has_abyssal_heart", has(ModItems.ABYSSAL_HEART.get()))
+                .save(output);
     }
 }

@@ -18,7 +18,18 @@ public final class ModSounds {
             DeferredRegister.create(Registries.SOUND_EVENT, EnigmaticLegacy.MODID);
 
     public static final DeferredHolder<SoundEvent, SoundEvent> CHARGED_ON = register("misc.hhon");
-    public static final DeferredHolder<SoundEvent, SoundEvent> SHIELD_TRIGGER = register("misc.shield_trigger");;
+    public static final DeferredHolder<SoundEvent, SoundEvent> SHIELD_TRIGGER = register("misc.shield_trigger");
+    // 饕餮之锅普通攻击音效。
+    // 对应原项目：misc.pan_clang
+    public static final DeferredHolder<SoundEvent, SoundEvent> PAN_CLANG =
+            register("misc.pan_clang");
+
+    // 饕餮之锅极低概率彩蛋攻击音效。
+    // 对应原项目：misc.pan_clang_fr
+    public static final DeferredHolder<SoundEvent, SoundEvent> PAN_CLANG_FR =
+            register("misc.pan_clang_fr");
+
+
 
     public static final Map<String, DeferredHolder<SoundEvent, SoundEvent>> QUOTES = new LinkedHashMap<>();
 

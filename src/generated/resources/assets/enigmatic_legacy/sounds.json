@@ -4,6 +4,18 @@
       "enigmatic_legacy:misc/hhon"
     ]
   },
+  "misc.pan_clang": {
+    "sounds": [
+      "enigmatic_legacy:misc/pan_clang_1",
+      "enigmatic_legacy:misc/pan_clang_2",
+      "enigmatic_legacy:misc/pan_clang_3"
+    ]
+  },
+  "misc.pan_clang_fr": {
+    "sounds": [
+      "enigmatic_legacy:misc/pan_clang_fr"
+    ]
+  },
   "misc.shield_trigger": {
     "sounds": [
       "enigmatic_legacy:misc/shield_hit_0",

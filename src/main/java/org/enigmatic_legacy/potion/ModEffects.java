@@ -7,6 +7,8 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.effect.ForbiddenFruitEffect;
+import org.enigmatic_legacy.effect.GrowingBloodlustEffect;
+import org.enigmatic_legacy.effect.GrowingHungerEffect;
 import org.enigmatic_legacy.effect.RecallEffect;
 
 /**
@@ -19,6 +21,13 @@ public final class ModEffects {
     public static final DeferredRegister<MobEffect> MOB_EFFECTS =
             DeferredRegister.create(Registries.MOB_EFFECT, EnigmaticLegacy.MODID);
 
+    // 饕餮之锅：增长饥饿
+    public static final DeferredHolder<MobEffect, MobEffect> GROWING_HUNGER =
+            MOB_EFFECTS.register("growing_hunger", GrowingHungerEffect::new);
+
+    // 饕餮之锅：增长嗜血
+    public static final DeferredHolder<MobEffect, MobEffect> GROWING_BLOODLUST =
+            MOB_EFFECTS.register("growing_bloodlust", GrowingBloodlustEffect::new);
     /**
      * 召回效果。
      *

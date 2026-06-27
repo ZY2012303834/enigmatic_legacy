@@ -684,6 +684,50 @@ public class ChineseLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.bulwark_of_blazing_pride.5",
                 "举盾时，来自背后的攻击会造成更高伤害。");
+
+        // The Voracious Pan / 饕餮之锅
+        addItem(ModItems.VORACIOUS_PAN, "饕餮之锅");
+
+        add("tooltip.enigmatic_legacy.voracious_pan.lore",
+                "它永远饥饿。");
+
+        add("tooltip.enigmatic_legacy.voracious_pan.1",
+                "一口会从猎物身上吞噬力量的诅咒之锅。");
+
+        add("tooltip.enigmatic_legacy.voracious_pan.2",
+                "也可以举起它来格挡来袭的攻击。");
+
+        add("tooltip.enigmatic_legacy.voracious_pan.lifesteal",
+                "将造成伤害的 %s 转化为生命恢复。");
+
+        add("tooltip.enigmatic_legacy.voracious_pan.hungersteal",
+                "命中时夺取 %s 点饥饿值。");
+
+        add("tooltip.enigmatic_legacy.voracious_pan.3",
+                "持有它太久，会唤醒不断增长的饥饿。");
+
+        add("tooltip.enigmatic_legacy.voracious_pan.4",
+                "这口锅会记住它吞噬过的每一种不同生物。");
+
+        add("tooltip.enigmatic_legacy.voracious_pan.damage_gain",
+                "每种独特击杀提供 %s 攻击伤害。");
+
+        add("tooltip.enigmatic_legacy.voracious_pan.armor_gain",
+                "每种独特击杀提供 %s 护甲。");
+
+        add("tooltip.enigmatic_legacy.voracious_pan.kills",
+                "独特击杀：%s / %s");
+
+        add("tooltip.enigmatic_legacy.voracious_pan.kills_max",
+                "这口锅已无法继续成长。");
+
+        add("message.enigmatic_legacy.voracious_pan_buff",
+                "饕餮之锅变得更强了。");
+        // 饕餮之锅效果名。
+        // Growing Hunger 在中文资料中对应“无止饥饿”。
+        // Growing Bloodlust 按同一命名风格翻译为“无止嗜血”。
+        add("effect.enigmatic_legacy.growing_hunger", "无止饥饿");
+        add("effect.enigmatic_legacy.growing_bloodlust", "无止嗜血");
     }
 
     private void addChineseCursedRingTooltips() {

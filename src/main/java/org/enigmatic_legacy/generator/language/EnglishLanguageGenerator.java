@@ -682,6 +682,48 @@ public class EnglishLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.bulwark_of_blazing_pride.5",
                 "Attacks from behind while blocking deal increased damage.");
+
+        // The Voracious Pan / 饕餮之锅
+        addItem(ModItems.VORACIOUS_PAN, "The Voracious Pan");
+
+        add("tooltip.enigmatic_legacy.voracious_pan.lore",
+                "It is always hungry.");
+
+        add("tooltip.enigmatic_legacy.voracious_pan.1",
+                "A cursed pan that devours strength from those it strikes.");
+
+        add("tooltip.enigmatic_legacy.voracious_pan.2",
+                "It can also be raised to block incoming attacks.");
+
+        add("tooltip.enigmatic_legacy.voracious_pan.lifesteal",
+                "Restores %s of damage dealt as health.");
+
+        add("tooltip.enigmatic_legacy.voracious_pan.hungersteal",
+                "Steals %s hunger from struck creatures.");
+
+        add("tooltip.enigmatic_legacy.voracious_pan.3",
+                "Holding it for too long awakens a growing hunger.");
+
+        add("tooltip.enigmatic_legacy.voracious_pan.4",
+                "The pan remembers every distinct creature it devours.");
+
+        add("tooltip.enigmatic_legacy.voracious_pan.damage_gain",
+                "Each unique kill grants %s Attack Damage.");
+
+        add("tooltip.enigmatic_legacy.voracious_pan.armor_gain",
+                "Each unique kill grants %s Armor.");
+
+        add("tooltip.enigmatic_legacy.voracious_pan.kills",
+                "Unique kills: %s / %s");
+
+        add("tooltip.enigmatic_legacy.voracious_pan.kills_max",
+                "The pan can grow no further.");
+
+        add("message.enigmatic_legacy.voracious_pan_buff",
+                "The Voracious Pan grows stronger.");
+
+        add("effect.enigmatic_legacy.growing_hunger", "Growing Hunger");
+        add("effect.enigmatic_legacy.growing_bloodlust", "Growing Bloodlust");
     }
 
     private void addEnglishCursedRingTooltips() {

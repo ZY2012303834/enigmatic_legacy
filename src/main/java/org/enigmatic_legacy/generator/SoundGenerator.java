@@ -61,5 +61,37 @@ public class SoundGenerator extends SoundDefinitionsProvider {
                                 "misc/shield_hit_1"
                         )))
         );
+
+        // 饕餮之锅普通攻击音效。
+        // 原项目 misc.pan_clang 对应 3 个随机音效文件：
+        // pan_clang_1.ogg
+        // pan_clang_2.ogg
+        // pan_clang_3.ogg
+        add(
+                ModSounds.PAN_CLANG.getId(),
+                definition()
+                        .with(sound(ResourceLocation.fromNamespaceAndPath(
+                                EnigmaticLegacy.MODID,
+                                "misc/pan_clang_1"
+                        )))
+                        .with(sound(ResourceLocation.fromNamespaceAndPath(
+                                EnigmaticLegacy.MODID,
+                                "misc/pan_clang_2"
+                        )))
+                        .with(sound(ResourceLocation.fromNamespaceAndPath(
+                                EnigmaticLegacy.MODID,
+                                "misc/pan_clang_3"
+                        )))
+        );
+
+        // 饕餮之锅极低概率彩蛋音效。
+        // 原项目 misc.pan_clang_fr 对应 pan_clang_fr.ogg。
+        add(
+                ModSounds.PAN_CLANG_FR.getId(),
+                definition().with(sound(ResourceLocation.fromNamespaceAndPath(
+                        EnigmaticLegacy.MODID,
+                        "misc/pan_clang_fr"
+                )))
+        );
     }
 }

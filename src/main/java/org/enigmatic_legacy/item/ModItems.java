@@ -88,12 +88,17 @@ public final class ModItems {
     public static final DeferredItem<EtheriumArmorItem> ETHERIUM_LEGGINGS = ITEMS.register("etherium_leggings", () -> new EtheriumArmorItem(ArmorItem.Type.LEGGINGS)); // 以太护腿
     public static final DeferredItem<EtheriumArmorItem> ETHERIUM_BOOTS = ITEMS.register("etherium_boots", () -> new EtheriumArmorItem(ArmorItem.Type.BOOTS)); // 以太靴子
     // 末影之屠 / The Ender Slayer
-// 七咒遗物，专门用于对抗末地生物。
+    // 七咒遗物，专门用于对抗末地生物。
     public static final DeferredItem<EnderSlayer> ENDER_SLAYER = ITEMS.register("ender_slayer", EnderSlayer::new);
     // 烈焰之傲壁垒 / Bulwark of Blazing Pride
-// 原项目类名 InfernalShield。
-// 只有承受七咒之人才能使用的防火盾牌。
+    // 原项目类名 InfernalShield。
+    // 只有承受七咒之人才能使用的防火盾牌。
     public static final DeferredItem<BulwarkOfBlazingPride> BULWARK_OF_BLAZING_PRIDE = ITEMS.register("infernal_shield", BulwarkOfBlazingPride::new);
+
+    // 饕餮之锅 / The Voracious Pan
+    // 原项目类名 EldritchPan。
+    // 只有承受七咒之人才能使用，会随不同生物击杀逐渐增强。
+    public static final DeferredItem<VoraciousPan> VORACIOUS_PAN = ITEMS.register("eldritch_pan", VoraciousPan::new);
 
     // 术石
     public static final DeferredItem<GolemHeart> GOLEM_HEART = ITEMS.register("golem_heart", GolemHeart::new); // 魔像之心
