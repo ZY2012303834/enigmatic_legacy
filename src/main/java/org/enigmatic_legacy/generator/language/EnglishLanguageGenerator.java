@@ -404,9 +404,9 @@ public class EnglishLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.void_pearl.passive.1", "You no longer need to breathe air and become immune to drowning damage.");
         add("tooltip.enigmatic_legacy.void_pearl.passive.2", "Removes almost all status effects, except special effects such as Forbidden Fruit.");
-        add("tooltip.enigmatic_legacy.void_pearl.passive.3", "Your attacks inflict Wither.");
-        add("tooltip.enigmatic_legacy.void_pearl.passive.4", "Every 0.5 seconds, creatures exposed to darkness within %s blocks take %s void damage and suffer severe debuffs.");
-        add("tooltip.enigmatic_legacy.void_pearl.passive.5", "Has a %s chance to block fatal damage.");
+        add("tooltip.enigmatic_legacy.void_pearl.passive.3", "Your attacks inflict %s on the target.");
+        add("tooltip.enigmatic_legacy.void_pearl.passive.4", "Every %s seconds, deals %s damage to creatures exposed to darkness within %s blocks and applies %s.");
+        add("tooltip.enigmatic_legacy.void_pearl.passive.5", "Has a %s chance to prevent lethal damage.");
         add("tooltip.enigmatic_legacy.void_pearl.passive.6", "Extinguishes you every tick and prevents suffocation damage inside blocks.");
 
         add("death.attack.enigmatic_legacy.darkness", "%1$s was devoured by darkness");
@@ -425,9 +425,9 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.2", "%s Fortune level and %s Luck.");
         add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.3", "Ignores damage above %s. With the Ring of Seven Curses, ignores damage above %s instead.");
         add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.4", "Has a %s chance to reflect projectiles or return damage to the attacker.");
-        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.5", "When damaged by non-projectile attacks, progressively afflicts the attacker with negative effects.");
+        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.5", "When taking non-projectile damage, gradually applies %s to the attacker.");
         add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.6", "Grants a random positive effect when you defeat a creature, excluding Slow Falling.");
-        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.7", "Prevents negative effects, cramming, fall, collision, thorns, teleportation, fire, and lava damage, and folds space to save you near death.");
+        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.7", "Immunity to %s, suffocation, fall, collision, thorns, teleportation, fire and lava damage, and folds space to save you from lethal damage.");
         // end
 
         // 创造之心
@@ -435,9 +435,9 @@ public class EnglishLanguageGenerator extends LanguageProvider {
 
         add("message.enigmatic_legacy.heart_of_creation.no_targets", "The Heart of Creation found no enemies to judge.");
 
-        add("tooltip.enigmatic_legacy.heart_of_creation.active", "Calls lightning upon all enemies within %s blocks, dealing %s damage and inflicting Wither.");
+        add("tooltip.enigmatic_legacy.heart_of_creation.active", "Calls lightning upon all enemies within %s blocks, dealing %s damage and applying %s.");
         add("tooltip.enigmatic_legacy.heart_of_creation.passive.1", "Prevents suffocation, fall, collision, cramming, starvation, void, thorns, fire, and lava damage.");
-        add("tooltip.enigmatic_legacy.heart_of_creation.passive.2", "Removes most negative status effects.");
+        add("tooltip.enigmatic_legacy.heart_of_creation.passive.2", "Immunity to most %s.");
         add("tooltip.enigmatic_legacy.heart_of_creation.passive.3", "Prevents knockback and grants flight.");
         add("tooltip.enigmatic_legacy.heart_of_creation.passive.4", "Compensates for mining speed loss while flying.");
         add("tooltip.enigmatic_legacy.heart_of_creation.passive.5", "While equipped or carried in your inventory, you become immortal;");
@@ -815,8 +815,12 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.eldritch_amulet.current_cursed_time",
                 "Current Seven Curses time: %s");
 
+        // Shared tooltip terms for partial coloring
+        add("tooltip.enigmatic_legacy.term.negative_effects", "negative effects");
+        add("tooltip.enigmatic_legacy.term.severe_negative_effects", "severe negative effects");
+
         // 七咒 99.5% .
-        add("tooltip.enigmatic_legacy.cursed_suffering.requirement", "You need to spend 99.5% of your total playtime under the torment of the Ring of the Seven Curses to use this item.");
+        add("tooltip.enigmatic_legacy.cursed_suffering.requirement", "You need to spend %s of your total playtime under the torment of the Ring of the Seven Curses to use this item.");
         add("tooltip.enigmatic_legacy.cursed_suffering.current_percentage", "Current Seven Curses torment percentage: %s");
     }
 

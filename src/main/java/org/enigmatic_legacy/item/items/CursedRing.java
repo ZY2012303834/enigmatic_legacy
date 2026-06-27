@@ -15,6 +15,7 @@ import org.enigmatic_legacy.config.ConfigClient;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.util.AbyssalHeartHelper;
 import org.enigmatic_legacy.util.CursedRingHelper;
+import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio;
@@ -56,17 +57,19 @@ public class CursedRing extends Item implements ICurioItem {
             addTooltip(tooltip, "cursedRing3");
 
             if (ConfigCommon.CURSED_RING_PAIN_MODIFIER.get() == 200) {
-                addTooltip(tooltip, "cursedRing4");
+                addNegativeTooltip(tooltip, "cursedRing4");
             } else {
-                addTooltip(tooltip, "cursedRing4_alt", ConfigCommon.CURSED_RING_PAIN_MODIFIER.get() + "%");
+                addNegativeTooltip(tooltip, "cursedRing4_alt", ConfigCommon.CURSED_RING_PAIN_MODIFIER.get() + "%");
             }
 
-            addTooltip(tooltip, "cursedRing5");
-            addTooltip(tooltip, "cursedRing6", ConfigCommon.CURSED_RING_ARMOR_DEBUFF.get() + "%");
-            addTooltip(tooltip, "cursedRing7", ConfigCommon.CURSED_RING_MONSTER_DAMAGE_DEBUFF.get() + "%");
-            addTooltip(tooltip, "cursedRing8");
-            addTooltip(tooltip, "cursedRing9");
-            addTooltip(tooltip, "cursedRing10");
+            addNegativeTooltip(tooltip, "cursedRing5");
+            addNegativeTooltip(tooltip, "cursedRing6", ConfigCommon.CURSED_RING_ARMOR_DEBUFF.get() + "%");
+            addNegativeTooltip(tooltip, "cursedRing7", ConfigCommon.CURSED_RING_MONSTER_DAMAGE_DEBUFF.get() + "%");
+            addNegativeTooltip(tooltip, "cursedRing8");
+            addNegativeTooltip(tooltip, "cursedRing9");
+            addNegativeTooltip(tooltip, "cursedRing10");
+
+
             addTooltip(tooltip, "void");
             addTooltip(tooltip, "cursedRing11");
             addTooltip(tooltip, "cursedRing12", ConfigCommon.CURSED_RING_LOOTING_BONUS.get());
@@ -99,14 +102,42 @@ public class CursedRing extends Item implements ICurioItem {
         addTooltip(tooltip, "hold_shift");
     }
 
+    /**
+     * 七咒之戒普通 tooltip：
+     * 普通介绍紫色，参数数字 / 百分比金色。
+     */
     private static void addTooltip(List<Component> tooltip, String key, Object... args) {
+        if ("void".equals(key)) {
+            tooltip.add(SpellstoneTooltip.empty());
+            return;
+        }
+
+        if ("hold_shift".equals(key)) {
+            tooltip.add(SpellstoneTooltip.holdShift());
+            return;
+        }
+
         Object[] formattedArgs = new Object[args.length];
 
         for (int i = 0; i < args.length; i++) {
-            formattedArgs[i] = Component.literal(String.valueOf(args[i])).withStyle(ChatFormatting.GOLD);
+            formattedArgs[i] = SpellstoneTooltip.number(args[i]);
         }
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy." + key, formattedArgs));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy." + key, formattedArgs));
+    }
+
+    /**
+     * 七咒之戒负面 tooltip：
+     * 整句红色，参数数字 / 百分比仍然金色。
+     */
+    private static void addNegativeTooltip(List<Component> tooltip, String key, Object... args) {
+        Object[] formattedArgs = new Object[args.length];
+
+        for (int i = 0; i < args.length; i++) {
+            formattedArgs[i] = SpellstoneTooltip.number(args[i]);
+        }
+
+        tooltip.add(SpellstoneTooltip.negative("tooltip.enigmatic_legacy." + key, formattedArgs));
     }
 
     /**

@@ -209,29 +209,37 @@ public class HeartOfCreation extends Item implements ICurioItem {
             @NotNull List<Component> tooltip,
             @NotNull TooltipFlag flag
     ) {
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.void"));
+        tooltip.add(SpellstoneTooltip.empty());
 
         if (!Screen.hasShiftDown()) {
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hold_shift"));
+            tooltip.add(SpellstoneTooltip.holdShift());
             return;
         }
 
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.spellstone.active"));
+
         tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.heart_of_creation.active",
                 SpellstoneTooltip.number(ConfigCommon.HEART_OF_CREATION_LIGHTNING_RANGE.get()),
-                SpellstoneTooltip.number(ConfigCommon.HEART_OF_CREATION_LIGHTNING_DAMAGE.get())
+                SpellstoneTooltip.number(ConfigCommon.HEART_OF_CREATION_LIGHTNING_DAMAGE.get()),
+                SpellstoneTooltip.effect("effect.minecraft.wither")
         ));
+
         tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.spellstone.cooldown",
                 SpellstoneTooltip.number(String.format("%.1f", ConfigCommon.HEART_OF_CREATION_COOLDOWN.get() / 20.0F))
         ));
 
-        tooltip.add(Component.empty());
+        tooltip.add(SpellstoneTooltip.empty());
 
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.spellstone.passive"));
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.heart_of_creation.passive.1"));
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.heart_of_creation.passive.2"));
+
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.heart_of_creation.passive.2",
+                SpellstoneTooltip.negativeTerm("tooltip.enigmatic_legacy.term.negative_effects")
+        ));
+
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.heart_of_creation.passive.3"));
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.heart_of_creation.passive.4"));
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.heart_of_creation.passive.5"));

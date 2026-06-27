@@ -1,6 +1,5 @@
 package org.enigmatic_legacy.item.items;
 
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.Holder;
@@ -27,6 +26,7 @@ import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.util.AbyssalHeartHelper;
 import org.enigmatic_legacy.util.CursedRingHelper;
 import org.enigmatic_legacy.util.CursedSufferingTooltip;
+import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
 import vazkii.patchouli.api.PatchouliAPI;
 
@@ -177,60 +177,53 @@ public class TheInfinitum extends Item {
             @NotNull List<Component> tooltip,
             @NotNull TooltipFlag flag
     ) {
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+        tooltip.add(SpellstoneTooltip.empty());
 
         if (!Screen.hasShiftDown()) {
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.the_infinitum.1")
-                    .withStyle(ChatFormatting.DARK_PURPLE));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hold_shift")
-                    .withStyle(ChatFormatting.DARK_GRAY));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.the_infinitum.1"));
+            tooltip.add(SpellstoneTooltip.empty());
+            tooltip.add(SpellstoneTooltip.holdShift());
             return;
         }
 
         Player player = Minecraft.getInstance().player;
         if (player != null && CursedRingHelper.hasCursedRing(player)) {
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.the_infinitum.2")
-                    .withStyle(ChatFormatting.LIGHT_PURPLE));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.the_infinitum.3")
-                    .withStyle(ChatFormatting.DARK_PURPLE));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.the_infinitum.2"));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.the_infinitum.3"));
+            tooltip.add(SpellstoneTooltip.empty());
         }
 
-        tooltip.add(Component.translatable(
+        tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.the_infinitum.4",
-                Component.literal("+200%").withStyle(ChatFormatting.GOLD)
-        ).withStyle(ChatFormatting.LIGHT_PURPLE));
+                SpellstoneTooltip.percent("+200%")
+        ));
 
-        tooltip.add(Component.translatable(
+        tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.the_infinitum.5",
-                Component.literal("+200%").withStyle(ChatFormatting.GOLD)
-        ).withStyle(ChatFormatting.LIGHT_PURPLE));
+                SpellstoneTooltip.percent("+200%")
+        ));
 
-        tooltip.add(Component.translatable(
+        tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.the_infinitum.6",
-                Component.literal("+10%").withStyle(ChatFormatting.GOLD)
-        ).withStyle(ChatFormatting.LIGHT_PURPLE));
+                SpellstoneTooltip.percent("+10%")
+        ));
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+        tooltip.add(SpellstoneTooltip.empty());
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.the_infinitum.7")
-                .withStyle(ChatFormatting.DARK_PURPLE));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.the_infinitum.7"));
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+        tooltip.add(SpellstoneTooltip.empty());
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.the_infinitum.8")
-                .withStyle(ChatFormatting.DARK_PURPLE));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.the_infinitum.8"));
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+        tooltip.add(SpellstoneTooltip.empty());
 
-        tooltip.add(Component.translatable(
+        tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.the_infinitum.9",
-                Component.literal("85%").withStyle(ChatFormatting.GOLD)
-        ).withStyle(ChatFormatting.DARK_PURPLE));
+                SpellstoneTooltip.percent("85%")
+        ));
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.the_infinitum.10")
-                .withStyle(ChatFormatting.DARK_PURPLE));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.the_infinitum.10"));
 
         // 最底部统一显示七咒折磨 99.5% 要求和当前百分比。
         CursedSufferingTooltip.appendTooltip(tooltip);

@@ -1,6 +1,5 @@
 package org.enigmatic_legacy.item.items.spellstone;
 
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
@@ -109,7 +108,6 @@ public class PearlOfTheVoid extends Item implements ICurioItem {
 
     /**
      * Tooltip 显示。
-     *
      * 风格保持和你已有术石一致：
      * 不按 Shift 只显示“按住 Shift 查看详情”；
      * 按住 Shift 后显示完整被动效果。
@@ -121,30 +119,34 @@ public class PearlOfTheVoid extends Item implements ICurioItem {
             @NotNull List<Component> tooltip,
             @NotNull TooltipFlag flag
     ) {
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.void"));
+        tooltip.add(SpellstoneTooltip.empty());
 
         if (!Screen.hasShiftDown()) {
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hold_shift"));
+            tooltip.add(SpellstoneTooltip.holdShift());
             return;
         }
 
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.spellstone.passive"));
 
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.void_pearl.passive.1"));
-
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.void_pearl.passive.2"));
 
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.void_pearl.passive.3"));
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.void_pearl.passive.3",
+                SpellstoneTooltip.effect("effect.minecraft.wither")
+        ));
 
         tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.void_pearl.passive.4",
+                SpellstoneTooltip.number("0.5"),
+                SpellstoneTooltip.number(String.format("%.1f", DARKNESS_DAMAGE)),
                 SpellstoneTooltip.number(String.format("%.1f", DARKNESS_RANGE)),
-                SpellstoneTooltip.number(String.format("%.1f", DARKNESS_DAMAGE))
+                SpellstoneTooltip.negativeTerm("tooltip.enigmatic_legacy.term.severe_negative_effects")
         ));
 
         tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.void_pearl.passive.5",
-                SpellstoneTooltip.number(DEATH_PROTECTION_CHANCE + "%")
+                SpellstoneTooltip.percent(DEATH_PROTECTION_CHANCE + "%")
         ));
 
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.void_pearl.passive.6"));

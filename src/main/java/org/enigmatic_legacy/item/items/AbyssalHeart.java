@@ -13,6 +13,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.enigmatic_legacy.util.AbyssalHeartHelper;
 import org.enigmatic_legacy.util.CursedSufferingTooltip;
+import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -74,25 +75,19 @@ public class AbyssalHeart extends Item {
             @NotNull List<Component> tooltip,
             @NotNull TooltipFlag flag
     ) {
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+        tooltip.add(SpellstoneTooltip.empty());
 
         if (Screen.hasShiftDown()) {
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.abyssal_heart.1")
-                    .withStyle(ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.abyssal_heart.2")
-                    .withStyle(ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.abyssal_heart.3")
-                    .withStyle(ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.abyssal_heart.4")
-                    .withStyle(ChatFormatting.DARK_PURPLE));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.abyssal_heart.1"));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.abyssal_heart.2"));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.abyssal_heart.3"));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.abyssal_heart.4"));
 
             // 最底部统一显示七咒折磨 99.5% 要求和当前百分比。
             CursedSufferingTooltip.appendTooltip(tooltip);
         } else {
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.abyssal_heart.short")
-                    .withStyle(ChatFormatting.DARK_PURPLE));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hold_shift")
-                    .withStyle(ChatFormatting.DARK_GRAY));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.abyssal_heart.short"));
+            tooltip.add(SpellstoneTooltip.holdShift());
         }
     }
 }

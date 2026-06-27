@@ -406,9 +406,9 @@ public class ChineseLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.void_pearl.passive.1", "不再需要呼吸空气，并免疫溺水伤害。");
         add("tooltip.enigmatic_legacy.void_pearl.passive.2", "免疫绝大多数状态效果，但禁忌之果等特殊效果除外。");
-        add("tooltip.enigmatic_legacy.void_pearl.passive.3", "你的攻击会使目标凋零。");
-        add("tooltip.enigmatic_legacy.void_pearl.passive.4", "每 0.5 秒，对 %s 格内暴露在黑暗中的生物造成 %s 点虚空伤害，并施加严重负面效果。");
-        add("tooltip.enigmatic_legacy.void_pearl.passive.5", "受到致命伤害时，有 %s 概率抵挡死亡。");
+        add("tooltip.enigmatic_legacy.void_pearl.passive.3", "你的攻击会使目标 %s。");
+        add("tooltip.enigmatic_legacy.void_pearl.passive.4", "每 %s 秒，对 %s 格内暴露在黑暗中的生物造成 %s 点虚空伤害，并施加 %s。");
+        add("tooltip.enigmatic_legacy.void_pearl.passive.5", "拥有 %s 的概率抵挡致命伤害。");
         add("tooltip.enigmatic_legacy.void_pearl.passive.6", "每 tick 熄灭自身火焰，并免疫墙内窒息伤害。");
 
         add("death.attack.enigmatic_legacy.darkness", "%1$s 被黑暗吞噬了");
@@ -427,9 +427,9 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.2", "%s 时运等级，%s 幸运。");
         add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.3", "无视高于 %s 点的伤害；佩戴七咒之戒时改为无视高于 %s 点的伤害。");
         add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.4", "%s 概率反弹投射物，或将伤害返还给攻击者。");
-        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.5", "受到非投射物伤害时，逐步给予攻击者负面效果。");
+        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.5", "受到非投射物伤害时，逐步给予攻击者 %s。");
         add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.6", "击败生物后获得随机正面效果，但不会获得缓降。");
-        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.7", "免疫负面效果、挤压、摔落、碰撞、荆棘、传送、火焰与熔岩伤害，并可在濒死时折叠空间保命。");
+        add("tooltip.enigmatic_legacy.non_euclidean_cube.passive.7", "免疫 %s、挤压、摔落、碰撞、荆棘、传送、火焰与熔岩伤害，并可在濒死时折叠空间保命。");
         // end
 
         // 创造之心
@@ -437,9 +437,9 @@ public class ChineseLanguageGenerator extends LanguageProvider {
 
         add("message.enigmatic_legacy.heart_of_creation.no_targets", "创造之心没有找到可审判的敌人。");
 
-        add("tooltip.enigmatic_legacy.heart_of_creation.active", "对 %s 格范围内的所有敌人降下闪电，造成 %s 点伤害并附加凋零。");
+        add("tooltip.enigmatic_legacy.heart_of_creation.active", "对 %s 格范围内的所有敌人降下闪电，造成 %s 点伤害并附加 %s。");
         add("tooltip.enigmatic_legacy.heart_of_creation.passive.1", "免疫窒息、坠落、碰撞、挤压、饥饿、虚空、荆棘、火焰和岩浆伤害。");
-        add("tooltip.enigmatic_legacy.heart_of_creation.passive.2", "免疫大部分负面状态效果。");
+        add("tooltip.enigmatic_legacy.heart_of_creation.passive.2", "免疫大部分 %s。");
         add("tooltip.enigmatic_legacy.heart_of_creation.passive.3", "免疫击退，并给予你飞行能力。");
         add("tooltip.enigmatic_legacy.heart_of_creation.passive.4", "补偿飞行时的挖掘速度损失。");
         add("tooltip.enigmatic_legacy.heart_of_creation.passive.5", "装备它或将其放在物品栏中时，你将不朽；");
@@ -822,6 +822,10 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         // 七咒折磨 99.5% 使用资格提示，所有需要该资格的物品共用这一组语言 key。
         add("tooltip.enigmatic_legacy.cursed_suffering.requirement", "你需要在七咒之戒的折磨下度过总游戏时间的99.5%才能使用该物品。");
         add("tooltip.enigmatic_legacy.cursed_suffering.current_percentage", "当前受七咒折磨的时间百分比：%s");
+
+        // Tooltip 通用词条：用于局部染色
+        add("tooltip.enigmatic_legacy.term.negative_effects", "负面效果");
+        add("tooltip.enigmatic_legacy.term.severe_negative_effects", "严重负面效果");
     }
 
     private void addChineseCursedRingTooltips() {

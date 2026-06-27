@@ -345,35 +345,59 @@ public class NonEuclideanCube extends Item implements ICurioItem {
             @NotNull List<Component> tooltip,
             @NotNull TooltipFlag flag
     ) {
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.void"));
+        tooltip.add(SpellstoneTooltip.empty());
 
         if (!Screen.hasShiftDown()) {
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hold_shift"));
+            tooltip.add(SpellstoneTooltip.holdShift());
             return;
         }
 
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.spellstone.active"));
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.non_euclidean_cube.active"));
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.spellstone.cooldown", SpellstoneTooltip.number("120.0")));
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.spellstone.cooldown",
+                SpellstoneTooltip.number("120.0")
+        ));
 
-        tooltip.add(Component.empty());
+        tooltip.add(SpellstoneTooltip.empty());
 
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.spellstone.passive"));
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.non_euclidean_cube.passive.1",
-                SpellstoneTooltip.number("+35%"),
-                SpellstoneTooltip.number("+100%"),
-                SpellstoneTooltip.number("+60%"),
-                SpellstoneTooltip.number("+40%")));
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.non_euclidean_cube.passive.2",
+
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.non_euclidean_cube.passive.1",
+                SpellstoneTooltip.percent("+35%"),
+                SpellstoneTooltip.percent("+100%"),
+                SpellstoneTooltip.percent("+60%"),
+                SpellstoneTooltip.percent("+40%")
+        ));
+
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.non_euclidean_cube.passive.2",
                 SpellstoneTooltip.number("+1"),
-                SpellstoneTooltip.number("+1")));
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.non_euclidean_cube.passive.3",
+                SpellstoneTooltip.number("+1")
+        ));
+
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.non_euclidean_cube.passive.3",
                 SpellstoneTooltip.number("100"),
-                SpellstoneTooltip.number("150")));
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.non_euclidean_cube.passive.4",
-                SpellstoneTooltip.number("35%")));
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.non_euclidean_cube.passive.5"));
+                SpellstoneTooltip.number("150")
+        ));
+
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.non_euclidean_cube.passive.4",
+                SpellstoneTooltip.percent("35%")
+        ));
+
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.non_euclidean_cube.passive.5",
+                SpellstoneTooltip.negativeTerm("tooltip.enigmatic_legacy.term.negative_effects")
+        ));
+
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.non_euclidean_cube.passive.6"));
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.non_euclidean_cube.passive.7"));
+
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.non_euclidean_cube.passive.7",
+                SpellstoneTooltip.negativeTerm("tooltip.enigmatic_legacy.term.negative_effects")
+        ));
     }
 }
