@@ -97,6 +97,16 @@ public class AxeOfExecutioner extends AxeItem {
     }
 
     /**
+     * 行刑者之斧的附魔能力。
+     * 1.21.1 没有 Item.Properties#enchantable(...)，
+     * 所以这里继续使用 1.21.1 的 getEnchantmentValue 方式。
+     */
+    @Override
+    public int getEnchantmentValue() {
+        return Tiers.NETHERITE.getEnchantmentValue();
+    }
+
+    /**
      * 添加物品提示文本。
      * 也就是鼠标放到物品上时显示的说明。
      */

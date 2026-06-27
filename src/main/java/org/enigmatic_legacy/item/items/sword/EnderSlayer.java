@@ -94,6 +94,16 @@ public class EnderSlayer extends SwordItem {
     }
 
     /**
+     * 末影之屠的附魔能力。
+     * 1.21.1 没有 Item.Properties#enchantable(...)，
+     * 所以这里继续使用 1.21.1 的 getEnchantmentValue 方式。
+     */
+    @Override
+    public int getEnchantmentValue() {
+        return EnderSlayerToolMaterial.INSTANCE.getEnchantmentValue();
+    }
+
+    /**
      * 判断目标是否属于“末地生物”。
      * 原项目默认包含：
      * - 末影人

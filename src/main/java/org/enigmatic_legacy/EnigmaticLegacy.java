@@ -54,7 +54,7 @@ public class EnigmaticLegacy {
         modEventBus.addListener(DamageTagGenerator::gatherData);
         modEventBus.addListener(DamageTypeGenerator::gatherData);
 
-
+        modEventBus.addListener(ItemTagGenerator::gatherData);
 
         modEventBus.addListener(InjectLootTableGenerator::gatherData);
         modEventBus.addListener(GlobalLootModifierGenerator::gatherData);

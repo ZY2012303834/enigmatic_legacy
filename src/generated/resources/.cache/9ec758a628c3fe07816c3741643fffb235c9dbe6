@@ -1,0 +1,11 @@
+// 1.21.1	2026-06-28T00:05:10.3327558	vanilla/Tags for minecraft:item mod id enigmatic_legacy
+9077428999e57b93355f7919695ca699bd4873ee data/minecraft/tags/item/axes.json
+9077428999e57b93355f7919695ca699bd4873ee data/minecraft/tags/item/enchantable/axe.json
+b952b013d8c9ab041b5a7a216f2fd3bb1393c92e data/minecraft/tags/item/enchantable/durability.json
+b952b013d8c9ab041b5a7a216f2fd3bb1393c92e data/minecraft/tags/item/enchantable/fire_aspect.json
+9077428999e57b93355f7919695ca699bd4873ee data/minecraft/tags/item/enchantable/mining.json
+9077428999e57b93355f7919695ca699bd4873ee data/minecraft/tags/item/enchantable/mining_loot.json
+b952b013d8c9ab041b5a7a216f2fd3bb1393c92e data/minecraft/tags/item/enchantable/sharp_weapon.json
+b952b013d8c9ab041b5a7a216f2fd3bb1393c92e data/minecraft/tags/item/enchantable/sword.json
+b952b013d8c9ab041b5a7a216f2fd3bb1393c92e data/minecraft/tags/item/enchantable/weapon.json
+26a474b3910c7c8d09c3017b63c03ccc7f54f417 data/minecraft/tags/item/swords.json
