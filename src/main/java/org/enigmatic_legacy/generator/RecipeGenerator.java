@@ -538,5 +538,25 @@ public class RecipeGenerator extends RecipeProvider {
                         EnigmaticLegacy.MODID,
                         "mending_mixture_repair"
                 ));
+
+        // 被诅咒者的寻路指针 / Wayfinder of the Damned
+        //
+        // 说明：
+        // - 使用指南针作为“寻路”基础；
+        // - 使用灵魂水晶作为定位目标核心；
+        // - 使用七咒之戒相关材料强化诅咒主题。
+        //
+        // 数据生成后会生成：
+        // data/enigmatic_legacy/recipe/wayfinder_of_the_damned.json
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.WAYFINDER_OF_THE_DAMNED.get())
+                .pattern(" E ")
+                .pattern("CSC")
+                .pattern(" R ")
+                .define('E', ModItems.EVIL_ESSENCE.get())
+                .define('C', ModItems.EVIL_INGOT.get())
+                .define('S', ModItems.SOUL_CRYSTAL.get())
+                .define('R', Items.COMPASS)
+                .unlockedBy("has_soul_crystal", has(ModItems.SOUL_CRYSTAL.get()))
+                .save(output);
     }
 }

@@ -61,6 +61,7 @@ public final class ModeTabs {
                                 output.accept(ModItems.ENCHANTMENT_TRANSPOSER.get());   // 求知之书
                                 output.accept(ModItems.CURSE_TRANSPOSER.get());         // 噬咒之书
                                 output.accept(ModItems.MENDING_MIXTURE.get());          // 修补混合物
+                                output.accept(ModItems.WAYFINDER_OF_THE_DAMNED.get());  // 被诅咒者的寻路指针
 
                                 // 武器工具
                                 output.accept(ModItems.THE_ACKNOWLEDGMENT.get());       // 启示之证

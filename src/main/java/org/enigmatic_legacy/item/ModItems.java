@@ -53,8 +53,12 @@ public final class ModItems {
     public static final DeferredItem<TomeOfDevouredMalignancy> CURSE_TRANSPOSER = ITEMS.register("curse_transposer", TomeOfDevouredMalignancy::new); // 噬咒之书
     public static final DeferredItem<RecallPotionItem> RECALL_POTION = ITEMS.register("recall_potion", RecallPotionItem::new); // 召回药水
     // 修补混合物
-// 用于在工作台中完全修复任意受损的可损坏物品。
+    // 用于在工作台中完全修复任意受损的可损坏物品。
     public static final DeferredItem<MendingMixture> MENDING_MIXTURE = ITEMS.register("mending_mixture", MendingMixture::new);
+    // 被诅咒者的寻路指针
+    // 只有佩戴七咒之戒的玩家可以使用。
+    // 用于定位当前维度内最近的灵魂水晶或装有死亡掉落的超维容器。
+    public static final DeferredItem<WayfinderOfTheDamned> WAYFINDER_OF_THE_DAMNED = ITEMS.register("wayfinder_of_the_damned", WayfinderOfTheDamned::new);
 
     public static final DeferredItem<UnwitnessedAmulet> UNWITNESSED_AMULET = ITEMS.register("unwitnessed_amulet", UnwitnessedAmulet::new);
     public static final DeferredItem<EnigmaticAmulet> ENIGMATIC_AMULET_RED = ITEMS.register("enigmatic_amulet_red", () -> new EnigmaticAmulet(AmuletVariant.RED));

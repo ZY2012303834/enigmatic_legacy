@@ -624,6 +624,39 @@ public class EnglishLanguageGenerator extends LanguageProvider {
 
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5Hold §6Shift§5 to see details.");
+
+        // Wayfinder of the Damned / 被诅咒者的寻路指针
+        addItem(ModItems.WAYFINDER_OF_THE_DAMNED, "Wayfinder of the Damned");
+
+        add("tooltip.enigmatic_legacy.wayfinder_of_the_damned.1",
+                "Only bearers of the Seven Curses can use it.");
+
+        add("tooltip.enigmatic_legacy.wayfinder_of_the_damned.2",
+                "Points toward the nearest Soul Crystal in the current dimension.");
+
+        add("tooltip.enigmatic_legacy.wayfinder_of_the_damned.3",
+                "Also works within Soul Sand Valleys.");
+
+        add("tooltip.enigmatic_legacy.wayfinder_of_the_damned.target",
+                "Last known target: X %s, Y %s, Z %s");
+
+        add("message.enigmatic_legacy.wayfinder_of_the_damned.no_curse",
+                "The way remains hidden from the uncursed.");
+
+        add("message.enigmatic_legacy.wayfinder_of_the_damned.no_target",
+                "No Soul Crystal can be sensed in this dimension.");
+
+        add("message.enigmatic_legacy.wayfinder_of_the_damned.target",
+                "Nearest Soul Crystal: %s blocks to the %s. [%s, %s, %s]");
+
+        add("direction.enigmatic_legacy.north", "north");
+        add("direction.enigmatic_legacy.northeast", "northeast");
+        add("direction.enigmatic_legacy.east", "east");
+        add("direction.enigmatic_legacy.southeast", "southeast");
+        add("direction.enigmatic_legacy.south", "south");
+        add("direction.enigmatic_legacy.southwest", "southwest");
+        add("direction.enigmatic_legacy.west", "west");
+        add("direction.enigmatic_legacy.northwest", "northwest");
     }
 
     private void addEnglishCursedRingTooltips() {

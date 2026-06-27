@@ -101,6 +101,9 @@ public class ItemGenerator extends ItemModelProvider {
 
         basicItem(ModItems.MENDING_MIXTURE.getId());    // 修补混合物
 
+        basicItem(ModItems.WAYFINDER_OF_THE_DAMNED.getId());    // 被诅咒者的寻路指针
+
+
         basicItem(ModItems.ETHERIUM_HELMET.getId());
         basicItem(ModItems.ETHERIUM_CHESTPLATE.getId());
         basicItem(ModItems.ETHERIUM_LEGGINGS.getId());

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": {
+      "item": "enigmatic_legacy:evil_ingot"
+    },
+    "E": {
+      "item": "enigmatic_legacy:evil_essence"
+    },
+    "R": {
+      "item": "minecraft:compass"
+    },
+    "S": {
+      "item": "enigmatic_legacy:soul_crystal"
+    }
+  },
+  "pattern": [
+    " E ",
+    "CSC",
+    " R "
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:wayfinder_of_the_damned"
+  }
+}
