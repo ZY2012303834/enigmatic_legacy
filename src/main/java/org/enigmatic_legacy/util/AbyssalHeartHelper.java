@@ -89,7 +89,7 @@ public final class AbyssalHeartHelper {
     /**
      * 获取玩家总在线时间 tick。
      *
-     * 这个时间由 AbyssalHeartEvents.onPlayerTick(...) 每 tick 记录。
+     * 服务端使用原版统计，客户端使用网络同步的缓存值。
      */
     public static long getTotalPlayTime(Player player) {
         if (player instanceof ServerPlayer serverPlayer) {
@@ -103,7 +103,7 @@ public final class AbyssalHeartHelper {
      * 获取玩家佩戴七咒之戒的在线时间 tick。
      *
      * 只有玩家当前佩戴七咒之戒时，
-     * tickPlaytime(...) 才会增加这个数值。
+     * tickCursedRingWear(...) 才会增加这个数值。
      */
     public static long getCursedPlayTime(Player player) {
         return player.getPersistentData().getLong(CURSED_PLAY_TIME_TAG);

@@ -93,7 +93,7 @@
   "key.enigmatic_legacy.ender_ring": "打开末影箱",
   "key.enigmatic_legacy.scroll": "使用奥秘卷轴",
   "key.enigmatic_legacy.use_spellstone": "使用术石",
-  "message.enigmatic_legacy.abyssal_heart.unworthy": "深渊之心拒绝了你。当前七咒折磨时间：%s / 需要 99.5%。",
+  "message.enigmatic_legacy.abyssal_heart.unworthy": "未达资格，当前七咒佩戴时间百分比：%s。",
   "message.enigmatic_legacy.cursed_ring.no_sleep": "七咒之戒的失眠诅咒阻止了你的睡眠。",
   "message.enigmatic_legacy.ender_ring.no_access": "你需要末影之戒才能这么做。",
   "message.enigmatic_legacy.enigmatic_eye.awakened": "眼已苏醒。",

@@ -504,7 +504,7 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.abyssal_heart.4", "You must spend 99.5% of your total playtime under the torment of the Ring of the Seven Curses.");
         add("tooltip.enigmatic_legacy.abyssal_heart.requirement", "The unworthy cannot pick up or use this item.");
 
-        add("message.enigmatic_legacy.abyssal_heart.unworthy", "The Heart of the Abyss rejects you. Current cursed time: %s / required 99.5%.");
+        add("message.enigmatic_legacy.abyssal_heart.unworthy", "Requirement unmet. Current Seven Curses wear percentage: %s.");
 
         add("tooltip.enigmatic_legacy.abyssal_heart.current_cursed_ratio",
                 "Current Seven Curses wear percentage: %s");

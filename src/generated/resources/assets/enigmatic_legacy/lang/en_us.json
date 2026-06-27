@@ -93,7 +93,7 @@
   "key.enigmatic_legacy.ender_ring": "Open Ender Chest",
   "key.enigmatic_legacy.scroll": "Use Mystic Scroll",
   "key.enigmatic_legacy.use_spellstone": "Use Spellstone",
-  "message.enigmatic_legacy.abyssal_heart.unworthy": "The Heart of the Abyss rejects you. Current cursed time: %s / required 99.5%.",
+  "message.enigmatic_legacy.abyssal_heart.unworthy": "Requirement unmet. Current Seven Curses wear percentage: %s.",
   "message.enigmatic_legacy.cursed_ring.no_sleep": "The insomnia curse of the Ring of the Seven Curses prevents you from sleeping.",
   "message.enigmatic_legacy.ender_ring.no_access": "You need the Ring of Ender to do that.",
   "message.enigmatic_legacy.enigmatic_eye.awakened": "The Eye awakens.",

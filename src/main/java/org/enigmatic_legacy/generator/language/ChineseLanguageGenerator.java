@@ -506,7 +506,7 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.abyssal_heart.4", "你必须在七咒之戒的折磨下度过总游戏时间的 99.5%。");
         add("tooltip.enigmatic_legacy.abyssal_heart.requirement", "未达资格者无法捡起或使用。");
 
-        add("message.enigmatic_legacy.abyssal_heart.unworthy", "深渊之心拒绝了你。当前七咒折磨时间：%s / 需要 99.5%。");
+        add("message.enigmatic_legacy.abyssal_heart.unworthy", "未达资格，当前七咒佩戴时间百分比：%s。");
 
         add("tooltip.enigmatic_legacy.abyssal_heart.current_cursed_ratio",
                 "当前七咒佩戴时间百分比：%s");
