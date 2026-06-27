@@ -1,0 +1,23 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:eldritch_amulet",
+  "name": "Testament of Contempt",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:eldritch_amulet",
+      "link_recipe": true,
+      "text": "The Amulet of Ascension may be perfected, but perfection can still be made cruel.$(br2)The Testament of Contempt grants all seven amulet traits, adds raw attack power and lifesteal, weakens creatures caught in your gaze, and preserves your inventory on death. Items marked by Curse of Vanishing are still lost.",
+      "title": "Testament of Contempt"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:eldritch_amulet",
+      "text": "合成配方 / Crafting Recipe",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 185
+}

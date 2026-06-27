@@ -131,6 +131,7 @@ public class ItemGenerator extends ItemModelProvider {
         // 飞升护符模型。
         // 原项目为普通 2D item/generated 模型，没有 3D 模型。
         basicItem(ModItems.ASCENSION_AMULET.getId());
+        basicItem(ModItems.ELDRITCH_AMULET.getId());
 
         basicItem(ModItems.ETHERIUM_HELMET.getId());
         basicItem(ModItems.ETHERIUM_CHESTPLATE.getId());

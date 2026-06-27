@@ -1,0 +1,23 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:eldritch_amulet",
+  "name": "轻蔑之约",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:eldritch_amulet",
+      "link_recipe": true,
+      "text": "飞升护符或许已臻完美，但完美仍可被扭曲为残酷之物。$(br2)轻蔑之约拥有全部七种护符特质，额外提供攻击伤害与生命偷取；被你凝视的生物会被削弱，死亡时也会保留你的背包。带有消失诅咒的物品仍会消失。",
+      "title": "轻蔑之约"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:eldritch_amulet",
+      "text": "合成配方 / Crafting Recipe",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 185
+}

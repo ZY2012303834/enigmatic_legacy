@@ -64,6 +64,7 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(MonsterCharmEvents.class);
         NeoForge.EVENT_BUS.register(EnchanterPearlEvents.class);
         NeoForge.EVENT_BUS.register(EnigmaticAmuletEvents.class);
+        NeoForge.EVENT_BUS.register(EldritchAmuletEvents.class);
         NeoForge.EVENT_BUS.register(EnigmaticEyeQuoteEvents.class);
         // 休眠之眼获取方式
         // 玩家第一次打开战利品箱时生成 1 个休眠之眼，并且每个玩家只会生成一次。

@@ -24,8 +24,10 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.item.items.charm.AmuletVariant;
+import org.enigmatic_legacy.item.items.charm.EldritchAmulet;
 import org.enigmatic_legacy.item.items.charm.EnigmaticAmulet;
 import org.enigmatic_legacy.item.items.charm.UnwitnessedAmulet;
+import org.enigmatic_legacy.util.AbyssalHeartHelper;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.event.CurioCanEquipEvent;
 
@@ -50,6 +52,8 @@ public final class EnigmaticAmuletEvents {
      * 红色护符：+2 攻击伤害。
      */
     private static final double ATTACK_DAMAGE = 2.0D;
+
+    private static final double ELDRITCH_ATTACK_DAMAGE = EldritchAmulet.ATTACK_DAMAGE;
 
     /**
      * 青色护符：疾跑时 +15% 移动速度。
@@ -111,6 +115,9 @@ public final class EnigmaticAmuletEvents {
     private static final ResourceLocation BLUE_MODIFIER =
             id("enigmatic_amulet_blue");
 
+    private static final ResourceLocation ELDRITCH_MODIFIER =
+            id("eldritch_amulet");
+
     private EnigmaticAmuletEvents() {
     }
 
@@ -168,7 +175,9 @@ public final class EnigmaticAmuletEvents {
      */
     @SubscribeEvent
     public static void onCurioCanEquip(CurioCanEquipEvent event) {
-        if (event.getEntity() instanceof Player player && player.isCreative()) {
+        Player player = event.getEntity() instanceof Player checkedPlayer ? checkedPlayer : null;
+
+        if (player != null && player.isCreative()) {
             return;
         }
 
@@ -182,8 +191,14 @@ public final class EnigmaticAmuletEvents {
 
         boolean isRegularAmulet = stack.getItem() instanceof EnigmaticAmulet;
         boolean isAscensionAmulet = stack.is(ModItems.ASCENSION_AMULET.get());
+        boolean isEldritchAmulet = stack.is(ModItems.ELDRITCH_AMULET.get());
 
-        if ((isRegularAmulet || isAscensionAmulet) && hasAnyEquippedAmulet(event.getEntity())) {
+        if (isEldritchAmulet && (player == null || !AbyssalHeartHelper.isWorthy(player))) {
+            event.setEquipResult(TriState.FALSE);
+            return;
+        }
+
+        if ((isRegularAmulet || isAscensionAmulet || isEldritchAmulet) && hasAnyEquippedAmulet(event.getEntity())) {
             event.setEquipResult(TriState.FALSE);
         }
     }
@@ -207,15 +222,26 @@ public final class EnigmaticAmuletEvents {
         clearAttributeModifiers(player);
 
         boolean hasAscension = hasAscensionAmulet(player);
+        boolean hasEldritch = hasEldritchAmulet(player);
         AmuletVariant variant = getEquippedVariant(player);
 
-        if (!hasAscension && variant == null) {
+        if (!hasAscension && !hasEldritch && variant == null) {
             return;
         }
 
-        if (hasAscension) {
+        if (hasAscension || hasEldritch) {
             for (AmuletVariant amuletVariant : AmuletVariant.values()) {
                 applyAttributeModifier(player, amuletVariant);
+            }
+
+            if (hasEldritch && AbyssalHeartHelper.isWorthy(player)) {
+                addModifier(
+                        player,
+                        Attributes.ATTACK_DAMAGE,
+                        ELDRITCH_MODIFIER,
+                        ELDRITCH_ATTACK_DAMAGE,
+                        AttributeModifier.Operation.ADD_VALUE
+                );
             }
 
             return;
@@ -332,7 +358,7 @@ public final class EnigmaticAmuletEvents {
      * - 对所有颜色都返回 true。
      */
     private static boolean hasVariant(Player player, AmuletVariant variant) {
-        return hasAscensionAmulet(player) || getEquippedVariant(player) == variant;
+        return hasAscensionAmulet(player) || hasEldritchAmulet(player) || getEquippedVariant(player) == variant;
     }
 
     /**
@@ -365,6 +391,18 @@ public final class EnigmaticAmuletEvents {
         return hasAscension.get();
     }
 
+    public static boolean hasEldritchAmulet(LivingEntity entity) {
+        AtomicReference<Boolean> hasEldritch = new AtomicReference<>(false);
+
+        CuriosApi.getCuriosInventory(entity)
+                .flatMap(handler -> handler.findFirstCurio(stack ->
+                        stack.is(ModItems.ELDRITCH_AMULET.get())
+                ))
+                .ifPresent(slotResult -> hasEldritch.set(true));
+
+        return hasEldritch.get();
+    }
+
     /**
      * 判断玩家 Curios 栏里是否已经佩戴了普通神秘护身符或飞升护符。
      */
@@ -375,6 +413,7 @@ public final class EnigmaticAmuletEvents {
                 .flatMap(handler -> handler.findFirstCurio(stack ->
                         stack.getItem() instanceof EnigmaticAmulet
                                 || stack.is(ModItems.ASCENSION_AMULET.get())
+                                || stack.is(ModItems.ELDRITCH_AMULET.get())
                 ))
                 .ifPresent(slotResult -> hasAmulet.set(true));
 
@@ -401,7 +440,8 @@ public final class EnigmaticAmuletEvents {
     private static boolean isAnyAmulet(ItemStack stack) {
         return stack.getItem() instanceof UnwitnessedAmulet
                 || stack.getItem() instanceof EnigmaticAmulet
-                || stack.is(ModItems.ASCENSION_AMULET.get());
+                || stack.is(ModItems.ASCENSION_AMULET.get())
+                || stack.is(ModItems.ELDRITCH_AMULET.get());
     }
     /**
      * 清理所有护符可能添加过的属性修饰器。
@@ -413,6 +453,7 @@ public final class EnigmaticAmuletEvents {
         removeModifier(player, Attributes.MOVEMENT_SPEED, AQUA_MODIFIER);
         removeModifier(player, Attributes.GRAVITY, MAGENTA_MODIFIER);
         removeModifier(player, NeoForgeMod.SWIM_SPEED, BLUE_MODIFIER);
+        removeModifier(player, Attributes.ATTACK_DAMAGE, ELDRITCH_MODIFIER);
     }
 
     /**

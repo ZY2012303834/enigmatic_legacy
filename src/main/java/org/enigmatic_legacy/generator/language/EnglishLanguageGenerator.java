@@ -796,6 +796,23 @@ public class EnglishLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.ascension_amulet.no_vessel",
                 "Soul Crystal and Vessel recovery is handled by the Ring of the Seven Curses.");
+
+        // The Testament of Contempt / 轻蔑之约
+        addItem(ModItems.ELDRITCH_AMULET, "The Testament of Contempt");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.1",
+                "A perfected amulet willingly made impure.");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.2",
+                "Those caught in your gaze are slowed, weakened,");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.3",
+                "and burdened by mining fatigue.");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.4",
+                "On death, preserves your inventory.");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.5",
+                "Items bearing Curse of Vanishing are still lost.");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.stat.1",
+                "+3 Attack Damage");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.stat.2",
+                "15% Additional Lifesteal");
     }
 
     private void addEnglishCursedRingTooltips() {

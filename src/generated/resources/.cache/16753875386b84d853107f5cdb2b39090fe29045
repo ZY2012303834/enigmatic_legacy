@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-27T07:08:41.895123	vanilla/Enigmatic Legacy Patchouli Books: en_us
+// 1.21.1	2026-06-27T16:18:58.974347	vanilla/Enigmatic Legacy Patchouli Books: en_us
 4c95ea558c63f49a6cf550e9242c3a260896a1eb assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/categories/equipment.json
 1ee684bdd0852af66aec80356b2c4888cf5438fd assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/categories/materials.json
 ccbebc8c5926f669122c44e750d409c99a7194f9 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/categories/relics.json
@@ -24,6 +24,7 @@ afa503c69ee571da9b013332fe8747e239702180 assets/enigmatic_legacy/patchouli_books
 dafb1ed6a485bf5a266c157b2f6545227376d695 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/entries/relics/cursed_ring.json
 8e31ea45b456d61aba02d2daf99607e84748259f assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/entries/relics/curse_transposer.json
 6f8b538bb9eb286867b77eea9adbf0eb3f04c9db assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/entries/relics/dislocation_ring.json
+9cc7a7b931f13b38d5b19c2ba0ae5075d3c4260b assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/entries/relics/eldritch_amulet.json
 4c4b0513168a68da6708eb599d2b19e3c7428e92 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/entries/relics/enchanter_pearl.json
 6d7e8002b4cfbc4b1c693cc21b4aae13c10afc04 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/entries/relics/enchantment_transposer.json
 0208e1087ce547df25843240e7c4ba56c78e5705 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/entries/relics/ender_ring.json

@@ -75,6 +75,7 @@ public final class ModItems {
     // 神秘护身符的升级版，同时拥有七种神秘护身符效果。
     // 注意：不再参与灵魂水晶 / 超维容器死亡保存逻辑。
     public static final DeferredItem<AscensionAmulet> ASCENSION_AMULET = ITEMS.register("ascension_amulet", AscensionAmulet::new);
+    public static final DeferredItem<EldritchAmulet> ELDRITCH_AMULET = ITEMS.register("eldritch_amulet", EldritchAmulet::new);
 
     public static final DeferredItem<MonsterCharm> MONSTER_CHARM = ITEMS.register("monster_charm", MonsterCharm::new); // 怪物猎人勋章
     public static final DeferredItem<TreasureHunterCharm> TREASURE_HUNTER_CHARM = ITEMS.register("treasure_hunter_charm", TreasureHunterCharm::new); // 猎宝者护符

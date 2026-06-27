@@ -432,6 +432,16 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 )
         )));
 
+        futures.add(save(output, "en_us", "entries/relics/eldritch_amulet", recipeEntry(
+                "Testament of Contempt",
+                "relics",
+                "enigmatic_legacy:eldritch_amulet",
+                185,
+                "The Amulet of Ascension may be perfected, but perfection can still be made cruel.$(br2)" +
+                        "The Testament of Contempt grants all seven amulet traits, adds raw attack power and lifesteal, weakens creatures caught in your gaze, and preserves your inventory on death. Items marked by Curse of Vanishing are still lost.",
+                "enigmatic_legacy:eldritch_amulet"
+        )));
+
         futures.add(save(output, "en_us", "entries/relics/storage_crystal", simpleSpotlight(
                 "Extradimensional Vessel",
                 "relics",

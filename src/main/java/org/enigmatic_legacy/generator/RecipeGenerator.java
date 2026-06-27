@@ -703,5 +703,19 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('C', ModItems.COSMIC_HEART.get())
                 .unlockedBy("has_cosmic_heart", has(ModItems.COSMIC_HEART.get()))
                 .save(output);
+
+        // 轻蔑之约 / The Testament of Contempt
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ELDRITCH_AMULET.get())
+                .pattern("EAE")
+                .pattern("NUN")
+                .pattern("TST")
+                .define('E', ModItems.EVIL_ESSENCE.get())
+                .define('A', ModItems.ABYSSAL_HEART.get())
+                .define('N', Items.NETHERITE_INGOT)
+                .define('U', ModItems.ASCENSION_AMULET.get())
+                .define('T', ModItems.TWISTED_HEART.get())
+                .define('S', Items.NETHER_STAR)
+                .unlockedBy("has_ascension_amulet", has(ModItems.ASCENSION_AMULET.get()))
+                .save(output);
     }
 }

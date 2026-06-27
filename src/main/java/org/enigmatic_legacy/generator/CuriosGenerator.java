@@ -203,6 +203,8 @@ public class CuriosGenerator implements DataProvider {
         values.add(EnigmaticLegacy.MODID + ":enigmatic_amulet_green");
         values.add(EnigmaticLegacy.MODID + ":enigmatic_amulet_black");
         values.add(EnigmaticLegacy.MODID + ":enigmatic_amulet_blue");
+        values.add(EnigmaticLegacy.MODID + ":ascension_amulet");
+        values.add(EnigmaticLegacy.MODID + ":eldritch_amulet");
         values.add(EnigmaticLegacy.MODID + ":monster_charm");
         values.add(EnigmaticLegacy.MODID + ":treasure_hunter_charm");
         values.add(EnigmaticLegacy.MODID + ":bloodstained_valor_emblem");

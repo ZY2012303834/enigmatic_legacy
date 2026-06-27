@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "enigmatic_legacy:abyssal_heart"
+    },
+    "E": {
+      "item": "enigmatic_legacy:evil_essence"
+    },
+    "N": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "S": {
+      "item": "minecraft:nether_star"
+    },
+    "T": {
+      "item": "enigmatic_legacy:twisted_heart"
+    },
+    "U": {
+      "item": "enigmatic_legacy:ascension_amulet"
+    }
+  },
+  "pattern": [
+    "EAE",
+    "NUN",
+    "TST"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:eldritch_amulet"
+  }
+}

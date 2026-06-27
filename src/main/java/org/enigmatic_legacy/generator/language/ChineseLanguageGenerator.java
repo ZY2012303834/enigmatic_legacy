@@ -800,6 +800,23 @@ public class ChineseLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.ascension_amulet.no_vessel",
                 "灵魂水晶与超维容器回收已由七咒之戒处理。");
+
+        // The Testament of Contempt / 轻蔑之约
+        addItem(ModItems.ELDRITCH_AMULET, "轻蔑之约");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.1",
+                "一枚自愿舍弃纯净的完美护符。");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.2",
+                "被你凝视的生物会被减速、虚弱，");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.3",
+                "并受到挖掘疲劳。");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.4",
+                "死亡时保留你的背包。");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.5",
+                "带有消失诅咒的物品仍会消失。");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.stat.1",
+                "+3 攻击伤害");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.stat.2",
+                "额外 15% 生命偷取");
     }
 
     private void addChineseCursedRingTooltips() {
