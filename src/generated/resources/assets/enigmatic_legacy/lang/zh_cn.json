@@ -287,6 +287,8 @@
   "tooltip.enigmatic_legacy.eldritch_amulet.3": "并受到挖掘疲劳。",
   "tooltip.enigmatic_legacy.eldritch_amulet.4": "死亡时保留你的背包。",
   "tooltip.enigmatic_legacy.eldritch_amulet.5": "带有消失诅咒的物品仍会消失。",
+  "tooltip.enigmatic_legacy.eldritch_amulet.current_cursed_time": "当前七咒佩戴时间：%s",
+  "tooltip.enigmatic_legacy.eldritch_amulet.required_cursed_time": "需要的七咒佩戴时间：%s",
   "tooltip.enigmatic_legacy.eldritch_amulet.stat.1": "+3 攻击伤害",
   "tooltip.enigmatic_legacy.eldritch_amulet.stat.2": "额外 15% 生命偷取",
   "tooltip.enigmatic_legacy.enchanter_pearl.1": "佩戴时提供 +1 个护符栏位。",

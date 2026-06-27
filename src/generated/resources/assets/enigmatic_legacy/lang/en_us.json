@@ -287,6 +287,8 @@
   "tooltip.enigmatic_legacy.eldritch_amulet.3": "and burdened by mining fatigue.",
   "tooltip.enigmatic_legacy.eldritch_amulet.4": "On death, preserves your inventory.",
   "tooltip.enigmatic_legacy.eldritch_amulet.5": "Items bearing Curse of Vanishing are still lost.",
+  "tooltip.enigmatic_legacy.eldritch_amulet.current_cursed_time": "Current Seven Curses time: %s",
+  "tooltip.enigmatic_legacy.eldritch_amulet.required_cursed_time": "Required Seven Curses time: %s",
   "tooltip.enigmatic_legacy.eldritch_amulet.stat.1": "+3 Attack Damage",
   "tooltip.enigmatic_legacy.eldritch_amulet.stat.2": "15% Additional Lifesteal",
   "tooltip.enigmatic_legacy.enchanter_pearl.1": "Provides +1 Charm slot while equipped.",
