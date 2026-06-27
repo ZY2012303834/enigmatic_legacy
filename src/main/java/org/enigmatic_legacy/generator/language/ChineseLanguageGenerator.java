@@ -782,7 +782,7 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.the_infinitum.10", "伤害无法杀死你。");
 
 
-// 轻蔑之约 / The Testament of Contempt
+        // 轻蔑之约 / The Testament of Contempt
         addItem(ModItems.ELDRITCH_AMULET, "轻蔑之约");
 
         add("tooltip.enigmatic_legacy.eldritch_amulet.short",
@@ -821,12 +821,30 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.eldritch_amulet.5",
                 "带有消失诅咒的物品仍会消失。");
 
-        add("tooltip.enigmatic_legacy.eldritch_amulet.stat.1",
+        // 轻蔑之约：佩戴属性。数字全部由 Java 传入，方便单独染成金色。
+        add("tooltip.enigmatic_legacy.eldritch_amulet.modifier.attack_total",
                 "%s 攻击伤害");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.modifier.aqua",
+                "疾跑时 %s 移动速度");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.modifier.violet",
+                "%s 概率偏转来袭弹射物");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.modifier.magenta",
+                "%s 重力");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.modifier.green",
+                "%s 挖掘效率");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.modifier.black",
+                "%s 生命偷取");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.modifier.blue",
+                "%s 游泳速度");
 
         add("tooltip.enigmatic_legacy.eldritch_amulet.stat.2",
                 "额外 %s 生命偷取");
-
 
         // 七咒折磨 99.5% 使用资格提示，所有需要该资格的物品共用这一组语言 key。
         add("tooltip.enigmatic_legacy.cursed_suffering.requirement", "你需要在七咒之戒的折磨下度过总游戏时间的 %s 才能使用该物品。");

@@ -793,7 +793,7 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.ascension_amulet.no_vessel",
                 "Soul Crystal and Vessel recovery is handled by the Ring of the Seven Curses.");
 
-// The Testament of Contempt / 轻蔑之约
+        // The Testament of Contempt / 轻蔑之约
         addItem(ModItems.ELDRITCH_AMULET, "The Testament of Contempt");
 
         add("tooltip.enigmatic_legacy.eldritch_amulet.short",
@@ -832,12 +832,30 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.eldritch_amulet.5",
                 "Items bearing Curse of Vanishing are still lost.");
 
-        add("tooltip.enigmatic_legacy.eldritch_amulet.stat.1",
+        // The Testament of Contempt: worn modifiers. Numbers are passed from Java for gold formatting.
+        add("tooltip.enigmatic_legacy.eldritch_amulet.modifier.attack_total",
                 "%s Attack Damage");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.modifier.aqua",
+                "%s Movement Speed while sprinting");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.modifier.violet",
+                "%s chance to deflect incoming projectiles");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.modifier.magenta",
+                "%s Gravity");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.modifier.green",
+                "%s Mining Efficiency");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.modifier.black",
+                "%s Lifesteal");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.modifier.blue",
+                "%s Swim Speed");
 
         add("tooltip.enigmatic_legacy.eldritch_amulet.stat.2",
                 "%s Additional Lifesteal");
-
 
         // Shared tooltip terms for partial coloring
         add("tooltip.enigmatic_legacy.term.negative_effects", "negative effects");

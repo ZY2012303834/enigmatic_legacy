@@ -30,12 +30,13 @@ public class EldritchAmulet extends AscensionAmulet {
     /**
      * 轻蔑之约 tooltip。
      * 统一标准：
-     * 1. 普通介绍文字为紫色；
-     * 2. 数字 / 百分比为金色；
-     * 3. 负面效果名称为红色；
-     * 4. 限制 / 惩罚说明为红色；
-     * 5. 非 Shift 显示简短介绍 + 按住 Shift；
-     * 6. Shift 显示完整介绍、凝视效果、死亡保留、佩戴属性、七咒折磨要求。
+     * 1. 普通介绍文字：紫色；
+     * 2. 数字 / 百分比：金色；
+     * 3. 负面效果名称：红色；
+     * 4. 限制 / 惩罚说明：红色；
+     * 5. 佩戴属性中不重复显示 +2 攻击伤害 和 +3 攻击伤害；
+     * 6. 攻击伤害合并显示为 +5 攻击伤害；
+     * 7. 七咒折磨 99.5% 要求放在最底部。
      */
     @Override
     public void appendHoverText(
@@ -53,7 +54,7 @@ public class EldritchAmulet extends AscensionAmulet {
             return;
         }
 
-        // 介绍
+        // 基础介绍
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.eldritch_amulet.1"));
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.eldritch_amulet.intro.1"));
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.eldritch_amulet.intro.2"));
@@ -86,11 +87,11 @@ public class EldritchAmulet extends AscensionAmulet {
 
         tooltip.add(SpellstoneTooltip.empty());
 
-        // 死亡保留
+        // 死亡保护
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.eldritch_amulet.death.title"));
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.eldritch_amulet.4"));
 
-        // 消失诅咒是负面限制，整句红色。
+        // 消失诅咒属于负面限制，整句红色。
         tooltip.add(SpellstoneTooltip.negative("tooltip.enigmatic_legacy.eldritch_amulet.5"));
 
         tooltip.add(SpellstoneTooltip.empty());
@@ -98,19 +99,46 @@ public class EldritchAmulet extends AscensionAmulet {
         // 佩戴在护符栏时
         tooltip.add(SpellstoneTooltip.text("curios.modifiers.charm"));
 
-        // 继承飞升护符 / 七色神秘护身符的完整效果
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.red"));
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.aqua"));
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.violet"));
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.magenta"));
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.green"));
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.black"));
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.blue"));
-
-        // 轻蔑之约额外佩戴属性
+        /*
+         * 轻蔑之约继承飞升护符的七色效果。
+         *
+         * 原本红色神秘护符会显示 +2 攻击伤害；
+         * 轻蔑之约自身又额外显示 +3 攻击伤害；
+         * 为避免 tooltip 出现两行攻击伤害，这里合并显示为 +5 攻击伤害。
+         */
         tooltip.add(SpellstoneTooltip.text(
-                "tooltip.enigmatic_legacy.eldritch_amulet.stat.1",
-                SpellstoneTooltip.number("+3")
+                "tooltip.enigmatic_legacy.eldritch_amulet.modifier.attack_total",
+                SpellstoneTooltip.number("+5")
+        ));
+
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.eldritch_amulet.modifier.aqua",
+                SpellstoneTooltip.percent("+15%")
+        ));
+
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.eldritch_amulet.modifier.violet",
+                SpellstoneTooltip.percent("15%")
+        ));
+
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.eldritch_amulet.modifier.magenta",
+                SpellstoneTooltip.percent("-20%")
+        ));
+
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.eldritch_amulet.modifier.green",
+                SpellstoneTooltip.number("+2")
+        ));
+
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.eldritch_amulet.modifier.black",
+                SpellstoneTooltip.percent("10%")
+        ));
+
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.eldritch_amulet.modifier.blue",
+                SpellstoneTooltip.percent("+25%")
         ));
 
         tooltip.add(SpellstoneTooltip.text(
@@ -121,5 +149,4 @@ public class EldritchAmulet extends AscensionAmulet {
         // 最底部统一显示七咒折磨 99.5% 要求和当前百分比。
         CursedSufferingTooltip.appendTooltip(tooltip);
     }
-
 }
