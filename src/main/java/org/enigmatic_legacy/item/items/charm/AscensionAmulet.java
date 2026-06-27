@@ -9,6 +9,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.CustomData;
+import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -56,6 +57,15 @@ public class AscensionAmulet extends Item {
                 : "";
     }
 
+    /**
+     * 飞升护符 tooltip。
+     *
+     * 统一规则：
+     * 1. 普通介绍文字为紫色；
+     * 2. 属性说明文字为紫色；
+     * 3. 负面限制说明为红色；
+     * 4. 使用 List<Component>，避免原始 List 警告。
+     */
     @Override
     public void appendHoverText(
             @NotNull ItemStack stack,
@@ -63,53 +73,28 @@ public class AscensionAmulet extends Item {
             @NotNull List<Component> tooltip,
             @NotNull TooltipFlag flag
     ) {
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+        tooltip.add(SpellstoneTooltip.empty());
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.ascension_amulet.1")
-                .withStyle(ChatFormatting.DARK_PURPLE));
-
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.ascension_amulet.2")
-                .withStyle(ChatFormatting.GRAY));
-
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.ascension_amulet.3")
-                .withStyle(ChatFormatting.GRAY));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.ascension_amulet.1"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.ascension_amulet.2"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.ascension_amulet.3"));
 
         String owner = getOwner(stack);
-
         if (!owner.isEmpty()) {
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.enigmatic_amulet.owner", owner)
-                    .withStyle(ChatFormatting.RED));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_amulet.owner", owner));
         }
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+        tooltip.add(SpellstoneTooltip.empty());
 
-        tooltip.add(Component.translatable("curios.modifiers.charm")
-                .withStyle(ChatFormatting.GOLD));
+        tooltip.add(SpellstoneTooltip.text("curios.modifiers.charm"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.red"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.aqua"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.violet"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.magenta"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.green"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.black"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.blue"));
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.red")
-                .withStyle(ChatFormatting.GOLD));
-
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.aqua")
-                .withStyle(ChatFormatting.GOLD));
-
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.violet")
-                .withStyle(ChatFormatting.GOLD));
-
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.magenta")
-                .withStyle(ChatFormatting.GOLD));
-
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.green")
-                .withStyle(ChatFormatting.GOLD));
-
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.black")
-                .withStyle(ChatFormatting.GOLD));
-
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.blue")
-                .withStyle(ChatFormatting.GOLD));
-
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
-
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.ascension_amulet.no_vessel")
-                .withStyle(ChatFormatting.DARK_GRAY));
+        tooltip.add(SpellstoneTooltip.empty());
     }
 }

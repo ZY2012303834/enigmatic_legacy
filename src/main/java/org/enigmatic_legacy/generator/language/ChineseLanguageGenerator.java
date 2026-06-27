@@ -203,8 +203,8 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.enigmatic_eye.dormant.2", "右键以唤醒此眼。");
         add("tooltip.enigmatic_legacy.enigmatic_eye.dormant.3", "有些事物，最好永远不要被看见。");
 
-        add("tooltip.enigmatic_legacy.enigmatic_eye.active.1", "佩戴时提供 +1 个护符栏位。");
-        add("tooltip.enigmatic_legacy.enigmatic_eye.active.2", "方块交互距离增加 3 格。");
+        add("tooltip.enigmatic_legacy.enigmatic_eye.active.1", "%s 护符栏位");
+        add("tooltip.enigmatic_legacy.enigmatic_eye.active.2", "%s 方块交互距离");
         add("tooltip.enigmatic_legacy.enigmatic_eye.active.3", "眼已苏醒，而它正在注视。");
         add("tooltip.enigmatic_legacy.enigmatic_eye.active.4", "只有已唤醒的眼才能被佩戴。");
 
@@ -798,25 +798,15 @@ public class ChineseLanguageGenerator extends LanguageProvider {
 
         // The Testament of Contempt / 轻蔑之约
         addItem(ModItems.ELDRITCH_AMULET, "轻蔑之约");
-        add("tooltip.enigmatic_legacy.eldritch_amulet.1",
-                "一枚自愿舍弃纯净的完美护符。");
-        add("tooltip.enigmatic_legacy.eldritch_amulet.2",
-                "被你凝视的生物会被减速、虚弱，");
-        add("tooltip.enigmatic_legacy.eldritch_amulet.3",
-                "并受到挖掘疲劳。");
-        add("tooltip.enigmatic_legacy.eldritch_amulet.4",
-                "死亡时保留你的背包。");
-        add("tooltip.enigmatic_legacy.eldritch_amulet.5",
-                "带有消失诅咒的物品仍会消失。");
-        add("tooltip.enigmatic_legacy.eldritch_amulet.stat.1",
-                "+3 攻击伤害");
-        add("tooltip.enigmatic_legacy.eldritch_amulet.stat.2",
-                "额外 15% 生命偷取");
-        add("tooltip.enigmatic_legacy.eldritch_amulet.required_cursed_time",
-                "需要的七咒佩戴时间：%s");
-
-        add("tooltip.enigmatic_legacy.eldritch_amulet.current_cursed_time",
-                "当前七咒佩戴时间：%s");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.1", "一枚自愿舍弃纯净的完美护符。");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.2", "你凝视的生物会获得 %s。");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.3", "你凝视的生物会获得 %s。");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.4", "死亡时保留你的背包。");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.5", "带有消失诅咒的物品仍会消失。");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.stat.1", "%s 攻击伤害");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.stat.2", "%s 吸血");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.required_cursed_time", "需要的七咒佩戴时间：%s");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.current_cursed_time", "当前七咒佩戴时间：%s");
 
 
         // 七咒折磨 99.5% 使用资格提示，所有需要该资格的物品共用这一组语言 key。

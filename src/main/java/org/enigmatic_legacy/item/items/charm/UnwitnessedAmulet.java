@@ -1,6 +1,5 @@
 package org.enigmatic_legacy.item.items.charm;
 
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -12,6 +11,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -64,21 +64,23 @@ public class UnwitnessedAmulet extends Item {
 
     /**
      * Tooltip 文本。
+     * 统一规则：
+     * 1. 普通介绍文字为紫色；
+     * 2. 不再使用 ChatFormatting.GRAY / GOLD 手写颜色；
+     * 3. 使用 List<Component>，避免原始 List 警告。
      */
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, List<Component> tooltip, @NotNull TooltipFlag flag) {
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+    public void appendHoverText(
+            @NotNull ItemStack stack,
+            @NotNull TooltipContext context,
+            @NotNull List<Component> tooltip,
+            @NotNull TooltipFlag flag
+    ) {
+        tooltip.add(SpellstoneTooltip.empty());
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.unwitnessed_amulet.1")
-                .withStyle(ChatFormatting.DARK_PURPLE));
-
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.unwitnessed_amulet.2")
-                .withStyle(ChatFormatting.GRAY));
-
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.unwitnessed_amulet.3")
-                .withStyle(ChatFormatting.GRAY));
-
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.unwitnessed_amulet.use")
-                .withStyle(ChatFormatting.GOLD));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.unwitnessed_amulet.1"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.unwitnessed_amulet.2"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.unwitnessed_amulet.3"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.unwitnessed_amulet.use"));
     }
 }

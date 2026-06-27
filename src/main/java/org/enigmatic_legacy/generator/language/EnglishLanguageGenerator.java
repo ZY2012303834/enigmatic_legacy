@@ -201,8 +201,8 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.enigmatic_eye.dormant.2", "Right-click to awaken the Eye.");
         add("tooltip.enigmatic_legacy.enigmatic_eye.dormant.3", "Some things are better left unseen.");
 
-        add("tooltip.enigmatic_legacy.enigmatic_eye.active.1", "Provides +1 Charm slot while equipped.");
-        add("tooltip.enigmatic_legacy.enigmatic_eye.active.2", "Increases block interaction range by 3 blocks.");
+        add("tooltip.enigmatic_legacy.enigmatic_eye.active.1", "%s Charm Slot");
+        add("tooltip.enigmatic_legacy.enigmatic_eye.active.2", "%s Block Interaction Range");
         add("tooltip.enigmatic_legacy.enigmatic_eye.active.3", "The Eye has awakened, and now it sees.");
         add("tooltip.enigmatic_legacy.enigmatic_eye.active.4", "Only the awakened Eye can be equipped.");
 
@@ -797,18 +797,14 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         addItem(ModItems.ELDRITCH_AMULET, "The Testament of Contempt");
         add("tooltip.enigmatic_legacy.eldritch_amulet.1",
                 "A perfected amulet willingly made impure.");
-        add("tooltip.enigmatic_legacy.eldritch_amulet.2",
-                "Those caught in your gaze are slowed, weakened,");
-        add("tooltip.enigmatic_legacy.eldritch_amulet.3",
-                "and burdened by mining fatigue.");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.2", "Creatures you gaze at receive %s.");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.3", "Creatures you gaze at receive %s.");
         add("tooltip.enigmatic_legacy.eldritch_amulet.4",
                 "On death, preserves your inventory.");
         add("tooltip.enigmatic_legacy.eldritch_amulet.5",
                 "Items bearing Curse of Vanishing are still lost.");
-        add("tooltip.enigmatic_legacy.eldritch_amulet.stat.1",
-                "+3 Attack Damage");
-        add("tooltip.enigmatic_legacy.eldritch_amulet.stat.2",
-                "15% Additional Lifesteal");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.stat.1", "%s Attack Damage");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.stat.2", "%s Lifesteal");
         add("tooltip.enigmatic_legacy.eldritch_amulet.required_cursed_time",
                 "Required Seven Curses time: %s");
 

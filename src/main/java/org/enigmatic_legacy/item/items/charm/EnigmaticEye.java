@@ -2,7 +2,6 @@ package org.enigmatic_legacy.item.items.charm;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
@@ -10,7 +9,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -28,6 +26,7 @@ import net.minecraft.world.level.Level;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.client.quote.Quote;
 import org.enigmatic_legacy.sound.ModSounds;
+import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
@@ -177,6 +176,7 @@ public class EnigmaticEye extends Item implements ICurioItem {
                 ).isEmpty())
                 .orElse(true);
     }
+
     /**
      * 根据状态显示不同名称：
      * 休眠之眼 / 全知之眼。
@@ -295,6 +295,14 @@ public class EnigmaticEye extends Item implements ICurioItem {
         return attributes;
     }
 
+    /**
+     * 休眠之眼 / 全知之眼 tooltip。
+     * 统一规则：
+     * 1. 普通介绍文字为紫色；
+     * 2. +1、+3 这类数字为金色；
+     * 3. 按住 Shift 提示统一深灰色；
+     * 4. 使用 List<Component>，避免原始 List 警告。
+     */
     @Override
     public void appendHoverText(
             @NotNull ItemStack stack,
@@ -302,43 +310,31 @@ public class EnigmaticEye extends Item implements ICurioItem {
             @NotNull List<Component> tooltip,
             @NotNull TooltipFlag flag
     ) {
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+        tooltip.add(SpellstoneTooltip.empty());
 
         if (!Screen.hasShiftDown()) {
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hold_shift"));
+            tooltip.add(SpellstoneTooltip.holdShift());
             return;
         }
 
         if (isDormant(stack)) {
-            tooltip.add(Component.translatable(
-                    "tooltip.enigmatic_legacy.enigmatic_eye.dormant.1"
-            ).withStyle(ChatFormatting.DARK_PURPLE));
-
-            tooltip.add(Component.translatable(
-                    "tooltip.enigmatic_legacy.enigmatic_eye.dormant.2"
-            ).withStyle(ChatFormatting.DARK_PURPLE));
-
-            tooltip.add(Component.translatable(
-                    "tooltip.enigmatic_legacy.enigmatic_eye.dormant.3"
-            ).withStyle(ChatFormatting.GRAY));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_eye.dormant.1"));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_eye.dormant.2"));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_eye.dormant.3"));
         } else {
-            tooltip.add(Component.translatable(
-                    "tooltip.enigmatic_legacy.enigmatic_eye.active.1"
-            ).withStyle(ChatFormatting.GOLD));
+            tooltip.add(SpellstoneTooltip.text(
+                    "tooltip.enigmatic_legacy.enigmatic_eye.active.1",
+                    SpellstoneTooltip.number("+1")
+            ));
 
-            tooltip.add(Component.translatable(
-                    "tooltip.enigmatic_legacy.enigmatic_eye.active.2"
-            ).withStyle(ChatFormatting.GOLD));
+            tooltip.add(SpellstoneTooltip.text(
+                    "tooltip.enigmatic_legacy.enigmatic_eye.active.2",
+                    SpellstoneTooltip.number("+3")
+            ));
 
-            tooltip.add(Component.translatable(
-                    "tooltip.enigmatic_legacy.enigmatic_eye.active.3"
-            ).withStyle(ChatFormatting.GRAY));
-
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
-
-            tooltip.add(Component.translatable(
-                    "tooltip.enigmatic_legacy.enigmatic_eye.active.4"
-            ).withStyle(ChatFormatting.DARK_PURPLE));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_eye.active.3"));
+            tooltip.add(SpellstoneTooltip.empty());
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_eye.active.4"));
         }
     }
 }

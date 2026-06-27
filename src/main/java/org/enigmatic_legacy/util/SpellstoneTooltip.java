@@ -5,12 +5,12 @@ import net.minecraft.network.chat.Component;
 
 /**
  * Tooltip 统一样式工具。
- * 全项目 tooltip 文案统一规则：
+ * 统一规则：
  * 1. 普通介绍文字：紫色；
- * 2. 数字、百分比：金色；
- * 3. 负面效果、负面词条、限制说明：红色；
- * 4. 按住 Shift 提示：深灰色；
- * 5. 空行统一使用 tooltip.enigmatic_legacy.void。
+ * 2. 数字 / 百分比：金色；
+ * 3. 负面效果 / 限制 / 惩罚：红色；
+ * 4. 按住 Shift：深灰色；
+ * 5. 空行统一走 tooltip.enigmatic_legacy.void。
  */
 public final class SpellstoneTooltip {
 
@@ -25,14 +25,14 @@ public final class SpellstoneTooltip {
     }
 
     /**
-     * 负面效果 / 负面词条 / 限制说明：红色。
+     * 负面效果、限制、惩罚：红色。
      */
     public static Component negative(String key, Object... args) {
         return Component.translatable(key, args).withStyle(ChatFormatting.RED);
     }
 
     /**
-     * 数字：金色。
+     * 数字 / 数值：金色。
      */
     public static Component number(Object value) {
         return Component.literal(String.valueOf(value)).withStyle(ChatFormatting.GOLD);
@@ -46,17 +46,20 @@ public final class SpellstoneTooltip {
     }
 
     /**
-     * 负面状态效果名称：红色。
+     * 药水效果 / 负面状态效果名称：红色。
      * 示例：
-     * SpellstoneTooltip.effect("effect.minecraft.wither")
+     * SpellstoneTooltip.effect("effect.minecraft.weakness")
      */
-    public static Component effect(String translationKey) {
-        return Component.translatable(translationKey).withStyle(ChatFormatting.RED);
+    public static Component effect(String key) {
+        return Component.translatable(key).withStyle(ChatFormatting.RED);
     }
 
     /**
      * 通用负面词条：红色。
-     * 用于“负面效果”“严重负面效果”这类不是原版药水效果名的文本。
+     * 用于“负面效果”“严重负面效果”这类不是具体药水效果名的文本。
+     * 示例：
+     * SpellstoneTooltip.negativeTerm("tooltip.enigmatic_legacy.term.negative_effects")
+     * SpellstoneTooltip.negativeTerm("tooltip.enigmatic_legacy.term.severe_negative_effects")
      */
     public static Component negativeTerm(String key) {
         return Component.translatable(key).withStyle(ChatFormatting.RED);

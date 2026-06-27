@@ -1,6 +1,5 @@
 package org.enigmatic_legacy.item.items.charm;
 
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -11,6 +10,8 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.CustomData;
 import org.enigmatic_legacy.item.ModItems;
+import org.enigmatic_legacy.util.SpellstoneTooltip;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -61,30 +62,35 @@ public class EnigmaticAmulet extends Item {
         return tag.contains(OWNER_TAG) ? tag.getString(OWNER_TAG) : "";
     }
 
+    /**
+     * 神秘护身符 tooltip。
+     * 统一规则：
+     * 1. 介绍文字为紫色；
+     * 2. 见证者文字不再作为负面效果，不再红色；
+     * 3. 属性说明文字统一紫色；
+     * 4. 如果语言文件中有写死的数字，后续需要把语言改成 %s 参数，数字才能单独金色。
+     */
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+    public void appendHoverText(
+            @NotNull ItemStack stack,
+            @NotNull TooltipContext context,
+            List<Component> tooltip,
+            @NotNull TooltipFlag flag
+    ) {
+        tooltip.add(SpellstoneTooltip.empty());
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.enigmatic_amulet.1")
-                .withStyle(ChatFormatting.DARK_PURPLE));
-
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.enigmatic_amulet.2")
-                .withStyle(ChatFormatting.GRAY));
-
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.enigmatic_amulet.variant." + this.variant.id())
-                .withStyle(this.variant.color()));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_amulet.1"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_amulet.2"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_amulet.variant." + this.variant.id()));
 
         String owner = getOwner(stack);
-
         if (!owner.isEmpty()) {
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.enigmatic_amulet.owner", owner)
-                    .withStyle(ChatFormatting.RED));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_amulet.owner", owner));
         }
 
-        tooltip.add(Component.translatable("curios.modifiers.charm")
-                .withStyle(ChatFormatting.GOLD));
+        tooltip.add(SpellstoneTooltip.empty());
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.enigmatic_amulet.modifier." + this.variant.id())
-                .withStyle(ChatFormatting.GOLD));
+        tooltip.add(SpellstoneTooltip.text("curios.modifiers.charm"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_amulet.modifier." + this.variant.id()));
     }
 }

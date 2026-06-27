@@ -28,11 +28,12 @@ public class EldritchAmulet extends AscensionAmulet {
     public static final double GAZE_RADIUS = 3.0D;
 
     /**
-     * 轻蔑之约提示文本。
-     * 修改内容：
-     * 1. 非 Shift 时只显示简短介绍和按住 Shift；
-     * 2. Shift 介绍显示完整效果；
-     * 3. Shift 介绍最底部统一显示七咒折磨 99.5% 要求和当前百分比。
+     * 轻蔑之约 tooltip。
+     * 统一规则：
+     * 1. 普通介绍文字为紫色；
+     * 2. 数字和百分比为金色；
+     * 3. 负面效果名称为红色；
+     * 4. 七咒折磨 99.5% 提示放在 Shift 介绍最底部。
      */
     @Override
     public void appendHoverText(
@@ -51,8 +52,16 @@ public class EldritchAmulet extends AscensionAmulet {
         }
 
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.eldritch_amulet.1"));
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.eldritch_amulet.2"));
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.eldritch_amulet.3"));
+
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.eldritch_amulet.2",
+                SpellstoneTooltip.effect("effect.minecraft.movement_slowdown")
+        ));
+
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.eldritch_amulet.3",
+                SpellstoneTooltip.effect("effect.minecraft.weakness")
+        ));
 
         tooltip.add(SpellstoneTooltip.empty());
 
@@ -62,8 +71,16 @@ public class EldritchAmulet extends AscensionAmulet {
         tooltip.add(SpellstoneTooltip.empty());
 
         tooltip.add(SpellstoneTooltip.text("curios.modifiers.charm"));
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.eldritch_amulet.stat.1"));
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.eldritch_amulet.stat.2"));
+
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.eldritch_amulet.stat.1",
+                SpellstoneTooltip.number("+3")
+        ));
+
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.eldritch_amulet.stat.2",
+                SpellstoneTooltip.percent("+15%")
+        ));
 
         // 最底部统一显示七咒折磨 99.5% 要求和当前百分比。
         CursedSufferingTooltip.appendTooltip(tooltip);
