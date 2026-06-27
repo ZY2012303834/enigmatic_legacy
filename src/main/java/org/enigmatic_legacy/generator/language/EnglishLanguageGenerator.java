@@ -790,6 +790,27 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.ascension_amulet.3",
                 "Combines the traits of all seven Enigmatic Amulets.");
 
+        add("tooltip.enigmatic_legacy.ascension_amulet.modifier.red",
+                "%s Attack Damage");
+
+        add("tooltip.enigmatic_legacy.ascension_amulet.modifier.aqua",
+                "%s Movement Speed while sprinting");
+
+        add("tooltip.enigmatic_legacy.ascension_amulet.modifier.violet",
+                "%s chance to deflect incoming projectiles");
+
+        add("tooltip.enigmatic_legacy.ascension_amulet.modifier.magenta",
+                "%s Gravity");
+
+        add("tooltip.enigmatic_legacy.ascension_amulet.modifier.green",
+                "%s Mining Efficiency");
+
+        add("tooltip.enigmatic_legacy.ascension_amulet.modifier.black",
+                "%s Lifesteal");
+
+        add("tooltip.enigmatic_legacy.ascension_amulet.modifier.blue",
+                "%s Swim Speed");
+
         add("tooltip.enigmatic_legacy.ascension_amulet.no_vessel",
                 "Soul Crystal and Vessel recovery is handled by the Ring of the Seven Curses.");
 

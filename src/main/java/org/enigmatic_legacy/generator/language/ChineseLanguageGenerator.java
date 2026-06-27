@@ -846,6 +846,42 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.eldritch_amulet.stat.2",
                 "额外 %s 生命偷取");
 
+        // 飞升护符 / Amulet of Ascension
+        addItem(ModItems.ASCENSION_AMULET, "飞升护符");
+
+        add("tooltip.enigmatic_legacy.ascension_amulet.1",
+                "命运定义了你的起点。");
+
+        add("tooltip.enigmatic_legacy.ascension_amulet.2",
+                "而你将亲手塑造自己的终点。");
+
+        add("tooltip.enigmatic_legacy.ascension_amulet.3",
+                "融合了全部七色神秘护身符的特质。");
+
+        add("tooltip.enigmatic_legacy.ascension_amulet.modifier.red",
+                "%s 攻击伤害");
+
+        add("tooltip.enigmatic_legacy.ascension_amulet.modifier.aqua",
+                "疾跑时 %s 移动速度");
+
+        add("tooltip.enigmatic_legacy.ascension_amulet.modifier.violet",
+                "%s 概率偏转来袭弹射物");
+
+        add("tooltip.enigmatic_legacy.ascension_amulet.modifier.magenta",
+                "%s 重力");
+
+        add("tooltip.enigmatic_legacy.ascension_amulet.modifier.green",
+                "%s 挖掘效率");
+
+        add("tooltip.enigmatic_legacy.ascension_amulet.modifier.black",
+                "%s 生命偷取");
+
+        add("tooltip.enigmatic_legacy.ascension_amulet.modifier.blue",
+                "%s 游泳速度");
+
+        add("tooltip.enigmatic_legacy.ascension_amulet.no_vessel",
+                "灵魂水晶与超维容器的死亡恢复逻辑已由七咒之戒处理。");
+
         // 七咒折磨 99.5% 使用资格提示，所有需要该资格的物品共用这一组语言 key。
         add("tooltip.enigmatic_legacy.cursed_suffering.requirement", "你需要在七咒之戒的折磨下度过总游戏时间的 %s 才能使用该物品。");
         add("tooltip.enigmatic_legacy.cursed_suffering.current_percentage", "当前受七咒折磨的时间百分比：%s");
