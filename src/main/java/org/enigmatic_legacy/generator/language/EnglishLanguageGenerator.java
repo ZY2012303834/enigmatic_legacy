@@ -821,11 +821,6 @@ public class EnglishLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.eldritch_amulet.stat.2",
                 "%s Additional Lifesteal");
-        add("tooltip.enigmatic_legacy.eldritch_amulet.required_cursed_time",
-                "Required Seven Curses time: %s");
-
-        add("tooltip.enigmatic_legacy.eldritch_amulet.current_cursed_time",
-                "Current Seven Curses time: %s");
 
         // Shared tooltip terms for partial coloring
         add("tooltip.enigmatic_legacy.term.negative_effects", "negative effects");

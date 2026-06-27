@@ -824,8 +824,7 @@ public class ChineseLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.eldritch_amulet.stat.2",
                 "额外 %s 生命偷取");
-        add("tooltip.enigmatic_legacy.eldritch_amulet.required_cursed_time", "需要的七咒佩戴时间：%s");
-        add("tooltip.enigmatic_legacy.eldritch_amulet.current_cursed_time", "当前七咒佩戴时间：%s");
+
 
 
         // 七咒折磨 99.5% 使用资格提示，所有需要该资格的物品共用这一组语言 key。
