@@ -506,7 +506,7 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.abyssal_heart.4", "你必须在七咒之戒的折磨下度过总游戏时间的 99.5%。");
         add("tooltip.enigmatic_legacy.abyssal_heart.requirement", "未达资格者无法捡起或使用。");
 
-        add("message.enigmatic_legacy.abyssal_heart.unworthy", "未达资格，当前七咒佩戴时间百分比：%s。");
+        add("message.enigmatic_legacy.abyssal_heart.unworthy", "深渊之心拒绝了你，当前七咒佩戴时间百分比：%s。");
 
         add("tooltip.enigmatic_legacy.abyssal_heart.current_cursed_ratio",
                 "当前七咒佩戴时间百分比：%s");
@@ -666,6 +666,24 @@ public class ChineseLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.ender_slayer.8",
                 "在末地中，满蓄力攻击末影人会变得极其致命。");
+
+        // Bulwark of Blazing Pride / 烈焰之傲壁垒
+        addItem(ModItems.BULWARK_OF_BLAZING_PRIDE, "烈焰之傲壁垒");
+
+        add("tooltip.enigmatic_legacy.bulwark_of_blazing_pride.1",
+                "一面由傲慢与炼狱烈焰铸成的盾牌。");
+
+        add("tooltip.enigmatic_legacy.bulwark_of_blazing_pride.2",
+                "只有承受七咒之人才能举起它。");
+
+        add("tooltip.enigmatic_legacy.bulwark_of_blazing_pride.3",
+                "手持时会熄灭你身上的火焰，但身处岩浆中时不会生效。");
+
+        add("tooltip.enigmatic_legacy.bulwark_of_blazing_pride.4",
+                "可以使用黑曜石修复。");
+
+        add("tooltip.enigmatic_legacy.bulwark_of_blazing_pride.5",
+                "举盾时，来自背后的攻击会造成更高伤害。");
     }
 
     private void addChineseCursedRingTooltips() {

@@ -504,7 +504,7 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.abyssal_heart.4", "You must spend 99.5% of your total playtime under the torment of the Ring of the Seven Curses.");
         add("tooltip.enigmatic_legacy.abyssal_heart.requirement", "The unworthy cannot pick up or use this item.");
 
-        add("message.enigmatic_legacy.abyssal_heart.unworthy", "Requirement unmet. Current Seven Curses wear percentage: %s.");
+        add("message.enigmatic_legacy.abyssal_heart.unworthy", "The Heart of the Abyss rejects you, current Seven Curses wear percentage: %s.");
 
         add("tooltip.enigmatic_legacy.abyssal_heart.current_cursed_ratio",
                 "Current Seven Curses wear percentage: %s");
@@ -664,6 +664,24 @@ public class EnglishLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.ender_slayer.8",
                 "In The End, fully charged strikes against Endermen become devastating.");
+
+        // Bulwark of Blazing Pride / 烈焰之傲壁垒
+        addItem(ModItems.BULWARK_OF_BLAZING_PRIDE, "Bulwark of Blazing Pride");
+
+        add("tooltip.enigmatic_legacy.bulwark_of_blazing_pride.1",
+                "A shield forged in unbearable pride and infernal flame.");
+
+        add("tooltip.enigmatic_legacy.bulwark_of_blazing_pride.2",
+                "Only bearers of the Seven Curses can raise it.");
+
+        add("tooltip.enigmatic_legacy.bulwark_of_blazing_pride.3",
+                "Extinguishes you while held, unless you are submerged in lava.");
+
+        add("tooltip.enigmatic_legacy.bulwark_of_blazing_pride.4",
+                "Can be repaired with Obsidian.");
+
+        add("tooltip.enigmatic_legacy.bulwark_of_blazing_pride.5",
+                "Attacks from behind while blocking deal increased damage.");
     }
 
     private void addEnglishCursedRingTooltips() {

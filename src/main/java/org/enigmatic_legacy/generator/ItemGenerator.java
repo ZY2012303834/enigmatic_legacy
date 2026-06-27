@@ -110,6 +110,11 @@ public class ItemGenerator extends ItemModelProvider {
         withExistingParent("item/ender_slayer", mcLoc("item/handheld"))
                 .texture("layer0", modLoc("item/ender_slayer"));
 
+        // 烈焰之傲壁垒模型。
+        // 原项目类名 InfernalShield。
+        // 贴图路径：textures/item/infernal_shield.png
+        basicItem(ModItems.BULWARK_OF_BLAZING_PRIDE.getId());
+
         basicItem(ModItems.ETHERIUM_HELMET.getId());
         basicItem(ModItems.ETHERIUM_CHESTPLATE.getId());
         basicItem(ModItems.ETHERIUM_LEGGINGS.getId());

@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-27T09:23:04.2546356	vanilla/Recipes
+// 1.21.1	2026-06-27T10:30:08.223337	vanilla/Recipes
 138cca5fc2d36a468976c88c266618e68aa51d88 data/enigmatic_legacy/advancement/recipes/building_blocks/astral_dust_sack.json
 75128c3d277fd90fca1df4cc9f996933af7f7241 data/enigmatic_legacy/advancement/recipes/building_blocks/etherium_block.json
 70a559dbe3db33a763c165b60a23730d9e9f955b data/enigmatic_legacy/advancement/recipes/combat/axe_of_executioner.json
@@ -9,6 +9,7 @@
 1511fc67fae5b4980101a0deff5f59de5ee9e4a8 data/enigmatic_legacy/advancement/recipes/combat/etherium_helmet.json
 ad0360cc904a949794c1538c719c0413c3d523ec data/enigmatic_legacy/advancement/recipes/combat/etherium_leggings.json
 d0be423c1e59703f99efa286ac4bae3587c66907 data/enigmatic_legacy/advancement/recipes/combat/etherium_sword.json
+be1652cc9a1a674b15883e0ade8abacb47c67f24 data/enigmatic_legacy/advancement/recipes/combat/infernal_shield.json
 afc69a4ceaecd0685cc5f6ee8c892af17f05a22e data/enigmatic_legacy/advancement/recipes/decorations/lamps/big_lamp.json
 f0d876abfb4d231cd8cd0bca21b02c1f0caa053e data/enigmatic_legacy/advancement/recipes/decorations/lamps/big_shroomlamp.json
 4a6993b7056e8f412ed1bbbd1c69dcf56d9476fa data/enigmatic_legacy/advancement/recipes/misc/avarice_scroll.json
@@ -69,6 +70,7 @@ b7e5405e7dfa851c5539c5aeff8c7d3a8057c1de data/enigmatic_legacy/recipe/etherium_s
 67f704cc11f7233cf762f2e45c1d9397be1ff2ef data/enigmatic_legacy/recipe/evil_ingot.json
 c84ca1c3bbba13c03e026c7477b64e0cb1316878 data/enigmatic_legacy/recipe/fabulous_scroll.json
 ca5674a917f19e5f062c2a18f2a96f92c6163d97 data/enigmatic_legacy/recipe/golden_ring.json
+5dc4c23f427ae36bf4b5b259f0233de69341da83 data/enigmatic_legacy/recipe/infernal_shield.json
 96515eef21b4c85507c8cb755cd98bdb17666433 data/enigmatic_legacy/recipe/iron_ring.json
 b7c1d5bc5ea6a00dba1fbcc0656e65bc1b07e93c data/enigmatic_legacy/recipe/lamps/big_lamp.json
 d65d6289f4b2aa74e1d51ee5e48c5286a303ae47 data/enigmatic_legacy/recipe/lamps/big_shroomlamp.json

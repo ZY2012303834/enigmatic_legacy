@@ -90,6 +90,10 @@ public final class ModItems {
     // 末影之屠 / The Ender Slayer
 // 七咒遗物，专门用于对抗末地生物。
     public static final DeferredItem<EnderSlayer> ENDER_SLAYER = ITEMS.register("ender_slayer", EnderSlayer::new);
+    // 烈焰之傲壁垒 / Bulwark of Blazing Pride
+// 原项目类名 InfernalShield。
+// 只有承受七咒之人才能使用的防火盾牌。
+    public static final DeferredItem<BulwarkOfBlazingPride> BULWARK_OF_BLAZING_PRIDE = ITEMS.register("infernal_shield", BulwarkOfBlazingPride::new);
 
     // 术石
     public static final DeferredItem<GolemHeart> GOLEM_HEART = ITEMS.register("golem_heart", GolemHeart::new); // 魔像之心

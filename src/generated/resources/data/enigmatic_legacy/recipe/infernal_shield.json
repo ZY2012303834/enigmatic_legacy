@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": {
+      "item": "enigmatic_legacy:blazing_core"
+    },
+    "E": {
+      "item": "enigmatic_legacy:evil_ingot"
+    },
+    "O": {
+      "item": "minecraft:obsidian"
+    }
+  },
+  "pattern": [
+    "OEO",
+    "OBO",
+    " O "
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:infernal_shield"
+  }
+}

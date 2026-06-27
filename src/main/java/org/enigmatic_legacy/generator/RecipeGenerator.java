@@ -574,5 +574,20 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('S', Items.STICK)
                 .unlockedBy("has_evil_essence", has(ModItems.EVIL_ESSENCE.get()))
                 .save(output);
+
+        // 烈焰之傲壁垒 / Bulwark of Blazing Pride
+        // 说明：
+        // - 原项目是七咒相关防具；
+        // - 使用黑曜石作为盾体，烈焰核心作为火焰核心；
+        // - 使用邪恶锭强化七咒主题。
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.BULWARK_OF_BLAZING_PRIDE.get())
+                .pattern("OEO")
+                .pattern("OBO")
+                .pattern(" O ")
+                .define('O', Items.OBSIDIAN)
+                .define('E', ModItems.EVIL_INGOT.get())
+                .define('B', ModItems.BLAZING_CORE.get())
+                .unlockedBy("has_blazing_core", has(ModItems.BLAZING_CORE.get()))
+                .save(output);
     }
 }

@@ -70,6 +70,8 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(EnigmaticEyeObtainEvents.class);
         // 末影之屠事件
         NeoForge.EVENT_BUS.register(EnderSlayerEvents.class);
+        // 烈焰之傲壁垒事件
+        NeoForge.EVENT_BUS.register(BulwarkOfBlazingPrideEvents.class);
 
         NeoForge.EVENT_BUS.register(TeleportParticleEvents.class);
         NeoForge.EVENT_BUS.register(EnderRingEvents.class);
