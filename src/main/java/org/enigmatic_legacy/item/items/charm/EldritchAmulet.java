@@ -29,18 +29,13 @@ public class EldritchAmulet extends AscensionAmulet {
 
     /**
      * 轻蔑之约 tooltip。
-     *
-     * 统一规则：
-     * 1. 非 Shift：只显示简短介绍 + 按住 Shift；
-     * 2. Shift：显示完整效果；
-     * 3. 普通介绍文字为紫色；
-     * 4. 数字、百分比为金色；
-     * 5. 负面效果名称为红色；
-     * 6. 佩戴护符时的属性介绍必须完整显示：
-     *    - 七种神秘护身符效果；
-     *    - +3 攻击伤害；
-     *    - +15% 生命偷取；
-     * 7. 七咒折磨 99.5% 要求必须放在 Shift 介绍最底部。
+     * 统一标准：
+     * 1. 普通介绍文字为紫色；
+     * 2. 数字 / 百分比为金色；
+     * 3. 负面效果名称为红色；
+     * 4. 限制 / 惩罚说明为红色；
+     * 5. 非 Shift 显示简短介绍 + 按住 Shift；
+     * 6. Shift 显示完整介绍、凝视效果、死亡保留、佩戴属性、七咒折磨要求。
      */
     @Override
     public void appendHoverText(
@@ -52,18 +47,22 @@ public class EldritchAmulet extends AscensionAmulet {
         tooltip.add(SpellstoneTooltip.empty());
 
         if (!Screen.hasShiftDown()) {
-            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.eldritch_amulet.1"));
+            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.eldritch_amulet.short"));
             tooltip.add(SpellstoneTooltip.empty());
             tooltip.add(SpellstoneTooltip.holdShift());
             return;
         }
 
-        // 基础介绍
+        // 介绍
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.eldritch_amulet.1"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.eldritch_amulet.intro.1"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.eldritch_amulet.intro.2"));
 
         tooltip.add(SpellstoneTooltip.empty());
 
-        // 凝视压制效果：负面效果名称单独红色
+        // 凝视压制效果
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.eldritch_amulet.gaze.title"));
+
         tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.eldritch_amulet.2",
                 SpellstoneTooltip.effect("effect.minecraft.slowness")
@@ -87,17 +86,19 @@ public class EldritchAmulet extends AscensionAmulet {
 
         tooltip.add(SpellstoneTooltip.empty());
 
-        // 死亡保存说明
+        // 死亡保留
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.eldritch_amulet.death.title"));
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.eldritch_amulet.4"));
 
-        // 消失诅咒属于限制 / 负面说明，整句红色
+        // 消失诅咒是负面限制，整句红色。
         tooltip.add(SpellstoneTooltip.negative("tooltip.enigmatic_legacy.eldritch_amulet.5"));
 
         tooltip.add(SpellstoneTooltip.empty());
 
-        // 佩戴护符时：必须完整显示飞升护符继承的七种护符效果
+        // 佩戴在护符栏时
         tooltip.add(SpellstoneTooltip.text("curios.modifiers.charm"));
 
+        // 继承飞升护符 / 七色神秘护身符的完整效果
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.red"));
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.aqua"));
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.violet"));
@@ -106,7 +107,7 @@ public class EldritchAmulet extends AscensionAmulet {
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.black"));
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.blue"));
 
-        // 轻蔑之约额外属性
+        // 轻蔑之约额外佩戴属性
         tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.eldritch_amulet.stat.1",
                 SpellstoneTooltip.number("+3")

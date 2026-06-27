@@ -781,25 +781,24 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.the_infinitum.9", "手持时，有 %s 概率使本应致命的");
         add("tooltip.enigmatic_legacy.the_infinitum.10", "伤害无法杀死你。");
 
-        // Amulet of Ascension / 飞升护符
-        addItem(ModItems.ASCENSION_AMULET, "飞升护符");
 
-        add("tooltip.enigmatic_legacy.ascension_amulet.1",
-                "命运裁定汝之起始。");
-
-        add("tooltip.enigmatic_legacy.ascension_amulet.2",
-                "汝将塑造命之终末。");
-
-        add("tooltip.enigmatic_legacy.ascension_amulet.3",
-                "集结七种神秘护身符的全部特质。");
-
-        add("tooltip.enigmatic_legacy.ascension_amulet.no_vessel",
-                "灵魂水晶与超维容器回收已由七咒之戒处理。");
-
-        // The Testament of Contempt / 轻蔑之约
+// 轻蔑之约 / The Testament of Contempt
         addItem(ModItems.ELDRITCH_AMULET, "轻蔑之约");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.short",
+                "一枚被深渊污染的完美护符。");
+
         add("tooltip.enigmatic_legacy.eldritch_amulet.1",
                 "一枚自愿舍弃纯净的完美护符。");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.intro.1",
+                "它继承了飞升护符的全部力量。");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.intro.2",
+                "同时，它也会将你的轻蔑化为凝视中的压迫。");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.gaze.title",
+                "凝视效果：");
 
         add("tooltip.enigmatic_legacy.eldritch_amulet.2",
                 "被你凝视的生物会受到 %s。");
@@ -812,6 +811,9 @@ public class ChineseLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.eldritch_amulet.7",
                 "凝视范围：%s 格，影响半径：%s 格。");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.death.title",
+                "死亡保护：");
 
         add("tooltip.enigmatic_legacy.eldritch_amulet.4",
                 "死亡时保留你的背包。");
@@ -826,9 +828,8 @@ public class ChineseLanguageGenerator extends LanguageProvider {
                 "额外 %s 生命偷取");
 
 
-
         // 七咒折磨 99.5% 使用资格提示，所有需要该资格的物品共用这一组语言 key。
-        add("tooltip.enigmatic_legacy.cursed_suffering.requirement", "你需要在七咒之戒的折磨下度过总游戏时间的99.5%才能使用该物品。");
+        add("tooltip.enigmatic_legacy.cursed_suffering.requirement", "你需要在七咒之戒的折磨下度过总游戏时间的 %s 才能使用该物品。");
         add("tooltip.enigmatic_legacy.cursed_suffering.current_percentage", "当前受七咒折磨的时间百分比：%s");
 
         // Tooltip 通用词条：用于局部染色

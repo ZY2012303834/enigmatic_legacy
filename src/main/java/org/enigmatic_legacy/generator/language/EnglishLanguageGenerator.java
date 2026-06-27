@@ -793,10 +793,23 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.ascension_amulet.no_vessel",
                 "Soul Crystal and Vessel recovery is handled by the Ring of the Seven Curses.");
 
-        // The Testament of Contempt / 轻蔑之约
+// The Testament of Contempt / 轻蔑之约
         addItem(ModItems.ELDRITCH_AMULET, "The Testament of Contempt");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.short",
+                "A perfected amulet corrupted by the abyss.");
+
         add("tooltip.enigmatic_legacy.eldritch_amulet.1",
                 "A perfected amulet willingly made impure.");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.intro.1",
+                "It inherits the full power of the Ascension Amulet.");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.intro.2",
+                "It also turns your contempt into pressure within your gaze.");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.gaze.title",
+                "Gaze effects:");
 
         add("tooltip.enigmatic_legacy.eldritch_amulet.2",
                 "Creatures caught in your gaze receive %s.");
@@ -810,8 +823,11 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.eldritch_amulet.7",
                 "Gaze range: %s blocks, effect radius: %s blocks.");
 
+        add("tooltip.enigmatic_legacy.eldritch_amulet.death.title",
+                "Death protection:");
+
         add("tooltip.enigmatic_legacy.eldritch_amulet.4",
-                "On death, preserves your inventory.");
+                "Preserves your inventory on death.");
 
         add("tooltip.enigmatic_legacy.eldritch_amulet.5",
                 "Items bearing Curse of Vanishing are still lost.");
@@ -821,6 +837,7 @@ public class EnglishLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.eldritch_amulet.stat.2",
                 "%s Additional Lifesteal");
+
 
         // Shared tooltip terms for partial coloring
         add("tooltip.enigmatic_legacy.term.negative_effects", "negative effects");
