@@ -505,6 +505,18 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.abyssal_heart.requirement", "The unworthy cannot pick up or use this item.");
 
         add("message.enigmatic_legacy.abyssal_heart.unworthy", "The Heart of the Abyss rejects you. Current cursed time: %s / required 99.5%.");
+
+        add("tooltip.enigmatic_legacy.abyssal_heart.current_time",
+                "Cursed time: %s / Total playtime: %s");
+
+        add("tooltip.enigmatic_legacy.abyssal_heart.current_ratio",
+                "Current torment: %s / Required: %s");
+
+        add("tooltip.enigmatic_legacy.abyssal_heart.worthy",
+                "Requirement fulfilled.");
+
+        add("tooltip.enigmatic_legacy.abyssal_heart.not_worthy",
+                "Requirement not fulfilled.");
         // end
 
         // 超维之眼

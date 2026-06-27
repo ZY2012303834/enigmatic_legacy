@@ -13,6 +13,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.enigmatic_legacy.util.AbyssalHeartHelper;
 import org.jetbrains.annotations.NotNull;
+import net.minecraft.client.Minecraft;
 
 import java.util.List;
 
@@ -38,7 +39,6 @@ public class AbyssalHeart extends Item {
 
     /**
      * 右键使用限制。
-     *
      * 深渊之心本身主要作为后续高阶物品的合成材料，
      * 这里保留“未达资格无法使用”的限制。
      */
@@ -58,6 +58,15 @@ public class AbyssalHeart extends Item {
         return InteractionResultHolder.pass(stack);
     }
 
+    /**
+     * 深渊之心提示文本。
+     * 修复内容：
+     * - 按住 Shift 时显示当前玩家的七咒佩戴时间；
+     * - 显示当前七咒折磨比例；
+     * - 显示要求比例 99.5%；
+     * - 如果已经达标，显示“资格已满足”；
+     * - 如果未达标，显示“资格不足”。
+     */
     @Override
     public void appendHoverText(
             @NotNull ItemStack stack,
@@ -70,12 +79,68 @@ public class AbyssalHeart extends Item {
         if (Screen.hasShiftDown()) {
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.abyssal_heart.1")
                     .withStyle(ChatFormatting.GRAY));
+
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.abyssal_heart.2")
                     .withStyle(ChatFormatting.GRAY));
+
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.abyssal_heart.3")
                     .withStyle(ChatFormatting.GRAY));
+
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.abyssal_heart.4")
                     .withStyle(ChatFormatting.DARK_PURPLE));
+
+            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+
+            /*
+             * 读取客户端当前玩家。
+             *
+             * appendHoverText 没有直接传入 Player，
+             * 所以这里使用 Minecraft.getInstance().player 获取本地玩家。
+             *
+             * 这个 tooltip 只在客户端渲染，所以可以这样读取。
+             */
+            Player localPlayer = Minecraft.getInstance().player;
+
+            if (localPlayer != null) {
+                long cursedTicks = AbyssalHeartHelper.getCursedPlayTime(localPlayer);
+                long totalTicks = AbyssalHeartHelper.getTotalPlayTime(localPlayer);
+
+                String cursedTime = AbyssalHeartHelper.formatPlayTime(cursedTicks);
+                String totalTime = AbyssalHeartHelper.formatPlayTime(totalTicks);
+                String currentPercent = AbyssalHeartHelper.getSufferingPercentage(localPlayer);
+                String requiredPercent = AbyssalHeartHelper.getRequiredSufferingPercentage();
+
+                // 当前七咒佩戴时间 / 总游戏时间。
+                tooltip.add(Component.translatable(
+                        "tooltip.enigmatic_legacy.abyssal_heart.current_time",
+                        cursedTime,
+                        totalTime
+                ).withStyle(ChatFormatting.GOLD));
+
+                // 当前七咒折磨比例 / 要求比例。
+                tooltip.add(Component.translatable(
+                        "tooltip.enigmatic_legacy.abyssal_heart.current_ratio",
+                        currentPercent,
+                        requiredPercent
+                ).withStyle(ChatFormatting.GOLD));
+
+                tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+
+                /*
+                 * 根据当前比例显示资格状态。
+                 *
+                 * 注意：
+                 * AbyssalHeartHelper.isWorthy(...) 同时要求玩家当前佩戴七咒之戒。
+                 * 这里 tooltip 只显示比例是否达标，避免玩家没戴戒指时看不懂时间进度。
+                 */
+                if (AbyssalHeartHelper.getSufferingFraction(localPlayer) >= AbyssalHeartHelper.REQUIRED_SUFFERING_FRACTION) {
+                    tooltip.add(Component.translatable("tooltip.enigmatic_legacy.abyssal_heart.worthy")
+                            .withStyle(ChatFormatting.GREEN));
+                } else {
+                    tooltip.add(Component.translatable("tooltip.enigmatic_legacy.abyssal_heart.not_worthy")
+                            .withStyle(ChatFormatting.DARK_RED));
+                }
+            }
 
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
 
@@ -84,6 +149,7 @@ public class AbyssalHeart extends Item {
         } else {
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.abyssal_heart.short")
                     .withStyle(ChatFormatting.DARK_PURPLE));
+
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hold_shift")
                     .withStyle(ChatFormatting.DARK_GRAY));
         }

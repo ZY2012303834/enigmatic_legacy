@@ -95,6 +95,67 @@ public final class AbyssalHeartHelper {
         return String.format(Locale.ROOT, "%.1f%%", getSufferingFraction(player) * 100.0D);
     }
 
+    /**
+     * 获取玩家总在线时间 tick。
+     *
+     * 这个时间由 AbyssalHeartEvents.onPlayerTick(...) 每 tick 记录。
+     */
+    public static long getTotalPlayTime(Player player) {
+        return player.getPersistentData().getLong(TOTAL_PLAY_TIME_TAG);
+    }
+
+    /**
+     * 获取玩家佩戴七咒之戒的在线时间 tick。
+     *
+     * 只有玩家当前佩戴七咒之戒时，
+     * tickPlaytime(...) 才会增加这个数值。
+     */
+    public static long getCursedPlayTime(Player player) {
+        return player.getPersistentData().getLong(CURSED_PLAY_TIME_TAG);
+    }
+
+    /**
+     * 获取深渊之心要求的七咒折磨比例文本。
+     *
+     * 默认要求：
+     * 99.5%
+     */
+    public static String getRequiredSufferingPercentage() {
+        return String.format(Locale.ROOT, "%.1f%%", REQUIRED_SUFFERING_FRACTION * 100.0D);
+    }
+
+    /**
+     * 把 tick 时间格式化成更容易阅读的文本。
+     * 20 tick = 1 秒。
+     * 显示规则：
+     * - 超过 1 天：显示 天 + 小时 + 分钟
+     * - 超过 1 小时：显示 小时 + 分钟 + 秒
+     * - 超过 1 分钟：显示 分钟 + 秒
+     * - 否则：显示 秒
+     */
+    public static String formatPlayTime(long ticks) {
+        long totalSeconds = Math.max(0L, ticks / 20L);
+
+        long days = totalSeconds / 86400L;
+        long hours = (totalSeconds % 86400L) / 3600L;
+        long minutes = (totalSeconds % 3600L) / 60L;
+        long seconds = totalSeconds % 60L;
+
+        if (days > 0L) {
+            return String.format(Locale.ROOT, "%dd %dh %dm", days, hours, minutes);
+        }
+
+        if (hours > 0L) {
+            return String.format(Locale.ROOT, "%dh %dm %ds", hours, minutes, seconds);
+        }
+
+        if (minutes > 0L) {
+            return String.format(Locale.ROOT, "%dm %ds", minutes, seconds);
+        }
+
+        return String.format(Locale.ROOT, "%ds", seconds);
+    }
+
     public static boolean canGainAnotherAbyssalHeart(Player player) {
         return getAbyssalHeartsGained(player) < MAX_ABYSSAL_HEARTS_PER_PLAYER;
     }

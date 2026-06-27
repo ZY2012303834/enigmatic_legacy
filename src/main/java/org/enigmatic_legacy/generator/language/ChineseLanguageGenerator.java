@@ -507,6 +507,18 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.abyssal_heart.requirement", "未达资格者无法捡起或使用。");
 
         add("message.enigmatic_legacy.abyssal_heart.unworthy", "深渊之心拒绝了你。当前七咒折磨时间：%s / 需要 99.5%。");
+
+        add("tooltip.enigmatic_legacy.abyssal_heart.current_time",
+                "七咒佩戴时间：%s / 总游戏时间：%s");
+
+        add("tooltip.enigmatic_legacy.abyssal_heart.current_ratio",
+                "当前折磨比例：%s / 要求：%s");
+
+        add("tooltip.enigmatic_legacy.abyssal_heart.worthy",
+                "资格已满足。");
+
+        add("tooltip.enigmatic_legacy.abyssal_heart.not_worthy",
+                "资格不足。");
         // end
 
         // 超维之眼
