@@ -3,7 +3,6 @@ package org.enigmatic_legacy.event;
 import net.minecraft.core.Holder;
 import net.minecraft.network.protocol.game.ClientboundSetHealthPacket;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
@@ -191,6 +190,7 @@ public final class HeartOfCreationEvents {
     /**
      * 给玩家开启飞行能力。
      */
+    @SuppressWarnings("deprecation")
     private static void grantFlight(ServerPlayer player) {
         boolean changed = false;
 
@@ -211,6 +211,7 @@ public final class HeartOfCreationEvents {
     /**
      * 如果飞行能力是创造之心授予的，则在取下后撤销。
      */
+    @SuppressWarnings("deprecation")
     private static void revokeFlightIfGranted(ServerPlayer player) {
         if (!player.getPersistentData().getBoolean(GRANTED_FLIGHT_TAG)) {
             return;

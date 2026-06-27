@@ -111,9 +111,9 @@ public class ItemGenerator extends ItemModelProvider {
                 .texture("layer0", modLoc("item/ender_slayer"));
 
         // 烈焰之傲壁垒模型。
-        // 原项目类名 InfernalShield。
-        // 贴图路径：textures/item/infernal_shield.png
-        basicItem(ModItems.BULWARK_OF_BLAZING_PRIDE.getId());
+        // 不能使用 basicItem，否则只会显示普通 2D 物品。
+        // 这里生成 shield / shield_blocking 两个模型，让它拥有原版盾牌举盾动画。
+        infernalShield();
 
         basicItem(ModItems.ETHERIUM_HELMET.getId());
         basicItem(ModItems.ETHERIUM_CHESTPLATE.getId());
@@ -202,6 +202,46 @@ public class ItemGenerator extends ItemModelProvider {
                     .model(frameModel)
                     .end();
         }
+    }
+
+    /**
+     * 生成烈焰之傲壁垒盾牌模型。
+     * 修复内容：
+     * - 不再使用 item/generated 的普通 2D 物品模型；
+     * - 改为继承原版 minecraft:item/shield；
+     * - 举盾时通过 minecraft:blocking predicate 切换到 shield_blocking 模型；
+     * - 这样才能显示原版盾牌举起、格挡时的大盾视觉效果。
+     * 生成文件：
+     * - assets/enigmatic_legacy/models/item/infernal_shield.json
+     * - assets/enigmatic_legacy/models/item/infernal_shield_blocking.json
+     * 需要贴图：
+     * - assets/enigmatic_legacy/textures/item/infernal_shield.png
+     */
+    private void infernalShield() {
+        /*
+         * 举盾状态模型。
+         *
+         * parent 使用 minecraft:item/shield_blocking，
+         * 这是原版盾牌格挡时的模型。
+         */
+        var blockingModel = withExistingParent("item/infernal_shield_blocking", mcLoc("item/shield_blocking"))
+                .texture("particle", modLoc("item/infernal_shield"));
+
+        /*
+         * 普通盾牌模型。
+         *
+         * parent 使用 minecraft:item/shield，
+         * 并添加 blocking override。
+         *
+         * 当客户端物品属性 minecraft:blocking >= 1.0F 时，
+         * 自动切换到 infernal_shield_blocking。
+         */
+        withExistingParent("item/infernal_shield", mcLoc("item/shield"))
+                .texture("particle", modLoc("item/infernal_shield"))
+                .override()
+                .predicate(mcLoc("blocking"), 1.0F)
+                .model(blockingModel)
+                .end();
     }
 
     /**

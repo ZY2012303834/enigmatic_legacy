@@ -1,6 +1,14 @@
 {
-  "parent": "minecraft:item/generated",
+  "parent": "minecraft:item/shield",
+  "overrides": [
+    {
+      "model": "enigmatic_legacy:item/infernal_shield_blocking",
+      "predicate": {
+        "minecraft:blocking": 1.0
+      }
+    }
+  ],
   "textures": {
-    "layer0": "enigmatic_legacy:item/infernal_shield"
+    "particle": "enigmatic_legacy:item/infernal_shield"
   }
 }

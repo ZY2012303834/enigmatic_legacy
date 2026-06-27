@@ -46,6 +46,7 @@ public class GenericConfig {
                                 "minecraft:wither",
                                 "minecraft:elder_guardian"
                         ),
+                        () -> "minecraft:ender_dragon",
                         value -> value instanceof String string
                                 && ResourceLocation.tryParse(string) != null
                 );

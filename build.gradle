@@ -211,7 +211,7 @@ publishing {
     repositories {
         maven {
             // 发布到项目目录下的本地 repo 文件夹。
-            url "file://${project.projectDir}/repo"
+            url = file('repo').toURI()
         }
     }
 }

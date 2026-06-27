@@ -186,6 +186,7 @@ public class GiftOfTheHeaven extends Item implements ICurioItem {
         player.getPersistentData().putBoolean(HAD_BEACON_POWER_TAG, false);
     }
 
+    @SuppressWarnings("deprecation")
     private static void grantFlight(ServerPlayer player) {
         if (!player.getAbilities().mayfly) {
             player.getAbilities().mayfly = true;
@@ -195,6 +196,7 @@ public class GiftOfTheHeaven extends Item implements ICurioItem {
         player.getPersistentData().putBoolean(GRANTED_FLIGHT_TAG, true);
     }
 
+    @SuppressWarnings("deprecation")
     private static void revokeFlightIfGranted(ServerPlayer player) {
         if (!player.getPersistentData().getBoolean(GRANTED_FLIGHT_TAG)) {
             return;
