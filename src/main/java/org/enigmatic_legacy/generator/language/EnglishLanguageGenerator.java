@@ -633,9 +633,7 @@ public class EnglishLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.wayfinder_of_the_damned.2",
                 "Points toward the nearest Soul Crystal in the current dimension.");
-
-        add("tooltip.enigmatic_legacy.wayfinder_of_the_damned.3",
-                "Also works within Soul Sand Valleys.");
+        // end
     }
 
     private void addEnglishCursedRingTooltips() {

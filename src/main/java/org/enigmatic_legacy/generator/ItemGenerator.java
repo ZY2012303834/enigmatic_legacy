@@ -101,7 +101,9 @@ public class ItemGenerator extends ItemModelProvider {
 
         basicItem(ModItems.MENDING_MIXTURE.getId());    // 修补混合物
 
-        basicItem(ModItems.WAYFINDER_OF_THE_DAMNED.getId());    // 被诅咒者的寻路指针
+        // 使用 32 帧 compass_00 ~ compass_31 贴图。
+        // angle 属性由 WayfinderClientEvents 在客户端注册。
+        wayfinderOfTheDamned();    // 被诅咒者的寻路指针
 
 
         basicItem(ModItems.ETHERIUM_HELMET.getId());
@@ -151,5 +153,57 @@ public class ItemGenerator extends ItemModelProvider {
                 .predicate(modLoc("enigmatic_eye_activated"), 1.0F)
                 .model(active)
                 .end();
+    }
+
+    /**
+     * 生成被诅咒者的寻路指针模型。
+     *
+     * 原项目效果：
+     * - 有目标时，指针指向灵魂水晶；
+     * - 没有目标时，指针随机旋转。
+     *
+     * 实现方式：
+     * - 基础模型：wayfinder_of_the_damned；
+     * - 旋转帧：compass_00 ~ compass_31；
+     * - 模型属性：enigmatic_legacy:angle；
+     * - 客户端会根据 angle 自动选择对应帧。
+     *
+     * 需要贴图：
+     * src/main/resources/assets/enigmatic_legacy/textures/item/wayfinder_of_the_damned.png
+     * src/main/resources/assets/enigmatic_legacy/textures/item/compass_00.png
+     * ...
+     * src/main/resources/assets/enigmatic_legacy/textures/item/compass_31.png
+     */
+    private void wayfinderOfTheDamned() {
+        var base = withExistingParent("item/wayfinder_of_the_damned", mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/wayfinder_of_the_damned"));
+
+        for (int frame = 0; frame < 32; frame++) {
+            String frameName = wayfinderFrameName(frame);
+
+            var frameModel = withExistingParent("item/wayfinder_of_the_damned_" + frameName, mcLoc("item/generated"))
+                    .texture("layer0", modLoc("item/compass_" + frameName));
+
+            /*
+             * override 顺序必须从小到大。
+             * 当 angle >= 当前 predicate 时，就会使用当前帧。
+             */
+            base.override()
+                    .predicate(modLoc("angle"), frame / 32.0F)
+                    .model(frameModel)
+                    .end();
+        }
+    }
+
+    /**
+     * 把帧编号转为两位数字。
+     * 例如：
+     * 0  -> 00
+     * 1  -> 01
+     * 10 -> 10
+     * 31 -> 31
+     */
+    private static String wayfinderFrameName(int frame) {
+        return frame < 10 ? "0" + frame : Integer.toString(frame);
     }
 }

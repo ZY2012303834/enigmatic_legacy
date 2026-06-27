@@ -633,13 +633,9 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.wayfinder_of_the_damned.2",
                 "指向当前维度内最近的灵魂水晶。");
 
-        add("tooltip.enigmatic_legacy.wayfinder_of_the_damned.3",
-                "在灵魂沙峡谷中也能正常工作。");
-
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5按住 §6Shift§5 查看详情。");
-
-
+        // end
     }
 
     private void addChineseCursedRingTooltips() {

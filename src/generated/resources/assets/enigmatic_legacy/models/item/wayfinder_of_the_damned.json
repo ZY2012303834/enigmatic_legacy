@@ -1,5 +1,199 @@
 {
   "parent": "minecraft:item/generated",
+  "overrides": [
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_00",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.0
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_01",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.03125
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_02",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.0625
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_03",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.09375
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_04",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.125
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_05",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.15625
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_06",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.1875
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_07",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.21875
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_08",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.25
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_09",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.28125
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_10",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.3125
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_11",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.34375
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_12",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.375
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_13",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.40625
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_14",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.4375
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_15",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.46875
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_16",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.5
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_17",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.53125
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_18",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.5625
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_19",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.59375
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_20",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.625
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_21",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.65625
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_22",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.6875
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_23",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.71875
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_24",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.75
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_25",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.78125
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_26",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.8125
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_27",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.84375
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_28",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.875
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_29",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.90625
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_30",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.9375
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/wayfinder_of_the_damned_31",
+      "predicate": {
+        "enigmatic_legacy:angle": 0.96875
+      }
+    }
+  ],
   "textures": {
     "layer0": "enigmatic_legacy:item/wayfinder_of_the_damned"
   }

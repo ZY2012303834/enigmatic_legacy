@@ -88,16 +88,12 @@ public class WayfinderOfTheDamned extends Item {
 
     /**
      * 右键使用。
-     * 按原项目风格处理：
-     * - 不再弹出坐标提示；
-     * - 不再显示“没有七咒之戒 / 没有目标”的行动栏文字；
-     * - 只在服务端刷新一次当前目标坐标；
-     * - 真正的表现应该交给指南针模型 / 指针贴图来显示。
-     * 说明：
-     * - 如果玩家没有佩戴七咒之戒，则清除目标；
-     * - 如果玩家佩戴七咒之戒，则寻找最近灵魂水晶；
-     * - 如果找到目标，就把目标坐标写入物品数据；
-     * - 如果没找到目标，就清除目标。
+     * 按原项目风格：
+     * - 不弹出坐标；
+     * - 不弹出方向；
+     * - 不提示“没有找到灵魂水晶”；
+     * - 只刷新一次目标数据。
+     * 真正的方向表现由客户端模型属性 angle 控制。
      */
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(
@@ -107,24 +103,16 @@ public class WayfinderOfTheDamned extends Item {
     ) {
         ItemStack stack = player.getItemInHand(hand);
 
-        // 客户端只返回成功，不做实际搜索。
+        // 客户端不做搜索，只等待服务端同步物品数据。
         if (level.isClientSide()) {
             return InteractionResultHolder.sidedSuccess(stack, true);
         }
 
-        // 只处理服务端玩家。
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return InteractionResultHolder.pass(stack);
         }
 
-        /*
-         * 原项目逻辑：
-         * 只有承受七咒之人才能使用。
-         *
-         * 这里取消文字提示：
-         * - 没有七咒之戒时，不显示任何消息；
-         * - 只清除目标，让指针失效。
-         */
+        // 没有佩戴七咒之戒时，清除目标，让指针随机旋转。
         if (!CursedRingHelper.hasCursedRing(serverPlayer)) {
             clearTarget(stack);
             return InteractionResultHolder.sidedSuccess(stack, false);
@@ -133,16 +121,13 @@ public class WayfinderOfTheDamned extends Item {
         // 搜索当前维度内最近的灵魂水晶 / 超维容器。
         Entity target = findNearestSoulTarget(serverPlayer);
 
-        /*
-         * 原项目风格：
-         * 找不到目标时不提示文字，只让指针没有目标。
-         */
+        // 没找到目标时，清除目标，让指针随机旋转。
         if (target == null) {
             clearTarget(stack);
             return InteractionResultHolder.sidedSuccess(stack, false);
         }
 
-        // 找到目标后，只保存目标坐标，不再发送行动栏提示。
+        // 找到目标时保存坐标，客户端模型属性会读取这个坐标并指向它。
         storeTarget(stack, target.blockPosition());
 
         return InteractionResultHolder.sidedSuccess(stack, false);
@@ -337,6 +322,26 @@ public class WayfinderOfTheDamned extends Item {
     }
 
     /**
+     * 给客户端模型属性读取：当前指针是否已经保存目标。
+     * 用途：
+     * - 客户端 angle 属性会调用这个方法；
+     * - 如果有目标，就正常指向目标；
+     * - 如果没有目标，就像原版指南针失效一样随机旋转。
+     */
+    public static boolean hasStoredTarget(ItemStack stack) {
+        return hasTarget(stack);
+    }
+
+    /**
+     * 给客户端模型属性读取：当前指针保存的目标坐标。
+     * 用途：
+     * - 客户端 angle 属性需要根据玩家朝向和目标坐标计算贴图角度。
+     */
+    public static BlockPos getStoredTargetPosition(ItemStack stack) {
+        return getStoredTarget(stack);
+    }
+
+    /**
      * 从物品中读取目标坐标。
      */
     private static BlockPos getStoredTarget(ItemStack stack) {
@@ -375,9 +380,6 @@ public class WayfinderOfTheDamned extends Item {
                 .withStyle(ChatFormatting.DARK_PURPLE));
 
         tooltip.add(Component.translatable("tooltip.enigmatic_legacy.wayfinder_of_the_damned.2")
-                .withStyle(ChatFormatting.GRAY));
-
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.wayfinder_of_the_damned.3")
                 .withStyle(ChatFormatting.GRAY));
     }
 
