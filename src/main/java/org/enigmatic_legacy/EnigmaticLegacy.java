@@ -21,7 +21,6 @@ import org.enigmatic_legacy.potion.ModEffects;
 import org.enigmatic_legacy.potion.ModPotions;
 import org.enigmatic_legacy.recipe.ModRecipeSerializers;
 import org.enigmatic_legacy.sound.ModSounds;
-import org.enigmatic_legacy.tab.ModeTabs;
 
 @Mod(EnigmaticLegacy.MODID)
 public class EnigmaticLegacy {

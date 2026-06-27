@@ -1,4 +1,4 @@
-package org.enigmatic_legacy.tab;
+package org.enigmatic_legacy;
 
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
@@ -11,7 +11,6 @@ import net.minecraft.world.item.alchemy.PotionContents;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.potion.ModPotions;
 
