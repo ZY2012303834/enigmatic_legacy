@@ -170,22 +170,24 @@ public final class WayfinderClientEvents {
         float rawAngle = (float) (0.5D - (playerYaw - 0.25D - targetAngle));
 
         /*
-         * 角度校准：
+         * 指针方向校准。
          *
-         * 之前 +0.5F 用来修正 180° 反向问题。
-         * 现在实测指针仍然偏右约 45°。
+         * 实测情况：
+         * - +0.5F 时，指针大约偏右 45°；
+         * - 改成 +0.375F 后，指针更偏右，约 88°；
          *
-         * 45° = 45 / 360 = 0.125F。
+         * 说明之前校准方向反了。
          *
-         * 所以这里从 0.5F 中减去 0.125F：
-         * 0.5F - 0.125F = 0.375F。
-         *
-         * 最终效果：
+         * 因此现在改为 +0.625F：
          * - 保留 180° 反向修正；
-         * - 额外向左校准约 45°；
-         * - 让指针更准确指向灵魂水晶。
+         * - 再向相反方向校正约 45°；
+         * - 让指针从偏右状态回到目标方向。
+         *
+         * 角度换算：
+         * - 0.125F = 45°
+         * - 0.625F = 0.5F + 0.125F
          */
-        rawAngle = Mth.positiveModulo(rawAngle + 0.375F, 1.0F);
+        rawAngle = Mth.positiveModulo(rawAngle + 0.542F, 1.0F);
 
         return wobbleTowardTarget(actualLevel, rawAngle);
     }
