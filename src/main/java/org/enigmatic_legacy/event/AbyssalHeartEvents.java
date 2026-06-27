@@ -77,9 +77,15 @@ public final class AbyssalHeartEvents {
     }
 
     /**
-     * 未达到 99.5% 七咒折磨比例时，阻止拾取深渊之心。
-     * NeoForge 的 ItemEntityPickupEvent.Pre 可以通过 TriState.FALSE
-     * 明确拒绝某个物品被玩家捡起。
+     * 深渊之心拾取限制。
+     * 修复内容：
+     * - 达到资格的玩家不再使用 TriState.TRUE 强制拾取；
+     * - 改为 TriState.DEFAULT，让原版拾取逻辑继续处理；
+     * - 这样玩家主动丢出深渊之心后，会保留正常 pickup delay，
+     *   不会立刻回到背包。
+     * 逻辑：
+     * - 未达资格：禁止拾取任何深渊之心；
+     * - 已达资格：不强制拾取，交给原版逻辑处理。
      */
     @SubscribeEvent
     public static void onItemPickup(ItemEntityPickupEvent.Pre event) {
@@ -91,11 +97,26 @@ public final class AbyssalHeartEvents {
             return;
         }
 
+        /*
+         * 已达资格：
+         * 不要设置 TriState.TRUE。
+         *
+         * 原因：
+         * - TriState.TRUE 会强制允许拾取；
+         * - 可能绕过玩家刚丢出物品时的拾取延迟；
+         * - 导致“刚扔出去就立刻回背包”。
+         *
+         * 使用 DEFAULT：
+         * - 允许原版正常判断 pickup delay；
+         * - 玩家丢出后不会立刻捡回；
+         * - 延迟结束后仍可正常捡起。
+         */
         if (AbyssalHeartHelper.isWorthy(player)) {
-            event.setCanPickup(TriState.TRUE);
+            event.setCanPickup(TriState.DEFAULT);
             return;
         }
 
+        // 未达资格：禁止拾取。
         event.setCanPickup(TriState.FALSE);
 
         /*
@@ -107,9 +128,11 @@ public final class AbyssalHeartEvents {
     }
 
     /**
-     * 只维持龙生成的悬浮深渊之心状态。
-     * 玩家拾取后再次丢出的深渊之心没有这个实体标记，
-     * 因此会像普通掉落物一样运动和旋转。
+     * 维持“龙死亡生成的深渊之心”悬浮状态。
+     * 修复内容：
+     * - 只处理带有 FLOATING_ABYSSAL_HEART_TAG 标记的深渊之心；
+     * - 玩家从背包中主动丢出的深渊之心没有这个标记；
+     * - 所以玩家丢出的深渊之心会像普通掉落物一样落地、旋转、可重新捡起。
      */
     @SubscribeEvent
     public static void onEntityTick(EntityTickEvent.Post event) {
@@ -123,6 +146,12 @@ public final class AbyssalHeartEvents {
             return;
         }
 
+        /*
+         * 关键修复：
+         * 只有“末影龙死亡位置生成的悬浮深渊之心”才会带这个标记。
+         *
+         * 玩家主动丢出的深渊之心不应该被重新标记为悬浮物。
+         */
         if (!itemEntity.getPersistentData().getBoolean(FLOATING_ABYSSAL_HEART_TAG)) {
             return;
         }
@@ -154,47 +183,38 @@ public final class AbyssalHeartEvents {
     }
 
     /**
-     * 维持已标记的悬浮深渊之心状态。
+     * 维持深渊之心悬浮状态。
+     * 注意：
+     * - 这个方法只应该处理已经带有 FLOATING_ABYSSAL_HEART_TAG 的实体；
+     * - 不要在这里给普通丢出的深渊之心补标记；
+     * - 否则玩家从背包丢出的深渊之心也会被固定在空中。
+     * 同时：
+     * - 不要每 tick 调用 setUnlimitedLifetime()；
+     * - 反复调用会影响 ItemEntity 的 age，
+     *   可能导致掉落物旋转显示异常。
      */
     private static void markAndFreezeAbyssalHeart(ItemEntity itemEntity) {
-        if (!hasBoundPosition(itemEntity)) {
-            itemEntity.getPersistentData().putDouble(BOUND_X_TAG, itemEntity.getX());
-            itemEntity.getPersistentData().putDouble(BOUND_Y_TAG, itemEntity.getY());
-            itemEntity.getPersistentData().putDouble(BOUND_Z_TAG, itemEntity.getZ());
-            itemEntity.setUnlimitedLifetime();
+        /*
+         * 保险判断：
+         * 如果没有悬浮标记，直接返回。
+         */
+        if (!itemEntity.getPersistentData().getBoolean(FLOATING_ABYSSAL_HEART_TAG)) {
+            return;
         }
 
         double x = itemEntity.getPersistentData().getDouble(BOUND_X_TAG);
         double y = itemEntity.getPersistentData().getDouble(BOUND_Y_TAG);
         double z = itemEntity.getPersistentData().getDouble(BOUND_Z_TAG);
 
-        /*
-         * 这些状态可以每 tick 保持：
-         * - 无重力；
-         * - 发光；
-         * - 停止物理速度。
-         */
         itemEntity.setNoGravity(true);
         itemEntity.setGlowingTag(true);
-        if (itemEntity.getDeltaMovement().lengthSqr() > 1.0E-7D) {
-            itemEntity.setDeltaMovement(Vec3.ZERO);
-        }
+        itemEntity.setDeltaMovement(Vec3.ZERO);
 
         /*
          * 防止被水流、爆炸、实体碰撞或其它模组移动。
-         *
-         * 注意：
-         * teleportTo 只在位置偏移明显时调用，
-         * 避免每 tick 强制传送影响客户端渲染插值。
          */
         if (itemEntity.distanceToSqr(x, y, z) > 0.01D) {
             itemEntity.teleportTo(x, y, z);
         }
-    }
-
-    private static boolean hasBoundPosition(ItemEntity itemEntity) {
-        return itemEntity.getPersistentData().contains(BOUND_X_TAG)
-                && itemEntity.getPersistentData().contains(BOUND_Y_TAG)
-                && itemEntity.getPersistentData().contains(BOUND_Z_TAG);
     }
 }

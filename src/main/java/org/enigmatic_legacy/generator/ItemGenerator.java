@@ -1,7 +1,9 @@
 package org.enigmatic_legacy.generator;
 
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.client.model.generators.loaders.SeparateTransformsModelBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import org.enigmatic_legacy.EnigmaticLegacy;
@@ -165,83 +167,75 @@ public class ItemGenerator extends ItemModelProvider {
     }
 
     /**
-     * 生成被诅咒者的寻路指针模型。
-     *
-     * 原项目效果：
-     * - 有目标时，指针指向灵魂水晶；
-     * - 没有目标时，指针随机旋转。
-     *
-     * 实现方式：
-     * - 基础模型：wayfinder_of_the_damned；
-     * - 旋转帧：compass_00 ~ compass_31；
-     * - 模型属性：enigmatic_legacy:angle；
-     * - 客户端会根据 angle 自动选择对应帧。
-     *
-     * 需要贴图：
-     * src/main/resources/assets/enigmatic_legacy/textures/item/wayfinder_of_the_damned.png
-     * src/main/resources/assets/enigmatic_legacy/textures/item/compass_00.png
-     * ...
-     * src/main/resources/assets/enigmatic_legacy/textures/item/compass_31.png
-     */
-    private void wayfinderOfTheDamned() {
-        var base = withExistingParent("item/wayfinder_of_the_damned", mcLoc("item/generated"))
-                .texture("layer0", modLoc("item/wayfinder_of_the_damned"));
-
-        for (int frame = 0; frame < 32; frame++) {
-            String frameName = wayfinderFrameName(frame);
-
-            var frameModel = withExistingParent("item/wayfinder_of_the_damned_" + frameName, mcLoc("item/generated"))
-                    .texture("layer0", modLoc("item/compass_" + frameName));
-
-            /*
-             * override 顺序必须从小到大。
-             * 当 angle >= 当前 predicate 时，就会使用当前帧。
-             */
-            base.override()
-                    .predicate(modLoc("angle"), frame / 32.0F)
-                    .model(frameModel)
-                    .end();
-        }
-    }
-
-    /**
-     * 生成烈焰之傲壁垒盾牌模型。
-     * 修复内容：
-     * - 不再使用 item/generated 的普通 2D 物品模型；
-     * - 改为继承原版 minecraft:item/shield；
-     * - 举盾时通过 minecraft:blocking predicate 切换到 shield_blocking 模型；
-     * - 这样才能显示原版盾牌举起、格挡时的大盾视觉效果。
-     * 生成文件：
-     * - assets/enigmatic_legacy/models/item/infernal_shield.json
-     * - assets/enigmatic_legacy/models/item/infernal_shield_blocking.json
-     * 需要贴图：
-     * - assets/enigmatic_legacy/textures/item/infernal_shield.png
+     * 生成烈焰之傲壁垒模型。
+     * 结构来自原项目：
+     * - infernal_shield：根据 minecraft:blocking 切换 idle / blocking；
+     * - idle / blocking：使用 separate_transforms 分离背包 2D 图标和手持 3D 模型；
+     * - in_hand 模型为原项目 Blockbench 导出的 3D 盾牌模型。
      */
     private void infernalShield() {
-        /*
-         * 举盾状态模型。
-         *
-         * parent 使用 minecraft:item/shield_blocking，
-         * 这是原版盾牌格挡时的模型。
-         */
-        var blockingModel = withExistingParent("item/infernal_shield_blocking", mcLoc("item/shield_blocking"))
-                .texture("particle", modLoc("item/infernal_shield"));
+        var inventoryModel = withExistingParent("item/infernal_shield_in_inventory", mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/infernal_shield"));
 
-        /*
-         * 普通盾牌模型。
-         *
-         * parent 使用 minecraft:item/shield，
-         * 并添加 blocking override。
-         *
-         * 当客户端物品属性 minecraft:blocking >= 1.0F 时，
-         * 自动切换到 infernal_shield_blocking。
-         */
-        withExistingParent("item/infernal_shield", mcLoc("item/shield"))
-                .texture("particle", modLoc("item/infernal_shield"))
+        var idleInHandModel = withExistingParent(
+                "item/infernal_shield_idle_in_hand_proxy",
+                modLoc("item/infernal_shield_idle_in_hand")
+        );
+        var blockingInHandModel = withExistingParent(
+                "item/infernal_shield_blocking_in_hand_proxy",
+                modLoc("item/infernal_shield_blocking_in_hand")
+        );
+
+        var idleModel = getBuilder("item/infernal_shield_idle")
+                .guiLight(net.minecraft.client.renderer.block.model.BlockModel.GuiLight.FRONT);
+
+        idleModel.customLoader(SeparateTransformsModelBuilder::begin)
+                .base(inventoryModel)
+                .perspective(ItemDisplayContext.FIRST_PERSON_RIGHT_HAND, idleInHandModel)
+                .perspective(ItemDisplayContext.FIRST_PERSON_LEFT_HAND, idleInHandModel)
+                .perspective(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND, idleInHandModel)
+                .perspective(ItemDisplayContext.THIRD_PERSON_LEFT_HAND, idleInHandModel)
+                .perspective(ItemDisplayContext.HEAD, idleInHandModel)
+                .perspective(ItemDisplayContext.FIXED, idleInHandModel)
+                .perspective(ItemDisplayContext.GROUND, idleInHandModel);
+
+        var blockingModel = getBuilder("item/infernal_shield_blocking")
+                .guiLight(net.minecraft.client.renderer.block.model.BlockModel.GuiLight.FRONT);
+
+        blockingModel.customLoader(SeparateTransformsModelBuilder::begin)
+                .base(inventoryModel)
+                .perspective(ItemDisplayContext.FIRST_PERSON_RIGHT_HAND, blockingInHandModel)
+                .perspective(ItemDisplayContext.FIRST_PERSON_LEFT_HAND, blockingInHandModel)
+                .perspective(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND, blockingInHandModel)
+                .perspective(ItemDisplayContext.THIRD_PERSON_LEFT_HAND, blockingInHandModel)
+                .perspective(ItemDisplayContext.HEAD, blockingInHandModel)
+                .perspective(ItemDisplayContext.FIXED, blockingInHandModel)
+                .perspective(ItemDisplayContext.GROUND, blockingInHandModel);
+
+        getBuilder("item/infernal_shield")
+                .override()
+                .predicate(mcLoc("blocking"), 0.0F)
+                .model(idleModel)
+                .end()
                 .override()
                 .predicate(mcLoc("blocking"), 1.0F)
                 .model(blockingModel)
                 .end();
+    }
+
+    private void wayfinderOfTheDamned() {
+        var baseModel = withExistingParent("item/wayfinder_of_the_damned", mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/compass_00"));
+
+        for (int frame = 0; frame < 32; frame++) {
+            var frameModel = withExistingParent("item/wayfinder_of_the_damned_" + wayfinderFrameName(frame), mcLoc("item/generated"))
+                    .texture("layer0", modLoc("item/compass_" + wayfinderFrameName(frame)));
+
+            baseModel.override()
+                    .predicate(modLoc("angle"), frame / 32.0F)
+                    .model(frameModel)
+                    .end();
+        }
     }
 
     /**
