@@ -118,10 +118,16 @@ public class ItemGenerator extends ItemModelProvider {
         infernalShield();
 
         // 饕餮之锅模型。
-        // 使用 handheld，让它像武器一样拿在手里。
-        // 原项目物品 ID：eldritch_pan
-        withExistingParent("item/eldritch_pan", mcLoc("item/handheld"))
-                .texture("layer0", modLoc("item/eldritch_pan"));
+        // 原项目不是普通 handheld，而是 idle / blocking 两套模型。
+        // 这里生成模型切换入口，具体 3D in_hand 模型使用原项目 JSON。
+        eldritchPan();
+
+//        // 饕餮之锅模型。
+//        // 使用 handheld，让它像武器一样拿在手里。
+//        // 原项目物品 ID：eldritch_pan
+//        withExistingParent("item/eldritch_pan", mcLoc("item/handheld"))
+//                .texture("layer0", modLoc("item/eldritch_pan"));
+
 
         basicItem(ModItems.ETHERIUM_HELMET.getId());
         basicItem(ModItems.ETHERIUM_CHESTPLATE.getId());
@@ -242,6 +248,110 @@ public class ItemGenerator extends ItemModelProvider {
                     .model(frameModel)
                     .end();
         }
+    }
+
+    /**
+     * 生成饕餮之锅模型。
+     * 原项目结构：
+     * - eldritch_pan：
+     *   根据 minecraft:blocking 切换 idle / blocking；
+     * - eldritch_pan_idle：
+     *   背包里使用 2D 动图 eldritch_pan；
+     *   手里使用 3D 模型 eldritch_pan_idle_in_hand；
+     * - eldritch_pan_blocking：
+     *   背包里仍使用 2D 动图 eldritch_pan；
+     *   手里使用 3D 模型 eldritch_pan_blocking_in_hand。
+     * 注意：
+     * - eldritch_pan_idle_in_hand.json 很大，是 Blockbench 导出的模型；
+     * - eldritch_pan_blocking_in_hand.json 继承 idle_in_hand，只改 display；
+     * - 这两个建议直接放静态 JSON，不建议用 datagen 手写元素。
+     */
+    private void eldritchPan() {
+        /*
+         * 背包 / GUI / 掉落物基础图标。
+         *
+         * 这里使用 item/generated + layer0，
+         * 可以正常播放 eldritch_pan.png.mcmeta 动画。
+         */
+        var inventoryModel = withExistingParent("item/eldritch_pan_in_inventory", mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/eldritch_pan"));
+
+        /*
+         * 手持普通状态。
+         *
+         * 这个 parent 指向静态 JSON：
+         * src/main/resources/assets/enigmatic_legacy/models/item/eldritch_pan_idle_in_hand.json
+         */
+        var idleInHandModel = withExistingParent(
+                "item/eldritch_pan_idle_in_hand_proxy",
+                modLoc("item/eldritch_pan_idle_in_hand")
+        );
+
+        /*
+         * 手持格挡状态。
+         *
+         * 这个 parent 指向静态 JSON：
+         * src/main/resources/assets/enigmatic_legacy/models/item/eldritch_pan_blocking_in_hand.json
+         */
+        var blockingInHandModel = withExistingParent(
+                "item/eldritch_pan_blocking_in_hand_proxy",
+                modLoc("item/eldritch_pan_blocking_in_hand")
+        );
+
+        /*
+         * 普通状态模型：
+         * - 背包显示 2D 动图；
+         * - 手里显示 3D 锅。
+         */
+        var idleModel = getBuilder("item/eldritch_pan_idle")
+                .guiLight(net.minecraft.client.renderer.block.model.BlockModel.GuiLight.FRONT);
+
+        idleModel.customLoader(SeparateTransformsModelBuilder::begin)
+                .base(inventoryModel)
+                .perspective(ItemDisplayContext.FIRST_PERSON_RIGHT_HAND, idleInHandModel)
+                .perspective(ItemDisplayContext.FIRST_PERSON_LEFT_HAND, idleInHandModel)
+                .perspective(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND, idleInHandModel)
+                .perspective(ItemDisplayContext.THIRD_PERSON_LEFT_HAND, idleInHandModel)
+                .perspective(ItemDisplayContext.HEAD, idleInHandModel)
+                .perspective(ItemDisplayContext.FIXED, idleInHandModel)
+                .perspective(ItemDisplayContext.GROUND, idleInHandModel);
+
+        /*
+         * 格挡状态模型：
+         * - 背包仍显示 2D 动图；
+         * - 手里切换到 blocking display。
+         */
+        var blockingModel = getBuilder("item/eldritch_pan_blocking")
+                .guiLight(net.minecraft.client.renderer.block.model.BlockModel.GuiLight.FRONT);
+
+        blockingModel.customLoader(SeparateTransformsModelBuilder::begin)
+                .base(inventoryModel)
+                .perspective(ItemDisplayContext.FIRST_PERSON_RIGHT_HAND, blockingInHandModel)
+                .perspective(ItemDisplayContext.FIRST_PERSON_LEFT_HAND, blockingInHandModel)
+                .perspective(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND, blockingInHandModel)
+                .perspective(ItemDisplayContext.THIRD_PERSON_LEFT_HAND, blockingInHandModel)
+                .perspective(ItemDisplayContext.HEAD, blockingInHandModel)
+                .perspective(ItemDisplayContext.FIXED, blockingInHandModel)
+                .perspective(ItemDisplayContext.GROUND, blockingInHandModel);
+
+        /*
+         * 总入口模型。
+         *
+         * 未格挡：
+         * minecraft:blocking = 0 -> eldritch_pan_idle
+         *
+         * 正在格挡：
+         * minecraft:blocking = 1 -> eldritch_pan_blocking
+         */
+        getBuilder("item/eldritch_pan")
+                .override()
+                .predicate(mcLoc("blocking"), 0.0F)
+                .model(idleModel)
+                .end()
+                .override()
+                .predicate(mcLoc("blocking"), 1.0F)
+                .model(blockingModel)
+                .end();
     }
 
     /**

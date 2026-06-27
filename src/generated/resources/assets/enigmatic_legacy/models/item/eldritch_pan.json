@@ -1,6 +1,16 @@
 {
-  "parent": "minecraft:item/handheld",
-  "textures": {
-    "layer0": "enigmatic_legacy:item/eldritch_pan"
-  }
+  "overrides": [
+    {
+      "model": "enigmatic_legacy:item/eldritch_pan_idle",
+      "predicate": {
+        "minecraft:blocking": 0.0
+      }
+    },
+    {
+      "model": "enigmatic_legacy:item/eldritch_pan_blocking",
+      "predicate": {
+        "minecraft:blocking": 1.0
+      }
+    }
+  ]
 }

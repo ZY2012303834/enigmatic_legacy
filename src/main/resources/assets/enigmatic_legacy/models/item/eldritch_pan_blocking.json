@@ -1,0 +1,30 @@
+{
+  "loader": "neoforge:separate_transforms",
+  "gui_light": "front",
+  "base": {
+    "parent": "enigmatic_legacy:item/eldritch_pan_in_inventory"
+  },
+  "perspectives": {
+    "firstperson_righthand": {
+      "parent": "enigmatic_legacy:item/eldritch_pan_blocking_in_hand"
+    },
+    "firstperson_lefthand": {
+      "parent": "enigmatic_legacy:item/eldritch_pan_blocking_in_hand"
+    },
+    "thirdperson_righthand": {
+      "parent": "enigmatic_legacy:item/eldritch_pan_blocking_in_hand"
+    },
+    "thirdperson_lefthand": {
+      "parent": "enigmatic_legacy:item/eldritch_pan_blocking_in_hand"
+    },
+    "head": {
+      "parent": "enigmatic_legacy:item/eldritch_pan_blocking_in_hand"
+    },
+    "fixed": {
+      "parent": "enigmatic_legacy:item/eldritch_pan_blocking_in_hand"
+    },
+    "ground": {
+      "parent": "enigmatic_legacy:item/eldritch_pan_blocking_in_hand"
+    }
+  }
+}
