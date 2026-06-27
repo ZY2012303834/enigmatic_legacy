@@ -91,55 +91,15 @@ public class AbyssalHeart extends Item {
 
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
 
-            /*
-             * 读取客户端当前玩家。
-             *
-             * appendHoverText 没有直接传入 Player，
-             * 所以这里使用 Minecraft.getInstance().player 获取本地玩家。
-             *
-             * 这个 tooltip 只在客户端渲染，所以可以这样读取。
-             */
             Player localPlayer = Minecraft.getInstance().player;
 
             if (localPlayer != null) {
-                long cursedTicks = AbyssalHeartHelper.getCursedPlayTime(localPlayer);
-                long totalTicks = AbyssalHeartHelper.getTotalPlayTime(localPlayer);
-
-                String cursedTime = AbyssalHeartHelper.formatPlayTime(cursedTicks);
-                String totalTime = AbyssalHeartHelper.formatPlayTime(totalTicks);
                 String currentPercent = AbyssalHeartHelper.getSufferingPercentage(localPlayer);
-                String requiredPercent = AbyssalHeartHelper.getRequiredSufferingPercentage();
 
-                // 当前七咒佩戴时间 / 总游戏时间。
                 tooltip.add(Component.translatable(
-                        "tooltip.enigmatic_legacy.abyssal_heart.current_time",
-                        cursedTime,
-                        totalTime
+                        "tooltip.enigmatic_legacy.abyssal_heart.current_cursed_ratio",
+                        currentPercent
                 ).withStyle(ChatFormatting.GOLD));
-
-                // 当前七咒折磨比例 / 要求比例。
-                tooltip.add(Component.translatable(
-                        "tooltip.enigmatic_legacy.abyssal_heart.current_ratio",
-                        currentPercent,
-                        requiredPercent
-                ).withStyle(ChatFormatting.GOLD));
-
-                tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
-
-                /*
-                 * 根据当前比例显示资格状态。
-                 *
-                 * 注意：
-                 * AbyssalHeartHelper.isWorthy(...) 同时要求玩家当前佩戴七咒之戒。
-                 * 这里 tooltip 只显示比例是否达标，避免玩家没戴戒指时看不懂时间进度。
-                 */
-                if (AbyssalHeartHelper.getSufferingFraction(localPlayer) >= AbyssalHeartHelper.REQUIRED_SUFFERING_FRACTION) {
-                    tooltip.add(Component.translatable("tooltip.enigmatic_legacy.abyssal_heart.worthy")
-                            .withStyle(ChatFormatting.GREEN));
-                } else {
-                    tooltip.add(Component.translatable("tooltip.enigmatic_legacy.abyssal_heart.not_worthy")
-                            .withStyle(ChatFormatting.DARK_RED));
-                }
             }
 
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));

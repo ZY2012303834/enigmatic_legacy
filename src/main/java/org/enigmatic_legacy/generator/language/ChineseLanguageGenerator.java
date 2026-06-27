@@ -508,17 +508,8 @@ public class ChineseLanguageGenerator extends LanguageProvider {
 
         add("message.enigmatic_legacy.abyssal_heart.unworthy", "深渊之心拒绝了你。当前七咒折磨时间：%s / 需要 99.5%。");
 
-        add("tooltip.enigmatic_legacy.abyssal_heart.current_time",
-                "七咒佩戴时间：%s / 总游戏时间：%s");
-
-        add("tooltip.enigmatic_legacy.abyssal_heart.current_ratio",
-                "当前折磨比例：%s / 要求：%s");
-
-        add("tooltip.enigmatic_legacy.abyssal_heart.worthy",
-                "资格已满足。");
-
-        add("tooltip.enigmatic_legacy.abyssal_heart.not_worthy",
-                "资格不足。");
+        add("tooltip.enigmatic_legacy.abyssal_heart.current_cursed_ratio",
+                "当前七咒佩戴时间百分比：%s");
         // end
 
         // 超维之眼
@@ -685,6 +676,7 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.eternallyBound1", "§5一旦佩戴，它便成为你的一部分。");
         add("tooltip.enigmatic_legacy.eternallyBound2", "§4这枚戒指将永远陪伴着你。");
         add("tooltip.enigmatic_legacy.eternallyBound2_creative", "§6需要神的能力才能取下它。");
+        add("tooltip.enigmatic_legacy.cursedRingTimer", "§5当前七咒佩戴时间百分比：§6%1$s");
         add("tooltip.enigmatic_legacy.cursedRing3", "§d七个诅咒将会降临到佩戴者身上：");
         add("tooltip.enigmatic_legacy.cursedRing4", "§5- 使受到的§6任何§5来源的伤害加倍");
         add("tooltip.enigmatic_legacy.cursedRing4_alt", "§5- 使受到的§6任何§5来源的伤害变化为原先的 §6%1$s");

@@ -13,6 +13,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.storage.loot.LootContext;
 import org.enigmatic_legacy.config.ConfigClient;
 import org.enigmatic_legacy.config.ConfigCommon;
+import org.enigmatic_legacy.util.AbyssalHeartHelper;
 import org.enigmatic_legacy.util.CursedRingHelper;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.SlotContext;
@@ -41,6 +42,11 @@ public class CursedRing extends Item implements ICurioItem {
             @NotNull TooltipFlag flag
     ) {
         addTooltip(tooltip, "void");
+        Player localPlayer = Minecraft.getInstance().player;
+
+        if (localPlayer != null) {
+            addTooltip(tooltip, "cursedRingTimer", AbyssalHeartHelper.getSufferingPercentage(localPlayer));
+        }
 
         if (ConfigClient.SHOW_CURIO_SLOT_HINT.get()) {
             tooltip.add(Component.literal("可放入：戒指栏位").withStyle(ChatFormatting.DARK_PURPLE));
@@ -137,6 +143,13 @@ public class CursedRing extends Item implements ICurioItem {
     @Override
     public boolean canEquipFromUse(SlotContext context, ItemStack stack) {
         return false;
+    }
+
+    @Override
+    public void curioTick(SlotContext context, ItemStack stack) {
+        if (context.entity() instanceof Player player) {
+            AbyssalHeartHelper.tickCursedRingWear(player);
+        }
     }
 
     /**

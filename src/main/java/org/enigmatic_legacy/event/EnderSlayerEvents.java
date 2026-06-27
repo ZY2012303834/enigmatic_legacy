@@ -3,6 +3,7 @@ package org.enigmatic_legacy.event;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.monster.Shulker;
@@ -95,8 +96,17 @@ public final class EnderSlayerEvents {
         // 压制目标的传送能力。
         suppressTeleportAbilities(target);
 
-        // 对末地生物登记额外击退。
-        if (EnderSlayer.isEndDweller(target)) {
+        /*
+         * 对末地生物登记额外击退。
+         *
+         * 特殊处理：
+         * - 末影龙仍然属于末地生物；
+         * - 末影之屠仍然对末影龙造成额外伤害；
+         * - 但末影龙不应该被末影之屠击飞。
+         *
+         * 所以这里排除 EnderDragon。
+         */
+        if (EnderSlayer.isEndDweller(target) && !(target instanceof EnderDragon)) {
             KNOCKBACK_MULTIPLIERS.put(
                     target,
                     1.0F + EnderSlayer.END_KNOCKBACK_BONUS

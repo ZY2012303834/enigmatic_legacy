@@ -506,17 +506,8 @@ public class EnglishLanguageGenerator extends LanguageProvider {
 
         add("message.enigmatic_legacy.abyssal_heart.unworthy", "The Heart of the Abyss rejects you. Current cursed time: %s / required 99.5%.");
 
-        add("tooltip.enigmatic_legacy.abyssal_heart.current_time",
-                "Cursed time: %s / Total playtime: %s");
-
-        add("tooltip.enigmatic_legacy.abyssal_heart.current_ratio",
-                "Current torment: %s / Required: %s");
-
-        add("tooltip.enigmatic_legacy.abyssal_heart.worthy",
-                "Requirement fulfilled.");
-
-        add("tooltip.enigmatic_legacy.abyssal_heart.not_worthy",
-                "Requirement not fulfilled.");
+        add("tooltip.enigmatic_legacy.abyssal_heart.current_cursed_ratio",
+                "Current Seven Curses wear percentage: %s");
         // end
 
         // 超维之眼
@@ -681,6 +672,7 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.eternallyBound1", "§5Once worn, it becomes a part of you.");
         add("tooltip.enigmatic_legacy.eternallyBound2", "§4This ring will persist with you forever.");
         add("tooltip.enigmatic_legacy.eternallyBound2_creative", "§6With the power of god, you can unequip it.");
+        add("tooltip.enigmatic_legacy.cursedRingTimer", "§5Current Seven Curses wear percentage: §6%1$s");
         add("tooltip.enigmatic_legacy.cursedRing3", "§dSeven curses will befall whoever bears it:");
         add("tooltip.enigmatic_legacy.cursedRing4", "§5- You receive double damage from §6ANY§5 source.");
         add("tooltip.enigmatic_legacy.cursedRing4_alt", "§5- You receive §6%1$s§5 damage from §6ANY§5 source.");

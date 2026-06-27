@@ -3,7 +3,11 @@ package org.enigmatic_legacy.util;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.entity.player.Player;
+import net.neoforged.neoforge.network.PacketDistributor;
+import org.enigmatic_legacy.network.CursedRingTimerPayload;
 
 import java.util.Locale;
 
@@ -18,7 +22,6 @@ import java.util.Locale;
 public final class AbyssalHeartHelper {
     public static final double REQUIRED_SUFFERING_FRACTION = 0.995D;
 
-    private static final String TOTAL_PLAY_TIME_TAG = "enigmatic_legacy_total_play_time";
     private static final String CURSED_PLAY_TIME_TAG = "enigmatic_legacy_cursed_play_time";
     private static final String ABYSSAL_HEARTS_GAINED_TAG = "enigmatic_legacy_abyssal_hearts_gained";
 
@@ -33,30 +36,20 @@ public final class AbyssalHeartHelper {
     }
 
     /**
-     * 每 tick 记录一次玩家游戏时间。
-     * totalPlayTime：
-     * 玩家在线总时间。
-     * cursedPlayTime：
-     * 玩家佩戴七咒之戒时的在线时间。
+     * 七咒之戒每 tick 调用，记录玩家佩戴七咒之戒的时间。
      */
-    public static void tickPlaytime(Player player) {
-        if (player.level().isClientSide()) {
+    public static void tickCursedRingWear(Player player) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
 
         CompoundTag data = player.getPersistentData();
-
-        long totalPlayTime = data.getLong(TOTAL_PLAY_TIME_TAG);
-        long cursedPlayTime = data.getLong(CURSED_PLAY_TIME_TAG);
-
-        totalPlayTime++;
-
-        if (CursedRingHelper.hasCursedRing(player)) {
-            cursedPlayTime++;
-        }
-
-        data.putLong(TOTAL_PLAY_TIME_TAG, totalPlayTime);
+        long cursedPlayTime = data.getLong(CURSED_PLAY_TIME_TAG) + 1L;
         data.putLong(CURSED_PLAY_TIME_TAG, cursedPlayTime);
+
+        if (player.tickCount % 20 == 0) {
+            syncTimer(serverPlayer);
+        }
     }
 
     /**
@@ -79,10 +72,8 @@ public final class AbyssalHeartHelper {
      * 0.995 = 99.5%
      */
     public static double getSufferingFraction(Player player) {
-        CompoundTag data = player.getPersistentData();
-
-        long totalPlayTime = data.getLong(TOTAL_PLAY_TIME_TAG);
-        long cursedPlayTime = data.getLong(CURSED_PLAY_TIME_TAG);
+        long totalPlayTime = getTotalPlayTime(player);
+        long cursedPlayTime = getCursedPlayTime(player);
 
         if (totalPlayTime <= 0L || cursedPlayTime <= 0L) {
             return 0.0D;
@@ -101,7 +92,11 @@ public final class AbyssalHeartHelper {
      * 这个时间由 AbyssalHeartEvents.onPlayerTick(...) 每 tick 记录。
      */
     public static long getTotalPlayTime(Player player) {
-        return player.getPersistentData().getLong(TOTAL_PLAY_TIME_TAG);
+        if (player instanceof ServerPlayer serverPlayer) {
+            return serverPlayer.getStats().getValue(Stats.CUSTOM.get(Stats.PLAY_TIME));
+        }
+
+        return player.getPersistentData().getLong(CursedRingTimerPayload.CLIENT_TOTAL_PLAY_TIME_TAG);
     }
 
     /**
@@ -178,9 +173,15 @@ public final class AbyssalHeartHelper {
         CompoundTag oldData = oldPlayer.getPersistentData();
         CompoundTag newData = newPlayer.getPersistentData();
 
-        newData.putLong(TOTAL_PLAY_TIME_TAG, oldData.getLong(TOTAL_PLAY_TIME_TAG));
         newData.putLong(CURSED_PLAY_TIME_TAG, oldData.getLong(CURSED_PLAY_TIME_TAG));
         newData.putInt(ABYSSAL_HEARTS_GAINED_TAG, oldData.getInt(ABYSSAL_HEARTS_GAINED_TAG));
+    }
+
+    public static void syncTimer(ServerPlayer player) {
+        PacketDistributor.sendToPlayer(
+                player,
+                new CursedRingTimerPayload(getCursedPlayTime(player), getTotalPlayTime(player))
+        );
     }
 
     public static void sendUnworthyMessage(Player player) {

@@ -13,7 +13,6 @@ import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 import net.neoforged.neoforge.event.entity.player.ItemEntityPickupEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.util.AbyssalHeartHelper;
 import org.enigmatic_legacy.util.CursedRingHelper;
@@ -33,18 +32,6 @@ public final class AbyssalHeartEvents {
     private static final String BOUND_Z_TAG = "enigmatic_legacy_bound_z";
 
     private AbyssalHeartEvents() {
-    }
-
-    /**
-     * 每 tick 记录玩家总游戏时间和佩戴七咒之戒的时间。
-     */
-    @SubscribeEvent
-    public static void onPlayerTick(PlayerTickEvent.Post event) {
-        Player player = event.getEntity();
-
-        if (player instanceof ServerPlayer) {
-            AbyssalHeartHelper.tickPlaytime(player);
-        }
     }
 
     /**
@@ -166,25 +153,67 @@ public final class AbyssalHeartEvents {
         return itemEntity;
     }
 
+    /**
+     * 维持深渊之心悬浮状态。
+     * 修复内容：
+     * - 不再每 tick 调用 setUnlimitedLifetime()；
+     * - setUnlimitedLifetime() 会影响 ItemEntity 的 age；
+     * - ItemEntity 的世界渲染自转依赖 age；
+     * - 如果每 tick 重置 age，就会导致掉落物看起来不自主旋转。
+     * 当前逻辑：
+     * 1. 第一次发现深渊之心时，写入绑定坐标；
+     * 2. 第一次标记时设置无重力、发光、无限寿命；
+     * 3. 后续 tick 只保持无重力、发光、速度清零、位置绑定；
+     * 4. 不再反复重置无限寿命。
+     */
     private static void markAndFreezeAbyssalHeart(ItemEntity itemEntity) {
+        /*
+         * 第一次标记深渊之心。
+         *
+         * 这里只执行一次：
+         * - 写入绑定坐标；
+         * - 设置无限寿命；
+         * - 设置无重力；
+         * - 设置发光。
+         */
         if (!itemEntity.getPersistentData().getBoolean(FLOATING_ABYSSAL_HEART_TAG)) {
             itemEntity.getPersistentData().putBoolean(FLOATING_ABYSSAL_HEART_TAG, true);
+
             itemEntity.getPersistentData().putDouble(BOUND_X_TAG, itemEntity.getX());
             itemEntity.getPersistentData().putDouble(BOUND_Y_TAG, itemEntity.getY());
             itemEntity.getPersistentData().putDouble(BOUND_Z_TAG, itemEntity.getZ());
+
+            /*
+             * 重要：
+             * setUnlimitedLifetime() 只能在第一次标记时调用。
+             * 不要每 tick 调用，否则物品 age 会反复被重置，
+             * 导致掉落物渲染自转异常。
+             */
+            itemEntity.setUnlimitedLifetime();
         }
 
         double x = itemEntity.getPersistentData().getDouble(BOUND_X_TAG);
         double y = itemEntity.getPersistentData().getDouble(BOUND_Y_TAG);
         double z = itemEntity.getPersistentData().getDouble(BOUND_Z_TAG);
 
+        /*
+         * 这些状态可以每 tick 保持：
+         * - 无重力；
+         * - 发光；
+         * - 停止物理速度。
+         *
+         * 但不要在这里继续调用 setUnlimitedLifetime()。
+         */
         itemEntity.setNoGravity(true);
         itemEntity.setGlowingTag(true);
-        itemEntity.setUnlimitedLifetime();
         itemEntity.setDeltaMovement(Vec3.ZERO);
 
         /*
          * 防止被水流、爆炸、实体碰撞或其它模组移动。
+         *
+         * 注意：
+         * teleportTo 只在位置偏移明显时调用，
+         * 避免每 tick 强制传送影响客户端渲染插值。
          */
         if (itemEntity.distanceToSqr(x, y, z) > 0.01D) {
             itemEntity.teleportTo(x, y, z);

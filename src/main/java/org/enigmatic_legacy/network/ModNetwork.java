@@ -41,6 +41,12 @@ public final class ModNetwork {
                 HeartOfCreationGuardPayload::handle
         );
 
+        registrar.playToClient(
+                CursedRingTimerPayload.TYPE,
+                CursedRingTimerPayload.STREAM_CODEC,
+                CursedRingTimerPayload::handle
+        );
+
         registrar.playToServer(
                 ScrollUsePayload.TYPE,
                 ScrollUsePayload.STREAM_CODEC,
