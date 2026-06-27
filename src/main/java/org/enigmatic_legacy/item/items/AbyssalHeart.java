@@ -12,8 +12,8 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.enigmatic_legacy.util.AbyssalHeartHelper;
+import org.enigmatic_legacy.util.CursedSufferingTooltip;
 import org.jetbrains.annotations.NotNull;
-import net.minecraft.client.Minecraft;
 
 import java.util.List;
 
@@ -60,12 +60,12 @@ public class AbyssalHeart extends Item {
 
     /**
      * 深渊之心提示文本。
-     * 修复内容：
-     * - 按住 Shift 时显示当前玩家的七咒佩戴时间；
-     * - 显示当前七咒折磨比例；
-     * - 显示要求比例 99.5%；
-     * - 如果已经达标，显示“资格已满足”；
-     * - 如果未达标，显示“资格不足”。
+     * 修改内容：
+     * 1. 不再使用 abyssal_heart.requirement 这种单独语言 key；
+     * 2. 改为所有 99.5% 七咒折磨物品共用 cursed_suffering 语言 key；
+     * 3. Shift 介绍最底部显示：
+     *    - 需要在七咒之戒折磨下度过总游戏时间的 99.5%；
+     *    - 当前受七咒折磨的时间百分比。
      */
     @Override
     public void appendHoverText(
@@ -79,37 +79,18 @@ public class AbyssalHeart extends Item {
         if (Screen.hasShiftDown()) {
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.abyssal_heart.1")
                     .withStyle(ChatFormatting.GRAY));
-
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.abyssal_heart.2")
                     .withStyle(ChatFormatting.GRAY));
-
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.abyssal_heart.3")
                     .withStyle(ChatFormatting.GRAY));
-
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.abyssal_heart.4")
                     .withStyle(ChatFormatting.DARK_PURPLE));
 
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
-
-            Player localPlayer = Minecraft.getInstance().player;
-
-            if (localPlayer != null) {
-                String currentPercent = AbyssalHeartHelper.getSufferingPercentage(localPlayer);
-
-                tooltip.add(Component.translatable(
-                        "tooltip.enigmatic_legacy.abyssal_heart.current_cursed_ratio",
-                        currentPercent
-                ).withStyle(ChatFormatting.GOLD));
-            }
-
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
-
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.abyssal_heart.requirement")
-                    .withStyle(ChatFormatting.DARK_RED));
+            // 最底部统一显示七咒折磨 99.5% 要求和当前百分比。
+            CursedSufferingTooltip.appendTooltip(tooltip);
         } else {
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.abyssal_heart.short")
                     .withStyle(ChatFormatting.DARK_PURPLE));
-
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hold_shift")
                     .withStyle(ChatFormatting.DARK_GRAY));
         }

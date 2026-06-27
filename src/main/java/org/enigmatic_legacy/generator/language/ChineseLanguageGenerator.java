@@ -526,12 +526,8 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.abyssal_heart.2", "它会悬浮在末影龙死亡的位置。");
         add("tooltip.enigmatic_legacy.abyssal_heart.3", "只有真正承受七咒折磨之人才能触碰它。");
         add("tooltip.enigmatic_legacy.abyssal_heart.4", "你必须在七咒之戒的折磨下度过总游戏时间的 99.5%。");
-        add("tooltip.enigmatic_legacy.abyssal_heart.requirement", "未达资格者无法捡起或使用。");
 
         add("message.enigmatic_legacy.abyssal_heart.unworthy", "深渊之心拒绝了你，当前七咒佩戴时间百分比：%s。");
-
-        add("tooltip.enigmatic_legacy.abyssal_heart.current_cursed_ratio",
-                "当前七咒佩戴时间百分比：%s");
         // end
 
         // 超维之眼
@@ -784,7 +780,6 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.the_infinitum.8", "每次攻击都会施加恐怖的负面效果。");
         add("tooltip.enigmatic_legacy.the_infinitum.9", "手持时，有 %s 概率使本应致命的");
         add("tooltip.enigmatic_legacy.the_infinitum.10", "伤害无法杀死你。");
-        add("tooltip.enigmatic_legacy.worthy_ones_only", "唯有资格已达成者才能驾驭它的真理。");
 
         // Amulet of Ascension / 飞升护符
         addItem(ModItems.ASCENSION_AMULET, "飞升护符");
@@ -822,6 +817,11 @@ public class ChineseLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.eldritch_amulet.current_cursed_time",
                 "当前七咒佩戴时间：%s");
+
+
+        // 七咒折磨 99.5% 使用资格提示，所有需要该资格的物品共用这一组语言 key。
+        add("tooltip.enigmatic_legacy.cursed_suffering.requirement", "你需要在七咒之戒的折磨下度过总游戏时间的99.5%才能使用该物品。");
+        add("tooltip.enigmatic_legacy.cursed_suffering.current_percentage", "当前受七咒折磨的时间百分比：%s");
     }
 
     private void addChineseCursedRingTooltips() {

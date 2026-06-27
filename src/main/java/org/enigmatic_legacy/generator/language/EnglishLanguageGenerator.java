@@ -524,12 +524,9 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.abyssal_heart.2", "It floats where the Ender Dragon died.");
         add("tooltip.enigmatic_legacy.abyssal_heart.3", "Only one truly tormented by the Seven Curses may touch it.");
         add("tooltip.enigmatic_legacy.abyssal_heart.4", "You must spend 99.5% of your total playtime under the torment of the Ring of the Seven Curses.");
-        add("tooltip.enigmatic_legacy.abyssal_heart.requirement", "The unworthy cannot pick up or use this item.");
 
         add("message.enigmatic_legacy.abyssal_heart.unworthy", "The Heart of the Abyss rejects you, current Seven Curses wear percentage: %s.");
 
-        add("tooltip.enigmatic_legacy.abyssal_heart.current_cursed_ratio",
-                "Current Seven Curses wear percentage: %s");
         // end
 
         // 超维之眼
@@ -780,7 +777,6 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.the_infinitum.8", "Each attack inflicts horrific debuffs.");
         add("tooltip.enigmatic_legacy.the_infinitum.9", "When held, provides %s Chance that otherwise");
         add("tooltip.enigmatic_legacy.the_infinitum.10", "lethal damage won't kill you.");
-        add("tooltip.enigmatic_legacy.worthy_ones_only", "Only the worthy may wield its truth.");
 
         // Amulet of Ascension / 飞升护符
         addItem(ModItems.ASCENSION_AMULET, "Amulet of Ascension");
@@ -818,6 +814,10 @@ public class EnglishLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.eldritch_amulet.current_cursed_time",
                 "Current Seven Curses time: %s");
+
+        // 七咒 99.5% .
+        add("tooltip.enigmatic_legacy.cursed_suffering.requirement", "You need to spend 99.5% of your total playtime under the torment of the Ring of the Seven Curses to use this item.");
+        add("tooltip.enigmatic_legacy.cursed_suffering.current_percentage", "Current Seven Curses torment percentage: %s");
     }
 
     private void addEnglishCursedRingTooltips() {

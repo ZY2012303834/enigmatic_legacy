@@ -8,6 +8,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import org.enigmatic_legacy.util.AbyssalHeartHelper;
+import org.enigmatic_legacy.util.CursedSufferingTooltip;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -31,6 +32,13 @@ public class EldritchAmulet extends AscensionAmulet {
     public static final double GAZE_RANGE = 128.0D;
     public static final double GAZE_RADIUS = 3.0D;
 
+    /**
+     * 轻蔑之约提示文本。
+     * 修改内容：
+     * 1. 非 Shift 时只显示简短介绍和按住 Shift；
+     * 2. Shift 介绍显示完整效果；
+     * 3. Shift 介绍最底部统一显示七咒折磨 99.5% 要求和当前百分比。
+     */
     @Override
     public void appendHoverText(
             @NotNull ItemStack stack,
@@ -40,43 +48,19 @@ public class EldritchAmulet extends AscensionAmulet {
     ) {
         tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
 
-        /*
-         * 非 Shift：
-         * 只显示简短介绍。
-         */
         if (!Screen.hasShiftDown()) {
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.eldritch_amulet.1")
                     .withStyle(ChatFormatting.DARK_PURPLE));
-
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.eldritch_amulet.2")
-                    .withStyle(ChatFormatting.GRAY));
-
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.eldritch_amulet.3")
-                    .withStyle(ChatFormatting.GRAY));
-
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
-
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hold_shift")
                     .withStyle(ChatFormatting.DARK_GRAY));
-
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
-
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.worthy_ones_only")
-                    .withStyle(ChatFormatting.DARK_RED));
-
             return;
         }
 
-        /*
-         * Shift：
-         * 显示完整介绍。
-         */
         tooltip.add(Component.translatable("tooltip.enigmatic_legacy.eldritch_amulet.1")
                 .withStyle(ChatFormatting.DARK_PURPLE));
-
         tooltip.add(Component.translatable("tooltip.enigmatic_legacy.eldritch_amulet.2")
                 .withStyle(ChatFormatting.GRAY));
-
         tooltip.add(Component.translatable("tooltip.enigmatic_legacy.eldritch_amulet.3")
                 .withStyle(ChatFormatting.GRAY));
 
@@ -84,7 +68,6 @@ public class EldritchAmulet extends AscensionAmulet {
 
         tooltip.add(Component.translatable("tooltip.enigmatic_legacy.eldritch_amulet.4")
                 .withStyle(ChatFormatting.DARK_PURPLE));
-
         tooltip.add(Component.translatable("tooltip.enigmatic_legacy.eldritch_amulet.5")
                 .withStyle(ChatFormatting.GRAY));
 
@@ -92,31 +75,13 @@ public class EldritchAmulet extends AscensionAmulet {
 
         tooltip.add(Component.translatable("curios.modifiers.charm")
                 .withStyle(ChatFormatting.GOLD));
-
         tooltip.add(Component.translatable("tooltip.enigmatic_legacy.eldritch_amulet.stat.1")
                 .withStyle(ChatFormatting.GOLD));
-
         tooltip.add(Component.translatable("tooltip.enigmatic_legacy.eldritch_amulet.stat.2")
                 .withStyle(ChatFormatting.GOLD));
 
-        /*
-         * Shift 介绍最底下显示资格时间。
-         *
-         * 要求：
-         * - 需要的七咒佩戴时间；
-         * - 当前的七咒佩戴时间。
-         *
-         * 计算方式：
-         * - 总游戏时间来自原版 PLAY_TIME 统计；
-         * - 当前七咒佩戴时间来自 AbyssalHeartHelper 记录；
-         * - 需要七咒佩戴时间 = 总游戏时间 × 99.5%。
-         */
-        appendCursedRingTimeTooltip(tooltip);
-
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
-
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.worthy_ones_only")
-                .withStyle(ChatFormatting.DARK_RED));
+        // 最底部统一显示七咒折磨 99.5% 要求和当前百分比。
+        CursedSufferingTooltip.appendTooltip(tooltip);
     }
 
     /**

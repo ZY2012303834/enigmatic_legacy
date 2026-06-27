@@ -26,6 +26,7 @@ import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.util.AbyssalHeartHelper;
 import org.enigmatic_legacy.util.CursedRingHelper;
+import org.enigmatic_legacy.util.CursedSufferingTooltip;
 import org.jetbrains.annotations.NotNull;
 import vazkii.patchouli.api.PatchouliAPI;
 
@@ -162,6 +163,13 @@ public class TheInfinitum extends Item {
         return true;
     }
 
+    /**
+     * 无止之言提示文本。
+     * 修改内容：
+     * 1. 普通介绍只提示按住 Shift；
+     * 2. Shift 介绍最底部统一显示七咒折磨 99.5% 要求；
+     * 3. 删除原本分散的 worthy_ones_only 提示。
+     */
     @Override
     public void appendHoverText(
             @NotNull ItemStack stack,
@@ -175,10 +183,8 @@ public class TheInfinitum extends Item {
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.the_infinitum.1")
                     .withStyle(ChatFormatting.DARK_PURPLE));
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hold_shift"));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.cursed_ones_only")
-                    .withStyle(ChatFormatting.RED));
+            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hold_shift")
+                    .withStyle(ChatFormatting.DARK_GRAY));
             return;
         }
 
@@ -195,29 +201,38 @@ public class TheInfinitum extends Item {
                 "tooltip.enigmatic_legacy.the_infinitum.4",
                 Component.literal("+200%").withStyle(ChatFormatting.GOLD)
         ).withStyle(ChatFormatting.LIGHT_PURPLE));
+
         tooltip.add(Component.translatable(
                 "tooltip.enigmatic_legacy.the_infinitum.5",
                 Component.literal("+200%").withStyle(ChatFormatting.GOLD)
         ).withStyle(ChatFormatting.LIGHT_PURPLE));
+
         tooltip.add(Component.translatable(
                 "tooltip.enigmatic_legacy.the_infinitum.6",
                 Component.literal("+10%").withStyle(ChatFormatting.GOLD)
         ).withStyle(ChatFormatting.LIGHT_PURPLE));
+
         tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+
         tooltip.add(Component.translatable("tooltip.enigmatic_legacy.the_infinitum.7")
                 .withStyle(ChatFormatting.DARK_PURPLE));
+
         tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+
         tooltip.add(Component.translatable("tooltip.enigmatic_legacy.the_infinitum.8")
                 .withStyle(ChatFormatting.DARK_PURPLE));
+
         tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+
         tooltip.add(Component.translatable(
                 "tooltip.enigmatic_legacy.the_infinitum.9",
                 Component.literal("85%").withStyle(ChatFormatting.GOLD)
         ).withStyle(ChatFormatting.DARK_PURPLE));
+
         tooltip.add(Component.translatable("tooltip.enigmatic_legacy.the_infinitum.10")
                 .withStyle(ChatFormatting.DARK_PURPLE));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.worthy_ones_only")
-                .withStyle(ChatFormatting.RED));
+
+        // 最底部统一显示七咒折磨 99.5% 要求和当前百分比。
+        CursedSufferingTooltip.appendTooltip(tooltip);
     }
 }
