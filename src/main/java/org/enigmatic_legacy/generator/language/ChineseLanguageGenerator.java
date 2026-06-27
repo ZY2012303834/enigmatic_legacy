@@ -837,14 +837,13 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.eldritch_amulet.modifier.green",
                 "%s 挖掘效率");
 
-        add("tooltip.enigmatic_legacy.eldritch_amulet.modifier.black",
-                "%s 生命偷取");
-
         add("tooltip.enigmatic_legacy.eldritch_amulet.modifier.blue",
                 "%s 游泳速度");
 
-        add("tooltip.enigmatic_legacy.eldritch_amulet.stat.2",
-                "额外 %s 生命偷取");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.modifier.lifesteal_total",
+                "%s 生命偷取");
+
+
 
         // 飞升护符 / Amulet of Ascension
         addItem(ModItems.ASCENSION_AMULET, "飞升护符");

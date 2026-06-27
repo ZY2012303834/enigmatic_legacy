@@ -869,14 +869,12 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.eldritch_amulet.modifier.green",
                 "%s Mining Efficiency");
 
-        add("tooltip.enigmatic_legacy.eldritch_amulet.modifier.black",
-                "%s Lifesteal");
-
         add("tooltip.enigmatic_legacy.eldritch_amulet.modifier.blue",
                 "%s Swim Speed");
 
-        add("tooltip.enigmatic_legacy.eldritch_amulet.stat.2",
-                "%s Additional Lifesteal");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.modifier.lifesteal_total",
+                "%s Lifesteal");
+
 
         // Shared tooltip terms for partial coloring
         add("tooltip.enigmatic_legacy.term.negative_effects", "negative effects");

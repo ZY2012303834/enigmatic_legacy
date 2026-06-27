@@ -132,18 +132,18 @@ public class EldritchAmulet extends AscensionAmulet {
         ));
 
         tooltip.add(SpellstoneTooltip.text(
-                "tooltip.enigmatic_legacy.eldritch_amulet.modifier.black",
-                SpellstoneTooltip.percent("10%")
-        ));
-
-        tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.eldritch_amulet.modifier.blue",
                 SpellstoneTooltip.percent("+25%")
         ));
 
+        /*
+         * 黑色神秘护符提供 10% 生命偷取；
+         * 轻蔑之约自身额外提供 +15% 生命偷取；
+         * 为避免 tooltip 出现两行生命偷取，这里合并显示为 25% 生命偷取。
+         */
         tooltip.add(SpellstoneTooltip.text(
-                "tooltip.enigmatic_legacy.eldritch_amulet.stat.2",
-                SpellstoneTooltip.percent("+15%")
+                "tooltip.enigmatic_legacy.eldritch_amulet.modifier.lifesteal_total",
+                SpellstoneTooltip.percent("25%")
         ));
 
         // 最底部统一显示七咒折磨 99.5% 要求和当前百分比。
