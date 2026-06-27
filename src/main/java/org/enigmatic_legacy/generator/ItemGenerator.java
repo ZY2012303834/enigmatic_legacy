@@ -105,6 +105,10 @@ public class ItemGenerator extends ItemModelProvider {
         // angle 属性由 WayfinderClientEvents 在客户端注册。
         wayfinderOfTheDamned();    // 被诅咒者的寻路指针
 
+        // 末影之屠模型。
+        // 使用 handheld，保证拿在手里像剑一样显示。
+        withExistingParent("item/ender_slayer", mcLoc("item/handheld"))
+                .texture("layer0", modLoc("item/ender_slayer"));
 
         basicItem(ModItems.ETHERIUM_HELMET.getId());
         basicItem(ModItems.ETHERIUM_CHESTPLATE.getId());

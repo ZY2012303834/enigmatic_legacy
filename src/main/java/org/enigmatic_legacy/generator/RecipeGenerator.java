@@ -558,5 +558,21 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('R', Items.COMPASS)
                 .unlockedBy("has_soul_crystal", has(ModItems.SOUL_CRYSTAL.get()))
                 .save(output);
+
+        // 末影之屠 / The Ender Slayer
+        // 邪恶精髓 / 黑曜石 / 邪恶精髓
+        // 末影之眼 / 黑曜石 / 末影之眼
+        // 恶魂之泪 / 木棍   / 恶魂之泪
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.ENDER_SLAYER.get())
+                .pattern("EOE")
+                .pattern("IOI")
+                .pattern("TST")
+                .define('E', ModItems.EVIL_ESSENCE.get())
+                .define('O', Items.OBSIDIAN)
+                .define('I', Items.ENDER_EYE)
+                .define('T', Items.GHAST_TEAR)
+                .define('S', Items.STICK)
+                .unlockedBy("has_evil_essence", has(ModItems.EVIL_ESSENCE.get()))
+                .save(output);
     }
 }

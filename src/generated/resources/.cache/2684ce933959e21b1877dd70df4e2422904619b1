@@ -1,7 +1,8 @@
-// 1.21.1	2026-06-27T08:20:23.9221833	vanilla/Recipes
+// 1.21.1	2026-06-27T09:23:04.2546356	vanilla/Recipes
 138cca5fc2d36a468976c88c266618e68aa51d88 data/enigmatic_legacy/advancement/recipes/building_blocks/astral_dust_sack.json
 75128c3d277fd90fca1df4cc9f996933af7f7241 data/enigmatic_legacy/advancement/recipes/building_blocks/etherium_block.json
 70a559dbe3db33a763c165b60a23730d9e9f955b data/enigmatic_legacy/advancement/recipes/combat/axe_of_executioner.json
+6f2f8466024a024d0a2962dd3dae3da67c0e3324 data/enigmatic_legacy/advancement/recipes/combat/ender_slayer.json
 7472e63295f55aa04be870eb8e30e7f202e9fa38 data/enigmatic_legacy/advancement/recipes/combat/etherium_axe.json
 637101299415463cf05a1183f0715c8bbfb9386d data/enigmatic_legacy/advancement/recipes/combat/etherium_boots.json
 5d9af61a64d9292a166c9e87e447c200bf060869 data/enigmatic_legacy/advancement/recipes/combat/etherium_chestplate.json
@@ -54,6 +55,7 @@ b1cef9a3a5db619747749b9dfcb99a26c5e44ee2 data/enigmatic_legacy/recipe/enchantmen
 a609c2448e884e3d3cae940daaa368c7933133f0 data/enigmatic_legacy/recipe/enchantment_transposing.json
 a3b72831dbddf7781e03cb59142517b6b6c68533 data/enigmatic_legacy/recipe/ender_ring.json
 3aa049f53d180ba99760b21e135657624ae584a9 data/enigmatic_legacy/recipe/ender_rod.json
+2626370a303ae762c3ab9fa75e7cd840b6a93d3d data/enigmatic_legacy/recipe/ender_slayer.json
 18ab948903ba1f4eb227d62bd7e89fdea5a700d0 data/enigmatic_legacy/recipe/etherium_axe.json
 793bd4e80692e9efccddd1eebcd84c988695217f data/enigmatic_legacy/recipe/etherium_block.json
 8f8a0b2bf4d6a776633bcc11239db349b6d8def5 data/enigmatic_legacy/recipe/etherium_block_uncrafting.json

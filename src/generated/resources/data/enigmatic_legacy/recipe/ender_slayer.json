@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "E": {
+      "item": "enigmatic_legacy:evil_essence"
+    },
+    "I": {
+      "item": "minecraft:ender_eye"
+    },
+    "O": {
+      "item": "minecraft:obsidian"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "T": {
+      "item": "minecraft:ghast_tear"
+    }
+  },
+  "pattern": [
+    "EOE",
+    "IOI",
+    "TST"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:ender_slayer"
+  }
+}

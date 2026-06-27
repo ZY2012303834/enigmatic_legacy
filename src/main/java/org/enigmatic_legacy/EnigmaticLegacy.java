@@ -54,6 +54,8 @@ public class EnigmaticLegacy {
         modEventBus.addListener(DamageTagGenerator::gatherData);
         modEventBus.addListener(DamageTypeGenerator::gatherData);
 
+
+
         modEventBus.addListener(InjectLootTableGenerator::gatherData);
         modEventBus.addListener(GlobalLootModifierGenerator::gatherData);
 
@@ -66,6 +68,8 @@ public class EnigmaticLegacy {
         // 休眠之眼获取方式
         // 玩家第一次打开战利品箱时生成 1 个休眠之眼，并且每个玩家只会生成一次。
         NeoForge.EVENT_BUS.register(EnigmaticEyeObtainEvents.class);
+        // 末影之屠事件
+        NeoForge.EVENT_BUS.register(EnderSlayerEvents.class);
 
         NeoForge.EVENT_BUS.register(TeleportParticleEvents.class);
         NeoForge.EVENT_BUS.register(EnderRingEvents.class);

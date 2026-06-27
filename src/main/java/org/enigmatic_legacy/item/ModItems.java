@@ -13,6 +13,7 @@ import org.enigmatic_legacy.item.items.charm.*;
 import org.enigmatic_legacy.item.items.scroll.*;
 import org.enigmatic_legacy.item.items.spellstone.*;
 import org.enigmatic_legacy.item.items.sword.AxeOfExecutioner;
+import org.enigmatic_legacy.item.items.sword.EnderSlayer;
 import org.enigmatic_legacy.item.items.sword.EtheriumBroadsword;
 import org.enigmatic_legacy.item.items.tool.EtheriumPickaxe;
 import org.enigmatic_legacy.item.items.tool.EtheriumShovel;
@@ -86,6 +87,9 @@ public final class ModItems {
     public static final DeferredItem<EtheriumArmorItem> ETHERIUM_CHESTPLATE = ITEMS.register("etherium_chestplate", () -> new EtheriumArmorItem(ArmorItem.Type.CHESTPLATE)); // 以太胸甲
     public static final DeferredItem<EtheriumArmorItem> ETHERIUM_LEGGINGS = ITEMS.register("etherium_leggings", () -> new EtheriumArmorItem(ArmorItem.Type.LEGGINGS)); // 以太护腿
     public static final DeferredItem<EtheriumArmorItem> ETHERIUM_BOOTS = ITEMS.register("etherium_boots", () -> new EtheriumArmorItem(ArmorItem.Type.BOOTS)); // 以太靴子
+    // 末影之屠 / The Ender Slayer
+// 七咒遗物，专门用于对抗末地生物。
+    public static final DeferredItem<EnderSlayer> ENDER_SLAYER = ITEMS.register("ender_slayer", EnderSlayer::new);
 
     // 术石
     public static final DeferredItem<GolemHeart> GOLEM_HEART = ITEMS.register("golem_heart", GolemHeart::new); // 魔像之心

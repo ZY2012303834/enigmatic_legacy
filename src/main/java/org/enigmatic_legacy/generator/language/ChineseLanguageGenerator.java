@@ -636,6 +636,33 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5按住 §6Shift§5 查看详情。");
         // end
+
+        // The Ender Slayer / 末影之屠
+        addItem(ModItems.ENDER_SLAYER, "末影之屠");
+
+        add("tooltip.enigmatic_legacy.ender_slayer.1",
+                "一柄为终结末地眷族而铸成的利刃。");
+
+        add("tooltip.enigmatic_legacy.ender_slayer.2",
+                "它的锋刃渴求着末影之血。");
+
+        add("tooltip.enigmatic_legacy.ender_slayer.3",
+                "对末地生物造成 %s 伤害。");
+
+        add("tooltip.enigmatic_legacy.ender_slayer.4",
+                "对末地生物造成 %s 击退。");
+
+        add("tooltip.enigmatic_legacy.ender_slayer.5",
+                "命中末影人和潜影贝时，会暂时压制它们的传送。");
+
+        add("tooltip.enigmatic_legacy.ender_slayer.6",
+                "命中玩家时，会压制末影珍珠、召回药水、扭曲魔镜、");
+
+        add("tooltip.enigmatic_legacy.ender_slayer.7",
+                "星云之眼和非欧立方的传送能力。");
+
+        add("tooltip.enigmatic_legacy.ender_slayer.8",
+                "在末地中，满蓄力攻击末影人会变得极其致命。");
     }
 
     private void addChineseCursedRingTooltips() {

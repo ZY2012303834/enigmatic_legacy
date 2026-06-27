@@ -634,6 +634,33 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.wayfinder_of_the_damned.2",
                 "Points toward the nearest Soul Crystal in the current dimension.");
         // end
+
+        // The Ender Slayer / 末影之屠
+        addItem(ModItems.ENDER_SLAYER, "The Ender Slayer");
+
+        add("tooltip.enigmatic_legacy.ender_slayer.1",
+                "A blade made to bring an end to those who dwell in The End.");
+
+        add("tooltip.enigmatic_legacy.ender_slayer.2",
+                "Its edge hungers for ender flesh.");
+
+        add("tooltip.enigmatic_legacy.ender_slayer.3",
+                "Deals %s damage against dwellers of The End.");
+
+        add("tooltip.enigmatic_legacy.ender_slayer.4",
+                "Deals %s knockback against dwellers of The End.");
+
+        add("tooltip.enigmatic_legacy.ender_slayer.5",
+                "Suppresses teleportation of Endermen and Shulkers.");
+
+        add("tooltip.enigmatic_legacy.ender_slayer.6",
+                "Suppresses Ender Pearls, Recall Potions, Twisted Mirror,");
+
+        add("tooltip.enigmatic_legacy.ender_slayer.7",
+                "Eye of the Nebula and Non-Euclidean Cube when striking players.");
+
+        add("tooltip.enigmatic_legacy.ender_slayer.8",
+                "In The End, fully charged strikes against Endermen become devastating.");
     }
 
     private void addEnglishCursedRingTooltips() {

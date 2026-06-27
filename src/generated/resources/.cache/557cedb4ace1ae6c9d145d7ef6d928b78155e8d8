@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-27T08:41:04.025663	vanilla/Item Models: enigmatic_legacy
+// 1.21.1	2026-06-27T09:23:04.2473565	vanilla/Item Models: enigmatic_legacy
 aaf9eff73642636d85d6ecd1627b8303f5153a76 assets/enigmatic_legacy/models/item/abyssal_heart.json
 79e416a4d6e90035107f541617b7d4a2d2d7abbb assets/enigmatic_legacy/models/item/angel_blessing.json
 71ad4196d7e8a842e7122ea637f5096bd1de67b7 assets/enigmatic_legacy/models/item/astral_dust.json
@@ -18,6 +18,7 @@ c386ed909c185c9f51711d9f360d065d4db06807 assets/enigmatic_legacy/models/item/ear
 ab589ae9832b07f2651bd6f07713a04c5c8bf1fd assets/enigmatic_legacy/models/item/enchantment_transposer.json
 5ff25963876aadf179ec247da2b5b09f9ff0d8ec assets/enigmatic_legacy/models/item/ender_ring.json
 b03e79e998b8c55fa67f589b2e05892163cc5f9b assets/enigmatic_legacy/models/item/ender_rod.json
+13e8cac81b073bfa437da06c09bafa1e671ea4b9 assets/enigmatic_legacy/models/item/ender_slayer.json
 a89cff20e9b088eb69e98f683aefbac5d262be80 assets/enigmatic_legacy/models/item/enigmatic_amulet_aqua.json
 6fb8a788fdede2287a2fffcdcd19f5b98822a7e9 assets/enigmatic_legacy/models/item/enigmatic_amulet_black.json
 1095799ff772190055cd88317e89bac22844f58d assets/enigmatic_legacy/models/item/enigmatic_amulet_blue.json
