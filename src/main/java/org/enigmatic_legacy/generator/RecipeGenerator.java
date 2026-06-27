@@ -315,6 +315,20 @@ public class RecipeGenerator extends RecipeProvider {
                 .unlockedBy("has_book", has(Items.BOOK))
                 .save(output);
 
+        // 野猎指南 / Guide to Feral Hunt。
+        // 对齐原项目 hunter_guidebook 配方。
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.HUNTER_GUIDEBOOK.get())
+                .pattern("bp ")
+                .pattern("nXn")
+                .pattern(" lb")
+                .define('b', Items.BONE)
+                .define('p', Items.ENDER_PEARL)
+                .define('n', Items.GOLD_NUGGET)
+                .define('X', Items.BOOK)
+                .define('l', Items.LEATHER)
+                .unlockedBy("has_book", has(Items.BOOK))
+                .save(output);
+
         // 非欧立方 / Non-Euclidean Cube。
         // 按原版材料逻辑：魔像之心、寰宇之心 x2、烈焰核心、天使之祝、黑曜石、星云之眼、海洋意志、虚空珍珠。
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.THE_CUBE.get())
@@ -643,6 +657,20 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('X', ModItems.THE_ACKNOWLEDGMENT.get())
                 .define('C', ModItems.TWISTED_HEART.get())
                 .unlockedBy("has_evil_essence", has(ModItems.EVIL_ESSENCE.get()))
+                .save(output);
+
+        // 无止之言 / The Infinitum
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.THE_INFINITUM.get())
+                .pattern("HPH")
+                .pattern("EXE")
+                .pattern("NAN")
+                .define('H', ModItems.COSMIC_HEART.get())
+                .define('P', ModItems.ENCHANTER_PEARL.get())
+                .define('E', ModItems.EVIL_ESSENCE.get())
+                .define('X', ModItems.THE_TWIST.get())
+                .define('N', Items.NETHERITE_INGOT)
+                .define('A', ModItems.ABYSSAL_HEART.get())
+                .unlockedBy("has_the_twist", has(ModItems.THE_TWIST.get()))
                 .save(output);
     }
 }

@@ -305,6 +305,15 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("message.enigmatic_legacy.animal_guidebook.not_tamable", "不，这个动物不会被视为可驯服。");
         // end
 
+        // 野猎指南
+        addItem(ModItems.HUNTER_GUIDEBOOK, "野猎指南");
+        add("tooltip.enigmatic_legacy.hunter_guidebook.1", "放在物品栏中时，你的宠物在");
+        add("tooltip.enigmatic_legacy.hunter_guidebook.2", "距离你 %1$s 格内受到的所有伤害");
+        add("tooltip.enigmatic_legacy.hunter_guidebook.3", "都会转移到你身上。");
+        add("tooltip.enigmatic_legacy.hunter_guidebook.4", "如果你同时持有兽友指南，");
+        add("tooltip.enigmatic_legacy.hunter_guidebook.5", "转移伤害会降低 %1$s。");
+        // end
+
         // 术石
         add("curios.identifier.spellstone", "术石");
 
@@ -762,6 +771,20 @@ public class ChineseLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.the_twist.7",
                 "%s 击退");
+
+        // The Infinitum / 无止之言
+        addItem(ModItems.THE_INFINITUM, "无止之言");
+        add("tooltip.enigmatic_legacy.the_infinitum.1", "深渊会回望最无畏的凝视。");
+        add("tooltip.enigmatic_legacy.the_infinitum.2", "第四诅咒的修正：");
+        add("tooltip.enigmatic_legacy.the_infinitum.3", "- 始终造成全额伤害。");
+        add("tooltip.enigmatic_legacy.the_infinitum.4", "对 Boss 和玩家造成 %s 伤害。");
+        add("tooltip.enigmatic_legacy.the_infinitum.5", "%s 击退");
+        add("tooltip.enigmatic_legacy.the_infinitum.6", "%s 生命偷取");
+        add("tooltip.enigmatic_legacy.the_infinitum.7", "可以承载大多数剑类附魔。");
+        add("tooltip.enigmatic_legacy.the_infinitum.8", "每次攻击都会施加恐怖的负面效果。");
+        add("tooltip.enigmatic_legacy.the_infinitum.9", "手持时，有 %s 概率使本应致命的");
+        add("tooltip.enigmatic_legacy.the_infinitum.10", "伤害无法杀死你。");
+        add("tooltip.enigmatic_legacy.worthy_ones_only", "唯有资格已达成者才能驾驭它的真理。");
     }
 
     private void addChineseCursedRingTooltips() {

@@ -61,6 +61,7 @@ public final class ModItems {
     // 用于定位当前维度内最近的灵魂水晶或装有死亡掉落的超维容器。
     public static final DeferredItem<WayfinderOfTheDamned> WAYFINDER_OF_THE_DAMNED = ITEMS.register("wayfinder_of_the_damned", WayfinderOfTheDamned::new);
     public static final DeferredItem<AnimalGuidebook> ANIMAL_GUIDEBOOK = ITEMS.register("animal_guidebook", AnimalGuidebook::new);
+    public static final DeferredItem<HunterGuidebook> HUNTER_GUIDEBOOK = ITEMS.register("hunter_guidebook", HunterGuidebook::new);
 
     public static final DeferredItem<UnwitnessedAmulet> UNWITNESSED_AMULET = ITEMS.register("unwitnessed_amulet", UnwitnessedAmulet::new);
     public static final DeferredItem<EnigmaticAmulet> ENIGMATIC_AMULET_RED = ITEMS.register("enigmatic_amulet_red", () -> new EnigmaticAmulet(AmuletVariant.RED));
@@ -82,6 +83,7 @@ public final class ModItems {
     // 倒转之启 / The Twist
     // 七咒专属启示之证变体，既是手册，也是武器。
     public static final DeferredItem<TheTwist> THE_TWIST = ITEMS.register("the_twist", TheTwist::new);
+    public static final DeferredItem<TheInfinitum> THE_INFINITUM = ITEMS.register("the_infinitum", TheInfinitum::new);
     public static final DeferredItem<AxeOfExecutioner> AXE_OF_EXECUTIONER = ITEMS.register("axe_of_executioner", AxeOfExecutioner::new);
     public static final DeferredItem<EtheriumBroadsword> ETHERIUM_SWORD = ITEMS.register("etherium_sword", EtheriumBroadsword::new); // 以太阔剑
     public static final DeferredItem<EtheriumPickaxe> ETHERIUM_PICKAXE = ITEMS.register("etherium_pickaxe", EtheriumPickaxe::new); // 以太镐

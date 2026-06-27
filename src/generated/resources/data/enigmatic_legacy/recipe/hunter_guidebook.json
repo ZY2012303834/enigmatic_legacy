@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": {
+      "item": "minecraft:book"
+    },
+    "b": {
+      "item": "minecraft:bone"
+    },
+    "l": {
+      "item": "minecraft:leather"
+    },
+    "n": {
+      "item": "minecraft:gold_nugget"
+    },
+    "p": {
+      "item": "minecraft:ender_pearl"
+    }
+  },
+  "pattern": [
+    "bp ",
+    "nXn",
+    " lb"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:hunter_guidebook"
+  }
+}

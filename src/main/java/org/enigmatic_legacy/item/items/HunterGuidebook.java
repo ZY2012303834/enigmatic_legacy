@@ -1,0 +1,73 @@
+package org.enigmatic_legacy.item.items;
+
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.TooltipFlag;
+import org.enigmatic_legacy.config.ConfigCommon;
+import org.enigmatic_legacy.item.ModItems;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+
+/**
+ * 野猎指南 / Guide to Feral Hunt。
+ * <p>
+ * 原项目类名 HunterGuidebook。物品栏中持有时，将附近宠物受到的伤害转移给主人。
+ */
+public class HunterGuidebook extends Item {
+
+    public HunterGuidebook() {
+        super(new Item.Properties()
+                .stacksTo(1)
+                .rarity(Rarity.RARE));
+    }
+
+    public static boolean hasGuidebook(Player player) {
+        if (player.getMainHandItem().is(ModItems.HUNTER_GUIDEBOOK.get())
+                || player.getOffhandItem().is(ModItems.HUNTER_GUIDEBOOK.get())) {
+            return true;
+        }
+
+        for (ItemStack stack : player.getInventory().items) {
+            if (stack.is(ModItems.HUNTER_GUIDEBOOK.get())) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    @Override
+    public void appendHoverText(
+            @NotNull ItemStack stack,
+            @NotNull TooltipContext context,
+            @NotNull List<Component> tooltip,
+            @NotNull TooltipFlag flag
+    ) {
+        if (!Screen.hasShiftDown()) {
+            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hold_shift"));
+            return;
+        }
+
+        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hunter_guidebook.1")
+                .withStyle(ChatFormatting.DARK_PURPLE));
+        tooltip.add(Component.translatable(
+                "tooltip.enigmatic_legacy.hunter_guidebook.2",
+                ConfigCommon.HUNTER_GUIDE_EFFECTIVE_DISTANCE.get()
+        ).withStyle(ChatFormatting.DARK_PURPLE));
+        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hunter_guidebook.3")
+                .withStyle(ChatFormatting.DARK_PURPLE));
+        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hunter_guidebook.4")
+                .withStyle(ChatFormatting.DARK_PURPLE));
+        tooltip.add(Component.translatable(
+                "tooltip.enigmatic_legacy.hunter_guidebook.5",
+                ConfigCommon.HUNTER_GUIDE_SYNERGY_DAMAGE_REDUCTION.get() + "%"
+        ).withStyle(ChatFormatting.DARK_PURPLE));
+    }
+}

@@ -76,6 +76,8 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(VoraciousPanEvents.class);
         // 倒转之启事件
         NeoForge.EVENT_BUS.register(TheTwistEvents.class);
+        // 无止之言事件
+        NeoForge.EVENT_BUS.register(TheInfinitumEvents.class);
 
         NeoForge.EVENT_BUS.register(TeleportParticleEvents.class);
         NeoForge.EVENT_BUS.register(EnderRingEvents.class);
@@ -84,6 +86,7 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(BloodstainedValorEvents.class);
         NeoForge.EVENT_BUS.register(CursedRingEvents.class);
         NeoForge.EVENT_BUS.register(AnimalGuidebookEvents.class);
+        NeoForge.EVENT_BUS.register(HunterGuidebookEvents.class);
         NeoForge.EVENT_BUS.register(EvilEssenceEvents.class);
         NeoForge.EVENT_BUS.register(EvilIngotEvents.class);
         NeoForge.EVENT_BUS.register(SoulCrystalEvents.class);

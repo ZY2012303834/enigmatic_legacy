@@ -79,6 +79,7 @@ public class ItemGenerator extends ItemModelProvider {
 
         // 启示之证使用原项目手写 3D separate-transforms 模型。
         // 入口 JSON 位于 src/main/resources，避免 datagen 覆盖成普通 2D。
+        // 无止之言同理，使用原项目三阶段手写 3D 模型和 item property 切换。
         basicItem(ModItems.EXTRADIMENSIONAL_EYE.getId()); // 超维之眼
         basicItem(ModItems.ENCHANTMENT_TRANSPOSER.getId()); // 求知之书
         basicItem(ModItems.CURSE_TRANSPOSER.getId()); // 噬咒之书
@@ -106,6 +107,7 @@ public class ItemGenerator extends ItemModelProvider {
 
         // 兽友指南使用原项目手写 3D separate-transforms 模型。
         // 入口 JSON 位于 src/main/resources，避免 datagen 覆盖成普通 2D。
+        // 野猎指南同理，使用原项目 Blockbench 模型和 2D GUI 模型。
 
         // 使用 32 帧 compass_00 ~ compass_31 贴图。
         // angle 属性由 WayfinderClientEvents 在客户端注册。

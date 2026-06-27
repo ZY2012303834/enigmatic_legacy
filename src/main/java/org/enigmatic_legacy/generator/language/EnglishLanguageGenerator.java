@@ -303,6 +303,15 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("message.enigmatic_legacy.animal_guidebook.not_tamable", "Nope, this animal is not considered tamable.");
         // end
 
+        // Guide to Feral Hunt
+        addItem(ModItems.HUNTER_GUIDEBOOK, "Guide to Feral Hunt");
+        add("tooltip.enigmatic_legacy.hunter_guidebook.1", "While in your inventory, all damage your pets");
+        add("tooltip.enigmatic_legacy.hunter_guidebook.2", "receive within %1$s blocks from you is redirected");
+        add("tooltip.enigmatic_legacy.hunter_guidebook.3", "upon you.");
+        add("tooltip.enigmatic_legacy.hunter_guidebook.4", "If Guide to Animal Companionship is also");
+        add("tooltip.enigmatic_legacy.hunter_guidebook.5", "possessed, redirected damage is reduced by %1$s.");
+        // end
+
         // 术石
         add("curios.identifier.spellstone", "Spellstone");
 
@@ -758,6 +767,20 @@ public class EnglishLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.the_twist.7",
                 "%s Knockback");
+
+        // The Infinitum / 无止之言
+        addItem(ModItems.THE_INFINITUM, "The Infinitum");
+        add("tooltip.enigmatic_legacy.the_infinitum.1", "The abyss returns even the boldest gaze.");
+        add("tooltip.enigmatic_legacy.the_infinitum.2", "Alteration of the Fourth Curse:");
+        add("tooltip.enigmatic_legacy.the_infinitum.3", "- Always deals its full damage.");
+        add("tooltip.enigmatic_legacy.the_infinitum.4", "%s Damage against bosses and players.");
+        add("tooltip.enigmatic_legacy.the_infinitum.5", "%s Knockback");
+        add("tooltip.enigmatic_legacy.the_infinitum.6", "%s Lifesteal");
+        add("tooltip.enigmatic_legacy.the_infinitum.7", "Can bear most sword enchantments.");
+        add("tooltip.enigmatic_legacy.the_infinitum.8", "Each attack inflicts horrific debuffs.");
+        add("tooltip.enigmatic_legacy.the_infinitum.9", "When held, provides %s Chance that otherwise");
+        add("tooltip.enigmatic_legacy.the_infinitum.10", "lethal damage won't kill you.");
+        add("tooltip.enigmatic_legacy.worthy_ones_only", "Only the worthy may wield its truth.");
     }
 
     private void addEnglishCursedRingTooltips() {

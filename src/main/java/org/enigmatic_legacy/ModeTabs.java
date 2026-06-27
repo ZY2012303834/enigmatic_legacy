@@ -62,10 +62,12 @@ public final class ModeTabs {
                                 output.accept(ModItems.MENDING_MIXTURE.get());          // 修补混合物
                                 output.accept(ModItems.WAYFINDER_OF_THE_DAMNED.get());  // 被诅咒者的寻路指针
                                 output.accept(ModItems.ANIMAL_GUIDEBOOK.get());         // 兽友指南
+                                output.accept(ModItems.HUNTER_GUIDEBOOK.get());         // 野猎指南
 
                                 // 武器工具
                                 output.accept(ModItems.THE_ACKNOWLEDGMENT.get());       // 启示之证
                                 output.accept(ModItems.THE_TWIST.get());                // 倒转之启
+                                output.accept(ModItems.THE_INFINITUM.get());            // 无止之言
                                 output.accept(ModItems.AXE_OF_EXECUTIONER.get());       // 行刑者之斧
                                 output.accept(ModItems.ENDER_SLAYER.get());             // 末影之屠
                                 output.accept(ModItems.BULWARK_OF_BLAZING_PRIDE.get()); // 烈焰之傲壁垒

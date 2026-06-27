@@ -31,7 +31,7 @@ import java.util.List;
 /**
  * 兽友指南 / Guide to Animal Companionship。
  * <p>
- * 原项目类名 PetGuidebook。背包中持有时保护动物，并削弱七咒之戒第二诅咒对可驯服动物的影响。
+ * 原项目类名 PetGuidebook。物品栏中持有时保护动物，并削弱七咒之戒第二诅咒对可驯服动物的影响。
  */
 public class AnimalGuidebook extends Item {
 
@@ -42,9 +42,12 @@ public class AnimalGuidebook extends Item {
     }
 
     public static boolean hasGuidebook(Player player) {
-        for (int slot = 0; slot < player.getInventory().getContainerSize(); slot++) {
-            ItemStack stack = player.getInventory().getItem(slot);
+        if (player.getMainHandItem().is(ModItems.ANIMAL_GUIDEBOOK.get())
+                || player.getOffhandItem().is(ModItems.ANIMAL_GUIDEBOOK.get())) {
+            return true;
+        }
 
+        for (ItemStack stack : player.getInventory().items) {
             if (stack.is(ModItems.ANIMAL_GUIDEBOOK.get())) {
                 return true;
             }

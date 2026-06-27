@@ -6,6 +6,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.item.items.charm.EnigmaticEye;
+import org.enigmatic_legacy.item.items.TheInfinitum;
 import org.enigmatic_legacy.item.items.TwistedHeart;
 
 public final class ClientItemProperties {
@@ -25,6 +26,14 @@ public final class ClientItemProperties {
                     ModItems.ENIGMATIC_EYE.get(),
                     ResourceLocation.fromNamespaceAndPath(EnigmaticLegacy.MODID, "enigmatic_eye_activated"),
                     (stack, level, entity, seed) -> EnigmaticEye.getModelProperty(stack)
+            );
+
+            ItemProperties.register(
+                    ModItems.THE_INFINITUM.get(),
+                    ResourceLocation.fromNamespaceAndPath(EnigmaticLegacy.MODID, "the_infinitum_open"),
+                    (stack, level, entity, seed) -> entity instanceof net.minecraft.world.entity.player.Player player
+                            ? TheInfinitum.getModelProperty(player)
+                            : 0.0F
             );
         });
     }

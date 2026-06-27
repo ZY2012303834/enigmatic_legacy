@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "enigmatic_legacy:abyssal_heart"
+    },
+    "E": {
+      "item": "enigmatic_legacy:evil_essence"
+    },
+    "H": {
+      "item": "enigmatic_legacy:cosmic_heart"
+    },
+    "N": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "P": {
+      "item": "enigmatic_legacy:enchanter_pearl"
+    },
+    "X": {
+      "item": "enigmatic_legacy:the_twist"
+    }
+  },
+  "pattern": [
+    "HPH",
+    "EXE",
+    "NAN"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:the_infinitum"
+  }
+}
