@@ -636,27 +636,6 @@ public class EnglishLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.wayfinder_of_the_damned.3",
                 "Also works within Soul Sand Valleys.");
-
-        add("tooltip.enigmatic_legacy.wayfinder_of_the_damned.target",
-                "Last known target: X %s, Y %s, Z %s");
-
-        add("message.enigmatic_legacy.wayfinder_of_the_damned.no_curse",
-                "The way remains hidden from the uncursed.");
-
-        add("message.enigmatic_legacy.wayfinder_of_the_damned.no_target",
-                "No Soul Crystal can be sensed in this dimension.");
-
-        add("message.enigmatic_legacy.wayfinder_of_the_damned.target",
-                "Nearest Soul Crystal: %s blocks to the %s. [%s, %s, %s]");
-
-        add("direction.enigmatic_legacy.north", "north");
-        add("direction.enigmatic_legacy.northeast", "northeast");
-        add("direction.enigmatic_legacy.east", "east");
-        add("direction.enigmatic_legacy.southeast", "southeast");
-        add("direction.enigmatic_legacy.south", "south");
-        add("direction.enigmatic_legacy.southwest", "southwest");
-        add("direction.enigmatic_legacy.west", "west");
-        add("direction.enigmatic_legacy.northwest", "northwest");
     }
 
     private void addEnglishCursedRingTooltips() {

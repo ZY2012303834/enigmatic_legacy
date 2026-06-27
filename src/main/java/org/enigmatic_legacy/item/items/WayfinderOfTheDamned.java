@@ -88,11 +88,16 @@ public class WayfinderOfTheDamned extends Item {
 
     /**
      * 右键使用。
-     * 逻辑：
-     * 1. 如果玩家没有佩戴七咒之戒，则提示无法理解/无法使用；
-     * 2. 如果玩家佩戴七咒之戒，则搜索最近灵魂目标；
-     * 3. 找到后，把方向和距离显示给玩家；
-     * 4. 没找到则提示当前维度没有可定位目标。
+     * 按原项目风格处理：
+     * - 不再弹出坐标提示；
+     * - 不再显示“没有七咒之戒 / 没有目标”的行动栏文字；
+     * - 只在服务端刷新一次当前目标坐标；
+     * - 真正的表现应该交给指南针模型 / 指针贴图来显示。
+     * 说明：
+     * - 如果玩家没有佩戴七咒之戒，则清除目标；
+     * - 如果玩家佩戴七咒之戒，则寻找最近灵魂水晶；
+     * - 如果找到目标，就把目标坐标写入物品数据；
+     * - 如果没找到目标，就清除目标。
      */
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(
@@ -102,50 +107,43 @@ public class WayfinderOfTheDamned extends Item {
     ) {
         ItemStack stack = player.getItemInHand(hand);
 
-        // 客户端不做真实搜索，只让服务端处理。
+        // 客户端只返回成功，不做实际搜索。
         if (level.isClientSide()) {
             return InteractionResultHolder.sidedSuccess(stack, true);
         }
 
-        // 只有服务端玩家才处理。
+        // 只处理服务端玩家。
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return InteractionResultHolder.pass(stack);
         }
 
-        // 必须佩戴七咒之戒。
+        /*
+         * 原项目逻辑：
+         * 只有承受七咒之人才能使用。
+         *
+         * 这里取消文字提示：
+         * - 没有七咒之戒时，不显示任何消息；
+         * - 只清除目标，让指针失效。
+         */
         if (!CursedRingHelper.hasCursedRing(serverPlayer)) {
             clearTarget(stack);
-
-            serverPlayer.displayClientMessage(
-                    Component.translatable("message.enigmatic_legacy.wayfinder_of_the_damned.no_curse")
-                            .withStyle(ChatFormatting.DARK_PURPLE),
-                    true
-            );
-
             return InteractionResultHolder.sidedSuccess(stack, false);
         }
 
-        // 搜索并刷新目标。
+        // 搜索当前维度内最近的灵魂水晶 / 超维容器。
         Entity target = findNearestSoulTarget(serverPlayer);
 
-        // 如果没有找到目标。
+        /*
+         * 原项目风格：
+         * 找不到目标时不提示文字，只让指针没有目标。
+         */
         if (target == null) {
             clearTarget(stack);
-
-            serverPlayer.displayClientMessage(
-                    Component.translatable("message.enigmatic_legacy.wayfinder_of_the_damned.no_target")
-                            .withStyle(ChatFormatting.GRAY),
-                    true
-            );
-
             return InteractionResultHolder.sidedSuccess(stack, false);
         }
 
-        // 写入目标坐标。
+        // 找到目标后，只保存目标坐标，不再发送行动栏提示。
         storeTarget(stack, target.blockPosition());
-
-        // 给玩家显示方向和距离。
-        sendTargetMessage(serverPlayer, target.blockPosition());
 
         return InteractionResultHolder.sidedSuccess(stack, false);
     }
@@ -358,81 +356,13 @@ public class WayfinderOfTheDamned extends Item {
     }
 
     /**
-     * 给玩家显示目标方向和距离。
-     */
-    private static void sendTargetMessage(ServerPlayer player, BlockPos targetPos) {
-        int distance = (int) Math.sqrt(player.blockPosition().distSqr(targetPos));
-        String direction = getHorizontalDirectionText(player.blockPosition(), targetPos);
-
-        player.displayClientMessage(
-                Component.translatable(
-                        "message.enigmatic_legacy.wayfinder_of_the_damned.target",
-                        distance,
-                        Component.translatable(direction),
-                        targetPos.getX(),
-                        targetPos.getY(),
-                        targetPos.getZ()
-                ).withStyle(ChatFormatting.DARK_PURPLE),
-                true
-        );
-    }
-
-    /**
-     * 根据玩家坐标和目标坐标，返回大致方向翻译 key。
-     * 这里使用八方向：
-     * - 北
-     * - 东北
-     * - 东
-     * - 东南
-     * - 南
-     * - 西南
-     * - 西
-     * - 西北
-     */
-    private static String getHorizontalDirectionText(BlockPos from, BlockPos to) {
-        int dx = to.getX() - from.getX();
-        int dz = to.getZ() - from.getZ();
-
-        double angle = Math.atan2(dz, dx);
-        double degrees = Math.toDegrees(angle);
-
-        if (degrees < 0.0D) {
-            degrees += 360.0D;
-        }
-
-        if (degrees >= 337.5D || degrees < 22.5D) {
-            return "direction.enigmatic_legacy.east";
-        }
-
-        if (degrees < 67.5D) {
-            return "direction.enigmatic_legacy.southeast";
-        }
-
-        if (degrees < 112.5D) {
-            return "direction.enigmatic_legacy.south";
-        }
-
-        if (degrees < 157.5D) {
-            return "direction.enigmatic_legacy.southwest";
-        }
-
-        if (degrees < 202.5D) {
-            return "direction.enigmatic_legacy.west";
-        }
-
-        if (degrees < 247.5D) {
-            return "direction.enigmatic_legacy.northwest";
-        }
-
-        if (degrees < 292.5D) {
-            return "direction.enigmatic_legacy.north";
-        }
-
-        return "direction.enigmatic_legacy.northeast";
-    }
-
-    /**
      * 物品提示文本。
+     * 按原项目风格：
+     * - 只说明物品用途；
+     * - 不显示目标坐标；
+     * - 不显示距离；
+     * - 不显示方向。
+     * 目标方向应通过指南针贴图表现，而不是文字提示。
      */
     @Override
     public void appendHoverText(
@@ -449,17 +379,6 @@ public class WayfinderOfTheDamned extends Item {
 
         tooltip.add(Component.translatable("tooltip.enigmatic_legacy.wayfinder_of_the_damned.3")
                 .withStyle(ChatFormatting.GRAY));
-
-        if (hasTarget(stack)) {
-            BlockPos pos = getStoredTarget(stack);
-
-            tooltip.add(Component.translatable(
-                    "tooltip.enigmatic_legacy.wayfinder_of_the_damned.target",
-                    pos.getX(),
-                    pos.getY(),
-                    pos.getZ()
-            ).withStyle(ChatFormatting.GOLD));
-        }
     }
 
     /**

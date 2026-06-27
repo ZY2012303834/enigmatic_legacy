@@ -636,27 +636,6 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.wayfinder_of_the_damned.3",
                 "在灵魂沙峡谷中也能正常工作。");
 
-        add("tooltip.enigmatic_legacy.wayfinder_of_the_damned.target",
-                "上次定位目标：X %s，Y %s，Z %s");
-
-        add("message.enigmatic_legacy.wayfinder_of_the_damned.no_curse",
-                "未受诅咒者无法看清这条道路。");
-
-        add("message.enigmatic_legacy.wayfinder_of_the_damned.no_target",
-                "当前维度中感知不到灵魂水晶。");
-
-        add("message.enigmatic_legacy.wayfinder_of_the_damned.target",
-                "最近的灵魂水晶：距离 %s 格，方向：%s。[%s, %s, %s]");
-
-        add("direction.enigmatic_legacy.north", "北");
-        add("direction.enigmatic_legacy.northeast", "东北");
-        add("direction.enigmatic_legacy.east", "东");
-        add("direction.enigmatic_legacy.southeast", "东南");
-        add("direction.enigmatic_legacy.south", "南");
-        add("direction.enigmatic_legacy.southwest", "西南");
-        add("direction.enigmatic_legacy.west", "西");
-        add("direction.enigmatic_legacy.northwest", "西北");
-
         // 按住 Shift 查看详情
         add("tooltip.enigmatic_legacy.hold_shift", "§5按住 §6Shift§5 查看详情。");
 
