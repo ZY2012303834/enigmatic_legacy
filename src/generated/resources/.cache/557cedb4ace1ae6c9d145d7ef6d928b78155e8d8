@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-27T13:00:26.4454202	vanilla/Item Models: enigmatic_legacy
+// 1.21.1	2026-06-27T14:06:02.8795001	vanilla/Item Models: enigmatic_legacy
 aaf9eff73642636d85d6ecd1627b8303f5153a76 assets/enigmatic_legacy/models/item/abyssal_heart.json
 79e416a4d6e90035107f541617b7d4a2d2d7abbb assets/enigmatic_legacy/models/item/angel_blessing.json
 71ad4196d7e8a842e7122ea637f5096bd1de67b7 assets/enigmatic_legacy/models/item/astral_dust.json
@@ -73,7 +73,6 @@ e9b89a174a55e8ae199acedfccbc959497d7b814 assets/enigmatic_legacy/models/item/iro
 70a49ada3e49d884eb2a05756d29b94c85d78f5f assets/enigmatic_legacy/models/item/recall_potion.json
 ecc9930eb84f65dfce77e42b52f82d09ac95fce5 assets/enigmatic_legacy/models/item/soul_crystal.json
 d2f712925c60a2c0d2c377f9a71c6df4f9872874 assets/enigmatic_legacy/models/item/storage_crystal.json
-4258deb1634fc563d998d09104830123622e1b09 assets/enigmatic_legacy/models/item/the_acknowledgment.json
 3a0740e1422cda6f5fb2359af87c063c6eab5dfe assets/enigmatic_legacy/models/item/the_cube.json
 f83b14662eaba05c2bb7492fdd6d909286dd0113 assets/enigmatic_legacy/models/item/thicc_scroll.json
 60cb1804e57fd810d78cf00eb5ccda686b1c55f4 assets/enigmatic_legacy/models/item/treasure_hunter_charm.json

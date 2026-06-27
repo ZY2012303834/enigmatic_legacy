@@ -77,7 +77,8 @@ public class ItemGenerator extends ItemModelProvider {
 
         enigmaticEye();
 
-        basicItem(ModItems.THE_ACKNOWLEDGMENT.getId());
+        // 启示之证使用原项目手写 3D separate-transforms 模型。
+        // 入口 JSON 位于 src/main/resources，避免 datagen 覆盖成普通 2D。
         basicItem(ModItems.EXTRADIMENSIONAL_EYE.getId()); // 超维之眼
         basicItem(ModItems.ENCHANTMENT_TRANSPOSER.getId()); // 求知之书
         basicItem(ModItems.CURSE_TRANSPOSER.getId()); // 噬咒之书
