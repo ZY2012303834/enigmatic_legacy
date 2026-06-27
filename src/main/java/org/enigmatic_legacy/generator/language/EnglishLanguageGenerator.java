@@ -797,14 +797,30 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         addItem(ModItems.ELDRITCH_AMULET, "The Testament of Contempt");
         add("tooltip.enigmatic_legacy.eldritch_amulet.1",
                 "A perfected amulet willingly made impure.");
-        add("tooltip.enigmatic_legacy.eldritch_amulet.2", "Creatures you gaze at receive %s.");
-        add("tooltip.enigmatic_legacy.eldritch_amulet.3", "Creatures you gaze at receive %s.");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.2",
+                "Creatures caught in your gaze receive %s.");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.3",
+                "Creatures caught in your gaze receive %s.");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.6",
+                "Creatures caught in your gaze receive %s.");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.7",
+                "Gaze range: %s blocks, effect radius: %s blocks.");
+
         add("tooltip.enigmatic_legacy.eldritch_amulet.4",
                 "On death, preserves your inventory.");
+
         add("tooltip.enigmatic_legacy.eldritch_amulet.5",
                 "Items bearing Curse of Vanishing are still lost.");
-        add("tooltip.enigmatic_legacy.eldritch_amulet.stat.1", "%s Attack Damage");
-        add("tooltip.enigmatic_legacy.eldritch_amulet.stat.2", "%s Lifesteal");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.stat.1",
+                "%s Attack Damage");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.stat.2",
+                "%s Additional Lifesteal");
         add("tooltip.enigmatic_legacy.eldritch_amulet.required_cursed_time",
                 "Required Seven Curses time: %s");
 

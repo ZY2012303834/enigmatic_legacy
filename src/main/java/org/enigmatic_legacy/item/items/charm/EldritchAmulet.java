@@ -32,8 +32,8 @@ public class EldritchAmulet extends AscensionAmulet {
      * 统一规则：
      * 1. 普通介绍文字为紫色；
      * 2. 数字和百分比为金色；
-     * 3. 负面效果名称为红色；
-     * 4. 七咒折磨 99.5% 提示放在 Shift 介绍最底部。
+     * 3. 减速、虚弱、挖掘疲劳等负面效果名称为红色；
+     * 4. Shift 介绍最底部显示七咒折磨 99.5% 要求和当前百分比。
      */
     @Override
     public void appendHoverText(
@@ -55,7 +55,7 @@ public class EldritchAmulet extends AscensionAmulet {
 
         tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.eldritch_amulet.2",
-                SpellstoneTooltip.effect("effect.minecraft.movement_slowdown")
+                SpellstoneTooltip.effect("effect.minecraft.slowness")
         ));
 
         tooltip.add(SpellstoneTooltip.text(
@@ -63,10 +63,22 @@ public class EldritchAmulet extends AscensionAmulet {
                 SpellstoneTooltip.effect("effect.minecraft.weakness")
         ));
 
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.eldritch_amulet.6",
+                SpellstoneTooltip.effect("effect.minecraft.mining_fatigue")
+        ));
+
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.eldritch_amulet.7",
+                SpellstoneTooltip.number((int) GAZE_RANGE),
+                SpellstoneTooltip.number((int) GAZE_RADIUS)
+        ));
+
         tooltip.add(SpellstoneTooltip.empty());
 
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.eldritch_amulet.4"));
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.eldritch_amulet.5"));
+
+        tooltip.add(SpellstoneTooltip.negative("tooltip.enigmatic_legacy.eldritch_amulet.5"));
 
         tooltip.add(SpellstoneTooltip.empty());
 

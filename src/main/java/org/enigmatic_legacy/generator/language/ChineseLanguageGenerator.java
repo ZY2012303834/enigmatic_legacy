@@ -798,13 +798,32 @@ public class ChineseLanguageGenerator extends LanguageProvider {
 
         // The Testament of Contempt / 轻蔑之约
         addItem(ModItems.ELDRITCH_AMULET, "轻蔑之约");
-        add("tooltip.enigmatic_legacy.eldritch_amulet.1", "一枚自愿舍弃纯净的完美护符。");
-        add("tooltip.enigmatic_legacy.eldritch_amulet.2", "你凝视的生物会获得 %s。");
-        add("tooltip.enigmatic_legacy.eldritch_amulet.3", "你凝视的生物会获得 %s。");
-        add("tooltip.enigmatic_legacy.eldritch_amulet.4", "死亡时保留你的背包。");
-        add("tooltip.enigmatic_legacy.eldritch_amulet.5", "带有消失诅咒的物品仍会消失。");
-        add("tooltip.enigmatic_legacy.eldritch_amulet.stat.1", "%s 攻击伤害");
-        add("tooltip.enigmatic_legacy.eldritch_amulet.stat.2", "%s 吸血");
+        add("tooltip.enigmatic_legacy.eldritch_amulet.1",
+                "一枚自愿舍弃纯净的完美护符。");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.2",
+                "被你凝视的生物会受到 %s。");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.3",
+                "被你凝视的生物会受到 %s。");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.6",
+                "被你凝视的生物会受到 %s。");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.7",
+                "凝视范围：%s 格，影响半径：%s 格。");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.4",
+                "死亡时保留你的背包。");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.5",
+                "带有消失诅咒的物品仍会消失。");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.stat.1",
+                "%s 攻击伤害");
+
+        add("tooltip.enigmatic_legacy.eldritch_amulet.stat.2",
+                "额外 %s 生命偷取");
         add("tooltip.enigmatic_legacy.eldritch_amulet.required_cursed_time", "需要的七咒佩戴时间：%s");
         add("tooltip.enigmatic_legacy.eldritch_amulet.current_cursed_time", "当前七咒佩戴时间：%s");
 
