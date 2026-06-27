@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "C": {
+      "item": "enigmatic_legacy:cosmic_heart"
+    },
+    "D": {
+      "item": "minecraft:dragon_breath"
+    },
+    "E": {
+      "item": "enigmatic_legacy:etherium_ingot"
+    },
+    "M": {
+      "tag": "enigmatic_legacy:enigmatic_amulets"
+    },
+    "S": {
+      "item": "enigmatic_legacy:astral_dust"
+    }
+  },
+  "pattern": [
+    "ASA",
+    "EME",
+    "DCD"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:ascension_amulet"
+  }
+}

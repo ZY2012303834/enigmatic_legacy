@@ -71,6 +71,11 @@ public final class ModItems {
     public static final DeferredItem<EnigmaticAmulet> ENIGMATIC_AMULET_GREEN = ITEMS.register("enigmatic_amulet_green", () -> new EnigmaticAmulet(AmuletVariant.GREEN));
     public static final DeferredItem<EnigmaticAmulet> ENIGMATIC_AMULET_BLACK = ITEMS.register("enigmatic_amulet_black", () -> new EnigmaticAmulet(AmuletVariant.BLACK));
     public static final DeferredItem<EnigmaticAmulet> ENIGMATIC_AMULET_BLUE = ITEMS.register("enigmatic_amulet_blue", () -> new EnigmaticAmulet(AmuletVariant.BLUE));
+    // 飞升护符 / Amulet of Ascension
+    // 神秘护身符的升级版，同时拥有七种神秘护身符效果。
+    // 注意：不再参与灵魂水晶 / 超维容器死亡保存逻辑。
+    public static final DeferredItem<AscensionAmulet> ASCENSION_AMULET = ITEMS.register("ascension_amulet", AscensionAmulet::new);
+
     public static final DeferredItem<MonsterCharm> MONSTER_CHARM = ITEMS.register("monster_charm", MonsterCharm::new); // 怪物猎人勋章
     public static final DeferredItem<TreasureHunterCharm> TREASURE_HUNTER_CHARM = ITEMS.register("treasure_hunter_charm", TreasureHunterCharm::new); // 猎宝者护符
     public static final DeferredItem<BloodstainedValorEmblem> BLOODSTAINED_VALOR_EMBLEM = ITEMS.register("bloodstained_valor_emblem", BloodstainedValorEmblem::new); //

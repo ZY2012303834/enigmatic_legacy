@@ -6,6 +6,9 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import org.enigmatic_legacy.EnigmaticLegacy;
@@ -25,6 +28,10 @@ public class RecipeGenerator extends RecipeProvider {
         event.getGenerator().getVanillaPack(event.includeServer()).addProvider(output ->
                 new RecipeGenerator(output, event.getLookupProvider()));
     }
+
+    private static final TagKey<Item> ENIGMATIC_AMULETS = ItemTags.create(
+            ResourceLocation.fromNamespaceAndPath(EnigmaticLegacy.MODID, "enigmatic_amulets")
+    );
 
     @Override
     protected void buildRecipes(@NotNull RecipeOutput output) {
@@ -671,6 +678,30 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('N', Items.NETHERITE_INGOT)
                 .define('A', ModItems.ABYSSAL_HEART.get())
                 .unlockedBy("has_the_twist", has(ModItems.THE_TWIST.get()))
+                .save(output);
+
+        // 飞升护符 / Amulet of Ascension
+        // 原项目配方：
+        // A S A
+        // E M E
+        // D C D
+        // A = 紫水晶碎片
+        // S = 星尘
+        // E = 以太锭
+        // M = 任意颜色神秘护身符
+        // D = 龙息
+        // C = 寰宇之心
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ASCENSION_AMULET.get())
+                .pattern("ASA")
+                .pattern("EME")
+                .pattern("DCD")
+                .define('A', Items.AMETHYST_SHARD)
+                .define('S', ModItems.ASTRAL_DUST.get())
+                .define('E', ModItems.ETHERIUM_INGOT.get())
+                .define('M', ENIGMATIC_AMULETS)
+                .define('D', Items.DRAGON_BREATH)
+                .define('C', ModItems.COSMIC_HEART.get())
+                .unlockedBy("has_cosmic_heart", has(ModItems.COSMIC_HEART.get()))
                 .save(output);
     }
 }

@@ -76,12 +76,6 @@ public final class EnigmaticAmuletEvents {
     private static final double JUMP_HEIGHT_BOOST = 0.12D;
 
     /**
-     * 绿色护符：+2 挖掘效率。
-     * Minecraft 1.21 原版已有 MINING_EFFICIENCY 属性。
-     */
-    private static final double MINING_EFFICIENCY = 2.0D;
-
-    /**
      * 黑色护符：造成伤害后回复实际伤害的 10%。
      */
     private static final float LIFESTEAL = 0.10F;
@@ -91,6 +85,14 @@ public final class EnigmaticAmuletEvents {
      * NeoForge 提供 SWIM_SPEED 属性。
      */
     private static final double SWIM_SPEED = 0.25D;
+
+    /**
+     * 绿色神秘护身符 / 飞升护符：
+     * +25% 挖掘速度。
+     * 原项目是挖掘速度乘 1.25。
+     * 这里写成额外增加原始速度的 25%。
+     */
+    private static final float MINING_SPEED_MULTIPLIER = 0.25F;
 
     /**
      * 每个属性修饰器都必须使用固定 ID。
@@ -105,9 +107,6 @@ public final class EnigmaticAmuletEvents {
 
     private static final ResourceLocation MAGENTA_MODIFIER =
             id("enigmatic_amulet_magenta");
-
-    private static final ResourceLocation GREEN_MODIFIER =
-            id("enigmatic_amulet_green");
 
     private static final ResourceLocation BLUE_MODIFIER =
             id("enigmatic_amulet_blue");
@@ -162,9 +161,10 @@ public final class EnigmaticAmuletEvents {
     /**
      * Curios 装备限制。
      * 规则：
-     * 1. 无主护身符不能直接装备，只能右键激活。
-     * 2. 神秘护身符同一时间只能装备一个。
-     * 3. 创造模式玩家放宽限制，方便调试。
+     * 1. 无主护身符不能直接装备，只能右键激活；
+     * 2. 普通神秘护身符和飞升护符互斥；
+     * 3. 同一时间只能装备一个普通神秘护身符或一个飞升护符；
+     * 4. 创造模式玩家放宽限制，方便调试。
      */
     @SubscribeEvent
     public static void onCurioCanEquip(CurioCanEquipEvent event) {
@@ -180,38 +180,47 @@ public final class EnigmaticAmuletEvents {
             return;
         }
 
-        // 如果玩家已经佩戴了任意颜色的神秘护身符，则不允许再装备第二个。
-        if (stack.getItem() instanceof EnigmaticAmulet && getEquippedVariant(event.getEntity()) != null) {
+        boolean isRegularAmulet = stack.getItem() instanceof EnigmaticAmulet;
+        boolean isAscensionAmulet = stack.is(ModItems.ASCENSION_AMULET.get());
+
+        if ((isRegularAmulet || isAscensionAmulet) && hasAnyEquippedAmulet(event.getEntity())) {
             event.setEquipResult(TriState.FALSE);
         }
     }
 
     /**
      * 每 tick 刷新属性类护符效果。
-     * 为什么不用永久属性？
-     * 因为青色护符只在疾跑时生效，玩家状态随时变化；
-     * 使用瞬时属性修饰器，每 tick 清理再添加，逻辑最直接、也最不容易残留。
+     * 飞升护符：
+     * - 同时拥有红、青、品红、蓝四种属性类效果；
+     * - 紫色、黑色、绿色分别在对应事件里处理。
+     * 普通神秘护身符：
+     * - 只拥有自身颜色效果。
      */
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
         Player player = event.getEntity();
 
-        // 属性只在服务端处理，客户端会由服务器同步。
         if (player.level().isClientSide) {
             return;
         }
 
-        // 先清理所有可能来自神秘护身符的属性修饰器，防止切换护符或取消装备后残留。
         clearAttributeModifiers(player);
 
+        boolean hasAscension = hasAscensionAmulet(player);
         AmuletVariant variant = getEquippedVariant(player);
 
-        // 没有佩戴神秘护身符时，不添加任何效果。
-        if (variant == null) {
+        if (!hasAscension && variant == null) {
             return;
         }
 
-        // 根据当前佩戴的颜色添加对应效果。
+        if (hasAscension) {
+            for (AmuletVariant amuletVariant : AmuletVariant.values()) {
+                applyAttributeModifier(player, amuletVariant);
+            }
+
+            return;
+        }
+
         applyAttributeModifier(player, variant);
     }
 
@@ -251,8 +260,8 @@ public final class EnigmaticAmuletEvents {
     }
 
     /**
-     * 紫色护符：弹射物命中玩家时，有概率直接取消命中并移除弹射物。
-     * 这里处理的是“事件类效果”，不依赖 Attribute。
+     * 紫色护符 / 飞升护符：
+     * 弹射物命中玩家时，有 15% 概率偏转。
      */
     @SubscribeEvent
     public static void onProjectileImpact(ProjectileImpactEvent event) {
@@ -266,7 +275,6 @@ public final class EnigmaticAmuletEvents {
             return;
         }
 
-        // 只有佩戴紫色神秘护符时，才有概率偏转弹射物。
         if (!hasVariant(player, AmuletVariant.VIOLET)) {
             return;
         }
@@ -278,9 +286,8 @@ public final class EnigmaticAmuletEvents {
     }
 
     /**
-     * 黑色护符：玩家造成伤害后，按实际伤害量回血。
-     * 使用 LivingDamageEvent.Post 是为了拿到最终伤害，
-     * 避免按被护甲、抗性、附魔减免前的伤害回血过多。
+     * 黑色护符 / 飞升护符：
+     * 玩家造成伤害后，按最终伤害量回复 10% 生命。
      */
     @SubscribeEvent
     public static void onLivingDamage(LivingDamageEvent.Post event) {
@@ -288,7 +295,6 @@ public final class EnigmaticAmuletEvents {
             return;
         }
 
-        // 只有佩戴黑色神秘护符时，才按造成伤害回血。
         if (!hasVariant(player, AmuletVariant.BLACK)) {
             return;
         }
@@ -301,14 +307,32 @@ public final class EnigmaticAmuletEvents {
     }
 
     /**
-     * 判断玩家当前佩戴的神秘护身符是否为指定颜色。
-     * 修复说明：
-     * - 之前这里写成了 !=，含义变成了“不是这个颜色”。
-     * - 这会导致品红护符跳跃逻辑、紫色护符弹射物逻辑、黑色护符吸血逻辑判断混乱。
-     * - 正确逻辑应该是：当前佩戴颜色 == 指定颜色。
+     * 绿色护符 / 飞升护符：
+     * +25% 挖掘速度。
+     * 原项目是在 BreakSpeed 事件里直接乘挖掘速度，
+     * 这里按原项目方式实现。
+     */
+    @SubscribeEvent
+    public static void onBreakSpeed(PlayerEvent.BreakSpeed event) {
+        Player player = event.getEntity();
+
+        if (!hasVariant(player, AmuletVariant.GREEN)) {
+            return;
+        }
+
+        float bonus = event.getOriginalSpeed() * MINING_SPEED_MULTIPLIER;
+        event.setNewSpeed(event.getNewSpeed() + bonus);
+    }
+
+    /**
+     * 判断玩家是否拥有某一种神秘护身符效果。
+     * 普通神秘护身符：
+     * - 只有对应颜色返回 true。
+     * 飞升护符：
+     * - 对所有颜色都返回 true。
      */
     private static boolean hasVariant(Player player, AmuletVariant variant) {
-        return getEquippedVariant(player) == variant;
+        return hasAscensionAmulet(player) || getEquippedVariant(player) == variant;
     }
 
     /**
@@ -324,6 +348,37 @@ public final class EnigmaticAmuletEvents {
         });
 
         return variant.get();
+    }
+
+    /**
+     * 判断玩家是否佩戴飞升护符。
+     */
+    private static boolean hasAscensionAmulet(LivingEntity entity) {
+        AtomicReference<Boolean> hasAscension = new AtomicReference<>(false);
+
+        CuriosApi.getCuriosInventory(entity)
+                .flatMap(handler -> handler.findFirstCurio(stack ->
+                        stack.is(ModItems.ASCENSION_AMULET.get())
+                ))
+                .ifPresent(slotResult -> hasAscension.set(true));
+
+        return hasAscension.get();
+    }
+
+    /**
+     * 判断玩家 Curios 栏里是否已经佩戴了普通神秘护身符或飞升护符。
+     */
+    private static boolean hasAnyEquippedAmulet(LivingEntity entity) {
+        AtomicReference<Boolean> hasAmulet = new AtomicReference<>(false);
+
+        CuriosApi.getCuriosInventory(entity)
+                .flatMap(handler -> handler.findFirstCurio(stack ->
+                        stack.getItem() instanceof EnigmaticAmulet
+                                || stack.is(ModItems.ASCENSION_AMULET.get())
+                ))
+                .ifPresent(slotResult -> hasAmulet.set(true));
+
+        return hasAmulet.get();
     }
 
     private static boolean hasAnyAmulet(Player player) {
@@ -345,9 +400,9 @@ public final class EnigmaticAmuletEvents {
 
     private static boolean isAnyAmulet(ItemStack stack) {
         return stack.getItem() instanceof UnwitnessedAmulet
-                || stack.getItem() instanceof EnigmaticAmulet;
+                || stack.getItem() instanceof EnigmaticAmulet
+                || stack.is(ModItems.ASCENSION_AMULET.get());
     }
-
     /**
      * 清理所有护符可能添加过的属性修饰器。
      * 这里按固定 ResourceLocation ID 移除，
@@ -357,7 +412,6 @@ public final class EnigmaticAmuletEvents {
         removeModifier(player, Attributes.ATTACK_DAMAGE, RED_MODIFIER);
         removeModifier(player, Attributes.MOVEMENT_SPEED, AQUA_MODIFIER);
         removeModifier(player, Attributes.GRAVITY, MAGENTA_MODIFIER);
-        removeModifier(player, Attributes.MINING_EFFICIENCY, GREEN_MODIFIER);
         removeModifier(player, NeoForgeMod.SWIM_SPEED, BLUE_MODIFIER);
     }
 
@@ -390,44 +444,23 @@ public final class EnigmaticAmuletEvents {
                 }
             }
 
-            case MAGENTA -> {
-                // 品红：降低重力，让玩家下落更慢、跳跃/滞空感更轻。
-                addModifier(
-                        player,
-                        Attributes.GRAVITY,
-                        MAGENTA_MODIFIER,
-                        GRAVITY_REDUCTION,
-                        AttributeModifier.Operation.ADD_MULTIPLIED_BASE
-                );
-            }
+            case MAGENTA -> // 品红：降低重力，让玩家下落更慢、跳跃/滞空感更轻。
+                    addModifier(
+                            player,
+                            Attributes.GRAVITY,
+                            MAGENTA_MODIFIER,
+                            GRAVITY_REDUCTION,
+                            AttributeModifier.Operation.ADD_MULTIPLIED_BASE
+                    );
 
-            case GREEN -> {
-                // 绿色：增加挖掘效率属性。
-                addModifier(
-                        player,
-                        Attributes.MINING_EFFICIENCY,
-                        GREEN_MODIFIER,
-                        MINING_EFFICIENCY,
-                        AttributeModifier.Operation.ADD_VALUE
-                );
-            }
-
-            case BLUE -> {
-                // 蓝色：增加游泳速度。
-                addModifier(
-                        player,
-                        NeoForgeMod.SWIM_SPEED,
-                        BLUE_MODIFIER,
-                        SWIM_SPEED,
-                        AttributeModifier.Operation.ADD_MULTIPLIED_BASE
-                );
-            }
-
-            case VIOLET, BLACK -> {
-                // 紫色和黑色不走属性：
-                // 紫色在 ProjectileImpactEvent 中处理；
-                // 黑色在 LivingDamageEvent.Post 中处理。
-            }
+            case BLUE -> // 蓝色：增加游泳速度。
+                    addModifier(
+                            player,
+                            NeoForgeMod.SWIM_SPEED,
+                            BLUE_MODIFIER,
+                            SWIM_SPEED,
+                            AttributeModifier.Operation.ADD_MULTIPLIED_BASE
+                    );
         }
     }
 

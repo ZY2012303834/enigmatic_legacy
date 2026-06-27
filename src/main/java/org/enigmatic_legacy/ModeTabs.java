@@ -94,6 +94,7 @@ public final class ModeTabs {
                                 output.accept(ModItems.ENIGMATIC_AMULET_GREEN.get());   // 神秘护符：绿色
                                 output.accept(ModItems.ENIGMATIC_AMULET_BLACK.get());   // 神秘护符：黑色
                                 output.accept(ModItems.ENIGMATIC_AMULET_BLUE.get());    // 神秘护符：蓝色
+                                output.accept(ModItems.ASCENSION_AMULET.get());         // 飞升护符
                                 // 术石
                                 output.accept(ModItems.GOLEM_HEART.get());              // 魔像之心
                                 output.accept(ModItems.ANGEL_BLESSING.get());           // 天使之祝

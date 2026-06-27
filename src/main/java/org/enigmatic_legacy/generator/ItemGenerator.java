@@ -128,7 +128,9 @@ public class ItemGenerator extends ItemModelProvider {
         // 这里生成模型切换入口，具体 3D in_hand 模型使用原项目 JSON。
         eldritchPan();
 
-
+        // 飞升护符模型。
+        // 原项目为普通 2D item/generated 模型，没有 3D 模型。
+        basicItem(ModItems.ASCENSION_AMULET.getId());
 
         basicItem(ModItems.ETHERIUM_HELMET.getId());
         basicItem(ModItems.ETHERIUM_CHESTPLATE.getId());

@@ -781,6 +781,21 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.the_infinitum.9", "When held, provides %s Chance that otherwise");
         add("tooltip.enigmatic_legacy.the_infinitum.10", "lethal damage won't kill you.");
         add("tooltip.enigmatic_legacy.worthy_ones_only", "Only the worthy may wield its truth.");
+
+        // Amulet of Ascension / 飞升护符
+        addItem(ModItems.ASCENSION_AMULET, "Amulet of Ascension");
+
+        add("tooltip.enigmatic_legacy.ascension_amulet.1",
+                "Destiny defines your beginning.");
+
+        add("tooltip.enigmatic_legacy.ascension_amulet.2",
+                "You shall shape your end.");
+
+        add("tooltip.enigmatic_legacy.ascension_amulet.3",
+                "Combines the traits of all seven Enigmatic Amulets.");
+
+        add("tooltip.enigmatic_legacy.ascension_amulet.no_vessel",
+                "Soul Crystal and Vessel recovery is handled by the Ring of the Seven Curses.");
     }
 
     private void addEnglishCursedRingTooltips() {

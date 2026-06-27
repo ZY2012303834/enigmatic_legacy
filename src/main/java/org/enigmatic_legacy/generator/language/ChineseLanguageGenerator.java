@@ -785,6 +785,21 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.the_infinitum.9", "手持时，有 %s 概率使本应致命的");
         add("tooltip.enigmatic_legacy.the_infinitum.10", "伤害无法杀死你。");
         add("tooltip.enigmatic_legacy.worthy_ones_only", "唯有资格已达成者才能驾驭它的真理。");
+
+        // Amulet of Ascension / 飞升护符
+        addItem(ModItems.ASCENSION_AMULET, "飞升护符");
+
+        add("tooltip.enigmatic_legacy.ascension_amulet.1",
+                "命运裁定汝之起始。");
+
+        add("tooltip.enigmatic_legacy.ascension_amulet.2",
+                "汝将塑造命之终末。");
+
+        add("tooltip.enigmatic_legacy.ascension_amulet.3",
+                "集结七种神秘护身符的全部特质。");
+
+        add("tooltip.enigmatic_legacy.ascension_amulet.no_vessel",
+                "灵魂水晶与超维容器回收已由七咒之戒处理。");
     }
 
     private void addChineseCursedRingTooltips() {
