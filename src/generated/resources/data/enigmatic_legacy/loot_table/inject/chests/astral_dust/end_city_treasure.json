@@ -9,18 +9,18 @@
             {
               "count": {
                 "type": "minecraft:uniform",
-                "max": 4.0,
+                "max": 5.0,
                 "min": 1.0
               },
               "function": "minecraft:set_count"
             }
           ],
           "name": "enigmatic_legacy:astral_dust",
-          "weight": 1
+          "weight": 20
         },
         {
           "type": "minecraft:empty",
-          "weight": 9
+          "weight": 80
         }
       ],
       "rolls": {

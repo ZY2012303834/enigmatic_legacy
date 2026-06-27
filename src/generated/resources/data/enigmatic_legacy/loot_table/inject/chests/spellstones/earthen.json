@@ -6,11 +6,11 @@
         {
           "type": "minecraft:item",
           "name": "enigmatic_legacy:golem_heart",
-          "weight": 100
+          "weight": 15
         },
         {
           "type": "minecraft:empty",
-          "weight": 900
+          "weight": 85
         }
       ],
       "rolls": {

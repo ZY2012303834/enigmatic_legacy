@@ -109,9 +109,32 @@ public class InjectLootTableGenerator implements DataProvider {
                 cachedOutput,
                 "earth_heart_fragment/overworld_epic",
                 1.0D,
-                2.0D,
-                itemEntry(ModItems.EARTH_HEART_FRAGMENT.get(), 7),
-                emptyEntry(224)
+                5.0D,
+
+                /*
+                 * 大地之心碎片概率设置：
+                 *
+                 * 目标：
+                 * 1. 每个目标箱子最多出现 5 个大地之心碎片；
+                 * 2. 每次命中只掉落 1 个；
+                 * 3. 综合开箱概率保持约 20%。
+                 *
+                 * 说明：
+                 * rolls = 1~5，代表每个箱子会随机抽取 1 到 5 次。
+                 * 每次抽取中，大地之心碎片权重为 74，空结果权重为 933。
+                 *
+                 * 单次命中概率：
+                 * 74 / (74 + 933) ≈ 7.35%
+                 *
+                 * 因为箱子会抽 1~5 次，
+                 * 所以最终每个箱子至少出现 1 个碎片的概率约为 20%。
+                 *
+                 * 因为每次命中只给 1 个，
+                 * 而最多抽 5 次，
+                 * 所以单个箱子最多出现 5 个大地之心碎片。
+                 */
+                itemEntry(ModItems.EARTH_HEART_FRAGMENT.get(), 74),
+                emptyEntry(933)
         ));
     }
 
@@ -128,14 +151,36 @@ public class InjectLootTableGenerator implements DataProvider {
      * - rolls = 1 ~ 2，约 4.5%。
      */
     private void addEarthHeartTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {
-        futures.add(saveTable(
-                cachedOutput,
-                "earth_heart/overworld_epic",
-                1.0D,
-                2.0D,
-                itemEntry(ModItems.EARTH_HEART.get(), 7),
-                emptyEntry(224)
-        ));
+        futures.add(
+                saveTable(
+                        cachedOutput,
+                        "earth_heart/overworld_epic",
+                        1.0D,
+                        1.0D,
+
+                        /*
+                         * 大地之心概率设置：
+                         *
+                         * 目标：
+                         * 1. 每个目标箱子最多出现 1 个大地之心；
+                         * 2. 每个目标箱子出现大地之心的概率为 15%。
+                         *
+                         * 说明：
+                         * rolls = 1~1，代表每个箱子只抽取 1 次。
+                         *
+                         * 单次抽取中：
+                         * 大地之心权重 = 15
+                         * 空结果权重 = 85
+                         *
+                         * 因此概率为：
+                         * 15 / (15 + 85) = 15%
+                         *
+                         * 因为只抽取 1 次，所以单个箱子最多只会出现 1 个大地之心。
+                         */
+                        itemEntry(ModItems.EARTH_HEART.get(), 15),
+                        emptyEntry(85)
+                )
+        );
     }
 
     /**
@@ -166,21 +211,17 @@ public class InjectLootTableGenerator implements DataProvider {
      * 生成以太矿石 loot table。
      * 获取方式：
      * - 末地城宝藏箱。
-     * 调整原因：
-     * - 原来的 rolls 是 -11 ~ 2。
-     * - 这种写法不直观，实测概率也不好判断。
-     * - 原注释写数量 1~2，但代码实际是 1~4。
-     * 新设计：
-     * - rolls 固定为 1。
-     * - 以太矿石权重 = 1。
-     * - empty 空条目权重 = 19。
-     * 概率：
-     * - 1 / (1 + 19) = 5%
-     * 数量：
-     * - 1~2 个。
-     * 注意：
-     * - 不改变出现箱子。
-     * - 仍然只注入到末地城宝藏箱。
+     * 当前设置：
+     * - rolls 固定为 1；
+     * - 以太矿石权重 = 10；
+     * - empty 空条目权重 = 90；
+     * - 出现概率 = 10 / (10 + 90) = 10%；
+     * - 出现时数量 = 1~3 个。
+     * 效果：
+     * - 每个末地城宝藏箱有 10% 概率出现以太矿石；
+     * - 成功出现时数量为 1~3 个；
+     * - 因为 rolls 固定为 1，所以一个箱子最多只会出现 1 组以太矿石；
+     * - 因此单个箱子最多出现 3 个以太矿石。
      */
     private void addEtheriumOreTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {
         futures.add(saveTable(
@@ -188,162 +229,190 @@ public class InjectLootTableGenerator implements DataProvider {
                 "etherium_ore/end_city_treasure",
                 1.0D,
                 1.0D,
-                itemEntry(ModItems.ETHERIUM_ORE.get(), 1, 1.0D, 2.0D),
-                emptyEntry(19)
+                itemEntry(ModItems.ETHERIUM_ORE.get(), 10, 1.0D, 3.0D),
+                emptyEntry(90)
         ));
     }
 
     /**
-     * 生成术石类 loot table。
-     * 重要调整：
-     * - 之前术石出现概率过高。
-     * - 原因是每张术石注入表只有术石条目，没有 minecraft:empty 空条目。
-     * - 这样只要注入表被抽取，就很容易直接给术石。
-     * 新设计：
-     * - 每张术石表固定 rolls = 1。
-     * - 术石总权重 = 100。
-     * - 空条目权重 = 1900。
-     * - 所以每次打开对应战利品箱时，术石总出现概率约为：
-     *   100 / (100 + 1900) = 5%
-     * 效果：
-     * - 术石仍然可以从对应结构中获得；
-     * - 但不会像之前那样频繁出现；
-     * - 多个术石共用一张表时，仍然按原来的内部比例分配。
-     * 举例：
-     * - air_earthen 表中：
-     *   魔像之心 35 权重
-     *   天使之祝 65 权重
-     *   empty 1900 权重
-     *   总术石概率约 5%。
-     *   在成功抽中术石的情况下：
-     *   魔像之心占 35%
-     *   天使之祝占 65%
+     * 生成术石 loot table。
+     * 概率调整：
+     * 1. 所有术石箱子的“任意术石出现概率”从 10% 提高到 15%；
+     * 2. 单术石表：目标术石 15%，空结果 85%；
+     * 3. 多术石表：保持原有内部比例，只提高总出现概率；
+     * 4. rolls 固定为 1，所以每个箱子最多只会出现 1 个术石。
      */
     private void addSpellstoneTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {
         /*
-         * 空气 + 大地类型术石表。
+         * 空气 + 大地术石表。
          *
-         * 当前用于：
-         * - 沙漠神殿
-         * - 丛林神庙
+         * 用途：
+         * - 沙漠神殿；
+         * - 丛林神庙。
          *
-         * 总出现率：
-         * - 约 5%
-         *
-         * 成功出现术石后：
+         * 原比例：
          * - 魔像之心：35%
          * - 天使之祝：65%
+         *
+         * 当前总出现概率：
+         * - 任意术石：15%
+         *
+         * 具体概率：
+         * - 魔像之心：105 / 2000 = 5.25%
+         * - 天使之祝：195 / 2000 = 9.75%
+         * - 空结果：1700 / 2000 = 85%
          */
-        futures.add(saveTable(cachedOutput, "spellstones/air_earthen", 1.0D, 1.0D,
-                itemEntry(ModItems.GOLEM_HEART.get(), 35),
-                itemEntry(ModItems.ANGEL_BLESSING.get(), 65),
-                emptyEntry(900)
+        futures.add(saveTable(
+                cachedOutput,
+                "spellstones/air_earthen",
+                1.0D,
+                1.0D,
+                itemEntry(ModItems.GOLEM_HEART.get(), 105),
+                itemEntry(ModItems.ANGEL_BLESSING.get(), 195),
+                emptyEntry(1700)
         ));
 
         /*
-         * 末影 + 大地类型术石表。
+         * 末影 + 大地术石表。
          *
-         * 当前用于：
-         * - 要塞走廊
-         * - 要塞十字路口
+         * 用途：
+         * - 要塞走廊；
+         * - 要塞十字路口。
          *
-         * 总出现率：
-         * - 约 5%
-         *
-         * 成功出现术石后：
+         * 原比例：
          * - 星云之眼：35%
          * - 魔像之心：65%
+         *
+         * 当前总出现概率：
+         * - 任意术石：15%
+         *
+         * 具体概率：
+         * - 星云之眼：105 / 2000 = 5.25%
+         * - 魔像之心：195 / 2000 = 9.75%
+         * - 空结果：1700 / 2000 = 85%
          */
-        futures.add(saveTable(cachedOutput, "spellstones/ender_earthen", 1.0D, 1.0D,
-                itemEntry(ModItems.EYE_OF_NEBULA.get(), 35),
-                itemEntry(ModItems.GOLEM_HEART.get(), 65),
-                emptyEntry(900)
+        futures.add(saveTable(
+                cachedOutput,
+                "spellstones/ender_earthen",
+                1.0D,
+                1.0D,
+                itemEntry(ModItems.EYE_OF_NEBULA.get(), 105),
+                itemEntry(ModItems.GOLEM_HEART.get(), 195),
+                emptyEntry(1700)
         ));
 
         /*
-         * 空气类型术石表。
+         * 空气术石表。
          *
-         * 当前用于：
-         * - 村庄教堂箱子
+         * 用途：
+         * - 村庄教堂箱子。
          *
-         * 总出现率：
-         * - 约 5%
+         * 当前概率：
+         * - 天使之祝：15%
+         * - 空结果：85%
          */
-        futures.add(saveTable(cachedOutput, "spellstones/air", 1.0D, 1.0D,
-                itemEntry(ModItems.ANGEL_BLESSING.get(), 100),
-                emptyEntry(900)
+        futures.add(saveTable(
+                cachedOutput,
+                "spellstones/air",
+                1.0D,
+                1.0D,
+                itemEntry(ModItems.ANGEL_BLESSING.get(), 15),
+                emptyEntry(85)
         ));
 
         /*
-         * 大地类型术石表。
+         * 大地术石表。
          *
-         * 当前用于：
-         * - 地牢
-         * - 废弃矿井
-         * - 村庄盔甲匠箱子
+         * 用途：
+         * - 地牢；
+         * - 废弃矿井；
+         * - 村庄盔甲匠箱子。
          *
-         * 总出现率：
-         * - 约 5%
+         * 当前概率：
+         * - 魔像之心：15%
+         * - 空结果：85%
          */
-        futures.add(saveTable(cachedOutput, "spellstones/earthen", 1.0D, 1.0D,
-                itemEntry(ModItems.GOLEM_HEART.get(), 100),
-                emptyEntry(900)
+        futures.add(saveTable(
+                cachedOutput,
+                "spellstones/earthen",
+                1.0D,
+                1.0D,
+                itemEntry(ModItems.GOLEM_HEART.get(), 15),
+                emptyEntry(85)
         ));
 
         /*
-         * 下界类型术石表。
+         * 下界术石表。
          *
-         * 当前用于：
-         * - 下界要塞
-         * - 堡垒遗迹各类箱子
-         * - 废弃传送门箱子
+         * 用途：
+         * - 下界要塞；
+         * - 堡垒藏宝室；
+         * - 堡垒普通箱；
+         * - 堡垒桥；
+         * - 堡垒疣猪兽棚；
+         * - 废弃传送门。
          *
-         * 总出现率：
-         * - 约 5%
+         * 当前概率：
+         * - 烈焰之核：15%
+         * - 空结果：85%
          */
-        futures.add(saveTable(cachedOutput, "spellstones/nether", 1.0D, 1.0D,
-                itemEntry(ModItems.BLAZING_CORE.get(), 100),
-                emptyEntry(900)
+        futures.add(saveTable(
+                cachedOutput,
+                "spellstones/nether",
+                1.0D,
+                1.0D,
+                itemEntry(ModItems.BLAZING_CORE.get(), 15),
+                emptyEntry(85)
         ));
 
         /*
-         * 水域类型术石表。
+         * 海洋术石表。
          *
-         * 当前用于：
-         * - 大型水下遗迹
-         * - 小型水下遗迹
-         * - 沉船宝藏
-         * - 埋藏的宝藏
+         * 用途：
+         * - 大型水下遗迹；
+         * - 小型水下遗迹；
+         * - 沉船宝藏；
+         * - 埋藏的宝藏。
          *
-         * 总出现率：
-         * - 约 5%
+         * 当前概率：
+         * - 海洋意志：15%
+         * - 空结果：85%
          */
-        futures.add(saveTable(cachedOutput, "spellstones/water", 1.0D, 1.0D,
-                itemEntry(ModItems.OCEAN_STONE.get(), 100),
-                emptyEntry(900)
+        futures.add(saveTable(
+                cachedOutput,
+                "spellstones/water",
+                1.0D,
+                1.0D,
+                itemEntry(ModItems.OCEAN_STONE.get(), 15),
+                emptyEntry(85)
         ));
 
         /*
-         * 末影类型术石表。
+         * 末影术石表。
          *
-         * 当前用于：
-         * - 末地城宝藏
+         * 用途：
+         * - 末地城宝藏箱。
          *
-         * 总出现率：
-         * - 约 5%
-         *
-         * 成功出现术石后：
+         * 原比例：
          * - 星云之眼：90%
          * - 虚空珍珠：10%
          *
-         * 也就是说：
-         * - 星云之眼实际约 4.5%
-         * - 虚空珍珠实际约 0.5%
+         * 当前总出现概率：
+         * - 任意术石：15%
+         *
+         * 具体概率：
+         * - 星云之眼：135 / 1000 = 13.5%
+         * - 虚空珍珠：15 / 1000 = 1.5%
+         * - 空结果：850 / 1000 = 85%
          */
-        futures.add(saveTable(cachedOutput, "spellstones/ender", 1.0D, 1.0D,
-                itemEntry(ModItems.EYE_OF_NEBULA.get(), 90),
-                itemEntry(ModItems.VOID_PEARL.get(), 10),
-                emptyEntry(900)
+        futures.add(saveTable(
+                cachedOutput,
+                "spellstones/ender",
+                1.0D,
+                1.0D,
+                itemEntry(ModItems.EYE_OF_NEBULA.get(), 135),
+                itemEntry(ModItems.VOID_PEARL.get(), 15),
+                emptyEntry(850)
         ));
     }
 
@@ -366,10 +435,35 @@ public class InjectLootTableGenerator implements DataProvider {
      * - 仍然只注入到 BuiltInLootTables.BASTION_TREASURE。
      */
     private void addDarkestScrollTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {
-        futures.add(saveTable(cachedOutput, "darkest_scroll/bastion_treasure", 1.0D, 1.0D,
-                itemEntry(ModItems.DARKEST_SCROLL.get(), 1),
-                emptyEntry(24)
-        ));
+        futures.add(
+                saveTable(
+                        cachedOutput,
+                        "darkest_scroll/bastion_treasure",
+                        1.0D,
+                        1.0D,
+
+                        /*
+                         * 至暗卷轴概率设置：
+                         *
+                         * 目标：
+                         * 1. 每个堡垒遗迹藏宝室箱子最多出现 1 个至暗卷轴；
+                         * 2. 每个目标箱子出现至暗卷轴的概率为 8%。
+                         *
+                         * 说明：
+                         * rolls = 1~1，代表每个箱子只抽取 1 次。
+                         *
+                         * 单次抽取中：
+                         * 至暗卷轴权重 = 8
+                         * 空结果权重 = 92
+                         *
+                         * 因此概率为：
+                         * 8 / (8 + 92) = 8%
+                         *
+                         * 因为只抽取 1 次，所以单个箱子最多只会出现 1 个至暗卷轴。
+                         */
+                        itemEntry(ModItems.DARKEST_SCROLL.get(), 8),
+                        emptyEntry(92)
+                ));
     }
 
     /**
@@ -379,8 +473,8 @@ public class InjectLootTableGenerator implements DataProvider {
      * - 仍然由 GlobalLootModifierGenerator 注入到对应主世界类战利品箱中。
      * 调整原因：
      * - 原来的圣杯概率过低：
-     *   不洁圣杯权重 = 1
-     *   empty 权重 = 230 或 223
+     * 不洁圣杯权重 = 1
+     * empty 权重 = 230 或 223
      * - 单次抽取概率不到 0.5%。
      * 新设计：
      * - rolls 固定为 1。
@@ -424,24 +518,26 @@ public class InjectLootTableGenerator implements DataProvider {
 
     /**
      * 生成禁忌之果 loot table。
-     * 调整原因：
-     * - 之前禁忌之果概率过高。
-     * - 原来的表只有禁忌之果，没有 minecraft:empty 空条目。
-     * - 只要这个注入表被抽中，就很容易直接生成禁忌之果。
-     * 新设计：
-     * - rolls 固定为 1。
-     * - 禁忌之果权重 = 1。
-     * - 空条目权重 = 49。
-     * 概率：
-     * - 1 / (1 + 49) = 2%
-     * 也就是说：
-     * - 每个被注入的堡垒箱子，约 2% 概率额外出现禁忌之果。
-     * - 不再像之前那样频繁出现。
+     * 获取方式：
+     * - 堡垒遗迹普通相关箱子。
+     * 当前设置：
+     * - rolls 固定为 1；
+     * - 禁忌之果权重 = 4；
+     * - empty 空条目权重 = 96；
+     * - 出现概率 = 4 / (4 + 96) = 4%；
+     * - 每次命中只给 1 个禁忌之果。
+     * 效果：
+     * - 每个目标箱子有 4% 概率出现禁忌之果；
+     * - 因为 rolls 固定为 1，所以一个箱子最多只会出现 1 个禁忌之果。
      */
     private void addForbiddenFruitTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {
-        futures.add(saveTable(cachedOutput, "forbidden_fruit/bastion_common", 1.0D, 1.0D,
-                itemEntry(ModItems.FORBIDDEN_FRUIT.get(), 1),
-                emptyEntry(49)
+        futures.add(saveTable(
+                cachedOutput,
+                "forbidden_fruit/bastion_common",
+                1.0D,
+                1.0D,
+                itemEntry(ModItems.FORBIDDEN_FRUIT.get(), 4),
+                emptyEntry(96)
         ));
     }
 
@@ -449,22 +545,16 @@ public class InjectLootTableGenerator implements DataProvider {
      * 生成星尘 loot table。
      * 获取方式：
      * - 末地城宝藏箱。
-     * 调整原因：
-     * - 原来星尘权重为 85，empty 权重为 322。
-     * - 单次抽取概率约 20.9%。
-     * - 并且 rolls 是 1~2，实际出现率会更高。
-     * - 对稀有材料来说偏高。
-     * 新设计：
-     * - rolls 固定为 1。
-     * - 星尘权重 = 1。
-     * - empty 空条目权重 = 9。
-     * 概率：
-     * - 1 / (1 + 9) = 10%
-     * 数量：
-     * - 保持 1~4 个。
-     * 注意：
-     * - 不改变出现箱子。
-     * - 仍然只注入到末地城宝藏箱。
+     * 当前设置：
+     * - rolls 固定为 1；
+     * - 星尘权重 = 20；
+     * - empty 空条目权重 = 80；
+     * - 出现概率 = 20 / (20 + 80) = 20%；
+     * - 数量 = 1~5 个。
+     * 效果：
+     * - 每个末地城宝藏箱有 20% 概率出现星尘；
+     * - 成功出现时数量为 1~5 个；
+     * - 因为 rolls 固定为 1，所以一个箱子最多只会出现 1 组星尘。
      */
     private void addAstralDustTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {
         futures.add(saveTable(
@@ -472,8 +562,8 @@ public class InjectLootTableGenerator implements DataProvider {
                 "astral_dust/end_city_treasure",
                 1.0D,
                 1.0D,
-                itemEntry(ModItems.ASTRAL_DUST.get(), 1, 1.0D, 4.0D),
-                emptyEntry(9)
+                itemEntry(ModItems.ASTRAL_DUST.get(), 20, 1.0D, 5.0D),
+                emptyEntry(80)
         ));
     }
 

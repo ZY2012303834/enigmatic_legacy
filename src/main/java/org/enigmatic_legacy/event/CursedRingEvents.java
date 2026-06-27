@@ -308,9 +308,13 @@ public class CursedRingEvents {
         } else if (killed.getClass() == Chicken.class) {
             addDropWithChance(event, new ItemStack(Items.EGG), 50);
         } else if (killed instanceof WitherBoss) {
-            // 凋零
-            addDrop(event, randomStack(killed, ModItems.DARKEST_SCROLL.get(), 2, 6));
-            addDrop(event, new ItemStack(ModItems.EVIL_ESSENCE.get()));
+            /*
+             * 凋零特殊掉落修复：
+             * 佩戴七咒之戒击杀凋零时：
+             * 2. 改为掉落 2~4 个邪恶精髓；
+             * 3. 掉落数量随机，范围包含 2 和 4。
+             */
+            addDrop(event, randomStack(killed, ModItems.EVIL_ESSENCE.get(), 2, 4));
         } else if (killed instanceof EnderDragon) {
             addDrop(event, new ItemStack(ModItems.COSMIC_HEART.get()));
         }

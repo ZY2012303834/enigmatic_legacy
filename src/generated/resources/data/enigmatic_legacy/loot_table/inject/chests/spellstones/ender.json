@@ -6,16 +6,16 @@
         {
           "type": "minecraft:item",
           "name": "enigmatic_legacy:eye_of_nebula",
-          "weight": 90
+          "weight": 135
         },
         {
           "type": "minecraft:item",
           "name": "enigmatic_legacy:void_pearl",
-          "weight": 10
+          "weight": 15
         },
         {
           "type": "minecraft:empty",
-          "weight": 900
+          "weight": 850
         }
       ],
       "rolls": {

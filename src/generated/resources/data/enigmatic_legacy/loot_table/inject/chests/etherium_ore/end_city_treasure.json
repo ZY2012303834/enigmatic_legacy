@@ -9,18 +9,18 @@
             {
               "count": {
                 "type": "minecraft:uniform",
-                "max": 2.0,
+                "max": 3.0,
                 "min": 1.0
               },
               "function": "minecraft:set_count"
             }
           ],
           "name": "enigmatic_legacy:etherium_ore",
-          "weight": 1
+          "weight": 10
         },
         {
           "type": "minecraft:empty",
-          "weight": 19
+          "weight": 90
         }
       ],
       "rolls": {
