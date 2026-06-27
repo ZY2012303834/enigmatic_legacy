@@ -36,11 +36,8 @@ public class ItemTagGenerator extends ItemTagsProvider {
     private static final TagKey<Item> ENCHANTABLE_DURABILITY = minecraftItemTag("enchantable/durability");
     private static final TagKey<Item> ENCHANTABLE_WEAPON = minecraftItemTag("enchantable/weapon");
     private static final TagKey<Item> ENCHANTABLE_SWORD = minecraftItemTag("enchantable/sword");
-    private static final TagKey<Item> ENCHANTABLE_AXE = minecraftItemTag("enchantable/axe");
     private static final TagKey<Item> ENCHANTABLE_SHARP_WEAPON = minecraftItemTag("enchantable/sharp_weapon");
     private static final TagKey<Item> ENCHANTABLE_FIRE_ASPECT = minecraftItemTag("enchantable/fire_aspect");
-    private static final TagKey<Item> ENCHANTABLE_MINING = minecraftItemTag("enchantable/mining");
-    private static final TagKey<Item> ENCHANTABLE_MINING_LOOT = minecraftItemTag("enchantable/mining_loot");
 
     public ItemTagGenerator(
             PackOutput output,
@@ -103,21 +100,14 @@ public class ItemTagGenerator extends ItemTagsProvider {
 
         /*
          * 行刑者之斧：
-         * - 加入 axes，保证它被识别为斧头；
-         * - 加入 axe / mining / mining_loot / durability，支持效率、精准采集、耐久、经验修补等；
-         * - 额外加入 sword / weapon / sharp_weapon / fire_aspect，让它能获得抢夺和常规武器附魔。
-         *   这是必须的，因为行刑者之斧的斩首概率依赖抢夺等级。
+         * - 名字仍然是斧；
+         * - 但按用户要求，属性和附魔都作为“剑”处理；
+         * - 不再加入 axes / axe / mining / mining_loot；
+         * - 加入 swords 和剑类 enchantable 标签；
+         * - 这样可以获得锋利、亡灵杀手、节肢杀手、击退、抢夺、火焰附加、耐久、经验修补等剑类附魔；
+         * - 抢夺等级仍然会影响斩首概率。
          */
-        tag(ItemTags.AXES)
-                .add(ModItems.AXE_OF_EXECUTIONER.get());
-
-        tag(ENCHANTABLE_AXE)
-                .add(ModItems.AXE_OF_EXECUTIONER.get());
-
-        tag(ENCHANTABLE_MINING)
-                .add(ModItems.AXE_OF_EXECUTIONER.get());
-
-        tag(ENCHANTABLE_MINING_LOOT)
+        tag(ItemTags.SWORDS)
                 .add(ModItems.AXE_OF_EXECUTIONER.get());
 
         tag(ENCHANTABLE_SWORD)

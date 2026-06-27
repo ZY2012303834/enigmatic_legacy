@@ -9,13 +9,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.AxeItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.Tiers;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 
 import net.minecraft.world.item.component.ResolvableProfile;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -44,7 +38,7 @@ import java.util.List;
  * 抢夺 III：30%
  */
 @EventBusSubscriber(modid = EnigmaticLegacy.MODID)
-public class AxeOfExecutioner extends AxeItem {
+public class AxeOfExecutioner extends SwordItem {
 
     /**
      * 基础斩首概率。
@@ -60,26 +54,15 @@ public class AxeOfExecutioner extends AxeItem {
 
     /**
      * 行刑者之斧的构造方法。
-     * 这里继承 AxeItem，所以它本身就是斧头类型武器。
-     * 属性解释：
-     * Tiers.NETHERITE：
-     * - 使用下界合金工具等级，保证耐久、挖掘等级等属性足够高。
-     * stacksTo(1)：
-     * - 只能堆叠 1 个。
-     * fireResistant()：
-     * - 掉进火里或岩浆里不会被烧毁。
-     * rarity(Rarity.EPIC)：
-     * - 物品名字显示为史诗品质颜色。
-     * AxeItem.createAttributes(Tiers.NETHERITE, 5.0F, -2.4F)：
-     * - 在 1.21.1 中，最终显示攻击力 = 工具基础攻击力 + 这里传入的攻击伤害加成。
-     * - 下界合金工具基础攻击力为 5。
-     * - 这里额外给 5。
-     * - 所以最终攻击力显示为 10。
-     * 攻击速度说明：
-     * - 原版属性内部显示方式是 4.0 + attackSpeed。
-     * - 这里传入 -2.4F。
-     * - 4.0 - 2.4 = 1.6。
-     * - 所以最终攻击速度显示为 1.6。
+     * 注意：
+     * 1. 虽然名字仍然叫“斧”，但这里按用户要求改为剑类属性；
+     * 2. 继承 SwordItem；
+     * 3. 使用 SwordItem.createAttributes；
+     * 4. 下界合金 Tier 的基础攻击伤害为 4；
+     * 5. SwordItem.createAttributes 第二个参数传 6.0F；
+     * 6. 最终攻击伤害显示约为 4 + 6 = 10；
+     * 7. 攻击速度传 -2.4F，最终显示为 1.6；
+     * 8. 附魔也会通过 ItemTagGenerator 按剑类标签处理。
      */
     public AxeOfExecutioner() {
         super(
@@ -88,9 +71,9 @@ public class AxeOfExecutioner extends AxeItem {
                         .stacksTo(1)
                         .fireResistant()
                         .rarity(Rarity.EPIC)
-                        .attributes(AxeItem.createAttributes(
+                        .attributes(SwordItem.createAttributes(
                                 Tiers.NETHERITE,
-                                5.0F,
+                                6.0F,
                                 -2.4F
                         ))
         );
