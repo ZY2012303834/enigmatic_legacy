@@ -64,6 +64,7 @@ public final class ModeTabs {
 
                                 // 武器工具
                                 output.accept(ModItems.THE_ACKNOWLEDGMENT.get());       // 启示之证
+                                output.accept(ModItems.THE_TWIST.get());                // 倒转之启
                                 output.accept(ModItems.AXE_OF_EXECUTIONER.get());       // 行刑者之斧
                                 output.accept(ModItems.ENDER_SLAYER.get());             // 末影之屠
                                 output.accept(ModItems.BULWARK_OF_BLAZING_PRIDE.get()); // 烈焰之傲壁垒

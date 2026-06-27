@@ -609,5 +609,27 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('R', ModItems.ENDER_ROD.get())
                 .unlockedBy("has_abyssal_heart", has(ModItems.ABYSSAL_HEART.get()))
                 .save(output);
+
+        // 倒转之启 / The Twist
+        // 原项目配方：
+        // E R E
+        // I X I
+        // E C E
+        // E = 邪恶精髓
+        // R = 红石粉
+        // I = 下界合金锭
+        // X = 启示之证
+        // C = 扭曲之心
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.THE_TWIST.get())
+                .pattern("ERE")
+                .pattern("IXI")
+                .pattern("ECE")
+                .define('E', ModItems.EVIL_ESSENCE.get())
+                .define('R', Items.REDSTONE)
+                .define('I', Items.NETHERITE_INGOT)
+                .define('X', ModItems.THE_ACKNOWLEDGMENT.get())
+                .define('C', ModItems.TWISTED_HEART.get())
+                .unlockedBy("has_evil_essence", has(ModItems.EVIL_ESSENCE.get()))
+                .save(output);
     }
 }

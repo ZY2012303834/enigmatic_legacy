@@ -122,11 +122,6 @@ public class ItemGenerator extends ItemModelProvider {
         // 这里生成模型切换入口，具体 3D in_hand 模型使用原项目 JSON。
         eldritchPan();
 
-//        // 饕餮之锅模型。
-//        // 使用 handheld，让它像武器一样拿在手里。
-//        // 原项目物品 ID：eldritch_pan
-//        withExistingParent("item/eldritch_pan", mcLoc("item/handheld"))
-//                .texture("layer0", modLoc("item/eldritch_pan"));
 
 
         basicItem(ModItems.ETHERIUM_HELMET.getId());

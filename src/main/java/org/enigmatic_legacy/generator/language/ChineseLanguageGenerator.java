@@ -728,6 +728,27 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         // Growing Bloodlust 按同一命名风格翻译为“无止嗜血”。
         add("effect.enigmatic_legacy.growing_hunger", "无止饥饿");
         add("effect.enigmatic_legacy.growing_bloodlust", "无止嗜血");
+
+        // The Twist / 倒转之启
+        addItem(ModItems.THE_TWIST, "倒转之启");
+
+        add("tooltip.enigmatic_legacy.the_twist.1",
+                "在夺走一切的道路上，");
+
+        add("tooltip.enigmatic_legacy.the_twist.2",
+                "没有比知晓更好的方式……");
+
+        add("tooltip.enigmatic_legacy.the_twist.4",
+                "第四诅咒的修正：");
+
+        add("tooltip.enigmatic_legacy.the_twist.5",
+                "- 始终造成全额伤害。");
+
+        add("tooltip.enigmatic_legacy.the_twist.6",
+                "对 Boss 和玩家造成 %s 伤害。");
+
+        add("tooltip.enigmatic_legacy.the_twist.7",
+                "%s 击退");
     }
 
     private void addChineseCursedRingTooltips() {

@@ -74,6 +74,8 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(BulwarkOfBlazingPrideEvents.class);
         // 饕餮之锅事件
         NeoForge.EVENT_BUS.register(VoraciousPanEvents.class);
+        // 倒转之启事件
+        NeoForge.EVENT_BUS.register(TheTwistEvents.class);
 
         NeoForge.EVENT_BUS.register(TeleportParticleEvents.class);
         NeoForge.EVENT_BUS.register(EnderRingEvents.class);

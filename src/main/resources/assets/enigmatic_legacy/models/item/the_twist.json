@@ -1,0 +1,18 @@
+{
+  "parent": "minecraft:item/handheld",
+  "loader": "neoforge:separate_transforms",
+  "base": {
+    "parent": "enigmatic_legacy:item/3d/the_twist_3d"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "enigmatic_legacy:item/gui/the_twist_gui"
+    },
+    "fixed": {
+      "parent": "enigmatic_legacy:item/3d/the_twist_3d"
+    },
+    "ground": {
+      "parent": "enigmatic_legacy:item/3d/the_twist_3d"
+    }
+  }
+}

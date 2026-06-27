@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-27T12:40:32.4655704	vanilla/Recipes
+// 1.21.1	2026-06-27T13:44:10.221073	vanilla/Recipes
 138cca5fc2d36a468976c88c266618e68aa51d88 data/enigmatic_legacy/advancement/recipes/building_blocks/astral_dust_sack.json
 75128c3d277fd90fca1df4cc9f996933af7f7241 data/enigmatic_legacy/advancement/recipes/building_blocks/etherium_block.json
 70a559dbe3db33a763c165b60a23730d9e9f955b data/enigmatic_legacy/advancement/recipes/combat/axe_of_executioner.json
@@ -11,6 +11,7 @@ df5fc7d2615628306ffd1c58890d87f878e19743 data/enigmatic_legacy/advancement/recip
 ad0360cc904a949794c1538c719c0413c3d523ec data/enigmatic_legacy/advancement/recipes/combat/etherium_leggings.json
 d0be423c1e59703f99efa286ac4bae3587c66907 data/enigmatic_legacy/advancement/recipes/combat/etherium_sword.json
 be1652cc9a1a674b15883e0ade8abacb47c67f24 data/enigmatic_legacy/advancement/recipes/combat/infernal_shield.json
+a6bb0afb6b61b2396d419e9da68a2a7a445c741b data/enigmatic_legacy/advancement/recipes/combat/the_twist.json
 afc69a4ceaecd0685cc5f6ee8c892af17f05a22e data/enigmatic_legacy/advancement/recipes/decorations/lamps/big_lamp.json
 f0d876abfb4d231cd8cd0bca21b02c1f0caa053e data/enigmatic_legacy/advancement/recipes/decorations/lamps/big_shroomlamp.json
 4a6993b7056e8f412ed1bbbd1c69dcf56d9476fa data/enigmatic_legacy/advancement/recipes/misc/avarice_scroll.json
@@ -83,6 +84,7 @@ d7ac2e0da59059256e77bc61b36e3925d2b5c44f data/enigmatic_legacy/recipe/mending_mi
 73dffe23d0416988f96b69e6853bf9014071a213 data/enigmatic_legacy/recipe/monster_charm.json
 516862b7044c46c4e7294da1ab7aafe5196ee822 data/enigmatic_legacy/recipe/the_acknowledgment.json
 37833edd533983868b64f9e92e785dfe87090cf6 data/enigmatic_legacy/recipe/the_cube.json
+ba6d29af95d8ca5a5d2db72b55e10a8e30329f82 data/enigmatic_legacy/recipe/the_twist.json
 9d1164ba211257b9b0a8afceac161910f5403ce6 data/enigmatic_legacy/recipe/thicc_scroll.json
 356776aabc4bdd1b8cc93bc0ced18e8d0172d019 data/enigmatic_legacy/recipe/treasure_hunter_charm.json
 8cfad9fa5459bfbf9f4230a1168be6e1c4093d45 data/enigmatic_legacy/recipe/twisted_heart.json

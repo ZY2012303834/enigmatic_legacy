@@ -78,6 +78,9 @@ public final class ModItems {
 
     // 武器工具
     public static final DeferredItem<TheAcknowledgment> THE_ACKNOWLEDGMENT = ITEMS.register("the_acknowledgment", TheAcknowledgment::new); // 启示之证 / The Acknowledgment
+    // 倒转之启 / The Twist
+    // 七咒专属启示之证变体，既是手册，也是武器。
+    public static final DeferredItem<TheTwist> THE_TWIST = ITEMS.register("the_twist", TheTwist::new);
     public static final DeferredItem<AxeOfExecutioner> AXE_OF_EXECUTIONER = ITEMS.register("axe_of_executioner", AxeOfExecutioner::new);
     public static final DeferredItem<EtheriumBroadsword> ETHERIUM_SWORD = ITEMS.register("etherium_sword", EtheriumBroadsword::new); // 以太阔剑
     public static final DeferredItem<EtheriumPickaxe> ETHERIUM_PICKAXE = ITEMS.register("etherium_pickaxe", EtheriumPickaxe::new); // 以太镐

@@ -724,6 +724,27 @@ public class EnglishLanguageGenerator extends LanguageProvider {
 
         add("effect.enigmatic_legacy.growing_hunger", "Growing Hunger");
         add("effect.enigmatic_legacy.growing_bloodlust", "Growing Bloodlust");
+
+        // The Twist / 倒转之启
+        addItem(ModItems.THE_TWIST, "The Twist");
+
+        add("tooltip.enigmatic_legacy.the_twist.1",
+                "On a path to take it all away,");
+
+        add("tooltip.enigmatic_legacy.the_twist.2",
+                "there can be no better way of knowing...");
+
+        add("tooltip.enigmatic_legacy.the_twist.4",
+                "Alteration of the Fourth Curse:");
+
+        add("tooltip.enigmatic_legacy.the_twist.5",
+                "- Always deals its full damage.");
+
+        add("tooltip.enigmatic_legacy.the_twist.6",
+                "%s Damage against bosses and players.");
+
+        add("tooltip.enigmatic_legacy.the_twist.7",
+                "%s Knockback");
     }
 
     private void addEnglishCursedRingTooltips() {
