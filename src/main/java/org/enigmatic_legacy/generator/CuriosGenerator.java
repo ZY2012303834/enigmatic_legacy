@@ -71,6 +71,7 @@ public class CuriosGenerator implements DataProvider {
 
         // 为玩家实体分配 ring 和 charm 栏位。
         futures.add(generatePlayerRingSlot(cachedOutput));
+        futures.add(generateTouhouMaidSlot(cachedOutput));
 
         // 生成 curios:ring 标签，让戒指物品可以放入 ring 栏位。
         futures.add(generateRingTag(cachedOutput));
@@ -248,6 +249,30 @@ public class CuriosGenerator implements DataProvider {
                 .resolve("curios")
                 .resolve("entities")
                 .resolve("player.json");
+
+        return DataProvider.saveStable(cachedOutput, json, path);
+    }
+
+    private CompletableFuture<?> generateTouhouMaidSlot(CachedOutput cachedOutput) {
+        JsonObject json = new JsonObject();
+
+        JsonArray entities = new JsonArray();
+        entities.add("touhou_little_maid:maid");
+
+        JsonArray slots = new JsonArray();
+        slots.add("ring");
+        slots.add("charm");
+        slots.add("spellstone");
+        slots.add("scroll");
+
+        json.add("entities", entities);
+        json.add("slots", slots);
+
+        Path path = output.getOutputFolder(PackOutput.Target.DATA_PACK)
+                .resolve(EnigmaticLegacy.MODID)
+                .resolve("curios")
+                .resolve("entities")
+                .resolve("touhou_little_maid_maid.json");
 
         return DataProvider.saveStable(cachedOutput, json, path);
     }

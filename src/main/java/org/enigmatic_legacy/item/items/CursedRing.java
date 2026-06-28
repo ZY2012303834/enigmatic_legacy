@@ -164,7 +164,7 @@ public class CursedRing extends Item implements ICurioItem {
             return CursedRingHelper.canEquipCursedRing(player, context.identifier(), context.index());
         }
 
-        return true;
+        return false;
     }
 
     /**

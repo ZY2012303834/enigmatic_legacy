@@ -1,6 +1,6 @@
 package org.enigmatic_legacy.event;
 
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
@@ -22,11 +22,9 @@ public final class MagicQuartzRingEvents {
      */
     @SubscribeEvent
     public static void onLivingDamage(LivingDamageEvent.Pre event) {
-        if (!(event.getEntity() instanceof Player player)) {
-            return;
-        }
+        LivingEntity entity = event.getEntity();
 
-        if (!MagicQuartzRingHelper.hasMagicQuartzRing(player)) {
+        if (!MagicQuartzRingHelper.hasMagicQuartzRing(entity)) {
             return;
         }
 

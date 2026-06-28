@@ -6,10 +6,10 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
@@ -64,11 +64,9 @@ public class MagicQuartzRing extends Item implements ICurioItem {
      */
     @Override
     public boolean canEquip(SlotContext context, ItemStack stack) {
-        if (context.entity() instanceof Player player) {
-            return MagicQuartzRingHelper.canEquipMagicQuartzRing(player, context.identifier(), context.index());
-        }
+        LivingEntity entity = context.entity();
 
-        return true;
+        return MagicQuartzRingHelper.canEquipMagicQuartzRing(entity, context.identifier(), context.index());
     }
 
     @Override

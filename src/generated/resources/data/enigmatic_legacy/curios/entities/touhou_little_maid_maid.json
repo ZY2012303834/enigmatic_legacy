@@ -1,0 +1,11 @@
+{
+  "entities": [
+    "touhou_little_maid:maid"
+  ],
+  "slots": [
+    "ring",
+    "charm",
+    "spellstone",
+    "scroll"
+  ]
+}

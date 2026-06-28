@@ -2,7 +2,7 @@ package org.enigmatic_legacy.util;
 
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.item.items.MagicQuartzRing;
@@ -23,8 +23,8 @@ public final class MagicQuartzRingHelper {
     /**
      * 判断玩家是否佩戴魔法石英戒指。
      */
-    public static boolean hasMagicQuartzRing(Player player) {
-        return CuriosApi.getCuriosInventory(player)
+    public static boolean hasMagicQuartzRing(LivingEntity entity) {
+        return CuriosApi.getCuriosInventory(entity)
                 .map(handler -> handler.findFirstCurio(ModItems.MAGIC_QUARTZ_RING.get()).isPresent())
                 .orElse(false);
     }
@@ -35,8 +35,8 @@ public final class MagicQuartzRingHelper {
      * Curios 的 ring 槽可以有多个，但魔法石英戒指本身只能佩戴一个。
      * 如果检查的是当前已经放着魔法石英戒指的同一个槽位，返回 true，避免 Curios 刷新装备状态时误判。
      */
-    public static boolean canEquipMagicQuartzRing(Player player, String slotIdentifier, int slotIndex) {
-        return CuriosApi.getCuriosInventory(player)
+    public static boolean canEquipMagicQuartzRing(LivingEntity entity, String slotIdentifier, int slotIndex) {
+        return CuriosApi.getCuriosInventory(entity)
                 .flatMap(handler -> handler.getStacksHandler(slotIdentifier))
                 .map(ringHandler -> {
                     for (int slot = 0; slot < ringHandler.getStacks().getSlots(); slot++) {
