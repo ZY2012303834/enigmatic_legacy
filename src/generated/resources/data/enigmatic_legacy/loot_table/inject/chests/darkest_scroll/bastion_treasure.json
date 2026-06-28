@@ -6,11 +6,11 @@
         {
           "type": "minecraft:item",
           "name": "enigmatic_legacy:darkest_scroll",
-          "weight": 8
+          "weight": 13
         },
         {
           "type": "minecraft:empty",
-          "weight": 92
+          "weight": 87
         }
       ],
       "rolls": {

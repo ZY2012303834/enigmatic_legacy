@@ -6,16 +6,16 @@
         {
           "type": "minecraft:item",
           "name": "enigmatic_legacy:golem_heart",
-          "weight": 105
+          "weight": 70
         },
         {
           "type": "minecraft:item",
           "name": "enigmatic_legacy:angel_blessing",
-          "weight": 195
+          "weight": 130
         },
         {
           "type": "minecraft:empty",
-          "weight": 1700
+          "weight": 800
         }
       ],
       "rolls": {

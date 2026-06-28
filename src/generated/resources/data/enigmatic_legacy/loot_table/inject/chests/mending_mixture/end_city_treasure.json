@@ -6,11 +6,11 @@
         {
           "type": "minecraft:item",
           "name": "enigmatic_legacy:mending_mixture",
-          "weight": 1
+          "weight": 10
         },
         {
           "type": "minecraft:empty",
-          "weight": 19
+          "weight": 90
         }
       ],
       "rolls": {

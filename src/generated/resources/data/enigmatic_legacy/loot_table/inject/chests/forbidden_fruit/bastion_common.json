@@ -6,11 +6,11 @@
         {
           "type": "minecraft:item",
           "name": "enigmatic_legacy:forbidden_fruit",
-          "weight": 4
+          "weight": 9
         },
         {
           "type": "minecraft:empty",
-          "weight": 96
+          "weight": 91
         }
       ],
       "rolls": {

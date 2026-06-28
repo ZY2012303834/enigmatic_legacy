@@ -16,11 +16,11 @@
             }
           ],
           "name": "enigmatic_legacy:astral_dust",
-          "weight": 20
+          "weight": 25
         },
         {
           "type": "minecraft:empty",
-          "weight": 80
+          "weight": 75
         }
       ],
       "rolls": {
