@@ -97,6 +97,10 @@ public final class EnigmaticEyeObtainEvents {
         // 获取这个位置的方块实体。
         BlockEntity blockEntity = level.getBlockEntity(pos);
 
+        if (isLootrBlockEntity(blockEntity)) {
+            return;
+        }
+
         // RandomizableContainerBlockEntity 是原版可带战利品表容器的基类。
         // 地牢箱、神殿箱、沉船箱、村庄箱等战利品箱通常属于这个体系。
         if (!(blockEntity instanceof RandomizableContainerBlockEntity container)) {
@@ -340,5 +344,10 @@ public final class EnigmaticEyeObtainEvents {
      */
     private static void setGeneratedDormantEye(ServerPlayer player) {
         player.getPersistentData().putBoolean(HAS_GENERATED_DORMANT_EYE_TAG, true);
+    }
+
+    private static boolean isLootrBlockEntity(BlockEntity blockEntity) {
+        return blockEntity != null
+                && blockEntity.getClass().getName().startsWith("noobanidus.mods.lootr.");
     }
 }

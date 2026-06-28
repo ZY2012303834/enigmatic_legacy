@@ -26,6 +26,10 @@ repositories {
         name = 'BlameJared'
         url = 'https://maven.blamejared.com'
     }
+    maven {
+        name = 'Modrinth'
+        url = 'https://api.modrinth.com/maven'
+    }
 }
 
 base {
@@ -144,6 +148,9 @@ dependencies {
     // Patchouli API is needed at compile time; the full mod is loaded in dev/runtime.
     compileOnly "vazkii.patchouli:Patchouli:${patchouli_version}:api"
     runtimeOnly "vazkii.patchouli:Patchouli:${patchouli_version}"
+
+    compileOnly "maven.modrinth:lootr:${lootr_version}"
+    runtimeOnly "maven.modrinth:lootr:${lootr_version}"
 
     // JEI Mod 依赖示例。
     // JEI API 仅用于编译期，完整 JEI artifact 用于运行时。

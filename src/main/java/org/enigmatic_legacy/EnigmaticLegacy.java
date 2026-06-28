@@ -2,6 +2,7 @@ package org.enigmatic_legacy;
 
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.common.NeoForge;
@@ -108,6 +109,10 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(ExtradimensionalEyeEvents.class);
         NeoForge.EVENT_BUS.register(MajesticElytraEvents.class);
         NeoForge.EVENT_BUS.register(EtheriumArmorEvents.class);     //以太装甲
+
+        if (ModList.get().isLoaded("lootr")) {
+            NeoForge.EVENT_BUS.register(LootrCompatEvents.class);
+        }
 
     }
 }

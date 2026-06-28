@@ -80,6 +80,12 @@ versionRange = "${patchouli_version_range}"
 ordering = "NONE"
 side = "BOTH"
 
+[[dependencies."${mod_id}"]]
+modId = "lootr"
+type = "optional"
+ordering = "AFTER"
+side = "BOTH"
+
 # 这是另一个依赖项
 [[dependencies."${mod_id}"]]
 modId = "minecraft"
