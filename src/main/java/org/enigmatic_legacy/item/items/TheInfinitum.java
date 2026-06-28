@@ -151,7 +151,7 @@ public class TheInfinitum extends Item {
     }
 
     @Override
-    public int getEnchantmentValue(@NotNull ItemStack stack) {
+    public int getEnchantmentValue() {
         return 24;
     }
 

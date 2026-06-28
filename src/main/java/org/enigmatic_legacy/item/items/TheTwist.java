@@ -195,7 +195,7 @@ public class TheTwist extends Item {
      * 原项目附魔能力来自 The Acknowledgment：24。
      */
     @Override
-    public int getEnchantmentValue(@NotNull ItemStack stack) {
+    public int getEnchantmentValue() {
         return 24;
     }
 

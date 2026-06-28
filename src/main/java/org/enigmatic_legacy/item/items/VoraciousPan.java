@@ -348,7 +348,7 @@ public class VoraciousPan extends ShieldItem {
      * 附魔能力。
      */
     @Override
-    public int getEnchantmentValue(@NotNull ItemStack stack) {
+    public int getEnchantmentValue() {
         return ENCHANTMENT_VALUE;
     }
 

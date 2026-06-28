@@ -16,8 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class MajesticElytra extends ElytraItem {
-    private static final int ENCHANTMENT_VALUE = 1;
-
     public MajesticElytra() {
         super(new Item.Properties()
                 .stacksTo(1)
@@ -29,6 +27,11 @@ public class MajesticElytra extends ElytraItem {
     @Override
     public boolean isValidRepairItem(@NotNull ItemStack stack, @NotNull ItemStack repairCandidate) {
         return repairCandidate.is(ModItems.ETHERIUM_INGOT.get());
+    }
+
+    @Override
+    public boolean isEnchantable(@NotNull ItemStack stack) {
+        return false;
     }
 
     @Override
@@ -56,16 +59,6 @@ public class MajesticElytra extends ElytraItem {
         }
 
         return true;
-    }
-
-    @Override
-    public boolean isEnchantable(@NotNull ItemStack stack) {
-        return true;
-    }
-
-    @Override
-    public int getEnchantmentValue(@NotNull ItemStack stack) {
-        return ENCHANTMENT_VALUE;
     }
 
     @Override

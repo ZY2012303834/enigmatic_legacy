@@ -138,7 +138,7 @@ public class TheAcknowledgment extends Item {
      * Plus 版附魔值：24。
      */
     @Override
-    public int getEnchantmentValue(@NotNull ItemStack stack) {
+    public int getEnchantmentValue() {
         return 24;
     }
 
