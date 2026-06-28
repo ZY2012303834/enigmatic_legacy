@@ -20,6 +20,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * 超维容器 / Extradimensional Vessel。
@@ -73,7 +74,18 @@ public class StorageCrystal extends Item {
         return crystal;
     }
 
-    public void retrieveDropsFromCrystal(ItemStack crystal, Player player) {
+    public boolean canRetrieveDropsFromCrystal(ItemStack crystal, Player player) {
+        ItemStack embeddedSoulCrystal = getEmbeddedSoulCrystal(crystal, player);
+        UUID owner = SoulCrystal.getOwnerId(embeddedSoulCrystal);
+
+        return owner == null || player.getUUID().equals(owner);
+    }
+
+    public boolean retrieveDropsFromCrystal(ItemStack crystal, Player player) {
+        if (!canRetrieveDropsFromCrystal(crystal, player)) {
+            return false;
+        }
+
         CompoundTag crystalTag = getTag(crystal);
         ListTag storedStacks = crystalTag.getList(STORED_STACKS_TAG, Tag.TAG_COMPOUND);
 
@@ -87,12 +99,10 @@ public class StorageCrystal extends Item {
 
         ExperienceHelper.addPlayerXP(player, crystalTag.getInt(STORED_XP_TAG));
 
-        if (crystalTag.contains(EMBEDDED_SOUL_TAG)) {
-            ItemStack soulCrystal = ItemStack.parseOptional(player.registryAccess(), crystalTag.getCompound(EMBEDDED_SOUL_TAG));
+        ItemStack soulCrystal = getEmbeddedSoulCrystal(crystal, player);
 
-            if (!soulCrystal.isEmpty() && soulCrystal.getItem() instanceof SoulCrystal soulCrystalItem) {
-                soulCrystalItem.retrieveSoulFromCrystal(player, soulCrystal);
-            }
+        if (!soulCrystal.isEmpty() && soulCrystal.getItem() instanceof SoulCrystal soulCrystalItem) {
+            soulCrystalItem.retrieveSoulFromCrystal(player, soulCrystal);
         } else {
             player.level().playSound(null, player.blockPosition(), SoundEvents.BEACON_ACTIVATE, SoundSource.PLAYERS, 1.0F, 1.0F);
         }
@@ -102,6 +112,7 @@ public class StorageCrystal extends Item {
         crystalTag.putInt(STORED_XP_TAG, 0);
         crystalTag.putBoolean(STORED_FLAG_TAG, false);
         setTag(crystal, crystalTag);
+        return true;
     }
 
     @Override
@@ -124,5 +135,15 @@ public class StorageCrystal extends Item {
 
     private static void setTag(ItemStack stack, CompoundTag tag) {
         stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
+    }
+
+    private static ItemStack getEmbeddedSoulCrystal(ItemStack crystal, Player player) {
+        CompoundTag crystalTag = getTag(crystal);
+
+        if (!crystalTag.contains(EMBEDDED_SOUL_TAG)) {
+            return ItemStack.EMPTY;
+        }
+
+        return ItemStack.parseOptional(player.registryAccess(), crystalTag.getCompound(EMBEDDED_SOUL_TAG));
     }
 }

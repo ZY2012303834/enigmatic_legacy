@@ -171,18 +171,24 @@ public class PermanentItemEntity extends Entity {
                 return;
             }
 
-            storageCrystal.retrieveDropsFromCrystal(stack, player);
+            if (!storageCrystal.canRetrieveDropsFromCrystal(stack, player)
+                    || !storageCrystal.retrieveDropsFromCrystal(stack, player)) {
+                return;
+            }
+
             this.finishPickup(player, item, 1);
             return;
         }
 
         if (item instanceof SoulCrystal soulCrystal) {
-            if (!SoulCrystal.hasOwner(stack)) {
+            UUID soulOwner = SoulCrystal.getOwnerId(stack);
+
+            if (soulOwner == null) {
                 this.finishPickup(player, item, 1);
                 return;
             }
 
-            if (!isOwner || !soulCrystal.retrieveSoulFromCrystal(player, stack)) {
+            if (!player.getUUID().equals(soulOwner) || !soulCrystal.retrieveSoulFromCrystal(player, stack)) {
                 return;
             }
 

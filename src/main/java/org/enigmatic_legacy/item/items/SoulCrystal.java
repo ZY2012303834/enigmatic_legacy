@@ -92,12 +92,16 @@ public class SoulCrystal extends Item {
     }
 
     private static boolean canRetrieveCrystal(Player player, ItemStack stack) {
-        CompoundTag tag = getTag(stack);
-        return player.getUUID().equals(tag.getUUID(OWNER_TAG));
+        return player.getUUID().equals(getOwnerId(stack));
     }
 
     public static boolean hasOwner(ItemStack stack) {
         return getTag(stack).hasUUID(OWNER_TAG);
+    }
+
+    public static UUID getOwnerId(ItemStack stack) {
+        CompoundTag tag = getTag(stack);
+        return tag.hasUUID(OWNER_TAG) ? tag.getUUID(OWNER_TAG) : null;
     }
 
     private static void setOwner(ItemStack stack, UUID owner) {

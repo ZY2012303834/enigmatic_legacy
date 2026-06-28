@@ -6,11 +6,11 @@
         {
           "type": "minecraft:item",
           "name": "enigmatic_legacy:blazing_core",
-          "weight": 20
+          "weight": 15
         },
         {
           "type": "minecraft:empty",
-          "weight": 80
+          "weight": 85
         }
       ],
       "rolls": {

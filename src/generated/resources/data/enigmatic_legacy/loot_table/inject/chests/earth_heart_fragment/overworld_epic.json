@@ -6,11 +6,11 @@
         {
           "type": "minecraft:item",
           "name": "enigmatic_legacy:earth_heart_fragment",
-          "weight": 95
+          "weight": 74
         },
         {
           "type": "minecraft:empty",
-          "weight": 911
+          "weight": 933
         }
       ],
       "rolls": {

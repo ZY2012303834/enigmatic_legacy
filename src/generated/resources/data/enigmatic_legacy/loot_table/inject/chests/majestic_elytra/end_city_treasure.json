@@ -6,11 +6,11 @@
         {
           "type": "minecraft:item",
           "name": "enigmatic_legacy:majestic_elytra",
-          "weight": 9
+          "weight": 4
         },
         {
           "type": "minecraft:empty",
-          "weight": 91
+          "weight": 96
         }
       ],
       "rolls": {

@@ -16,11 +16,11 @@
             }
           ],
           "name": "enigmatic_legacy:etherium_ore",
-          "weight": 15
+          "weight": 10
         },
         {
           "type": "minecraft:empty",
-          "weight": 85
+          "weight": 90
         }
       ],
       "rolls": {

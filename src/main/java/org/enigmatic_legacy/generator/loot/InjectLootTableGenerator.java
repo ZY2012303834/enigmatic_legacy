@@ -120,9 +120,8 @@ public class InjectLootTableGenerator implements DataProvider {
                 1.0D,
                 5.0D,
 
-                // 25%
-                itemEntry(ModItems.EARTH_HEART_FRAGMENT.get(), 95),
-                emptyEntry(911)
+                itemEntry(ModItems.EARTH_HEART_FRAGMENT.get(), 74),
+                emptyEntry(933)
         ));
     }
 
@@ -146,9 +145,8 @@ public class InjectLootTableGenerator implements DataProvider {
                         1.0D,
                         1.0D,
 
-                        // 20%
-                        itemEntry(ModItems.EARTH_HEART.get(), 20),
-                        emptyEntry(80)
+                        itemEntry(ModItems.EARTH_HEART.get(), 15),
+                        emptyEntry(85)
                 )
         );
     }
@@ -172,8 +170,8 @@ public class InjectLootTableGenerator implements DataProvider {
                 "mending_mixture/end_city_treasure",
                 1.0D,
                 1.0D,
-                itemEntry(ModItems.MENDING_MIXTURE.get(), 10),
-                emptyEntry(90)
+                itemEntry(ModItems.MENDING_MIXTURE.get(), 5),
+                emptyEntry(95)
         ));
     }
 
@@ -184,8 +182,8 @@ public class InjectLootTableGenerator implements DataProvider {
                 "redemption_potion/village",
                 1.0D,
                 1.0D,
-                itemEntry(ModItems.REDEMPTION_POTION.get(), 9),
-                emptyEntry(91)
+                itemEntry(ModItems.REDEMPTION_POTION.get(), 4),
+                emptyEntry(96)
         ));
     }
 
@@ -211,8 +209,8 @@ public class InjectLootTableGenerator implements DataProvider {
                 "etherium_ore/end_city_treasure",
                 1.0D,
                 1.0D,
-                itemEntry(ModItems.ETHERIUM_ORE.get(), 15, 1.0D, 3.0D),
-                emptyEntry(85)
+                itemEntry(ModItems.ETHERIUM_ORE.get(), 10, 1.0D, 3.0D),
+                emptyEntry(90)
         ));
     }
 
@@ -222,8 +220,8 @@ public class InjectLootTableGenerator implements DataProvider {
                 "majestic_elytra/end_city_treasure",
                 1.0D,
                 1.0D,
-                itemEntry(ModItems.MAJESTIC_ELYTRA.get(), 9),
-                emptyEntry(91)
+                itemEntry(ModItems.MAJESTIC_ELYTRA.get(), 4),
+                emptyEntry(96)
         ));
     }
 
@@ -233,8 +231,8 @@ public class InjectLootTableGenerator implements DataProvider {
                 "astral_fruit/end_city_treasure",
                 1.0D,
                 1.0D,
-                itemEntry(ModItems.ASTRAL_FRUIT.get(), 9),
-                emptyEntry(91)
+                itemEntry(ModItems.ASTRAL_FRUIT.get(), 4),
+                emptyEntry(96)
         ));
     }
 
@@ -271,9 +269,9 @@ public class InjectLootTableGenerator implements DataProvider {
                 "spellstones/air_earthen",
                 1.0D,
                 1.0D,
-                itemEntry(ModItems.GOLEM_HEART.get(), 70),
-                itemEntry(ModItems.ANGEL_BLESSING.get(), 130),
-                emptyEntry(800)
+                itemEntry(ModItems.GOLEM_HEART.get(), 105),
+                itemEntry(ModItems.ANGEL_BLESSING.get(), 195),
+                emptyEntry(1700)
         ));
 
         /*
@@ -300,9 +298,9 @@ public class InjectLootTableGenerator implements DataProvider {
                 "spellstones/ender_earthen",
                 1.0D,
                 1.0D,
-                itemEntry(ModItems.EYE_OF_NEBULA.get(), 70),
-                itemEntry(ModItems.GOLEM_HEART.get(), 130),
-                emptyEntry(800)
+                itemEntry(ModItems.EYE_OF_NEBULA.get(), 105),
+                itemEntry(ModItems.GOLEM_HEART.get(), 195),
+                emptyEntry(1700)
         ));
 
         /*
@@ -320,8 +318,8 @@ public class InjectLootTableGenerator implements DataProvider {
                 "spellstones/air",
                 1.0D,
                 1.0D,
-                itemEntry(ModItems.ANGEL_BLESSING.get(), 20),
-                emptyEntry(80)
+                itemEntry(ModItems.ANGEL_BLESSING.get(), 15),
+                emptyEntry(85)
         ));
 
         /*
@@ -341,8 +339,8 @@ public class InjectLootTableGenerator implements DataProvider {
                 "spellstones/earthen",
                 1.0D,
                 1.0D,
-                itemEntry(ModItems.GOLEM_HEART.get(), 20),
-                emptyEntry(80)
+                itemEntry(ModItems.GOLEM_HEART.get(), 15),
+                emptyEntry(85)
         ));
 
         /*
@@ -365,8 +363,8 @@ public class InjectLootTableGenerator implements DataProvider {
                 "spellstones/nether",
                 1.0D,
                 1.0D,
-                itemEntry(ModItems.BLAZING_CORE.get(), 20),
-                emptyEntry(80)
+                itemEntry(ModItems.BLAZING_CORE.get(), 15),
+                emptyEntry(85)
         ));
 
         /*
@@ -387,8 +385,8 @@ public class InjectLootTableGenerator implements DataProvider {
                 "spellstones/water",
                 1.0D,
                 1.0D,
-                itemEntry(ModItems.OCEAN_STONE.get(), 20),
-                emptyEntry(80)
+                itemEntry(ModItems.OCEAN_STONE.get(), 15),
+                emptyEntry(85)
         ));
 
         /*
@@ -397,26 +395,27 @@ public class InjectLootTableGenerator implements DataProvider {
          * 用途：
          * - 末地城宝藏箱。
          *
-         * 原比例：
-         * - 星云之眼：90%
-         * - 虚空珍珠：10%
-         *
          * 当前总出现概率：
-         * - 任意术石：15%
+         * - 任意术石：20%
          *
          * 具体概率：
-         * - 星云之眼：135 / 1000 = 13.5%
-         * - 虚空珍珠：15 / 1000 = 1.5%
-         * - 空结果：850 / 1000 = 85%
+         * - 星云之眼：140 / 1000 = 14%
+         * - 虚空珍珠：60 / 1000 = 6%
+         * - 空结果：800 / 1000 = 80%
+         *
+         * 说明：
+         * - 虚空珍珠概率从 2% 提高到 6%；
+         * - 末影术石总概率仍然保持 20%；
+         * - 每个箱子最多只会出现 1 个术石。
          */
         futures.add(saveTable(
                 cachedOutput,
                 "spellstones/ender",
                 1.0D,
                 1.0D,
-                itemEntry(ModItems.EYE_OF_NEBULA.get(), 180),
-                itemEntry(ModItems.VOID_PEARL.get(), 20),
-                emptyEntry(800)
+                itemEntry(ModItems.EYE_OF_NEBULA.get(), 105),
+                itemEntry(ModItems.VOID_PEARL.get(), 45),
+                emptyEntry(850)
         ));
     }
 
@@ -465,8 +464,8 @@ public class InjectLootTableGenerator implements DataProvider {
                          *
                          * 因为只抽取 1 次，所以单个箱子最多只会出现 1 个至暗卷轴。
                          */
-                        itemEntry(ModItems.DARKEST_SCROLL.get(), 13),
-                        emptyEntry(87)
+                        itemEntry(ModItems.DARKEST_SCROLL.get(), 8),
+                        emptyEntry(92)
                 ));
     }
 
@@ -491,8 +490,8 @@ public class InjectLootTableGenerator implements DataProvider {
                 "unholy_grail/overworld_epic",
                 1.0D,
                 1.0D,
-                itemEntry(ModItems.UNHOLY_GRAIL.get(), 9),
-                emptyEntry(91)
+                itemEntry(ModItems.UNHOLY_GRAIL.get(), 4),
+                emptyEntry(96)
         ));
 
         futures.add(saveTable(
@@ -500,8 +499,8 @@ public class InjectLootTableGenerator implements DataProvider {
                 "unholy_grail/overworld_epic_without_earth_heart",
                 1.0D,
                 1.0D,
-                itemEntry(ModItems.UNHOLY_GRAIL.get(), 9),
-                emptyEntry(91)
+                itemEntry(ModItems.UNHOLY_GRAIL.get(), 4),
+                emptyEntry(96)
         ));
     }
 
@@ -525,8 +524,8 @@ public class InjectLootTableGenerator implements DataProvider {
                 "forbidden_fruit/bastion_common",
                 1.0D,
                 1.0D,
-                itemEntry(ModItems.FORBIDDEN_FRUIT.get(), 9),
-                emptyEntry(91)
+                itemEntry(ModItems.FORBIDDEN_FRUIT.get(), 4),
+                emptyEntry(96)
         ));
     }
 
@@ -551,8 +550,8 @@ public class InjectLootTableGenerator implements DataProvider {
                 "astral_dust/end_city_treasure",
                 1.0D,
                 1.0D,
-                itemEntry(ModItems.ASTRAL_DUST.get(), 25, 1.0D, 5.0D),
-                emptyEntry(75)
+                itemEntry(ModItems.ASTRAL_DUST.get(), 20, 1.0D, 5.0D),
+                emptyEntry(80)
         ));
     }
 

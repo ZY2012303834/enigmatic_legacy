@@ -6,16 +6,16 @@
         {
           "type": "minecraft:item",
           "name": "enigmatic_legacy:eye_of_nebula",
-          "weight": 70
+          "weight": 105
         },
         {
           "type": "minecraft:item",
           "name": "enigmatic_legacy:golem_heart",
-          "weight": 130
+          "weight": 195
         },
         {
           "type": "minecraft:empty",
-          "weight": 800
+          "weight": 1700
         }
       ],
       "rolls": {
