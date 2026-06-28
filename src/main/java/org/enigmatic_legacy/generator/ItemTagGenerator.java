@@ -122,6 +122,7 @@ public class ItemTagGenerator extends ItemTagsProvider {
         addWeaponEnchantableTags();
         addToolEnchantableTags();
         addArmorEnchantableTags();
+        addElytraEnchantableTags();
         addShieldEnchantableTags();
         addRelicEnchantableTags();
         /*
@@ -315,8 +316,7 @@ public class ItemTagGenerator extends ItemTagsProvider {
                 .add(ModItems.ETHERIUM_HELMET.get())
                 .add(ModItems.ETHERIUM_CHESTPLATE.get())
                 .add(ModItems.ETHERIUM_LEGGINGS.get())
-                .add(ModItems.ETHERIUM_BOOTS.get())
-                .add(ModItems.MAJESTIC_ELYTRA.get());
+                .add(ModItems.ETHERIUM_BOOTS.get());
 
         tag(ENCHANTABLE_HEAD_ARMOR)
                 .add(ModItems.ETHERIUM_HELMET.get());
@@ -334,14 +334,20 @@ public class ItemTagGenerator extends ItemTagsProvider {
                 .add(ModItems.ETHERIUM_HELMET.get())
                 .add(ModItems.ETHERIUM_CHESTPLATE.get())
                 .add(ModItems.ETHERIUM_LEGGINGS.get())
-                .add(ModItems.ETHERIUM_BOOTS.get())
-                .add(ModItems.MAJESTIC_ELYTRA.get());
+                .add(ModItems.ETHERIUM_BOOTS.get());
 
         tag(ENCHANTABLE_VANISHING)
                 .add(ModItems.ETHERIUM_HELMET.get())
                 .add(ModItems.ETHERIUM_CHESTPLATE.get())
                 .add(ModItems.ETHERIUM_LEGGINGS.get())
-                .add(ModItems.ETHERIUM_BOOTS.get())
+                .add(ModItems.ETHERIUM_BOOTS.get());
+    }
+
+    private void addElytraEnchantableTags() {
+        tag(ENCHANTABLE_EQUIPPABLE)
+                .add(ModItems.MAJESTIC_ELYTRA.get());
+
+        tag(ENCHANTABLE_DURABILITY)
                 .add(ModItems.MAJESTIC_ELYTRA.get());
     }
 
