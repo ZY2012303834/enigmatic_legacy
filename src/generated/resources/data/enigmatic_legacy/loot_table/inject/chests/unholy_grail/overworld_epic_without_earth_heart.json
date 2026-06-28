@@ -6,11 +6,11 @@
         {
           "type": "minecraft:item",
           "name": "enigmatic_legacy:unholy_grail",
-          "weight": 1
+          "weight": 4
         },
         {
           "type": "minecraft:empty",
-          "weight": 49
+          "weight": 96
         }
       ],
       "rolls": {

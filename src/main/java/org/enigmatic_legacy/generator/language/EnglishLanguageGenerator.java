@@ -68,6 +68,9 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         addItem(ModItems.RECALL_POTION, "Potion of Recall");
         add("tooltip.enigmatic_legacy.recall_potion.1", "Drink to return to your respawn point.");
         add("tooltip.enigmatic_legacy.recall_potion.2", "When used in the End, teleports you near the main island platform.");
+        addItem(ModItems.REDEMPTION_POTION, "Potion of Redemption");
+        add("tooltip.enigmatic_legacy.redemption_potion.1", "Drink to cleanse all harmful effects, including the Forbidden Fruit.");
+        add("tooltip.enigmatic_legacy.redemption_potion.2", "Found rarely in village chests.");
 
         addItem(ModItems.UNHOLY_GRAIL, "Unholy Grail");
         add("tooltip.enigmatic_legacy.unholy_grail1", "Drink from it to draw upon forbidden power.");
@@ -621,6 +624,10 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.etherium_armor.set.2", "The shield reflects most projectiles.");
         add("tooltip.enigmatic_legacy.etherium_armor.set.3", "While active, the shield grants 50% damage resistance.");
         add("tooltip.enigmatic_legacy.etherium_armor.set.4", "Creatures that attack you are knocked back.");
+        addItem(ModItems.MAJESTIC_ELYTRA, "Majestic Elytra");
+        add("tooltip.enigmatic_legacy.majestic_elytra.1", "A refined pair of wings with immense durability.");
+        add("tooltip.enigmatic_legacy.majestic_elytra.2", "Hold jump while gliding to boost forward.");
+        add("tooltip.enigmatic_legacy.majestic_elytra.3", "Can be repaired with Etherium Ingots.");
         // end
 
         // 行刑者之斧

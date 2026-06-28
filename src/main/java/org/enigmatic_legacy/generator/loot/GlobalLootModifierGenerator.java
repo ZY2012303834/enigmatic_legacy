@@ -41,7 +41,9 @@ public class GlobalLootModifierGenerator extends GlobalLootModifierProvider {
         addForbiddenFruitModifiers();
         addAstralDustModifiers();
         addEtheriumOreModifiers();
+        addMajesticElytraModifiers();
         addMendingMixtureModifiers();
+        addRedemptionPotionModifiers();
 
         // 大地之心奖励箱获取方式。
         // 按原作者项目的 Overworld epic 池注入范围复刻。
@@ -70,6 +72,29 @@ public class GlobalLootModifierGenerator extends GlobalLootModifierProvider {
         );
     }
 
+    private void addRedemptionPotionModifiers() {
+        addVillageModifier("redemption_potion_village_weaponsmith", BuiltInLootTables.VILLAGE_WEAPONSMITH);
+        addVillageModifier("redemption_potion_village_toolsmith", BuiltInLootTables.VILLAGE_TOOLSMITH);
+        addVillageModifier("redemption_potion_village_armorer", BuiltInLootTables.VILLAGE_ARMORER);
+        addVillageModifier("redemption_potion_village_cartographer", BuiltInLootTables.VILLAGE_CARTOGRAPHER);
+        addVillageModifier("redemption_potion_village_mason", BuiltInLootTables.VILLAGE_MASON);
+        addVillageModifier("redemption_potion_village_shepherd", BuiltInLootTables.VILLAGE_SHEPHERD);
+        addVillageModifier("redemption_potion_village_butcher", BuiltInLootTables.VILLAGE_BUTCHER);
+        addVillageModifier("redemption_potion_village_fletcher", BuiltInLootTables.VILLAGE_FLETCHER);
+        addVillageModifier("redemption_potion_village_fisher", BuiltInLootTables.VILLAGE_FISHER);
+        addVillageModifier("redemption_potion_village_tannery", BuiltInLootTables.VILLAGE_TANNERY);
+        addVillageModifier("redemption_potion_village_temple", BuiltInLootTables.VILLAGE_TEMPLE);
+        addVillageModifier("redemption_potion_village_desert_house", BuiltInLootTables.VILLAGE_DESERT_HOUSE);
+        addVillageModifier("redemption_potion_village_plains_house", BuiltInLootTables.VILLAGE_PLAINS_HOUSE);
+        addVillageModifier("redemption_potion_village_taiga_house", BuiltInLootTables.VILLAGE_TAIGA_HOUSE);
+        addVillageModifier("redemption_potion_village_snowy_house", BuiltInLootTables.VILLAGE_SNOWY_HOUSE);
+        addVillageModifier("redemption_potion_village_savanna_house", BuiltInLootTables.VILLAGE_SAVANNA_HOUSE);
+    }
+
+    private void addVillageModifier(String name, ResourceKey<LootTable> targetTable) {
+        addTableModifier(name, targetTable, "inject/chests/redemption_potion/village");
+    }
+
     /**
      * 以太矿石获取方式。
      * 原项目：
@@ -85,6 +110,14 @@ public class GlobalLootModifierGenerator extends GlobalLootModifierProvider {
                 "etherium_ore_end_city_treasure",
                 BuiltInLootTables.END_CITY_TREASURE,
                 "inject/chests/etherium_ore/end_city_treasure"
+        );
+    }
+
+    private void addMajesticElytraModifiers() {
+        addTableModifier(
+                "majestic_elytra_end_city_treasure",
+                BuiltInLootTables.END_CITY_TREASURE,
+                "inject/chests/majestic_elytra/end_city_treasure"
         );
     }
 

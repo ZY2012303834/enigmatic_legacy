@@ -4,11 +4,13 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.enigmatic_legacy.item.ModItems;
@@ -47,6 +49,7 @@ public final class ModeTabs {
                                 output.accept(ModItems.FORBIDDEN_FRUIT.get());          // 禁忌之果
                                 output.accept(ModItems.TWISTED_MIRROR.get());           // 扭曲魔镜
                                 output.accept(ModItems.RECALL_POTION.get());            // 召回药水
+                                output.accept(ModItems.REDEMPTION_POTION.get());
                                 output.accept(createUltimateNightVisionPotionStack(Items.POTION));              // 终极夜视药水
                                 output.accept(createUltimateNightVisionPotionStack(Items.SPLASH_POTION));       // 喷溅型终极夜视药水
                                 output.accept(createUltimateNightVisionPotionStack(Items.LINGERING_POTION));    // 滞留型终极夜视药水
@@ -80,6 +83,7 @@ public final class ModeTabs {
                                 output.accept(ModItems.ETHERIUM_CHESTPLATE.get());      // 以太胸甲
                                 output.accept(ModItems.ETHERIUM_LEGGINGS.get());        // 以太护腿
                                 output.accept(ModItems.ETHERIUM_BOOTS.get());           // 以太靴子
+                                output.accept(ModItems.MAJESTIC_ELYTRA.get());
                                 // 护符
                                 output.accept(ModItems.ENIGMATIC_EYE.get());            // 莫测之眼
                                 output.accept(ModItems.MONSTER_CHARM.get());            // 怪物猎人勋章
@@ -135,5 +139,16 @@ public final class ModeTabs {
 
     public static void register(IEventBus eventBus) {
         CREATIVE_MODE_TABS.register(eventBus);
+        eventBus.addListener(ModeTabs::addCreativeModeTabContents);
+    }
+
+    private static void addCreativeModeTabContents(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
+            event.accept(ModItems.REDEMPTION_POTION.get());
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.COMBAT) {
+            event.accept(ModItems.MAJESTIC_ELYTRA.get());
+        }
     }
 }

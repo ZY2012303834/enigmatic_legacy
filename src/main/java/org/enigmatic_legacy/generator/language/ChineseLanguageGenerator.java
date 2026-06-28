@@ -68,6 +68,9 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         addItem(ModItems.RECALL_POTION, "召回药水");
         add("tooltip.enigmatic_legacy.recall_potion.1", "饮用后传送回重生点。");
         add("tooltip.enigmatic_legacy.recall_potion.2", "在末地使用时，会传送至末地主岛平台附近。");
+        addItem(ModItems.REDEMPTION_POTION, "救赎药水");
+        add("tooltip.enigmatic_legacy.redemption_potion.1", "饮用后清除所有负面效果，包括禁忌之果。");
+        add("tooltip.enigmatic_legacy.redemption_potion.2", "可在村庄宝箱中稀有发现。");
 
         addItem(ModItems.UNHOLY_GRAIL, "不洁圣杯");
         add("tooltip.enigmatic_legacy.unholy_grail1", "饮下其中之物，以汲取禁忌之力。");
@@ -616,6 +619,10 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.etherium_armor.set.2", "护盾会反弹大多数弹射物。");
         add("tooltip.enigmatic_legacy.etherium_armor.set.3", "护盾激活时获得 50% 伤害抗性。");
         add("tooltip.enigmatic_legacy.etherium_armor.set.4", "攻击你的生物会被击退。");
+        addItem(ModItems.MAJESTIC_ELYTRA, "壮丽鞘翅");
+        add("tooltip.enigmatic_legacy.majestic_elytra.1", "拥有惊人耐久的华美之翼。");
+        add("tooltip.enigmatic_legacy.majestic_elytra.2", "滑翔时按住跳跃键可向前加速。");
+        add("tooltip.enigmatic_legacy.majestic_elytra.3", "可使用以太锭修复。");
         // end
 
         // 以太斧

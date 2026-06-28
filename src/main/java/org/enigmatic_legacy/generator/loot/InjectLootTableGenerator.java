@@ -69,8 +69,14 @@ public class InjectLootTableGenerator implements DataProvider {
         // 以太矿石
         addEtheriumOreTables(cachedOutput, futures);
 
+        // 壮丽鞘翅
+        addMajesticElytraTables(cachedOutput, futures);
+
         // 修补混合物
         addMendingMixtureTables(cachedOutput, futures);
+
+        // 救赎药水
+        addRedemptionPotionTables(cachedOutput, futures);
 
         // 大地之心
         // 按原作者项目的 Overworld epic 池概率生成。
@@ -207,6 +213,18 @@ public class InjectLootTableGenerator implements DataProvider {
         ));
     }
 
+    // 救赎药水
+    private void addRedemptionPotionTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {
+        futures.add(saveTable(
+                cachedOutput,
+                "redemption_potion/village",
+                1.0D,
+                1.0D,
+                itemEntry(ModItems.REDEMPTION_POTION.get(), 4),
+                emptyEntry(96)
+        ));
+    }
+
     /**
      * 生成以太矿石 loot table。
      * 获取方式：
@@ -231,6 +249,17 @@ public class InjectLootTableGenerator implements DataProvider {
                 1.0D,
                 itemEntry(ModItems.ETHERIUM_ORE.get(), 10, 1.0D, 3.0D),
                 emptyEntry(90)
+        ));
+    }
+
+    private void addMajesticElytraTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {
+        futures.add(saveTable(
+                cachedOutput,
+                "majestic_elytra/end_city_treasure",
+                1.0D,
+                1.0D,
+                itemEntry(ModItems.MAJESTIC_ELYTRA.get(), 4),
+                emptyEntry(96)
         ));
     }
 
@@ -469,50 +498,35 @@ public class InjectLootTableGenerator implements DataProvider {
     /**
      * 生成不洁圣杯 loot table。
      * 获取方式：
-     * - 不改变原本出现的箱子条目。
-     * - 仍然由 GlobalLootModifierGenerator 注入到对应主世界类战利品箱中。
-     * 调整原因：
-     * - 原来的圣杯概率过低：
-     * 不洁圣杯权重 = 1
-     * empty 权重 = 230 或 223
-     * - 单次抽取概率不到 0.5%。
-     * 新设计：
-     * - rolls 固定为 1。
-     * - 不洁圣杯权重 = 1。
-     * - empty 空条目权重 = 49。
-     * 概率：
-     * - 1 / (1 + 49) = 2%
+     * - 主世界遗迹类箱子；
+     * - 部分水下遗迹 / 掠夺者前哨站箱子。
+     * 当前设置：
+     * - rolls 固定为 1；
+     * - 不洁圣杯权重 = 4；
+     * - empty 空条目权重 = 96；
+     * - 出现概率 = 4 / (4 + 96) = 4%；
+     * - 每次命中只给 1 个不洁圣杯。
      * 效果：
-     * - 圣杯仍然是稀有物品；
-     * - 但不会像之前那样几乎看不到；
-     * - 每个被注入的目标箱子约 2% 概率生成不洁圣杯；
-     * - rolls 改为 1，可以避免同一个箱子里重复刷出多个圣杯。
+     * - 每个目标箱子有 4% 概率出现不洁圣杯；
+     * - 因为 rolls 固定为 1，所以一个箱子最多只会出现 1 个不洁圣杯。
      */
     private void addUnholyGrailTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {
-        /*
-         * 普通主世界 epic 池。
-         *
-         * 新概率：
-         * - 不洁圣杯：1 权重
-         * - 空条目：49 权重
-         * - 总概率：2%
-         */
-        futures.add(saveTable(cachedOutput, "unholy_grail/overworld_epic", 1.0D, 1.0D,
-                itemEntry(ModItems.UNHOLY_GRAIL.get(), 1),
-                emptyEntry(49)
+        futures.add(saveTable(
+                cachedOutput,
+                "unholy_grail/overworld_epic",
+                1.0D,
+                1.0D,
+                itemEntry(ModItems.UNHOLY_GRAIL.get(), 4),
+                emptyEntry(96)
         ));
 
-        /*
-         * 不包含大地之心权重的主世界 epic 池。
-         *
-         * 新概率：
-         * - 不洁圣杯：1 权重
-         * - 空条目：49 权重
-         * - 总概率：2%
-         */
-        futures.add(saveTable(cachedOutput, "unholy_grail/overworld_epic_without_earth_heart", 1.0D, 1.0D,
-                itemEntry(ModItems.UNHOLY_GRAIL.get(), 1),
-                emptyEntry(49)
+        futures.add(saveTable(
+                cachedOutput,
+                "unholy_grail/overworld_epic_without_earth_heart",
+                1.0D,
+                1.0D,
+                itemEntry(ModItems.UNHOLY_GRAIL.get(), 4),
+                emptyEntry(96)
         ));
     }
 

@@ -52,5 +52,11 @@ public final class ModNetwork {
                 ScrollUsePayload.STREAM_CODEC,
                 ScrollUsePayload::handle
         );
+
+        registrar.playToServer(
+                MajesticElytraBoostPayload.TYPE,
+                MajesticElytraBoostPayload.STREAM_CODEC,
+                MajesticElytraBoostPayload::handle
+        );
     }
 }

@@ -10,6 +10,7 @@ import org.enigmatic_legacy.client.event.AngelBlessingClientEvents;
 import org.enigmatic_legacy.client.event.EnderRingClientEvents;
 import org.enigmatic_legacy.client.event.ForbiddenFruitClientEvents;
 import org.enigmatic_legacy.client.event.MagnetRingClientEvents;
+import org.enigmatic_legacy.client.event.MajesticElytraClientEvents;
 import org.enigmatic_legacy.client.quote.QuoteHandler;
 import org.enigmatic_legacy.client.renderer.PermanentItemRenderer;
 import org.enigmatic_legacy.entity.ModEntities;
@@ -28,6 +29,7 @@ public final class EnigmaticLegacyClient {
         NeoForge.EVENT_BUS.register(EnderRingClientEvents.class);
         NeoForge.EVENT_BUS.register(ForbiddenFruitClientEvents.class);
         NeoForge.EVENT_BUS.register(MagnetRingClientEvents.class);
+        NeoForge.EVENT_BUS.register(MajesticElytraClientEvents.class);
         NeoForge.EVENT_BUS.register(QuoteHandler.INSTANCE);
     }
 

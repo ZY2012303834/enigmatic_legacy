@@ -269,7 +269,8 @@ public class ItemTagGenerator extends ItemTagsProvider {
                 .add(ModItems.ETHERIUM_HELMET.get())
                 .add(ModItems.ETHERIUM_CHESTPLATE.get())
                 .add(ModItems.ETHERIUM_LEGGINGS.get())
-                .add(ModItems.ETHERIUM_BOOTS.get());
+                .add(ModItems.ETHERIUM_BOOTS.get())
+                .add(ModItems.MAJESTIC_ELYTRA.get());
 
         tag(ENCHANTABLE_HEAD_ARMOR)
                 .add(ModItems.ETHERIUM_HELMET.get());
@@ -287,13 +288,15 @@ public class ItemTagGenerator extends ItemTagsProvider {
                 .add(ModItems.ETHERIUM_HELMET.get())
                 .add(ModItems.ETHERIUM_CHESTPLATE.get())
                 .add(ModItems.ETHERIUM_LEGGINGS.get())
-                .add(ModItems.ETHERIUM_BOOTS.get());
+                .add(ModItems.ETHERIUM_BOOTS.get())
+                .add(ModItems.MAJESTIC_ELYTRA.get());
 
         tag(ENCHANTABLE_VANISHING)
                 .add(ModItems.ETHERIUM_HELMET.get())
                 .add(ModItems.ETHERIUM_CHESTPLATE.get())
                 .add(ModItems.ETHERIUM_LEGGINGS.get())
-                .add(ModItems.ETHERIUM_BOOTS.get());
+                .add(ModItems.ETHERIUM_BOOTS.get())
+                .add(ModItems.MAJESTIC_ELYTRA.get());
     }
 
     /**

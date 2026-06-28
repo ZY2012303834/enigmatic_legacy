@@ -53,6 +53,7 @@ public final class ModItems {
     public static final DeferredItem<TomeOfHungeringKnowledge> ENCHANTMENT_TRANSPOSER = ITEMS.register("enchantment_transposer", TomeOfHungeringKnowledge::new); // 求知之书
     public static final DeferredItem<TomeOfDevouredMalignancy> CURSE_TRANSPOSER = ITEMS.register("curse_transposer", TomeOfDevouredMalignancy::new); // 噬咒之书
     public static final DeferredItem<RecallPotionItem> RECALL_POTION = ITEMS.register("recall_potion", RecallPotionItem::new); // 召回药水
+    public static final DeferredItem<RedemptionPotionItem> REDEMPTION_POTION = ITEMS.register("redemption_potion", RedemptionPotionItem::new);
     // 修补混合物
     // 用于在工作台中完全修复任意受损的可损坏物品。
     public static final DeferredItem<MendingMixture> MENDING_MIXTURE = ITEMS.register("mending_mixture", MendingMixture::new);
@@ -102,6 +103,7 @@ public final class ModItems {
     // 末影之屠 / The Ender Slayer
     // 七咒遗物，专门用于对抗末地生物。
     public static final DeferredItem<EnderSlayer> ENDER_SLAYER = ITEMS.register("ender_slayer", EnderSlayer::new);
+    public static final DeferredItem<MajesticElytra> MAJESTIC_ELYTRA = ITEMS.register("majestic_elytra", MajesticElytra::new);
     // 烈焰之傲壁垒 / Bulwark of Blazing Pride
     // 原项目类名 InfernalShield。
     // 只有承受七咒之人才能使用的防火盾牌。

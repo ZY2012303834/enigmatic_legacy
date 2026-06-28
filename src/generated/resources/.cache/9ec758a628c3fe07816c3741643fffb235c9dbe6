@@ -1,11 +1,11 @@
-// 1.21.1	2026-06-28T01:11:28.961692	vanilla/Tags for minecraft:item mod id enigmatic_legacy
+// 1.21.1	2026-06-28T15:09:42.8451079	vanilla/Tags for minecraft:item mod id enigmatic_legacy
 782ad49cfd8886a590be46f0c1b3806725b63381 data/enigmatic_legacy/tags/item/enigmatic_amulets.json
 57e12fdad87d237bba5a935e019e11e4cd5f257b data/minecraft/tags/item/axes.json
 137fbf1d2c880c581cb51458f188e2574c37a8c2 data/minecraft/tags/item/enchantable/armor.json
 57e12fdad87d237bba5a935e019e11e4cd5f257b data/minecraft/tags/item/enchantable/axe.json
 2746afc570db4245f5d80c04210b621025499a52 data/minecraft/tags/item/enchantable/chest_armor.json
-4f5b92f7a45ce165b6b3c4b4545120c640799beb data/minecraft/tags/item/enchantable/durability.json
-137fbf1d2c880c581cb51458f188e2574c37a8c2 data/minecraft/tags/item/enchantable/equippable.json
+e4cc5867ee0feac71efe95b481a7aede56b5c926 data/minecraft/tags/item/enchantable/durability.json
+10ec9a6777ca7d3f1e3d4b309263ea26d3ef9758 data/minecraft/tags/item/enchantable/equippable.json
 1f89b68266bf35d8cb09cb783450d369a31ecbcb data/minecraft/tags/item/enchantable/fire_aspect.json
 91560a1d339cf0c248b603e2c27daf54fae7a556 data/minecraft/tags/item/enchantable/foot_armor.json
 5e14b52f4616cf5b58d9cfb9dba71a832f1596cd data/minecraft/tags/item/enchantable/head_armor.json
@@ -15,7 +15,7 @@ c5bf5da76af54a1d33047e5dd72103fb6b3888d0 data/minecraft/tags/item/enchantable/mi
 1f89b68266bf35d8cb09cb783450d369a31ecbcb data/minecraft/tags/item/enchantable/sharp_weapon.json
 f5de9d3a49327127fdb6854f777fab7beff10c45 data/minecraft/tags/item/enchantable/shield.json
 db20b2f43fe1e6e507654add393376c1a6a57339 data/minecraft/tags/item/enchantable/sword.json
-4f5b92f7a45ce165b6b3c4b4545120c640799beb data/minecraft/tags/item/enchantable/vanishing.json
+e4cc5867ee0feac71efe95b481a7aede56b5c926 data/minecraft/tags/item/enchantable/vanishing.json
 1f89b68266bf35d8cb09cb783450d369a31ecbcb data/minecraft/tags/item/enchantable/weapon.json
 e50d578e2ed90b375d1f6b48cbe503b117a41d34 data/minecraft/tags/item/pickaxes.json
 0312511472318acc5aea24b3d424a48d4a1021ef data/minecraft/tags/item/shovels.json
