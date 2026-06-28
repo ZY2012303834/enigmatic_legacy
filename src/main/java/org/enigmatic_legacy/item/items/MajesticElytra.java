@@ -16,6 +16,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class MajesticElytra extends ElytraItem {
+    private static final int ENCHANTMENT_VALUE = 1;
+
     public MajesticElytra() {
         super(new Item.Properties()
                 .stacksTo(1)
@@ -57,8 +59,13 @@ public class MajesticElytra extends ElytraItem {
     }
 
     @Override
-    public boolean isFoil(@NotNull ItemStack stack) {
+    public boolean isEnchantable(@NotNull ItemStack stack) {
         return true;
+    }
+
+    @Override
+    public int getEnchantmentValue(@NotNull ItemStack stack) {
+        return ENCHANTMENT_VALUE;
     }
 
     @Override

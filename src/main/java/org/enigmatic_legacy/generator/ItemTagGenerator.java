@@ -72,17 +72,6 @@ public class ItemTagGenerator extends ItemTagsProvider {
      */
     private static final TagKey<Item> ENCHANTABLE_SHIELD = minecraftItemTag("enchantable/shield");
 
-    /**
-     * Curios 戒指栏标签。
-     *
-     * 生成路径：
-     * data/curios/tags/item/ring.json
-     *
-     * 用途：
-     * 让魔法石英戒指可以被 Curios 识别为 ring 槽物品。
-     */
-    private static final TagKey<Item> CURIOS_RING = curiosItemTag("ring");
-
     public ItemTagGenerator(
             PackOutput output,
             CompletableFuture<HolderLookup.Provider> lookupProvider,
@@ -125,13 +114,6 @@ public class ItemTagGenerator extends ItemTagsProvider {
         addElytraEnchantableTags();
         addShieldEnchantableTags();
         addRelicEnchantableTags();
-        /*
-         * Curios 戒指栏标签。
-         *
-         * 魔法石英戒指不是靠 minecraft:enchantable/* 标签识别佩戴槽位，
-         * 而是需要加入 curios:ring 标签。
-         */
-        addCuriosRingTags();
     }
 
     /**
@@ -146,33 +128,6 @@ public class ItemTagGenerator extends ItemTagsProvider {
                 .add(ModItems.ENIGMATIC_AMULET_GREEN.get())
                 .add(ModItems.ENIGMATIC_AMULET_BLACK.get())
                 .add(ModItems.ENIGMATIC_AMULET_BLUE.get());
-    }
-
-    /**
-     * 创建 Curios 物品标签。
-     * 例如：
-     * curiosItemTag("ring")
-     * 对应生成：
-     * data/curios/tags/item/ring.json
-     */
-    private static TagKey<Item> curiosItemTag(String path) {
-        return TagKey.create(
-                Registries.ITEM,
-                ResourceLocation.fromNamespaceAndPath("curios", path)
-        );
-    }
-
-    /**
-     * Curios 戒指栏标签。
-     *
-     * 作用：
-     * 1. 让魔法石英戒指被 Curios 识别为 ring 槽物品；
-     * 2. 生成 data/curios/tags/item/ring.json；
-     * 3. 配合 MagicQuartzRing#canEquip 限制同一时间只能佩戴一个。
-     */
-    private void addCuriosRingTags() {
-        tag(CURIOS_RING)
-                .add(ModItems.MAGIC_QUARTZ_RING.get());
     }
 
     /**

@@ -43,6 +43,7 @@ public final class ModeTabs {
                                 output.accept(ModItems.CURSED_RING.get());              // 七咒之戒
                                 output.accept(ModItems.IRON_RING.get());                // 铁戒指
                                 output.accept(ModItems.EXQUISITE_RING.get());           // 精美戒指
+                                output.accept(ModItems.MAGIC_QUARTZ_RING.get());        // 魔法石英戒指
                                 output.accept(ModItems.EVIL_INGOT.get());               // 极恶锭
                                 output.accept(ModItems.STORAGE_CRYSTAL.get());          // 超维容器
                                 output.accept(ModItems.SOUL_CRYSTAL.get());             // 灵魂水晶

@@ -322,6 +322,7 @@ public class CuriosGenerator implements DataProvider {
         values.add(EnigmaticLegacy.MODID + ":dislocation_ring");
         values.add(EnigmaticLegacy.MODID + ":golden_ring");
         values.add(EnigmaticLegacy.MODID + ":ender_ring");
+        values.add(EnigmaticLegacy.MODID + ":magic_quartz_ring");
 
         json.add("values", values);
 
