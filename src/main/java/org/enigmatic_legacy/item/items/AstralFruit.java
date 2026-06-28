@@ -142,12 +142,6 @@ public class AstralFruit extends Item {
                     .withStyle(ChatFormatting.DARK_PURPLE));
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.astral_fruit.3")
                     .withStyle(ChatFormatting.DARK_PURPLE));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.astral_fruit.4")
-                    .withStyle(ChatFormatting.DARK_PURPLE));
         }
-
-        tooltip.add(Component.empty());
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.astral_fruit.cursed_bonus")
-                .withStyle(ChatFormatting.GOLD));
     }
 }
