@@ -50,6 +50,7 @@ public class ItemGenerator extends ItemModelProvider {
         basicItem(ModItems.EVIL_INGOT.getId());
         basicItem(ModItems.STORAGE_CRYSTAL.getId());
         basicItem(ModItems.SOUL_CRYSTAL.getId());
+        basicItem(ModItems.ASTRAL_FRUIT.getId());
         basicItem(ModItems.FORBIDDEN_FRUIT.getId());
         // 扭曲魔镜
         withExistingParent("item/twisted_mirror", mcLoc("item/handheld"))
@@ -129,6 +130,8 @@ public class ItemGenerator extends ItemModelProvider {
         // 原项目不是普通 handheld，而是 idle / blocking 两套模型。
         // 这里生成模型切换入口，具体 3D in_hand 模型使用原项目 JSON。
         eldritchPan();
+
+        basicItem(ModItems.MAGIC_QUARTZ_RING.getId()); // 魔法石英戒指
 
         // 飞升护符模型。
         // 原项目为普通 2D item/generated 模型，没有 3D 模型。

@@ -717,5 +717,24 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('S', Items.NETHER_STAR)
                 .unlockedBy("has_ascension_amulet", has(ModItems.ASCENSION_AMULET.get()))
                 .save(output);
+
+        /*
+         * 魔法石英戒指。
+         *
+         * 参考 Enigmatic Addons：
+         * - 使用地狱石英；
+         * - 使用青金石作为附魔材料；
+         * - 基底使用铁指环。
+         */
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MAGIC_QUARTZ_RING.get())
+                .pattern("QLQ")
+                .pattern("LRL")
+                .pattern("QLQ")
+                .define('Q', Items.QUARTZ)
+                .define('L', Items.LAPIS_LAZULI)
+                .define('R', ModItems.IRON_RING.get())
+                .unlockedBy("has_quartz", has(Items.QUARTZ))
+                .unlockedBy("has_iron_ring", has(ModItems.IRON_RING.get()))
+                .save(output);
     }
 }

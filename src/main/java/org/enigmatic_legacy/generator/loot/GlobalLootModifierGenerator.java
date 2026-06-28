@@ -42,6 +42,7 @@ public class GlobalLootModifierGenerator extends GlobalLootModifierProvider {
         addAstralDustModifiers();
         addEtheriumOreModifiers();
         addMajesticElytraModifiers();
+        addAstralFruitModifiers();
         addMendingMixtureModifiers();
         addRedemptionPotionModifiers();
 
@@ -118,6 +119,14 @@ public class GlobalLootModifierGenerator extends GlobalLootModifierProvider {
                 "majestic_elytra_end_city_treasure",
                 BuiltInLootTables.END_CITY_TREASURE,
                 "inject/chests/majestic_elytra/end_city_treasure"
+        );
+    }
+
+    private void addAstralFruitModifiers() {
+        addTableModifier(
+                "astral_fruit_end_city_treasure",
+                BuiltInLootTables.END_CITY_TREASURE,
+                "inject/chests/astral_fruit/end_city_treasure"
         );
     }
 

@@ -88,6 +88,11 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.forbidden_fruit2", "感到饥饿，但任何形式的");
         add("tooltip.enigmatic_legacy.forbidden_fruit3", "再生效果都会削弱 %1$s。");
 
+        addItem(ModItems.ASTRAL_FRUIT, "天体果实");
+        add("tooltip.enigmatic_legacy.astral_fruit.1", "只有七咒之戒的佩戴者才能食用。");
+        add("tooltip.enigmatic_legacy.astral_fruit.2", "给予强大的再生、抗性、力量与抗火效果。");
+        add("tooltip.enigmatic_legacy.astral_fruit.3", "星辰以禁忌的生命力回应你。");
+
         addItem(ModItems.ENDER_RING, "末影之戒");
         add("tooltip.enigmatic_legacy.ender_ring1", "装备时可访问你的末影箱。");
         add("tooltip.enigmatic_legacy.ender_ring2", "按下绑定按键，或使用背包界面按钮。");
@@ -850,6 +855,26 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.eldritch_amulet.modifier.lifesteal_total",
                 "%s 生命偷取");
 
+        // 魔法石英戒指 / Magic Quartz Ring
+        addItem(ModItems.MAGIC_QUARTZ_RING, "魔法石英戒指");
+
+        add("tooltip.enigmatic_legacy.magic_quartz_ring.1",
+                "地狱石英与青金石引导出稳定的魔法防护。");
+
+        add("tooltip.enigmatic_legacy.magic_quartz_ring.2",
+                "佩戴时，它会强化你的防御与幸运，并削弱部分魔法伤害。");
+
+        add("tooltip.enigmatic_legacy.magic_quartz_ring.modifier.magic_resistance",
+                "%s 魔法伤害抗性");
+
+        add("tooltip.enigmatic_legacy.magic_quartz_ring.modifier.armor",
+                "%s 护甲");
+
+        add("tooltip.enigmatic_legacy.magic_quartz_ring.modifier.luck",
+                "%s 幸运");
+
+        add("tooltip.enigmatic_legacy.magic_quartz_ring.limit",
+                "同一时间只能佩戴一个魔法石英戒指。");
 
 
         // 飞升护符 / Amulet of Ascension

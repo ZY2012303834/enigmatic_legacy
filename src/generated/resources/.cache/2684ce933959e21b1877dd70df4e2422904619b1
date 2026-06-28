@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-27T16:14:25.8346187	vanilla/Recipes
+// 1.21.1	2026-06-28T16:28:52.7739305	vanilla/Recipes
 138cca5fc2d36a468976c88c266618e68aa51d88 data/enigmatic_legacy/advancement/recipes/building_blocks/astral_dust_sack.json
 75128c3d277fd90fca1df4cc9f996933af7f7241 data/enigmatic_legacy/advancement/recipes/building_blocks/etherium_block.json
 70a559dbe3db33a763c165b60a23730d9e9f955b data/enigmatic_legacy/advancement/recipes/combat/axe_of_executioner.json
@@ -35,6 +35,7 @@ eab20bff7cc5b751515a84c801e7e858703f6c08 data/enigmatic_legacy/advancement/recip
 c42014eeb94e52f8cd0ec999471820c210701d1b data/enigmatic_legacy/advancement/recipes/misc/golden_ring.json
 e24c13ab54a2bebb2365501cfd122bbe346323f1 data/enigmatic_legacy/advancement/recipes/misc/hunter_guidebook.json
 67afc31468041d604544d2ef7e517776de057341 data/enigmatic_legacy/advancement/recipes/misc/iron_ring.json
+f02d7af4f840f10e21925d1d56afacd8be0152af data/enigmatic_legacy/advancement/recipes/misc/magic_quartz_ring.json
 e6d68748b75ff98fe29f25cf84a97c858267a267 data/enigmatic_legacy/advancement/recipes/misc/magnet_ring.json
 b4bc3350ebdc21a63600169d4bdbb66abe888b29 data/enigmatic_legacy/advancement/recipes/misc/mega_sponge.json
 efa03204eb4f91704aaec8cc30cbc62cf62dc9ed data/enigmatic_legacy/advancement/recipes/misc/mending_mixture.json
@@ -86,6 +87,7 @@ ca5674a917f19e5f062c2a18f2a96f92c6163d97 data/enigmatic_legacy/recipe/golden_rin
 96515eef21b4c85507c8cb755cd98bdb17666433 data/enigmatic_legacy/recipe/iron_ring.json
 b7c1d5bc5ea6a00dba1fbcc0656e65bc1b07e93c data/enigmatic_legacy/recipe/lamps/big_lamp.json
 d65d6289f4b2aa74e1d51ee5e48c5286a303ae47 data/enigmatic_legacy/recipe/lamps/big_shroomlamp.json
+2fb3adc27fe1fd4382d03b68d46d640750df4e54 data/enigmatic_legacy/recipe/magic_quartz_ring.json
 b7ff29e9a057ae6829ace5151db9d21fc64eda65 data/enigmatic_legacy/recipe/magnet_ring.json
 1a7fcaac2a30e1ae84d8113fa331190680d7c92d data/enigmatic_legacy/recipe/mega_sponge.json
 0d57ca57cc9ce8c4ec5c8ab5166642cc390c5bbf data/enigmatic_legacy/recipe/mending_mixture.json

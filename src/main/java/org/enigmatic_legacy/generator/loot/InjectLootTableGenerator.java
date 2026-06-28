@@ -72,6 +72,9 @@ public class InjectLootTableGenerator implements DataProvider {
         // 壮丽鞘翅
         addMajesticElytraTables(cachedOutput, futures);
 
+        // 天体果实
+        addAstralFruitTables(cachedOutput, futures);
+
         // 修补混合物
         addMendingMixtureTables(cachedOutput, futures);
 
@@ -259,6 +262,17 @@ public class InjectLootTableGenerator implements DataProvider {
                 1.0D,
                 1.0D,
                 itemEntry(ModItems.MAJESTIC_ELYTRA.get(), 4),
+                emptyEntry(96)
+        ));
+    }
+
+    private void addAstralFruitTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {
+        futures.add(saveTable(
+                cachedOutput,
+                "astral_fruit/end_city_treasure",
+                1.0D,
+                1.0D,
+                itemEntry(ModItems.ASTRAL_FRUIT.get(), 4),
                 emptyEntry(96)
         ));
     }

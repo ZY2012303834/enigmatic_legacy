@@ -54,6 +54,7 @@ public final class ModItems {
     public static final DeferredItem<TomeOfDevouredMalignancy> CURSE_TRANSPOSER = ITEMS.register("curse_transposer", TomeOfDevouredMalignancy::new); // 噬咒之书
     public static final DeferredItem<RecallPotionItem> RECALL_POTION = ITEMS.register("recall_potion", RecallPotionItem::new); // 召回药水
     public static final DeferredItem<RedemptionPotionItem> REDEMPTION_POTION = ITEMS.register("redemption_potion", RedemptionPotionItem::new);
+    public static final DeferredItem<MagicQuartzRing> MAGIC_QUARTZ_RING = ITEMS.register("magic_quartz_ring", MagicQuartzRing::new); // 魔法石英戒指
     // 修补混合物
     // 用于在工作台中完全修复任意受损的可损坏物品。
     public static final DeferredItem<MendingMixture> MENDING_MIXTURE = ITEMS.register("mending_mixture", MendingMixture::new);
@@ -135,6 +136,7 @@ public final class ModItems {
     // 原版名为 storage_crystal，显示名是 Extradimensional Vessel / 超维容器。
     public static final DeferredItem<StorageCrystal> STORAGE_CRYSTAL = ITEMS.register("storage_crystal", StorageCrystal::new);
     public static final DeferredItem<SoulCrystal> SOUL_CRYSTAL = ITEMS.register("soul_crystal", SoulCrystal::new);
+    public static final DeferredItem<AstralFruit> ASTRAL_FRUIT = ITEMS.register("astral_fruit", AstralFruit::new);
     public static final DeferredItem<ForbiddenFruit> FORBIDDEN_FRUIT = ITEMS.register("forbidden_fruit", ForbiddenFruit::new);
 
     private ModItems() {

@@ -46,6 +46,7 @@ public final class ModeTabs {
                                 output.accept(ModItems.EVIL_INGOT.get());               // 极恶锭
                                 output.accept(ModItems.STORAGE_CRYSTAL.get());          // 超维容器
                                 output.accept(ModItems.SOUL_CRYSTAL.get());             // 灵魂水晶
+                                output.accept(ModItems.ASTRAL_FRUIT.get());
                                 output.accept(ModItems.FORBIDDEN_FRUIT.get());          // 禁忌之果
                                 output.accept(ModItems.TWISTED_MIRROR.get());           // 扭曲魔镜
                                 output.accept(ModItems.RECALL_POTION.get());            // 召回药水
@@ -145,6 +146,7 @@ public final class ModeTabs {
     private static void addCreativeModeTabContents(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
             event.accept(ModItems.REDEMPTION_POTION.get());
+            event.accept(ModItems.ASTRAL_FRUIT.get());
         }
 
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {

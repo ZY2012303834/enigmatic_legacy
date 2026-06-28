@@ -1,4 +1,5 @@
-// 1.21.1	2026-06-28T15:09:42.8451079	vanilla/Tags for minecraft:item mod id enigmatic_legacy
+// 1.21.1	2026-06-28T16:28:52.7594766	vanilla/Tags for minecraft:item mod id enigmatic_legacy
+7c1833c04f78fb19ef042ae7438190c3b7d49ef9 data/curios/tags/item/ring.json
 782ad49cfd8886a590be46f0c1b3806725b63381 data/enigmatic_legacy/tags/item/enigmatic_amulets.json
 57e12fdad87d237bba5a935e019e11e4cd5f257b data/minecraft/tags/item/axes.json
 137fbf1d2c880c581cb51458f188e2574c37a8c2 data/minecraft/tags/item/enchantable/armor.json
@@ -15,7 +16,7 @@ c5bf5da76af54a1d33047e5dd72103fb6b3888d0 data/minecraft/tags/item/enchantable/mi
 1f89b68266bf35d8cb09cb783450d369a31ecbcb data/minecraft/tags/item/enchantable/sharp_weapon.json
 f5de9d3a49327127fdb6854f777fab7beff10c45 data/minecraft/tags/item/enchantable/shield.json
 db20b2f43fe1e6e507654add393376c1a6a57339 data/minecraft/tags/item/enchantable/sword.json
-e4cc5867ee0feac71efe95b481a7aede56b5c926 data/minecraft/tags/item/enchantable/vanishing.json
+06a7b432036b231d901f5f9fd6bba34c23a146d5 data/minecraft/tags/item/enchantable/vanishing.json
 1f89b68266bf35d8cb09cb783450d369a31ecbcb data/minecraft/tags/item/enchantable/weapon.json
 e50d578e2ed90b375d1f6b48cbe503b117a41d34 data/minecraft/tags/item/pickaxes.json
 0312511472318acc5aea24b3d424a48d4a1021ef data/minecraft/tags/item/shovels.json

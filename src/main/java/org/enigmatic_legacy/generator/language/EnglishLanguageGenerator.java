@@ -87,6 +87,11 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.forbidden_fruit2", "feel hunger, but any form of");
         add("tooltip.enigmatic_legacy.forbidden_fruit3", "regeneration is reduced by %1$s.");
 
+        addItem(ModItems.ASTRAL_FRUIT, "Celestial Fruit");
+        add("tooltip.enigmatic_legacy.astral_fruit.1", "Can only be eaten by bearers of the Seven Curses.");
+        add("tooltip.enigmatic_legacy.astral_fruit.2", "Grants powerful regeneration, resistance, strength, and fire resistance.");
+        add("tooltip.enigmatic_legacy.astral_fruit.3", "The stars answer with a promise of forbidden vitality.");
+
         addItem(ModItems.ENDER_RING, "Ring of Ender");
         add("tooltip.enigmatic_legacy.ender_ring1", "Allows access to your Ender Chest while equipped.");
         add("tooltip.enigmatic_legacy.ender_ring2", "Press the keybind or use the inventory button.");
@@ -882,6 +887,26 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.eldritch_amulet.modifier.lifesteal_total",
                 "%s Lifesteal");
 
+        // Magic Quartz Ring / 魔法石英戒指
+        addItem(ModItems.MAGIC_QUARTZ_RING, "Magic Quartz Ring");
+
+        add("tooltip.enigmatic_legacy.magic_quartz_ring.1",
+                "Nether quartz and lapis lazuli guide a stable magical ward.");
+
+        add("tooltip.enigmatic_legacy.magic_quartz_ring.2",
+                "When worn, it improves your defense and luck while weakening some magical damage.");
+
+        add("tooltip.enigmatic_legacy.magic_quartz_ring.modifier.magic_resistance",
+                "%s Magic Damage Resistance");
+
+        add("tooltip.enigmatic_legacy.magic_quartz_ring.modifier.armor",
+                "%s Armor");
+
+        add("tooltip.enigmatic_legacy.magic_quartz_ring.modifier.luck",
+                "%s Luck");
+
+        add("tooltip.enigmatic_legacy.magic_quartz_ring.limit",
+                "Only one Magic Quartz Ring can be worn at a time.");
 
         // Shared tooltip terms for partial coloring
         add("tooltip.enigmatic_legacy.term.negative_effects", "negative effects");

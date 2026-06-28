@@ -1,8 +1,9 @@
-// 1.21.1	2026-06-28T15:09:42.859054	vanilla/Item Models: enigmatic_legacy
+// 1.21.1	2026-06-28T16:28:52.7650741	vanilla/Item Models: enigmatic_legacy
 aaf9eff73642636d85d6ecd1627b8303f5153a76 assets/enigmatic_legacy/models/item/abyssal_heart.json
 79e416a4d6e90035107f541617b7d4a2d2d7abbb assets/enigmatic_legacy/models/item/angel_blessing.json
 91788e275aaecfe4ddd200b085f49433f9966bf1 assets/enigmatic_legacy/models/item/ascension_amulet.json
 71ad4196d7e8a842e7122ea637f5096bd1de67b7 assets/enigmatic_legacy/models/item/astral_dust.json
+2e178fe11cbe5a5a359496f1785e4454e31db26f assets/enigmatic_legacy/models/item/astral_fruit.json
 32a7330aeaad158bf8610b8763fd7a22cee87514 assets/enigmatic_legacy/models/item/avarice_scroll.json
 d6d6be3e4299f8ca8aee76df3c484e459e384086 assets/enigmatic_legacy/models/item/axe_of_executioner.json
 baae1e9410c2ca95493c81ced390f9823be60e7d assets/enigmatic_legacy/models/item/blazing_core.json
@@ -67,6 +68,7 @@ a65ad3c8cca7c6df5b35b0989ab11a08deaf4651 assets/enigmatic_legacy/models/item/inf
 836e4010082a68fc07a0d90929592bd88689bb5b assets/enigmatic_legacy/models/item/infernal_shield_in_inventory.json
 e9b89a174a55e8ae199acedfccbc959497d7b814 assets/enigmatic_legacy/models/item/iron_ring.json
 4258deb1634fc563d998d09104830123622e1b09 assets/enigmatic_legacy/models/item/item/the_acknowledgment.json
+d69639b618e2ba1f8eaed2423ee841cf84a1e5c1 assets/enigmatic_legacy/models/item/magic_quartz_ring.json
 605ecdfd8e7c0a82ef87dabbff6105e8320fb367 assets/enigmatic_legacy/models/item/magnet_ring.json
 0983c317a532d2491264748c84eb22049cb6d14f assets/enigmatic_legacy/models/item/majestic_elytra.json
 3cc83dfa20f9d0d9ec2f0fde7b803b1fa8326477 assets/enigmatic_legacy/models/item/mega_sponge.json

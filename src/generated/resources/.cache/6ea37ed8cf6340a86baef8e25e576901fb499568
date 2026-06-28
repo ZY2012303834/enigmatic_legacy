@@ -1,5 +1,6 @@
-// 1.21.1	2026-06-28T15:09:42.8504658	Injected Chest Loot Tables
+// 1.21.1	2026-06-28T16:07:05.5155497	Injected Chest Loot Tables
 a87e2a6c898a6a01323cad5dd44eeade50da1349 data/enigmatic_legacy/loot_table/inject/chests/astral_dust/end_city_treasure.json
+3affbd9cf24827d1ced91b21ca39ebccec251822 data/enigmatic_legacy/loot_table/inject/chests/astral_fruit/end_city_treasure.json
 dfc4b2675f3d7117eaec30f0a72429f6870fa939 data/enigmatic_legacy/loot_table/inject/chests/darkest_scroll/bastion_treasure.json
 9b053994cc69c49dcfc66f2123b4c6bbba16a5e7 data/enigmatic_legacy/loot_table/inject/chests/earth_heart/overworld_epic.json
 8504a4b28fb7e2a5d3bf7c7efe8b589a6902bb0d data/enigmatic_legacy/loot_table/inject/chests/earth_heart_fragment/overworld_epic.json
