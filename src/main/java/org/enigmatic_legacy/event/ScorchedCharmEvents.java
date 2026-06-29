@@ -8,12 +8,11 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import org.enigmatic_legacy.util.ScorchedCharmHelper;
 
 /**
@@ -63,29 +62,31 @@ public final class ScorchedCharmEvents {
      * 3. 岩浆表面行走。
      */
     @SubscribeEvent
-    public static void onPlayerTick(PlayerTickEvent.Post event) {
-        Player player = event.getEntity();
-
-        if (player.level().isClientSide()) {
+    public static void onEntityTick(EntityTickEvent.Post event) {
+        if (!(event.getEntity() instanceof LivingEntity entity)) {
             return;
         }
 
-        if (!ScorchedCharmHelper.hasScorchedCharm(player)) {
+        if (entity.level().isClientSide()) {
+            return;
+        }
+
+        if (!ScorchedCharmHelper.hasScorchedCharm(entity)) {
             return;
         }
 
         /*
          * 阳灼护符佩戴者不会持续燃烧。
          */
-        if (player.isOnFire()) {
-            player.clearFire();
+        if (entity.isOnFire()) {
+            entity.clearFire();
         }
 
         /*
          * 接触岩浆时每秒恢复 2 点生命。
          */
-        if (isTouchingLava(player) && player.tickCount % 20 == 0) {
-            player.heal(LAVA_HEAL_AMOUNT);
+        if (isTouchingLava(entity) && entity.tickCount % 20 == 0) {
+            entity.heal(LAVA_HEAL_AMOUNT);
         }
 
         /*
@@ -93,7 +94,7 @@ public final class ScorchedCharmEvents {
          * - 没有下蹲时，尝试停留在岩浆表面；
          * - 下蹲时不处理，让玩家可以潜入岩浆。
          */
-        handleLavaWalking(player);
+        handleLavaWalking(entity);
     }
 
     /**
@@ -153,7 +154,7 @@ public final class ScorchedCharmEvents {
      */
     @SubscribeEvent
     public static void onLivingDamage(LivingDamageEvent.Pre event) {
-        if (!(event.getSource().getEntity() instanceof Player attacker)) {
+        if (!(event.getSource().getEntity() instanceof LivingEntity attacker)) {
             return;
         }
 
@@ -187,49 +188,46 @@ public final class ScorchedCharmEvents {
      * - 在岩浆里时，如果玩家没有下蹲，会给向上的运动或保持地面状态；
      * - 下蹲时允许玩家向下潜入岩浆。
      */
-    private static void handleLavaWalking(Player player) {
-        if (!player.isInLava()) {
+    private static void handleLavaWalking(LivingEntity entity) {
+        if (entity.isShiftKeyDown()) {
             return;
         }
 
-        /*
-         * 下蹲时不托起玩家，允许潜入岩浆。
-         */
-        if (player.isShiftKeyDown()) {
+        BlockPos feetPos = entity.blockPosition();
+        BlockPos belowPos = feetPos.below();
+
+        boolean feetInLava = entity.level().getFluidState(feetPos).is(FluidTags.LAVA);
+        boolean standingOverLava = entity.level().getFluidState(belowPos).is(FluidTags.LAVA);
+
+        if (!feetInLava && !standingOverLava) {
             return;
         }
 
-        BlockPos feetPos = player.blockPosition();
-
-        if (!player.level().getFluidState(feetPos).is(FluidTags.LAVA)) {
-            return;
-        }
-
-        boolean lavaAbove = player.level().getFluidState(feetPos.above()).is(FluidTags.LAVA);
-        Vec3 motion = player.getDeltaMovement();
+        boolean lavaAbove = entity.level().getFluidState(feetPos.above()).is(FluidTags.LAVA);
+        Vec3 motion = entity.getDeltaMovement();
 
         if (lavaAbove) {
             /*
              * 如果头顶仍然是岩浆，说明玩家在较深岩浆中。
              * 非下蹲状态下轻微上浮，避免一直下沉。
              */
-            player.setDeltaMovement(motion.x, motion.y + 0.07D, motion.z);
-            player.fallDistance = 0.0F;
+            entity.setDeltaMovement(motion.x, motion.y + 0.07D, motion.z);
+            entity.fallDistance = 0.0F;
             return;
         }
 
         /*
          * 如果只在岩浆表面，托到当前岩浆方块顶部附近。
          */
-        double surfaceY = feetPos.getY() + 1.0D;
+        double surfaceY = feetInLava ? feetPos.getY() + 1.0D : belowPos.getY() + 1.0D;
 
-        if (player.getY() < surfaceY + 0.02D) {
-            player.setPos(player.getX(), surfaceY + 0.02D, player.getZ());
+        if (entity.getY() < surfaceY + 0.02D) {
+            entity.setPos(entity.getX(), surfaceY + 0.02D, entity.getZ());
         }
 
-        player.setDeltaMovement(motion.x, Math.max(0.0D, motion.y), motion.z);
-        player.setOnGround(true);
-        player.fallDistance = 0.0F;
+        entity.setDeltaMovement(motion.x, Math.max(0.0D, motion.y), motion.z);
+        entity.setOnGround(true);
+        entity.fallDistance = 0.0F;
     }
 
     /**
