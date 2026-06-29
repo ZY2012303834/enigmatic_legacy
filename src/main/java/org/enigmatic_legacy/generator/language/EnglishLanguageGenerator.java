@@ -392,15 +392,22 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.blazing_core.active",
                 "No active ability.");
         add("tooltip.enigmatic_legacy.blazing_core.passive.1",
-                "Immunizes you against fire damage and automatically extinguishes you.");
+                "Grants immunity to most ordinary fire damage and automatically extinguishes the bearer.");
+
         add("tooltip.enigmatic_legacy.blazing_core.passive.2",
-                "Temporarily protects you from lava damage; staying in lava too long makes you overheat.");
+                "Grants temporary protection in lava and improves lava visibility.");
+
         add("tooltip.enigmatic_legacy.blazing_core.passive.3",
-                "When hit in melee, deals %s fire feedback damage to the attacker and ignites them.");
+                "When hit by melee attacks, ignites the attacker and deals %s fire feedback damage.");
+
         add("tooltip.enigmatic_legacy.blazing_core.passive.4",
-                "Most status effects last %s as long; fire resistance-like effects last twice as long.");
+                "Reduces the duration of most status effects by %s, while extending fire resistance effects.");
+
         add("tooltip.enigmatic_legacy.blazing_core.passive.5",
-                "Damage from aquatic creatures is multiplied by %s.");
+                "Damage from aquatic creatures is increased by %s.");
+
+        add("tooltip.enigmatic_legacy.blazing_core.passive.6",
+                "You can now swim in lava.");
         // end
 
         // 星云之眼
@@ -924,16 +931,19 @@ public class EnglishLanguageGenerator extends LanguageProvider {
                 "Grants immunity to most fire damage and lets you walk on lava.");
 
         add("tooltip.enigmatic_legacy.scorched_charm.2",
-                "While touching lava, restores 2 health every second.");
+                "While touching lava, restores %s health every second.");
 
         add("tooltip.enigmatic_legacy.scorched_charm.3",
-                "Attacking burning targets restores 20% of the damage dealt.");
+                "Attacking burning targets restores %s of the damage dealt.");
 
         add("tooltip.enigmatic_legacy.scorched_charm.4",
-                "Has a 10% chance to resist incoming damage; this chance doubles while touching lava.");
+                "Has a %s chance to resist incoming damage; this chance becomes %s while touching lava.");
 
         add("tooltip.enigmatic_legacy.scorched_charm.5",
-                "Crouching allows you to dive into lava and improves lava visibility.");
+                "Crouching allows you to dive into lava.");
+
+        add("tooltip.enigmatic_legacy.scorched_charm.6",
+                "You can now swim in lava and gain the same lava visibility as the Blazing Core.");
 
         addAdvancementTranslations();
 

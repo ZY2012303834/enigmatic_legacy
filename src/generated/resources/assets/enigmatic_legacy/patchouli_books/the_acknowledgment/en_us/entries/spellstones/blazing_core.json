@@ -7,12 +7,17 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:blazing_core",
       "link_recipe": true,
-      "text": "A fire-aspected spellstone connected to flame, lava, and the Nether.$(br2)It grants strong protection against heat, but its power is not without limits.",
+      "text": "A spellstone tied to fire, lava, and the Nether.$(br2)It grants strong adaptation to extreme heat and allows the bearer to move through lava.",
       "title": "Blazing Core"
     },
     {
       "type": "patchouli:text",
-      "text": "Do not mistake resistance for invulnerability.$(br2)If the core is pushed too far, the bearer may still suffer the consequences of fire and lava.",
+      "text": "While wearing the Blazing Core, you are immune to most ordinary fire damage and gain temporary protection in lava.$(br2)It also improves visibility in lava and allows you to swim through it.",
+      "title": "Lava Adaptation"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Do not mistake resistance for invulnerability.$(br2)If the Blazing Core is pushed too far, the bearer may still suffer the consequences of fire and lava.$(br2)Damage from aquatic creatures also becomes more dangerous.",
       "title": "Overheat"
     }
   ],

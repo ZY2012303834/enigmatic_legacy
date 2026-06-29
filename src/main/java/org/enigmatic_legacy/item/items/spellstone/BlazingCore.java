@@ -1,5 +1,6 @@
 package org.enigmatic_legacy.item.items.spellstone;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
@@ -81,15 +82,18 @@ public class BlazingCore extends Item implements ICurioItem {
             @NotNull List<Component> tooltip,
             @NotNull TooltipFlag flag
     ) {
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.void"));
+        tooltip.add(SpellstoneTooltip.empty());
 
         if (!Screen.hasShiftDown()) {
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hold_shift"));
+            tooltip.add(SpellstoneTooltip.holdShift());
             return;
         }
 
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.spellstone.active"));
+        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.spellstone.active")
+                .withStyle(ChatFormatting.DARK_RED));
+
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.blazing_core.active"));
+
         tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.spellstone.cooldown",
                 SpellstoneTooltip.number(String.format("%.1f", ConfigCommon.BLAZING_CORE_COOLDOWN.get() / 20.0F))
@@ -97,17 +101,25 @@ public class BlazingCore extends Item implements ICurioItem {
 
         tooltip.add(Component.empty());
 
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.spellstone.passive"));
+        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.spellstone.passive")
+                .withStyle(ChatFormatting.DARK_RED));
+
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.blazing_core.passive.1"));
+
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.blazing_core.passive.2"));
+
         tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.blazing_core.passive.3",
                 SpellstoneTooltip.number(String.format("%.1f", ConfigCommon.BLAZING_CORE_DAMAGE_FEEDBACK.get()))
         ));
+
         tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.blazing_core.passive.4",
-                SpellstoneTooltip.number(ConfigCommon.BLAZING_CORE_EFFECT_DURATION_MODIFIER.get() + "%")
+                SpellstoneTooltip.percent(ConfigCommon.BLAZING_CORE_EFFECT_DURATION_MODIFIER.get() + "%")
         ));
+
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.blazing_core.passive.6"));
+
         tooltip.add(SpellstoneTooltip.negative(
                 "tooltip.enigmatic_legacy.blazing_core.passive.5",
                 SpellstoneTooltip.number(String.format("%.1f", ConfigCommon.BLAZING_CORE_AQUATIC_DAMAGE_VULNERABILITY.get()))

@@ -74,9 +74,11 @@ public final class SpellstoneTooltip {
 
     /**
      * 按住 Shift 查看详情。
+     * 项目统一规则：
+     * Shift 提示文字使用金色。
      */
     public static Component holdShift() {
         return Component.translatable("tooltip.enigmatic_legacy.hold_shift")
-                .withStyle(ChatFormatting.DARK_GRAY);
+                .withStyle(ChatFormatting.GOLD);
     }
 }

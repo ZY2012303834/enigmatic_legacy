@@ -17,6 +17,11 @@
     },
     {
       "type": "patchouli:text",
+      "text": "The Charm of Scorched Sun now allows its bearer to swim in lava.$(br2)It also grants the same improved lava visibility as the Blazing Core, making it useful for exploring Nether lava lakes.",
+      "title": "Lava Movement"
+    },
+    {
+      "type": "patchouli:text",
       "text": "While touching lava, the charm restores 2 health every second.$(br2)When you attack a burning target, it restores 20% of the damage dealt.$(br2)It rewards fighting within fire rather than fleeing from it.",
       "title": "Healing and Lifesteal"
     },

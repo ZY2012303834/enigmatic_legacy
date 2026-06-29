@@ -738,6 +738,12 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 ),
 
                 textPage(
+                        "Lava Movement",
+                        "The Charm of Scorched Sun now allows its bearer to swim in lava.$(br2)" +
+                                "It also grants the same improved lava visibility as the Blazing Core, making it useful for exploring Nether lava lakes."
+                ),
+
+                textPage(
                         "Healing and Lifesteal",
                         "While touching lava, the charm restores 2 health every second.$(br2)" +
                                 "When you attack a burning target, it restores 20% of the damage dealt.$(br2)" +
@@ -756,7 +762,6 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                         "The crafting recipe for the Charm of Scorched Sun."
                 )
         )));
-
         futures.add(save(output, "en_us", "entries/relics/mega_sponge", recipeEntry(
                 "Extrapolated Megasponge",
                 "relics",
@@ -1057,14 +1062,21 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 spotlightPage(
                         "enigmatic_legacy:blazing_core",
                         "Blazing Core",
-                        "A fire-aspected spellstone connected to flame, lava, and the Nether.$(br2)" +
-                                "It grants strong protection against heat, but its power is not without limits."
+                        "A spellstone tied to fire, lava, and the Nether.$(br2)" +
+                                "It grants strong adaptation to extreme heat and allows the bearer to move through lava."
+                ),
+
+                textPage(
+                        "Lava Adaptation",
+                        "While wearing the Blazing Core, you are immune to most ordinary fire damage and gain temporary protection in lava.$(br2)" +
+                                "It also improves visibility in lava and allows you to swim through it."
                 ),
 
                 textPage(
                         "Overheat",
                         "Do not mistake resistance for invulnerability.$(br2)" +
-                                "If the core is pushed too far, the bearer may still suffer the consequences of fire and lava."
+                                "If the Blazing Core is pushed too far, the bearer may still suffer the consequences of fire and lava.$(br2)" +
+                                "Damage from aquatic creatures also becomes more dangerous."
                 )
         )));
 

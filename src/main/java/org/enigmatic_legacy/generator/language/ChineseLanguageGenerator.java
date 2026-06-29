@@ -393,15 +393,22 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.blazing_core.active",
                 "无主动效果。");
         add("tooltip.enigmatic_legacy.blazing_core.passive.1",
-                "免疫火焰伤害，并会自动熄灭自身燃烧。");
+                "免疫大多数普通火焰伤害，并会自动熄灭自身燃烧。");
+
         add("tooltip.enigmatic_legacy.blazing_core.passive.2",
-                "暂时免疫岩浆伤害；在岩浆中停留过久后会过热并开始受伤。");
+                "在岩浆中获得临时保护，并拥有更高岩浆能见度。");
+
         add("tooltip.enigmatic_legacy.blazing_core.passive.3",
-                "受到近战攻击时，对攻击者造成 %s 点火焰反馈伤害并点燃攻击者。");
+                "受到近战攻击时点燃攻击者，并造成 %s 点火焰反馈伤害。");
+
         add("tooltip.enigmatic_legacy.blazing_core.passive.4",
-                "大多数状态效果持续时间变为 %s；抗火类效果持续时间翻倍。");
+                "大多数状态效果持续时间缩短 %s，抗火类效果持续时间延长。");
+
         add("tooltip.enigmatic_legacy.blazing_core.passive.5",
-                "来自水生生物的伤害变为 %s 倍。");
+                "来自水生生物的伤害提高 %s。");
+
+        add("tooltip.enigmatic_legacy.blazing_core.passive.6",
+                "现在可以在岩浆中游泳。");
         // end
 
         // 星云之眼
@@ -930,16 +937,19 @@ public class ChineseLanguageGenerator extends LanguageProvider {
                 "免疫大多数火焰伤害，并允许你行走在岩浆之上。");
 
         add("tooltip.enigmatic_legacy.scorched_charm.2",
-                "接触岩浆时，每秒恢复 2 点生命。");
+                "接触岩浆时，每秒恢复 %s 点生命。");
 
         add("tooltip.enigmatic_legacy.scorched_charm.3",
-                "攻击着火目标时，恢复造成伤害的 20%。");
+                "攻击着火目标时，恢复造成伤害的 %s。");
 
         add("tooltip.enigmatic_legacy.scorched_charm.4",
-                "有 10% 概率抵御下一次伤害；接触岩浆时概率翻倍。");
+                "有 %s 概率抵御下一次伤害；接触岩浆时提升到 %s。");
 
         add("tooltip.enigmatic_legacy.scorched_charm.5",
-                "下蹲时可以潜入岩浆，并在岩浆中拥有更高能见度。");
+                "下蹲时可以潜入岩浆。");
+
+        add("tooltip.enigmatic_legacy.scorched_charm.6",
+                "现在可以在岩浆中游泳，并拥有和烈焰之核一样的岩浆能见度。");
 
         // 七咒折磨 99.5% 使用资格提示，所有需要该资格的物品共用这一组语言 key。
         add("tooltip.enigmatic_legacy.cursed_suffering.requirement", "你需要在七咒之戒的折磨下度过总游戏时间的 %s 才能使用该物品。");

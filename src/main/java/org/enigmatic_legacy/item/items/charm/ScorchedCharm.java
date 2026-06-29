@@ -9,6 +9,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
+import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
@@ -91,28 +92,35 @@ public class ScorchedCharm extends Item implements ICurioItem {
             @NotNull List<Component> tooltip,
             @NotNull TooltipFlag flag
     ) {
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+        tooltip.add(SpellstoneTooltip.empty());
 
         if (!Screen.hasShiftDown()) {
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hold_shift"));
+            tooltip.add(SpellstoneTooltip.holdShift());
             return;
         }
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.scorched_charm.1")
-                .withStyle(ChatFormatting.DARK_PURPLE));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.scorched_charm.1"));
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.scorched_charm.2")
-                .withStyle(ChatFormatting.DARK_PURPLE));
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.scorched_charm.2",
+                SpellstoneTooltip.number("2")
+        ));
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.scorched_charm.3")
-                .withStyle(ChatFormatting.DARK_PURPLE));
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.scorched_charm.3",
+                SpellstoneTooltip.percent("20%")
+        ));
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.scorched_charm.4")
-                .withStyle(ChatFormatting.DARK_PURPLE));
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.scorched_charm.4",
+                SpellstoneTooltip.percent("10%"),
+                SpellstoneTooltip.percent("20%")
+        ));
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.scorched_charm.5")
-                .withStyle(ChatFormatting.DARK_PURPLE));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.scorched_charm.5"));
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.scorched_charm.6"));
+
+        tooltip.add(SpellstoneTooltip.empty());
     }
 }

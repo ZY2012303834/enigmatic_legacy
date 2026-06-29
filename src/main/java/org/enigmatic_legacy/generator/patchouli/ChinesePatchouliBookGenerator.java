@@ -738,6 +738,12 @@ final class ChinesePatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 ),
 
                 textPage(
+                        "岩浆行动",
+                        "阳灼护符现在允许佩戴者在岩浆中游泳。$(br2)" +
+                                "它也拥有和烈焰核心一样的岩浆能见度提升，因此更适合在下界岩浆湖中探索。"
+                ),
+
+                textPage(
                         "恢复与汲取",
                         "接触岩浆时，阳灼护符每秒恢复 2 点生命。$(br2)" +
                                 "攻击正在燃烧的目标时，会恢复造成伤害的 20%。$(br2)" +
@@ -1058,13 +1064,20 @@ final class ChinesePatchouliBookGenerator extends AbstractPatchouliBookContentGe
                         "enigmatic_legacy:blazing_core",
                         "烈焰核心",
                         "与火焰、岩浆和下界相关的术石。$(br2)" +
-                                "它提供强大的高温防护，但这种防护并非没有极限。"
+                                "它提供强大的高温适应能力，并让佩戴者能在岩浆中行动。"
+                ),
+
+                textPage(
+                        "岩浆适应",
+                        "佩戴烈焰核心时，你会免疫大多数普通火焰伤害，并在岩浆中获得临时保护。$(br2)" +
+                                "它还会提高岩浆中的能见度，并允许你在岩浆中游泳。"
                 ),
 
                 textPage(
                         "过热",
                         "不要把抗性误认为无敌。$(br2)" +
-                                "如果烈焰核心被推到极限，佩戴者仍可能承受火焰和岩浆的后果。"
+                                "如果烈焰核心被推到极限，佩戴者仍可能承受火焰和岩浆的后果。$(br2)" +
+                                "此外，来自水生生物的伤害会变得更加危险。"
                 )
         )));
 
