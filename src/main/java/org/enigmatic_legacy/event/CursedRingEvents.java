@@ -46,10 +46,7 @@ import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.common.damagesource.DamageContainer;
 import net.neoforged.neoforge.event.enchanting.EnchantmentLevelSetEvent;
-import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
-import net.neoforged.neoforge.event.entity.living.LivingExperienceDropEvent;
-import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
-import net.neoforged.neoforge.event.entity.living.LivingKnockBackEvent;
+import net.neoforged.neoforge.event.entity.living.*;
 import net.neoforged.neoforge.event.entity.player.CanContinueSleepingEvent;
 import net.neoforged.neoforge.event.entity.player.CanPlayerSleepEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
@@ -135,35 +132,74 @@ public class CursedRingEvents {
 
     /**
      * 七咒之戒调整伤害：
-     * 1. 佩戴者受到更多伤害。
+     * 1. 佩戴者护甲减伤效果降低；
      * 2. 佩戴者攻击怪物时，伤害降低。
-     * 3. 佩戴者的护甲减伤效果降低。
-     * <p>
-     * NeoForge 1.21.1 使用 LivingIncomingDamageEvent 替代旧版 LivingHurtEvent。
+     * 注意：
+     * 佩戴者受到更多伤害的倍率不要在这里处理。
+     * 原因：
+     * LivingIncomingDamageEvent 发生在护甲、防御等减伤之前。
+     * 如果这里直接把原始伤害乘以 200%，然后再削弱护甲，
+     * 实际最终伤害会远高于预期。
+     * 所以：
+     * - 护甲削弱仍然留在这里；
+     * - 七咒最终受伤倍率移动到 LivingDamageEvent.Pre 中处理。
      */
     @SubscribeEvent
     public static void onIncomingDamage(LivingIncomingDamageEvent event) {
         LivingEntity target = event.getEntity();
 
         if (target instanceof Player player && CursedRingHelper.hasCursedRing(player)) {
-            float multiplier = ConfigCommon.CURSED_RING_PAIN_MODIFIER.get() / 100.0F;
-            multiplier = applyAcknowledgmentFourthCurseReduction(player, multiplier);
-
-            event.setAmount(event.getAmount() * multiplier);
-
+            /*
+             * 七咒护甲削弱：
+             * 只削弱护甲减伤本身，不再提前放大原始伤害。
+             */
             float armorDebuff = ConfigCommon.CURSED_RING_ARMOR_DEBUFF.get() / 100.0F;
+
             event.addReductionModifier(
                     DamageContainer.Reduction.ARMOR,
                     (container, baseReduction) -> baseReduction * Math.max(0.0F, 1.0F - armorDebuff)
             );
         }
 
+        /*
+         * 七咒佩戴者攻击怪物时，伤害降低。
+         */
         if (event.getSource().getEntity() instanceof Player attacker
                 && CursedRingHelper.hasCursedRing(attacker)
                 && target instanceof Enemy) {
             float debuff = ConfigCommon.CURSED_RING_MONSTER_DAMAGE_DEBUFF.get() / 100.0F;
             event.setAmount(event.getAmount() * Math.max(0.0F, 1.0F - debuff));
         }
+    }
+
+    /**
+     * 七咒之戒佩戴者受到更多最终伤害。
+     * 修复点：
+     * 之前在 LivingIncomingDamageEvent 中直接放大原始伤害，
+     * 会和护甲削弱叠加得过猛。
+     * 现在改为在 LivingDamageEvent.Pre 中处理：
+     * 1. 原版护甲、抗性、附魔等减伤先正常计算；
+     * 2. 七咒护甲削弱已经在 IncomingDamage 阶段生效；
+     * 3. 最后再对最终伤害应用七咒痛苦倍率。
+     * 这样实际效果更接近“最终受到伤害提高到配置倍率”，
+     * 不会因为先放大原始伤害导致怪物伤害异常过高。
+     */
+    @SubscribeEvent
+    public static void onFinalDamage(LivingDamageEvent.Pre event) {
+        LivingEntity target = event.getEntity();
+
+        if (!(target instanceof Player player)) {
+            return;
+        }
+
+        if (!CursedRingHelper.hasCursedRing(player)) {
+            return;
+        }
+
+        float multiplier = ConfigCommon.CURSED_RING_PAIN_MODIFIER.get() / 100.0F;
+        multiplier = applyAcknowledgmentFourthCurseReduction(player, multiplier);
+
+        event.setNewDamage(event.getNewDamage() * multiplier);
     }
 
     /**
