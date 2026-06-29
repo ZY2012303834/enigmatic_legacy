@@ -934,7 +934,7 @@ public class ChineseLanguageGenerator extends LanguageProvider {
     }
 
     private void addAdvancementTranslations() {
-        add("advancementTab.enigmatic_legacy", "神秘遗物");
+        add("advancementTab.enigmatic_legacy", "§5神秘遗物");
         add("advancementTab.enigmatic_legacy.desc", "昔日残遗");
 
         addAdvancement("discoverSpellstone", "元素之力", "找到你的第一块术石");
@@ -975,7 +975,7 @@ public class ChineseLanguageGenerator extends LanguageProvider {
     }
 
     private void addAdvancement(String key, String title, String description) {
-        add("advancement.enigmatic_legacy:" + key, title);
+        add("advancement.enigmatic_legacy:" + key, "§5" + title);
         add("advancement.enigmatic_legacy:" + key + ".desc", description);
     }
 

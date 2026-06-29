@@ -930,7 +930,7 @@ public class EnglishLanguageGenerator extends LanguageProvider {
     }
 
     private void addAdvancementTranslations() {
-        add("advancementTab.enigmatic_legacy", "Enigmatic Legacy");
+        add("advancementTab.enigmatic_legacy", "§5Enigmatic Legacy");
         add("advancementTab.enigmatic_legacy.desc", "Remains of the former times");
 
         addAdvancement("discoverSpellstone", "Elemental Might", "Discover your first Spellstone");
@@ -971,7 +971,7 @@ public class EnglishLanguageGenerator extends LanguageProvider {
     }
 
     private void addAdvancement(String key, String title, String description) {
-        add("advancement.enigmatic_legacy:" + key, title);
+        add("advancement.enigmatic_legacy:" + key, "§5" + title);
         add("advancement.enigmatic_legacy:" + key + ".desc", description);
     }
 

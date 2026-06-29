@@ -55,6 +55,10 @@ public final class ModeTabs {
                                 output.accept(createUltimateNightVisionPotionStack(Items.POTION));              // 终极夜视药水
                                 output.accept(createUltimateNightVisionPotionStack(Items.SPLASH_POTION));       // 喷溅型终极夜视药水
                                 output.accept(createUltimateNightVisionPotionStack(Items.LINGERING_POTION));    // 滞留型终极夜视药水
+                                // 灵液滴 / Ichor Droplet
+                                output.accept(ModItems.ICHOR_DROPLET.get());
+                                // 纯净之心 / Pure Heart
+                                output.accept(ModItems.PURE_HEART.get());
                                 output.accept(ModItems.UNHOLY_GRAIL.get());             // 不洁圣杯
                                 output.accept(ModItems.GUARDIAN_HEART.get());           // 守卫者之心
                                 output.accept(ModItems.ENDER_RING.get());               // 末影之戒
