@@ -1,0 +1,33 @@
+{
+  "category": "enigmatic_legacy:materials",
+  "icon": "enigmatic_legacy:pure_heart",
+  "name": "Pure Heart",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:pure_heart",
+      "link_recipe": true,
+      "text": "A strange heart born from hidden dark pollution and faint divinity.$(br2)It appears bright and pure, yet still requires the power of curses to be truly understood.",
+      "title": "Pure Heart"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The Pure Heart is crafted from a Heart of the Earth, Ichor Droplets, a Ghast Tear, Glowstone Dust, and an Eye of Ender.$(br2)It can be seen as another direction from the Twisted Heart: not deeper malice, but an attempt to turn pollution toward purification.",
+      "title": "Materials"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The Pure Heart is not an equipable relic or an Arcane Scroll by itself.$(br2)It is an important material for later purification, blessing, and redemption progression.$(br2)Although it is called pure, that purity still stands upon curses.",
+      "title": "Purification Path"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:pure_heart",
+      "text": "The crafting recipe for the Pure Heart.",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 27
+}

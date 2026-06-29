@@ -135,6 +135,8 @@ public class ItemGenerator extends ItemModelProvider {
 
         basicItem(ModItems.ICHOR_DROPLET.getId()); // 灵液滴
 
+        basicItem(ModItems.PURE_HEART.getId()); // 纯净之心
+
         // 飞升护符模型。
         // 原项目为普通 2D item/generated 模型，没有 3D 模型。
         basicItem(ModItems.ASCENSION_AMULET.getId());

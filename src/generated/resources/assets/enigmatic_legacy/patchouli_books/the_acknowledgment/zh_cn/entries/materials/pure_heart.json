@@ -1,0 +1,33 @@
+{
+  "category": "enigmatic_legacy:materials",
+  "icon": "enigmatic_legacy:pure_heart",
+  "name": "纯净之心",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:pure_heart",
+      "link_recipe": true,
+      "text": "由隐藏的深暗污染与微弱神性共同塑成的奇异心脏。$(br2)它看似明亮纯净，却仍然需要借助七咒的力量才能被真正理解。",
+      "title": "纯净之心"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "纯净之心由大地之心、灵液滴、恶魂之泪、荧石粉和末影之眼制作而成。$(br2)它可以被视为扭曲之心的另一种方向：不是继续走向恶意，而是尝试将污染转向净化。",
+      "title": "材料来源"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "纯净之心本身不是可装备遗物，也不是奥秘卷轴。$(br2)它是后续净化、祝福、救赎路线的重要材料。$(br2)虽然它被称为纯净，但这份纯净仍然建立在诅咒之上。",
+      "title": "净化路线"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:pure_heart",
+      "text": "纯净之心的合成配方。",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 27
+}

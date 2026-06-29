@@ -276,6 +276,38 @@ final class ChinesePatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 )
         )));
 
+        futures.add(save(output, "zh_cn", "entries/materials/pure_heart", entry(
+                "纯净之心",
+                "materials",
+                "enigmatic_legacy:pure_heart",
+                27,
+
+                spotlightPage(
+                        "enigmatic_legacy:pure_heart",
+                        "纯净之心",
+                        "由隐藏的深暗污染与微弱神性共同塑成的奇异心脏。$(br2)" +
+                                "它看似明亮纯净，却仍然需要借助七咒的力量才能被真正理解。"
+                ),
+
+                textPage(
+                        "材料来源",
+                        "纯净之心由大地之心、灵液滴、恶魂之泪、荧石粉和末影之眼制作而成。$(br2)" +
+                                "它可以被视为扭曲之心的另一种方向：不是继续走向恶意，而是尝试将污染转向净化。"
+                ),
+
+                textPage(
+                        "净化路线",
+                        "纯净之心本身不是可装备遗物，也不是奥秘卷轴。$(br2)" +
+                                "它是后续净化、祝福、救赎路线的重要材料。$(br2)" +
+                                "虽然它被称为纯净，但这份纯净仍然建立在诅咒之上。"
+                ),
+
+                craftingPage(
+                        "enigmatic_legacy:pure_heart",
+                        "纯净之心的合成配方。"
+                )
+        )));
+
         futures.add(save(output, "zh_cn", "entries/materials/etherium_ore", simpleSpotlight(
                 "以太矿石",
                 "materials",

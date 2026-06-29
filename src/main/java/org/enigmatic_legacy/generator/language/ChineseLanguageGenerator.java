@@ -30,6 +30,14 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         addItem(ModItems.EARTH_HEART, "大地之心");
         addItem(ModItems.ICHOR_DROPLET, "灵液滴");
 
+        addItem(ModItems.PURE_HEART, "纯净之心");
+
+        add("tooltip.enigmatic_legacy.pure_heart.1",
+                "纯净之物，却由诅咒塑成。");
+
+        add("tooltip.enigmatic_legacy.pure_heart.2",
+                "这颗心属于七咒净化路线。");
+
         addItem(ModItems.TWISTED_HEART, "扭曲之心");
         add("tooltip.enigmatic_legacy.cursed_ones_only", "唯有背负诅咒者方能理解它的用途。");
         add("tooltip.enigmatic_legacy.twisted_heart.active", "已被七咒之戒激活。");

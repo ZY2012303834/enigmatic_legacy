@@ -125,6 +125,34 @@ public class RecipeGenerator extends RecipeProvider {
                 .unlockedBy("has_earth_heart", has(ModItems.EARTH_HEART.get()))
                 .save(output);
 
+        // 纯净之心 / Pure Heart
+// 复刻 Enigmatic Addons 配方：
+//  L
+// QXQ
+// RER
+//
+// L = 恶魂之泪
+// Q = 灵液滴
+// X = 大地之心
+// R = 荧石粉
+// E = 末影之眼
+//
+// 原拓展项目使用 cursed shaped recipe。
+// 当前项目暂未接入 cursed recipe serializer，
+// 因此这里先使用普通 shaped recipe 生成 JSON。
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PURE_HEART.get())
+                .pattern(" L ")
+                .pattern("QXQ")
+                .pattern("RER")
+                .define('L', Items.GHAST_TEAR)
+                .define('Q', ModItems.ICHOR_DROPLET.get())
+                .define('X', ModItems.EARTH_HEART.get())
+                .define('R', Items.GLOWSTONE_DUST)
+                .define('E', Items.ENDER_EYE)
+                .unlockedBy("has_ichor_droplet", has(ModItems.ICHOR_DROPLET.get()))
+                .unlockedBy("has_earth_heart", has(ModItems.EARTH_HEART.get()))
+                .save(output);
+
         // 大灯笼
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.BIG_LAMP.get(), 2)
                 .pattern("ici")

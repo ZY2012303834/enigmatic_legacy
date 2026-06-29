@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-29T09:36:53.6185818	vanilla/Item Models: enigmatic_legacy
+// 1.21.1	2026-06-29T09:49:57.1571043	vanilla/Item Models: enigmatic_legacy
 aaf9eff73642636d85d6ecd1627b8303f5153a76 assets/enigmatic_legacy/models/item/abyssal_heart.json
 79e416a4d6e90035107f541617b7d4a2d2d7abbb assets/enigmatic_legacy/models/item/angel_blessing.json
 91788e275aaecfe4ddd200b085f49433f9966bf1 assets/enigmatic_legacy/models/item/ascension_amulet.json
@@ -76,6 +76,7 @@ d69639b618e2ba1f8eaed2423ee841cf84a1e5c1 assets/enigmatic_legacy/models/item/mag
 79d82a21647e0c55bf0a6bab13535800f169d97c assets/enigmatic_legacy/models/item/mending_mixture.json
 976082ecddc4955efb4fd7527f3124871d3ff06f assets/enigmatic_legacy/models/item/monster_charm.json
 4f4071a2cea28cee7982429764404f03b2e1f0fa assets/enigmatic_legacy/models/item/ocean_stone.json
+ca3299c7b2de565e1d4c4d56e46dd21fdb1b87ed assets/enigmatic_legacy/models/item/pure_heart.json
 70a49ada3e49d884eb2a05756d29b94c85d78f5f assets/enigmatic_legacy/models/item/recall_potion.json
 2c0098259b42bc9054adbe89f0ef21c21fa955eb assets/enigmatic_legacy/models/item/redemption_potion.json
 ecc9930eb84f65dfce77e42b52f82d09ac95fce5 assets/enigmatic_legacy/models/item/soul_crystal.json

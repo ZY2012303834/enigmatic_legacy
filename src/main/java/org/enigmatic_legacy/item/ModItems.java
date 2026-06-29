@@ -33,6 +33,10 @@ public final class ModItems {
     // 灵液滴 / Ichor Droplet
     // 拓展项目材料：可在下界战利品箱中发现，也可由恶魂的七咒特殊掉落获得。
     public static final DeferredItem<IchorDroplet> ICHOR_DROPLET = ITEMS.register("ichor_droplet", IchorDroplet::new);
+    // 纯净之心 / Pure Heart
+    // 拓展项目净化路线材料：由深暗污染与微弱神性共同塑成。
+    public static final DeferredItem<PureHeart> PURE_HEART = ITEMS.register("pure_heart", PureHeart::new);
+
     public static final DeferredItem<BlockItem> ASTRAL_DUST_SACK = ITEMS.registerSimpleBlockItem(ModBlocks.ASTRAL_DUST_SACK);
     public static final DeferredItem<BlockItem> ETHERIUM_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.ETHERIUM_BLOCK, new BlockItem.Properties().fireResistant());
     public static final DeferredItem<CosmicHeart> COSMIC_HEART = ITEMS.register("cosmic_heart", CosmicHeart::new);

@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-29T09:36:53.6096256	vanilla/Enigmatic Legacy Patchouli Books: zh_cn
+// 1.21.1	2026-06-29T09:49:57.1516012	vanilla/Enigmatic Legacy Patchouli Books: zh_cn
 cd2228d4eb2e84839fc05be8d27501d37ee82de1 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/categories/equipment.json
 f52c760edc0a0eba5f768202bde3aa481452400d assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/categories/materials.json
 ffd12d3c6a57628b47bf69332abf107f01d3a070 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/categories/relics.json
@@ -31,6 +31,7 @@ fbb5512f9a91f1515da535e60b337ac68feac6df assets/enigmatic_legacy/patchouli_books
 0bb6603c3068874f0d79043d01e75a1bac699576 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/entries/materials/evil_essence.json
 fdae99d750f4730cf6b22c3bfbd0df8cd999c888 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/entries/materials/evil_ingot.json
 1bbc0df37467a68f2537901b7021b4412a1db444 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/entries/materials/ichor_droplet.json
+61f23240b78daf69dc8d65da625a30defdc269d7 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/entries/materials/pure_heart.json
 b6789585d50a6d6936c551e671e600733cf88107 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/entries/materials/thicc_scroll.json
 fb2e55648196d88da00b4c2f4a7252bf8b42b4de assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/entries/materials/twisted_heart.json
 bc3ba1a411261b53050fada323f6cdd95da91e2f assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/entries/relics/animal_guidebook.json

@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "E": {
+      "item": "minecraft:ender_eye"
+    },
+    "L": {
+      "item": "minecraft:ghast_tear"
+    },
+    "Q": {
+      "item": "enigmatic_legacy:ichor_droplet"
+    },
+    "R": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "X": {
+      "item": "enigmatic_legacy:earth_heart"
+    }
+  },
+  "pattern": [
+    " L ",
+    "QXQ",
+    "RER"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:pure_heart"
+  }
+}

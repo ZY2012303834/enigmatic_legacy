@@ -276,6 +276,38 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 )
         )));
 
+        futures.add(save(output, "en_us", "entries/materials/pure_heart", entry(
+                "Pure Heart",
+                "materials",
+                "enigmatic_legacy:pure_heart",
+                27,
+
+                spotlightPage(
+                        "enigmatic_legacy:pure_heart",
+                        "Pure Heart",
+                        "A strange heart born from hidden dark pollution and faint divinity.$(br2)" +
+                                "It appears bright and pure, yet still requires the power of curses to be truly understood."
+                ),
+
+                textPage(
+                        "Materials",
+                        "The Pure Heart is crafted from a Heart of the Earth, Ichor Droplets, a Ghast Tear, Glowstone Dust, and an Eye of Ender.$(br2)" +
+                                "It can be seen as another direction from the Twisted Heart: not deeper malice, but an attempt to turn pollution toward purification."
+                ),
+
+                textPage(
+                        "Purification Path",
+                        "The Pure Heart is not an equipable relic or an Arcane Scroll by itself.$(br2)" +
+                                "It is an important material for later purification, blessing, and redemption progression.$(br2)" +
+                                "Although it is called pure, that purity still stands upon curses."
+                ),
+
+                craftingPage(
+                        "enigmatic_legacy:pure_heart",
+                        "The crafting recipe for the Pure Heart."
+                )
+        )));
+
         futures.add(save(output, "en_us", "entries/materials/etherium_ore", simpleSpotlight(
                 "Etherium Ore",
                 "materials",

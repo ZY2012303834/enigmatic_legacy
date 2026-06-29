@@ -29,6 +29,15 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         addItem(ModItems.EARTH_HEART_FRAGMENT, "Fragment of the Earth"); // 大地之心碎片
         addItem(ModItems.EARTH_HEART, "Heart of the Earth"); // 大地之心
         addItem(ModItems.ICHOR_DROPLET, "Ichor Droplet");
+
+        addItem(ModItems.PURE_HEART, "Pure Heart");
+
+        add("tooltip.enigmatic_legacy.pure_heart.1",
+                "Something pure, shaped through curses.");
+
+        add("tooltip.enigmatic_legacy.pure_heart.2",
+                "This heart belongs to the Seven Curses purification path.");
+
         // 扭曲之心
         addItem(ModItems.TWISTED_HEART, "Twisted Heart");
         add("tooltip.enigmatic_legacy.cursed_ones_only", "Only those bearing the curse may comprehend its purpose.");
