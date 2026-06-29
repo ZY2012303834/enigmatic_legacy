@@ -9,6 +9,7 @@
     "MixinPoisonMobEffect"
   ],
   "client": [
+    "MixinFogRenderer"
   ],
   "injectors": {
     "defaultRequire": 1
