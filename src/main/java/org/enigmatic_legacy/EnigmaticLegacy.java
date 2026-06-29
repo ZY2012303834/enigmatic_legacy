@@ -1,5 +1,6 @@
 package org.enigmatic_legacy;
 
+import com.mojang.logging.LogUtils;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
@@ -22,10 +23,12 @@ import org.enigmatic_legacy.potion.ModEffects;
 import org.enigmatic_legacy.potion.ModPotions;
 import org.enigmatic_legacy.recipe.ModRecipeSerializers;
 import org.enigmatic_legacy.sound.ModSounds;
+import org.slf4j.Logger;
 
 @Mod(EnigmaticLegacy.MODID)
 public class EnigmaticLegacy {
     public static final String MODID = "enigmatic_legacy";
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public EnigmaticLegacy(IEventBus modEventBus, ModContainer modContainer) {
         ConfigFileHelper.ensureDefaultConfig("enigmatic_legacy-server.toml", ConfigCommon.SPEC);

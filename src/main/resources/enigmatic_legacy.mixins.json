@@ -2,6 +2,7 @@
   "required": true,
   "minVersion": "0.8",
   "package": "org.enigmatic_legacy.mixin",
+  "plugin": "org.enigmatic_legacy.mixin.EnigmaticMixinPlugin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "MixinEnchantmentMenu",
@@ -9,6 +10,7 @@
     "MixinPoisonMobEffect"
   ],
   "client": [
+    "compat.MixinIrisCommonUniforms",
     "MixinFogRenderer"
   ],
   "injectors": {

@@ -28,6 +28,7 @@ import java.util.List;
  */
 public class BlazingCore extends Item implements ICurioItem {
     private static final String SPELLSTONE_SLOT = "spellstone";
+    public static final String CLIENT_TICK_TAG = "enigmatic_legacy.blazing_core_client_tick";
 
     public BlazingCore() {
         super(new Item.Properties()
@@ -56,6 +57,10 @@ public class BlazingCore extends Item implements ICurioItem {
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         LivingEntity entity = slotContext.entity();
+
+        if (entity.level().isClientSide()) {
+            entity.getPersistentData().putInt(CLIENT_TICK_TAG, entity.tickCount);
+        }
 
         /*
          * 原版烈焰核心效果：

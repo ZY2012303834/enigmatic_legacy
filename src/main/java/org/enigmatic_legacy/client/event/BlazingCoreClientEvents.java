@@ -7,7 +7,6 @@ import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.material.FogType;
 import net.neoforged.api.distmarker.Dist;
@@ -20,8 +19,10 @@ import net.neoforged.neoforge.client.event.RenderGuiLayerEvent;
 import net.neoforged.neoforge.client.event.ViewportEvent;
 import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 import org.enigmatic_legacy.EnigmaticLegacy;
+import org.enigmatic_legacy.client.util.ClientLavaVisionHelper;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.items.charm.ScorchedCharm;
+import org.enigmatic_legacy.item.items.spellstone.BlazingCore;
 import org.enigmatic_legacy.util.BlazingCoreHelper;
 import org.enigmatic_legacy.util.ScorchedCharmHelper;
 
@@ -73,7 +74,15 @@ public final class BlazingCoreClientEvents {
             player.getPersistentData().putInt(ScorchedCharm.CLIENT_TICK_TAG, player.tickCount);
         }
 
+        if (player != null && BlazingCoreHelper.hasBlazingCore(player)) {
+            player.getPersistentData().putInt(BlazingCore.CLIENT_TICK_TAG, player.tickCount);
+        }
+
         hasLocalLavaVision = player != null && hasLavaVision(player);
+
+        if (hasLocalLavaVision && player.isOnFire()) {
+            player.clearFire();
+        }
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
@@ -99,10 +108,10 @@ public final class BlazingCoreClientEvents {
             return;
         }
 
-        RenderSystem.setShaderFogStart(0.0F);
-        RenderSystem.setShaderFogEnd(256.0F);
-        event.setNearPlaneDistance(0.0F);
-        event.setFarPlaneDistance(256.0F);
+        RenderSystem.setShaderFogStart(ClientLavaVisionHelper.LAVA_FOG_START);
+        RenderSystem.setShaderFogEnd(ClientLavaVisionHelper.LAVA_FOG_END);
+        event.setNearPlaneDistance(ClientLavaVisionHelper.LAVA_FOG_START);
+        event.setFarPlaneDistance(ClientLavaVisionHelper.LAVA_FOG_END);
         event.setCanceled(true);
     }
 
@@ -139,9 +148,9 @@ public final class BlazingCoreClientEvents {
          * 保持熔岩的橙红色调，但略微提亮。
          * 数值范围是 0.0F ~ 1.0F。
          */
-        event.setRed(1.0F);
-        event.setGreen(0.58F);
-        event.setBlue(0.22F);
+        event.setRed(ClientLavaVisionHelper.LAVA_FOG_RED);
+        event.setGreen(ClientLavaVisionHelper.LAVA_FOG_GREEN);
+        event.setBlue(ClientLavaVisionHelper.LAVA_FOG_BLUE);
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
@@ -162,10 +171,7 @@ public final class BlazingCoreClientEvents {
     }
 
     private static boolean hasLavaVision(LocalPlayer player) {
-        return BlazingCoreHelper.hasBlazingCore(player)
-                || ScorchedCharmHelper.hasScorchedCharm(player)
-                || player.hasEffect(MobEffects.FIRE_RESISTANCE)
-                || player.getPersistentData().getInt(ScorchedCharm.CLIENT_TICK_TAG) >= player.tickCount - 2;
+        return ClientLavaVisionHelper.hasLavaVisionSource(player);
     }
 
     @SubscribeEvent
