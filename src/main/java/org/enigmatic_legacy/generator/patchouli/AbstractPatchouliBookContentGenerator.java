@@ -146,6 +146,10 @@ abstract class AbstractPatchouliBookContentGenerator implements DataProvider {
         book.addProperty("progress_bar_background", "555555");
         book.addProperty("show_progress", false);
         book.addProperty("show_toasts", true);
+        book.addProperty("advancements_tab", "enigmatic_legacy:main/root");
+        JsonArray advancementNamespaces = new JsonArray();
+        advancementNamespaces.add(EnigmaticLegacy.MODID);
+        book.add("advancement_namespaces", advancementNamespaces);
         book.addProperty("pause_game", false);
         book.addProperty("text_overflow_mode", "overflow");
 

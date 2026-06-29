@@ -1,0 +1,37 @@
+{
+  "parent": "enigmatic_legacy:main/discover_spellstone",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:void_pearl"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.enigmatic_legacy:voidPearl.desc"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "id": "enigmatic_legacy:void_pearl"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.enigmatic_legacy:voidPearl"
+    },
+    "x": -1.0,
+    "y": -2.0
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

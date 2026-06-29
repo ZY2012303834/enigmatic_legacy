@@ -148,6 +148,7 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 textPage(
                         "Common Structures",
                         "You should pay special attention to these structures:$(br2)" +
+                                "$(li)Ancient City chests$(br)" +
                                 "$(li)End City treasure chests$(br)" +
                                 "$(li)Bastion chests$(br)" +
                                 "$(li)Ruined Portal chests$(br)" +
@@ -234,7 +235,45 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 25,
                 "A scroll soaked in deep darkness.$(br2)" +
                         "It is not an equipable Arcane Scroll by itself, but an important material for more dangerous crafting paths.$(br2)" +
-                        "It is usually found in high-value Bastion loot."
+                        "The Darkest Scroll can only be found in Ancient City chests."
+        )));
+
+        futures.add(save(output, "en_us", "entries/materials/ichor_droplet", entry(
+                "Ichor Droplet",
+                "materials",
+                "enigmatic_legacy:ichor_droplet",
+                26,
+
+                spotlightPage(
+                        "enigmatic_legacy:ichor_droplet",
+                        "Ichor Droplet",
+                        "A Nether material known as the “blood of gods.”$(br2)" +
+                                "It can usually be found in most Nether Fortress and Bastion loot chests."
+                ),
+
+                textPage(
+                        "Nether Loot",
+                        "Ichor Droplets can be found in most Nether loot chests.$(br2)" +
+                                "Search these places first:$(br2)" +
+                                "$(li)Nether Fortress chests$(br)" +
+                                "$(li)Bastion treasure chests$(br)" +
+                                "$(li)Bastion common chests$(br)" +
+                                "$(li)Bastion bridge chests$(br)" +
+                                "$(li)Bastion hoglin stable chests"
+                ),
+
+                textPage(
+                        "Seven Curses Drop",
+                        "When a player wearing the Ring of the Seven Curses kills a Ghast, the Ghast drops additional Ichor Droplets.$(br2)" +
+                                "The curse awakens the faint divinity remaining in its blood and tears, allowing Ichor to appear again.$(br2)" +
+                                "This is one of the more stable ways to obtain it."
+                ),
+
+                textPage(
+                        "Use",
+                        "The Ichor Droplet is a material, not an equipable relic or scroll.$(br2)" +
+                                "It will be used in future crafting paths related to purification, divinity, the Nether, special potions, and higher creations."
+                )
         )));
 
         futures.add(save(output, "en_us", "entries/materials/etherium_ore", simpleSpotlight(

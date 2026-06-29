@@ -1,0 +1,37 @@
+{
+  "parent": "enigmatic_legacy:main/cursed_ring",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:twisted_heart"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.enigmatic_legacy:twistedHeart.desc"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "enigmatic_legacy:twisted_heart"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.enigmatic_legacy:twistedHeart"
+    },
+    "x": 4.0,
+    "y": 2.0
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

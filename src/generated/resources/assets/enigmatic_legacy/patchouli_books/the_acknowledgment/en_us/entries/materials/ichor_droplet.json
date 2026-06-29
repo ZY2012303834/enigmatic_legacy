@@ -1,0 +1,32 @@
+{
+  "category": "enigmatic_legacy:materials",
+  "icon": "enigmatic_legacy:ichor_droplet",
+  "name": "Ichor Droplet",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:ichor_droplet",
+      "link_recipe": true,
+      "text": "A Nether material known as the “blood of gods.”$(br2)It can usually be found in most Nether Fortress and Bastion loot chests.",
+      "title": "Ichor Droplet"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Ichor Droplets can be found in most Nether loot chests.$(br2)Search these places first:$(br2)$(li)Nether Fortress chests$(br)$(li)Bastion treasure chests$(br)$(li)Bastion common chests$(br)$(li)Bastion bridge chests$(br)$(li)Bastion hoglin stable chests",
+      "title": "Nether Loot"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "When a player wearing the Ring of the Seven Curses kills a Ghast, the Ghast drops additional Ichor Droplets.$(br2)The curse awakens the faint divinity remaining in its blood and tears, allowing Ichor to appear again.$(br2)This is one of the more stable ways to obtain it.",
+      "title": "Seven Curses Drop"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The Ichor Droplet is a material, not an equipable relic or scroll.$(br2)It will be used in future crafting paths related to purification, divinity, the Nether, special potions, and higher creations.",
+      "title": "Use"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 26
+}

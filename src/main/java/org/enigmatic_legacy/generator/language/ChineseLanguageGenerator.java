@@ -28,6 +28,7 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         addBlock(ModBlocks.BIG_SHROOMLAMP, "菌光体灯笼");
         addItem(ModItems.EARTH_HEART_FRAGMENT, "大地之心碎片");
         addItem(ModItems.EARTH_HEART, "大地之心");
+        addItem(ModItems.ICHOR_DROPLET, "灵液滴");
 
         addItem(ModItems.TWISTED_HEART, "扭曲之心");
         add("tooltip.enigmatic_legacy.cursed_ones_only", "唯有背负诅咒者方能理解它的用途。");
@@ -876,6 +877,8 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.magic_quartz_ring.limit",
                 "同一时间只能佩戴一个魔法石英戒指。");
 
+        addAdvancementTranslations();
+
 
         // 飞升护符 / Amulet of Ascension
         addItem(ModItems.ASCENSION_AMULET, "飞升护符");
@@ -920,6 +923,52 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         // Tooltip 通用词条：用于局部染色
         add("tooltip.enigmatic_legacy.term.negative_effects", "负面效果");
         add("tooltip.enigmatic_legacy.term.severe_negative_effects", "严重负面效果");
+    }
+
+    private void addAdvancementTranslations() {
+        add("advancementTab.enigmatic_legacy", "神秘遗物");
+        add("advancementTab.enigmatic_legacy.desc", "昔日残遗");
+
+        addAdvancement("discoverSpellstone", "元素之力", "找到你的第一块术石");
+        addAdvancement("discoverScroll", "专业的巫师", "获得你的第一个奥秘卷轴");
+        addAdvancement("discoverRing", "疯狂的 0.5 克拉钻石", "找到或制作你的第一个戒指");
+        addAdvancement("recallPotion", "跑路", "酿造召回药水");
+        addAdvancement("magnetRing", "富有磁性", "找到或制作磁力之戒");
+        addAdvancement("superMagnetRing", "饕餮之眼", "找到或制作错位之戒");
+        addAdvancement("heavenScroll", "天堂之卷轴", "找到或制作天堂之礼");
+        addAdvancement("voidPearl", "希望消逝", "认领虚空珍珠");
+        addAdvancement("forbiddenAxe", "骇人报复", "用行刑者之斧砍下敌人的头颅。");
+        addAdvancement("megasponge", "谁住在最深处？", "找到或制作无内海绵");
+        addAdvancement("mendingMixture", "外星物质", "找到或制作修补混合物");
+        addAdvancement("unholyGrail", "不听老人言", "饮用不洁圣杯内的水");
+        addAdvancement("unholyGrailWorthy", "罪恶霸业", "驾驭不洁圣杯的力量……但代价是什么？");
+        addAdvancement("astralDust", "原始催化剂", "发现星尘");
+        addAdvancement("smeltEtherium", "并没有那么虚无缥缈", "熔炼以太锭");
+        addAdvancement("etheriumTool", "激进工具设计师", "制作任意以太工具");
+        addAdvancement("etheriumGear", "终极防御", "制作全套以太护甲");
+        addAdvancement("ultimatePotion", "酿造大师", "第一次酿造终极药水");
+        addAdvancement("loreInscriber", "铭文撰者", "获得设计师的墨水");
+        addAdvancement("burnTheTome", "你怎敢", "尝试并使用远古巨著作为熔炉燃料");
+        addAdvancement("forbiddenFruit", "原初罪行", "吃下禁果，摆脱饥饿的诅咒");
+        addAdvancement("cursedRing", "前途黑暗", "带上七咒之戒并接受七个诅咒");
+        addAdvancement("twistedHeart", "它将背叛你", "创造扭曲的心");
+        addAdvancement("guardianHeart", "恶意之眼", "杀死远古守护者并获得守卫者之心");
+        addAdvancement("infernalShield", "有本事刺穿§l它§r啊！", "锻造烈焰之傲壁垒，一个终极防御工具");
+        addAdvancement("twistedMirror", "嫉妒美人", "创建扭曲魔镜");
+        addAdvancement("theTwist", "命运倒转", "击杀凋灵并使用邪恶精髓制作倒转之启");
+        addAdvancement("astralFruit", "绝妙的果子", "在末地城内找到天体果实");
+        addAdvancement("abyssalHeart", "邪异的恐怖", "杀死末影龙并获得深渊之心");
+        addAdvancement("theInfinitum", "超然象外", "获得无止之言，成为深渊的使者");
+        addAdvancement("desolationRing", "现实者鄙", "铸造荒芜之负，并忍受其结果");
+        addAdvancement("allSpellstones", "石头做的魔法书", "收集每一个独特的术石。也许有某种途径将它们全部合并为一……");
+        addAdvancement("theCube", "钨块治愈了我的腐朽", "将所有的术石都强扭成一个强力而不自然的形体——非欧立方");
+        addAdvancement("fabulousScroll", "手触苍穹", "获得创造者的恩赐");
+        addAdvancement("cosmicScroll", "神圣守护者", "前往建筑师的领域朝圣，成为他的忠实信徒，以佩戴他的印记、获得他的祝福");
+    }
+
+    private void addAdvancement(String key, String title, String description) {
+        add("advancement.enigmatic_legacy:" + key, title);
+        add("advancement.enigmatic_legacy:" + key + ".desc", description);
     }
 
     private void addChineseCursedRingTooltips() {

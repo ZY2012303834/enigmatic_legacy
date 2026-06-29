@@ -148,6 +148,7 @@ final class ChinesePatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 textPage(
                         "常见结构",
                         "你应该重点搜索这些结构：$(br2)" +
+                                "$(li)古城宝箱$(br)" +
                                 "$(li)末地城宝藏箱$(br)" +
                                 "$(li)堡垒遗迹箱子$(br)" +
                                 "$(li)废弃传送门箱子$(br)" +
@@ -234,7 +235,45 @@ final class ChinesePatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 25,
                 "一张被深暗力量浸染的卷轴。$(br2)" +
                         "它本身并不是可装备的奥秘卷轴，而是通向更危险制作路线的重要材料。$(br2)" +
-                        "通常需要在堡垒遗迹的高价值箱子中寻找。"
+                        "至暗卷轴只能在古城宝箱中发现。"
+        )));
+
+        futures.add(save(output, "zh_cn", "entries/materials/ichor_droplet", entry(
+                "灵液滴",
+                "materials",
+                "enigmatic_legacy:ichor_droplet",
+                26,
+
+                spotlightPage(
+                        "enigmatic_legacy:ichor_droplet",
+                        "灵液滴",
+                        "被称作“神之血”的下界材料。$(br2)" +
+                                "它通常会在下界要塞与堡垒遗迹的大多数战利品箱中出现。"
+                ),
+
+                textPage(
+                        "下界获取",
+                        "灵液滴可以在下界的大多数战利品箱中发现。$(br2)" +
+                                "你应该重点搜索：$(br2)" +
+                                "$(li)下界要塞箱子$(br)" +
+                                "$(li)堡垒遗迹藏宝室$(br)" +
+                                "$(li)堡垒遗迹普通箱$(br)" +
+                                "$(li)堡垒遗迹桥箱子$(br)" +
+                                "$(li)堡垒遗迹疣猪兽棚箱子"
+                ),
+
+                textPage(
+                        "七咒掉落",
+                        "佩戴七咒之戒击杀恶魂时，恶魂会额外掉落灵液滴。$(br2)" +
+                                "诅咒的力量会激发恶魂血泪中残留的微弱神性，使这种材料重新凝结。$(br2)" +
+                                "这也是稳定获取灵液滴的方法之一。"
+                ),
+
+                textPage(
+                        "用途",
+                        "灵液滴本身是材料，不是可以装备的遗物或卷轴。$(br2)" +
+                                "它将用于后续与净化、神性、下界、特殊药水和更高阶造物相关的制作路线。"
+                )
         )));
 
         futures.add(save(output, "zh_cn", "entries/materials/etherium_ore", simpleSpotlight(

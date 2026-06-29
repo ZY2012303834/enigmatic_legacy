@@ -1,4 +1,4 @@
-package org.enigmatic_legacy.item.items;
+package org.enigmatic_legacy.item.items.ring;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;

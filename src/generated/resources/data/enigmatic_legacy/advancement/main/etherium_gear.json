@@ -1,0 +1,70 @@
+{
+  "parent": "enigmatic_legacy:main/smelt_etherium",
+  "criteria": {
+    "has_etherium_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:etherium_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_etherium_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:etherium_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_etherium_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:etherium_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_etherium_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:etherium_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.enigmatic_legacy:etheriumGear.desc"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "id": "enigmatic_legacy:etherium_helmet"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.enigmatic_legacy:etheriumGear"
+    },
+    "x": -1.0,
+    "y": 3.0
+  },
+  "requirements": [
+    [
+      "has_etherium_helmet",
+      "has_etherium_chestplate",
+      "has_etherium_leggings",
+      "has_etherium_boots"
+    ]
+  ]
+}

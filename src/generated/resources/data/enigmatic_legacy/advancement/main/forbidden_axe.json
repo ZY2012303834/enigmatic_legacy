@@ -1,0 +1,37 @@
+{
+  "parent": "enigmatic_legacy:main/megasponge",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:axe_of_executioner"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.enigmatic_legacy:forbiddenAxe.desc"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "id": "enigmatic_legacy:axe_of_executioner"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.enigmatic_legacy:forbiddenAxe"
+    },
+    "x": -7.0,
+    "y": 3.0
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

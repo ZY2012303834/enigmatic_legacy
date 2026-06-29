@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-28T16:28:52.7650741	vanilla/Item Models: enigmatic_legacy
+// 1.21.1	2026-06-29T09:36:53.6185818	vanilla/Item Models: enigmatic_legacy
 aaf9eff73642636d85d6ecd1627b8303f5153a76 assets/enigmatic_legacy/models/item/abyssal_heart.json
 79e416a4d6e90035107f541617b7d4a2d2d7abbb assets/enigmatic_legacy/models/item/angel_blessing.json
 91788e275aaecfe4ddd200b085f49433f9966bf1 assets/enigmatic_legacy/models/item/ascension_amulet.json
@@ -60,6 +60,7 @@ d04fe019984814a8c097b8309d6aafc20e399370 assets/enigmatic_legacy/models/item/gol
 df0aa91084051dacbbb39f169cedffe05c4dc426 assets/enigmatic_legacy/models/item/guardian_heart.json
 0c8df89d01203cb481f9f08d4d58b2212d8909fa assets/enigmatic_legacy/models/item/heart_of_creation.json
 a6c70091384f7c57075aff8290fe3306085d02e0 assets/enigmatic_legacy/models/item/heaven_scroll.json
+8481b40660208fa6dd1c11f7b6d2fe540bfe917d assets/enigmatic_legacy/models/item/ichor_droplet.json
 3fcffabf414886813e8720795c8dd0833694d82c assets/enigmatic_legacy/models/item/infernal_shield.json
 a65ad3c8cca7c6df5b35b0989ab11a08deaf4651 assets/enigmatic_legacy/models/item/infernal_shield_blocking.json
 6e7e84ed003fed1a63b934dd36a82ee9d5ecd18b assets/enigmatic_legacy/models/item/infernal_shield_blocking_in_hand_proxy.json

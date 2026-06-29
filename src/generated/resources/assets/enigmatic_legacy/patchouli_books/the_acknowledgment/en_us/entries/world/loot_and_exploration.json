@@ -10,7 +10,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "You should pay special attention to these structures:$(br2)$(li)End City treasure chests$(br)$(li)Bastion chests$(br)$(li)Ruined Portal chests$(br)$(li)Dungeons and Mineshafts$(br)$(li)Desert Temples and Jungle Temples$(br)$(li)Ocean Ruins, Shipwrecks, and Buried Treasure$(br)$(li)Stronghold corridors and crossings",
+      "text": "You should pay special attention to these structures:$(br2)$(li)Ancient City chests$(br)$(li)End City treasure chests$(br)$(li)Bastion chests$(br)$(li)Ruined Portal chests$(br)$(li)Dungeons and Mineshafts$(br)$(li)Desert Temples and Jungle Temples$(br)$(li)Ocean Ruins, Shipwrecks, and Buried Treasure$(br)$(li)Stronghold corridors and crossings",
       "title": "Common Structures"
     },
     {

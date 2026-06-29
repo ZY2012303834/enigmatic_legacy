@@ -1,0 +1,46 @@
+{
+  "parent": "enigmatic_legacy:main/root",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "enigmatic_legacy:golem_heart",
+              "enigmatic_legacy:angel_blessing",
+              "enigmatic_legacy:ocean_stone",
+              "enigmatic_legacy:blazing_core",
+              "enigmatic_legacy:eye_of_nebula",
+              "enigmatic_legacy:void_pearl",
+              "enigmatic_legacy:the_cube",
+              "enigmatic_legacy:heart_of_creation"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.enigmatic_legacy:discoverSpellstone.desc"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "id": "enigmatic_legacy:golem_heart"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.enigmatic_legacy:discoverSpellstone"
+    },
+    "x": 0.0,
+    "y": -1.0
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

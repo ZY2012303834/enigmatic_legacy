@@ -1,0 +1,37 @@
+{
+  "parent": "enigmatic_legacy:main/root",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:forbidden_fruit"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.enigmatic_legacy:forbiddenFruit.desc"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "id": "enigmatic_legacy:forbidden_fruit"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.enigmatic_legacy:forbiddenFruit"
+    },
+    "x": 5.0,
+    "y": -1.0
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

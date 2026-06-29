@@ -10,6 +10,7 @@ import org.enigmatic_legacy.block.ModBlocks;
 import org.enigmatic_legacy.item.items.*;
 import org.enigmatic_legacy.item.items.armor.EtheriumArmorItem;
 import org.enigmatic_legacy.item.items.charm.*;
+import org.enigmatic_legacy.item.items.ring.*;
 import org.enigmatic_legacy.item.items.scroll.*;
 import org.enigmatic_legacy.item.items.spellstone.*;
 import org.enigmatic_legacy.item.items.sword.AxeOfExecutioner;
@@ -29,6 +30,9 @@ public final class ModItems {
     public static final DeferredItem<EtheriumIngot> ETHERIUM_INGOT = ITEMS.register("etherium_ingot", EtheriumIngot::new);
     public static final DeferredItem<ThiccScroll> THICC_SCROLL = ITEMS.register("thicc_scroll", ThiccScroll::new);
     public static final DeferredItem<DarkestScroll> DARKEST_SCROLL = ITEMS.register("darkest_scroll", DarkestScroll::new);
+    // 灵液滴 / Ichor Droplet
+    // 拓展项目材料：可在下界战利品箱中发现，也可由恶魂的七咒特殊掉落获得。
+    public static final DeferredItem<IchorDroplet> ICHOR_DROPLET = ITEMS.register("ichor_droplet", IchorDroplet::new);
     public static final DeferredItem<BlockItem> ASTRAL_DUST_SACK = ITEMS.registerSimpleBlockItem(ModBlocks.ASTRAL_DUST_SACK);
     public static final DeferredItem<BlockItem> ETHERIUM_BLOCK = ITEMS.registerSimpleBlockItem(ModBlocks.ETHERIUM_BLOCK, new BlockItem.Properties().fireResistant());
     public static final DeferredItem<CosmicHeart> COSMIC_HEART = ITEMS.register("cosmic_heart", CosmicHeart::new);

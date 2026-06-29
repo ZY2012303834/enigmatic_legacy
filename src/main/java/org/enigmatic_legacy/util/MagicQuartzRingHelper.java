@@ -7,7 +7,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.common.Tags;
 import org.enigmatic_legacy.item.ModItems;
-import org.enigmatic_legacy.item.items.MagicQuartzRing;
+import org.enigmatic_legacy.item.items.ring.MagicQuartzRing;
 import top.theillusivec4.curios.api.CuriosApi;
 
 /**

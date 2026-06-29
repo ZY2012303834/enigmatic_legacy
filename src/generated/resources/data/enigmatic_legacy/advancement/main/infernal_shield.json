@@ -1,0 +1,37 @@
+{
+  "parent": "enigmatic_legacy:main/twisted_heart",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:infernal_shield"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.enigmatic_legacy:infernalShield.desc"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "enigmatic_legacy:infernal_shield"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.enigmatic_legacy:infernalShield"
+    },
+    "x": 3.0,
+    "y": 3.0
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

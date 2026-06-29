@@ -1,4 +1,8 @@
 {
+  "advancement_namespaces": [
+    "enigmatic_legacy"
+  ],
+  "advancements_tab": "enigmatic_legacy:main/root",
   "book_texture": "enigmatic_legacy:textures/gui/the_acknowledgment.png",
   "custom_book_item": "enigmatic_legacy:the_acknowledgment",
   "dont_generate_book": true,

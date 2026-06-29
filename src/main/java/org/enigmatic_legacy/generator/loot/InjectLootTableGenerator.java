@@ -63,6 +63,9 @@ public class InjectLootTableGenerator implements DataProvider {
         // 禁忌之果
         addForbiddenFruitTables(cachedOutput, futures);
 
+        // 灵液滴
+        addIchorDropletTables(cachedOutput, futures);
+
         // 星尘
         addAstralDustTables(cachedOutput, futures);
 
@@ -422,51 +425,26 @@ public class InjectLootTableGenerator implements DataProvider {
     /**
      * 生成至暗卷轴 loot table。
      * 获取方式：
-     * - 只会在堡垒遗迹藏宝室箱子中概率生成。
-     * 调整原因：
-     * - 之前只有至暗卷轴条目，没有 empty 空条目。
-     * - 一旦该注入表发生抽取，就会直接生成至暗卷轴。
-     * - 实测容易显得过多。
-     * 新设计：
-     * - rolls 固定为 1。
-     * - 至暗卷轴权重 = 1。
-     * - empty 空条目权重 = 49。
-     * 概率：
-     * - 1 / (1 + 49) = 2%
-     * 注意：
-     * - 不改变出现箱子。
-     * - 仍然只注入到 BuiltInLootTables.BASTION_TREASURE。
+     * - 古城宝箱。
+     * 当前设置：
+     * - rolls 固定为 1；
+     * - 至暗卷轴权重 = 8；
+     * - empty 空条目权重 = 92；
+     * - 出现概率 = 8 / (8 + 92) = 8%；
+     * - 每次命中只给 1 个至暗卷轴。
+     * 效果：
+     * - 每个目标古城箱子有 8% 概率出现至暗卷轴；
+     * - 因为 rolls 固定为 1，所以一个箱子最多只会出现 1 个至暗卷轴。
      */
     private void addDarkestScrollTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {
-        futures.add(
-                saveTable(
-                        cachedOutput,
-                        "darkest_scroll/bastion_treasure",
-                        1.0D,
-                        1.0D,
-
-                        /*
-                         * 至暗卷轴概率设置：
-                         *
-                         * 目标：
-                         * 1. 每个堡垒遗迹藏宝室箱子最多出现 1 个至暗卷轴；
-                         * 2. 每个目标箱子出现至暗卷轴的概率为 8%。
-                         *
-                         * 说明：
-                         * rolls = 1~1，代表每个箱子只抽取 1 次。
-                         *
-                         * 单次抽取中：
-                         * 至暗卷轴权重 = 8
-                         * 空结果权重 = 92
-                         *
-                         * 因此概率为：
-                         * 8 / (8 + 92) = 8%
-                         *
-                         * 因为只抽取 1 次，所以单个箱子最多只会出现 1 个至暗卷轴。
-                         */
-                        itemEntry(ModItems.DARKEST_SCROLL.get(), 8),
-                        emptyEntry(92)
-                ));
+        futures.add(saveTable(
+                cachedOutput,
+                "darkest_scroll/ancient_city",
+                1.0D,
+                1.0D,
+                itemEntry(ModItems.DARKEST_SCROLL.get(), 8),
+                emptyEntry(92)
+        ));
     }
 
     /**
@@ -526,6 +504,31 @@ public class InjectLootTableGenerator implements DataProvider {
                 1.0D,
                 itemEntry(ModItems.FORBIDDEN_FRUIT.get(), 4),
                 emptyEntry(96)
+        ));
+    }
+
+    /**
+     * 生成灵液滴 loot table。
+     * 获取方式：
+     * - 下界大多数战利品箱。
+     * 当前设置：
+     * - rolls 固定为 1；
+     * - 灵液滴权重 = 15；
+     * - empty 空条目权重 = 85；
+     * - 出现概率 = 15 / (15 + 85) = 15%；
+     * - 出现时数量 = 1~2 个。
+     * 说明：
+     * - 这里只有注入用 loot table 本体；
+     * - 实际注入到哪些原版箱子，在 GlobalLootModifierGenerator 中处理。
+     */
+    private void addIchorDropletTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {
+        futures.add(saveTable(
+                cachedOutput,
+                "ichor_droplet/nether_common",
+                1.0D,
+                1.0D,
+                itemEntry(ModItems.ICHOR_DROPLET.get(), 15, 1.0D, 2.0D),
+                emptyEntry(85)
         ));
     }
 

@@ -1,0 +1,37 @@
+{
+  "parent": "enigmatic_legacy:main/magnet_ring",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:dislocation_ring"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.enigmatic_legacy:superMagnetRing.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "enigmatic_legacy:dislocation_ring"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.enigmatic_legacy:superMagnetRing"
+    },
+    "x": 2.0,
+    "y": 2.0
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

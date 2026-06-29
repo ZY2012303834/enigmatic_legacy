@@ -290,7 +290,19 @@ public class CursedRingEvents {
             addDropWithChance(event, new ItemStack(Items.GHAST_TEAR), 20);
             addDropWithChance(event, new ItemStack(Items.NETHERITE_SCRAP), 7);
         } else if (killed.getClass() == Ghast.class) {
+            /*
+             * 恶魂七咒特殊掉落：
+             *
+             * 复刻 Enigmatic Addons 的灵液滴获取方式。
+             * 由于 onLivingDrops 方法前面已经判断了：
+             * 1. 击杀者必须是玩家；
+             * 2. 玩家必须佩戴七咒之戒；
+             * 3. 必须是最近被玩家击中；
+             *
+             * 所以这里可以直接加入灵液滴掉落。
+             */
             addDrop(event, randomStack(killed, Items.PHANTOM_MEMBRANE, 1, 4));
+            addDrop(event, randomStack(killed, ModItems.ICHOR_DROPLET.get(), 1, 2));
         } else if (killed.getClass() == Drowned.class) {
             addDropWithChance(event, randomStack(killed, Items.LAPIS_LAZULI, 1, 3), 30);
         } else if (killed.getClass() == Vex.class) {

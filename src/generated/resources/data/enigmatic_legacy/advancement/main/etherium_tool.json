@@ -1,0 +1,42 @@
+{
+  "parent": "enigmatic_legacy:main/smelt_etherium",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "enigmatic_legacy:etherium_sword",
+              "enigmatic_legacy:etherium_pickaxe",
+              "enigmatic_legacy:etherium_shovel",
+              "enigmatic_legacy:etherium_axe"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.enigmatic_legacy:etheriumTool.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "enigmatic_legacy:etherium_axe"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.enigmatic_legacy:etheriumTool"
+    },
+    "x": -3.0,
+    "y": 3.0
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

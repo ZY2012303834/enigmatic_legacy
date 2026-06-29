@@ -28,6 +28,7 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         addBlock(ModBlocks.BIG_SHROOMLAMP, "Shroomlamp");   //菌光体灯笼
         addItem(ModItems.EARTH_HEART_FRAGMENT, "Fragment of the Earth"); // 大地之心碎片
         addItem(ModItems.EARTH_HEART, "Heart of the Earth"); // 大地之心
+        addItem(ModItems.ICHOR_DROPLET, "Ichor Droplet");
         // 扭曲之心
         addItem(ModItems.TWISTED_HEART, "Twisted Heart");
         add("tooltip.enigmatic_legacy.cursed_ones_only", "Only those bearing the curse may comprehend its purpose.");
@@ -908,6 +909,8 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.magic_quartz_ring.limit",
                 "Only one Magic Quartz Ring can be worn at a time.");
 
+        addAdvancementTranslations();
+
         // Shared tooltip terms for partial coloring
         add("tooltip.enigmatic_legacy.term.negative_effects", "negative effects");
         add("tooltip.enigmatic_legacy.term.severe_negative_effects", "severe negative effects");
@@ -915,6 +918,52 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         // 七咒 99.5% .
         add("tooltip.enigmatic_legacy.cursed_suffering.requirement", "You need to spend %s of your total playtime under the torment of the Ring of the Seven Curses to use this item.");
         add("tooltip.enigmatic_legacy.cursed_suffering.current_percentage", "Current Seven Curses torment percentage: %s");
+    }
+
+    private void addAdvancementTranslations() {
+        add("advancementTab.enigmatic_legacy", "Enigmatic Legacy");
+        add("advancementTab.enigmatic_legacy.desc", "Remains of the former times");
+
+        addAdvancement("discoverSpellstone", "Elemental Might", "Discover your first Spellstone");
+        addAdvancement("discoverScroll", "Supersolid Wizard", "Obtain your first Arcane Scroll");
+        addAdvancement("discoverRing", "Crazy 0.5 Carat Diamond", "Discover or create your first Ring");
+        addAdvancement("recallPotion", "Gotta Get Out of Here", "Brew the potion of Recall");
+        addAdvancement("magnetRing", "Magnificence", "Find or create Magnetic Ring");
+        addAdvancement("superMagnetRing", "Omnivorous Eye", "Find or create Dislocation Ring");
+        addAdvancement("heavenScroll", "Heavenly Scroll", "Find or create Gift of the Heaven");
+        addAdvancement("voidPearl", "Hope Fades", "Claim the Pearl of the Void");
+        addAdvancement("forbiddenAxe", "Fearsome Vengeance", "Behead an enemy using Axe of Executioner");
+        addAdvancement("megasponge", "Who Lives at the Bottom?..", "Find or create Extrapolated Megasponge");
+        addAdvancement("mendingMixture", "Extraterrestrial Substance", "Find or create Mending Mixture");
+        addAdvancement("unholyGrail", "Ignoring the Advices", "Drink from Unholy Grail");
+        addAdvancement("unholyGrailWorthy", "Unholy Supremacy", "Harness the power of Unholy Grail... but at what cost?");
+        addAdvancement("astralDust", "Primal Catalyst", "Discover the Astral Dust");
+        addAdvancement("smeltEtherium", "Not So Ethereal", "Smelt the Etherium Ingot");
+        addAdvancement("etheriumTool", "Aggressive Landscape Designer", "Craft any tool out of etherium");
+        addAdvancement("etheriumGear", "The Ultimate Shield", "Create a full set of armor made of etherium");
+        addAdvancement("ultimatePotion", "Master of the Brewing Stand", "Brew your first ultimate potion");
+        addAdvancement("loreInscriber", "Lore Writer", "Obtain the Architect's Inkwell");
+        addAdvancement("burnTheTome", "How Dare You", "Try and use ancient tome as a furnace fuel");
+        addAdvancement("forbiddenFruit", "Primordial Sin", "Consume The Forbidden Fruit and rid yourself of the curse of hunger");
+        addAdvancement("cursedRing", "Darkness Lies Ahead", "Equip the Ring and embrace the Seven Curses");
+        addAdvancement("twistedHeart", "It Will Betray You", "Create the Twisted Heart");
+        addAdvancement("guardianHeart", "The Baleful Eye", "Slay the Elder Guardian and claim Heart of the Guardian");
+        addAdvancement("infernalShield", "You Try Penetrating THIS!", "Forge Bulwark of Blazing Pride, the ultimate tool of defense");
+        addAdvancement("twistedMirror", "Warped Beauty", "Create the Twisted Mirror");
+        addAdvancement("theTwist", "Fateful Twist", "Slay the Wither and create The Twist using Nefarious Essence");
+        addAdvancement("astralFruit", "Fabulous Apple", "Find Celestial Fruit among treasures of the End City, and consume it");
+        addAdvancement("abyssalHeart", "Eldritch Horror", "Slay the Ender Dragon and claim Heart of the Abyss");
+        addAdvancement("theInfinitum", "Beyond Time and Space", "Acquire The Infinitum and become the herald of the Abyss");
+        addAdvancement("desolationRing", "Reality is Bent", "Forge The Burden of Desolation, and bear it");
+        addAdvancement("allSpellstones", "Stone Grimoire", "Collect every unique spellstone. Would there have been a way to combine them all...");
+        addAdvancement("theCube", "This Cube Cured My Mortality", "Force all spellstones into a shape equally powerful and unnatural, creating Non-Euclidean Cube");
+        addAdvancement("fabulousScroll", "Touch the Skies", "Obtain Grace of the Creator");
+        addAdvancement("cosmicScroll", "Retainer of the Divine", "Perform pilgrimage to The Architect's domain and become his devoted believer, earning the right to bear his mark and blessing");
+    }
+
+    private void addAdvancement(String key, String title, String description) {
+        add("advancement.enigmatic_legacy:" + key, title);
+        add("advancement.enigmatic_legacy:" + key + ".desc", description);
     }
 
     private void addEnglishCursedRingTooltips() {

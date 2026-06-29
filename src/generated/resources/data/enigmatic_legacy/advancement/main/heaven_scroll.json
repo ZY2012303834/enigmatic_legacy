@@ -1,0 +1,37 @@
+{
+  "parent": "enigmatic_legacy:main/discover_scroll",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:heaven_scroll"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.enigmatic_legacy:heavenScroll.desc"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "id": "enigmatic_legacy:heaven_scroll"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.enigmatic_legacy:heavenScroll"
+    },
+    "x": -3.0,
+    "y": -2.0
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

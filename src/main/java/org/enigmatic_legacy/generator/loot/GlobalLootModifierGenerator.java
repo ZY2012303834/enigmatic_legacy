@@ -39,6 +39,7 @@ public class GlobalLootModifierGenerator extends GlobalLootModifierProvider {
         addDarkestScrollModifiers();
         addUnholyGrailModifiers();
         addForbiddenFruitModifiers();
+        addIchorDropletModifiers();
         addAstralDustModifiers();
         addEtheriumOreModifiers();
         addMajesticElytraModifiers();
@@ -182,6 +183,54 @@ public class GlobalLootModifierGenerator extends GlobalLootModifierProvider {
     }
 
     /**
+     * 灵液滴获取方式。
+     * 复刻拓展项目设定：
+     * - 一种可以在下界获得的材料；
+     * - 出现在下界大多数战利品箱中。
+     * 注入范围：
+     * 1. 下界要塞；
+     * 2. 堡垒遗迹藏宝室；
+     * 3. 堡垒遗迹普通箱；
+     * 4. 堡垒遗迹桥；
+     * 5. 堡垒遗迹疣猪兽棚。
+     * 注意：
+     * - 这里不注入 RUINED_PORTAL；
+     * - 因为废弃传送门 loot table 同时用于主世界和下界，
+     *   如果加入会导致主世界废弃传送门也能刷出灵液滴。
+     */
+    private void addIchorDropletModifiers() {
+        addTableModifier(
+                "ichor_droplet_nether_bridge",
+                BuiltInLootTables.NETHER_BRIDGE,
+                "inject/chests/ichor_droplet/nether_common"
+        );
+
+        addTableModifier(
+                "ichor_droplet_bastion_treasure",
+                BuiltInLootTables.BASTION_TREASURE,
+                "inject/chests/ichor_droplet/nether_common"
+        );
+
+        addTableModifier(
+                "ichor_droplet_bastion_other",
+                BuiltInLootTables.BASTION_OTHER,
+                "inject/chests/ichor_droplet/nether_common"
+        );
+
+        addTableModifier(
+                "ichor_droplet_bastion_bridge",
+                BuiltInLootTables.BASTION_BRIDGE,
+                "inject/chests/ichor_droplet/nether_common"
+        );
+
+        addTableModifier(
+                "ichor_droplet_bastion_hoglin_stable",
+                BuiltInLootTables.BASTION_HOGLIN_STABLE,
+                "inject/chests/ichor_droplet/nether_common"
+        );
+    }
+
+    /**
      * 术石战利品注入。
      */
     private void addSpellstoneModifiers() {
@@ -214,16 +263,24 @@ public class GlobalLootModifierGenerator extends GlobalLootModifierProvider {
 
     /**
      * 至暗卷轴获取方式。
-     * 原项目：
-     * 至暗卷轴只注入堡垒遗迹藏宝室箱子。
+     * 当前设定：
+     * - 至暗卷轴只能在古城发现；
+     * - 不再注入堡垒遗迹藏宝室；
+     * - 普通古城箱子和古城冰窖箱子都属于古城结构，因此都注入。
      * 对应自定义表：
-     * data/enigmatic_legacy/loot_table/inject/chests/darkest_scroll/bastion_treasure.json
+     * data/enigmatic_legacy/loot_table/inject/chests/darkest_scroll/ancient_city.json
      */
     private void addDarkestScrollModifiers() {
         addTableModifier(
-                "darkest_scroll_bastion_treasure",
-                BuiltInLootTables.BASTION_TREASURE,
-                "inject/chests/darkest_scroll/bastion_treasure"
+                "darkest_scroll_ancient_city",
+                BuiltInLootTables.ANCIENT_CITY,
+                "inject/chests/darkest_scroll/ancient_city"
+        );
+
+        addTableModifier(
+                "darkest_scroll_ancient_city_ice_box",
+                BuiltInLootTables.ANCIENT_CITY_ICE_BOX,
+                "inject/chests/darkest_scroll/ancient_city"
         );
     }
 

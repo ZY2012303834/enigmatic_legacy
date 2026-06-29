@@ -1,4 +1,4 @@
-package org.enigmatic_legacy.item.items;
+package org.enigmatic_legacy.item.items.ring;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;

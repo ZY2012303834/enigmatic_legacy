@@ -133,6 +133,8 @@ public class ItemGenerator extends ItemModelProvider {
 
         basicItem(ModItems.MAGIC_QUARTZ_RING.getId()); // 魔法石英戒指
 
+        basicItem(ModItems.ICHOR_DROPLET.getId()); // 灵液滴
+
         // 飞升护符模型。
         // 原项目为普通 2D item/generated 模型，没有 3D 模型。
         basicItem(ModItems.ASCENSION_AMULET.getId());

@@ -1,0 +1,114 @@
+{
+  "parent": "enigmatic_legacy:main/discover_spellstone",
+  "criteria": {
+    "has_angel_blessing": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:angel_blessing"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_blazing_core": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:blazing_core"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_eye_of_nebula": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:eye_of_nebula"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_golem_heart": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:golem_heart"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_heart_of_creation": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:heart_of_creation"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ocean_stone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:ocean_stone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_cube": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:the_cube"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_void_pearl": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:void_pearl"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.enigmatic_legacy:allSpellstones.desc"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "id": "enigmatic_legacy:heart_of_creation"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.enigmatic_legacy:allSpellstones"
+    },
+    "x": 1.0,
+    "y": -2.0
+  },
+  "requirements": [
+    [
+      "has_golem_heart",
+      "has_angel_blessing",
+      "has_ocean_stone",
+      "has_blazing_core",
+      "has_eye_of_nebula",
+      "has_void_pearl",
+      "has_the_cube",
+      "has_heart_of_creation"
+    ]
+  ]
+}

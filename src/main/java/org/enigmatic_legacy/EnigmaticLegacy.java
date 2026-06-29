@@ -49,6 +49,7 @@ public class EnigmaticLegacy {
         modEventBus.addListener(LanguageGenerator::gatherData);     // 语言文件
         modEventBus.addListener(RecipeGenerator::gatherData);
         modEventBus.addListener(FurnaceRecipeGenerator::gatherData);
+        modEventBus.addListener(AdvancementGenerator::gatherData);
         modEventBus.addListener(CuriosGenerator::gatherData);
         modEventBus.addListener(SoundGenerator::gatherData);
         modEventBus.addListener(PatchouliBookGenerator::gatherData);

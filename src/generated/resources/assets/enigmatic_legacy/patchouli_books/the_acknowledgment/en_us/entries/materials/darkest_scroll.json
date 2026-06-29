@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:darkest_scroll",
       "link_recipe": true,
-      "text": "A scroll soaked in deep darkness.$(br2)It is not an equipable Arcane Scroll by itself, but an important material for more dangerous crafting paths.$(br2)It is usually found in high-value Bastion loot.",
+      "text": "A scroll soaked in deep darkness.$(br2)It is not an equipable Arcane Scroll by itself, but an important material for more dangerous crafting paths.$(br2)The Darkest Scroll can only be found in Ancient City chests.",
       "title": "Darkest Scroll"
     }
   ],

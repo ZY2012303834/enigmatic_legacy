@@ -1,0 +1,32 @@
+{
+  "category": "enigmatic_legacy:materials",
+  "icon": "enigmatic_legacy:ichor_droplet",
+  "name": "灵液滴",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:ichor_droplet",
+      "link_recipe": true,
+      "text": "被称作“神之血”的下界材料。$(br2)它通常会在下界要塞与堡垒遗迹的大多数战利品箱中出现。",
+      "title": "灵液滴"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "灵液滴可以在下界的大多数战利品箱中发现。$(br2)你应该重点搜索：$(br2)$(li)下界要塞箱子$(br)$(li)堡垒遗迹藏宝室$(br)$(li)堡垒遗迹普通箱$(br)$(li)堡垒遗迹桥箱子$(br)$(li)堡垒遗迹疣猪兽棚箱子",
+      "title": "下界获取"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "佩戴七咒之戒击杀恶魂时，恶魂会额外掉落灵液滴。$(br2)诅咒的力量会激发恶魂血泪中残留的微弱神性，使这种材料重新凝结。$(br2)这也是稳定获取灵液滴的方法之一。",
+      "title": "七咒掉落"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "灵液滴本身是材料，不是可以装备的遗物或卷轴。$(br2)它将用于后续与净化、神性、下界、特殊药水和更高阶造物相关的制作路线。",
+      "title": "用途"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 26
+}
