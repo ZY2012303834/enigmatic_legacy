@@ -7,12 +7,12 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:heart_of_creation",
       "link_recipe": true,
-      "text": "A supreme spellstone bound to creation and survival.$(br2)It grants flight, protects from many damage sources, and can call lightning upon nearby enemies.",
+      "text": "A supreme spellstone tied to creation and survival.$(br2)It grants flight, resists many forms of damage, and calls lightning down upon nearby enemies.",
       "title": "Heart of Creation"
     },
     {
       "type": "patchouli:text",
-      "text": "When carried or equipped, it may prevent death by leaving the bearer at the edge of life.$(br2)This protection is powerful, but it should not be mistaken for carelessness.",
+      "text": "When carried or worn, it can keep the bearer alive at the edge of death.$(br2)This protection is powerful, but it does not mean recklessness is safe.",
       "title": "Immortality"
     }
   ],

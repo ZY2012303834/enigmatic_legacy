@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:etherium_sword",
       "link_recipe": true,
-      "text": "A heavy etherium blade forged for direct combat.",
+      "text": "A heavy Etherium blade forged for direct combat.$(br2)It has strong durability and stable melee performance.",
       "title": "Etherium Broadsword"
     },
     {
@@ -19,5 +19,5 @@
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 10
+  "sortnum": 20
 }

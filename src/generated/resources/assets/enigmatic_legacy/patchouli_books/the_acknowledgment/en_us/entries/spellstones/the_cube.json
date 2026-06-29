@@ -12,7 +12,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "Its active ability sends the bearer toward a random structure within the current dimension.$(br2)Use it carefully. Non-Euclidean travel rarely cares about comfort.",
+      "text": "Its active ability sends the bearer toward a random structure within the current dimension.$(br2)Use it carefully. Non-Euclidean travel does not promise comfort.",
       "title": "Active Power"
     }
   ],

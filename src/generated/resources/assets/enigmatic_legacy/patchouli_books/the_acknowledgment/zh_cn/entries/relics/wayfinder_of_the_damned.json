@@ -1,0 +1,17 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:wayfinder_of_the_damned",
+  "name": "被诅咒者的寻路指针",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:wayfinder_of_the_damned",
+      "link_recipe": true,
+      "text": "只回应受七咒折磨之人的指针。$(br2)它可以帮助寻找当前维度内最近的灵魂水晶或装有死亡掉落的超维容器。",
+      "title": "被诅咒者的寻路指针"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 280
+}

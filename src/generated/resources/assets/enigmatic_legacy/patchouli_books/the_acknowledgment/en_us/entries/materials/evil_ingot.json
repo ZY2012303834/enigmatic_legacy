@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:evil_ingot",
       "link_recipe": true,
-      "text": "An ingot forged from essence too malicious to be left uncontained.",
+      "text": "An ingot forged from essence too malicious to be left uncontained.$(br2)It is often used in curse, malice, and high-tier relic progression.",
       "title": "Evil Ingot"
     },
     {
@@ -19,5 +19,5 @@
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 80
+  "sortnum": 90
 }

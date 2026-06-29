@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:etherium_ingot",
       "link_recipe": true,
-      "text": "A refined material used in advanced relic construction.$(br2)It is commonly used for etherium tools, weapons, and armor.",
+      "text": "A refined material used in advanced relic construction.$(br2)It is commonly used to craft Etherium tools, weapons, and armor.",
       "title": "Etherium Ingot"
     },
     {
@@ -19,5 +19,5 @@
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 30
+  "sortnum": 40
 }

@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:etherium_axe",
       "link_recipe": true,
-      "text": "既是工具，也是武器的以太战斧。",
+      "text": "既是工具，也是武器的以太战斧。$(br2)它适合伐木，也可以作为可靠的近战装备。",
       "title": "以太斧"
     },
     {
@@ -19,5 +19,5 @@
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 40
+  "sortnum": 50
 }

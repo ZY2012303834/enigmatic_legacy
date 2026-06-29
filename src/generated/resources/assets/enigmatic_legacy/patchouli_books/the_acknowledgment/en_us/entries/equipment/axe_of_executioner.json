@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:axe_of_executioner",
       "link_recipe": true,
-      "text": "A brutal axe with a chance to behead slain creatures.$(br2)Its base beheading chance is 15%, and each Looting level adds 5% more.",
+      "text": "A cruel axe with a chance to behead slain enemies.$(br2)Its base beheading chance is 15%, and each level of Looting adds another 5%.",
       "title": "Axe of Executioner"
     },
     {

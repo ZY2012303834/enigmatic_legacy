@@ -1,0 +1,27 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:enigmatic_amulet_red",
+  "name": "七色神秘护符",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:enigmatic_amulet_red",
+      "link_recipe": true,
+      "text": "未见之护符在被见证后，会显现为七种不同颜色的神秘护符之一。$(br2)每种颜色都代表一种独立的能力方向。",
+      "title": "七色神秘护符"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "七色神秘护符包括：$(br2)$(li)红色：攻击伤害$(br)$(li)青色：疾跑速度$(br)$(li)紫色：弹射物偏转$(br)$(li)品红色：重力变化$(br)$(li)绿色：挖掘效率$(br)$(li)黑色：生命偷取$(br)$(li)蓝色：游泳速度",
+      "title": "七种形态"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "七种颜色的护符可以进一步汇聚为飞升护符。$(br2)飞升护符继承全部七种神秘护符的力量，并能继续通向更加危险的轻蔑之约。",
+      "title": "进阶"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 230
+}

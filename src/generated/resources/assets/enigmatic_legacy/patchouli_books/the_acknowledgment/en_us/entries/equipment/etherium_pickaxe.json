@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:etherium_pickaxe",
       "link_recipe": true,
-      "text": "A durable etherium tool for mining hard materials.",
+      "text": "A durable pickaxe forged from Etherium.$(br2)It is suitable for mining hard materials and can receive normal tool enchantments.",
       "title": "Etherium Pickaxe"
     },
     {
@@ -19,5 +19,5 @@
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 20
+  "sortnum": 30
 }

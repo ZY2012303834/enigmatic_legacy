@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:etherium_shovel",
       "link_recipe": true,
-      "text": "A shovel forged from etherium for fast excavation.",
+      "text": "A shovel forged from Etherium.$(br2)It is used to quickly dig dirt, gravel, sand, and similar blocks.",
       "title": "Etherium Shovel"
     },
     {
@@ -19,5 +19,5 @@
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 30
+  "sortnum": 40
 }

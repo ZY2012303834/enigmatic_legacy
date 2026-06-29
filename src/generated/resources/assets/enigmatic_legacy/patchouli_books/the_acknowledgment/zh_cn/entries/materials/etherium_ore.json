@@ -1,0 +1,17 @@
+{
+  "category": "enigmatic_legacy:materials",
+  "icon": "enigmatic_legacy:etherium_ore",
+  "name": "以太矿石",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:etherium_ore",
+      "link_recipe": true,
+      "text": "蕴含以太能量的稀有矿石。$(br2)它通常不是普通地下矿脉，而是高阶探索奖励。$(br2)将其熔炼后可以得到以太锭。",
+      "title": "以太矿石"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 30
+}

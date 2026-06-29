@@ -5,7 +5,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "在普通合成与普通奖励之外，存在着并非人人都能看见的眷顾。",
+      "text": "在普通合成与普通奖励之外，存在着并非人人都能看见的眷顾。$(br2)它不属于常规进度，也不应该被当作普通物品路线的一部分。",
       "title": "造物者的眷顾"
     },
     {
@@ -16,5 +16,5 @@
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 10
+  "sortnum": 30
 }

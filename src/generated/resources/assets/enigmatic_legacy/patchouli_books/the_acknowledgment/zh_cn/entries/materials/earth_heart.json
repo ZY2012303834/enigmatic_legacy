@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:earth_heart",
       "link_recipe": true,
-      "text": "大地碎片被凝聚成一颗心脏，其中脉动着深埋地下的生命力。",
+      "text": "大地碎片被凝聚成一颗心脏，其中脉动着深埋地下的生命力。$(br2)许多防御型遗物、术石和装备都会用到它。",
       "title": "大地之心"
     },
     {
@@ -19,5 +19,5 @@
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 50
+  "sortnum": 60
 }

@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:golden_ring",
       "link_recipe": true,
-      "text": "拥有更珍贵框架的精炼戒指，适合进一步附魔或转化。",
+      "text": "拥有更珍贵框架的精炼戒指。$(br2)它适合进一步附魔、转化或作为其它戒指的材料。",
       "title": "精致戒指"
     },
     {

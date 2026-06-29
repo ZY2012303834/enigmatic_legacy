@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:mega_sponge",
       "link_recipe": true,
-      "text": "A charm-like sponge that consumes nearby water when its bearer touches it.",
+      "text": "A charm-like sponge.$(br2)When its bearer touches water, it attempts to consume nearby water blocks.",
       "title": "Extrapolated Megasponge"
     },
     {
@@ -19,5 +19,5 @@
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 120
+  "sortnum": 160
 }

@@ -7,8 +7,18 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:cursed_ring",
       "link_recipe": true,
-      "text": "将佩戴者绑定到七重惩罚的诅咒戒指。$(br2)许多强大遗物只会回应能够承受其负担的人。",
+      "text": "将佩戴者绑定到七重惩罚的诅咒戒指。$(br2)它不是普通饰品，而是一条危险路线。",
       "title": "七咒之戒"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "七咒之戒会持续惩罚佩戴者。$(br2)这些惩罚会让战斗、生存、恢复、物品保存和探索变得更加危险。$(br2)但许多强大遗物只会回应能够承受其负担的人。",
+      "title": "七重代价"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "不要在不了解后果的情况下佩戴它。$(br2)当一个物品要求承受七咒，或要求七咒折磨时间达到一定比例时，它的力量通常也伴随着极高风险。",
+      "title": "使用建议"
     }
   ],
   "read_by_default": true,

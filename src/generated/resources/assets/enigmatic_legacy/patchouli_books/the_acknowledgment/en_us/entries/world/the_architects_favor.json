@@ -5,7 +5,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Somewhere beyond ordinary craft and ordinary reward lies a favor not meant to be seen by everyone.",
+      "text": "Beyond ordinary crafting and ordinary rewards lies a favor not meant to be seen by everyone.$(br2)It is not part of the usual progression and should not be treated as a normal item route.",
       "title": "The Architect's Favor"
     },
     {
@@ -16,5 +16,5 @@
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 10
+  "sortnum": 30
 }

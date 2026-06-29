@@ -7,12 +7,12 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:angel_blessing",
       "link_recipe": true,
-      "text": "A mobility spellstone tied to air and grace.$(br2)It helps the bearer move, fall, and recover more safely during exploration.",
+      "text": "A mobility spellstone tied to air and grace.$(br2)It helps the bearer move, fall, and explore more safely.",
       "title": "Angel's Blessing"
     },
     {
       "type": "patchouli:text",
-      "text": "Best used when traveling through cliffs, mountains, floating islands, or dangerous vertical spaces.",
+      "text": "It is best used when traveling through cliffs, mountains, floating islands, or other dangerous vertical spaces.$(br2)If terrain and falling often put you in danger, this stone is extremely useful.",
       "title": "Use"
     }
   ],

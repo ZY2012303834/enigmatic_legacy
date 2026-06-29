@@ -7,13 +7,13 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:cursed_scroll",
       "link_recipe": true,
-      "text": "A scroll meant only for those who endure the Seven Curses.$(br2)Its bonuses scale with the number of curse enchantments on your equipment.",
+      "text": "A scroll usable only by those who endure the Seven Curses.$(br2)Its bonuses scale with the number of curse enchantments on your equipment.",
       "title": "Scroll of a Thousand Curses"
     },
     {
       "type": "patchouli:text",
-      "text": "It improves attack, mining speed, and regeneration.$(br2)The more cursed your equipment becomes, the stronger the scroll answers.",
-      "title": "Scaling"
+      "text": "It improves attack, mining speed, and life regeneration.$(br2)The more cursed your equipment becomes, the stronger the scroll answers.",
+      "title": "Growth"
     }
   ],
   "read_by_default": true,

@@ -12,11 +12,11 @@
     },
     {
       "type": "patchouli:text",
-      "text": "每种显现护符都有不同颜色与能力：伤害、速度、弹射物偏转、重力、挖掘、吸血或游泳。",
+      "text": "每种显现护符都有不同颜色与能力：$(br2)$(li)红色：攻击伤害$(br)$(li)青色：疾跑速度$(br)$(li)紫色：弹射物偏转$(br)$(li)品红色：重力变化$(br)$(li)绿色：挖掘效率$(br)$(li)黑色：生命偷取$(br)$(li)蓝色：游泳速度",
       "title": "显现形态"
     }
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 180
+  "sortnum": 220
 }

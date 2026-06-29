@@ -1,0 +1,17 @@
+{
+  "category": "enigmatic_legacy:materials",
+  "icon": "enigmatic_legacy:etherium_ore",
+  "name": "Etherium Ore",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:etherium_ore",
+      "link_recipe": true,
+      "text": "A rare ore carrying etherium energy.$(br2)It usually appears as a high-tier exploration reward rather than a normal underground vein.$(br2)Smelting it yields Etherium Ingots.",
+      "title": "Etherium Ore"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 30
+}

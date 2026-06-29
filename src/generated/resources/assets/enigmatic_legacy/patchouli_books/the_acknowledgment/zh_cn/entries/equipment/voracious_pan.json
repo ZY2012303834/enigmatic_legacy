@@ -1,0 +1,17 @@
+{
+  "category": "enigmatic_legacy:equipment",
+  "icon": "enigmatic_legacy:eldritch_pan",
+  "name": "饕餮之锅",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:eldritch_pan",
+      "link_recipe": true,
+      "text": "看似荒唐，却极其危险的七咒遗物。$(br2)它会随着不同生物击杀逐渐增强，也能像武器一样被使用。",
+      "title": "饕餮之锅"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 110
+}

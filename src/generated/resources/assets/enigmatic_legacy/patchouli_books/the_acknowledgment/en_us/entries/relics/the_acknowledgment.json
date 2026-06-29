@@ -7,63 +7,28 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:the_acknowledgment",
       "link_recipe": true,
-      "text": "The Acknowledgment is the core guidebook of this project.$(br2)Right-clicking it allows you to read about enigmatic relics, materials, spellstones, arcane scrolls, equipment, loot sources, and the mechanics tied to the Seven Curses.$(br2)When you do not know what to pursue next, open it first.",
+      "text": "The Acknowledgment is both a mysterious guidebook and an ancient relic.$(br2)Right-clicking it opens this manual, which records relics, spellstones, scrolls, curses, equipment, and hidden knowledge.",
       "title": "The Acknowledgment"
     },
     {
       "type": "patchouli:text",
-      "text": "The Acknowledgment records most of the project's core content:$(br2)$(li)Basic and rare materials$(br)$(li)Rings, charms, grails, mirrors, and other relics$(br)$(li)Active and passive spellstone powers$(br)$(li)Arcane scrolls and pacts$(br)$(li)Etherium equipment, special weapons, and shields$(br)$(li)Restrictions and rewards related to the Ring of the Seven Curses$(br)$(li)Exploration tips and loot sources",
+      "text": "The Acknowledgment records most of the project's core content:$(br2)$(li)Basic and rare materials$(br)$(li)Rings, charms, grails, mirrors, and fruits$(br)$(li)Active and passive spellstone powers$(br)$(li)Arcane scrolls and pacts$(br)$(li)Etherium equipment, special weapons, and shields$(br)$(li)Restrictions and rewards related to the Ring of the Seven Curses$(br)$(li)Exploration tips and loot sources",
       "title": "What Does It Record?"
     },
     {
       "type": "patchouli:text",
-      "text": "If this is your first time playing, read the book in this order:$(br2)$(li)Start with Materials to learn where Astral Dust, Etherium, Hearts, and other components come from.$(br)$(li)Then read Relics to understand rings, charms, and early utility items.$(br)$(li)After that, read Spellstones and choose the core power that fits your playstyle.$(br)$(li)In the mid to late game, read Arcane Scrolls and Equipment.$(br)$(li)Before accepting the Seven Curses, read the curse-related entries carefully.",
-      "title": "Recommended Order"
+      "text": "The Acknowledgment is not consumed and does not need to be equipped in a Curios slot.$(br2)Hold it and right-click to read the knowledge currently recorded within it.$(br2)When you obtain an unfamiliar item, search this book for an entry with the same name.",
+      "title": "As a Guide"
     },
     {
       "type": "patchouli:text",
-      "text": "The manual is divided into several categories:$(br2)$(li)World: special rules, exploration tips, and hidden mechanics.$(br)$(li)Materials: key components used to craft relics.$(br)$(li)Relics: rings, charms, grails, mirrors, fruits, and other artifacts.$(br)$(li)Spellstones: wearable stones that grant active or passive powers.$(br)$(li)Arcane Scrolls: scrolls related to flight, experience, curses, and rewards.$(br)$(li)Equipment: weapons, tools, armor, and shields.",
-      "title": "Main Categories"
+      "text": "The Acknowledgment can also be swung like a weapon.$(br2)It deals modest damage, ignites struck enemies, and can be enchanted.$(br2)It is not a strong combat weapon, but it can protect you during early exploration.",
+      "title": "As a Weapon"
     },
     {
       "type": "patchouli:text",
-      "text": "Many items are built around unusual materials:$(br2)$(li)Astral Dust: an important starting point for early enigmatic creations.$(br)$(li)Etherium: used for Etherium equipment and advanced crafting.$(br)$(li)Heart of the Earth: an important material for relics and spellstones.$(br)$(li)Cosmic Heart: tied to space, teleportation, and higher artifacts.$(br)$(li)Evil Essence: tied to curses, malice, and dangerous creations.",
-      "title": "Important Materials"
-    },
-    {
-      "type": "patchouli:text",
-      "text": "This project adds many relics that can be equipped in Curios slots.$(br2)Rings usually provide basic powers or convenience effects. Charms are often more focused on combat, exploration, or special mechanics. Some relics only answer to those who endure the Seven Curses.$(br2)If an item says it requires the Seven Curses, it is not a power meant for ordinary safety.",
-      "title": "Relics and Accessories"
-    },
-    {
-      "type": "patchouli:text",
-      "text": "Spellstones are among the most important ability relics.$(br2)A player can usually equip only a limited number of them, so they define your combat and exploration style.$(br2)Some spellstones focus on defense, mobility, water, fire, void, teleportation, or even creation-level power.",
-      "title": "Spellstones"
-    },
-    {
-      "type": "patchouli:text",
-      "text": "Arcane Scrolls change rules rather than simply adding attributes.$(br2)They may affect experience storage, flight, beacon range, curse scaling, resource rewards, or villager trading.$(br2)Some scrolls can only be used by those who endure the Seven Curses.",
-      "title": "Arcane Scrolls"
-    },
-    {
-      "type": "patchouli:text",
-      "text": "The Equipment category records Etherium weapons, tools, armor, special weapons, and shields.$(br2)These items usually have greater durability, special attributes, or interactions with other systems in this project.$(br2)Once you can reliably obtain Etherium materials, you can begin planning this stage.",
-      "title": "Equipment"
-    },
-    {
-      "type": "patchouli:text",
-      "text": "Not every item is obtained through crafting.$(br2)Some materials, spellstones, fruits, scrolls, and high-tier relics appear in structure chests.$(br2)End Cities, Bastions, Ruined Portals, Dungeons, Mineshafts, Temples, Ocean Ruins, Shipwrecks, and Buried Treasure are all worth checking.",
-      "title": "Loot Sources"
-    },
-    {
-      "type": "patchouli:text",
-      "text": "The Ring of the Seven Curses is not an ordinary accessory. It is a dangerous path.$(br2)It brings long-term punishments, but it also unlocks the right to use certain powerful items.$(br2)Many advanced relics, scrolls, and special effects require you to spend enough time under its torment.",
-      "title": "The Seven Curses"
-    },
-    {
-      "type": "patchouli:text",
-      "text": "When you obtain an unfamiliar item, search for an entry with the same name in this manual.$(br2)If that entry mentions another material, relic, or mechanic, continue reading the corresponding category.$(br2)This book is not meant to be finished all at once. It is a record to return to throughout the entire progression.",
-      "title": "Reading Advice"
+      "text": "When its bearer suffers under the Ring of the Seven Curses, The Acknowledgment resonates with that burden.$(br2)It cannot remove the curses, nor can it make them safe.$(br2)It merely gives the bearer a little more room to continue through the pain.",
+      "title": "Curse Resonance"
     },
     {
       "type": "patchouli:crafting",

@@ -1,0 +1,20 @@
+{
+  "category": "enigmatic_legacy:world",
+  "icon": "enigmatic_legacy:the_acknowledgment",
+  "name": "开始阅读",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "启示之证是本项目的核心手册。$(br2)它记录材料、遗物、术石、奥秘卷轴、装备、战利品来源，以及七咒之戒相关机制。$(br2)如果你不知道下一步该寻找什么，先阅读这里。",
+      "title": "开始阅读"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "第一次游玩时，建议按下面的顺序阅读：$(br2)$(li)材料：了解星尘、以太、大地之心等来源。$(br)$(li)遗物：了解戒指、护符和早期辅助道具。$(br)$(li)术石：选择适合自己的核心能力。$(br)$(li)卷轴：了解飞行、经验、诅咒与收益规则。$(br)$(li)装备：规划中后期武器、工具和护甲。$(br)$(li)七咒：在承受诅咒前阅读相关内容。",
+      "title": "推荐路线"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 0
+}

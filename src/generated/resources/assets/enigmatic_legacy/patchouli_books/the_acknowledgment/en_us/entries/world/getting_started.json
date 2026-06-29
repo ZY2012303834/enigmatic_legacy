@@ -1,0 +1,20 @@
+{
+  "category": "enigmatic_legacy:world",
+  "icon": "enigmatic_legacy:the_acknowledgment",
+  "name": "Getting Started",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The Acknowledgment is the core guidebook of this project.$(br2)It records materials, relics, spellstones, arcane scrolls, equipment, loot sources, and the mechanics tied to the Ring of the Seven Curses.$(br2)When you do not know what to seek next, begin here.",
+      "title": "Getting Started"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "If this is your first time playing, read in this order:$(br2)$(li)Materials: learn where Astral Dust, Etherium, Hearts, and other components come from.$(br)$(li)Relics: learn about rings, charms, and early utility items.$(br)$(li)Spellstones: choose the core power that fits your style.$(br)$(li)Scrolls: learn about flight, experience, curses, and rewards.$(br)$(li)Equipment: plan mid and late game weapons, tools, and armor.$(br)$(li)Seven Curses: read carefully before accepting the burden.",
+      "title": "Recommended Route"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 0
+}

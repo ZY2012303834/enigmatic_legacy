@@ -7,8 +7,18 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:cursed_ring",
       "link_recipe": true,
-      "text": "A cursed ring that binds the bearer to seven punishments.$(br2)Many powerful relics answer only to those who endure its burden.",
+      "text": "A cursed ring that binds its bearer to seven layers of punishment.$(br2)It is not an ordinary accessory. It is a dangerous path.",
       "title": "Ring of the Seven Curses"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The Ring of the Seven Curses continuously punishes its bearer.$(br2)These punishments make combat, survival, recovery, item preservation, and exploration far more dangerous.$(br2)Yet many powerful relics only answer to those capable of bearing its burden.",
+      "title": "Seven Costs"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Do not wear it without understanding the consequences.$(br2)When an item requires the Seven Curses, or a certain percentage of time under their torment, its power usually comes with severe risk.",
+      "title": "Advice"
     }
   ],
   "read_by_default": true,

@@ -1,5 +1,5 @@
 {
-  "description": "用于制作神秘遗物的异常材料。",
+  "description": "用于制作神秘遗物、术石、卷轴与装备的异常材料。",
   "icon": "enigmatic_legacy:astral_dust",
   "name": "材料",
   "secret": false,

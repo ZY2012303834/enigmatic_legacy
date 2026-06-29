@@ -1,0 +1,17 @@
+{
+  "category": "enigmatic_legacy:equipment",
+  "icon": "enigmatic_legacy:the_twist",
+  "name": "倒转之启",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:the_twist",
+      "link_recipe": true,
+      "text": "启示之证在七咒影响下扭曲出的形态。$(br2)它既是书，也是武器，只会回应承受七咒之人。",
+      "title": "倒转之启"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 70
+}

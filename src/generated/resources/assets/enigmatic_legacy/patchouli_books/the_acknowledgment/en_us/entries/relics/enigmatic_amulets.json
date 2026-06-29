@@ -1,0 +1,27 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:enigmatic_amulet_red",
+  "name": "Seven Enigmatic Amulets",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:enigmatic_amulet_red",
+      "link_recipe": true,
+      "text": "When the Unwitnessed Amulet is witnessed, it reveals one of seven colored Enigmatic Amulets.$(br2)Each color represents a different kind of power.",
+      "title": "Seven Enigmatic Amulets"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The seven forms are:$(br2)$(li)Red: Attack Damage$(br)$(li)Aqua: Sprint Speed$(br)$(li)Violet: Projectile Deflection$(br)$(li)Magenta: Gravity Change$(br)$(li)Green: Mining Efficiency$(br)$(li)Black: Lifesteal$(br)$(li)Blue: Swim Speed",
+      "title": "Seven Forms"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "All seven colored amulets can be gathered into the Amulet of Ascension.$(br2)The Amulet of Ascension inherits all seven powers and leads toward the more dangerous Testament of Contempt.",
+      "title": "Progression"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 230
+}

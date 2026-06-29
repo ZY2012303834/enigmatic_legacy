@@ -1,0 +1,17 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:recall_potion",
+  "name": "召回药水",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:recall_potion",
+      "link_recipe": true,
+      "text": "饮下后会尝试将使用者带回安全或绑定的位置。$(br2)它常作为回归、传送与扭曲魔镜相关制作的基础。",
+      "title": "召回药水"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 80
+}

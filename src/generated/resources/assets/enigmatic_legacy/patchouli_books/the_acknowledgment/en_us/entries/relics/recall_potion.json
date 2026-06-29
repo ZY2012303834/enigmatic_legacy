@@ -1,0 +1,17 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:recall_potion",
+  "name": "Potion of Recall",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:recall_potion",
+      "link_recipe": true,
+      "text": "A potion that attempts to return the user to a safe or bound location.$(br2)It is often used in recipes related to returning, teleportation, and the Twisted Mirror.",
+      "title": "Potion of Recall"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 80
+}

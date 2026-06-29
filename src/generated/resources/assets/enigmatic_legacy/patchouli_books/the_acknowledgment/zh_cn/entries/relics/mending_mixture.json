@@ -1,0 +1,17 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:mending_mixture",
+  "name": "修补混合物",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:mending_mixture",
+      "link_recipe": true,
+      "text": "用于修复装备的特殊混合物。$(br2)它可以在工作台中完全修复受损的可损坏物品。",
+      "title": "修补混合物"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 100
+}

@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:earth_heart",
       "link_recipe": true,
-      "text": "Fragments of the earth can be gathered into a single heart, pulsing with buried vitality.",
+      "text": "Fragments of the earth gathered into a single heart, pulsing with buried vitality.$(br2)Many defensive relics, spellstones, and equipment pieces require it.",
       "title": "Heart of the Earth"
     },
     {
@@ -19,5 +19,5 @@
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 50
+  "sortnum": 60
 }

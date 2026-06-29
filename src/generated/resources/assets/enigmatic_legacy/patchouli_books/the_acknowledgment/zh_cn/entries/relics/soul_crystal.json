@@ -7,11 +7,11 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:soul_crystal",
       "link_recipe": true,
-      "text": "被拯救灵魂的结晶残片，绑定着死亡的地点与瞬间。",
+      "text": "被拯救灵魂的结晶残片。$(br2)它绑定着死亡的地点与瞬间。",
       "title": "灵魂水晶"
     }
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 200
+  "sortnum": 270
 }

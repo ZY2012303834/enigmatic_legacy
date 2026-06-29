@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:etherium_shovel",
       "link_recipe": true,
-      "text": "由以太锻造的铲具，用于快速挖掘泥土、沙砾与类似方块。",
+      "text": "由以太锻造的铲具。$(br2)用于快速挖掘泥土、沙砾、沙子与类似方块。",
       "title": "以太锹"
     },
     {
@@ -19,5 +19,5 @@
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 30
+  "sortnum": 40
 }

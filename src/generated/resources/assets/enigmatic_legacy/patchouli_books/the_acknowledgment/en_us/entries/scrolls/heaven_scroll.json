@@ -7,13 +7,13 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:heaven_scroll",
       "link_recipe": true,
-      "text": "A scroll that grants flight within beacon influence.$(br2)It consumes experience while flying and protects against fall damage under proper conditions.",
+      "text": "A scroll that grants flight while within beacon range.$(br2)Flying consumes experience and can prevent fall damage while its conditions are met.",
       "title": "Gift of the Heaven"
     },
     {
       "type": "patchouli:text",
-      "text": "Leaving beacon range removes flight and grants slow falling for a short time.$(br2)If you still have not landed afterward, the ground will remind you of gravity.",
-      "title": "Beacon Bound"
+      "text": "Leaving beacon range removes flight and briefly grants Slow Falling.$(br2)If Slow Falling ends before you land, gravity will reclaim its price.",
+      "title": "Beacon Limit"
     }
   ],
   "read_by_default": true,

@@ -13,29 +13,29 @@
     {
       "type": "patchouli:crafting",
       "recipe": "enigmatic_legacy:etherium_helmet",
-      "text": "头盔配方。",
+      "text": "以太头盔配方。",
       "title": " "
     },
     {
       "type": "patchouli:crafting",
       "recipe": "enigmatic_legacy:etherium_chestplate",
-      "text": "胸甲配方。",
+      "text": "以太胸甲配方。",
       "title": " "
     },
     {
       "type": "patchouli:crafting",
       "recipe": "enigmatic_legacy:etherium_leggings",
-      "text": "护腿配方。",
+      "text": "以太护腿配方。",
       "title": " "
     },
     {
       "type": "patchouli:crafting",
       "recipe": "enigmatic_legacy:etherium_boots",
-      "text": "靴子配方。",
+      "text": "以太靴子配方。",
       "title": " "
     }
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 50
+  "sortnum": 60
 }

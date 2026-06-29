@@ -1,0 +1,17 @@
+{
+  "category": "enigmatic_legacy:materials",
+  "icon": "enigmatic_legacy:abyssal_heart",
+  "name": "Abyssal Heart",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:abyssal_heart",
+      "link_recipe": true,
+      "text": "A heart-shaped material touched by abyssal power.$(br2)It is often tied to the void, malice, and higher relics.",
+      "title": "Abyssal Heart"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 75
+}

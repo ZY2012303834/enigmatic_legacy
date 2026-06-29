@@ -7,35 +7,35 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:etherium_chestplate",
       "link_recipe": true,
-      "text": "A full armor set forged from etherium.$(br2)It is intended for late-game protection and pairs naturally with other advanced relics.",
+      "text": "A complete armor set forged from Etherium.$(br2)It is suitable for late-game protection and naturally pairs with other high-tier relics.",
       "title": "Etherium Armor"
     },
     {
       "type": "patchouli:crafting",
       "recipe": "enigmatic_legacy:etherium_helmet",
-      "text": "Helmet recipe.",
+      "text": "The recipe for the Etherium Helmet.",
       "title": " "
     },
     {
       "type": "patchouli:crafting",
       "recipe": "enigmatic_legacy:etherium_chestplate",
-      "text": "Chestplate recipe.",
+      "text": "The recipe for the Etherium Chestplate.",
       "title": " "
     },
     {
       "type": "patchouli:crafting",
       "recipe": "enigmatic_legacy:etherium_leggings",
-      "text": "Leggings recipe.",
+      "text": "The recipe for the Etherium Leggings.",
       "title": " "
     },
     {
       "type": "patchouli:crafting",
       "recipe": "enigmatic_legacy:etherium_boots",
-      "text": "Boots recipe.",
+      "text": "The recipe for the Etherium Boots.",
       "title": " "
     }
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 50
+  "sortnum": 60
 }

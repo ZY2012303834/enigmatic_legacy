@@ -1,0 +1,17 @@
+{
+  "category": "enigmatic_legacy:materials",
+  "icon": "enigmatic_legacy:earth_heart_fragment",
+  "name": "Heart of the Earth Fragment",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:earth_heart_fragment",
+      "link_recipe": true,
+      "text": "A broken fragment of the Heart of the Earth.$(br2)Enough fragments can be gathered and formed back into a complete heart.",
+      "title": "Heart of the Earth Fragment"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 55
+}

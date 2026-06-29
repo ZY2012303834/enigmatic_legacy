@@ -9,12 +9,15 @@ import java.util.concurrent.CompletableFuture;
 
 /**
  * 启示之证 Patchouli 手册英文内容生成器。
- * 作用：
- * - 生成英文分类；
- * - 生成英文物品介绍；
- * - 补全当前项目已有的术石、卷轴、装备和主要遗物说明。
+ * 设计目标：
+ * 1. 按原项目 The Acknowledgment 的定位，将启示之证作为整个模组的手册入口；
+ * 2. 不是只介绍启示之证本身，而是记录世界规则、材料、遗物、术石、卷轴、装备和战利品来源；
+ * 3. 覆盖当前项目中主要已注册、可获取或有玩法意义的物品；
+ * 4. 内容尽量保持 Patchouli 手册风格：短段落、分类清晰、适合游戏内阅读；
+ * 5. JSON 继续由 datagen 生成，不手写静态 JSON。
  */
 final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGenerator {
+
     EnglishPatchouliBookGenerator(PackOutput output) {
         super(output);
     }
@@ -25,21 +28,27 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
     }
 
     /**
-     * 英文内容入口。
+     * 英文手册内容入口。
      */
     @Override
     protected void addContent(CachedOutput output, List<CompletableFuture<?>> futures) {
-        // 基础分类。
-        addCategories(output, futures, "en_us",
-                "World", "Laws, consequences, and hidden truths of this world.",
-                "Materials", "Unusual materials used to create enigmatic relics.",
-                "Relics", "Ancient rings, charms, tomes, and unusual artifacts."
+        addCategories(
+                output,
+                futures,
+                "en_us",
+
+                "World",
+                "Records about worldly laws, hidden mechanisms, exploration, and consequences.",
+
+                "Materials",
+                "Unusual materials used to craft enigmatic relics, spellstones, scrolls, and equipment.",
+
+                "Relics",
+                "Ancient rings, charms, grails, mirrors, fruits, and other enigmatic creations."
         );
 
-        // 额外分类：术石、卷轴、装备。
         addExtraCategories(output, futures);
 
-        // 各分类条目。
         addWorldEntries(output, futures);
         addMaterialEntries(output, futures);
         addRelicEntries(output, futures);
@@ -49,26 +58,26 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
     }
 
     /**
-     * 生成新增分类。
+     * 生成额外分类。
      */
     private void addExtraCategories(CachedOutput output, List<CompletableFuture<?>> futures) {
         futures.add(save(output, "en_us", "categories/spellstones", category(
                 "Spellstones",
-                "Powerful stones that grant active and passive abilities when equipped.",
+                "Powerful relic stones that grant active and passive abilities when equipped. They often define a player's core combat or exploration style.",
                 "enigmatic_legacy:golem_heart",
                 30
         )));
 
         futures.add(save(output, "en_us", "categories/scrolls", category(
                 "Arcane Scrolls",
-                "Scrolls and pacts that alter flight, experience, curses, and rewards.",
+                "Scrolls and pacts that alter flight, experience, curses, rewards, and other rules.",
                 "enigmatic_legacy:xp_scroll",
                 40
         )));
 
         futures.add(save(output, "en_us", "categories/equipment", category(
                 "Equipment",
-                "Weapons, tools, and armor forged from unusual materials.",
+                "Weapons, tools, armor, shields, and special equipment forged from abnormal materials.",
                 "enigmatic_legacy:etherium_sword",
                 50
         )));
@@ -78,31 +87,48 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
      * 世界机制条目。
      */
     private void addWorldEntries(CachedOutput output, List<CompletableFuture<?>> futures) {
+        futures.add(save(output, "en_us", "entries/world/getting_started", entry(
+                "Getting Started",
+                "world",
+                "enigmatic_legacy:the_acknowledgment",
+                0,
+
+                textPage(
+                        "Getting Started",
+                        "The Acknowledgment is the core guidebook of this project.$(br2)" +
+                                "It records materials, relics, spellstones, arcane scrolls, equipment, loot sources, and the mechanics tied to the Ring of the Seven Curses.$(br2)" +
+                                "When you do not know what to seek next, begin here."
+                ),
+
+                textPage(
+                        "Recommended Route",
+                        "If this is your first time playing, read in this order:$(br2)" +
+                                "$(li)Materials: learn where Astral Dust, Etherium, Hearts, and other components come from.$(br)" +
+                                "$(li)Relics: learn about rings, charms, and early utility items.$(br)" +
+                                "$(li)Spellstones: choose the core power that fits your style.$(br)" +
+                                "$(li)Scrolls: learn about flight, experience, curses, and rewards.$(br)" +
+                                "$(li)Equipment: plan mid and late game weapons, tools, and armor.$(br)" +
+                                "$(li)Seven Curses: read carefully before accepting the burden."
+                )
+        )));
+
         futures.add(save(output, "en_us", "entries/world/soul_loss", entry(
                 "Soul Loss",
                 "world",
                 "minecraft:soul_lantern",
-                0,
+                10,
+
                 textPage(
                         "Soul Loss",
                         "Death is rarely without consequence.$(br2)" +
-                                "Some forces return what was lost, but never without reminding you that the world keeps count."
-                )
-        )));
-
-        futures.add(save(output, "en_us", "entries/world/the_architects_favor", entry(
-                "The Architect's Favor",
-                "world",
-                "minecraft:structure_block",
-                10,
-                textPage(
-                        "The Architect's Favor",
-                        "Somewhere beyond ordinary craft and ordinary reward lies a favor not meant to be seen by everyone."
+                                "Some powers may return what was lost, but the world always remembers what you owed.$(br2)" +
+                                "Soul Crystals, Extradimensional Vessels, and some Seven Curses items are tied to death recovery and retrieval."
                 ),
+
                 textPage(
                         "Hint",
-                        "The Acknowledgment records only fragments of this truth.$(br2)" +
-                                "Some knowledge must be earned through exploration, curses, and survival."
+                        "If you lose important items after death, first check whether they were preserved in a Soul Crystal or an Extradimensional Vessel.$(br2)" +
+                                "Certain wayfinding items can help cursed bearers locate these containers."
                 )
         )));
 
@@ -115,8 +141,8 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 textPage(
                         "Loot and Exploration",
                         "Not every item comes from crafting.$(br2)" +
-                                "Some materials, spellstones, fruits, scrolls, and high-tier items in this project appear in structure chests.$(br2)" +
-                                "If you cannot find a crafting recipe in the crafting table or JEI, the item may require exploration."
+                                "Some materials, spellstones, fruits, scrolls, and high-tier relics appear in structure chests.$(br2)" +
+                                "If you cannot find a recipe in the crafting table or JEI, the item may require exploration."
                 ),
 
                 textPage(
@@ -132,18 +158,319 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 ),
 
                 textPage(
-                        "Important Note",
+                        "Testing Note",
                         "Structure chests usually generate their contents when first opened.$(br2)" +
                                 "If a chest has already been opened, changing loot tables later will not refresh its contents.$(br2)" +
                                 "When testing loot, use a new world, newly generated chunks, or the /loot command."
                 )
         )));
 
+        futures.add(save(output, "en_us", "entries/world/the_architects_favor", entry(
+                "The Architect's Favor",
+                "world",
+                "minecraft:structure_block",
+                30,
+
+                textPage(
+                        "The Architect's Favor",
+                        "Beyond ordinary crafting and ordinary rewards lies a favor not meant to be seen by everyone.$(br2)" +
+                                "It is not part of the usual progression and should not be treated as a normal item route."
+                ),
+
+                textPage(
+                        "Hint",
+                        "The Acknowledgment records only fragments of this truth.$(br2)" +
+                                "Some knowledge must be earned through exploration, curses, and survival."
+                )
+        )));
+    }
+
+    /**
+     * 材料条目。
+     */
+    private void addMaterialEntries(CachedOutput output, List<CompletableFuture<?>> futures) {
+        futures.add(save(output, "en_us", "entries/materials/astral_dust", simpleSpotlight(
+                "Astral Dust",
+                "materials",
+                "enigmatic_legacy:astral_dust",
+                0,
+                "A faintly shimmering abnormal dust, as if it came from the edge of the unknown.$(br2)" +
+                        "Many early relics, rings, and enigmatic creations begin with it."
+        )));
+
+        futures.add(save(output, "en_us", "entries/materials/astral_dust_sack", simpleSpotlight(
+                "Astral Dust Sack",
+                "materials",
+                "enigmatic_legacy:astral_dust_sack",
+                5,
+                "A storage block made from compressed Astral Dust.$(br2)" +
+                        "Useful for storing large amounts of dust and keeping materials ready for enigmatic crafting."
+        )));
+
+        futures.add(save(output, "en_us", "entries/materials/ender_rod", recipeEntry(
+                "Ender Rod",
+                "materials",
+                "enigmatic_legacy:ender_rod",
+                10,
+                "A rod infused with ender resonance.$(br2)" +
+                        "It often serves as a stabilizing component for space, teleportation, and End-related creations.",
+                "enigmatic_legacy:ender_rod"
+        )));
+
+        futures.add(save(output, "en_us", "entries/materials/thicc_scroll", recipeEntry(
+                "Thicc Scroll",
+                "materials",
+                "enigmatic_legacy:thicc_scroll",
+                20,
+                "A blank but unusually sturdy scroll.$(br2)" +
+                        "It can carry knowledge that ordinary paper would fail to contain, making it an important base for Arcane Scrolls.",
+                "enigmatic_legacy:thicc_scroll"
+        )));
+
+        futures.add(save(output, "en_us", "entries/materials/etherium_ore", simpleSpotlight(
+                "Etherium Ore",
+                "materials",
+                "enigmatic_legacy:etherium_ore",
+                30,
+                "A rare ore carrying etherium energy.$(br2)" +
+                        "It usually appears as a high-tier exploration reward rather than a normal underground vein.$(br2)" +
+                        "Smelting it yields Etherium Ingots."
+        )));
+
+        futures.add(save(output, "en_us", "entries/materials/etherium_ingot", entry(
+                "Etherium Ingot",
+                "materials",
+                "enigmatic_legacy:etherium_ingot",
+                40,
+
+                spotlightPage(
+                        "enigmatic_legacy:etherium_ingot",
+                        "Etherium Ingot",
+                        "A refined material used in advanced relic construction.$(br2)" +
+                                "It is commonly used to craft Etherium tools, weapons, and armor."
+                ),
+
+                craftingPage(
+                        "enigmatic_legacy:etherium_block_uncrafting",
+                        "Etherium blocks can be broken back down into ingots."
+                )
+        )));
+
+        futures.add(save(output, "en_us", "entries/materials/etherium_block", simpleSpotlight(
+                "Block of Etherium",
+                "materials",
+                "enigmatic_legacy:etherium_block",
+                45,
+                "A high-tier material block made from Etherium Ingots.$(br2)" +
+                        "It can be used for storage and broken back down into ingots."
+        )));
+
+        futures.add(save(output, "en_us", "entries/materials/cosmic_heart", recipeEntry(
+                "Cosmic Heart",
+                "materials",
+                "enigmatic_legacy:cosmic_heart",
+                50,
+                "A heart-shaped concentration of cosmic potential.$(br2)" +
+                        "It is an important ingredient for relics tied to space, distance, teleportation, and higher artifacts.",
+                "enigmatic_legacy:cosmic_heart"
+        )));
+
+        futures.add(save(output, "en_us", "entries/materials/earth_heart_fragment", simpleSpotlight(
+                "Heart of the Earth Fragment",
+                "materials",
+                "enigmatic_legacy:earth_heart_fragment",
+                55,
+                "A broken fragment of the Heart of the Earth.$(br2)" +
+                        "Enough fragments can be gathered and formed back into a complete heart."
+        )));
+
+        futures.add(save(output, "en_us", "entries/materials/earth_heart", recipeEntry(
+                "Heart of the Earth",
+                "materials",
+                "enigmatic_legacy:earth_heart",
+                60,
+                "Fragments of the earth gathered into a single heart, pulsing with buried vitality.$(br2)" +
+                        "Many defensive relics, spellstones, and equipment pieces require it.",
+                "enigmatic_legacy:earth_heart"
+        )));
+
+        futures.add(save(output, "en_us", "entries/materials/twisted_heart", recipeEntry(
+                "Twisted Heart",
+                "materials",
+                "enigmatic_legacy:twisted_heart",
+                70,
+                "A heart distorted by hostile energies.$(br2)" +
+                        "It is dangerous, but many relics demand dangerous components.",
+                "enigmatic_legacy:twisted_heart"
+        )));
+
+        futures.add(save(output, "en_us", "entries/materials/abyssal_heart", simpleSpotlight(
+                "Abyssal Heart",
+                "materials",
+                "enigmatic_legacy:abyssal_heart",
+                75,
+                "A heart-shaped material touched by abyssal power.$(br2)" +
+                        "It is often tied to the void, malice, and higher relics."
+        )));
+
+        futures.add(save(output, "en_us", "entries/materials/evil_essence", simpleSpotlight(
+                "Evil Essence",
+                "materials",
+                "enigmatic_legacy:evil_essence",
+                80,
+                "Condensed malice given form.$(br2)" +
+                        "It is unstable, corruptive, and useful."
+        )));
+
+        futures.add(save(output, "en_us", "entries/materials/evil_ingot", recipeEntry(
+                "Evil Ingot",
+                "materials",
+                "enigmatic_legacy:evil_ingot",
+                90,
+                "An ingot forged from essence too malicious to be left uncontained.$(br2)" +
+                        "It is often used in curse, malice, and high-tier relic progression.",
+                "enigmatic_legacy:evil_ingot"
+        )));
+    }
+
+    /**
+     * 遗物条目。
+     */
+    private void addRelicEntries(CachedOutput output, List<CompletableFuture<?>> futures) {
+        futures.add(save(output, "en_us", "entries/relics/the_acknowledgment", entry(
+                "The Acknowledgment",
+                "relics",
+                "enigmatic_legacy:the_acknowledgment",
+                0,
+
+                spotlightPage(
+                        "enigmatic_legacy:the_acknowledgment",
+                        "The Acknowledgment",
+                        "The Acknowledgment is both a mysterious guidebook and an ancient relic.$(br2)" +
+                                "Right-clicking it opens this manual, which records relics, spellstones, scrolls, curses, equipment, and hidden knowledge."
+                ),
+
+                textPage(
+                        "What Does It Record?",
+                        "The Acknowledgment records most of the project's core content:$(br2)" +
+                                "$(li)Basic and rare materials$(br)" +
+                                "$(li)Rings, charms, grails, mirrors, and fruits$(br)" +
+                                "$(li)Active and passive spellstone powers$(br)" +
+                                "$(li)Arcane scrolls and pacts$(br)" +
+                                "$(li)Etherium equipment, special weapons, and shields$(br)" +
+                                "$(li)Restrictions and rewards related to the Ring of the Seven Curses$(br)" +
+                                "$(li)Exploration tips and loot sources"
+                ),
+
+                textPage(
+                        "As a Guide",
+                        "The Acknowledgment is not consumed and does not need to be equipped in a Curios slot.$(br2)" +
+                                "Hold it and right-click to read the knowledge currently recorded within it.$(br2)" +
+                                "When you obtain an unfamiliar item, search this book for an entry with the same name."
+                ),
+
+                textPage(
+                        "As a Weapon",
+                        "The Acknowledgment can also be swung like a weapon.$(br2)" +
+                                "It deals modest damage, ignites struck enemies, and can be enchanted.$(br2)" +
+                                "It is not a strong combat weapon, but it can protect you during early exploration."
+                ),
+
+                textPage(
+                        "Curse Resonance",
+                        "When its bearer suffers under the Ring of the Seven Curses, The Acknowledgment resonates with that burden.$(br2)" +
+                                "It cannot remove the curses, nor can it make them safe.$(br2)" +
+                                "It merely gives the bearer a little more room to continue through the pain."
+                ),
+
+                craftingPage(
+                        "enigmatic_legacy:the_acknowledgment",
+                        "Craft The Acknowledgment, then right-click it to open this manual."
+                )
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/cursed_ring", entry(
+                "Ring of the Seven Curses",
+                "relics",
+                "enigmatic_legacy:cursed_ring",
+                5,
+
+                spotlightPage(
+                        "enigmatic_legacy:cursed_ring",
+                        "Ring of the Seven Curses",
+                        "A cursed ring that binds its bearer to seven layers of punishment.$(br2)" +
+                                "It is not an ordinary accessory. It is a dangerous path."
+                ),
+
+                textPage(
+                        "Seven Costs",
+                        "The Ring of the Seven Curses continuously punishes its bearer.$(br2)" +
+                                "These punishments make combat, survival, recovery, item preservation, and exploration far more dangerous.$(br2)" +
+                                "Yet many powerful relics only answer to those capable of bearing its burden."
+                ),
+
+                textPage(
+                        "Advice",
+                        "Do not wear it without understanding the consequences.$(br2)" +
+                                "When an item requires the Seven Curses, or a certain percentage of time under their torment, its power usually comes with severe risk."
+                )
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/iron_ring", recipeEntry(
+                "Iron Ring",
+                "relics",
+                "enigmatic_legacy:iron_ring",
+                10,
+                "A simple ring base.$(br2)" +
+                        "Many stronger rings begin as something this plain.",
+                "enigmatic_legacy:iron_ring"
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/exquisite_ring", recipeEntry(
+                "Exquisite Ring",
+                "relics",
+                "enigmatic_legacy:golden_ring",
+                20,
+                "A refined ring with a more precious frame.$(br2)" +
+                        "It is suitable for enchantment, transformation, or use as a material for other rings.",
+                "enigmatic_legacy:golden_ring"
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/ender_ring", recipeEntry(
+                "Ender Ring",
+                "relics",
+                "enigmatic_legacy:ender_ring",
+                30,
+                "A ring linked to ender storage.$(br2)" +
+                        "When worn, it allows convenient access to an Ender Chest.",
+                "enigmatic_legacy:ender_ring"
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/magnet_ring", recipeEntry(
+                "Magnet Ring",
+                "relics",
+                "enigmatic_legacy:magnet_ring",
+                40,
+                "This ring pulls nearby item drops toward its bearer.$(br2)" +
+                        "It is useful while mining, farming, fighting, or cleaning up large amounts of loot.",
+                "enigmatic_legacy:magnet_ring"
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/dislocation_ring", recipeEntry(
+                "Dislocation Ring",
+                "relics",
+                "enigmatic_legacy:dislocation_ring",
+                50,
+                "A stronger magnetic ring.$(br2)" +
+                        "Instead of slowly dragging drops, it dislocates nearby items directly into reach.",
+                "enigmatic_legacy:dislocation_ring"
+        )));
+
         futures.add(save(output, "en_us", "entries/relics/magic_quartz_ring", entry(
                 "Magic Quartz Ring",
                 "relics",
                 "enigmatic_legacy:magic_quartz_ring",
-                45,
+                60,
 
                 spotlightPage(
                         "enigmatic_legacy:magic_quartz_ring",
@@ -173,11 +500,287 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 )
         )));
 
+        futures.add(save(output, "en_us", "entries/relics/twisted_mirror", recipeEntry(
+                "Twisted Mirror",
+                "relics",
+                "enigmatic_legacy:twisted_mirror",
+                70,
+                "A mirror that bends return and remembrance.$(br2)" +
+                        "It is crafted around a recall potion and a Twisted Heart.",
+                "enigmatic_legacy:twisted_mirror"
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/recall_potion", simpleSpotlight(
+                "Potion of Recall",
+                "relics",
+                "enigmatic_legacy:recall_potion",
+                80,
+                "A potion that attempts to return the user to a safe or bound location.$(br2)" +
+                        "It is often used in recipes related to returning, teleportation, and the Twisted Mirror."
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/redemption_potion", simpleSpotlight(
+                "Potion of Redemption",
+                "relics",
+                "enigmatic_legacy:redemption_potion",
+                90,
+                "A potion carrying the force of redemption.$(br2)" +
+                        "It is uncommon and is usually obtained through higher exploration rewards."
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/mending_mixture", simpleSpotlight(
+                "Mending Mixture",
+                "relics",
+                "enigmatic_legacy:mending_mixture",
+                100,
+                "A special mixture used to repair equipment.$(br2)" +
+                        "It can fully repair damaged damageable items in a crafting grid."
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/unholy_grail", simpleSpotlight(
+                "Unholy Grail",
+                "relics",
+                "enigmatic_legacy:unholy_grail",
+                110,
+                "A relic that turns violence into recovery.$(br2)" +
+                        "It rewards aggressive survival, but should not be mistaken for safety."
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/guardian_heart", simpleSpotlight(
+                "Guardian Heart",
+                "relics",
+                "enigmatic_legacy:guardian_heart",
+                120,
+                "A heart carrying the memory of ancient guardians.$(br2)" +
+                        "It is linked to protection, endurance, and the depths."
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/monster_charm", recipeEntry(
+                "Emblem of Monster Slayer",
+                "relics",
+                "enigmatic_legacy:monster_charm",
+                130,
+                "An emblem devoted to hunting monsters.$(br2)" +
+                        "It improves combat against hostile creatures and can grant additional rewards.",
+                "enigmatic_legacy:monster_charm"
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/treasure_hunter_charm", recipeEntry(
+                "Charm of Treasure Hunter",
+                "relics",
+                "enigmatic_legacy:treasure_hunter_charm",
+                140,
+                "A charm for miners and explorers.$(br2)" +
+                        "It improves mining, fortune, and exploration comfort.",
+                "enigmatic_legacy:treasure_hunter_charm"
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/bloodstained_valor_emblem", recipeEntry(
+                "Emblem of Bloodstained Valor",
+                "relics",
+                "enigmatic_legacy:bloodstained_valor_emblem",
+                150,
+                "An emblem for cursed bearers.$(br2)" +
+                        "The closer its wearer is to death, the more violently it answers.",
+                "enigmatic_legacy:bloodstained_valor_emblem"
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/mega_sponge", recipeEntry(
+                "Extrapolated Megasponge",
+                "relics",
+                "enigmatic_legacy:mega_sponge",
+                160,
+                "A charm-like sponge.$(br2)" +
+                        "When its bearer touches water, it attempts to consume nearby water blocks.",
+                "enigmatic_legacy:mega_sponge"
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/enchanter_pearl", recipeEntry(
+                "Enchanter's Pearl",
+                "relics",
+                "enigmatic_legacy:enchanter_pearl",
+                170,
+                "A pearl useful only to cursed bearers.$(br2)" +
+                        "While equipped, it grants an additional charm slot.",
+                "enigmatic_legacy:enchanter_pearl"
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/enigmatic_eye", entry(
+                "Dormant Eye / Inscrutable Eye",
+                "relics",
+                "enigmatic_legacy:enigmatic_eye",
+                180,
+
+                spotlightPage(
+                        "enigmatic_legacy:enigmatic_eye",
+                        "Dormant Eye",
+                        "This eye sleeps until awakened.$(br2)" +
+                                "It appears only once for a player, usually when they first discover the right kind of loot."
+                ),
+
+                textPage(
+                        "Awakened Sight",
+                        "Once awakened, the Eye may be worn as a charm.$(br2)" +
+                                "It grants an additional charm slot, increases interaction range, and may give voice to the Watcher."
+                )
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/extradimensional_eye", simpleSpotlight(
+                "Extradimensional Eye",
+                "relics",
+                "enigmatic_legacy:extradimensional_eye",
+                190,
+                "A higher eye that peers beyond ordinary space.$(br2)" +
+                        "It is connected to additional reach, hidden containers, and stranger perception."
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/enchantment_transposer", simpleSpotlight(
+                "Tome of Hungering Knowledge",
+                "relics",
+                "enigmatic_legacy:enchantment_transposer",
+                200,
+                "A tome that hungers for enchantments.$(br2)" +
+                        "It can manipulate enchantment power in ways ordinary books cannot."
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/curse_transposer", simpleSpotlight(
+                "Tome of Devoured Malignancy",
+                "relics",
+                "enigmatic_legacy:curse_transposer",
+                210,
+                "A tome that devours malignancy.$(br2)" +
+                        "It is tied to curses and to those willing to handle cursed knowledge."
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/unwitnessed_amulet", entry(
+                "Unwitnessed Amulet",
+                "relics",
+                "enigmatic_legacy:unwitnessed_amulet",
+                220,
+
+                spotlightPage(
+                        "enigmatic_legacy:unwitnessed_amulet",
+                        "Unwitnessed Amulet",
+                        "An amulet whose nature has not yet been witnessed.$(br2)" +
+                                "Using it reveals one of its enigmatic variants."
+                ),
+
+                textPage(
+                        "Revealed Forms",
+                        "Each revealed amulet has a different color and power:$(br2)" +
+                                "$(li)Red: Attack Damage$(br)" +
+                                "$(li)Aqua: Sprint Speed$(br)" +
+                                "$(li)Violet: Projectile Deflection$(br)" +
+                                "$(li)Magenta: Gravity Change$(br)" +
+                                "$(li)Green: Mining Efficiency$(br)" +
+                                "$(li)Black: Lifesteal$(br)" +
+                                "$(li)Blue: Swim Speed"
+                )
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/enigmatic_amulets", entry(
+                "Seven Enigmatic Amulets",
+                "relics",
+                "enigmatic_legacy:enigmatic_amulet_red",
+                230,
+
+                spotlightPage(
+                        "enigmatic_legacy:enigmatic_amulet_red",
+                        "Seven Enigmatic Amulets",
+                        "When the Unwitnessed Amulet is witnessed, it reveals one of seven colored Enigmatic Amulets.$(br2)" +
+                                "Each color represents a different kind of power."
+                ),
+
+                textPage(
+                        "Seven Forms",
+                        "The seven forms are:$(br2)" +
+                                "$(li)Red: Attack Damage$(br)" +
+                                "$(li)Aqua: Sprint Speed$(br)" +
+                                "$(li)Violet: Projectile Deflection$(br)" +
+                                "$(li)Magenta: Gravity Change$(br)" +
+                                "$(li)Green: Mining Efficiency$(br)" +
+                                "$(li)Black: Lifesteal$(br)" +
+                                "$(li)Blue: Swim Speed"
+                ),
+
+                textPage(
+                        "Progression",
+                        "All seven colored amulets can be gathered into the Amulet of Ascension.$(br2)" +
+                                "The Amulet of Ascension inherits all seven powers and leads toward the more dangerous Testament of Contempt."
+                )
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/ascension_amulet", entry(
+                "Amulet of Ascension",
+                "relics",
+                "enigmatic_legacy:ascension_amulet",
+                240,
+
+                spotlightPage(
+                        "enigmatic_legacy:ascension_amulet",
+                        "Amulet of Ascension",
+                        "A higher amulet formed from all seven Enigmatic Amulets.$(br2)" +
+                                "It inherits the powers of all seven colors."
+                ),
+
+                textPage(
+                        "Worn Effects",
+                        "The Amulet of Ascension grants bonuses related to attack, speed, projectile deflection, gravity, mining, lifesteal, and swimming.$(br2)" +
+                                "It is the completed form of the Enigmatic Amulet path and a key step toward the Testament of Contempt."
+                )
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/eldritch_amulet", recipeEntry(
+                "Testament of Contempt",
+                "relics",
+                "enigmatic_legacy:eldritch_amulet",
+                250,
+                "The Amulet of Ascension may be perfected, but perfection can still be made cruel.$(br2)" +
+                        "The Testament of Contempt grants all seven amulet traits, adds raw attack power and lifesteal, weakens creatures caught in your gaze, and preserves your inventory on death. Items marked by Curse of Vanishing are still lost.",
+                "enigmatic_legacy:eldritch_amulet"
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/storage_crystal", simpleSpotlight(
+                "Extradimensional Vessel",
+                "relics",
+                "enigmatic_legacy:storage_crystal",
+                260,
+                "A vessel for a life interrupted.$(br2)" +
+                        "It stores what would otherwise be lost when saved by the Seven Curses."
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/soul_crystal", simpleSpotlight(
+                "Soul Crystal",
+                "relics",
+                "enigmatic_legacy:soul_crystal",
+                270,
+                "A crystallized remnant of a rescued soul.$(br2)" +
+                        "It is bound to the place and moment of death."
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/wayfinder_of_the_damned", simpleSpotlight(
+                "Wayfinder of the Damned",
+                "relics",
+                "enigmatic_legacy:wayfinder_of_the_damned",
+                280,
+                "A wayfinder that answers only to those suffering under the Seven Curses.$(br2)" +
+                        "It can help locate the nearest Soul Crystal or Extradimensional Vessel containing death drops in the current dimension."
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/forbidden_fruit", simpleSpotlight(
+                "Forbidden Fruit",
+                "relics",
+                "enigmatic_legacy:forbidden_fruit",
+                290,
+                "A fruit whose sweetness promises more than it should.$(br2)" +
+                        "Its gift is powerful, but the price should never be ignored."
+        )));
+
         futures.add(save(output, "en_us", "entries/relics/astral_fruit", entry(
                 "Astral Fruit",
                 "relics",
                 "enigmatic_legacy:astral_fruit",
-                215,
+                300,
 
                 spotlightPage(
                         "enigmatic_legacy:astral_fruit",
@@ -202,451 +805,6 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
     }
 
     /**
-     * 材料条目。
-     */
-    private void addMaterialEntries(CachedOutput output, List<CompletableFuture<?>> futures) {
-        futures.add(save(output, "en_us", "entries/materials/astral_dust", simpleSpotlight(
-                "Astral Dust",
-                "materials",
-                "enigmatic_legacy:astral_dust",
-                0,
-                "A faintly shimmering substance found at the edge of the unknown.$(br2)" +
-                        "Many early relics begin with this dust."
-        )));
-
-        futures.add(save(output, "en_us", "entries/materials/ender_rod", recipeEntry(
-                "Ender Rod",
-                "materials",
-                "enigmatic_legacy:ender_rod",
-                10,
-                "A rod infused with ender resonance.$(br2)" +
-                        "It serves as a stabilizing component for stranger constructions.",
-                "enigmatic_legacy:ender_rod"
-        )));
-
-        futures.add(save(output, "en_us", "entries/materials/thicc_scroll", recipeEntry(
-                "Thicc Scroll",
-                "materials",
-                "enigmatic_legacy:thicc_scroll",
-                20,
-                "A blank but unusually sturdy scroll.$(br2)" +
-                        "It is prepared to contain knowledge ordinary paper would fail to hold.",
-                "enigmatic_legacy:thicc_scroll"
-        )));
-
-        futures.add(save(output, "en_us", "entries/materials/etherium_ingot", entry(
-                "Etherium Ingot",
-                "materials",
-                "enigmatic_legacy:etherium_ingot",
-                30,
-                spotlightPage(
-                        "enigmatic_legacy:etherium_ingot",
-                        "Etherium Ingot",
-                        "A refined material used in advanced relic construction.$(br2)" +
-                                "It is commonly used for etherium tools, weapons, and armor."
-                ),
-                craftingPage("enigmatic_legacy:etherium_block_uncrafting", "Etherium blocks can be broken back down into ingots.")
-        )));
-
-        futures.add(save(output, "en_us", "entries/materials/cosmic_heart", recipeEntry(
-                "Cosmic Heart",
-                "materials",
-                "enigmatic_legacy:cosmic_heart",
-                40,
-                "A heart-shaped concentration of cosmic potential.$(br2)" +
-                        "It is a crucial ingredient for artifacts tied to space and distance.",
-                "enigmatic_legacy:cosmic_heart"
-        )));
-
-        futures.add(save(output, "en_us", "entries/materials/earth_heart", recipeEntry(
-                "Heart of the Earth",
-                "materials",
-                "enigmatic_legacy:earth_heart",
-                50,
-                "Fragments of the earth can be gathered into a single heart, pulsing with buried vitality.",
-                "enigmatic_legacy:earth_heart"
-        )));
-
-        futures.add(save(output, "en_us", "entries/materials/twisted_heart", recipeEntry(
-                "Twisted Heart",
-                "materials",
-                "enigmatic_legacy:twisted_heart",
-                60,
-                "A heart distorted by hostile energies.$(br2)" +
-                        "It is dangerous, but many relics demand dangerous components.",
-                "enigmatic_legacy:twisted_heart"
-        )));
-
-        futures.add(save(output, "en_us", "entries/materials/evil_essence", simpleSpotlight(
-                "Evil Essence",
-                "materials",
-                "enigmatic_legacy:evil_essence",
-                70,
-                "Condensed malice given form.$(br2)" +
-                        "It is unstable, corruptive, and useful."
-        )));
-
-        futures.add(save(output, "en_us", "entries/materials/evil_ingot", recipeEntry(
-                "Evil Ingot",
-                "materials",
-                "enigmatic_legacy:evil_ingot",
-                80,
-                "An ingot forged from essence too malicious to be left uncontained.",
-                "enigmatic_legacy:evil_ingot"
-        )));
-    }
-
-    /**
-     * 遗物条目。
-     */
-    private void addRelicEntries(CachedOutput output, List<CompletableFuture<?>> futures) {
-        futures.add(save(output, "en_us", "entries/relics/the_acknowledgment", entry(
-                "The Acknowledgment",
-                "relics",
-                "enigmatic_legacy:the_acknowledgment",
-                0,
-
-                spotlightPage(
-                        "enigmatic_legacy:the_acknowledgment",
-                        "The Acknowledgment",
-                        "The Acknowledgment is the core guidebook of this project.$(br2)" +
-                                "Right-clicking it allows you to read about enigmatic relics, materials, spellstones, arcane scrolls, equipment, loot sources, and the mechanics tied to the Seven Curses.$(br2)" +
-                                "When you do not know what to pursue next, open it first."
-                ),
-
-                textPage(
-                        "What Does It Record?",
-                        "The Acknowledgment records most of the project's core content:$(br2)" +
-                                "$(li)Basic and rare materials$(br)" +
-                                "$(li)Rings, charms, grails, mirrors, and other relics$(br)" +
-                                "$(li)Active and passive spellstone powers$(br)" +
-                                "$(li)Arcane scrolls and pacts$(br)" +
-                                "$(li)Etherium equipment, special weapons, and shields$(br)" +
-                                "$(li)Restrictions and rewards related to the Ring of the Seven Curses$(br)" +
-                                "$(li)Exploration tips and loot sources"
-                ),
-
-                textPage(
-                        "Recommended Order",
-                        "If this is your first time playing, read the book in this order:$(br2)" +
-                                "$(li)Start with Materials to learn where Astral Dust, Etherium, Hearts, and other components come from.$(br)" +
-                                "$(li)Then read Relics to understand rings, charms, and early utility items.$(br)" +
-                                "$(li)After that, read Spellstones and choose the core power that fits your playstyle.$(br)" +
-                                "$(li)In the mid to late game, read Arcane Scrolls and Equipment.$(br)" +
-                                "$(li)Before accepting the Seven Curses, read the curse-related entries carefully."
-                ),
-
-                textPage(
-                        "Main Categories",
-                        "The manual is divided into several categories:$(br2)" +
-                                "$(li)World: special rules, exploration tips, and hidden mechanics.$(br)" +
-                                "$(li)Materials: key components used to craft relics.$(br)" +
-                                "$(li)Relics: rings, charms, grails, mirrors, fruits, and other artifacts.$(br)" +
-                                "$(li)Spellstones: wearable stones that grant active or passive powers.$(br)" +
-                                "$(li)Arcane Scrolls: scrolls related to flight, experience, curses, and rewards.$(br)" +
-                                "$(li)Equipment: weapons, tools, armor, and shields."
-                ),
-
-                textPage(
-                        "Important Materials",
-                        "Many items are built around unusual materials:$(br2)" +
-                                "$(li)Astral Dust: an important starting point for early enigmatic creations.$(br)" +
-                                "$(li)Etherium: used for Etherium equipment and advanced crafting.$(br)" +
-                                "$(li)Heart of the Earth: an important material for relics and spellstones.$(br)" +
-                                "$(li)Cosmic Heart: tied to space, teleportation, and higher artifacts.$(br)" +
-                                "$(li)Evil Essence: tied to curses, malice, and dangerous creations."
-                ),
-
-                textPage(
-                        "Relics and Accessories",
-                        "This project adds many relics that can be equipped in Curios slots.$(br2)" +
-                                "Rings usually provide basic powers or convenience effects. Charms are often more focused on combat, exploration, or special mechanics. Some relics only answer to those who endure the Seven Curses.$(br2)" +
-                                "If an item says it requires the Seven Curses, it is not a power meant for ordinary safety."
-                ),
-
-                textPage(
-                        "Spellstones",
-                        "Spellstones are among the most important ability relics.$(br2)" +
-                                "A player can usually equip only a limited number of them, so they define your combat and exploration style.$(br2)" +
-                                "Some spellstones focus on defense, mobility, water, fire, void, teleportation, or even creation-level power."
-                ),
-
-                textPage(
-                        "Arcane Scrolls",
-                        "Arcane Scrolls change rules rather than simply adding attributes.$(br2)" +
-                                "They may affect experience storage, flight, beacon range, curse scaling, resource rewards, or villager trading.$(br2)" +
-                                "Some scrolls can only be used by those who endure the Seven Curses."
-                ),
-
-                textPage(
-                        "Equipment",
-                        "The Equipment category records Etherium weapons, tools, armor, special weapons, and shields.$(br2)" +
-                                "These items usually have greater durability, special attributes, or interactions with other systems in this project.$(br2)" +
-                                "Once you can reliably obtain Etherium materials, you can begin planning this stage."
-                ),
-
-                textPage(
-                        "Loot Sources",
-                        "Not every item is obtained through crafting.$(br2)" +
-                                "Some materials, spellstones, fruits, scrolls, and high-tier relics appear in structure chests.$(br2)" +
-                                "End Cities, Bastions, Ruined Portals, Dungeons, Mineshafts, Temples, Ocean Ruins, Shipwrecks, and Buried Treasure are all worth checking."
-                ),
-
-                textPage(
-                        "The Seven Curses",
-                        "The Ring of the Seven Curses is not an ordinary accessory. It is a dangerous path.$(br2)" +
-                                "It brings long-term punishments, but it also unlocks the right to use certain powerful items.$(br2)" +
-                                "Many advanced relics, scrolls, and special effects require you to spend enough time under its torment."
-                ),
-
-                textPage(
-                        "Reading Advice",
-                        "When you obtain an unfamiliar item, search for an entry with the same name in this manual.$(br2)" +
-                                "If that entry mentions another material, relic, or mechanic, continue reading the corresponding category.$(br2)" +
-                                "This book is not meant to be finished all at once. It is a record to return to throughout the entire progression."
-                ),
-
-                craftingPage(
-                        "enigmatic_legacy:the_acknowledgment",
-                        "Craft The Acknowledgment, then right-click it to open this manual."
-                )
-        )));
-
-        futures.add(save(output, "en_us", "entries/relics/cursed_ring", simpleSpotlight(
-                "Ring of the Seven Curses",
-                "relics",
-                "enigmatic_legacy:cursed_ring",
-                5,
-                "A cursed ring that binds the bearer to seven punishments.$(br2)" +
-                        "Many powerful relics answer only to those who endure its burden."
-        )));
-
-        futures.add(save(output, "en_us", "entries/relics/iron_ring", recipeEntry(
-                "Iron Ring",
-                "relics",
-                "enigmatic_legacy:iron_ring",
-                10,
-                "A simple ring base.$(br2)" +
-                        "Many stronger rings begin as something this plain.",
-                "enigmatic_legacy:iron_ring"
-        )));
-
-        futures.add(save(output, "en_us", "entries/relics/exquisite_ring", recipeEntry(
-                "Exquisite Ring",
-                "relics",
-                "enigmatic_legacy:golden_ring",
-                20,
-                "A refined ring with a more precious frame, suitable for enchantment and further transformation.",
-                "enigmatic_legacy:golden_ring"
-        )));
-
-        futures.add(save(output, "en_us", "entries/relics/ender_ring", recipeEntry(
-                "Ender Ring",
-                "relics",
-                "enigmatic_legacy:ender_ring",
-                30,
-                "A ring linked to ender storage.$(br2)" +
-                        "It grants convenient access to an Ender Chest through its own interface.",
-                "enigmatic_legacy:ender_ring"
-        )));
-
-        futures.add(save(output, "en_us", "entries/relics/magnet_ring", recipeEntry(
-                "Magnet Ring",
-                "relics",
-                "enigmatic_legacy:magnet_ring",
-                40,
-                "This ring pulls nearby items toward its bearer.$(br2)" +
-                        "It is useful while mining, farming, or fighting around many drops.",
-                "enigmatic_legacy:magnet_ring"
-        )));
-
-        futures.add(save(output, "en_us", "entries/relics/dislocation_ring", recipeEntry(
-                "Dislocation Ring",
-                "relics",
-                "enigmatic_legacy:dislocation_ring",
-                50,
-                "A stronger magnetic ring.$(br2)" +
-                        "Instead of slowly dragging drops, it dislocates nearby items directly into reach.",
-                "enigmatic_legacy:dislocation_ring"
-        )));
-
-        futures.add(save(output, "en_us", "entries/relics/twisted_mirror", recipeEntry(
-                "Twisted Mirror",
-                "relics",
-                "enigmatic_legacy:twisted_mirror",
-                60,
-                "A mirror that bends return and remembrance.$(br2)" +
-                        "It is crafted around a recall potion and a Twisted Heart.",
-                "enigmatic_legacy:twisted_mirror"
-        )));
-
-        futures.add(save(output, "en_us", "entries/relics/unholy_grail", simpleSpotlight(
-                "Unholy Grail",
-                "relics",
-                "enigmatic_legacy:unholy_grail",
-                70,
-                "A relic that turns violence into recovery.$(br2)" +
-                        "It rewards aggressive survival, but should not be mistaken for safety."
-        )));
-
-        futures.add(save(output, "en_us", "entries/relics/guardian_heart", simpleSpotlight(
-                "Guardian Heart",
-                "relics",
-                "enigmatic_legacy:guardian_heart",
-                80,
-                "A heart carrying the memory of ancient guardians.$(br2)" +
-                        "It is linked to protection, endurance, and the depths."
-        )));
-
-        futures.add(save(output, "en_us", "entries/relics/monster_charm", recipeEntry(
-                "Emblem of Monster Slayer",
-                "relics",
-                "enigmatic_legacy:monster_charm",
-                90,
-                "An emblem devoted to hunting monsters.$(br2)" +
-                        "It improves combat against hostile creatures and can grant additional rewards.",
-                "enigmatic_legacy:monster_charm"
-        )));
-
-        futures.add(save(output, "en_us", "entries/relics/treasure_hunter_charm", recipeEntry(
-                "Charm of Treasure Hunter",
-                "relics",
-                "enigmatic_legacy:treasure_hunter_charm",
-                100,
-                "A charm for miners and explorers.$(br2)" +
-                        "It improves mining, fortune, and exploration comfort.",
-                "enigmatic_legacy:treasure_hunter_charm"
-        )));
-
-        futures.add(save(output, "en_us", "entries/relics/bloodstained_valor_emblem", recipeEntry(
-                "Emblem of Bloodstained Valor",
-                "relics",
-                "enigmatic_legacy:bloodstained_valor_emblem",
-                110,
-                "An emblem for cursed bearers.$(br2)" +
-                        "The closer its wearer is to death, the more violently it answers.",
-                "enigmatic_legacy:bloodstained_valor_emblem"
-        )));
-
-        futures.add(save(output, "en_us", "entries/relics/mega_sponge", recipeEntry(
-                "Extrapolated Megasponge",
-                "relics",
-                "enigmatic_legacy:mega_sponge",
-                120,
-                "A charm-like sponge that consumes nearby water when its bearer touches it.",
-                "enigmatic_legacy:mega_sponge"
-        )));
-
-        futures.add(save(output, "en_us", "entries/relics/enchanter_pearl", recipeEntry(
-                "Enchanter's Pearl",
-                "relics",
-                "enigmatic_legacy:enchanter_pearl",
-                130,
-                "A pearl useful only to cursed bearers.$(br2)" +
-                        "While equipped, it grants an additional charm slot.",
-                "enigmatic_legacy:enchanter_pearl"
-        )));
-
-        futures.add(save(output, "en_us", "entries/relics/enigmatic_eye", entry(
-                "Dormant Eye / Inscrutable Eye",
-                "relics",
-                "enigmatic_legacy:enigmatic_eye",
-                140,
-                spotlightPage(
-                        "enigmatic_legacy:enigmatic_eye",
-                        "Dormant Eye",
-                        "The Eye sleeps until awakened.$(br2)" +
-                                "It appears only once for a player, when they first discover the right kind of loot."
-                ),
-                textPage(
-                        "Awakened Sight",
-                        "Once awakened, the Eye may be worn as a charm.$(br2)" +
-                                "It grants an additional charm slot, increases interaction range, and may give voice to the Watcher."
-                )
-        )));
-
-        futures.add(save(output, "en_us", "entries/relics/extradimensional_eye", simpleSpotlight(
-                "Extradimensional Eye",
-                "relics",
-                "enigmatic_legacy:extradimensional_eye",
-                150,
-                "A higher eye that peers beyond ordinary space.$(br2)" +
-                        "It is connected to additional reach, hidden containers, and stranger perception."
-        )));
-
-        futures.add(save(output, "en_us", "entries/relics/enchantment_transposer", simpleSpotlight(
-                "Tome of Hungering Knowledge",
-                "relics",
-                "enigmatic_legacy:enchantment_transposer",
-                160,
-                "A tome that hungers for enchantments.$(br2)" +
-                        "It is used to manipulate enchantment power in ways ordinary books cannot."
-        )));
-
-        futures.add(save(output, "en_us", "entries/relics/curse_transposer", simpleSpotlight(
-                "Tome of Devoured Malignancy",
-                "relics",
-                "enigmatic_legacy:curse_transposer",
-                170,
-                "A tome that devours malignancy.$(br2)" +
-                        "It is tied to curses and to those willing to handle cursed knowledge."
-        )));
-
-        futures.add(save(output, "en_us", "entries/relics/unwitnessed_amulet", entry(
-                "Unwitnessed Amulet",
-                "relics",
-                "enigmatic_legacy:unwitnessed_amulet",
-                180,
-                spotlightPage(
-                        "enigmatic_legacy:unwitnessed_amulet",
-                        "Unwitnessed Amulet",
-                        "An amulet whose nature is not yet witnessed.$(br2)" +
-                                "Use it to reveal one of its enigmatic variants."
-                ),
-                textPage(
-                        "Revealed Forms",
-                        "Each revealed amulet bears a different color and power: damage, speed, deflection, gravity, mining, lifesteal, or swimming."
-                )
-        )));
-
-        futures.add(save(output, "en_us", "entries/relics/eldritch_amulet", recipeEntry(
-                "Testament of Contempt",
-                "relics",
-                "enigmatic_legacy:eldritch_amulet",
-                185,
-                "The Amulet of Ascension may be perfected, but perfection can still be made cruel.$(br2)" +
-                        "The Testament of Contempt grants all seven amulet traits, adds raw attack power and lifesteal, weakens creatures caught in your gaze, and preserves your inventory on death. Items marked by Curse of Vanishing are still lost.",
-                "enigmatic_legacy:eldritch_amulet"
-        )));
-
-        futures.add(save(output, "en_us", "entries/relics/storage_crystal", simpleSpotlight(
-                "Extradimensional Vessel",
-                "relics",
-                "enigmatic_legacy:storage_crystal",
-                190,
-                "A vessel for a life interrupted.$(br2)" +
-                        "It stores what would otherwise be lost when saved by the Seven Curses."
-        )));
-
-        futures.add(save(output, "en_us", "entries/relics/soul_crystal", simpleSpotlight(
-                "Soul Crystal",
-                "relics",
-                "enigmatic_legacy:soul_crystal",
-                200,
-                "A crystallized remnant of a rescued soul, bound to the place and moment of death."
-        )));
-
-        futures.add(save(output, "en_us", "entries/relics/forbidden_fruit", simpleSpotlight(
-                "Forbidden Fruit",
-                "relics",
-                "enigmatic_legacy:forbidden_fruit",
-                210,
-                "A fruit whose sweetness promises more than it should.$(br2)" +
-                        "Its gift is powerful, but the price should never be ignored."
-        )));
-    }
-
-    /**
      * 术石条目。
      */
     private void addSpellstoneEntries(CachedOutput output, List<CompletableFuture<?>> futures) {
@@ -655,12 +813,14 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 "spellstones",
                 "enigmatic_legacy:golem_heart",
                 0,
+
                 spotlightPage(
                         "enigmatic_legacy:golem_heart",
                         "Heart of the Golem",
                         "A defensive spellstone that turns the bearer into something closer to an iron golem.$(br2)" +
                                 "It grants armor, toughness, knockback resistance, and special protection when the bearer wears no armor."
                 ),
+
                 textPage(
                         "Weakness",
                         "Its strength has a price.$(br2)" +
@@ -673,15 +833,18 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 "spellstones",
                 "enigmatic_legacy:angel_blessing",
                 10,
+
                 spotlightPage(
                         "enigmatic_legacy:angel_blessing",
                         "Angel's Blessing",
                         "A mobility spellstone tied to air and grace.$(br2)" +
-                                "It helps the bearer move, fall, and recover more safely during exploration."
+                                "It helps the bearer move, fall, and explore more safely."
                 ),
+
                 textPage(
                         "Use",
-                        "Best used when traveling through cliffs, mountains, floating islands, or dangerous vertical spaces."
+                        "It is best used when traveling through cliffs, mountains, floating islands, or other dangerous vertical spaces.$(br2)" +
+                                "If terrain and falling often put you in danger, this stone is extremely useful."
                 )
         )));
 
@@ -690,15 +853,18 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 "spellstones",
                 "enigmatic_legacy:ocean_stone",
                 20,
+
                 spotlightPage(
                         "enigmatic_legacy:ocean_stone",
                         "Will of the Ocean",
-                        "A water-aspected spellstone for underwater exploration.$(br2)" +
+                        "A water-aspected spellstone made for underwater exploration.$(br2)" +
                                 "It improves movement and survival in water, but its power is opposed by flame."
                 ),
+
                 textPage(
                         "Warning",
-                        "Fire and heat become far more threatening while relying on this stone."
+                        "Fire and heat become far more threatening while relying on this stone.$(br2)" +
+                                "Be especially careful in the Nether, near lava lakes, or around blazes."
                 )
         )));
 
@@ -707,12 +873,14 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 "spellstones",
                 "enigmatic_legacy:blazing_core",
                 30,
+
                 spotlightPage(
                         "enigmatic_legacy:blazing_core",
                         "Blazing Core",
                         "A fire-aspected spellstone connected to flame, lava, and the Nether.$(br2)" +
                                 "It grants strong protection against heat, but its power is not without limits."
                 ),
+
                 textPage(
                         "Overheat",
                         "Do not mistake resistance for invulnerability.$(br2)" +
@@ -725,12 +893,14 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 "spellstones",
                 "enigmatic_legacy:eye_of_nebula",
                 40,
+
                 spotlightPage(
                         "enigmatic_legacy:eye_of_nebula",
                         "Eye of the Nebula",
                         "A teleportation spellstone linked to distant space.$(br2)" +
                                 "Its active power moves the bearer behind the creature they are looking at."
                 ),
+
                 textPage(
                         "Combat Use",
                         "After teleporting, the next attack becomes far more dangerous.$(br2)" +
@@ -743,12 +913,14 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 "spellstones",
                 "enigmatic_legacy:void_pearl",
                 50,
+
                 spotlightPage(
                         "enigmatic_legacy:void_pearl",
                         "Pearl of the Void",
                         "A forbidden spellstone that makes the bearer closer to the void.$(br2)" +
                                 "It removes the need to breathe and protects against most status effects."
                 ),
+
                 textPage(
                         "Darkness",
                         "Enemies that remain too close in darkness may suffer void damage and crippling effects.$(br2)" +
@@ -761,16 +933,18 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 "spellstones",
                 "enigmatic_legacy:the_cube",
                 60,
+
                 spotlightPage(
                         "enigmatic_legacy:the_cube",
                         "Non-Euclidean Cube",
                         "A geometry-breaking spellstone.$(br2)" +
                                 "It improves movement, mining, attack speed, luck, and fortune while bending the rules of incoming damage."
                 ),
+
                 textPage(
                         "Active Power",
                         "Its active ability sends the bearer toward a random structure within the current dimension.$(br2)" +
-                                "Use it carefully. Non-Euclidean travel rarely cares about comfort."
+                                "Use it carefully. Non-Euclidean travel does not promise comfort."
                 )
         )));
 
@@ -779,16 +953,18 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 "spellstones",
                 "enigmatic_legacy:heart_of_creation",
                 70,
+
                 spotlightPage(
                         "enigmatic_legacy:heart_of_creation",
                         "Heart of Creation",
-                        "A supreme spellstone bound to creation and survival.$(br2)" +
-                                "It grants flight, protects from many damage sources, and can call lightning upon nearby enemies."
+                        "A supreme spellstone tied to creation and survival.$(br2)" +
+                                "It grants flight, resists many forms of damage, and calls lightning down upon nearby enemies."
                 ),
+
                 textPage(
                         "Immortality",
-                        "When carried or equipped, it may prevent death by leaving the bearer at the edge of life.$(br2)" +
-                                "This protection is powerful, but it should not be mistaken for carelessness."
+                        "When carried or worn, it can keep the bearer alive at the edge of death.$(br2)" +
+                                "This protection is powerful, but it does not mean recklessness is safe."
                 )
         )));
     }
@@ -802,16 +978,18 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 "scrolls",
                 "enigmatic_legacy:xp_scroll",
                 0,
+
                 spotlightPage(
                         "enigmatic_legacy:xp_scroll",
                         "Scroll of Ageless Wisdom",
-                        "An arcane scroll that stores experience.$(br2)" +
-                                "When active, it can absorb nearby experience or return stored experience to the bearer."
+                        "An arcane scroll used to store experience.$(br2)" +
+                                "When enabled, it can absorb nearby experience and later return stored experience to its holder."
                 ),
+
                 textPage(
                         "Use",
-                        "Use Shift + Right Click to toggle its mode.$(br2)" +
-                                "It is best carried when mining, enchanting, or preparing for dangerous fights."
+                        "Use Shift + Right Click to switch modes.$(br2)" +
+                                "It is useful while mining, enchanting, or preparing for dangerous combat."
                 )
         )));
 
@@ -820,16 +998,18 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 "scrolls",
                 "enigmatic_legacy:heaven_scroll",
                 10,
+
                 spotlightPage(
                         "enigmatic_legacy:heaven_scroll",
                         "Gift of the Heaven",
-                        "A scroll that grants flight within beacon influence.$(br2)" +
-                                "It consumes experience while flying and protects against fall damage under proper conditions."
+                        "A scroll that grants flight while within beacon range.$(br2)" +
+                                "Flying consumes experience and can prevent fall damage while its conditions are met."
                 ),
+
                 textPage(
-                        "Beacon Bound",
-                        "Leaving beacon range removes flight and grants slow falling for a short time.$(br2)" +
-                                "If you still have not landed afterward, the ground will remind you of gravity."
+                        "Beacon Limit",
+                        "Leaving beacon range removes flight and briefly grants Slow Falling.$(br2)" +
+                                "If Slow Falling ends before you land, gravity will reclaim its price."
                 )
         )));
 
@@ -838,15 +1018,17 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 "scrolls",
                 "enigmatic_legacy:cursed_scroll",
                 20,
+
                 spotlightPage(
                         "enigmatic_legacy:cursed_scroll",
                         "Scroll of a Thousand Curses",
-                        "A scroll meant only for those who endure the Seven Curses.$(br2)" +
+                        "A scroll usable only by those who endure the Seven Curses.$(br2)" +
                                 "Its bonuses scale with the number of curse enchantments on your equipment."
                 ),
+
                 textPage(
-                        "Scaling",
-                        "It improves attack, mining speed, and regeneration.$(br2)" +
+                        "Growth",
+                        "It improves attack, mining speed, and life regeneration.$(br2)" +
                                 "The more cursed your equipment becomes, the stronger the scroll answers."
                 )
         )));
@@ -856,16 +1038,18 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 "scrolls",
                 "enigmatic_legacy:fabulous_scroll",
                 30,
+
                 spotlightPage(
                         "enigmatic_legacy:fabulous_scroll",
                         "Grace of the Creator",
-                        "A superior flight scroll.$(br2)" +
-                                "It allows flight anywhere, consuming experience unless the bearer remains within beacon range."
+                        "A higher flight scroll.$(br2)" +
+                                "It allows flight anywhere, but continuously consumes experience outside beacon range."
                 ),
+
                 textPage(
                         "Limit",
                         "It cannot be worn together with Gift of the Heaven.$(br2)" +
-                                "Both grant flight, but their blessings do not stack."
+                                "Both grant flight, but their gifts do not stack with each other."
                 )
         )));
 
@@ -874,16 +1058,18 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 "scrolls",
                 "enigmatic_legacy:avarice_scroll",
                 40,
+
                 spotlightPage(
                         "enigmatic_legacy:avarice_scroll",
                         "Pact of Infinite Avarice",
-                        "A pact for cursed bearers who value gain above restraint.$(br2)" +
-                                "It improves fortune, affects piglins, increases rewards, and helps with trading."
+                        "A pact of greed offered to the cursed.$(br2)" +
+                                "It improves fortune, affects piglins, increases rewards, and makes trading more favorable."
                 ),
+
                 textPage(
                         "Greed",
-                        "With sufficient curses, material gains can be doubled.$(br2)" +
-                                "Killed creatures may drop emeralds, and villagers may offer better prices."
+                        "When the curse is deep enough, material rewards can be doubled.$(br2)" +
+                                "Killed creatures may drop emeralds, and villagers may offer lower prices."
                 )
         )));
     }
@@ -897,17 +1083,27 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 "equipment",
                 "enigmatic_legacy:axe_of_executioner",
                 0,
-                "A brutal axe with a chance to behead slain creatures.$(br2)" +
-                        "Its base beheading chance is 15%, and each Looting level adds 5% more.",
+                "A cruel axe with a chance to behead slain enemies.$(br2)" +
+                        "Its base beheading chance is 15%, and each level of Looting adds another 5%.",
                 "enigmatic_legacy:axe_of_executioner"
+        )));
+
+        futures.add(save(output, "en_us", "entries/equipment/ender_slayer", simpleSpotlight(
+                "The Ender Slayer",
+                "equipment",
+                "enigmatic_legacy:ender_slayer",
+                10,
+                "A Seven Curses relic weapon made to fight End creatures.$(br2)" +
+                        "It is especially dangerous against End-related enemies and is worth preparing before exploring the End."
         )));
 
         futures.add(save(output, "en_us", "entries/equipment/etherium_sword", recipeEntry(
                 "Etherium Broadsword",
                 "equipment",
                 "enigmatic_legacy:etherium_sword",
-                10,
-                "A heavy etherium blade forged for direct combat.",
+                20,
+                "A heavy Etherium blade forged for direct combat.$(br2)" +
+                        "It has strong durability and stable melee performance.",
                 "enigmatic_legacy:etherium_sword"
         )));
 
@@ -915,8 +1111,9 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 "Etherium Pickaxe",
                 "equipment",
                 "enigmatic_legacy:etherium_pickaxe",
-                20,
-                "A durable etherium tool for mining hard materials.",
+                30,
+                "A durable pickaxe forged from Etherium.$(br2)" +
+                        "It is suitable for mining hard materials and can receive normal tool enchantments.",
                 "enigmatic_legacy:etherium_pickaxe"
         )));
 
@@ -924,17 +1121,19 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 "Etherium Shovel",
                 "equipment",
                 "enigmatic_legacy:etherium_shovel",
-                30,
-                "A shovel forged from etherium for fast excavation.",
+                40,
+                "A shovel forged from Etherium.$(br2)" +
+                        "It is used to quickly dig dirt, gravel, sand, and similar blocks.",
                 "enigmatic_legacy:etherium_shovel"
         )));
 
         futures.add(save(output, "en_us", "entries/equipment/etherium_axe", recipeEntry(
-                "Etherium Waraxe",
+                "Etherium Axe",
                 "equipment",
                 "enigmatic_legacy:etherium_axe",
-                40,
-                "An etherium axe made as both a tool and a weapon.",
+                50,
+                "An Etherium waraxe that serves as both tool and weapon.$(br2)" +
+                        "It is useful for chopping wood and can also serve as reliable melee equipment.",
                 "enigmatic_legacy:etherium_axe"
         )));
 
@@ -942,17 +1141,64 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 "Etherium Armor",
                 "equipment",
                 "enigmatic_legacy:etherium_chestplate",
-                50,
+                60,
+
                 spotlightPage(
                         "enigmatic_legacy:etherium_chestplate",
                         "Etherium Armor",
-                        "A full armor set forged from etherium.$(br2)" +
-                                "It is intended for late-game protection and pairs naturally with other advanced relics."
+                        "A complete armor set forged from Etherium.$(br2)" +
+                                "It is suitable for late-game protection and naturally pairs with other high-tier relics."
                 ),
-                craftingPage("enigmatic_legacy:etherium_helmet", "Helmet recipe."),
-                craftingPage("enigmatic_legacy:etherium_chestplate", "Chestplate recipe."),
-                craftingPage("enigmatic_legacy:etherium_leggings", "Leggings recipe."),
-                craftingPage("enigmatic_legacy:etherium_boots", "Boots recipe.")
+
+                craftingPage("enigmatic_legacy:etherium_helmet", "The recipe for the Etherium Helmet."),
+                craftingPage("enigmatic_legacy:etherium_chestplate", "The recipe for the Etherium Chestplate."),
+                craftingPage("enigmatic_legacy:etherium_leggings", "The recipe for the Etherium Leggings."),
+                craftingPage("enigmatic_legacy:etherium_boots", "The recipe for the Etherium Boots.")
+        )));
+
+        futures.add(save(output, "en_us", "entries/equipment/the_twist", simpleSpotlight(
+                "The Twist",
+                "equipment",
+                "enigmatic_legacy:the_twist",
+                70,
+                "A twisted form of The Acknowledgment shaped by the Seven Curses.$(br2)" +
+                        "It is both a book and a weapon, and it answers only to those who endure the curses."
+        )));
+
+        futures.add(save(output, "en_us", "entries/equipment/the_infinitum", simpleSpotlight(
+                "The Infinitum",
+                "equipment",
+                "enigmatic_legacy:the_infinitum",
+                80,
+                "A deeper, higher form beyond The Twist.$(br2)" +
+                        "It carries knowledge and violence that seem almost endless."
+        )));
+
+        futures.add(save(output, "en_us", "entries/equipment/majestic_elytra", simpleSpotlight(
+                "Majestic Elytra",
+                "equipment",
+                "enigmatic_legacy:majestic_elytra",
+                90,
+                "An elytra strengthened by enigmatic power.$(br2)" +
+                        "It is useful for long-distance exploration and can be used alongside higher equipment progression."
+        )));
+
+        futures.add(save(output, "en_us", "entries/equipment/bulwark_of_blazing_pride", simpleSpotlight(
+                "Bulwark of Blazing Pride",
+                "equipment",
+                "enigmatic_legacy:infernal_shield",
+                100,
+                "A fireproof shield that only those enduring the Seven Curses can truly use.$(br2)" +
+                        "It is tied to flame, defense, and pride, forming a solid bulwark in dangerous battles."
+        )));
+
+        futures.add(save(output, "en_us", "entries/equipment/voracious_pan", simpleSpotlight(
+                "The Voracious Pan",
+                "equipment",
+                "enigmatic_legacy:eldritch_pan",
+                110,
+                "A ridiculous-looking but highly dangerous Seven Curses relic.$(br2)" +
+                        "It grows stronger through kills of different creatures and can be used as a weapon."
         )));
     }
 }

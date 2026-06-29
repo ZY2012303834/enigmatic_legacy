@@ -1,0 +1,17 @@
+{
+  "category": "enigmatic_legacy:materials",
+  "icon": "enigmatic_legacy:etherium_block",
+  "name": "以太块",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:etherium_block",
+      "link_recipe": true,
+      "text": "以太锭压缩而成的高阶材料方块。$(br2)它既可用于储存以太，也能分解回以太锭。",
+      "title": "以太块"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 45
+}

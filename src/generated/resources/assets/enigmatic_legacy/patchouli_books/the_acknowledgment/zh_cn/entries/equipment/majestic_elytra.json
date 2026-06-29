@@ -1,0 +1,17 @@
+{
+  "category": "enigmatic_legacy:equipment",
+  "icon": "enigmatic_legacy:majestic_elytra",
+  "name": "壮丽鞘翅",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:majestic_elytra",
+      "link_recipe": true,
+      "text": "经过神秘力量强化的鞘翅。$(br2)它适合长距离探索，也可以和其它高阶装备共同使用。",
+      "title": "壮丽鞘翅"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 90
+}

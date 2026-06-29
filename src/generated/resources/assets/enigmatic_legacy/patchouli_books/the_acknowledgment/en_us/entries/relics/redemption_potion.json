@@ -1,0 +1,17 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:redemption_potion",
+  "name": "Potion of Redemption",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:redemption_potion",
+      "link_recipe": true,
+      "text": "A potion carrying the force of redemption.$(br2)It is uncommon and is usually obtained through higher exploration rewards.",
+      "title": "Potion of Redemption"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 90
+}

@@ -1,0 +1,22 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:ascension_amulet",
+  "name": "Amulet of Ascension",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:ascension_amulet",
+      "link_recipe": true,
+      "text": "A higher amulet formed from all seven Enigmatic Amulets.$(br2)It inherits the powers of all seven colors.",
+      "title": "Amulet of Ascension"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The Amulet of Ascension grants bonuses related to attack, speed, projectile deflection, gravity, mining, lifesteal, and swimming.$(br2)It is the completed form of the Enigmatic Amulet path and a key step toward the Testament of Contempt.",
+      "title": "Worn Effects"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 240
+}

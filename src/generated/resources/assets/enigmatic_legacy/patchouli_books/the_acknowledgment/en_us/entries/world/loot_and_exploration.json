@@ -5,7 +5,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Not every item comes from crafting.$(br2)Some materials, spellstones, fruits, scrolls, and high-tier items in this project appear in structure chests.$(br2)If you cannot find a crafting recipe in the crafting table or JEI, the item may require exploration.",
+      "text": "Not every item comes from crafting.$(br2)Some materials, spellstones, fruits, scrolls, and high-tier relics appear in structure chests.$(br2)If you cannot find a recipe in the crafting table or JEI, the item may require exploration.",
       "title": "Loot and Exploration"
     },
     {
@@ -16,7 +16,7 @@
     {
       "type": "patchouli:text",
       "text": "Structure chests usually generate their contents when first opened.$(br2)If a chest has already been opened, changing loot tables later will not refresh its contents.$(br2)When testing loot, use a new world, newly generated chunks, or the /loot command.",
-      "title": "Important Note"
+      "title": "Testing Note"
     }
   ],
   "read_by_default": true,

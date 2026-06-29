@@ -1,0 +1,17 @@
+{
+  "category": "enigmatic_legacy:materials",
+  "icon": "enigmatic_legacy:abyssal_heart",
+  "name": "深渊之心",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:abyssal_heart",
+      "link_recipe": true,
+      "text": "来自深渊力量的心脏状材料。$(br2)它通常与虚空、恶意和高阶遗物有关。",
+      "title": "深渊之心"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 75
+}

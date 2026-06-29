@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:evil_ingot",
       "link_recipe": true,
-      "text": "由过于恶毒而不能放任不管的精华锻造成的锭。",
+      "text": "由过于恶毒而不能放任不管的精华锻造成的锭。$(br2)它常用于诅咒、恶意和高阶遗物路线。",
       "title": "邪恶锭"
     },
     {
@@ -19,5 +19,5 @@
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 80
+  "sortnum": 90
 }

@@ -1,0 +1,17 @@
+{
+  "category": "enigmatic_legacy:materials",
+  "icon": "enigmatic_legacy:earth_heart_fragment",
+  "name": "大地之心碎片",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:earth_heart_fragment",
+      "link_recipe": true,
+      "text": "大地之心破碎后留下的残片。$(br2)收集足够碎片后，可以重新凝聚为完整的大地之心。",
+      "title": "大地之心碎片"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 55
+}

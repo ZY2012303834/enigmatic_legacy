@@ -7,16 +7,16 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:unwitnessed_amulet",
       "link_recipe": true,
-      "text": "An amulet whose nature is not yet witnessed.$(br2)Use it to reveal one of its enigmatic variants.",
+      "text": "An amulet whose nature has not yet been witnessed.$(br2)Using it reveals one of its enigmatic variants.",
       "title": "Unwitnessed Amulet"
     },
     {
       "type": "patchouli:text",
-      "text": "Each revealed amulet bears a different color and power: damage, speed, deflection, gravity, mining, lifesteal, or swimming.",
+      "text": "Each revealed amulet has a different color and power:$(br2)$(li)Red: Attack Damage$(br)$(li)Aqua: Sprint Speed$(br)$(li)Violet: Projectile Deflection$(br)$(li)Magenta: Gravity Change$(br)$(li)Green: Mining Efficiency$(br)$(li)Black: Lifesteal$(br)$(li)Blue: Swim Speed",
       "title": "Revealed Forms"
     }
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 180
+  "sortnum": 220
 }

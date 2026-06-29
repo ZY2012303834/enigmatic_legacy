@@ -7,11 +7,11 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:enchantment_transposer",
       "link_recipe": true,
-      "text": "A tome that hungers for enchantments.$(br2)It is used to manipulate enchantment power in ways ordinary books cannot.",
+      "text": "A tome that hungers for enchantments.$(br2)It can manipulate enchantment power in ways ordinary books cannot.",
       "title": "Tome of Hungering Knowledge"
     }
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 160
+  "sortnum": 200
 }

@@ -1,0 +1,17 @@
+{
+  "category": "enigmatic_legacy:materials",
+  "icon": "enigmatic_legacy:astral_dust_sack",
+  "name": "Astral Dust Sack",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:astral_dust_sack",
+      "link_recipe": true,
+      "text": "A storage block made from compressed Astral Dust.$(br2)Useful for storing large amounts of dust and keeping materials ready for enigmatic crafting.",
+      "title": "Astral Dust Sack"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 5
+}

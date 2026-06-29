@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:thicc_scroll",
       "link_recipe": true,
-      "text": "A blank but unusually sturdy scroll.$(br2)It is prepared to contain knowledge ordinary paper would fail to hold.",
+      "text": "A blank but unusually sturdy scroll.$(br2)It can carry knowledge that ordinary paper would fail to contain, making it an important base for Arcane Scrolls.",
       "title": "Thicc Scroll"
     },
     {

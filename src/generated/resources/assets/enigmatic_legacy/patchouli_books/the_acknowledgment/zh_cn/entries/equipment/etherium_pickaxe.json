@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:etherium_pickaxe",
       "link_recipe": true,
-      "text": "由以太锻造的耐用矿镐，适合开采坚硬材料。",
+      "text": "由以太锻造的耐用矿镐。$(br2)适合开采坚硬材料，并能正常接受工具类附魔。",
       "title": "以太镐"
     },
     {
@@ -19,5 +19,5 @@
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 20
+  "sortnum": 30
 }

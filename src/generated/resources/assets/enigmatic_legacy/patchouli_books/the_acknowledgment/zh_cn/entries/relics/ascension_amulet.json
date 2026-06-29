@@ -1,0 +1,22 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:ascension_amulet",
+  "name": "飞升护符",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:ascension_amulet",
+      "link_recipe": true,
+      "text": "由七种神秘护符汇聚而成的高阶护符。$(br2)它同时继承七种颜色神秘护符的力量。",
+      "title": "飞升护符"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "飞升护符提供攻击、速度、弹射物偏转、重力、挖掘、生命偷取和游泳相关加成。$(br2)它是神秘护符路线的完整形态，也是通向轻蔑之约的关键材料。",
+      "title": "佩戴效果"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 240
+}

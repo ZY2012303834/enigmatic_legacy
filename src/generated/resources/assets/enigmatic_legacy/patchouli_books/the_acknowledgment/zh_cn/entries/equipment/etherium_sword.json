@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:etherium_sword",
       "link_recipe": true,
-      "text": "一把沉重的以太剑刃，为正面战斗而锻造。",
+      "text": "一把沉重的以太剑刃，为正面战斗而锻造。$(br2)它拥有优秀的耐久和稳定的近战表现。",
       "title": "以太阔剑"
     },
     {
@@ -19,5 +19,5 @@
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 10
+  "sortnum": 20
 }

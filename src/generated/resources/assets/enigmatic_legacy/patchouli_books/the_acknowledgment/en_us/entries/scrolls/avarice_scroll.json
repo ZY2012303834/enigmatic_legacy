@@ -7,12 +7,12 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:avarice_scroll",
       "link_recipe": true,
-      "text": "A pact for cursed bearers who value gain above restraint.$(br2)It improves fortune, affects piglins, increases rewards, and helps with trading.",
+      "text": "A pact of greed offered to the cursed.$(br2)It improves fortune, affects piglins, increases rewards, and makes trading more favorable.",
       "title": "Pact of Infinite Avarice"
     },
     {
       "type": "patchouli:text",
-      "text": "With sufficient curses, material gains can be doubled.$(br2)Killed creatures may drop emeralds, and villagers may offer better prices.",
+      "text": "When the curse is deep enough, material rewards can be doubled.$(br2)Killed creatures may drop emeralds, and villagers may offer lower prices.",
       "title": "Greed"
     }
   ],

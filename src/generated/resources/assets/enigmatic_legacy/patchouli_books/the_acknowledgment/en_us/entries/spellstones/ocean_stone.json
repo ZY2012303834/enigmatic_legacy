@@ -7,12 +7,12 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:ocean_stone",
       "link_recipe": true,
-      "text": "A water-aspected spellstone for underwater exploration.$(br2)It improves movement and survival in water, but its power is opposed by flame.",
+      "text": "A water-aspected spellstone made for underwater exploration.$(br2)It improves movement and survival in water, but its power is opposed by flame.",
       "title": "Will of the Ocean"
     },
     {
       "type": "patchouli:text",
-      "text": "Fire and heat become far more threatening while relying on this stone.",
+      "text": "Fire and heat become far more threatening while relying on this stone.$(br2)Be especially careful in the Nether, near lava lakes, or around blazes.",
       "title": "Warning"
     }
   ],

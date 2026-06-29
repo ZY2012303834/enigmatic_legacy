@@ -5,11 +5,16 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Death is rarely without consequence.$(br2)Some forces return what was lost, but never without reminding you that the world keeps count.",
+      "text": "Death is rarely without consequence.$(br2)Some powers may return what was lost, but the world always remembers what you owed.$(br2)Soul Crystals, Extradimensional Vessels, and some Seven Curses items are tied to death recovery and retrieval.",
       "title": "Soul Loss"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "If you lose important items after death, first check whether they were preserved in a Soul Crystal or an Extradimensional Vessel.$(br2)Certain wayfinding items can help cursed bearers locate these containers.",
+      "title": "Hint"
     }
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 0
+  "sortnum": 10
 }

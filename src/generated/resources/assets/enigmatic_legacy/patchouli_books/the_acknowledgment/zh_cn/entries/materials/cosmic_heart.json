@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:cosmic_heart",
       "link_recipe": true,
-      "text": "心形的宇宙潜能凝聚物。$(br2)它是空间与距离类遗物的重要材料。",
+      "text": "心形的宇宙潜能凝聚物。$(br2)它是空间、距离、传送和高阶遗物的重要材料。",
       "title": "宇宙之心"
     },
     {
@@ -19,5 +19,5 @@
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 40
+  "sortnum": 50
 }

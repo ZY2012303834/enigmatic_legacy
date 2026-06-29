@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:golden_ring",
       "link_recipe": true,
-      "text": "A refined ring with a more precious frame, suitable for enchantment and further transformation.",
+      "text": "A refined ring with a more precious frame.$(br2)It is suitable for enchantment, transformation, or use as a material for other rings.",
       "title": "Exquisite Ring"
     },
     {

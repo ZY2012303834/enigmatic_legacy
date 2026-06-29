@@ -7,11 +7,11 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:soul_crystal",
       "link_recipe": true,
-      "text": "A crystallized remnant of a rescued soul, bound to the place and moment of death.",
+      "text": "A crystallized remnant of a rescued soul.$(br2)It is bound to the place and moment of death.",
       "title": "Soul Crystal"
     }
   ],
   "read_by_default": true,
   "secret": false,
-  "sortnum": 200
+  "sortnum": 270
 }

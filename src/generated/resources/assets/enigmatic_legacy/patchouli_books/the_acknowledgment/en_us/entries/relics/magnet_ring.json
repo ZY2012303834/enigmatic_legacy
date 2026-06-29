@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "enigmatic_legacy:magnet_ring",
       "link_recipe": true,
-      "text": "This ring pulls nearby items toward its bearer.$(br2)It is useful while mining, farming, or fighting around many drops.",
+      "text": "This ring pulls nearby item drops toward its bearer.$(br2)It is useful while mining, farming, fighting, or cleaning up large amounts of loot.",
       "title": "Magnet Ring"
     },
     {
