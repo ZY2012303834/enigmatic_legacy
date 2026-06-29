@@ -1,19 +1,12 @@
 {
   "parent": "enigmatic_legacy:main/root",
   "criteria": {
-    "has_item": {
-      "conditions": {
-        "items": [
-          {
-            "items": "enigmatic_legacy:cursed_ring"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
+    "equipped_cursed_ring": {
+      "trigger": "minecraft:impossible"
     }
   },
   "display": {
-    "announce_to_chat": true,
+    "announce_to_chat": false,
     "description": {
       "translate": "advancement.enigmatic_legacy:cursedRing.desc"
     },
@@ -31,7 +24,7 @@
   },
   "requirements": [
     [
-      "has_item"
+      "equipped_cursed_ring"
     ]
   ]
 }

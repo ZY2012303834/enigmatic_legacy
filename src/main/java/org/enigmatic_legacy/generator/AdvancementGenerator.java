@@ -157,7 +157,14 @@ public class AdvancementGenerator implements DataProvider {
             }
             display.addProperty("frame", frame);
             display.addProperty("show_toast", showToast);
-            display.addProperty("announce_to_chat", announceToChat);
+            /*
+             * 本项目进度聊天提示改为由 EnigmaticAdvancementEvents 手动发送。
+             *
+             * 原因：
+             * 原版进度聊天里的 [ ] 括号颜色不能通过 advancement JSON 单独控制；
+             * 所以这里关闭原版聊天广播，避免出现两条重复提示。
+             */
+            display.addProperty("announce_to_chat", false);
             display.addProperty("hidden", hidden);
             display.addProperty("x", x);
             display.addProperty("y", y);
@@ -166,6 +173,22 @@ public class AdvancementGenerator implements DataProvider {
 
         private JsonObject criteria() {
             JsonObject criteria = new JsonObject();
+
+            /*
+             * “前途黑暗”进度特殊处理：
+             *
+             * 原来是 inventory_changed，只要背包里有七咒之戒就会触发。
+             * 现在改为 minecraft:impossible，让 JSON 自身永远不会自动完成。
+             * 实际完成逻辑交给 EnigmaticAdvancementEvents：
+             * 只有玩家真正佩戴七咒之戒时才授予。
+             */
+            if ("cursedRing".equals(key)) {
+                JsonObject criterion = new JsonObject();
+                criterion.addProperty("trigger", "minecraft:impossible");
+                criteria.add("equipped_cursed_ring", criterion);
+                return criteria;
+            }
+
             if (requireAll) {
                 for (String item : items) {
                     criteria.add("has_" + item, inventoryCriterion(List.of(item)));
@@ -173,12 +196,24 @@ public class AdvancementGenerator implements DataProvider {
             } else {
                 criteria.add("has_item", inventoryCriterion(items));
             }
+
             return criteria;
         }
 
         private JsonArray requirements() {
             JsonArray requirements = new JsonArray();
             JsonArray group = new JsonArray();
+
+            /*
+             * “前途黑暗”使用手动授予条件。
+             * 必须和 criteria() 里的 equipped_cursed_ring 名称一致。
+             */
+            if ("cursedRing".equals(key)) {
+                group.add("equipped_cursed_ring");
+                requirements.add(group);
+                return requirements;
+            }
+
             if (requireAll) {
                 for (String item : items) {
                     group.add("has_" + item);
@@ -186,6 +221,7 @@ public class AdvancementGenerator implements DataProvider {
             } else {
                 group.add("has_item");
             }
+
             requirements.add(group);
             return requirements;
         }

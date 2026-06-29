@@ -83,7 +83,7 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
+    "announce_to_chat": false,
     "description": {
       "translate": "advancement.enigmatic_legacy:allSpellstones.desc"
     },
