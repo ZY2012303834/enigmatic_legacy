@@ -932,6 +932,9 @@ public class EnglishLanguageGenerator extends LanguageProvider {
     private void addAdvancementTranslations() {
         add("advancementTab.enigmatic_legacy", "§5Enigmatic Legacy");
         add("advancementTab.enigmatic_legacy.desc", "Remains of the former times");
+        add("advancements.toast.task", "§5Advancement Made!");
+        add("advancements.toast.goal", "§5Goal Reached!");
+        add("advancements.toast.challenge", "§5Challenge Complete!");
 
         addAdvancement("discoverSpellstone", "Elemental Might", "Discover your first Spellstone");
         addAdvancement("discoverScroll", "Supersolid Wizard", "Obtain your first Arcane Scroll");

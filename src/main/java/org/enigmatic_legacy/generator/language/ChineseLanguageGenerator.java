@@ -936,6 +936,9 @@ public class ChineseLanguageGenerator extends LanguageProvider {
     private void addAdvancementTranslations() {
         add("advancementTab.enigmatic_legacy", "§5神秘遗物");
         add("advancementTab.enigmatic_legacy.desc", "昔日残遗");
+        add("advancements.toast.task", "§5达成进度！");
+        add("advancements.toast.goal", "§5达成目标！");
+        add("advancements.toast.challenge", "§5完成挑战！");
 
         addAdvancement("discoverSpellstone", "元素之力", "找到你的第一块术石");
         addAdvancement("discoverScroll", "专业的巫师", "获得你的第一个奥秘卷轴");
