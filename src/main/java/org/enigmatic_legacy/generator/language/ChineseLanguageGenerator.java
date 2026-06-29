@@ -924,6 +924,23 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.ascension_amulet.no_vessel",
                 "灵魂水晶与超维容器的死亡恢复逻辑已由七咒之戒处理。");
 
+        addItem(ModItems.SCORCHED_CHARM, "阳灼护符");
+
+        add("tooltip.enigmatic_legacy.scorched_charm.1",
+                "免疫大多数火焰伤害，并允许你行走在岩浆之上。");
+
+        add("tooltip.enigmatic_legacy.scorched_charm.2",
+                "接触岩浆时，每秒恢复 2 点生命。");
+
+        add("tooltip.enigmatic_legacy.scorched_charm.3",
+                "攻击着火目标时，恢复造成伤害的 20%。");
+
+        add("tooltip.enigmatic_legacy.scorched_charm.4",
+                "有 10% 概率抵御下一次伤害；接触岩浆时概率翻倍。");
+
+        add("tooltip.enigmatic_legacy.scorched_charm.5",
+                "下蹲时可以潜入岩浆，并在岩浆中拥有更高能见度。");
+
         // 七咒折磨 99.5% 使用资格提示，所有需要该资格的物品共用这一组语言 key。
         add("tooltip.enigmatic_legacy.cursed_suffering.requirement", "你需要在七咒之戒的折磨下度过总游戏时间的 %s 才能使用该物品。");
         add("tooltip.enigmatic_legacy.cursed_suffering.current_percentage", "当前受七咒折磨的时间百分比：%s");

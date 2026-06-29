@@ -1,0 +1,38 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:scorched_charm",
+  "name": "Charm of Scorched Sun",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:scorched_charm",
+      "link_recipe": true,
+      "text": "A high-tier charm scorched by sunfire and lava.$(br2)It turns the Blazing Core's fire adaptation into a steadier blessing of survival.",
+      "title": "Charm of Scorched Sun"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The Charm of Scorched Sun grants immunity to most fire damage, including fire, burning, lava, and hot floors.$(br2)It allows you to walk on lava. If you want to dive into lava, crouch.",
+      "title": "Fire and Lava"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "While touching lava, the charm restores 2 health every second.$(br2)When you attack a burning target, it restores 20% of the damage dealt.$(br2)It rewards fighting within fire rather than fleeing from it.",
+      "title": "Healing and Lifesteal"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "While worn, the charm has a 10% chance to completely resist incoming damage.$(br2)While touching lava, this chance doubles to 20%.$(br2)The protection is unreliable, but it may save your life at the worst moment.",
+      "title": "Damage Resistance"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:scorched_charm",
+      "text": "The crafting recipe for the Charm of Scorched Sun.",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 155
+}

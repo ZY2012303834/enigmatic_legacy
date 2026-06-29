@@ -1,0 +1,38 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:scorched_charm",
+  "name": "阳灼护符",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:scorched_charm",
+      "link_recipe": true,
+      "text": "被烈日与岩浆共同灼刻的高阶护符。$(br2)它将烈焰核心的火焰适应能力转化为更加稳定的生存祝福。",
+      "title": "阳灼护符"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "阳灼护符会免疫大多数火焰伤害，包括火焰、着火、岩浆和岩浆块。$(br2)佩戴后可以行走在岩浆表面；如果你想潜入岩浆，只需要下蹲。",
+      "title": "火焰与岩浆"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "接触岩浆时，阳灼护符每秒恢复 2 点生命。$(br2)攻击正在燃烧的目标时，会恢复造成伤害的 20%。$(br2)它鼓励你在火焰环境中战斗，而不是逃离火焰。",
+      "title": "恢复与汲取"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "佩戴时有 10% 概率完全抵御下一次受到的伤害。$(br2)当你接触岩浆时，这个概率翻倍为 20%。$(br2)这份庇护并不稳定，但在最危险的时候可能救你一命。",
+      "title": "伤害抵御"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:scorched_charm",
+      "text": "阳灼护符的合成配方。",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 155
+}

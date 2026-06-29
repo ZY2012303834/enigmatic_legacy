@@ -718,6 +718,45 @@ final class ChinesePatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 "enigmatic_legacy:bloodstained_valor_emblem"
         )));
 
+        futures.add(save(output, "zh_cn", "entries/relics/scorched_charm", entry(
+                "阳灼护符",
+                "relics",
+                "enigmatic_legacy:scorched_charm",
+                155,
+
+                spotlightPage(
+                        "enigmatic_legacy:scorched_charm",
+                        "阳灼护符",
+                        "被烈日与岩浆共同灼刻的高阶护符。$(br2)" +
+                                "它将烈焰核心的火焰适应能力转化为更加稳定的生存祝福。"
+                ),
+
+                textPage(
+                        "火焰与岩浆",
+                        "阳灼护符会免疫大多数火焰伤害，包括火焰、着火、岩浆和岩浆块。$(br2)" +
+                                "佩戴后可以行走在岩浆表面；如果你想潜入岩浆，只需要下蹲。"
+                ),
+
+                textPage(
+                        "恢复与汲取",
+                        "接触岩浆时，阳灼护符每秒恢复 2 点生命。$(br2)" +
+                                "攻击正在燃烧的目标时，会恢复造成伤害的 20%。$(br2)" +
+                                "它鼓励你在火焰环境中战斗，而不是逃离火焰。"
+                ),
+
+                textPage(
+                        "伤害抵御",
+                        "佩戴时有 10% 概率完全抵御下一次受到的伤害。$(br2)" +
+                                "当你接触岩浆时，这个概率翻倍为 20%。$(br2)" +
+                                "这份庇护并不稳定，但在最危险的时候可能救你一命。"
+                ),
+
+                craftingPage(
+                        "enigmatic_legacy:scorched_charm",
+                        "阳灼护符的合成配方。"
+                )
+        )));
+
         futures.add(save(output, "zh_cn", "entries/relics/mega_sponge", recipeEntry(
                 "超维海绵",
                 "relics",

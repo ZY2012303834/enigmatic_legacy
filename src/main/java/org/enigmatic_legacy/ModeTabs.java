@@ -96,6 +96,7 @@ public final class ModeTabs {
                                 output.accept(ModItems.TREASURE_HUNTER_CHARM.get());    // 猎宝者护符
                                 output.accept(ModItems.MEGA_SPONGE.get());              // 吸水海绵
                                 output.accept(ModItems.ENCHANTER_PEARL.get());          // 附魔师的珍珠
+                                output.accept(ModItems.SCORCHED_CHARM.get());           // 阳灼护符
                                 output.accept(ModItems.UNWITNESSED_AMULET.get());       // 无主护符
                                 output.accept(ModItems.ENIGMATIC_AMULET_RED.get());     // 神秘护符：红色
                                 output.accept(ModItems.ENIGMATIC_AMULET_AQUA.get());    // 神秘护符：青色

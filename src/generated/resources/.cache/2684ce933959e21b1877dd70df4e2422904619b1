@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-29T09:49:57.1680958	vanilla/Recipes
+// 1.21.1	2026-06-29T10:44:46.9180611	vanilla/Recipes
 138cca5fc2d36a468976c88c266618e68aa51d88 data/enigmatic_legacy/advancement/recipes/building_blocks/astral_dust_sack.json
 75128c3d277fd90fca1df4cc9f996933af7f7241 data/enigmatic_legacy/advancement/recipes/building_blocks/etherium_block.json
 70a559dbe3db33a763c165b60a23730d9e9f955b data/enigmatic_legacy/advancement/recipes/combat/axe_of_executioner.json
@@ -41,6 +41,7 @@ b4bc3350ebdc21a63600169d4bdbb66abe888b29 data/enigmatic_legacy/advancement/recip
 efa03204eb4f91704aaec8cc30cbc62cf62dc9ed data/enigmatic_legacy/advancement/recipes/misc/mending_mixture.json
 03d4356a380943e7d1952c0b1149bc38da4bccc7 data/enigmatic_legacy/advancement/recipes/misc/monster_charm.json
 0a1f4c966a664b24b1ff0f15da04696c71829f68 data/enigmatic_legacy/advancement/recipes/misc/pure_heart.json
+d31e94ac444757f9907892826fc1de8cfd3fc537 data/enigmatic_legacy/advancement/recipes/misc/scorched_charm.json
 501be4947ff26e2ed6d5e41e09162300a7fffed6 data/enigmatic_legacy/advancement/recipes/misc/the_acknowledgment.json
 0165b94e6e6f736530ee29fc3acd60355868f04e data/enigmatic_legacy/advancement/recipes/misc/the_cube.json
 0802268decf9f83fe1bbc684a804e15c13e8efbc data/enigmatic_legacy/advancement/recipes/misc/thicc_scroll.json
@@ -95,6 +96,7 @@ b7ff29e9a057ae6829ace5151db9d21fc64eda65 data/enigmatic_legacy/recipe/magnet_rin
 d7ac2e0da59059256e77bc61b36e3925d2b5c44f data/enigmatic_legacy/recipe/mending_mixture_repair.json
 73dffe23d0416988f96b69e6853bf9014071a213 data/enigmatic_legacy/recipe/monster_charm.json
 901309fffafc1ceb7b2174ecdfc8271ac3eef645 data/enigmatic_legacy/recipe/pure_heart.json
+89d8138ef2921df9d6bcbce97f442114369a3776 data/enigmatic_legacy/recipe/scorched_charm.json
 516862b7044c46c4e7294da1ab7aafe5196ee822 data/enigmatic_legacy/recipe/the_acknowledgment.json
 37833edd533983868b64f9e92e785dfe87090cf6 data/enigmatic_legacy/recipe/the_cube.json
 f7c5075567330fa65c3fd0e548e64a22ba8620ea data/enigmatic_legacy/recipe/the_infinitum.json

@@ -718,6 +718,45 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 "enigmatic_legacy:bloodstained_valor_emblem"
         )));
 
+        futures.add(save(output, "en_us", "entries/relics/scorched_charm", entry(
+                "Charm of Scorched Sun",
+                "relics",
+                "enigmatic_legacy:scorched_charm",
+                155,
+
+                spotlightPage(
+                        "enigmatic_legacy:scorched_charm",
+                        "Charm of Scorched Sun",
+                        "A high-tier charm scorched by sunfire and lava.$(br2)" +
+                                "It turns the Blazing Core's fire adaptation into a steadier blessing of survival."
+                ),
+
+                textPage(
+                        "Fire and Lava",
+                        "The Charm of Scorched Sun grants immunity to most fire damage, including fire, burning, lava, and hot floors.$(br2)" +
+                                "It allows you to walk on lava. If you want to dive into lava, crouch."
+                ),
+
+                textPage(
+                        "Healing and Lifesteal",
+                        "While touching lava, the charm restores 2 health every second.$(br2)" +
+                                "When you attack a burning target, it restores 20% of the damage dealt.$(br2)" +
+                                "It rewards fighting within fire rather than fleeing from it."
+                ),
+
+                textPage(
+                        "Damage Resistance",
+                        "While worn, the charm has a 10% chance to completely resist incoming damage.$(br2)" +
+                                "While touching lava, this chance doubles to 20%.$(br2)" +
+                                "The protection is unreliable, but it may save your life at the worst moment."
+                ),
+
+                craftingPage(
+                        "enigmatic_legacy:scorched_charm",
+                        "The crafting recipe for the Charm of Scorched Sun."
+                )
+        )));
+
         futures.add(save(output, "en_us", "entries/relics/mega_sponge", recipeEntry(
                 "Extrapolated Megasponge",
                 "relics",

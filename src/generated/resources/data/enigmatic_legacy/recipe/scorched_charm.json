@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:netherite_scrap"
+    },
+    "B": {
+      "item": "enigmatic_legacy:pure_heart"
+    },
+    "N": {
+      "item": "minecraft:blaze_powder"
+    },
+    "Q": {
+      "item": "minecraft:basalt"
+    },
+    "X": {
+      "item": "enigmatic_legacy:blazing_core"
+    }
+  },
+  "pattern": [
+    "N N",
+    "AXA",
+    "QBQ"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:scorched_charm"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_blazing_core": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:blazing_core"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_pure_heart": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:pure_heart"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "enigmatic_legacy:scorched_charm"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_pure_heart",
+      "has_blazing_core"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "enigmatic_legacy:scorched_charm"
+    ]
+  }
+}

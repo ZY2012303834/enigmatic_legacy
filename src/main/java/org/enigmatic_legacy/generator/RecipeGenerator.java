@@ -764,5 +764,29 @@ public class RecipeGenerator extends RecipeProvider {
                 .unlockedBy("has_quartz", has(Items.QUARTZ))
                 .unlockedBy("has_iron_ring", has(ModItems.IRON_RING.get()))
                 .save(output);
+
+        // 阳灼护符 / Charm of Scorched Sun
+// 复刻 Enigmatic Addons 配方：
+// n n
+// aXa
+// qbq
+//
+// X = 烈焰核心
+// n = 烈焰粉
+// a = 远古残骸
+// q = 玄武岩
+// b = 纯净之心
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SCORCHED_CHARM.get())
+                .pattern("N N")
+                .pattern("AXA")
+                .pattern("QBQ")
+                .define('X', ModItems.BLAZING_CORE.get())
+                .define('N', Items.BLAZE_POWDER)
+                .define('A', Items.NETHERITE_SCRAP)
+                .define('Q', Items.BASALT)
+                .define('B', ModItems.PURE_HEART.get())
+                .unlockedBy("has_pure_heart", has(ModItems.PURE_HEART.get()))
+                .unlockedBy("has_blazing_core", has(ModItems.BLAZING_CORE.get()))
+                .save(output);
     }
 }

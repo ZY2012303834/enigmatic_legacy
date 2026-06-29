@@ -918,6 +918,23 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.magic_quartz_ring.limit",
                 "Only one Magic Quartz Ring can be worn at a time.");
 
+        addItem(ModItems.SCORCHED_CHARM, "Charm of Scorched Sun");
+
+        add("tooltip.enigmatic_legacy.scorched_charm.1",
+                "Grants immunity to most fire damage and lets you walk on lava.");
+
+        add("tooltip.enigmatic_legacy.scorched_charm.2",
+                "While touching lava, restores 2 health every second.");
+
+        add("tooltip.enigmatic_legacy.scorched_charm.3",
+                "Attacking burning targets restores 20% of the damage dealt.");
+
+        add("tooltip.enigmatic_legacy.scorched_charm.4",
+                "Has a 10% chance to resist incoming damage; this chance doubles while touching lava.");
+
+        add("tooltip.enigmatic_legacy.scorched_charm.5",
+                "Crouching allows you to dive into lava and improves lava visibility.");
+
         addAdvancementTranslations();
 
         // Shared tooltip terms for partial coloring

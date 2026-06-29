@@ -93,6 +93,9 @@ public final class ModItems {
     public static final DeferredItem<MegaSponge> MEGA_SPONGE = ITEMS.register("mega_sponge", MegaSponge::new); // 超级海绵
     public static final DeferredItem<EnchanterPearl> ENCHANTER_PEARL = ITEMS.register("enchanter_pearl", EnchanterPearl::new); // 附魔师的珍珠
     public static final DeferredItem<EnigmaticEye> ENIGMATIC_EYE = ITEMS.register("enigmatic_eye", EnigmaticEye::new); // 休眠之眼
+    // 阳灼护符 / Charm of Scorched Sun
+// 复刻自 Enigmatic Addons 的 scorched_charm。
+    public static final DeferredItem<ScorchedCharm> SCORCHED_CHARM = ITEMS.register("scorched_charm", ScorchedCharm::new);
 
     // 武器工具
     public static final DeferredItem<TheAcknowledgment> THE_ACKNOWLEDGMENT = ITEMS.register("the_acknowledgment", TheAcknowledgment::new); // 启示之证 / The Acknowledgment

@@ -1,6 +1,5 @@
 package org.enigmatic_legacy.client.event;
 
-import com.mojang.blaze3d.shaders.FogShape;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.player.LocalPlayer;
@@ -17,6 +16,7 @@ import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.util.BlazingCoreHelper;
+import org.enigmatic_legacy.util.ScorchedCharmHelper;
 
 /**
  * 烈焰之核客户端 GUI 事件。
@@ -57,15 +57,8 @@ public final class BlazingCoreClientEvents {
     private BlazingCoreClientEvents() {
     }
 
-    /**
-     * 烈焰之核：提升熔岩中的能见度。
-     *
-     * 说明：
-     * 这个效果不是 GUI，也不是经验条；
-     * 它通过拉远 LAVA 雾的起止距离，让玩家在岩浆里看得更远。
-     */
     @SubscribeEvent
-    public static void onRenderLavaFog(ViewportEvent.RenderFog event) {
+    public static void onRenderFog(ViewportEvent.RenderFog event) {
         Minecraft minecraft = Minecraft.getInstance();
         LocalPlayer player = minecraft.player;
 
@@ -73,43 +66,34 @@ public final class BlazingCoreClientEvents {
             return;
         }
 
-        /*
-         * 只处理镜头真的位于岩浆中的情况。
-         * FogType.LAVA 是原版用于判断镜头处于岩浆雾中的类型。
-         */
-        if (event.getType() != FogType.LAVA) {
+        if (!player.isInLava()) {
             return;
         }
 
         /*
-         * 必须佩戴烈焰之核才提升岩浆能见度。
+         * 岩浆高能见度：
+         * 1. 烈焰之核拥有原本的岩浆能见度提升；
+         * 2. 阳灼护符复用同一套客户端视觉逻辑；
+         * 3. 两者任意一个满足即可生效。
          */
-        if (!BlazingCoreHelper.hasBlazingCore(player)) {
+        if (!BlazingCoreHelper.hasBlazingCore(player)
+                && !ScorchedCharmHelper.hasScorchedCharm(player)) {
             return;
         }
 
-        /*
-         * 极大地提高熔岩中的能见度。
-         *
-         * near = 0.0F：雾从镜头位置开始，但不糊脸；
-         * far  = 32.0F：比原版岩浆可视距离远很多。
-         *
-         * 如果你觉得还不够清楚，可以把 32.0F 改成 48.0F 或 64.0F。
-         */
-        event.setNearPlaneDistance(0.5F);
-        event.setFarPlaneDistance(4.0F);
-        event.setFogShape(FogShape.CYLINDER);
-
-        /*
-         * NeoForge 要求：
-         * RenderFog 里修改 near/far/fogShape 后，必须 cancel 才会生效。
-         */
+        event.setNearPlaneDistance(0.0F);
+        event.setFarPlaneDistance(96.0F);
         event.setCanceled(true);
     }
 
     /**
-     * 烈焰之核：稍微改善熔岩雾颜色。
-     * 这一步不是必须，但能让岩浆里不再那么黑红糊成一片。
+     * 岩浆雾颜色改善。
+     * 功能：
+     * 1. 烈焰之核拥有原本的岩浆雾颜色改善；
+     * 2. 阳灼护符复用同一套客户端视觉逻辑；
+     * 3. 两者任意一个满足即可生效。
+     * 说明：
+     * 这里只改变客户端视觉效果，不影响服务端逻辑。
      */
     @SubscribeEvent
     public static void onComputeLavaFogColor(ViewportEvent.ComputeFogColor event) {
@@ -124,7 +108,11 @@ public final class BlazingCoreClientEvents {
             return;
         }
 
-        if (!BlazingCoreHelper.hasBlazingCore(player)) {
+        /*
+         * 只要佩戴烈焰之核或阳灼护符，就改善岩浆雾颜色。
+         */
+        if (!BlazingCoreHelper.hasBlazingCore(player)
+                && !ScorchedCharmHelper.hasScorchedCharm(player)) {
             return;
         }
 

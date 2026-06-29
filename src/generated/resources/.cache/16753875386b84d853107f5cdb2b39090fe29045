@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-29T09:49:57.162225	vanilla/Enigmatic Legacy Patchouli Books: en_us
+// 1.21.1	2026-06-29T10:44:46.907531	vanilla/Enigmatic Legacy Patchouli Books: en_us
 9dd5e7973ba905f424bfe6f5c9adfcbc37f5c317 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/categories/equipment.json
 d6b58f139e8f10e617f46435a2f7c38ab110f182 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/categories/materials.json
 1516486cac3e0447a643d6f865e0c7501b206391 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/categories/relics.json
@@ -60,6 +60,7 @@ de3a28ad3064a393cd91f4888b0b685a798cb95b assets/enigmatic_legacy/patchouli_books
 928c11fb38112bd317197264319cc3ddfb300b14 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/entries/relics/monster_charm.json
 72613ab627aba22a91eabe872f02be86828a2a37 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/entries/relics/recall_potion.json
 f1492fe9776bdd32caa802080bce81ace1652324 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/entries/relics/redemption_potion.json
+eb11542754a562d93c72b575b97073cdfdcfb6e2 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/entries/relics/scorched_charm.json
 b41bf1a40a6cb5106ec5f229f782f55d843f35f3 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/entries/relics/soul_crystal.json
 cbb3a4c6c1a220974cafa9be6b1d297c0ff73832 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/entries/relics/storage_crystal.json
 0647a368ec44ffcd4b91aedd9417cf4fae9d1ac6 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/entries/relics/the_acknowledgment.json
