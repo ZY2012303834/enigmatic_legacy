@@ -15,7 +15,9 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.RenderBlockScreenEffectEvent;
+import net.neoforged.neoforge.client.event.RenderGuiEvent;
 import net.neoforged.neoforge.client.event.RenderGuiLayerEvent;
+import net.neoforged.neoforge.client.event.ScreenEvent;
 import net.neoforged.neoforge.client.event.ViewportEvent;
 import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 import org.enigmatic_legacy.EnigmaticLegacy;
@@ -153,6 +155,22 @@ public final class BlazingCoreClientEvents {
         event.setBlue(ClientLavaVisionHelper.LAVA_FOG_BLUE);
     }
 
+    @SubscribeEvent
+    public static void onRenderGuiPost(RenderGuiEvent.Post event) {
+        Minecraft minecraft = Minecraft.getInstance();
+
+        if (minecraft.screen != null) {
+            return;
+        }
+
+        renderShaderLavaOverlay(event.getGuiGraphics(), minecraft);
+    }
+
+    @SubscribeEvent
+    public static void onRenderScreenPre(ScreenEvent.Render.Pre event) {
+        renderShaderLavaOverlay(event.getGuiGraphics(), Minecraft.getInstance());
+    }
+
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onRenderBlockScreenEffect(RenderBlockScreenEffectEvent event) {
         if (!(event.getPlayer() instanceof LocalPlayer player)) {
@@ -172,6 +190,34 @@ public final class BlazingCoreClientEvents {
 
     private static boolean hasLavaVision(LocalPlayer player) {
         return ClientLavaVisionHelper.hasLavaVisionSource(player);
+    }
+
+    private static int lavaOverlayColor() {
+        int alpha = Mth.clamp(Math.round(ClientLavaVisionHelper.SHADER_LAVA_OVERLAY_ALPHA * 255.0F), 0, 255);
+        int red = Mth.clamp(Math.round(ClientLavaVisionHelper.LAVA_FOG_RED * 255.0F), 0, 255);
+        int green = Mth.clamp(Math.round(ClientLavaVisionHelper.LAVA_FOG_GREEN * 255.0F), 0, 255);
+        int blue = Mth.clamp(Math.round(ClientLavaVisionHelper.LAVA_FOG_BLUE * 255.0F), 0, 255);
+
+        return alpha << 24 | red << 16 | green << 8 | blue;
+    }
+
+    private static void renderShaderLavaOverlay(GuiGraphics guiGraphics, Minecraft minecraft) {
+        if (minecraft.gameRenderer == null) {
+            return;
+        }
+
+        if (!ClientLavaVisionHelper.isIrisShaderPackInUse()) {
+            return;
+        }
+
+        if (!ClientLavaVisionHelper.hasLavaVision(minecraft.gameRenderer.getMainCamera())) {
+            return;
+        }
+
+        int color = lavaOverlayColor();
+        int width = minecraft.getWindow().getGuiScaledWidth();
+        int height = minecraft.getWindow().getGuiScaledHeight();
+        guiGraphics.fill(0, 0, width, height, color);
     }
 
     @SubscribeEvent

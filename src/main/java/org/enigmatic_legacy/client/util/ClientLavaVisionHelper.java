@@ -1,7 +1,6 @@
 package org.enigmatic_legacy.client.util;
 
 import net.minecraft.client.Camera;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -12,11 +11,14 @@ import org.enigmatic_legacy.util.BlazingCoreHelper;
 import org.enigmatic_legacy.util.ScorchedCharmHelper;
 
 public final class ClientLavaVisionHelper {
+    private static Object irisShaderPackInUseMethod;
+    private static boolean irisLookupAttempted;
+
     // 熔岩雾起始距离。原版默认值：普通岩浆 0.25F，火焰抗性 0.0F。
-    public static final float LAVA_FOG_START = 0.25F;
+    public static final float LAVA_FOG_START = 0.0F;
 
     // 熔岩雾结束距离。原版默认值：普通岩浆 1.0F，火焰抗性 5.0F。数值越大，在岩浆中看得越远；推荐范围 16-96。
-    public static final float LAVA_FOG_END = 5.0F;
+    public static final float LAVA_FOG_END = 32.0F;
 
     // 熔岩雾颜色。原版默认值：0.6F, 0.1F, 0.0F。提高红色和绿色会让岩浆视野更明亮。
     public static final float LAVA_FOG_RED = 0.95F;
@@ -27,7 +29,10 @@ public final class ClientLavaVisionHelper {
     public static final float LAVA_CLEAR_ALPHA = 0.0F;
 
     // Iris 光影雾密度。原版没有这个值；ittrp 未兼容时会用 isEyeInWater 的岩浆路径套强雾。数值越低越清晰。
-    public static final float IRIS_LAVA_FOG_DENSITY = 0.25F;
+    public static final float IRIS_LAVA_FOG_DENSITY = 0.02F;
+
+    // 光影启用时的额外覆盖层透明度。原版没有这个值；ittrp 不读取原版雾距离时，主要调这个值控制明显程度。
+    public static final float SHADER_LAVA_OVERLAY_ALPHA = 0.50F;
 
     private ClientLavaVisionHelper() {
     }
@@ -43,10 +48,7 @@ public final class ClientLavaVisionHelper {
             return false;
         }
 
-        return camera.getFluidInCamera() == FogType.LAVA
-                || livingEntity.isInLava()
-                || livingEntity.level().getFluidState(camera.getBlockPosition()).is(FluidTags.LAVA)
-                || livingEntity.level().getFluidState(livingEntity.blockPosition()).is(FluidTags.LAVA);
+        return camera.getFluidInCamera() == FogType.LAVA;
     }
 
     public static boolean hasLavaVisionSource(LivingEntity entity) {
@@ -55,5 +57,38 @@ public final class ClientLavaVisionHelper {
                 || entity.hasEffect(MobEffects.FIRE_RESISTANCE)
                 || entity.getPersistentData().getInt(BlazingCore.CLIENT_TICK_TAG) >= entity.tickCount - 2
                 || entity.getPersistentData().getInt(ScorchedCharm.CLIENT_TICK_TAG) >= entity.tickCount - 2;
+    }
+
+    public static boolean isIrisShaderPackInUse() {
+        if (!resolveIrisShaderPackHook()) {
+            return false;
+        }
+
+        try {
+            return (boolean) ((java.lang.reflect.Method) irisShaderPackInUseMethod).invoke(null);
+        } catch (ReflectiveOperationException exception) {
+            irisShaderPackInUseMethod = null;
+            return false;
+        }
+    }
+
+    private static boolean resolveIrisShaderPackHook() {
+        if (irisShaderPackInUseMethod != null) {
+            return true;
+        }
+
+        if (irisLookupAttempted) {
+            return false;
+        }
+
+        irisLookupAttempted = true;
+
+        try {
+            Class<?> irisClass = Class.forName("net.irisshaders.iris.Iris");
+            irisShaderPackInUseMethod = irisClass.getMethod("isPackInUseQuick");
+            return true;
+        } catch (ReflectiveOperationException exception) {
+            return false;
+        }
     }
 }

@@ -1,16 +1,112 @@
 package org.enigmatic_legacy.mixin;
 
 import net.minecraft.tags.FluidTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MoverType;
+import net.minecraft.world.entity.animal.FlyingAnimal;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.phys.Vec3;
+import org.enigmatic_legacy.util.BlazingCoreHelper;
 import org.enigmatic_legacy.util.ScorchedCharmHelper;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
+import org.spongepowered.asm.mixin.injection.Slice;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
 public abstract class MixinLivingEntity {
+
+    @Shadow
+    protected abstract float getWaterSlowDown();
+
+    @Shadow
+    public abstract float getSpeed();
+
+    @Shadow
+    protected abstract boolean isAffectedByFluids();
+
+    @ModifyConstant(
+            method = "travel",
+            constant = @Constant(doubleValue = 0.5D),
+            slice = @Slice(
+                    from = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;isInLava()Z"),
+                    to = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;isFallFlying()Z")
+            )
+    )
+    private double enigmaticLegacy$useWaterDampingInLava(double original) {
+        LivingEntity entity = (LivingEntity) (Object) this;
+
+        if (!entity.isInLava()) {
+            return original;
+        }
+
+        if (!BlazingCoreHelper.hasBlazingCore(entity) && !ScorchedCharmHelper.hasScorchedCharm(entity)) {
+            return original;
+        }
+
+        return enigmaticLegacy$hasLavaSwimming(entity) ? 0.9D : this.getWaterSlowDown();
+    }
+
+    @Inject(method = "travel", at = @At("HEAD"), cancellable = true)
+    private void enigmaticLegacy$travelInLavaLikeWater(Vec3 travelVector, CallbackInfo callback) {
+        LivingEntity entity = (LivingEntity) (Object) this;
+
+        if (!enigmaticLegacy$hasLavaSwimming(entity) || !entity.isControlledByLocalInstance() || !this.isAffectedByFluids()) {
+            return;
+        }
+
+        double gravity = entity.getGravity();
+        boolean falling = entity.getDeltaMovement().y <= 0.0D;
+        if (falling && entity.hasEffect(MobEffects.SLOW_FALLING)) {
+            gravity = Math.min(gravity, 0.01D);
+        }
+
+        double startY = entity.getY();
+        entity.setSwimming(true);
+        entity.moveRelative(this.getSpeed(), travelVector);
+        entity.move(MoverType.SELF, entity.getDeltaMovement());
+
+        Vec3 movement = entity.getDeltaMovement();
+        if (entity.horizontalCollision && entity.onClimbable()) {
+            movement = new Vec3(movement.x, 0.2D, movement.z);
+        }
+
+        movement = movement.multiply(0.9D, 0.8D, 0.9D);
+        movement = entity.getFluidFallingAdjustedMovement(gravity, falling, movement);
+        entity.setDeltaMovement(movement);
+
+        if (entity.horizontalCollision && entity.isFree(movement.x, movement.y + 0.6D - entity.getY() + startY, movement.z)) {
+            entity.setDeltaMovement(movement.x, 0.3D, movement.z);
+        }
+
+        entity.setSwimming(true);
+        entity.calculateEntityAnimation(entity instanceof FlyingAnimal);
+        callback.cancel();
+    }
+
+    @Inject(method = "jumpInLiquid", at = @At("HEAD"), cancellable = true)
+    private void enigmaticLegacy$jumpInLavaLikeWater(TagKey<Fluid> fluidTag, CallbackInfo callback) {
+        if (!fluidTag.equals(FluidTags.LAVA)) {
+            return;
+        }
+
+        LivingEntity entity = (LivingEntity) (Object) this;
+
+        if (!enigmaticLegacy$hasLavaSwimming(entity)) {
+            return;
+        }
+
+        entity.setDeltaMovement(entity.getDeltaMovement().add(0.0D, 0.04D, 0.0D));
+        callback.cancel();
+    }
 
     @Inject(method = "canStandOnFluid", at = @At("RETURN"), cancellable = true)
     private void enigmaticLegacy$scorchedCharmCanStandOnLava(
@@ -30,5 +126,12 @@ public abstract class MixinLivingEntity {
         if (fluidState.is(FluidTags.LAVA) && ScorchedCharmHelper.hasScorchedCharm(entity)) {
             callback.setReturnValue(true);
         }
+    }
+
+    private static boolean enigmaticLegacy$hasLavaSwimming(LivingEntity entity) {
+        return entity.isSprinting()
+                && entity.isEyeInFluid(FluidTags.LAVA)
+                && !entity.isPassenger()
+                && (BlazingCoreHelper.hasBlazingCore(entity) || ScorchedCharmHelper.hasScorchedCharm(entity));
     }
 }
