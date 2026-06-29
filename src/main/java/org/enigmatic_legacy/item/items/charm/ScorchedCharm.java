@@ -3,6 +3,8 @@ package org.enigmatic_legacy.item.items.charm;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.tags.FluidTags;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
@@ -53,6 +55,34 @@ public class ScorchedCharm extends Item implements ICurioItem {
     private static boolean isCharmSlot(SlotContext context) {
         return context != null && CHARM_SLOT.equals(context.identifier());
     }
+
+    @Override
+    public void curioTick(SlotContext slotContext, ItemStack stack) {
+        LivingEntity entity = slotContext.entity();
+
+        if (entity.level().isClientSide()) {
+            entity.getPersistentData().putInt(CLIENT_TICK_TAG, entity.tickCount);
+        }
+
+        if (entity.isOnFire()) {
+            entity.clearFire();
+        }
+
+        if (!entity.isInLava()) {
+            return;
+        }
+
+        if (!entity.level().isClientSide() && entity.tickCount % 20 == 0) {
+            entity.heal(LAVA_HEAL_AMOUNT);
+        }
+
+        if (entity.level().getFluidState(entity.blockPosition().above()).is(FluidTags.LAVA)) {
+            entity.setDeltaMovement(entity.getDeltaMovement().add(0.0D, entity.isCrouching() ? -0.01D : 0.07D, 0.0D));
+        }
+    }
+
+    public static final String CLIENT_TICK_TAG = "enigmatic_legacy.scorched_charm_client_tick";
+    private static final float LAVA_HEAL_AMOUNT = 2.0F;
 
     @Override
     public void appendHoverText(

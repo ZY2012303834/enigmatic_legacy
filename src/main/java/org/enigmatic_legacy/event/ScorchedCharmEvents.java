@@ -1,18 +1,14 @@
 package org.enigmatic_legacy.event;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
-import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import org.enigmatic_legacy.util.ScorchedCharmHelper;
 
 /**
@@ -27,12 +23,6 @@ import org.enigmatic_legacy.util.ScorchedCharmHelper;
  * 7. 接触岩浆时抵御概率翻倍到 20%。
  */
 public final class ScorchedCharmEvents {
-
-    /**
-     * 岩浆中每秒恢复生命值。
-     * 2.0F = 1 颗心。
-     */
-    private static final float LAVA_HEAL_AMOUNT = 2.0F;
 
     /**
      * 攻击燃烧目标时的生命汲取比例。
@@ -51,50 +41,7 @@ public final class ScorchedCharmEvents {
      * 0.20F = 20%。
      */
     private static final float RESIST_DAMAGE_CHANCE_IN_LAVA = 0.20F;
-
     private ScorchedCharmEvents() {
-    }
-
-    /**
-     * 每 tick 处理：
-     * 1. 自动灭火；
-     * 2. 岩浆自然回复；
-     * 3. 岩浆表面行走。
-     */
-    @SubscribeEvent
-    public static void onEntityTick(EntityTickEvent.Post event) {
-        if (!(event.getEntity() instanceof LivingEntity entity)) {
-            return;
-        }
-
-        if (entity.level().isClientSide()) {
-            return;
-        }
-
-        if (!ScorchedCharmHelper.hasScorchedCharm(entity)) {
-            return;
-        }
-
-        /*
-         * 阳灼护符佩戴者不会持续燃烧。
-         */
-        if (entity.isOnFire()) {
-            entity.clearFire();
-        }
-
-        /*
-         * 接触岩浆时每秒恢复 2 点生命。
-         */
-        if (isTouchingLava(entity) && entity.tickCount % 20 == 0) {
-            entity.heal(LAVA_HEAL_AMOUNT);
-        }
-
-        /*
-         * 岩浆行走：
-         * - 没有下蹲时，尝试停留在岩浆表面；
-         * - 下蹲时不处理，让玩家可以潜入岩浆。
-         */
-        handleLavaWalking(entity);
     }
 
     /**
@@ -181,66 +128,7 @@ public final class ScorchedCharmEvents {
         attacker.heal(damage * LIFESTEAL_MODIFIER);
     }
 
-    /**
-     * 处理岩浆行走。
-     * 说明：
-     * 原拓展项目逻辑大意：
-     * - 在岩浆里时，如果玩家没有下蹲，会给向上的运动或保持地面状态；
-     * - 下蹲时允许玩家向下潜入岩浆。
-     */
-    private static void handleLavaWalking(LivingEntity entity) {
-        if (entity.isShiftKeyDown()) {
-            return;
-        }
-
-        BlockPos feetPos = entity.blockPosition();
-        BlockPos belowPos = feetPos.below();
-
-        boolean feetInLava = entity.level().getFluidState(feetPos).is(FluidTags.LAVA);
-        boolean standingOverLava = entity.level().getFluidState(belowPos).is(FluidTags.LAVA);
-
-        if (!feetInLava && !standingOverLava) {
-            return;
-        }
-
-        boolean lavaAbove = entity.level().getFluidState(feetPos.above()).is(FluidTags.LAVA);
-        Vec3 motion = entity.getDeltaMovement();
-
-        if (lavaAbove) {
-            /*
-             * 如果头顶仍然是岩浆，说明玩家在较深岩浆中。
-             * 非下蹲状态下轻微上浮，避免一直下沉。
-             */
-            entity.setDeltaMovement(motion.x, motion.y + 0.07D, motion.z);
-            entity.fallDistance = 0.0F;
-            return;
-        }
-
-        /*
-         * 如果只在岩浆表面，托到当前岩浆方块顶部附近。
-         */
-        double surfaceY = feetInLava ? feetPos.getY() + 1.0D : belowPos.getY() + 1.0D;
-
-        if (entity.getY() < surfaceY + 0.02D) {
-            entity.setPos(entity.getX(), surfaceY + 0.02D, entity.getZ());
-        }
-
-        entity.setDeltaMovement(motion.x, Math.max(0.0D, motion.y), motion.z);
-        entity.setOnGround(true);
-        entity.fallDistance = 0.0F;
-    }
-
-    /**
-     * 判断实体是否正在接触岩浆。
-     */
     private static boolean isTouchingLava(LivingEntity entity) {
-        if (entity.isInLava()) {
-            return true;
-        }
-
-        BlockPos pos = entity.blockPosition();
-
-        return entity.level().getFluidState(pos).is(FluidTags.LAVA)
-                || entity.level().getFluidState(pos.below()).is(FluidTags.LAVA);
+        return entity.isInLava();
     }
 }

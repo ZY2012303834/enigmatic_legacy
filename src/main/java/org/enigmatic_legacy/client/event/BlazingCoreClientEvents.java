@@ -1,20 +1,27 @@
 package org.enigmatic_legacy.client.event;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.material.FogType;
 import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.ClientTickEvent;
+import net.neoforged.neoforge.client.event.RenderBlockScreenEffectEvent;
 import net.neoforged.neoforge.client.event.RenderGuiLayerEvent;
 import net.neoforged.neoforge.client.event.ViewportEvent;
 import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.config.ConfigCommon;
+import org.enigmatic_legacy.item.items.charm.ScorchedCharm;
 import org.enigmatic_legacy.util.BlazingCoreHelper;
 import org.enigmatic_legacy.util.ScorchedCharmHelper;
 
@@ -53,11 +60,23 @@ public final class BlazingCoreClientEvents {
 
     private static final int BAR_WIDTH = 182;
     private static final int BAR_HEIGHT = 5;
+    private static boolean hasLocalLavaVision;
 
     private BlazingCoreClientEvents() {
     }
 
     @SubscribeEvent
+    public static void onClientTick(ClientTickEvent.Post event) {
+        LocalPlayer player = Minecraft.getInstance().player;
+
+        if (player != null && ScorchedCharmHelper.hasScorchedCharm(player)) {
+            player.getPersistentData().putInt(ScorchedCharm.CLIENT_TICK_TAG, player.tickCount);
+        }
+
+        hasLocalLavaVision = player != null && hasLavaVision(player);
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onRenderFog(ViewportEvent.RenderFog event) {
         Minecraft minecraft = Minecraft.getInstance();
         LocalPlayer player = minecraft.player;
@@ -66,7 +85,7 @@ public final class BlazingCoreClientEvents {
             return;
         }
 
-        if (!player.isInLava()) {
+        if (event.getCamera().getFluidInCamera() != FogType.LAVA) {
             return;
         }
 
@@ -76,13 +95,14 @@ public final class BlazingCoreClientEvents {
          * 2. 阳灼护符复用同一套客户端视觉逻辑；
          * 3. 两者任意一个满足即可生效。
          */
-        if (!BlazingCoreHelper.hasBlazingCore(player)
-                && !ScorchedCharmHelper.hasScorchedCharm(player)) {
+        if (!hasLocalLavaVision && !hasLavaVision(player)) {
             return;
         }
 
+        RenderSystem.setShaderFogStart(0.0F);
+        RenderSystem.setShaderFogEnd(256.0F);
         event.setNearPlaneDistance(0.0F);
-        event.setFarPlaneDistance(96.0F);
+        event.setFarPlaneDistance(256.0F);
         event.setCanceled(true);
     }
 
@@ -95,7 +115,7 @@ public final class BlazingCoreClientEvents {
      * 说明：
      * 这里只改变客户端视觉效果，不影响服务端逻辑。
      */
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onComputeLavaFogColor(ViewportEvent.ComputeFogColor event) {
         Minecraft minecraft = Minecraft.getInstance();
         LocalPlayer player = minecraft.player;
@@ -111,8 +131,7 @@ public final class BlazingCoreClientEvents {
         /*
          * 只要佩戴烈焰之核或阳灼护符，就改善岩浆雾颜色。
          */
-        if (!BlazingCoreHelper.hasBlazingCore(player)
-                && !ScorchedCharmHelper.hasScorchedCharm(player)) {
+        if (!hasLocalLavaVision && !hasLavaVision(player)) {
             return;
         }
 
@@ -121,8 +140,32 @@ public final class BlazingCoreClientEvents {
          * 数值范围是 0.0F ~ 1.0F。
          */
         event.setRed(1.0F);
-        event.setGreen(0.42F);
-        event.setBlue(0.12F);
+        event.setGreen(0.58F);
+        event.setBlue(0.22F);
+    }
+
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public static void onRenderBlockScreenEffect(RenderBlockScreenEffectEvent event) {
+        if (!(event.getPlayer() instanceof LocalPlayer player)) {
+            return;
+        }
+
+        if (!hasLavaVision(player)) {
+            return;
+        }
+
+        if (event.getOverlayType() == RenderBlockScreenEffectEvent.OverlayType.FIRE
+                || event.getOverlayType() == RenderBlockScreenEffectEvent.OverlayType.BLOCK
+                && event.getBlockState().getFluidState().is(FluidTags.LAVA)) {
+            event.setCanceled(true);
+        }
+    }
+
+    private static boolean hasLavaVision(LocalPlayer player) {
+        return BlazingCoreHelper.hasBlazingCore(player)
+                || ScorchedCharmHelper.hasScorchedCharm(player)
+                || player.hasEffect(MobEffects.FIRE_RESISTANCE)
+                || player.getPersistentData().getInt(ScorchedCharm.CLIENT_TICK_TAG) >= player.tickCount - 2;
     }
 
     @SubscribeEvent
