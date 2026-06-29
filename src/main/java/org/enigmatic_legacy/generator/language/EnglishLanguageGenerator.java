@@ -772,6 +772,7 @@ public class EnglishLanguageGenerator extends LanguageProvider {
 
         add("effect.enigmatic_legacy.growing_hunger", "Growing Hunger");
         add("effect.enigmatic_legacy.growing_bloodlust", "Growing Bloodlust");
+        add("effect.enigmatic_legacy.blazing_might", "Blazing Might");
 
         // The Twist / 倒转之启
         addItem(ModItems.THE_TWIST, "The Twist");

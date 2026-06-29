@@ -774,6 +774,7 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         // Growing Bloodlust 按同一命名风格翻译为“无止嗜血”。
         add("effect.enigmatic_legacy.growing_hunger", "无止饥饿");
         add("effect.enigmatic_legacy.growing_bloodlust", "无止嗜血");
+        add("effect.enigmatic_legacy.blazing_might", "烈焰巨力");
 
         // The Twist / 倒转之启
         addItem(ModItems.THE_TWIST, "倒转之启");

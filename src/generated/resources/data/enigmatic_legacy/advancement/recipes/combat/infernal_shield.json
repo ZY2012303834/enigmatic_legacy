@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_blazing_core": {
+    "has_shield": {
       "conditions": {
         "items": [
           {
-            "items": "enigmatic_legacy:blazing_core"
+            "items": "minecraft:shield"
           }
         ]
       },
@@ -16,12 +16,23 @@
         "recipe": "enigmatic_legacy:infernal_shield"
       },
       "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_twisted_heart": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:twisted_heart"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_blazing_core"
+      "has_twisted_heart",
+      "has_shield"
     ]
   ],
   "rewards": {

@@ -6,10 +6,13 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.animal.FlyingAnimal;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.Vec3;
+import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.util.BlazingCoreHelper;
+import org.enigmatic_legacy.util.CursedRingHelper;
 import org.enigmatic_legacy.util.ScorchedCharmHelper;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -124,6 +127,18 @@ public abstract class MixinLivingEntity {
         }
 
         if (fluidState.is(FluidTags.LAVA) && ScorchedCharmHelper.hasScorchedCharm(entity)) {
+            callback.setReturnValue(true);
+        }
+    }
+
+    @Inject(method = "isBlocking", at = @At("HEAD"), cancellable = true)
+    private void enigmaticLegacy$bulwarkBlocksImmediately(CallbackInfoReturnable<Boolean> callback) {
+        LivingEntity entity = (LivingEntity) (Object) this;
+
+        if (entity instanceof Player player
+                && entity.isUsingItem()
+                && entity.getUseItem().is(ModItems.BULWARK_OF_BLAZING_PRIDE.get())
+                && CursedRingHelper.hasCursedRing(player)) {
             callback.setReturnValue(true);
         }
     }

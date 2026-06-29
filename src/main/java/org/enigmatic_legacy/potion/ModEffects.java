@@ -6,6 +6,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.enigmatic_legacy.EnigmaticLegacy;
+import org.enigmatic_legacy.effect.BlazingMightEffect;
 import org.enigmatic_legacy.effect.ForbiddenFruitEffect;
 import org.enigmatic_legacy.effect.GrowingBloodlustEffect;
 import org.enigmatic_legacy.effect.GrowingHungerEffect;
@@ -38,6 +39,9 @@ public final class ModEffects {
 
     public static final DeferredHolder<MobEffect, ForbiddenFruitEffect> FORBIDDEN_FRUIT =
             MOB_EFFECTS.register("forbidden_fruit", ForbiddenFruitEffect::new);
+
+    public static final DeferredHolder<MobEffect, BlazingMightEffect> BLAZING_MIGHT =
+            MOB_EFFECTS.register("blazing_might", BlazingMightEffect::new);
 
     private ModEffects() {
     }

@@ -637,19 +637,35 @@ public class RecipeGenerator extends RecipeProvider {
                 .unlockedBy("has_evil_essence", has(ModItems.EVIL_ESSENCE.get()))
                 .save(output);
 
-        // 烈焰之傲壁垒 / Bulwark of Blazing Pride
-        // 说明：
-        // - 原项目是七咒相关防具；
-        // - 使用黑曜石作为盾体，烈焰核心作为火焰核心；
-        // - 使用邪恶锭强化七咒主题。
+// 烈焰之傲壁垒 / Bulwark of Blazing Pride
+//
+// 对齐原项目 infernal_shield 配方：
+// P I P
+// R S R
+// O C O
+//
+// P = 烈焰粉
+// I = 下界合金锭
+// R = 烈焰棒
+// S = 盾牌
+// O = 黑曜石
+// C = 扭曲之心
+//
+// 注意：当前项目该物品注册名仍是 infernal_shield，
+// 所以数据生成后会输出：
+// data/enigmatic_legacy/recipe/infernal_shield.json
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.BULWARK_OF_BLAZING_PRIDE.get())
-                .pattern("OEO")
-                .pattern("OBO")
-                .pattern(" O ")
+                .pattern("PIP")
+                .pattern("RSR")
+                .pattern("OCO")
+                .define('P', Items.BLAZE_POWDER)
+                .define('I', Items.NETHERITE_INGOT)
+                .define('R', Items.BLAZE_ROD)
+                .define('S', Items.SHIELD)
                 .define('O', Items.OBSIDIAN)
-                .define('E', ModItems.EVIL_INGOT.get())
-                .define('B', ModItems.BLAZING_CORE.get())
-                .unlockedBy("has_blazing_core", has(ModItems.BLAZING_CORE.get()))
+                .define('C', ModItems.TWISTED_HEART.get())
+                .unlockedBy("has_twisted_heart", has(ModItems.TWISTED_HEART.get()))
+                .unlockedBy("has_shield", has(Items.SHIELD))
                 .save(output);
 
         // 饕餮之锅 / The Voracious Pan

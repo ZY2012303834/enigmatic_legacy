@@ -2,20 +2,29 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "B": {
-      "item": "enigmatic_legacy:blazing_core"
+    "C": {
+      "item": "enigmatic_legacy:twisted_heart"
     },
-    "E": {
-      "item": "enigmatic_legacy:evil_ingot"
+    "I": {
+      "item": "minecraft:netherite_ingot"
     },
     "O": {
       "item": "minecraft:obsidian"
+    },
+    "P": {
+      "item": "minecraft:blaze_powder"
+    },
+    "R": {
+      "item": "minecraft:blaze_rod"
+    },
+    "S": {
+      "item": "minecraft:shield"
     }
   },
   "pattern": [
-    "OEO",
-    "OBO",
-    " O "
+    "PIP",
+    "RSR",
+    "OCO"
   ],
   "result": {
     "count": 1,
