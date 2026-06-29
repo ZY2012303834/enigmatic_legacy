@@ -1,8 +1,10 @@
 package org.enigmatic_legacy.event;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.EntityTypeTags;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -90,8 +92,12 @@ public final class BlazingCoreEvents {
 
     /**
      * 处理岩浆临时免疫的“热量”。
+     * 修复点：
+     * 1. 不再只依赖 entity.isInLava()；
+     * 2. 岩浆游泳、岩浆表面、脚下/身体方块为岩浆时，都算作正在接触岩浆；
+     * 3. 这样热量会稳定增长，达到上限后烈焰之核不再取消岩浆伤害。
      * 设计：
-     * - 在岩浆里每 tick +1；
+     * - 接触岩浆时每 tick +1；
      * - 热量未满时免疫岩浆伤害；
      * - 热量满后不再拦截岩浆伤害；
      * - 离开岩浆后逐渐冷却。
@@ -101,17 +107,20 @@ public final class BlazingCoreEvents {
         int maxHeat = ConfigCommon.BLAZING_CORE_LAVA_IMMUNITY_TICKS.get();
 
         /*
-         * 只有佩戴烈焰之核时，进入岩浆才会增加热力。
-         * 脱下后即使还泡在岩浆里，也不再继续累计烈焰之核热力。
+         * 只有佩戴烈焰之核时，接触岩浆才会增加热力。
+         *
+         * 这里必须使用 isTouchingLava(entity)，不能只用 entity.isInLava()。
+         * 否则新增“岩浆中游泳 / 岩浆表面移动”后，某些状态下热量不会增长，
+         * 导致 heat 永远小于 maxHeat，岩浆伤害被永久取消。
          */
-        if (hasBlazingCore && entity.isInLava()) {
+        if (hasBlazingCore && isTouchingLava(entity)) {
             data.putInt(LAVA_HEAT_TAG, Math.min(maxHeat, heat + 1));
             return;
         }
 
         /*
          * 未佩戴、离开岩浆，或者脱下烈焰之核后：
-         * 只要热力值还大于 0，就继续按原速度冷却。
+         * 只要热力值还大于 0，就继续按配置速度冷却。
          */
         if (heat > 0) {
             int cooldown = Math.max(1, ConfigCommon.BLAZING_CORE_LAVA_COOLDOWN_PER_TICK.get());
@@ -142,13 +151,19 @@ public final class BlazingCoreEvents {
 
         /*
          * 岩浆伤害：
-         * 原版新版烈焰核心是“临时免疫岩浆”，不是永久岩浆无敌。
-         * 所以这里根据热量决定是否取消伤害。
+         *
+         * 必须最先单独处理，并且无论是否取消，都直接 return。
+         * 这样可以避免岩浆伤害继续落入 DamageTypeTags.IS_FIRE 分支，
+         * 否则岩浆会被当成普通火焰伤害永久免疫。
          */
-        if (source.is(DamageTypes.LAVA)) {
+        if (isLavaDamage(source)) {
             int heat = target.getPersistentData().getInt(LAVA_HEAT_TAG);
             int maxHeat = ConfigCommon.BLAZING_CORE_LAVA_IMMUNITY_TICKS.get();
 
+            /*
+             * 热量未满：取消岩浆伤害。
+             * 热量满：不取消，让玩家开始受到岩浆伤害。
+             */
             if (heat < maxHeat) {
                 event.setCanceled(true);
             }
@@ -164,6 +179,35 @@ public final class BlazingCoreEvents {
         if (source.is(DamageTypeTags.IS_FIRE)) {
             event.setCanceled(true);
         }
+    }
+
+    /**
+     * 判断伤害是否为岩浆伤害。
+     * 说明：
+     * 正常情况下 source.is(DamageTypes.LAVA) 就够了。
+     * 额外判断 msgId 是为了避免不同映射 / 兼容环境下岩浆伤害没被 ResourceKey 命中。
+     */
+    private static boolean isLavaDamage(DamageSource source) {
+        return source.is(DamageTypes.LAVA) || "lava".equals(source.getMsgId());
+    }
+
+    /**
+     * 判断实体是否正在接触岩浆。
+     * 修复烈焰之核永久免疫的关键：
+     * 新增岩浆游泳后，部分状态下 entity.isInLava() 不一定足够稳定。
+     * 所以同时检查身体位置、眼睛位置、脚下位置的流体状态。
+     */
+    private static boolean isTouchingLava(LivingEntity entity) {
+        if (entity.isInLava()) {
+            return true;
+        }
+
+        BlockPos bodyPos = entity.blockPosition();
+        BlockPos eyePos = BlockPos.containing(entity.getEyePosition());
+
+        return entity.level().getFluidState(bodyPos).is(FluidTags.LAVA)
+                || entity.level().getFluidState(bodyPos.below()).is(FluidTags.LAVA)
+                || entity.level().getFluidState(eyePos).is(FluidTags.LAVA);
     }
 
     @SubscribeEvent
