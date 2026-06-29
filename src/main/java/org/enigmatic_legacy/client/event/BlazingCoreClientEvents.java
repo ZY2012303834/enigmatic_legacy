@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
@@ -48,6 +49,21 @@ public final class BlazingCoreClientEvents {
      * 必须和 BlazingCoreEvents 中的热量 NBT 名称一致。
      */
     private static final String LAVA_HEAT_TAG = "enigmatic_legacy.blazing_core_lava_heat";
+
+    /**
+     * 客户端视觉热量。
+     * 注意：
+     * 服务端 PersistentData 不会稳定同步到客户端，
+     * 所以 GUI 不能直接读取服务端的 LAVA_HEAT_TAG。
+     * 这个值只用于客户端绘制过热条，
+     * 不参与真实伤害判定。
+     */
+    private static int clientVisualLavaHeat = 0;
+
+    /**
+     * 防止一帧多次渲染导致热量一 tick 增加多次。
+     */
+    private static int lastClientVisualTick = -1;
 
     /**
      * 原版经验条 sprite。
@@ -225,9 +241,21 @@ public final class BlazingCoreClientEvents {
         Minecraft minecraft = Minecraft.getInstance();
         LocalPlayer player = minecraft.player;
 
-        if (player == null || minecraft.options.hideGui) {
+        if (player == null) {
+            clientVisualLavaHeat = 0;
+            lastClientVisualTick = -1;
             return;
         }
+
+        if (minecraft.options.hideGui) {
+            return;
+        }
+
+        /*
+         * 每 tick 更新一次客户端视觉热量。
+         * 这只影响 GUI，不影响真实岩浆伤害。
+         */
+        updateClientVisualLavaHeat(player);
 
         if (!shouldReplaceExperienceBar(player)) {
             return;
@@ -254,12 +282,13 @@ public final class BlazingCoreClientEvents {
     /**
      * 是否替换经验条。
 
+     /**
+     * 是否替换经验条。
      * 重点：
      * 1. 创造模式不显示；
      * 2. 旁观模式不显示；
-     * 3. 必须佩戴烈焰之核；
-     * 4. 只要热量还没完全消退，就继续显示 GUI；
-     * 5. 刚进入岩浆时，即使热量还是 0，也先显示空过热条。
+     * 3. GUI 使用客户端视觉热量，不再读取服务端 PersistentData；
+     * 4. 这样岩浆游泳、岩浆表面行走时也能正常显示进度条。
      */
     private static boolean shouldReplaceExperienceBar(Player player) {
         if (player.isSpectator()) {
@@ -270,15 +299,15 @@ public final class BlazingCoreClientEvents {
             return false;
         }
 
-        int heat = player.getPersistentData().getInt(LAVA_HEAT_TAG);
         boolean hasBlazingCore = BlazingCoreHelper.hasBlazingCore(player);
 
         /*
-         * 佩戴烈焰之核并在岩浆中时，显示热条。
-         * 脱下后，只要热力值还没降到 0，也继续显示热条。
+         * 佩戴烈焰之核并接触岩浆时显示；
+         * 离开岩浆后，只要视觉热量还没冷却完，也继续显示。
          */
-        return heat > 0 || (hasBlazingCore && player.isInLava());
+        return clientVisualLavaHeat > 0 || (hasBlazingCore && isTouchingLava(player));
     }
+
     /**
      * 绘制过热条。
 
@@ -294,7 +323,11 @@ public final class BlazingCoreClientEvents {
         int y = screenHeight - 29;
 
         int maxHeat = Math.max(1, ConfigCommon.BLAZING_CORE_LAVA_IMMUNITY_TICKS.get());
-        int heat = Mth.clamp(player.getPersistentData().getInt(LAVA_HEAT_TAG), 0, maxHeat);
+        /*
+         * GUI 只读取客户端视觉热量。
+         * 服务端真实热量仍然由 BlazingCoreEvents 控制。
+         */
+        int heat = Mth.clamp(clientVisualLavaHeat, 0, maxHeat);
 
         float progress = heat / (float) maxHeat;
 
@@ -377,5 +410,61 @@ public final class BlazingCoreClientEvents {
     private static float smoothStep(float value) {
         value = Mth.clamp(value, 0.0F, 1.0F);
         return value * value * (3.0F - 2.0F * value);
+    }
+
+    /**
+     * 更新客户端视觉热量。
+     * 说明：
+     * 服务端真实热量不自动同步到客户端，
+     * 所以这里复制一份客户端视觉计数。
+     * 这个方法只影响 GUI 显示，
+     * 不会改变烈焰之核真实保护时间。
+     */
+    private static void updateClientVisualLavaHeat(Player player) {
+        if (player.tickCount == lastClientVisualTick) {
+            return;
+        }
+
+        lastClientVisualTick = player.tickCount;
+
+        int maxHeat = Math.max(1, ConfigCommon.BLAZING_CORE_LAVA_IMMUNITY_TICKS.get());
+        boolean hasBlazingCore = BlazingCoreHelper.hasBlazingCore(player);
+
+        /*
+         * 佩戴烈焰之核并接触岩浆：
+         * 客户端视觉热量每 tick +1。
+         */
+        if (hasBlazingCore && isTouchingLava(player)) {
+            clientVisualLavaHeat = Math.min(maxHeat, clientVisualLavaHeat + 1);
+            return;
+        }
+
+        /*
+         * 离开岩浆或脱下烈焰之核：
+         * 视觉热量按配置冷却。
+         */
+        if (clientVisualLavaHeat > 0) {
+            int cooldown = Math.max(1, ConfigCommon.BLAZING_CORE_LAVA_COOLDOWN_PER_TICK.get());
+            clientVisualLavaHeat = Math.max(0, clientVisualLavaHeat - cooldown);
+        }
+    }
+
+    /**
+     * 判断客户端玩家是否正在接触岩浆。
+     * 不能只用 player.isInLava()，
+     * 因为现在烈焰之核支持岩浆游泳 / 岩浆表面行动，
+     * 某些状态下 isInLava() 不够稳定。
+     */
+    private static boolean isTouchingLava(Player player) {
+        if (player.isInLava()) {
+            return true;
+        }
+
+        BlockPos bodyPos = player.blockPosition();
+        BlockPos eyePos = BlockPos.containing(player.getX(), player.getEyeY(), player.getZ());
+
+        return player.level().getFluidState(bodyPos).is(FluidTags.LAVA)
+                || player.level().getFluidState(bodyPos.below()).is(FluidTags.LAVA)
+                || player.level().getFluidState(eyePos).is(FluidTags.LAVA);
     }
 }
