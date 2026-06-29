@@ -1,0 +1,27 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:astral_fruit",
+  "name": "Astral Fruit",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:astral_fruit",
+      "link_recipe": true,
+      "text": "A rare fruit carrying starlight power.$(br2)Eating it grants a set of powerful temporary effects.",
+      "title": "Astral Fruit"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Eating Astral Fruit grants its base effects regardless of whether the player wears the Ring of the Seven Curses.$(br2)These effects are useful before dangerous combat, exploration, or escape.",
+      "title": "Base Effects"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "If the player eats Astral Fruit while wearing the Ring of the Seven Curses, and has never absorbed its starlight before, it permanently grants 1 additional ring slot.$(br2)This slot increase can only happen once per player.$(br2)Without the Ring of the Seven Curses, or on later uses, the fruit only grants its base effects.",
+      "title": "Seven Curses Resonance"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 215
+}

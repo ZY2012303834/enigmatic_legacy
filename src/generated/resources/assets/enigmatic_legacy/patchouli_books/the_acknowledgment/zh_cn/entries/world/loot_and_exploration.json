@@ -1,0 +1,25 @@
+{
+  "category": "enigmatic_legacy:world",
+  "icon": "minecraft:chest",
+  "name": "探索与战利品",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "并非所有物品都来自合成。$(br2)本项目中，部分材料、术石、果实、卷轴和高阶物品会出现在结构宝箱中。$(br2)如果你无法在工作台或 JEI 中找到合成方式，它可能需要通过探索获得。",
+      "title": "探索与战利品"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "你应该重点搜索这些结构：$(br2)$(li)末地城宝藏箱$(br)$(li)堡垒遗迹箱子$(br)$(li)废弃传送门箱子$(br)$(li)地牢和废弃矿井$(br)$(li)沙漠神殿和丛林神庙$(br)$(li)水下遗迹、沉船和埋藏宝藏$(br)$(li)要塞走廊和要塞十字路口",
+      "title": "常见结构"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "结构宝箱通常在第一次打开时生成内容。$(br2)如果你已经打开过某个箱子，之后修改战利品表并不会让它重新刷新。$(br2)测试战利品时，建议使用新世界、新生成区块，或使用 /loot 命令检查。",
+      "title": "注意"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 20
+}

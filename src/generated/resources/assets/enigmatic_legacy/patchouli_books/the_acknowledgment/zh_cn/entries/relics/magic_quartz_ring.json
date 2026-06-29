@@ -1,0 +1,33 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:magic_quartz_ring",
+  "name": "魔法石英戒指",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:magic_quartz_ring",
+      "link_recipe": true,
+      "text": "由石英与魔力材料制成的戒指。$(br2)佩戴时，它会提升护甲与幸运，并削弱部分魔法伤害。",
+      "title": "魔法石英戒指"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "魔法石英戒指提供：$(br2)$(li)+2 护甲$(br)$(li)+1.5 幸运$(br)$(li)+30% 魔法伤害抗性$(br2)它对原版魔法、凋零、龙息，以及部分兼容模组的魔法伤害有效。",
+      "title": "佩戴效果"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "同一时间只能佩戴一个魔法石英戒指。$(br2)如果你有多个戒指栏位，也不能通过重复佩戴来叠加它的效果。",
+      "title": "佩戴限制"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:magic_quartz_ring",
+      "text": "魔法石英戒指的合成配方。",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 45
+}

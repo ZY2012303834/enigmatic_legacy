@@ -1,0 +1,33 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:magic_quartz_ring",
+  "name": "Magic Quartz Ring",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:magic_quartz_ring",
+      "link_recipe": true,
+      "text": "A ring made from quartz and magical materials.$(br2)When worn, it improves armor and luck while weakening certain kinds of magical damage.",
+      "title": "Magic Quartz Ring"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The Magic Quartz Ring grants:$(br2)$(li)+2 Armor$(br)$(li)+1.5 Luck$(br)$(li)+30% Magic Damage Resistance$(br2)It works against vanilla magic, wither, dragon breath, and compatible magic damage from some other mods.",
+      "title": "Worn Effects"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Only one Magic Quartz Ring can be worn at a time.$(br2)Even if you have multiple ring slots, you cannot stack its effect by equipping several copies.",
+      "title": "Limit"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:magic_quartz_ring",
+      "text": "The crafting recipe for the Magic Quartz Ring.",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 45
+}

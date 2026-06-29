@@ -1,0 +1,25 @@
+{
+  "category": "enigmatic_legacy:world",
+  "icon": "minecraft:chest",
+  "name": "Loot and Exploration",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Not every item comes from crafting.$(br2)Some materials, spellstones, fruits, scrolls, and high-tier items in this project appear in structure chests.$(br2)If you cannot find a crafting recipe in the crafting table or JEI, the item may require exploration.",
+      "title": "Loot and Exploration"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "You should pay special attention to these structures:$(br2)$(li)End City treasure chests$(br)$(li)Bastion chests$(br)$(li)Ruined Portal chests$(br)$(li)Dungeons and Mineshafts$(br)$(li)Desert Temples and Jungle Temples$(br)$(li)Ocean Ruins, Shipwrecks, and Buried Treasure$(br)$(li)Stronghold corridors and crossings",
+      "title": "Common Structures"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Structure chests usually generate their contents when first opened.$(br2)If a chest has already been opened, changing loot tables later will not refresh its contents.$(br2)When testing loot, use a new world, newly generated chunks, or the /loot command.",
+      "title": "Important Note"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 20
+}

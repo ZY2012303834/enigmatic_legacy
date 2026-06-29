@@ -1,0 +1,27 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:astral_fruit",
+  "name": "天体果实",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:astral_fruit",
+      "link_recipe": true,
+      "text": "带有星辉力量的稀有果实。$(br2)食用后会给予一组强力增益效果。",
+      "title": "天体果实"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "无论是否佩戴七咒之戒，食用天体果实都会获得基础增益效果。$(br2)这些效果适合在危险战斗、探索或逃生前使用。",
+      "title": "基础效果"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "如果玩家佩戴七咒之戒，并且此前从未吸收过天体果实的星辉，食用后会永久增加 1 个戒指栏位。$(br2)这个栏位增加效果每名玩家只能触发一次。$(br2)未佩戴七咒之戒，或第二次及以后食用，只会获得基础增益效果。",
+      "title": "七咒共鸣"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 215
+}
