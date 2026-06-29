@@ -90,7 +90,7 @@ public class BlazingCore extends Item implements ICurioItem {
         }
 
         tooltip.add(Component.translatable("tooltip.enigmatic_legacy.spellstone.active")
-                .withStyle(ChatFormatting.DARK_RED));
+                .withStyle(ChatFormatting.DARK_PURPLE));
 
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.blazing_core.active"));
 
@@ -102,7 +102,7 @@ public class BlazingCore extends Item implements ICurioItem {
         tooltip.add(Component.empty());
 
         tooltip.add(Component.translatable("tooltip.enigmatic_legacy.spellstone.passive")
-                .withStyle(ChatFormatting.DARK_RED));
+                .withStyle(ChatFormatting.DARK_PURPLE));
 
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.blazing_core.passive.1"));
 
