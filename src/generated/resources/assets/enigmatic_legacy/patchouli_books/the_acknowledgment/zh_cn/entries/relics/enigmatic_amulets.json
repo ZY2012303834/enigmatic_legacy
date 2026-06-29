@@ -1,11 +1,20 @@
 {
   "category": "enigmatic_legacy:relics",
+  "extra_recipe_mappings": {
+    "enigmatic_legacy:enigmatic_amulet_aqua": 0,
+    "enigmatic_legacy:enigmatic_amulet_black": 0,
+    "enigmatic_legacy:enigmatic_amulet_blue": 0,
+    "enigmatic_legacy:enigmatic_amulet_green": 0,
+    "enigmatic_legacy:enigmatic_amulet_magenta": 0,
+    "enigmatic_legacy:enigmatic_amulet_red": 0,
+    "enigmatic_legacy:enigmatic_amulet_violet": 0
+  },
   "icon": "enigmatic_legacy:enigmatic_amulet_red",
   "name": "七色神秘护符",
   "pages": [
     {
       "type": "patchouli:spotlight",
-      "item": "enigmatic_legacy:enigmatic_amulet_red",
+      "item": "enigmatic_legacy:enigmatic_amulet_red,enigmatic_legacy:enigmatic_amulet_aqua,enigmatic_legacy:enigmatic_amulet_violet,enigmatic_legacy:enigmatic_amulet_magenta,enigmatic_legacy:enigmatic_amulet_green,enigmatic_legacy:enigmatic_amulet_black,enigmatic_legacy:enigmatic_amulet_blue",
       "link_recipe": true,
       "text": "未见之护符在被见证后，会显现为七种不同颜色的神秘护符之一。$(br2)每种颜色都代表一种独立的能力方向。",
       "title": "七色神秘护符"

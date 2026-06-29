@@ -169,6 +169,28 @@ abstract class AbstractPatchouliBookContentGenerator implements DataProvider {
     }
 
     /**
+     * 给 Patchouli 条目追加额外物品查询映射。
+     * 用途：
+     * 1. 让多个物品都能通过 Patchouli 快速查询 / Ctrl 查询打开同一个条目；
+     * 2. 例如七色神秘护符共用一个介绍页；
+     * 3. 如果不加这个，只有条目的 icon 物品能直接打开该页面。
+     *
+     * @param entry 已经生成好的条目 JSON
+     * @param page  0-based 页码，通常填 0
+     * @param items 需要映射到该条目的物品 ID
+     */
+    protected static JsonObject withExtraRecipeMappings(JsonObject entry, int page, String... items) {
+        JsonObject mappings = new JsonObject();
+
+        for (String item : items) {
+            mappings.addProperty(item, page);
+        }
+
+        entry.add("extra_recipe_mappings", mappings);
+        return entry;
+    }
+
+    /**
      * 创建只有一个 spotlight 页面的简单条目。
      */
     protected static JsonObject simpleSpotlight(

@@ -227,6 +227,16 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 "enigmatic_legacy:thicc_scroll"
         )));
 
+        futures.add(save(output, "en_us", "entries/materials/darkest_scroll", simpleSpotlight(
+                "Darkest Scroll",
+                "materials",
+                "enigmatic_legacy:darkest_scroll",
+                25,
+                "A scroll soaked in deep darkness.$(br2)" +
+                        "It is not an equipable Arcane Scroll by itself, but an important material for more dangerous crafting paths.$(br2)" +
+                        "It is usually found in high-value Bastion loot."
+        )));
+
         futures.add(save(output, "en_us", "entries/materials/etherium_ore", simpleSpotlight(
                 "Etherium Ore",
                 "materials",
@@ -546,6 +556,58 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                         "It rewards aggressive survival, but should not be mistaken for safety."
         )));
 
+        futures.add(save(output, "en_us", "entries/relics/animal_guidebook", entry(
+                "Guide to Animal Companionship",
+                "relics",
+                "enigmatic_legacy:animal_guidebook",
+                115,
+
+                spotlightPage(
+                        "enigmatic_legacy:animal_guidebook",
+                        "Guide to Animal Companionship",
+                        "A guidebook recording the knowledge of animal companionship.$(br2)" +
+                                "As long as it is carried in the inventory, main hand, or off hand, it helps protect certain animals."
+                ),
+
+                textPage(
+                        "Animal Protection",
+                        "The guidebook protects certain animals, especially ordinary animals and some tamable creatures.$(br2)" +
+                                "It also weakens the impact of the second curse of the Ring of the Seven Curses on tamable animals."
+                ),
+
+                textPage(
+                        "Creative Check",
+                        "Creative mode players can right-click a creature with this book to check whether it is treated as a tamable animal.$(br2)" +
+                                "This is mainly useful for debugging and compatibility checks."
+                )
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/hunter_guidebook", entry(
+                "Guide to Feral Hunt",
+                "relics",
+                "enigmatic_legacy:hunter_guidebook",
+                116,
+
+                spotlightPage(
+                        "enigmatic_legacy:hunter_guidebook",
+                        "Guide to Feral Hunt",
+                        "A guidebook recording wild hunting and companion coordination.$(br2)" +
+                                "As long as it is carried in the inventory, main hand, or off hand, it changes how nearby pets receive damage."
+                ),
+
+                textPage(
+                        "Damage Transfer",
+                        "When nearby pets take damage, the Guide to Feral Hunt attempts to transfer part of that danger to their owner.$(br2)" +
+                                "This can protect pets, but it also means the owner must accept greater risk."
+                ),
+
+                textPage(
+                        "Synergy",
+                        "When used together with the Guide to Animal Companionship, the transferred damage receives additional reduction.$(br2)" +
+                                "It is useful for players who often fight or explore with pets."
+                )
+        )));
+
         futures.add(save(output, "en_us", "entries/relics/guardian_heart", simpleSpotlight(
                 "Guardian Heart",
                 "relics",
@@ -678,36 +740,44 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 )
         )));
 
-        futures.add(save(output, "en_us", "entries/relics/enigmatic_amulets", entry(
-                "Seven Enigmatic Amulets",
-                "relics",
-                "enigmatic_legacy:enigmatic_amulet_red",
-                230,
-
-                spotlightPage(
-                        "enigmatic_legacy:enigmatic_amulet_red",
+        futures.add(save(output, "en_us", "entries/relics/enigmatic_amulets", withExtraRecipeMappings(entry(
                         "Seven Enigmatic Amulets",
-                        "When the Unwitnessed Amulet is witnessed, it reveals one of seven colored Enigmatic Amulets.$(br2)" +
-                                "Each color represents a different kind of power."
-                ),
+                        "relics",
+                        "enigmatic_legacy:enigmatic_amulet_red",
+                        230,
 
-                textPage(
-                        "Seven Forms",
-                        "The seven forms are:$(br2)" +
-                                "$(li)Red: Attack Damage$(br)" +
-                                "$(li)Aqua: Sprint Speed$(br)" +
-                                "$(li)Violet: Projectile Deflection$(br)" +
-                                "$(li)Magenta: Gravity Change$(br)" +
-                                "$(li)Green: Mining Efficiency$(br)" +
-                                "$(li)Black: Lifesteal$(br)" +
-                                "$(li)Blue: Swim Speed"
-                ),
+                        spotlightPage(
+                                "enigmatic_legacy:enigmatic_amulet_red,enigmatic_legacy:enigmatic_amulet_aqua,enigmatic_legacy:enigmatic_amulet_violet,enigmatic_legacy:enigmatic_amulet_magenta,enigmatic_legacy:enigmatic_amulet_green,enigmatic_legacy:enigmatic_amulet_black,enigmatic_legacy:enigmatic_amulet_blue",
+                                "Seven Enigmatic Amulets",
+                                "When the Unwitnessed Amulet is witnessed, it reveals one of seven colored Enigmatic Amulets.$(br2)" +
+                                        "Each color represents a different kind of power."
+                        ),
 
-                textPage(
-                        "Progression",
-                        "All seven colored amulets can be gathered into the Amulet of Ascension.$(br2)" +
-                                "The Amulet of Ascension inherits all seven powers and leads toward the more dangerous Testament of Contempt."
-                )
+                        textPage(
+                                "Seven Forms",
+                                "The seven forms are:$(br2)" +
+                                        "$(li)Red: Attack Damage$(br)" +
+                                        "$(li)Aqua: Sprint Speed$(br)" +
+                                        "$(li)Violet: Projectile Deflection$(br)" +
+                                        "$(li)Magenta: Gravity Change$(br)" +
+                                        "$(li)Green: Mining Efficiency$(br)" +
+                                        "$(li)Black: Lifesteal$(br)" +
+                                        "$(li)Blue: Swim Speed"
+                        ),
+
+                        textPage(
+                                "Progression",
+                                "All seven colored amulets can be gathered into the Amulet of Ascension.$(br2)" +
+                                        "The Amulet of Ascension inherits all seven powers and leads toward the more dangerous Testament of Contempt."
+                        )
+                ), 0,
+                "enigmatic_legacy:enigmatic_amulet_red",
+                "enigmatic_legacy:enigmatic_amulet_aqua",
+                "enigmatic_legacy:enigmatic_amulet_violet",
+                "enigmatic_legacy:enigmatic_amulet_magenta",
+                "enigmatic_legacy:enigmatic_amulet_green",
+                "enigmatic_legacy:enigmatic_amulet_black",
+                "enigmatic_legacy:enigmatic_amulet_blue"
         )));
 
         futures.add(save(output, "en_us", "entries/relics/ascension_amulet", entry(

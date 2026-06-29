@@ -1,0 +1,27 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:hunter_guidebook",
+  "name": "野猎指南",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:hunter_guidebook",
+      "link_recipe": true,
+      "text": "一本记录野性狩猎与伙伴协同的指南。$(br2)只要持有在物品栏、主手或副手中，它就会影响附近宠物受到伤害的方式。",
+      "title": "野猎指南"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "当附近宠物受到伤害时，野猎指南会尝试将部分危险转移给主人。$(br2)这能保护宠物，但也意味着主人必须承担更多风险。",
+      "title": "伤害转移"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "如果同时配合兽友指南使用，野猎指南的伤害转移会获得额外减免。$(br2)适合经常携带宠物战斗或探索的玩家。",
+      "title": "协同效果"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 116
+}

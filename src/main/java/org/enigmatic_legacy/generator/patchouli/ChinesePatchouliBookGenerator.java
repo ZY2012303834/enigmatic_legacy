@@ -227,6 +227,16 @@ final class ChinesePatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 "enigmatic_legacy:thicc_scroll"
         )));
 
+        futures.add(save(output, "zh_cn", "entries/materials/darkest_scroll", simpleSpotlight(
+                "至暗卷轴",
+                "materials",
+                "enigmatic_legacy:darkest_scroll",
+                25,
+                "一张被深暗力量浸染的卷轴。$(br2)" +
+                        "它本身并不是可装备的奥秘卷轴，而是通向更危险制作路线的重要材料。$(br2)" +
+                        "通常需要在堡垒遗迹的高价值箱子中寻找。"
+        )));
+
         futures.add(save(output, "zh_cn", "entries/materials/etherium_ore", simpleSpotlight(
                 "以太矿石",
                 "materials",
@@ -546,6 +556,58 @@ final class ChinesePatchouliBookGenerator extends AbstractPatchouliBookContentGe
                         "它奖励激进的生存方式，但绝不代表安全。"
         )));
 
+        futures.add(save(output, "zh_cn", "entries/relics/animal_guidebook", entry(
+                "兽友指南",
+                "relics",
+                "enigmatic_legacy:animal_guidebook",
+                115,
+
+                spotlightPage(
+                        "enigmatic_legacy:animal_guidebook",
+                        "兽友指南",
+                        "一本记录动物陪伴知识的指南。$(br2)" +
+                                "只要持有在物品栏、主手或副手中，它就会帮助保护部分动物。"
+                ),
+
+                textPage(
+                        "动物保护",
+                        "兽友指南会让部分动物受到保护，尤其是普通动物和部分可驯服生物。$(br2)" +
+                                "它也能削弱七咒之戒第二诅咒对可驯服动物造成的影响。"
+                ),
+
+                textPage(
+                        "创造模式检测",
+                        "创造模式玩家可以用它右键生物，检测该生物是否会被视为可驯服动物。$(br2)" +
+                                "这个功能主要用于调试和确认兼容生物。"
+                )
+        )));
+
+        futures.add(save(output, "zh_cn", "entries/relics/hunter_guidebook", entry(
+                "野猎指南",
+                "relics",
+                "enigmatic_legacy:hunter_guidebook",
+                116,
+
+                spotlightPage(
+                        "enigmatic_legacy:hunter_guidebook",
+                        "野猎指南",
+                        "一本记录野性狩猎与伙伴协同的指南。$(br2)" +
+                                "只要持有在物品栏、主手或副手中，它就会影响附近宠物受到伤害的方式。"
+                ),
+
+                textPage(
+                        "伤害转移",
+                        "当附近宠物受到伤害时，野猎指南会尝试将部分危险转移给主人。$(br2)" +
+                                "这能保护宠物，但也意味着主人必须承担更多风险。"
+                ),
+
+                textPage(
+                        "协同效果",
+                        "如果同时配合兽友指南使用，野猎指南的伤害转移会获得额外减免。$(br2)" +
+                                "适合经常携带宠物战斗或探索的玩家。"
+                )
+        )));
+
         futures.add(save(output, "zh_cn", "entries/relics/guardian_heart", simpleSpotlight(
                 "守卫者之心",
                 "relics",
@@ -678,36 +740,44 @@ final class ChinesePatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 )
         )));
 
-        futures.add(save(output, "zh_cn", "entries/relics/enigmatic_amulets", entry(
-                "七色神秘护符",
-                "relics",
-                "enigmatic_legacy:enigmatic_amulet_red",
-                230,
-
-                spotlightPage(
-                        "enigmatic_legacy:enigmatic_amulet_red",
+        futures.add(save(output, "zh_cn", "entries/relics/enigmatic_amulets", withExtraRecipeMappings(entry(
                         "七色神秘护符",
-                        "未见之护符在被见证后，会显现为七种不同颜色的神秘护符之一。$(br2)" +
-                                "每种颜色都代表一种独立的能力方向。"
-                ),
+                        "relics",
+                        "enigmatic_legacy:enigmatic_amulet_red",
+                        230,
 
-                textPage(
-                        "七种形态",
-                        "七色神秘护符包括：$(br2)" +
-                                "$(li)红色：攻击伤害$(br)" +
-                                "$(li)青色：疾跑速度$(br)" +
-                                "$(li)紫色：弹射物偏转$(br)" +
-                                "$(li)品红色：重力变化$(br)" +
-                                "$(li)绿色：挖掘效率$(br)" +
-                                "$(li)黑色：生命偷取$(br)" +
-                                "$(li)蓝色：游泳速度"
-                ),
+                        spotlightPage(
+                                "enigmatic_legacy:enigmatic_amulet_red,enigmatic_legacy:enigmatic_amulet_aqua,enigmatic_legacy:enigmatic_amulet_violet,enigmatic_legacy:enigmatic_amulet_magenta,enigmatic_legacy:enigmatic_amulet_green,enigmatic_legacy:enigmatic_amulet_black,enigmatic_legacy:enigmatic_amulet_blue",
+                                "七色神秘护符",
+                                "未见之护符在被见证后，会显现为七种不同颜色的神秘护符之一。$(br2)" +
+                                        "每种颜色都代表一种独立的能力方向。"
+                        ),
 
-                textPage(
-                        "进阶",
-                        "七种颜色的护符可以进一步汇聚为飞升护符。$(br2)" +
-                                "飞升护符继承全部七种神秘护符的力量，并能继续通向更加危险的轻蔑之约。"
-                )
+                        textPage(
+                                "七种形态",
+                                "七色神秘护符包括：$(br2)" +
+                                        "$(li)红色：攻击伤害$(br)" +
+                                        "$(li)青色：疾跑速度$(br)" +
+                                        "$(li)紫色：弹射物偏转$(br)" +
+                                        "$(li)品红色：重力变化$(br)" +
+                                        "$(li)绿色：挖掘效率$(br)" +
+                                        "$(li)黑色：生命偷取$(br)" +
+                                        "$(li)蓝色：游泳速度"
+                        ),
+
+                        textPage(
+                                "进阶",
+                                "七种颜色的护符可以进一步汇聚为飞升护符。$(br2)" +
+                                        "飞升护符继承全部七种神秘护符的力量，并能继续通向更加危险的轻蔑之约。"
+                        )
+                ), 0,
+                "enigmatic_legacy:enigmatic_amulet_red",
+                "enigmatic_legacy:enigmatic_amulet_aqua",
+                "enigmatic_legacy:enigmatic_amulet_violet",
+                "enigmatic_legacy:enigmatic_amulet_magenta",
+                "enigmatic_legacy:enigmatic_amulet_green",
+                "enigmatic_legacy:enigmatic_amulet_black",
+                "enigmatic_legacy:enigmatic_amulet_blue"
         )));
 
         futures.add(save(output, "zh_cn", "entries/relics/ascension_amulet", entry(

@@ -1,0 +1,27 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:animal_guidebook",
+  "name": "兽友指南",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:animal_guidebook",
+      "link_recipe": true,
+      "text": "一本记录动物陪伴知识的指南。$(br2)只要持有在物品栏、主手或副手中，它就会帮助保护部分动物。",
+      "title": "兽友指南"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "兽友指南会让部分动物受到保护，尤其是普通动物和部分可驯服生物。$(br2)它也能削弱七咒之戒第二诅咒对可驯服动物造成的影响。",
+      "title": "动物保护"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "创造模式玩家可以用它右键生物，检测该生物是否会被视为可驯服动物。$(br2)这个功能主要用于调试和确认兼容生物。",
+      "title": "创造模式检测"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 115
+}

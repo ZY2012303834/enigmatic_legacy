@@ -1,0 +1,27 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:animal_guidebook",
+  "name": "Guide to Animal Companionship",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:animal_guidebook",
+      "link_recipe": true,
+      "text": "A guidebook recording the knowledge of animal companionship.$(br2)As long as it is carried in the inventory, main hand, or off hand, it helps protect certain animals.",
+      "title": "Guide to Animal Companionship"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The guidebook protects certain animals, especially ordinary animals and some tamable creatures.$(br2)It also weakens the impact of the second curse of the Ring of the Seven Curses on tamable animals.",
+      "title": "Animal Protection"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Creative mode players can right-click a creature with this book to check whether it is treated as a tamable animal.$(br2)This is mainly useful for debugging and compatibility checks.",
+      "title": "Creative Check"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 115
+}

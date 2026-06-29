@@ -1,0 +1,17 @@
+{
+  "category": "enigmatic_legacy:materials",
+  "icon": "enigmatic_legacy:darkest_scroll",
+  "name": "Darkest Scroll",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:darkest_scroll",
+      "link_recipe": true,
+      "text": "A scroll soaked in deep darkness.$(br2)It is not an equipable Arcane Scroll by itself, but an important material for more dangerous crafting paths.$(br2)It is usually found in high-value Bastion loot.",
+      "title": "Darkest Scroll"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 25
+}
