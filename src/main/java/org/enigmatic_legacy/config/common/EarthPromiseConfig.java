@@ -30,11 +30,11 @@ public class EarthPromiseConfig {
 
         cooldown = builder
                 .comment("地灵之诺被动能力的冷却时间，单位为 tick。20 tick = 1 秒。")
-                .defineInRange("Cooldown", 1000, 0, 32768);
+                .defineInRange("Cooldown", 500, 0, 32768);
 
         totalResistance = builder
                 .comment("对第一诅咒的修正系数，单位为百分比。")
-                .defineInRange("TotalResistance", 25, 0, 100);
+                .defineInRange("TotalResistance", 50, 0, 100);
 
         abilityTriggerPercent = builder
                 .comment("触发被动能力所需的伤害阈值，按当前生命值百分比计算。")

@@ -8,12 +8,6 @@
     "a": {
       "item": "enigmatic_legacy:pure_heart"
     },
-    "b": {
-      "item": "enigmatic_legacy:treasure_hunter_charm"
-    },
-    "e": {
-      "item": "enigmatic_legacy:cosmic_heart"
-    },
     "m": {
       "item": "minecraft:golden_apple"
     },
@@ -25,9 +19,9 @@
     }
   },
   "pattern": [
-    "mem",
-    "tXa",
-    "nbn"
+    "mam",
+    "tXt",
+    "nan"
   ],
   "result": {
     "count": 1,

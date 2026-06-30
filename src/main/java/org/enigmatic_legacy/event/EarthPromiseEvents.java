@@ -1,6 +1,7 @@
 package org.enigmatic_legacy.event;
 
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -12,6 +13,7 @@ import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.potion.ModEffects;
@@ -21,8 +23,33 @@ import org.enigmatic_legacy.util.EarthPromiseHelper;
 public final class EarthPromiseEvents {
     private static final int PURE_RESISTANCE_DURATION = 20 * 5;
     private static final int PURE_RESISTANCE_AMPLIFIER = 4;
+    private static final String COOLDOWN_UNTIL_TAG = "enigmatic_legacy_earth_promise_cooldown_until";
 
     private EarthPromiseEvents() {
+    }
+
+    @SubscribeEvent
+    public static void onPlayerTick(PlayerTickEvent.Post event) {
+        Player player = event.getEntity();
+
+        if (player.level().isClientSide()) {
+            return;
+        }
+
+        restorePersistentCooldown(player);
+    }
+
+    @SubscribeEvent
+    public static void onPlayerClone(PlayerEvent.Clone event) {
+        if (!event.isWasDeath()) {
+            return;
+        }
+
+        CompoundTag originalData = event.getOriginal().getPersistentData();
+
+        if (originalData.contains(COOLDOWN_UNTIL_TAG)) {
+            event.getEntity().getPersistentData().putLong(COOLDOWN_UNTIL_TAG, originalData.getLong(COOLDOWN_UNTIL_TAG));
+        }
     }
 
     @SubscribeEvent
@@ -63,7 +90,7 @@ public final class EarthPromiseEvents {
             event.setNewDamage(damage);
         }
 
-        if (player.getCooldowns().isOnCooldown(ModItems.EARTH_PROMISE.get())) {
+        if (isEarthPromiseOnCooldown(player)) {
             return;
         }
 
@@ -77,7 +104,7 @@ public final class EarthPromiseEvents {
             return;
         }
 
-        player.getCooldowns().addCooldown(ModItems.EARTH_PROMISE.get(), ConfigCommon.EARTH_PROMISE_COOLDOWN.get());
+        startEarthPromiseCooldown(player, ConfigCommon.EARTH_PROMISE_COOLDOWN.get());
 
         if (player.level() instanceof ServerLevel serverLevel) {
             serverLevel.sendParticles(ParticleTypes.FLASH, player.getX(), player.getY(), player.getZ(), 1, 0.0D, 0.0D, 0.0D, 0.0D);
@@ -95,6 +122,45 @@ public final class EarthPromiseEvents {
         ));
 
         event.setNewDamage(0.0F);
+    }
+
+    private static boolean isEarthPromiseOnCooldown(Player player) {
+        if (player.getCooldowns().isOnCooldown(ModItems.EARTH_PROMISE.get())) {
+            return true;
+        }
+
+        long cooldownUntil = player.getPersistentData().getLong(COOLDOWN_UNTIL_TAG);
+        return cooldownUntil > player.level().getGameTime();
+    }
+
+    private static void startEarthPromiseCooldown(Player player, int ticks) {
+        if (ticks <= 0) {
+            player.getPersistentData().remove(COOLDOWN_UNTIL_TAG);
+            return;
+        }
+
+        player.getPersistentData().putLong(COOLDOWN_UNTIL_TAG, player.level().getGameTime() + ticks);
+        player.getCooldowns().addCooldown(ModItems.EARTH_PROMISE.get(), ticks);
+    }
+
+    private static void restorePersistentCooldown(Player player) {
+        CompoundTag persistentData = player.getPersistentData();
+        long cooldownUntil = persistentData.getLong(COOLDOWN_UNTIL_TAG);
+
+        if (cooldownUntil <= 0L) {
+            return;
+        }
+
+        long remaining = cooldownUntil - player.level().getGameTime();
+
+        if (remaining <= 0L) {
+            persistentData.remove(COOLDOWN_UNTIL_TAG);
+            return;
+        }
+
+        if (!player.getCooldowns().isOnCooldown(ModItems.EARTH_PROMISE.get())) {
+            player.getCooldowns().addCooldown(ModItems.EARTH_PROMISE.get(), (int) Math.min(Integer.MAX_VALUE, remaining));
+        }
     }
 
     private static void applyPureResistance(LivingDamageEvent.Pre event, LivingEntity target) {

@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-30T08:49:41.6112743	vanilla/Recipes
+// 1.21.1	2026-06-30T09:16:38.9733806	vanilla/Recipes
 138cca5fc2d36a468976c88c266618e68aa51d88 data/enigmatic_legacy/advancement/recipes/building_blocks/astral_dust_sack.json
 75128c3d277fd90fca1df4cc9f996933af7f7241 data/enigmatic_legacy/advancement/recipes/building_blocks/etherium_block.json
 70a559dbe3db33a763c165b60a23730d9e9f955b data/enigmatic_legacy/advancement/recipes/combat/axe_of_executioner.json
@@ -64,7 +64,7 @@ a68e9f47121f7c2f4e9d9d83a3dc9b7c97b499c3 data/enigmatic_legacy/recipe/cursed_scr
 1870a36d5e13b417304e3093bca3398549bcac48 data/enigmatic_legacy/recipe/curse_transposer.json
 aa39ef5036cc226d1f775becab4cb81df43437c1 data/enigmatic_legacy/recipe/dislocation_ring.json
 6ef1086e682453d87e5ac2ba3051e790b36f5368 data/enigmatic_legacy/recipe/earth_heart.json
-1d8568a677443a509f9b71a6caf77fc9dff0ae54 data/enigmatic_legacy/recipe/earth_promise.json
+a70130164f73b421a7759077982001d85a69b6f4 data/enigmatic_legacy/recipe/earth_promise.json
 91e218a7c7de70e57b080bfbe5f9349dec1f3bb0 data/enigmatic_legacy/recipe/eldritch_amulet.json
 a58e0bed026981ae51e31ffeaa58a021138c4727 data/enigmatic_legacy/recipe/eldritch_pan.json
 9fc09683e8b66b8c8de211066f7fdd19c0114163 data/enigmatic_legacy/recipe/enchanter_pearl.json
