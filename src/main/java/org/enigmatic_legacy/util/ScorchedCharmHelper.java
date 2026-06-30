@@ -2,7 +2,6 @@ package org.enigmatic_legacy.util;
 
 import net.minecraft.world.entity.LivingEntity;
 import org.enigmatic_legacy.item.ModItems;
-import org.enigmatic_legacy.item.items.charm.ScorchedCharm;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotResult;
 
@@ -22,12 +21,7 @@ public final class ScorchedCharmHelper {
      * 判断实体是否佩戴阳灼护符。
      */
     public static boolean hasScorchedCharm(LivingEntity entity) {
-        if (findScorchedCharm(entity).isPresent()) {
-            return true;
-        }
-
-        return entity.level().isClientSide()
-                && entity.getPersistentData().getInt(ScorchedCharm.CLIENT_TICK_TAG) >= entity.tickCount - 2;
+        return findScorchedCharm(entity).isPresent();
     }
 
     /**

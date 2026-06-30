@@ -4,12 +4,14 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.block.LiquidBlock;
+import net.minecraft.world.phys.shapes.CollisionContext;
 import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.SlotContext;
@@ -28,8 +30,6 @@ import java.util.List;
  */
 public class ScorchedCharm extends Item implements ICurioItem {
 
-    private static final String CHARM_SLOT = "charm";
-
     public ScorchedCharm() {
         super(new Item.Properties()
                 .stacksTo(1)
@@ -43,7 +43,7 @@ public class ScorchedCharm extends Item implements ICurioItem {
      */
     @Override
     public boolean canEquipFromUse(SlotContext context, ItemStack stack) {
-        return isCharmSlot(context);
+        return true;
     }
 
     /**
@@ -51,11 +51,7 @@ public class ScorchedCharm extends Item implements ICurioItem {
      */
     @Override
     public boolean canEquip(SlotContext context, ItemStack stack) {
-        return isCharmSlot(context);
-    }
-
-    private static boolean isCharmSlot(SlotContext context) {
-        return context != null && CHARM_SLOT.equals(context.identifier());
+        return true;
     }
 
     @Override
@@ -78,38 +74,30 @@ public class ScorchedCharm extends Item implements ICurioItem {
             entity.heal(LAVA_HEAL_AMOUNT);
         }
 
-        stabilizeLavaWalking(entity);
+        if (entity instanceof Player player && !player.isAffectedByFluids()) {
+            return;
+        }
 
-        if (entity.level().getFluidState(entity.blockPosition().above()).is(FluidTags.LAVA)) {
+        CollisionContext collisionContext = CollisionContext.of(entity);
+        if (collisionContext.isAbove(LiquidBlock.STABLE_SHAPE, entity.blockPosition(), true)
+                && !entity.level().getFluidState(entity.blockPosition().above()).is(FluidTags.LAVA)) {
+            entity.setOnGround(true);
+        } else {
+            if (isLavaSwimming(entity)) {
+                return;
+            }
+
             entity.setDeltaMovement(entity.getDeltaMovement().add(0.0D, entity.isCrouching() ? -0.01D : 0.07D, 0.0D));
         }
     }
 
     public static final String CLIENT_TICK_TAG = "enigmatic_legacy.scorched_charm_client_tick";
     private static final float LAVA_HEAL_AMOUNT = 2.0F;
-    private static final double LAVA_SURFACE_Y_OFFSET = 0.5D;
 
-    private static void stabilizeLavaWalking(LivingEntity entity) {
-        if (entity.isCrouching()
-                || entity.isPassenger()
-                || entity.isSprinting() && entity.isEyeInFluid(FluidTags.LAVA)
-                || entity.getDeltaMovement().y > 0.0D) {
-            return;
-        }
-
-        if (!entity.level().getFluidState(entity.blockPosition()).is(FluidTags.LAVA)) {
-            return;
-        }
-
-        double surfaceY = entity.blockPosition().getY() + LAVA_SURFACE_Y_OFFSET;
-
-        if (entity.getY() >= surfaceY || entity.getY() < entity.blockPosition().getY() - 0.25D) {
-            return;
-        }
-
-        entity.setPos(entity.getX(), surfaceY, entity.getZ());
-        entity.setDeltaMovement(entity.getDeltaMovement().multiply(1.0D, 0.0D, 1.0D));
-        entity.resetFallDistance();
+    private static boolean isLavaSwimming(LivingEntity entity) {
+        return entity.isSprinting()
+                && entity.isEyeInFluid(FluidTags.LAVA)
+                && !entity.isPassenger();
     }
 
     @Override
