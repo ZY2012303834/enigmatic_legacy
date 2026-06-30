@@ -119,12 +119,6 @@ public class CursedRingConfig {
                         "CursedRingNeutralAngerBlacklist = [",
                         "    \"minecraft:iron_golem\",",
                         "    \"guardvillagers:guard\",",
-                        "    \"minecraft:bee\",",
-                        "    \"resourcefulbees:*\",",
-                        "    \"irons_spellbooks:pyromancer\",",
-                        "    \"irons_spellbooks:cryomancer\",",
-                        "    \"irons_spellbooks:priest\",",
-                        "    \"irons_spellbooks:apothecarist\"",
                         "]"
                 )
                 .define(
@@ -132,14 +126,10 @@ public class CursedRingConfig {
                         List.of(
                                 "minecraft:iron_golem",
                                 "guardvillagers:guard",
-                                "minecraft:bee",
-                                "minecraft:wolf",
-                                "resourcefulbees:*",
                                 "irons_spellbooks:pyromancer",
                                 "irons_spellbooks:cryomancer",
                                 "irons_spellbooks:priest",
-                                "irons_spellbooks:apothecarist",
-                                "the_bumblezone:bee_queen"
+                                "irons_spellbooks:apothecarist"
                         ),
                         CursedRingConfig::isValidEntityIdList
                 );

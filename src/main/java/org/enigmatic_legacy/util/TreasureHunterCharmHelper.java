@@ -33,7 +33,7 @@ public final class TreasureHunterCharmHelper {
     /**
      * 判断玩家是否佩戴猎宝者护符。
      */
-    public static boolean hasTreasureHunterCharm(Player player) {
+    public static boolean hasTreasureHunterCharm(LivingEntity player) {
         return findEquippedTreasureHunterCharm(player).isPresent();
     }
 }

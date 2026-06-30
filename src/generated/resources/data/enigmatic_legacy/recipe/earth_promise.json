@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": {
+      "item": "enigmatic_legacy:golden_ring"
+    },
+    "a": {
+      "item": "enigmatic_legacy:pure_heart"
+    },
+    "b": {
+      "item": "enigmatic_legacy:treasure_hunter_charm"
+    },
+    "e": {
+      "item": "enigmatic_legacy:cosmic_heart"
+    },
+    "m": {
+      "item": "minecraft:golden_apple"
+    },
+    "n": {
+      "item": "minecraft:enchanted_golden_apple"
+    },
+    "t": {
+      "item": "enigmatic_legacy:twisted_heart"
+    }
+  },
+  "pattern": [
+    "mem",
+    "tXa",
+    "nbn"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:earth_promise"
+  }
+}

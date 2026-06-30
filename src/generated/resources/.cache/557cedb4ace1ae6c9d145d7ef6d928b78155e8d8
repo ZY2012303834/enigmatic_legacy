@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-29T10:44:46.9006381	vanilla/Item Models: enigmatic_legacy
+// 1.21.1	2026-06-30T08:49:41.6031523	vanilla/Item Models: enigmatic_legacy
 aaf9eff73642636d85d6ecd1627b8303f5153a76 assets/enigmatic_legacy/models/item/abyssal_heart.json
 79e416a4d6e90035107f541617b7d4a2d2d7abbb assets/enigmatic_legacy/models/item/angel_blessing.json
 91788e275aaecfe4ddd200b085f49433f9966bf1 assets/enigmatic_legacy/models/item/ascension_amulet.json
@@ -16,6 +16,8 @@ aa8a877409c8a27271da8e00bffe8dfab2806822 assets/enigmatic_legacy/models/item/cur
 db483d06c4aa7d2a5c5b56bf15524e7306755731 assets/enigmatic_legacy/models/item/dislocation_ring.json
 5f1a130d2a78a8cf92087e96831b3c25880f701e assets/enigmatic_legacy/models/item/earth_heart.json
 c386ed909c185c9f51711d9f360d065d4db06807 assets/enigmatic_legacy/models/item/earth_heart_fragment.json
+5fa07c92590aeb6b02027793ff504d71bcecaf1d assets/enigmatic_legacy/models/item/earth_promise.json
+b6f4d56079c0732398cfc3f351a13a942699dbec assets/enigmatic_legacy/models/item/earth_promise_broken.json
 bc562791d7952dac4c5d9dd6101413ad9cd65be0 assets/enigmatic_legacy/models/item/eldritch_amulet.json
 289c710e802771258599bf1381dc303fdafc227a assets/enigmatic_legacy/models/item/eldritch_pan.json
 bb09bd9942ce9103fd744bfc39ef1376b3a30cb3 assets/enigmatic_legacy/models/item/eldritch_pan_blocking.json

@@ -133,6 +133,7 @@ public class ItemGenerator extends ItemModelProvider {
         eldritchPan();
 
         basicItem(ModItems.MAGIC_QUARTZ_RING.getId()); // 魔法石英戒指
+        earthPromise();
 
         basicItem(ModItems.ICHOR_DROPLET.getId()); // 灵液滴
 
@@ -190,6 +191,18 @@ public class ItemGenerator extends ItemModelProvider {
                 .override()
                 .predicate(modLoc("enigmatic_eye_activated"), 1.0F)
                 .model(active)
+                .end();
+    }
+
+    private void earthPromise() {
+        var broken = withExistingParent("item/earth_promise_broken", mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/earth_promise_broken"));
+
+        withExistingParent("item/earth_promise", mcLoc("item/generated"))
+                .texture("layer0", modLoc("item/earth_promise"))
+                .override()
+                .predicate(mcLoc("broken"), 1.0F)
+                .model(broken)
                 .end();
     }
 

@@ -773,6 +773,7 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("effect.enigmatic_legacy.growing_hunger", "Growing Hunger");
         add("effect.enigmatic_legacy.growing_bloodlust", "Growing Bloodlust");
         add("effect.enigmatic_legacy.blazing_might", "Blazing Might");
+        add("effect.enigmatic_legacy.pure_resistance", "Pure Resistance");
 
         // The Twist / 倒转之启
         addItem(ModItems.THE_TWIST, "The Twist");
@@ -926,6 +927,24 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.magic_quartz_ring.limit",
                 "Only one Magic Quartz Ring can be worn at a time.");
 
+        addItem(ModItems.EARTH_PROMISE, "Promise of the Earth");
+        add("tooltip.enigmatic_legacy.earth_promise.1",
+                "When receiving damage worth %s of your current health,");
+        add("tooltip.enigmatic_legacy.earth_promise.2",
+                "block the attack and enter a %s second cooldown.");
+        add("tooltip.enigmatic_legacy.earth_promise.3",
+                "Alteration of the First Curse:");
+        add("tooltip.enigmatic_legacy.earth_promise.4",
+                "- Reduce the effect of the First Curse by %s.");
+        add("tooltip.enigmatic_legacy.earth_promise.modifier.armor",
+                "%s Armor");
+        add("tooltip.enigmatic_legacy.earth_promise.modifier.toughness",
+                "%s Armor Toughness");
+        add("tooltip.enigmatic_legacy.earth_promise.modifier.mining_speed",
+                "%s Mining Speed");
+        add("tooltip.enigmatic_legacy.earth_promise.modifier.fortune",
+                "%s Fortune");
+
         addItem(ModItems.SCORCHED_CHARM, "Charm of Scorched Sun");
 
         add("tooltip.enigmatic_legacy.scorched_charm.1",
@@ -991,6 +1010,7 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         addAdvancement("infernalShield", "You Try Penetrating THIS!", "Forge Bulwark of Blazing Pride, the ultimate tool of defense");
         addAdvancement("twistedMirror", "Warped Beauty", "Create the Twisted Mirror");
         addAdvancement("theTwist", "Fateful Twist", "Slay the Wither and create The Twist using Nefarious Essence");
+        addAdvancement("earthPromise", "Never Make Promises Easily", "Obtain a promise from the earth");
         addAdvancement("astralFruit", "Fabulous Apple", "Find Celestial Fruit among treasures of the End City, and consume it");
         addAdvancement("abyssalHeart", "Eldritch Horror", "Slay the Ender Dragon and claim Heart of the Abyss");
         addAdvancement("theInfinitum", "Beyond Time and Space", "Acquire The Infinitum and become the herald of the Abyss");

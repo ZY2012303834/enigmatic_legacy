@@ -35,6 +35,15 @@ public final class ClientItemProperties {
                             ? TheInfinitum.getModelProperty(player)
                             : 0.0F
             );
+
+            ItemProperties.register(
+                    ModItems.EARTH_PROMISE.get(),
+                    ResourceLocation.withDefaultNamespace("broken"),
+                    (stack, level, entity, seed) -> entity instanceof net.minecraft.world.entity.player.Player player
+                            && player.getCooldowns().isOnCooldown(ModItems.EARTH_PROMISE.get())
+                            ? 1.0F
+                            : 0.0F
+            );
         });
     }
 }

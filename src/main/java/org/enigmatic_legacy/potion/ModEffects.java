@@ -10,6 +10,7 @@ import org.enigmatic_legacy.effect.BlazingMightEffect;
 import org.enigmatic_legacy.effect.ForbiddenFruitEffect;
 import org.enigmatic_legacy.effect.GrowingBloodlustEffect;
 import org.enigmatic_legacy.effect.GrowingHungerEffect;
+import org.enigmatic_legacy.effect.PureResistanceEffect;
 import org.enigmatic_legacy.effect.RecallEffect;
 
 /**
@@ -42,6 +43,9 @@ public final class ModEffects {
 
     public static final DeferredHolder<MobEffect, BlazingMightEffect> BLAZING_MIGHT =
             MOB_EFFECTS.register("blazing_might", BlazingMightEffect::new);
+
+    public static final DeferredHolder<MobEffect, PureResistanceEffect> PURE_RESISTANCE =
+            MOB_EFFECTS.register("pure_resistance", PureResistanceEffect::new);
 
     private ModEffects() {
     }

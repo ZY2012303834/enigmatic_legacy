@@ -26,6 +26,7 @@ public final class ConfigCommon {
     public static final MonsterCharmConfig MONSTER_CHARM;
     public static final TreasureHunterCharmConfig TREASURE_HUNTER_CHARM;
     public static final BloodstainedValorConfig BLOODSTAINED_VALOR;
+    public static final EarthPromiseConfig EARTH_PROMISE;
     public static final MegaSpongeConfig MEGA_SPONGE;
     public static final GolemHeartConfig GOLEM_HEART;
     public static final GuidebookConfig GUIDEBOOKS;
@@ -122,6 +123,14 @@ public final class ConfigCommon {
     public static final ModConfigSpec.DoubleValue BLOODSTAINED_VALOR_MOVEMENT_SPEED;
     public static final ModConfigSpec.DoubleValue BLOODSTAINED_VALOR_DAMAGE_RESISTANCE;
 
+    // Promise of the Earth
+    public static final ModConfigSpec.IntValue EARTH_PROMISE_BREAK_SPEED_BONUS;
+    public static final ModConfigSpec.DoubleValue EARTH_PROMISE_ARMOR_BONUS;
+    public static final ModConfigSpec.DoubleValue EARTH_PROMISE_TOUGHNESS_BONUS;
+    public static final ModConfigSpec.IntValue EARTH_PROMISE_COOLDOWN;
+    public static final ModConfigSpec.IntValue EARTH_PROMISE_TOTAL_RESISTANCE;
+    public static final ModConfigSpec.IntValue EARTH_PROMISE_ABILITY_TRIGGER_PERCENT;
+
     // ==============================
     // 旧字段兼容别名：超级海绵
     // ==============================
@@ -186,6 +195,7 @@ public final class ConfigCommon {
         MONSTER_CHARM = new MonsterCharmConfig(builder);
         TREASURE_HUNTER_CHARM = new TreasureHunterCharmConfig(builder);
         BLOODSTAINED_VALOR = new BloodstainedValorConfig(builder);
+        EARTH_PROMISE = new EarthPromiseConfig(builder);
         MEGA_SPONGE = new MegaSpongeConfig(builder);
         GOLEM_HEART = new GolemHeartConfig(builder);
         GUIDEBOOKS = new GuidebookConfig(builder);
@@ -257,6 +267,12 @@ public final class ConfigCommon {
         BLOODSTAINED_VALOR_MOVEMENT_SPEED = BLOODSTAINED_VALOR.movementSpeed;
         BLOODSTAINED_VALOR_DAMAGE_RESISTANCE = BLOODSTAINED_VALOR.damageResistance;
 
+        EARTH_PROMISE_BREAK_SPEED_BONUS = EARTH_PROMISE.breakSpeedBonus;
+        EARTH_PROMISE_ARMOR_BONUS = EARTH_PROMISE.armorBonus;
+        EARTH_PROMISE_TOUGHNESS_BONUS = EARTH_PROMISE.toughnessBonus;
+        EARTH_PROMISE_COOLDOWN = EARTH_PROMISE.cooldown;
+        EARTH_PROMISE_TOTAL_RESISTANCE = EARTH_PROMISE.totalResistance;
+        EARTH_PROMISE_ABILITY_TRIGGER_PERCENT = EARTH_PROMISE.abilityTriggerPercent;
 
         MEGA_SPONGE_RADIUS = MEGA_SPONGE.radius;
 

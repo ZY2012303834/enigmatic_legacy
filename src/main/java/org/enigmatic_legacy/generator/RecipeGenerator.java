@@ -198,6 +198,24 @@ public class RecipeGenerator extends RecipeProvider {
                 .unlockedBy("has_iron_ring", has(ModItems.IRON_RING.get()))
                 .save(output);
 
+        // Promise of the Earth.
+        // Original Enigmatic Addons pattern:
+        // mem / tXa / nbn
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.EARTH_PROMISE.get())
+                .pattern("mem")
+                .pattern("tXa")
+                .pattern("nbn")
+                .define('m', Items.GOLDEN_APPLE)
+                .define('e', ModItems.COSMIC_HEART.get())
+                .define('t', ModItems.TWISTED_HEART.get())
+                .define('X', ModItems.EXQUISITE_RING.get())
+                .define('a', ModItems.PURE_HEART.get())
+                .define('n', Items.ENCHANTED_GOLDEN_APPLE)
+                .define('b', ModItems.TREASURE_HUNTER_CHARM.get())
+                .unlockedBy("has_pure_heart", has(ModItems.PURE_HEART.get()))
+                .unlockedBy("has_treasure_hunter_charm", has(ModItems.TREASURE_HUNTER_CHARM.get()))
+                .save(output);
+
         // 极恶锭
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.EVIL_INGOT.get())
                 .pattern("TET")

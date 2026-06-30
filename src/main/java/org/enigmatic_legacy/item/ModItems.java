@@ -63,6 +63,7 @@ public final class ModItems {
     public static final DeferredItem<RecallPotionItem> RECALL_POTION = ITEMS.register("recall_potion", RecallPotionItem::new); // 召回药水
     public static final DeferredItem<RedemptionPotionItem> REDEMPTION_POTION = ITEMS.register("redemption_potion", RedemptionPotionItem::new);
     public static final DeferredItem<MagicQuartzRing> MAGIC_QUARTZ_RING = ITEMS.register("magic_quartz_ring", MagicQuartzRing::new); // 魔法石英戒指
+    public static final DeferredItem<EarthPromise> EARTH_PROMISE = ITEMS.register("earth_promise", EarthPromise::new);
     // 修补混合物
     // 用于在工作台中完全修复任意受损的可损坏物品。
     public static final DeferredItem<MendingMixture> MENDING_MIXTURE = ITEMS.register("mending_mixture", MendingMixture::new);

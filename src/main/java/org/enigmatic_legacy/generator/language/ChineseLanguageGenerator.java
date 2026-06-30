@@ -775,6 +775,7 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("effect.enigmatic_legacy.growing_hunger", "无止饥饿");
         add("effect.enigmatic_legacy.growing_bloodlust", "无止嗜血");
         add("effect.enigmatic_legacy.blazing_might", "烈焰巨力");
+        add("effect.enigmatic_legacy.pure_resistance", "纯化抗性");
 
         // The Twist / 倒转之启
         addItem(ModItems.THE_TWIST, "倒转之启");
@@ -893,6 +894,24 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.magic_quartz_ring.limit",
                 "同一时间只能佩戴一个魔法石英戒指。");
 
+        addItem(ModItems.EARTH_PROMISE, "地灵之诺");
+        add("tooltip.enigmatic_legacy.earth_promise.1",
+                "当受到当前生命值 %s 以上的伤害时，");
+        add("tooltip.enigmatic_legacy.earth_promise.2",
+                "挡下此次攻击，随即进入 %s 秒冷却。");
+        add("tooltip.enigmatic_legacy.earth_promise.3",
+                "修正第一诅咒的方法：");
+        add("tooltip.enigmatic_legacy.earth_promise.4",
+                "- 使第一诅咒的影响减少 %s。");
+        add("tooltip.enigmatic_legacy.earth_promise.modifier.armor",
+                "%s 护甲");
+        add("tooltip.enigmatic_legacy.earth_promise.modifier.toughness",
+                "%s 盔甲韧性");
+        add("tooltip.enigmatic_legacy.earth_promise.modifier.mining_speed",
+                "%s 挖掘速度");
+        add("tooltip.enigmatic_legacy.earth_promise.modifier.fortune",
+                "%s 时运");
+
         addAdvancementTranslations();
 
 
@@ -995,6 +1014,7 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         addAdvancement("infernalShield", "有本事刺穿§l它§r啊！", "锻造烈焰之傲壁垒，一个终极防御工具");
         addAdvancement("twistedMirror", "嫉妒美人", "创建扭曲魔镜");
         addAdvancement("theTwist", "命运倒转", "击杀凋灵并使用邪恶精髓制作倒转之启");
+        addAdvancement("earthPromise", "从不轻易许诺", "获得来自大地的承诺");
         addAdvancement("astralFruit", "绝妙的果子", "在末地城内找到天体果实");
         addAdvancement("abyssalHeart", "邪异的恐怖", "杀死末影龙并获得深渊之心");
         addAdvancement("theInfinitum", "超然象外", "获得无止之言，成为深渊的使者");
