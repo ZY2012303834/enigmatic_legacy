@@ -1,6 +1,6 @@
 {
   "icon": "curios:slot/empty_ring_slot",
-  "operation": "ADD",
+  "operation": "SET",
   "order": 100,
-  "size": 4
+  "size": 8
 }

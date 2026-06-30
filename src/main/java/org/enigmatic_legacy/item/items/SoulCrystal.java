@@ -125,6 +125,8 @@ public class SoulCrystal extends Item {
 
         if (lostCrystals > 0) {
             newPlayer.getPersistentData().putInt(LOST_SOUL_TAG, lostCrystals);
+        } else {
+            newPlayer.getPersistentData().remove(LOST_SOUL_TAG);
         }
     }
 

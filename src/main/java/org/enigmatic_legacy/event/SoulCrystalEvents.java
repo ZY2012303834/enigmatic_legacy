@@ -87,7 +87,7 @@ public final class SoulCrystalEvents {
         }
 
         ModItems.SOUL_CRYSTAL.get().copyLostCrystals(event.getOriginal(), event.getEntity());
-        applyPendingLostCrystals(event.getEntity(), false);
+        applyPendingLostCrystals(event.getEntity(), true);
     }
 
     /**

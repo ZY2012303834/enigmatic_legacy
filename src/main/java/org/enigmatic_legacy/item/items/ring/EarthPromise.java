@@ -19,7 +19,6 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.storage.loot.LootContext;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.config.ConfigCommon;
-import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.util.EarthPromiseHelper;
 import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.enigmatic_legacy.util.TreasureHunterCharmHelper;
@@ -45,11 +44,7 @@ public class EarthPromise extends Item implements ICurioItem {
 
     @Override
     public boolean canEquip(SlotContext context, ItemStack stack) {
-        LivingEntity entity = context.entity();
-
-        return RING_SLOT.equals(context.identifier())
-                && entity instanceof Player player
-                && EarthPromiseHelper.canUseEarthPromise(player);
+        return RING_SLOT.equals(context.identifier());
     }
 
     @Override
@@ -71,6 +66,10 @@ public class EarthPromise extends Item implements ICurioItem {
             ItemStack stack
     ) {
         ImmutableMultimap.Builder<Holder<Attribute>, AttributeModifier> builder = ImmutableMultimap.builder();
+
+        if (!(slotContext.entity() instanceof Player player) || !EarthPromiseHelper.canUseEarthPromise(player)) {
+            return builder.build();
+        }
 
         builder.put(
                 Attributes.ARMOR,

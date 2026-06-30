@@ -56,7 +56,7 @@ public final class EarthPromiseEvents {
     public static void onBreakSpeed(PlayerEvent.BreakSpeed event) {
         Player player = event.getEntity();
 
-        if (!EarthPromiseHelper.hasEarthPromise(player)) {
+        if (!EarthPromiseHelper.hasEarthPromise(player) || !EarthPromiseHelper.canUseEarthPromise(player)) {
             return;
         }
 
@@ -79,16 +79,14 @@ public final class EarthPromiseEvents {
             return;
         }
 
-        if (!EarthPromiseHelper.hasEarthPromise(player)) {
+        if (!EarthPromiseHelper.hasEarthPromise(player) || !EarthPromiseHelper.canUseEarthPromise(player)) {
             return;
         }
 
         float damage = event.getNewDamage();
 
-        if (CursedRingHelper.hasCursedRing(player)) {
-            damage *= Math.max(0.0F, 1.0F - ConfigCommon.EARTH_PROMISE_TOTAL_RESISTANCE.get() / 100.0F);
-            event.setNewDamage(damage);
-        }
+        damage *= Math.max(0.0F, 1.0F - ConfigCommon.EARTH_PROMISE_TOTAL_RESISTANCE.get() / 100.0F);
+        event.setNewDamage(damage);
 
         if (isEarthPromiseOnCooldown(player)) {
             return;

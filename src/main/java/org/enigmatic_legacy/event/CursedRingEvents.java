@@ -44,6 +44,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.common.util.TriState;
 import net.neoforged.neoforge.common.damagesource.DamageContainer;
 import net.neoforged.neoforge.event.enchanting.EnchantmentLevelSetEvent;
 import net.neoforged.neoforge.event.entity.living.*;
@@ -54,6 +55,7 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.util.CursedRingHelper;
+import top.theillusivec4.curios.api.event.CurioCanUnequipEvent;
 import top.theillusivec4.curios.api.event.DropRulesEvent;
 import top.theillusivec4.curios.api.type.capability.ICurio;
 
@@ -403,6 +405,20 @@ public class CursedRingEvents {
                 stack -> stack.is(ModItems.CURSED_RING.get()),
                 ICurio.DropRule.ALWAYS_KEEP
         );
+    }
+
+    @SubscribeEvent
+    public static void onCurioCanUnequip(CurioCanUnequipEvent event) {
+        if (!event.getStack().is(ModItems.CURSED_RING.get())) {
+            return;
+        }
+
+        if (event.getEntity() instanceof Player player && player.isCreative()) {
+            event.setUnequipResult(TriState.TRUE);
+            return;
+        }
+
+        event.setUnequipResult(TriState.FALSE);
     }
 
     @SubscribeEvent

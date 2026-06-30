@@ -158,7 +158,7 @@ public class CuriosGenerator implements DataProvider {
 
         // SET 表示直接设置最终数量。
         // 如果后续你希望兼容其他模组添加的 charm 槽，可以改成 ADD。
-        json.addProperty("operation", "ADD");
+        json.addProperty("operation", "SET");
 
         // 控制该槽位在 Curios GUI 中的排序。
         // 数字越小越靠前；这里让它排在 ring 后面。
@@ -300,11 +300,11 @@ public class CuriosGenerator implements DataProvider {
 
         // 设置玩家拥有的 ring 戒指栏数量。
         // 5 = 添加 5 个戒指栏位。
-        json.addProperty("size", 4);
+        json.addProperty("size", 8);
 
         // SET 表示直接设置最终数量。
         // 如果有其他数据包也修改 ring 槽位，SET 会覆盖为这里指定的数量。
-        json.addProperty("operation", "ADD");
+        json.addProperty("operation", "SET");
 
         // 控制该槽位在 Curios GUI 中的排序。
         // 数字越小越靠前。

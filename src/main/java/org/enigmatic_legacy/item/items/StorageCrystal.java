@@ -137,6 +137,11 @@ public class StorageCrystal extends Item {
         stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
     }
 
+    public static UUID getEmbeddedSoulOwner(ItemStack crystal, Player player) {
+        ItemStack embeddedSoulCrystal = getEmbeddedSoulCrystal(crystal, player);
+        return SoulCrystal.getOwnerId(embeddedSoulCrystal);
+    }
+
     private static ItemStack getEmbeddedSoulCrystal(ItemStack crystal, Player player) {
         CompoundTag crystalTag = getTag(crystal);
 

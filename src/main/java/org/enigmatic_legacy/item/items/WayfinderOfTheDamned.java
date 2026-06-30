@@ -25,6 +25,7 @@ import org.enigmatic_legacy.util.CursedRingHelper;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * 被诅咒者的寻路指针 / Wayfinder of the Damned
@@ -224,7 +225,7 @@ public class WayfinderOfTheDamned extends Item {
         List<PermanentItemEntity> permanentItems = level.getEntitiesOfClass(
                 PermanentItemEntity.class,
                 searchBox,
-                entity -> entity.isAlive() && isSoulTargetStack(entity.getItem())
+                entity -> entity.isAlive() && isSoulTargetStack(entity.getItem(), player)
         );
 
         for (PermanentItemEntity entity : permanentItems) {
@@ -245,7 +246,7 @@ public class WayfinderOfTheDamned extends Item {
         List<ItemEntity> itemEntities = level.getEntitiesOfClass(
                 ItemEntity.class,
                 searchBox,
-                entity -> entity.isAlive() && isSoulTargetStack(entity.getItem())
+                entity -> entity.isAlive() && isSoulTargetStack(entity.getItem(), player)
         );
 
         for (ItemEntity entity : itemEntities) {
@@ -263,9 +264,21 @@ public class WayfinderOfTheDamned extends Item {
     /**
      * 判断一个 ItemStack 是否是寻路指针应该定位的目标。
      */
-    private static boolean isSoulTargetStack(ItemStack stack) {
-        return stack.is(ModItems.SOUL_CRYSTAL.get())
-                || stack.is(ModItems.STORAGE_CRYSTAL.get());
+    private static boolean isSoulTargetStack(ItemStack stack, ServerPlayer player) {
+        UUID owner = getSoulTargetOwner(stack, player);
+        return player.getUUID().equals(owner);
+    }
+
+    private static UUID getSoulTargetOwner(ItemStack stack, ServerPlayer player) {
+        if (stack.is(ModItems.SOUL_CRYSTAL.get())) {
+            return SoulCrystal.getOwnerId(stack);
+        }
+
+        if (stack.is(ModItems.STORAGE_CRYSTAL.get())) {
+            return StorageCrystal.getEmbeddedSoulOwner(stack, player);
+        }
+
+        return null;
     }
 
     /**
