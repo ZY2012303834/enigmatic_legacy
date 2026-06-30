@@ -6,6 +6,7 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "MixinEnchantmentMenu",
+    "MixinLiquidBlock",
     "MixinLivingEntity",
     "MixinPlayer",
     "MixinPoisonMobEffect"
