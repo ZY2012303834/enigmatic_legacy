@@ -54,6 +54,10 @@ public abstract class MixinLivingEntity {
             Vec3 movement = entity.getDeltaMovement();
             entity.setDeltaMovement(movement.x, Math.max(movement.y + 0.04D, 0.04D), movement.z);
             falling = false;
+        } else if (entity.isShiftKeyDown()) {
+            Vec3 movement = entity.getDeltaMovement();
+            entity.setDeltaMovement(movement.x, Math.min(movement.y - 0.04D, -0.04D), movement.z);
+            falling = true;
         }
 
         entity.move(MoverType.SELF, entity.getDeltaMovement());
