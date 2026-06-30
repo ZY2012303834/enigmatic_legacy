@@ -21,7 +21,6 @@ import java.util.List;
 
 /**
  * 铁指环 / Iron Ring。
- *
  * 装备在 Curios 戒指栏时，提供 +1 护甲值。
  */
 public class IronRing extends Item implements ICurioItem {
@@ -42,7 +41,6 @@ public class IronRing extends Item implements ICurioItem {
 
     /**
      * 直接显示铁指环效果，不需要按 Shift。
-     *
      * 显示效果：
      * 护甲值+1
      */
@@ -62,7 +60,6 @@ public class IronRing extends Item implements ICurioItem {
 
     /**
      * 装备时提供 +1 护甲值。
-     *
      * 注意：
      * - 不再使用固定的 enigmatic_legacy:iron_ring_armor；
      * - 改为根据 Curios 槽位 identifier + index 生成唯一 modifier id；

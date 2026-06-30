@@ -4,6 +4,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -77,6 +78,8 @@ public class ScorchedCharm extends Item implements ICurioItem {
             entity.heal(LAVA_HEAL_AMOUNT);
         }
 
+        stabilizeLavaWalking(entity);
+
         if (entity.level().getFluidState(entity.blockPosition().above()).is(FluidTags.LAVA)) {
             entity.setDeltaMovement(entity.getDeltaMovement().add(0.0D, entity.isCrouching() ? -0.01D : 0.07D, 0.0D));
         }
@@ -84,6 +87,30 @@ public class ScorchedCharm extends Item implements ICurioItem {
 
     public static final String CLIENT_TICK_TAG = "enigmatic_legacy.scorched_charm_client_tick";
     private static final float LAVA_HEAL_AMOUNT = 2.0F;
+    private static final double LAVA_SURFACE_Y_OFFSET = 0.5D;
+
+    private static void stabilizeLavaWalking(LivingEntity entity) {
+        if (entity.isCrouching()
+                || entity.isPassenger()
+                || entity.isSprinting() && entity.isEyeInFluid(FluidTags.LAVA)
+                || entity.getDeltaMovement().y > 0.0D) {
+            return;
+        }
+
+        if (!entity.level().getFluidState(entity.blockPosition()).is(FluidTags.LAVA)) {
+            return;
+        }
+
+        double surfaceY = entity.blockPosition().getY() + LAVA_SURFACE_Y_OFFSET;
+
+        if (entity.getY() >= surfaceY || entity.getY() < entity.blockPosition().getY() - 0.25D) {
+            return;
+        }
+
+        entity.setPos(entity.getX(), surfaceY, entity.getZ());
+        entity.setDeltaMovement(entity.getDeltaMovement().multiply(1.0D, 0.0D, 1.0D));
+        entity.resetFallDistance();
+    }
 
     @Override
     public void appendHoverText(
