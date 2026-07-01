@@ -18,6 +18,7 @@ import org.enigmatic_legacy.generator.language.LanguageGenerator;
 import org.enigmatic_legacy.generator.loot.*;
 import org.enigmatic_legacy.generator.patchouli.PatchouliBookGenerator;
 import org.enigmatic_legacy.item.ModItems;
+import org.enigmatic_legacy.menu.ModMenus;
 import org.enigmatic_legacy.network.ModNetwork;
 import org.enigmatic_legacy.potion.ModEffects;
 import org.enigmatic_legacy.potion.ModPotions;
@@ -39,6 +40,7 @@ public class EnigmaticLegacy {
 
         ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
+        ModMenus.register(modEventBus);
         ModEntities.register(modEventBus);
         ModeTabs.register(modEventBus);
 
@@ -98,6 +100,7 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(AnimalGuidebookEvents.class);
         NeoForge.EVENT_BUS.register(HunterGuidebookEvents.class);
         NeoForge.EVENT_BUS.register(OdeToLivingEvents.class);
+        NeoForge.EVENT_BUS.register(AntiqueBookBagEvents.class);
         NeoForge.EVENT_BUS.register(EvilEssenceEvents.class);
         NeoForge.EVENT_BUS.register(EvilIngotEvents.class);
         NeoForge.EVENT_BUS.register(SoulCrystalEvents.class);

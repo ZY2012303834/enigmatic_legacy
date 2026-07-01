@@ -334,9 +334,14 @@ public class ItemTagGenerator extends ItemTagsProvider {
     }
 
     private void addBookTags() {
-        // 生灵颂词是书类道具，原拓展项目也把它加入 bookshelf_books。
+        // 这些遗物按书类处理，古旧书袋只允许收纳 bookshelf_books 标签内的物品。
         tag(BOOKSHELF_BOOKS)
-                .add(ModItems.ODE_TO_LIVING.get());
+                .add(ModItems.ANIMAL_GUIDEBOOK.get())
+                .add(ModItems.HUNTER_GUIDEBOOK.get())
+                .add(ModItems.ODE_TO_LIVING.get())
+                .add(ModItems.THE_ACKNOWLEDGMENT.get())
+                .add(ModItems.THE_TWIST.get())
+                .add(ModItems.THE_INFINITUM.get());
     }
 
     private static TagKey<Item> modItemTag(String path) {

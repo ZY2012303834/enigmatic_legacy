@@ -23,6 +23,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
+import org.enigmatic_legacy.util.AntiqueBookBagHelper;
 import org.enigmatic_legacy.util.CursedRingHelper;
 import org.enigmatic_legacy.util.PlayerInventoryHelper;
 import org.jetbrains.annotations.NotNull;
@@ -43,7 +44,8 @@ public class AnimalGuidebook extends Item {
     }
 
     public static boolean hasGuidebook(Player player) {
-        return PlayerInventoryHelper.contains(player, stack -> stack.is(ModItems.ANIMAL_GUIDEBOOK.get()));
+        return PlayerInventoryHelper.hasInHotbar(player, stack -> stack.is(ModItems.ANIMAL_GUIDEBOOK.get()))
+                || AntiqueBookBagHelper.hasBook(player, ModItems.ANIMAL_GUIDEBOOK.get());
     }
 
     public static boolean isProtectedAnimal(LivingEntity entity) {

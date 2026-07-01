@@ -10,6 +10,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
+import org.enigmatic_legacy.util.AntiqueBookBagHelper;
 import org.enigmatic_legacy.util.PlayerInventoryHelper;
 import org.jetbrains.annotations.NotNull;
 
@@ -29,7 +30,8 @@ public class HunterGuidebook extends Item {
     }
 
     public static boolean hasGuidebook(Player player) {
-        return PlayerInventoryHelper.contains(player, stack -> stack.is(ModItems.HUNTER_GUIDEBOOK.get()));
+        return PlayerInventoryHelper.hasInHotbar(player, stack -> stack.is(ModItems.HUNTER_GUIDEBOOK.get()))
+                || AntiqueBookBagHelper.hasBook(player, ModItems.HUNTER_GUIDEBOOK.get());
     }
 
     @Override

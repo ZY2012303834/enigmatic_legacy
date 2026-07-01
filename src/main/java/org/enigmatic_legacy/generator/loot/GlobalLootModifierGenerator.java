@@ -55,6 +55,20 @@ public class GlobalLootModifierGenerator extends GlobalLootModifierProvider {
         // 先按原项目奖励箱范围与概率注入，保证编译与数据生成正常。
         addEarthHeartFragmentModifiers();
 
+        addAntiqueBookBagModifiers();
+
+    }
+
+    private void addAntiqueBookBagModifiers() {
+        addTableModifier("antique_book_bag_simple_dungeon", BuiltInLootTables.SIMPLE_DUNGEON, "inject/chests/antique_book_bag/overworld_epic");
+        addTableModifier("antique_book_bag_abandoned_mineshaft", BuiltInLootTables.ABANDONED_MINESHAFT, "inject/chests/antique_book_bag/overworld_epic");
+        addTableModifier("antique_book_bag_stronghold_crossing", BuiltInLootTables.STRONGHOLD_CROSSING, "inject/chests/antique_book_bag/overworld_epic");
+        addTableModifier("antique_book_bag_stronghold_corridor", BuiltInLootTables.STRONGHOLD_CORRIDOR, "inject/chests/antique_book_bag/overworld_epic");
+        addTableModifier("antique_book_bag_desert_pyramid", BuiltInLootTables.DESERT_PYRAMID, "inject/chests/antique_book_bag/overworld_epic");
+        addTableModifier("antique_book_bag_jungle_temple", BuiltInLootTables.JUNGLE_TEMPLE, "inject/chests/antique_book_bag/overworld_epic");
+        addTableModifier("antique_book_bag_igloo_chest", BuiltInLootTables.IGLOO_CHEST, "inject/chests/antique_book_bag/overworld_epic");
+        addTableModifier("antique_book_bag_woodland_mansion", BuiltInLootTables.WOODLAND_MANSION, "inject/chests/antique_book_bag/overworld_epic");
+        addTableModifier("antique_book_bag_shipwreck_supply", BuiltInLootTables.SHIPWRECK_SUPPLY, "inject/chests/antique_book_bag/overworld_epic");
     }
 
     /**

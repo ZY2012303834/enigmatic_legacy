@@ -330,6 +330,13 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.hunter_guidebook.5", "possessed, redirected damage is reduced by %1$s.");
         // end
 
+        addItem(ModItems.ANTIQUE_BOOK_BAG, "Antique Book Bag");
+        add("container.enigmatic_legacy.antique_book_bag", "Magic Book Bag");
+        add("tooltip.enigmatic_legacy.antique_book_bag.1", "A container similar to an Ender Chest.");
+        add("tooltip.enigmatic_legacy.antique_book_bag.2", "Books stored inside are considered");
+        add("tooltip.enigmatic_legacy.antique_book_bag.3", "as being in your inventory.");
+        add("tooltip.enigmatic_legacy.antique_book_bag.4", "It still works from your Ender Chest.");
+
         // 术石
         // Ode to Living Beings
         addItem(ModItems.ODE_TO_LIVING, "Ode to Living Beings");

@@ -96,12 +96,26 @@ public class InjectLootTableGenerator implements DataProvider {
         // 这里只生成注入用 loot table，具体注入位置在 GlobalLootModifierGenerator 中处理。
         addEarthHeartFragmentTables(cachedOutput, futures);
 
+        // 古旧书袋
+        addAntiqueBookBagTables(cachedOutput, futures);
+
 
 
         /*
          * 等待所有 loot table 文件全部写入完成。
          */
         return CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new));
+    }
+
+    private void addAntiqueBookBagTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {
+        futures.add(saveTable(
+                cachedOutput,
+                "antique_book_bag/overworld_epic",
+                1.0D,
+                1.0D,
+                itemEntry(ModItems.ANTIQUE_BOOK_BAG.get(), 5),
+                emptyEntry(95)
+        ));
     }
 
     /**

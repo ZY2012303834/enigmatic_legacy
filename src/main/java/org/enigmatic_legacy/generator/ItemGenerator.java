@@ -85,6 +85,7 @@ public class ItemGenerator extends ItemModelProvider {
         basicItem(ModItems.EXTRADIMENSIONAL_EYE.getId()); // 超维之眼
         basicItem(ModItems.ENCHANTMENT_TRANSPOSER.getId()); // 求知之书
         basicItem(ModItems.CURSE_TRANSPOSER.getId()); // 噬咒之书
+        basicItem(ModItems.ANTIQUE_BOOK_BAG.getId()); // 古旧书袋
 
         withExistingParent("item/recall_potion", mcLoc("item/generated"))
                 .texture("layer0", modLoc("item/recall_potion"));

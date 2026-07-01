@@ -79,7 +79,16 @@
     "enigmatic_legacy:earth_heart_fragment_jungle_temple",
     "enigmatic_legacy:earth_heart_fragment_igloo_chest",
     "enigmatic_legacy:earth_heart_fragment_woodland_mansion",
-    "enigmatic_legacy:earth_heart_fragment_shipwreck_supply"
+    "enigmatic_legacy:earth_heart_fragment_shipwreck_supply",
+    "enigmatic_legacy:antique_book_bag_simple_dungeon",
+    "enigmatic_legacy:antique_book_bag_abandoned_mineshaft",
+    "enigmatic_legacy:antique_book_bag_stronghold_crossing",
+    "enigmatic_legacy:antique_book_bag_stronghold_corridor",
+    "enigmatic_legacy:antique_book_bag_desert_pyramid",
+    "enigmatic_legacy:antique_book_bag_jungle_temple",
+    "enigmatic_legacy:antique_book_bag_igloo_chest",
+    "enigmatic_legacy:antique_book_bag_woodland_mansion",
+    "enigmatic_legacy:antique_book_bag_shipwreck_supply"
   ],
   "replace": false
 }

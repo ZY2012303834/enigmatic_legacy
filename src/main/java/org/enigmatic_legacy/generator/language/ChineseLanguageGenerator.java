@@ -331,6 +331,13 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.hunter_guidebook.5", "转移伤害会降低 %1$s。");
         // end
 
+        addItem(ModItems.ANTIQUE_BOOK_BAG, "古旧书袋");
+        add("container.enigmatic_legacy.antique_book_bag", "魔法书袋");
+        add("tooltip.enigmatic_legacy.antique_book_bag.1", "类似于末影箱的容器。");
+        add("tooltip.enigmatic_legacy.antique_book_bag.2", "放入其中的书会视作");
+        add("tooltip.enigmatic_legacy.antique_book_bag.3", "在物品栏中。");
+        add("tooltip.enigmatic_legacy.antique_book_bag.4", "该物品放在末影箱中也会生效。");
+
         // 术石
         // 生灵颂词
         addItem(ModItems.ODE_TO_LIVING, "生灵颂词");

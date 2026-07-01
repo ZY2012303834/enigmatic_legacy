@@ -73,6 +73,7 @@ public final class ModItems {
     public static final DeferredItem<WayfinderOfTheDamned> WAYFINDER_OF_THE_DAMNED = ITEMS.register("wayfinder_of_the_damned", WayfinderOfTheDamned::new);
     public static final DeferredItem<AnimalGuidebook> ANIMAL_GUIDEBOOK = ITEMS.register("animal_guidebook", AnimalGuidebook::new);
     public static final DeferredItem<HunterGuidebook> HUNTER_GUIDEBOOK = ITEMS.register("hunter_guidebook", HunterGuidebook::new);
+    public static final DeferredItem<AntiqueBookBag> ANTIQUE_BOOK_BAG = ITEMS.register("antique_book_bag", AntiqueBookBag::new);
     // 生灵颂词 / Ode to Living Beings
     // 复刻自 Enigmatic Addons，放在背包中即可保护动物并修正七咒第二诅咒。
     public static final DeferredItem<OdeToLiving> ODE_TO_LIVING = ITEMS.register("ode_to_living", OdeToLiving::new);

@@ -26,6 +26,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.CustomData;
 import org.enigmatic_legacy.item.ModItems;
+import org.enigmatic_legacy.util.AntiqueBookBagHelper;
 import org.enigmatic_legacy.util.PlayerInventoryHelper;
 import org.jetbrains.annotations.NotNull;
 
@@ -62,7 +63,8 @@ public class OdeToLiving extends Item {
      * 因此这里先覆盖主手、副手和普通背包。</p>
      */
     public static Optional<ItemStack> findOde(Player player) {
-        return PlayerInventoryHelper.find(player, stack -> stack.is(ModItems.ODE_TO_LIVING.get()));
+        return PlayerInventoryHelper.findInHotbar(player, stack -> stack.is(ModItems.ODE_TO_LIVING.get()))
+                .or(() -> AntiqueBookBagHelper.findBook(player, ModItems.ODE_TO_LIVING.get()));
     }
 
     public static boolean hasOde(Player player) {
