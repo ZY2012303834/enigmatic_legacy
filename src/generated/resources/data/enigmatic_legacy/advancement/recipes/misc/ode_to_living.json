@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_animal_guidebook": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:animal_guidebook"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "enigmatic_legacy:ode_to_living"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_animal_guidebook"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "enigmatic_legacy:ode_to_living"
+    ]
+  }
+}

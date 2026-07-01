@@ -129,7 +129,8 @@ public class CursedRingConfig {
                                 "irons_spellbooks:pyromancer",
                                 "irons_spellbooks:cryomancer",
                                 "irons_spellbooks:priest",
-                                "irons_spellbooks:apothecarist"
+                                "irons_spellbooks:apothecarist",
+                                "touhou_little_maid_spell:elf_templar"
                         ),
                         CursedRingConfig::isValidEntityIdList
                 );

@@ -93,9 +93,11 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(ScorchedCharmEvents.class); // 阳灼护符事件
         NeoForge.EVENT_BUS.register(BloodstainedValorEvents.class);
         NeoForge.EVENT_BUS.register(CursedRingEvents.class);
+        NeoForge.EVENT_BUS.register(CursedRingCommandEvents.class);
         NeoForge.EVENT_BUS.register(EnigmaticAdvancementEvents.class); // 本项目进度触发与聊天样式
         NeoForge.EVENT_BUS.register(AnimalGuidebookEvents.class);
         NeoForge.EVENT_BUS.register(HunterGuidebookEvents.class);
+        NeoForge.EVENT_BUS.register(OdeToLivingEvents.class);
         NeoForge.EVENT_BUS.register(EvilEssenceEvents.class);
         NeoForge.EVENT_BUS.register(EvilIngotEvents.class);
         NeoForge.EVENT_BUS.register(SoulCrystalEvents.class);

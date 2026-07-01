@@ -327,11 +327,21 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.hunter_guidebook.1", "放在物品栏中时，你的宠物在");
         add("tooltip.enigmatic_legacy.hunter_guidebook.2", "距离你 %1$s 格内受到的所有伤害");
         add("tooltip.enigmatic_legacy.hunter_guidebook.3", "都会转移到你身上。");
-        add("tooltip.enigmatic_legacy.hunter_guidebook.4", "如果你同时持有兽友指南，");
+        add("tooltip.enigmatic_legacy.hunter_guidebook.4", "如果你同时持有兽友指南或生灵颂词，");
         add("tooltip.enigmatic_legacy.hunter_guidebook.5", "转移伤害会降低 %1$s。");
         // end
 
         // 术石
+        // 生灵颂词
+        addItem(ModItems.ODE_TO_LIVING, "生灵颂词");
+        add("tooltip.enigmatic_legacy.ode_to_living.1", "放在物品栏中时，你的攻击不会");
+        add("tooltip.enigmatic_legacy.ode_to_living.2", "对大多数动物造成伤害。");
+        add("tooltip.enigmatic_legacy.ode_to_living.3", "你周围的大多数动物会保持被动。");
+        add("tooltip.enigmatic_legacy.ode_to_living.4", "第二诅咒的修正：");
+        add("tooltip.enigmatic_legacy.ode_to_living.5", "- 中立动物不会主动攻击你。");
+        add("tooltip.enigmatic_legacy.ode_to_living.6", "用此物攻击动物，可取消该类动物受到的保护。");
+        add("tooltip.enigmatic_legacy.ode_to_living.7", "对动物使用可安抚对方，并恢复保护效果。");
+
         add("curios.identifier.spellstone", "术石");
 
         // 魔像之心

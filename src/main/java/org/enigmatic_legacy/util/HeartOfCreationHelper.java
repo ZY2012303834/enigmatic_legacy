@@ -46,25 +46,7 @@ public final class HeartOfCreationHelper {
      * 装备它或把它放在物品栏中，玩家都不会真正死亡。
      */
     public static boolean hasHeartOfCreationInInventory(Player player) {
-        for (ItemStack stack : player.getInventory().items) {
-            if (stack.is(ModItems.HEART_OF_CREATION.get())) {
-                return true;
-            }
-        }
-
-        for (ItemStack stack : player.getInventory().armor) {
-            if (stack.is(ModItems.HEART_OF_CREATION.get())) {
-                return true;
-            }
-        }
-
-        for (ItemStack stack : player.getInventory().offhand) {
-            if (stack.is(ModItems.HEART_OF_CREATION.get())) {
-                return true;
-            }
-        }
-
-        return false;
+        return PlayerInventoryHelper.contains(player, stack -> stack.is(ModItems.HEART_OF_CREATION.get()));
     }
 
     /**

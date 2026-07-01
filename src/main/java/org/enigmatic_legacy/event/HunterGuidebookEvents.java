@@ -8,6 +8,7 @@ import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.items.AnimalGuidebook;
 import org.enigmatic_legacy.item.items.HunterGuidebook;
+import org.enigmatic_legacy.item.items.OdeToLiving;
 
 /**
  * 野猎指南服务端事件。
@@ -38,7 +39,7 @@ public final class HunterGuidebookEvents {
         }
 
         float redirectedDamage = event.getAmount();
-        if (AnimalGuidebook.hasGuidebook(player)) {
+        if (AnimalGuidebook.hasGuidebook(player) || OdeToLiving.hasOde(player)) {
             float reduction = ConfigCommon.HUNTER_GUIDE_SYNERGY_DAMAGE_REDUCTION.get() / 100.0F;
             redirectedDamage *= Math.max(0.0F, 1.0F - reduction);
         }

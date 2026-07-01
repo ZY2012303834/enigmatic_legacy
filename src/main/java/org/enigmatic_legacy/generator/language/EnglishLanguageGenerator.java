@@ -326,11 +326,21 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.hunter_guidebook.1", "While in your inventory, all damage your pets");
         add("tooltip.enigmatic_legacy.hunter_guidebook.2", "receive within %1$s blocks from you is redirected");
         add("tooltip.enigmatic_legacy.hunter_guidebook.3", "upon you.");
-        add("tooltip.enigmatic_legacy.hunter_guidebook.4", "If Guide to Animal Companionship is also");
+        add("tooltip.enigmatic_legacy.hunter_guidebook.4", "If Guide to Animal Companionship or Ode to Living Beings is also");
         add("tooltip.enigmatic_legacy.hunter_guidebook.5", "possessed, redirected damage is reduced by %1$s.");
         // end
 
         // 术石
+        // Ode to Living Beings
+        addItem(ModItems.ODE_TO_LIVING, "Ode to Living Beings");
+        add("tooltip.enigmatic_legacy.ode_to_living.1", "While in your inventory, your attacks can't");
+        add("tooltip.enigmatic_legacy.ode_to_living.2", "deal damage to most animals.");
+        add("tooltip.enigmatic_legacy.ode_to_living.3", "Most animals around you are rendered passive.");
+        add("tooltip.enigmatic_legacy.ode_to_living.4", "Alteration of the Second Curse:");
+        add("tooltip.enigmatic_legacy.ode_to_living.5", "- Neutral animals will not actively attack.");
+        add("tooltip.enigmatic_legacy.ode_to_living.6", "Attack with this item to remove protection from that animal type.");
+        add("tooltip.enigmatic_legacy.ode_to_living.7", "Use it on animals to appease them and restore protection.");
+
         add("curios.identifier.spellstone", "Spellstone");
 
         // 魔像之心

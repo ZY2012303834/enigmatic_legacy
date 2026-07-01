@@ -142,6 +142,27 @@ public class StorageCrystal extends Item {
         return SoulCrystal.getOwnerId(embeddedSoulCrystal);
     }
 
+    public static boolean clearStoredContentsIfOwned(ItemStack crystal, Player player) {
+        CompoundTag crystalTag = getTag(crystal);
+
+        if (!crystalTag.contains(EMBEDDED_SOUL_TAG)) {
+            return false;
+        }
+
+        ItemStack embeddedSoulCrystal = ItemStack.parseOptional(player.registryAccess(), crystalTag.getCompound(EMBEDDED_SOUL_TAG));
+
+        if (!player.getUUID().equals(SoulCrystal.getOwnerId(embeddedSoulCrystal))) {
+            return false;
+        }
+
+        crystalTag.remove(STORED_STACKS_TAG);
+        crystalTag.remove(EMBEDDED_SOUL_TAG);
+        crystalTag.putInt(STORED_XP_TAG, 0);
+        crystalTag.putBoolean(STORED_FLAG_TAG, false);
+        setTag(crystal, crystalTag);
+        return true;
+    }
+
     private static ItemStack getEmbeddedSoulCrystal(ItemStack crystal, Player player) {
         CompoundTag crystalTag = getTag(crystal);
 

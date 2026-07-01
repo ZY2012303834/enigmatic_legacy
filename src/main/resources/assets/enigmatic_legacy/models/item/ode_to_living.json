@@ -1,0 +1,18 @@
+{
+  "parent": "minecraft:item/handheld",
+  "loader": "neoforge:separate_transforms",
+  "base": {
+    "parent": "enigmatic_legacy:item/3d/ode_to_living"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "enigmatic_legacy:item/gui/ode_to_living"
+    },
+    "fixed": {
+      "parent": "enigmatic_legacy:item/3d/ode_to_living"
+    },
+    "ground": {
+      "parent": "enigmatic_legacy:item/3d/ode_to_living"
+    }
+  }
+}

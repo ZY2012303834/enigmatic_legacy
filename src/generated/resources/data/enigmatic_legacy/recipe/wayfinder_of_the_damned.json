@@ -2,23 +2,23 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "C": {
-      "item": "enigmatic_legacy:evil_ingot"
-    },
     "E": {
-      "item": "enigmatic_legacy:evil_essence"
+      "item": "minecraft:ender_eye"
+    },
+    "N": {
+      "item": "minecraft:nether_brick"
+    },
+    "P": {
+      "item": "minecraft:blaze_powder"
     },
     "R": {
       "item": "minecraft:compass"
-    },
-    "S": {
-      "item": "enigmatic_legacy:soul_crystal"
     }
   },
   "pattern": [
-    " E ",
-    "CSC",
-    " R "
+    "NPN",
+    "PEP",
+    "NRN"
   ],
   "result": {
     "count": 1,

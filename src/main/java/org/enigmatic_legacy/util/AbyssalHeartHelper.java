@@ -109,6 +109,20 @@ public final class AbyssalHeartHelper {
         return player.getPersistentData().getLong(CURSED_PLAY_TIME_TAG);
     }
 
+    public static long setCursedPlayTimeFraction(ServerPlayer player, double fraction) {
+        long totalPlayTime = getTotalPlayTime(player);
+
+        if (totalPlayTime <= 0L) {
+            return -1L;
+        }
+
+        double clampedFraction = Math.max(0.0D, Math.min(1.0D, fraction));
+        long cursedPlayTime = Math.max(0L, Math.min(totalPlayTime, Math.round(totalPlayTime * clampedFraction)));
+        player.getPersistentData().putLong(CURSED_PLAY_TIME_TAG, cursedPlayTime);
+        syncTimer(player);
+        return cursedPlayTime;
+    }
+
     /**
      * 获取深渊之心要求的七咒折磨比例文本。
      *

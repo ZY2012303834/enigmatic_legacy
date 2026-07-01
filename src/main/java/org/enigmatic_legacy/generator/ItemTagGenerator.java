@@ -41,6 +41,7 @@ public class ItemTagGenerator extends ItemTagsProvider {
     public static final TagKey<Item> ENIGMATIC_AMULETS = modItemTag("enigmatic_amulets");
 
     // 原版物品分类标签
+    private static final TagKey<Item> BOOKSHELF_BOOKS = minecraftItemTag("bookshelf_books");
     private static final TagKey<Item> MINECRAFT_SWORDS = minecraftItemTag("swords");
     private static final TagKey<Item> MINECRAFT_AXES = minecraftItemTag("axes");
     private static final TagKey<Item> MINECRAFT_PICKAXES = minecraftItemTag("pickaxes");
@@ -113,6 +114,7 @@ public class ItemTagGenerator extends ItemTagsProvider {
         addArmorEnchantableTags();
         addElytraEnchantableTags();
         addShieldEnchantableTags();
+        addBookTags();
         addRelicEnchantableTags();
     }
 
@@ -329,6 +331,12 @@ public class ItemTagGenerator extends ItemTagsProvider {
     private void addRelicEnchantableTags() {
         tag(ENCHANTABLE_VANISHING)
                 .add(ModItems.ASTRAL_FRUIT.get());
+    }
+
+    private void addBookTags() {
+        // 生灵颂词是书类道具，原拓展项目也把它加入 bookshelf_books。
+        tag(BOOKSHELF_BOOKS)
+                .add(ModItems.ODE_TO_LIVING.get());
     }
 
     private static TagKey<Item> modItemTag(String path) {

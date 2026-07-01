@@ -378,6 +378,30 @@ public class RecipeGenerator extends RecipeProvider {
                 .unlockedBy("has_book", has(Items.BOOK))
                 .save(output);
 
+        // 生灵颂词 / Ode to Living Beings。
+        //
+        // 复刻 Enigmatic Addons 原配方：
+        // n e n
+        // a X a
+        // n b n
+        //
+        // X = 兽友指南
+        // n = 金粒
+        // e = 大地之心
+        // a = 金苹果
+        // b = 经验瓶
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ODE_TO_LIVING.get())
+                .pattern("NEN")
+                .pattern("AXA")
+                .pattern("NBN")
+                .define('N', Items.GOLD_NUGGET)
+                .define('E', ModItems.EARTH_HEART.get())
+                .define('A', Items.GOLDEN_APPLE)
+                .define('X', ModItems.ANIMAL_GUIDEBOOK.get())
+                .define('B', Items.EXPERIENCE_BOTTLE)
+                .unlockedBy("has_animal_guidebook", has(ModItems.ANIMAL_GUIDEBOOK.get()))
+                .save(output);
+
         // 非欧立方 / Non-Euclidean Cube。
         // 按原版材料逻辑：魔像之心、寰宇之心 x2、烈焰核心、天使之祝、黑曜石、星云之眼、海洋意志、虚空珍珠。
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.THE_CUBE.get())
@@ -615,24 +639,27 @@ public class RecipeGenerator extends RecipeProvider {
                         "mending_mixture_repair"
                 ));
 
-        // 被诅咒者的寻路指针 / Wayfinder of the Damned
-        //
-        // 说明：
-        // - 使用指南针作为“寻路”基础；
-        // - 使用灵魂水晶作为定位目标核心；
-        // - 使用七咒之戒相关材料强化诅咒主题。
-        //
-        // 数据生成后会生成：
-        // data/enigmatic_legacy/recipe/wayfinder_of_the_damned.json
+// 被诅咒者的寻路指针 / Wayfinder of the Damned
+//
+// 新配方：
+// N P N
+// P E P
+// N R N
+//
+// N = 地狱砖
+// P = 烈焰粉
+// E = 末影之眼
+// R = 指南针
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.WAYFINDER_OF_THE_DAMNED.get())
-                .pattern(" E ")
-                .pattern("CSC")
-                .pattern(" R ")
-                .define('E', ModItems.EVIL_ESSENCE.get())
-                .define('C', ModItems.EVIL_INGOT.get())
-                .define('S', ModItems.SOUL_CRYSTAL.get())
+                .pattern("NPN")
+                .pattern("PEP")
+                .pattern("NRN")
+                .define('N', Items.NETHER_BRICK)
+                .define('P', Items.BLAZE_POWDER)
+                .define('E', Items.ENDER_EYE)
                 .define('R', Items.COMPASS)
-                .unlockedBy("has_soul_crystal", has(ModItems.SOUL_CRYSTAL.get()))
+                .unlockedBy("has_ender_eye", has(Items.ENDER_EYE))
+                .unlockedBy("has_blaze_powder", has(Items.BLAZE_POWDER))
                 .save(output);
 
         // 末影之屠 / The Ender Slayer

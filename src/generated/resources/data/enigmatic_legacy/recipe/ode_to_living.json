@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:golden_apple"
+    },
+    "B": {
+      "item": "minecraft:experience_bottle"
+    },
+    "E": {
+      "item": "enigmatic_legacy:earth_heart"
+    },
+    "N": {
+      "item": "minecraft:gold_nugget"
+    },
+    "X": {
+      "item": "enigmatic_legacy:animal_guidebook"
+    }
+  },
+  "pattern": [
+    "NEN",
+    "AXA",
+    "NBN"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:ode_to_living"
+  }
+}

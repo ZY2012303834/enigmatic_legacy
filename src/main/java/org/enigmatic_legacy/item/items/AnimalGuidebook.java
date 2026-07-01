@@ -24,6 +24,7 @@ import net.minecraft.world.item.TooltipFlag;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.util.CursedRingHelper;
+import org.enigmatic_legacy.util.PlayerInventoryHelper;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -42,18 +43,7 @@ public class AnimalGuidebook extends Item {
     }
 
     public static boolean hasGuidebook(Player player) {
-        if (player.getMainHandItem().is(ModItems.ANIMAL_GUIDEBOOK.get())
-                || player.getOffhandItem().is(ModItems.ANIMAL_GUIDEBOOK.get())) {
-            return true;
-        }
-
-        for (ItemStack stack : player.getInventory().items) {
-            if (stack.is(ModItems.ANIMAL_GUIDEBOOK.get())) {
-                return true;
-            }
-        }
-
-        return false;
+        return PlayerInventoryHelper.contains(player, stack -> stack.is(ModItems.ANIMAL_GUIDEBOOK.get()));
     }
 
     public static boolean isProtectedAnimal(LivingEntity entity) {
