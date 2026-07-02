@@ -33,6 +33,12 @@ public final class ModRecipeSerializers {
                     () -> new SimpleCraftingRecipeSerializer<>(EnchantmentTransposingRecipe::new)
             );
 
+    public static final DeferredHolder<RecipeSerializer<?>, SimpleCraftingRecipeSerializer<DarkestScrollDuplicationRecipe>> DARKEST_SCROLL_DUPLICATION =
+            RECIPE_SERIALIZERS.register(
+                    "darkest_scroll_duplication",
+                    () -> new SimpleCraftingRecipeSerializer<>(DarkestScrollDuplicationRecipe::new)
+            );
+
     /**
      * 修补混合物特殊修复配方。
      * JSON 类型：

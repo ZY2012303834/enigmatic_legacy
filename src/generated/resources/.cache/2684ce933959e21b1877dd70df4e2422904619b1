@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-01T08:11:56.3494859	vanilla/Recipes
+// 1.21.1	2026-07-02T16:27:27.9849878	vanilla/Recipes
 138cca5fc2d36a468976c88c266618e68aa51d88 data/enigmatic_legacy/advancement/recipes/building_blocks/astral_dust_sack.json
 75128c3d277fd90fca1df4cc9f996933af7f7241 data/enigmatic_legacy/advancement/recipes/building_blocks/etherium_block.json
 70a559dbe3db33a763c165b60a23730d9e9f955b data/enigmatic_legacy/advancement/recipes/combat/axe_of_executioner.json
@@ -63,6 +63,7 @@ fb27980e68235d55440fe805245fb1b9e16ced28 data/enigmatic_legacy/recipe/axe_of_exe
 874378b1428b2e4f0b7923bec326928f7e37ba59 data/enigmatic_legacy/recipe/cosmic_heart.json
 a68e9f47121f7c2f4e9d9d83a3dc9b7c97b499c3 data/enigmatic_legacy/recipe/cursed_scroll.json
 1870a36d5e13b417304e3093bca3398549bcac48 data/enigmatic_legacy/recipe/curse_transposer.json
+7c9df7e58eca2d13da3fb5ba533db3bb77c0e0dd data/enigmatic_legacy/recipe/darkest_scroll_duplication.json
 aa39ef5036cc226d1f775becab4cb81df43437c1 data/enigmatic_legacy/recipe/dislocation_ring.json
 6ef1086e682453d87e5ac2ba3051e790b36f5368 data/enigmatic_legacy/recipe/earth_heart.json
 a70130164f73b421a7759077982001d85a69b6f4 data/enigmatic_legacy/recipe/earth_promise.json

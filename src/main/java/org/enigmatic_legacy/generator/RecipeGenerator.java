@@ -14,6 +14,7 @@ import net.neoforged.neoforge.data.event.GatherDataEvent;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.block.ModBlocks;
 import org.enigmatic_legacy.item.ModItems;
+import org.enigmatic_legacy.recipe.DarkestScrollDuplicationRecipe;
 import org.enigmatic_legacy.recipe.EnchantmentTransposingRecipe;
 import org.enigmatic_legacy.recipe.MendingMixtureRepairRecipe;
 import org.jetbrains.annotations.NotNull;
@@ -61,6 +62,13 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('n', Items.STICK)
                 .unlockedBy("has_paper", has(Items.PAPER))
                 .save(output);
+
+        // 至暗卷轴增殖配方。
+        SpecialRecipeBuilder.special(DarkestScrollDuplicationRecipe::new)
+                .save(output, ResourceLocation.fromNamespaceAndPath(
+                        EnigmaticLegacy.MODID,
+                        "darkest_scroll_duplication"
+                ));
 
         // 永恒智慧卷轴 / Scroll of Ageless Wisdom。
         // 对齐原项目 xp_scroll 配方。
