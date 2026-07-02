@@ -4,6 +4,8 @@
   ],
   "slots": [
     "ring",
+    "bracelet",
+    "hands",
     "charm",
     "spellstone",
     "scroll"

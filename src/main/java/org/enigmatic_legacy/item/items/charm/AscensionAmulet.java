@@ -71,7 +71,10 @@ public class AscensionAmulet extends Item {
 
         String owner = getOwner(stack);
         if (!owner.isEmpty()) {
-            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_amulet.owner", owner));
+            tooltip.add(SpellstoneTooltip.text(
+                    "tooltip.enigmatic_legacy.enigmatic_amulet.owner",
+                    SpellstoneTooltip.number(owner)
+            ));
         }
 
         tooltip.add(SpellstoneTooltip.empty());

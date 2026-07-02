@@ -137,13 +137,13 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.enigmatic_amulet.variant.black", "Color: Black");
         add("tooltip.enigmatic_legacy.enigmatic_amulet.variant.blue", "Color: Blue");
 
-        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.red", "+2 Attack Damage");
-        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.aqua", "+15% Movement Speed while sprinting");
-        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.violet", "15% chance to deflect incoming projectiles");
-        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.magenta", "-20% Gravity");
-        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.green", "+2 Mining Efficiency");
-        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.black", "10% Lifesteal");
-        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.blue", "+25% Swim Speed");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.red", "%s Attack Damage");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.aqua", "%s Movement Speed while sprinting");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.violet", "%s chance to deflect incoming projectiles");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.magenta", "%s Gravity");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.green", "%s Mining Efficiency");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.black", "%s Lifesteal");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.blue", "%s Swim Speed");
 
         addItem(ModItems.MAGNET_RING, "Magnetic Ring");
         add("tooltip.enigmatic_legacy.magnet_ring.1", "Attracts nearby items within %s blocks.");
@@ -170,13 +170,13 @@ public class EnglishLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.monster_charm.1", "Increases damage dealt to undead enemies by %s.");
         add("tooltip.enigmatic_legacy.monster_charm.2", "Increases damage dealt to hostile creatures by %s.");
-        add("tooltip.enigmatic_legacy.monster_charm.3", "Provides +1 Looting.");
+        add("tooltip.enigmatic_legacy.monster_charm.3", "Provides %s Looting.");
         add("tooltip.enigmatic_legacy.monster_charm.4", "Doubles experience dropped by monsters.");
 
         addItem(ModItems.TREASURE_HUNTER_CHARM, "Charm of Treasure Hunter");
 
         add("tooltip.enigmatic_legacy.treasure_hunter_charm.1", "Grants Night Vision while equipped.");
-        add("tooltip.enigmatic_legacy.treasure_hunter_charm.2", "Provides +1 Fortune.");
+        add("tooltip.enigmatic_legacy.treasure_hunter_charm.2", "Provides %s Fortune.");
         add("tooltip.enigmatic_legacy.treasure_hunter_charm.3", "Increases mining speed by %s.");
         add("tooltip.enigmatic_legacy.treasure_hunter_charm.4", "Right-click to toggle Night Vision.");
         add("tooltip.enigmatic_legacy.treasure_hunter_charm.night_vision.enabled", "Night Vision is enabled.");
@@ -310,8 +310,6 @@ public class EnglishLanguageGenerator extends LanguageProvider {
 
         // Guide to Animal Companionship
         addItem(ModItems.ANIMAL_GUIDEBOOK, "Guide to Animal Companionship");
-        add("tooltip.enigmatic_legacy.animal_guidebook.1", "While in your inventory, your attacks can't");
-        add("tooltip.enigmatic_legacy.animal_guidebook.2", "deal damage to animals.");
         add("tooltip.enigmatic_legacy.animal_guidebook.3", "Hoglins around you are rendered passive.");
         add("tooltip.enigmatic_legacy.animal_guidebook.4", "Alteration of the Second Curse:");
         add("tooltip.enigmatic_legacy.animal_guidebook.5", "- Tamable animals stay neutral towards you.");
@@ -340,13 +338,10 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         // 术石
         // Ode to Living Beings
         addItem(ModItems.ODE_TO_LIVING, "Ode to Living Beings");
-        add("tooltip.enigmatic_legacy.ode_to_living.1", "While in your inventory, your attacks can't");
-        add("tooltip.enigmatic_legacy.ode_to_living.2", "deal damage to most animals.");
         add("tooltip.enigmatic_legacy.ode_to_living.3", "Most animals around you are rendered passive.");
         add("tooltip.enigmatic_legacy.ode_to_living.4", "Alteration of the Second Curse:");
         add("tooltip.enigmatic_legacy.ode_to_living.5", "- Neutral animals will not actively attack.");
-        add("tooltip.enigmatic_legacy.ode_to_living.6", "Attack with this item to remove protection from that animal type.");
-        add("tooltip.enigmatic_legacy.ode_to_living.7", "Use it on animals to appease them and restore protection.");
+        add("tooltip.enigmatic_legacy.ode_to_living.6", "Use it on animals to appease them.");
 
         add("curios.identifier.spellstone", "Spellstone");
 
@@ -425,6 +420,8 @@ public class EnglishLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.blazing_core.passive.6",
                 "You can now swim in lava.");
+        add("tooltip.enigmatic_legacy.blazing_core.passive.7",
+                "Reduces fire spell damage from Iron's Spells by %s.");
         // end
 
         // 星云之眼
@@ -981,6 +978,8 @@ public class EnglishLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.scorched_charm.6",
                 "You can now swim in lava and gain the same lava visibility as the Blazing Core.");
+        add("tooltip.enigmatic_legacy.scorched_charm.7",
+                "Reduces fire spell damage from Iron's Spells by %s.");
 
         addAdvancementTranslations();
 

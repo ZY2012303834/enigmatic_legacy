@@ -78,14 +78,21 @@ public final class MagicQuartzRingHelper {
                 || isIronsSpellbooksMagicDamage(source);
     }
 
-    private static boolean isIronsSpellbooksMagicDamage(DamageSource source) {
+    public static boolean isIronsSpellbooksMagicDamage(DamageSource source) {
         return source.typeHolder()
                 .unwrapKey()
                 .map(key -> isIronsSpellbooksMagicDamage(key.location()))
                 .orElse(false);
     }
 
-    private static boolean isIronsSpellbooksMagicDamage(ResourceLocation damageType) {
+    public static boolean isIronsSpellbooksFireDamage(DamageSource source) {
+        return source.typeHolder()
+                .unwrapKey()
+                .map(key -> isIronsSpellbooksFireDamage(key.location()))
+                .orElse(false);
+    }
+
+    public static boolean isIronsSpellbooksMagicDamage(ResourceLocation damageType) {
         if (!IRONS_SPELLBOOKS_MODID.equals(damageType.getNamespace())) {
             return false;
         }
@@ -105,8 +112,21 @@ public final class MagicQuartzRingHelper {
                 || path.contains("wither");
     }
 
+    public static boolean isIronsSpellbooksFireDamage(ResourceLocation damageType) {
+        if (!IRONS_SPELLBOOKS_MODID.equals(damageType.getNamespace())) {
+            return false;
+        }
+
+        String path = damageType.getPath();
+
+        return path.contains("fire")
+                || path.contains("flame")
+                || path.contains("burn")
+                || path.contains("pyro");
+    }
+
     /**
-     * 应用 30% 魔法伤害减免。
+     * 应用 20% 魔法伤害减免。
      */
     public static float reduceMagicDamage(float amount) {
         return (float) (amount * (1.0D - MagicQuartzRing.MAGIC_RESISTANCE));

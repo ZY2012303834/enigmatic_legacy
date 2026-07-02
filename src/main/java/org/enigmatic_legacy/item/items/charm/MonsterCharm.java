@@ -1,6 +1,5 @@
 package org.enigmatic_legacy.item.items.charm;
 
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.storage.loot.LootContext;
@@ -9,6 +8,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import org.enigmatic_legacy.config.ConfigCommon;
+import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
@@ -61,35 +61,34 @@ public class MonsterCharm extends Item implements ICurioItem {
             @NotNull List<Component> tooltip,
             @NotNull TooltipFlag flag
     ) {
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+        tooltip.add(SpellstoneTooltip.empty());
 
         if (Screen.hasShiftDown()) {
-            tooltip.add(Component.translatable(
+            tooltip.add(SpellstoneTooltip.text(
                     "tooltip.enigmatic_legacy.monster_charm.1",
-                    ConfigCommon.MONSTER_CHARM_UNDEAD_DAMAGE.get() + "%"
-            ).withStyle(ChatFormatting.GOLD));
+                    SpellstoneTooltip.percent(ConfigCommon.MONSTER_CHARM_UNDEAD_DAMAGE.get() + "%")
+            ));
 
-            tooltip.add(Component.translatable(
+            tooltip.add(SpellstoneTooltip.text(
                     "tooltip.enigmatic_legacy.monster_charm.2",
-                    ConfigCommon.MONSTER_CHARM_HOSTILE_DAMAGE.get() + "%"
-            ).withStyle(ChatFormatting.GOLD));
+                    SpellstoneTooltip.percent(ConfigCommon.MONSTER_CHARM_HOSTILE_DAMAGE.get() + "%")
+            ));
 
             if (ConfigCommon.MONSTER_CHARM_BONUS_LOOTING_ENABLED.get()) {
-                tooltip.add(Component.translatable(
-                        "tooltip.enigmatic_legacy.monster_charm.3"
-                ).withStyle(ChatFormatting.GOLD));
+                tooltip.add(SpellstoneTooltip.text(
+                        "tooltip.enigmatic_legacy.monster_charm.3",
+                        SpellstoneTooltip.number("+1")
+                ));
             }
 
             if (ConfigCommon.MONSTER_CHARM_DOUBLE_XP_ENABLED.get()) {
-                tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
-                tooltip.add(Component.translatable(
+                tooltip.add(SpellstoneTooltip.empty());
+                tooltip.add(SpellstoneTooltip.text(
                         "tooltip.enigmatic_legacy.monster_charm.4"
-                ).withStyle(ChatFormatting.GOLD));
+                ));
             }
         } else {
-            tooltip.add(Component.translatable(
-                    "tooltip.enigmatic_legacy.hold_shift"
-            ).withStyle(ChatFormatting.DARK_GRAY));
+            tooltip.add(SpellstoneTooltip.holdShift());
         }
     }
 }

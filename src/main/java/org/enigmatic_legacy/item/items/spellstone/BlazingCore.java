@@ -120,6 +120,11 @@ public class BlazingCore extends Item implements ICurioItem {
 
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.blazing_core.passive.6"));
 
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.blazing_core.passive.7",
+                SpellstoneTooltip.percent("30%")
+        ));
+
         tooltip.add(SpellstoneTooltip.negative(
                 "tooltip.enigmatic_legacy.blazing_core.passive.5",
                 SpellstoneTooltip.number(String.format("%.1f", ConfigCommon.BLAZING_CORE_AQUATIC_DAMAGE_VULNERABILITY.get()))

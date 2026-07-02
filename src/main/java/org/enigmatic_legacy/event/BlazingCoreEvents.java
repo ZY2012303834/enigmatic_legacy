@@ -42,7 +42,6 @@ public final class BlazingCoreEvents {
      * 防止调整药水时间时 remove + add 重新触发 MobEffectEvent.Added 导致递归。
      */
     private static final String EFFECT_ADJUSTING_TAG = "enigmatic_legacy.blazing_core_adjusting_effect";
-
     private BlazingCoreEvents() {
     }
 

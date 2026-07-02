@@ -9,6 +9,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
+import org.enigmatic_legacy.util.BlazingCoreHelper;
+import org.enigmatic_legacy.util.MagicQuartzRingHelper;
 import org.enigmatic_legacy.util.ScorchedCharmHelper;
 
 /**
@@ -41,6 +43,7 @@ public final class ScorchedCharmEvents {
      * 0.20F = 20%。
      */
     private static final float RESIST_DAMAGE_CHANCE_IN_LAVA = 0.20F;
+    private static final float IRONS_SPELLBOOKS_FIRE_SPELL_RESISTANCE = 0.30F;
     private ScorchedCharmEvents() {
     }
 
@@ -126,6 +129,21 @@ public final class ScorchedCharmEvents {
          * 攻击着火目标时，恢复造成伤害的 20%。
          */
         attacker.heal(damage * LIFESTEAL_MODIFIER);
+    }
+
+    @SubscribeEvent
+    public static void onLivingDamagePre(LivingDamageEvent.Pre event) {
+        LivingEntity target = event.getEntity();
+
+        if (!ScorchedCharmHelper.hasScorchedCharm(target) && !BlazingCoreHelper.hasBlazingCore(target)) {
+            return;
+        }
+
+        if (!MagicQuartzRingHelper.isIronsSpellbooksFireDamage(event.getSource())) {
+            return;
+        }
+
+        event.setNewDamage(event.getNewDamage() * (1.0F - IRONS_SPELLBOOKS_FIRE_SPELL_RESISTANCE));
     }
 
     private static boolean isTouchingLava(LivingEntity entity) {

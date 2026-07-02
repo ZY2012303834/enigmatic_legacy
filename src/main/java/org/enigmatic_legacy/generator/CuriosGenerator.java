@@ -154,7 +154,7 @@ public class CuriosGenerator implements DataProvider {
         JsonObject json = new JsonObject();
 
         // 护符栏位
-        json.addProperty("size", 2);
+        json.addProperty("size", 3);
 
         // SET 表示直接设置最终数量。
         // 如果后续你希望兼容其他模组添加的 charm 槽，可以改成 ADD。
@@ -238,6 +238,10 @@ public class CuriosGenerator implements DataProvider {
 
         JsonArray slots = new JsonArray();
         slots.add("ring");
+        // 手镯栏位使用 Curios 默认 bracelet 定义，默认数量为 1。
+        slots.add("bracelet");
+        // 手饰栏位使用 Curios 默认 hands 定义，默认数量为 1。
+        slots.add("hands");
         slots.add("charm");
         slots.add("spellstone");
         slots.add("scroll");
@@ -256,12 +260,17 @@ public class CuriosGenerator implements DataProvider {
 
     private CompletableFuture<?> generateTouhouMaidSlot(CachedOutput cachedOutput) {
         JsonObject json = new JsonObject();
+        json.addProperty("replace", true);
 
         JsonArray entities = new JsonArray();
         entities.add("touhou_little_maid:maid");
 
         JsonArray slots = new JsonArray();
         slots.add("ring");
+        // 手镯栏位使用 Curios 默认 bracelet 定义，默认数量为 1。
+        slots.add("bracelet");
+        // 手饰栏位使用 Curios 默认 hands 定义，默认数量为 1。
+        slots.add("hands");
         slots.add("charm");
         slots.add("spellstone");
         slots.add("scroll");

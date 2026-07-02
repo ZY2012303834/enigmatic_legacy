@@ -136,6 +136,11 @@ public class ScorchedCharm extends Item implements ICurioItem {
 
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.scorched_charm.6"));
 
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.scorched_charm.7",
+                SpellstoneTooltip.percent("30%")
+        ));
+
         tooltip.add(SpellstoneTooltip.empty());
     }
 }

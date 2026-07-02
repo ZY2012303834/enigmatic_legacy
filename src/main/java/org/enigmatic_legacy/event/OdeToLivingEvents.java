@@ -1,13 +1,15 @@
 package org.enigmatic_legacy.event;
 
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.NeutralMob;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.monster.hoglin.Hoglin;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.event.entity.living.LivingChangeTargetEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.enigmatic_legacy.config.ConfigCommon;
@@ -16,10 +18,7 @@ import org.enigmatic_legacy.item.items.OdeToLiving;
 import java.util.List;
 
 /**
- * 生灵颂词服务端事件。
- *
- * <p>原拓展项目把这些事件直接注册在物品实例上；当前项目习惯把行为放到
- * event 包中统一注册，因此这里独立成事件类。</p>
+ * Server-side behavior for Ode to Living Beings.
  */
 public final class OdeToLivingEvents {
     private OdeToLivingEvents() {
@@ -27,34 +26,28 @@ public final class OdeToLivingEvents {
 
     @SubscribeEvent
     public static void onIncomingDamage(LivingIncomingDamageEvent event) {
-        if (event.getSource().getEntity() instanceof Player attacker) {
-            handlePlayerAttackingAnimal(event, attacker);
+        Entity attacker = event.getSource().getEntity();
+
+        if (event.getEntity() instanceof Player player
+                && attacker instanceof Hoglin
+                && OdeToLiving.hasOde(player)) {
+            event.setCanceled(true);
         }
     }
 
-    /**
-     * 背包内有颂词时，玩家攻击动物会被阻止。
-     *
-     * <p>如果玩家正用颂词本体攻击，则该次攻击用于“记录例外种类”，
-     * 因此不会取消伤害。这一点对应原项目的黑名单机制。</p>
-     */
-    private static void handlePlayerAttackingAnimal(LivingIncomingDamageEvent event, Player attacker) {
-        if (!OdeToLiving.isOdeAnimal(event.getEntity())) {
+    @SubscribeEvent
+    public static void onHoglinChangeTarget(LivingChangeTargetEvent event) {
+        if (!(event.getEntity() instanceof Hoglin)) {
             return;
         }
 
-        ItemStack mainHand = attacker.getMainHandItem();
-
-        if (OdeToLiving.isHeldOde(mainHand)) {
-            if (OdeToLiving.isProtectedByOde(attacker, event.getEntity())) {
-                OdeToLiving.addToBannedList(mainHand, event.getEntity());
-            }
-
+        if (!(event.getNewAboutToBeSetTarget() instanceof Player player)) {
             return;
         }
 
-        if (OdeToLiving.isProtectedByOde(attacker, event.getEntity())) {
+        if (OdeToLiving.hasOde(player)) {
             event.setCanceled(true);
+            event.setNewAboutToBeSetTarget(null);
         }
     }
 
@@ -71,12 +64,6 @@ public final class OdeToLivingEvents {
         calmProtectedAnimals(player);
     }
 
-    /**
-     * 每秒清理一次附近被颂词保护动物对玩家的仇恨。
-     *
-     * <p>这里不强行修改所有动物 AI，只处理“目标正是该玩家”的情况，
-     * 避免干扰动物对其它实体的正常行为。</p>
-     */
     private static void calmProtectedAnimals(ServerPlayer player) {
         double range = ConfigCommon.CURSED_RING_NEUTRAL_ANGER_RANGE.get();
         AABB box = player.getBoundingBox().inflate(range);
@@ -97,6 +84,17 @@ public final class OdeToLivingEvents {
             if (animal instanceof NeutralMob neutralMob) {
                 neutralMob.stopBeingAngry();
             }
+        }
+
+        List<Hoglin> hoglins = player.level().getEntitiesOfClass(
+                Hoglin.class,
+                box,
+                hoglin -> hoglin.isAlive() && hoglin.getTarget() == player
+        );
+
+        for (Hoglin hoglin : hoglins) {
+            hoglin.setTarget(null);
+            hoglin.setAggressive(false);
         }
     }
 }

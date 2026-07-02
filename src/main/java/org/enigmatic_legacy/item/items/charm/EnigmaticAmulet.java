@@ -85,12 +85,48 @@ public class EnigmaticAmulet extends Item {
 
         String owner = getOwner(stack);
         if (!owner.isEmpty()) {
-            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_amulet.owner", owner));
+            tooltip.add(SpellstoneTooltip.text(
+                    "tooltip.enigmatic_legacy.enigmatic_amulet.owner",
+                    SpellstoneTooltip.number(owner)
+            ));
         }
 
         tooltip.add(SpellstoneTooltip.empty());
 
         tooltip.add(SpellstoneTooltip.text("curios.modifiers.charm"));
-        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.enigmatic_amulet.modifier." + this.variant.id()));
+        tooltip.add(this.modifierTooltip());
+    }
+
+    private Component modifierTooltip() {
+        return switch (this.variant) {
+            case RED -> SpellstoneTooltip.text(
+                    "tooltip.enigmatic_legacy.enigmatic_amulet.modifier.red",
+                    SpellstoneTooltip.number("+2")
+            );
+            case AQUA -> SpellstoneTooltip.text(
+                    "tooltip.enigmatic_legacy.enigmatic_amulet.modifier.aqua",
+                    SpellstoneTooltip.percent("+15%")
+            );
+            case VIOLET -> SpellstoneTooltip.text(
+                    "tooltip.enigmatic_legacy.enigmatic_amulet.modifier.violet",
+                    SpellstoneTooltip.percent("15%")
+            );
+            case MAGENTA -> SpellstoneTooltip.text(
+                    "tooltip.enigmatic_legacy.enigmatic_amulet.modifier.magenta",
+                    SpellstoneTooltip.percent("-20%")
+            );
+            case GREEN -> SpellstoneTooltip.text(
+                    "tooltip.enigmatic_legacy.enigmatic_amulet.modifier.green",
+                    SpellstoneTooltip.number("+2")
+            );
+            case BLACK -> SpellstoneTooltip.text(
+                    "tooltip.enigmatic_legacy.enigmatic_amulet.modifier.black",
+                    SpellstoneTooltip.percent("10%")
+            );
+            case BLUE -> SpellstoneTooltip.text(
+                    "tooltip.enigmatic_legacy.enigmatic_amulet.modifier.blue",
+                    SpellstoneTooltip.percent("+25%")
+            );
+        };
     }
 }

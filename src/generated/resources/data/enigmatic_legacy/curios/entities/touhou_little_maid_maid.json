@@ -2,8 +2,11 @@
   "entities": [
     "touhou_little_maid:maid"
   ],
+  "replace": true,
   "slots": [
     "ring",
+    "bracelet",
+    "hands",
     "charm",
     "spellstone",
     "scroll"

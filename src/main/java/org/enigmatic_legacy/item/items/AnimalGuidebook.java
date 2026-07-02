@@ -77,10 +77,6 @@ public class AnimalGuidebook extends Item {
             @NotNull TooltipFlag flag
     ) {
         if (Screen.hasShiftDown()) {
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.animal_guidebook.1")
-                    .withStyle(ChatFormatting.DARK_PURPLE));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.animal_guidebook.2")
-                    .withStyle(ChatFormatting.DARK_PURPLE));
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.animal_guidebook.3")
                     .withStyle(ChatFormatting.GOLD));
 

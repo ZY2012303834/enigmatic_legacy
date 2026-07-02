@@ -40,9 +40,9 @@ public class MagicQuartzRing extends Item implements ICurioItem {
 
     /**
      * 魔法伤害抗性。
-     * 0.30D = 减少 30% 对应伤害。
+     * 0.20D = 减少 20% 对应伤害。
      */
-    public static final double MAGIC_RESISTANCE = 0.30D;
+    public static final double MAGIC_RESISTANCE = 0.20D;
 
     public MagicQuartzRing() {
         super(new Item.Properties()
@@ -86,7 +86,7 @@ public class MagicQuartzRing extends Item implements ICurioItem {
 
         tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.magic_quartz_ring.modifier.magic_resistance",
-                SpellstoneTooltip.percent("+30%")
+                SpellstoneTooltip.percent("+20%")
         ));
 
         tooltip.add(SpellstoneTooltip.text(

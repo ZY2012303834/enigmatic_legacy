@@ -137,13 +137,13 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.enigmatic_amulet.variant.black", "颜色：漆黑");
         add("tooltip.enigmatic_legacy.enigmatic_amulet.variant.blue", "颜色：湛蓝");
 
-        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.red", "+2 攻击伤害");
-        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.aqua", "疾跑时 +15% 移动速度");
-        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.violet", "15% 概率偏转来袭弹射物");
-        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.magenta", "-20% 重力");
-        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.green", "+2 挖掘效率");
-        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.black", "10% 生命偷取");
-        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.blue", "+25% 游泳速度");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.red", "%s 攻击伤害");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.aqua", "疾跑时 %s 移动速度");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.violet", "%s 概率偏转来袭弹射物");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.magenta", "%s 重力");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.green", "%s 挖掘效率");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.black", "%s 生命偷取");
+        add("tooltip.enigmatic_legacy.enigmatic_amulet.modifier.blue", "%s 游泳速度");
 
         addItem(ModItems.MAGNET_RING, "磁力之戒");
         add("tooltip.enigmatic_legacy.magnet_ring.1", "吸取 %s 格范围内的附近掉落物。");
@@ -170,13 +170,13 @@ public class ChineseLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.monster_charm.1", "对亡灵生物造成的伤害提高 %s。");
         add("tooltip.enigmatic_legacy.monster_charm.2", "对敌对生物造成的伤害提高 %s。");
-        add("tooltip.enigmatic_legacy.monster_charm.3", "提供 +1 抢夺。");
+        add("tooltip.enigmatic_legacy.monster_charm.3", "提供 %s 抢夺。");
         add("tooltip.enigmatic_legacy.monster_charm.4", "怪物掉落经验翻倍。");
 
         addItem(ModItems.TREASURE_HUNTER_CHARM, "猎宝者护符");
 
         add("tooltip.enigmatic_legacy.treasure_hunter_charm.1", "佩戴时获得夜视。");
-        add("tooltip.enigmatic_legacy.treasure_hunter_charm.2", "提供 +1 时运。");
+        add("tooltip.enigmatic_legacy.treasure_hunter_charm.2", "提供 %s 时运。");
         add("tooltip.enigmatic_legacy.treasure_hunter_charm.3", "挖掘速度提高 %s。");
         add("tooltip.enigmatic_legacy.treasure_hunter_charm.4", "右键可切换夜视。");
         add("tooltip.enigmatic_legacy.treasure_hunter_charm.night_vision.enabled", "夜视当前已开启。");
@@ -311,8 +311,6 @@ public class ChineseLanguageGenerator extends LanguageProvider {
 
         // 兽友指南
         addItem(ModItems.ANIMAL_GUIDEBOOK, "兽友指南");
-        add("tooltip.enigmatic_legacy.animal_guidebook.1", "放在物品栏中时，你的攻击不会");
-        add("tooltip.enigmatic_legacy.animal_guidebook.2", "对动物造成伤害。");
         add("tooltip.enigmatic_legacy.animal_guidebook.3", "你周围的疣猪兽会保持被动。");
         add("tooltip.enigmatic_legacy.animal_guidebook.4", "第二诅咒的修正：");
         add("tooltip.enigmatic_legacy.animal_guidebook.5", "- 可驯服动物会对你保持中立。");
@@ -341,13 +339,10 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         // 术石
         // 生灵颂词
         addItem(ModItems.ODE_TO_LIVING, "生灵颂词");
-        add("tooltip.enigmatic_legacy.ode_to_living.1", "放在物品栏中时，你的攻击不会");
-        add("tooltip.enigmatic_legacy.ode_to_living.2", "对大多数动物造成伤害。");
         add("tooltip.enigmatic_legacy.ode_to_living.3", "你周围的大多数动物会保持被动。");
         add("tooltip.enigmatic_legacy.ode_to_living.4", "第二诅咒的修正：");
         add("tooltip.enigmatic_legacy.ode_to_living.5", "- 中立动物不会主动攻击你。");
-        add("tooltip.enigmatic_legacy.ode_to_living.6", "用此物攻击动物，可取消该类动物受到的保护。");
-        add("tooltip.enigmatic_legacy.ode_to_living.7", "对动物使用可安抚对方，并恢复保护效果。");
+        add("tooltip.enigmatic_legacy.ode_to_living.6", "对动物使用可安抚对方。");
 
         add("curios.identifier.spellstone", "术石");
 
@@ -426,6 +421,8 @@ public class ChineseLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.blazing_core.passive.6",
                 "现在可以在岩浆中游泳。");
+        add("tooltip.enigmatic_legacy.blazing_core.passive.7",
+                "受到的铁魔法火焰法术伤害降低 %s。");
         // end
 
         // 星云之眼
@@ -987,6 +984,8 @@ public class ChineseLanguageGenerator extends LanguageProvider {
 
         add("tooltip.enigmatic_legacy.scorched_charm.6",
                 "现在可以在岩浆中游泳，并拥有和烈焰之核一样的岩浆能见度。");
+        add("tooltip.enigmatic_legacy.scorched_charm.7",
+                "受到的铁魔法火焰法术伤害降低 %s。");
 
         // 七咒折磨 99.5% 使用资格提示，所有需要该资格的物品共用这一组语言 key。
         add("tooltip.enigmatic_legacy.cursed_suffering.requirement", "你需要在七咒之戒的折磨下度过总游戏时间的 %s 才能使用该物品。");

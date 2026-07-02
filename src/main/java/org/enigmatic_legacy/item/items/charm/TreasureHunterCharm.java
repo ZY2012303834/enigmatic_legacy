@@ -1,6 +1,5 @@
 package org.enigmatic_legacy.item.items.charm;
 
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
@@ -16,6 +15,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
 import org.enigmatic_legacy.config.ConfigCommon;
+import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
@@ -119,39 +119,34 @@ public class TreasureHunterCharm extends Item implements ICurioItem {
             @NotNull List<Component> tooltip,
             @NotNull TooltipFlag flag
     ) {
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+        tooltip.add(SpellstoneTooltip.empty());
 
         if (!Screen.hasShiftDown()) {
-            tooltip.add(Component.translatable(
-                    "tooltip.enigmatic_legacy.hold_shift"
-            ).withStyle(ChatFormatting.DARK_GRAY));
+            tooltip.add(SpellstoneTooltip.holdShift());
 
             return;
         }
 
-        tooltip.add(Component.translatable(
+        tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.treasure_hunter_charm.1"
-        ).withStyle(ChatFormatting.GOLD));
+        ));
 
-        tooltip.add(Component.translatable(
-                "tooltip.enigmatic_legacy.treasure_hunter_charm.2"
-        ).withStyle(ChatFormatting.GOLD));
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.treasure_hunter_charm.2",
+                SpellstoneTooltip.number("+1")
+        ));
 
-        tooltip.add(Component.translatable(
+        tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.treasure_hunter_charm.3",
-                ConfigCommon.TREASURE_HUNTER_CHARM_MINING_SPEED_BONUS.get() + "%"
-        ).withStyle(ChatFormatting.GOLD));
+                SpellstoneTooltip.percent(ConfigCommon.TREASURE_HUNTER_CHARM_MINING_SPEED_BONUS.get() + "%")
+        ));
 
-        tooltip.add(Component.translatable(
-                isNightVisionEnabled(stack)
-                        ? "tooltip.enigmatic_legacy.treasure_hunter_charm.night_vision.enabled"
-                        : "tooltip.enigmatic_legacy.treasure_hunter_charm.night_vision.disabled"
-        ).withStyle(isNightVisionEnabled(stack)
-                ? ChatFormatting.GREEN
-                : ChatFormatting.RED));
+        tooltip.add(isNightVisionEnabled(stack)
+                ? SpellstoneTooltip.text("tooltip.enigmatic_legacy.treasure_hunter_charm.night_vision.enabled")
+                : SpellstoneTooltip.negative("tooltip.enigmatic_legacy.treasure_hunter_charm.night_vision.disabled"));
 
-        tooltip.add(Component.translatable(
+        tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.treasure_hunter_charm.4"
-        ).withStyle(ChatFormatting.GRAY));
+        ));
     }
 }

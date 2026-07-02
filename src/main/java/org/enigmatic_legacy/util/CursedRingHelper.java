@@ -130,6 +130,10 @@ public class CursedRingHelper {
 
             // 猪灵使用原版仇恨 AI。
             // 但如果玩家佩戴无尽贪婪契约，猪灵必须保持中立。
+            if (isNeutralAngerSuppressedByBooks(player, entity)) {
+                continue;
+            }
+
             if (entity instanceof Piglin piglin) {
                 if (PactOfInfiniteAvariceHelper.hasPact(player)) {
                     continue;
@@ -143,14 +147,6 @@ public class CursedRingHelper {
             }
 
             if (!(entity instanceof NeutralMob)) {
-                continue;
-            }
-
-            if (AnimalGuidebook.hasGuidebook(player) && AnimalGuidebook.isTamableAnimal(entity)) {
-                continue;
-            }
-
-            if (OdeToLiving.isProtectedByOde(player, entity)) {
                 continue;
             }
 
@@ -190,10 +186,23 @@ public class CursedRingHelper {
     }
 
     /**
-     * 让猪灵把玩家记为仇恨目标。
-     * <p>
-     * PiglinAi.wasHurtBy 在当前映射中是 protected，不能从模组工具类直接调用。
-     * 这里复用它最关键的公开效果：写入 Brain 的 ANGRY_AT 记忆，让原版 StartAttacking 行为接手。
+     * 在七咒写入仇恨目标前先检查书本效果，避免先激怒再解除导致生物行为抽搐。
+     */
+    private static boolean isNeutralAngerSuppressedByBooks(Player player, LivingEntity entity) {
+        if (isNeutralAngerSuppressedByAnimalGuide(player, entity)) {
+            return true;
+        }
+
+        return OdeToLiving.isProtectedByOde(player, entity);
+    }
+
+    private static boolean isNeutralAngerSuppressedByAnimalGuide(Player player, LivingEntity entity) {
+        return AnimalGuidebook.hasGuidebook(player)
+                && (AnimalGuidebook.isProtectedAnimal(entity) || AnimalGuidebook.isTamableAnimal(entity));
+    }
+
+    /**
+     * 通过猪灵的脑记忆写入七咒仇恨目标。
      */
     private static void angerPiglin(Piglin piglin, Player player) {
         if (!piglin.canAttack(player)) {

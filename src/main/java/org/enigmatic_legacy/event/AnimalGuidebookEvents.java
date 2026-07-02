@@ -6,11 +6,11 @@ import net.minecraft.world.entity.monster.hoglin.Hoglin;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.event.entity.living.LivingChangeTargetEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.items.AnimalGuidebook;
-import org.enigmatic_legacy.item.items.OdeToLiving;
 
 import java.util.List;
 
@@ -26,18 +26,26 @@ public final class AnimalGuidebookEvents {
     public static void onIncomingDamage(LivingIncomingDamageEvent event) {
         Entity attacker = event.getSource().getEntity();
 
-        if (attacker instanceof Player player
-                && AnimalGuidebook.hasGuidebook(player)
-                && !OdeToLiving.isHeldOde(player.getMainHandItem())
-                && AnimalGuidebook.isProtectedAnimal(event.getEntity())) {
-            event.setCanceled(true);
-            return;
-        }
-
         if (event.getEntity() instanceof Player player
                 && attacker instanceof Hoglin
                 && AnimalGuidebook.hasGuidebook(player)) {
             event.setCanceled(true);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onHoglinChangeTarget(LivingChangeTargetEvent event) {
+        if (!(event.getEntity() instanceof Hoglin)) {
+            return;
+        }
+
+        if (!(event.getNewAboutToBeSetTarget() instanceof Player player)) {
+            return;
+        }
+
+        if (AnimalGuidebook.hasGuidebook(player)) {
+            event.setCanceled(true);
+            event.setNewAboutToBeSetTarget(null);
         }
     }
 

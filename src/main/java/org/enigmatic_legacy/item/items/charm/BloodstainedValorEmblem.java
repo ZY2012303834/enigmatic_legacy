@@ -1,6 +1,5 @@
 package org.enigmatic_legacy.item.items.charm;
 
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
@@ -10,6 +9,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.util.CursedRingHelper;
+import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
@@ -57,48 +57,46 @@ public class BloodstainedValorEmblem extends Item implements ICurioItem {
             @NotNull List<Component> tooltip,
             @NotNull TooltipFlag flag
     ) {
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+        tooltip.add(SpellstoneTooltip.empty());
 
         if (Screen.hasShiftDown()) {
-            tooltip.add(Component.translatable(
+            tooltip.add(SpellstoneTooltip.text(
                     "tooltip.enigmatic_legacy.bloodstained_valor_emblem.1",
-                    format(ConfigCommon.BLOODSTAINED_VALOR_ATTACK_DAMAGE.get())
-            ).withStyle(ChatFormatting.GOLD));
+                    SpellstoneTooltip.percent(format(ConfigCommon.BLOODSTAINED_VALOR_ATTACK_DAMAGE.get()))
+            ));
 
-            tooltip.add(Component.translatable(
+            tooltip.add(SpellstoneTooltip.text(
                     "tooltip.enigmatic_legacy.bloodstained_valor_emblem.2",
-                    format(ConfigCommon.BLOODSTAINED_VALOR_ATTACK_SPEED.get())
-            ).withStyle(ChatFormatting.GOLD));
+                    SpellstoneTooltip.percent(format(ConfigCommon.BLOODSTAINED_VALOR_ATTACK_SPEED.get()))
+            ));
 
-            tooltip.add(Component.translatable(
+            tooltip.add(SpellstoneTooltip.text(
                     "tooltip.enigmatic_legacy.bloodstained_valor_emblem.3",
-                    format(ConfigCommon.BLOODSTAINED_VALOR_MOVEMENT_SPEED.get())
-            ).withStyle(ChatFormatting.GOLD));
+                    SpellstoneTooltip.percent(format(ConfigCommon.BLOODSTAINED_VALOR_MOVEMENT_SPEED.get()))
+            ));
 
-            tooltip.add(Component.translatable(
+            tooltip.add(SpellstoneTooltip.text(
                     "tooltip.enigmatic_legacy.bloodstained_valor_emblem.4",
-                    format(ConfigCommon.BLOODSTAINED_VALOR_DAMAGE_RESISTANCE.get())
-            ).withStyle(ChatFormatting.GOLD));
+                    SpellstoneTooltip.percent(format(ConfigCommon.BLOODSTAINED_VALOR_DAMAGE_RESISTANCE.get()))
+            ));
 
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+            tooltip.add(SpellstoneTooltip.empty());
 
-            tooltip.add(Component.translatable(
+            tooltip.add(SpellstoneTooltip.text(
                     "tooltip.enigmatic_legacy.bloodstained_valor_emblem.5"
-            ).withStyle(ChatFormatting.GRAY));
+            ));
 
-            tooltip.add(Component.translatable(
+            tooltip.add(SpellstoneTooltip.text(
                     "tooltip.enigmatic_legacy.bloodstained_valor_emblem.6"
-            ).withStyle(ChatFormatting.GRAY));
+            ));
 
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+            tooltip.add(SpellstoneTooltip.empty());
 
-            tooltip.add(Component.translatable(
+            tooltip.add(SpellstoneTooltip.negative(
                     "tooltip.enigmatic_legacy.bloodstained_valor_emblem.cursed_only"
-            ).withStyle(ChatFormatting.DARK_RED));
+            ));
         } else {
-            tooltip.add(Component.translatable(
-                    "tooltip.enigmatic_legacy.hold_shift"
-            ).withStyle(ChatFormatting.DARK_GRAY));
+            tooltip.add(SpellstoneTooltip.holdShift());
         }
     }
 
