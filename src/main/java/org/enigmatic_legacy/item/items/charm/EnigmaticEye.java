@@ -24,6 +24,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
 import org.enigmatic_legacy.EnigmaticLegacy;
+import org.enigmatic_legacy.api.CuriosLookupApi;
 import org.enigmatic_legacy.client.quote.Quote;
 import org.enigmatic_legacy.sound.ModSounds;
 import org.enigmatic_legacy.util.SpellstoneTooltip;
@@ -168,13 +169,11 @@ public class EnigmaticEye extends Item implements ICurioItem {
             return false;
         }
 
-        return CuriosApi.getCuriosInventory(context.entity())
-                .map(handler -> handler.findFirstCurio(otherStack ->
+        return CuriosLookupApi.findFirstSlot(context.entity(), otherStack ->
                         otherStack != stack
                                 && otherStack.getItem() instanceof EnigmaticEye
-                                && !isDormant(otherStack)
-                ).isEmpty())
-                .orElse(true);
+                                && !isDormant(otherStack))
+                .isEmpty();
     }
 
     /**

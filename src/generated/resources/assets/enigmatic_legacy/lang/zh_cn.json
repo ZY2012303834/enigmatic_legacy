@@ -94,6 +94,8 @@
   "effect.enigmatic_legacy.growing_hunger": "无止饥饿",
   "effect.enigmatic_legacy.pure_resistance": "纯化抗性",
   "effect.enigmatic_legacy.recall": "召回",
+  "enchantment.enigmatic_legacy.eternal_binding": "永恒绑定诅咒",
+  "enchantment.enigmatic_legacy.eternal_binding.desc": "使装备无法被卸下，即便持有者死亡。",
   "gui.enigmatic_legacy.magnet_control.tooltip.disabled": "%s当前已关闭。点击开启。",
   "gui.enigmatic_legacy.magnet_control.tooltip.enabled": "%s当前已开启。点击关闭。",
   "item.enigmatic_legacy.abyssal_heart": "深渊之心",

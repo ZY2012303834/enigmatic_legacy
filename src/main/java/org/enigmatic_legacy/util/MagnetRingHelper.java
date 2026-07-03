@@ -9,11 +9,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
 import org.enigmatic_legacy.EnigmaticLegacy;
+import org.enigmatic_legacy.api.CuriosLookupApi;
 import org.enigmatic_legacy.item.items.ring.MagnetRing;
-import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * 磁力之戒工具类。
@@ -36,12 +35,7 @@ public final class MagnetRingHelper {
      * 3. 兼容 super_magnet_ring。
      */
     public static Optional<ItemStack> findEquippedMagnetControlRing(LivingEntity entity) {
-        AtomicReference<ItemStack> result = new AtomicReference<>(ItemStack.EMPTY);
-
-        CuriosApi.getCuriosInventory(entity).flatMap(handler -> handler.findFirstCurio(MagnetRingHelper::isMagnetControlRing)).ifPresent(slotResult -> result.set(slotResult.stack()));
-
-        ItemStack stack = result.get();
-        return stack.isEmpty() ? Optional.empty() : Optional.of(stack);
+        return CuriosLookupApi.findFirstStack(entity, MagnetRingHelper::isMagnetControlRing);
     }
 
     /**
@@ -110,14 +104,7 @@ public final class MagnetRingHelper {
      * 如果后续只需要“磁力之戒或转位之戒”，请使用 findEquippedMagnetControlRing。
      */
     public static Optional<ItemStack> findEquippedMagnetRing(LivingEntity entity) {
-        AtomicReference<ItemStack> result = new AtomicReference<>(ItemStack.EMPTY);
-
-        CuriosApi.getCuriosInventory(entity)
-                .flatMap(handler -> handler.findFirstCurio(stack -> stack.getItem() instanceof MagnetRing))
-                .ifPresent(slotResult -> result.set(slotResult.stack()));
-
-        ItemStack stack = result.get();
-        return stack.isEmpty() ? Optional.empty() : Optional.of(stack);
+        return CuriosLookupApi.findFirstStack(entity, stack -> stack.getItem() instanceof MagnetRing);
     }
 
     /**

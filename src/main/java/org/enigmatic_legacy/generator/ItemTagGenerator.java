@@ -13,6 +13,7 @@ import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import org.enigmatic_legacy.EnigmaticLegacy;
+import org.enigmatic_legacy.api.RelicItemApi;
 import org.enigmatic_legacy.item.ModItems;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -330,7 +331,10 @@ public class ItemTagGenerator extends ItemTagsProvider {
 
     private void addRelicEnchantableTags() {
         tag(ENCHANTABLE_VANISHING)
-                .add(ModItems.ASTRAL_FRUIT.get());
+                .add(RelicItemApi.curseEnchantableRelics());
+
+        tag(ENCHANTABLE_EQUIPPABLE)
+                .add(RelicItemApi.curseEnchantableRelics());
     }
 
     private void addBookTags() {

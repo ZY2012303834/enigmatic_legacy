@@ -6,9 +6,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.common.Tags;
+import org.enigmatic_legacy.api.CuriosLookupApi;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.item.items.ring.MagicQuartzRing;
-import top.theillusivec4.curios.api.CuriosApi;
 
 /**
  * 魔法石英戒指工具类。
@@ -27,9 +27,7 @@ public final class MagicQuartzRingHelper {
      * 判断玩家是否佩戴魔法石英戒指。
      */
     public static boolean hasMagicQuartzRing(LivingEntity entity) {
-        return CuriosApi.getCuriosInventory(entity)
-                .map(handler -> handler.findFirstCurio(ModItems.MAGIC_QUARTZ_RING.get()).isPresent())
-                .orElse(false);
+        return CuriosLookupApi.hasCurio(entity, ModItems.MAGIC_QUARTZ_RING.get());
     }
 
     /**
@@ -39,8 +37,7 @@ public final class MagicQuartzRingHelper {
      * 如果检查的是当前已经放着魔法石英戒指的同一个槽位，返回 true，避免 Curios 刷新装备状态时误判。
      */
     public static boolean canEquipMagicQuartzRing(LivingEntity entity, String slotIdentifier, int slotIndex) {
-        return CuriosApi.getCuriosInventory(entity)
-                .flatMap(handler -> handler.getStacksHandler(slotIdentifier))
+        return CuriosLookupApi.getStacksHandler(entity, slotIdentifier)
                 .map(ringHandler -> {
                     for (int slot = 0; slot < ringHandler.getStacks().getSlots(); slot++) {
                         ItemStack stack = ringHandler.getStacks().getStackInSlot(slot);

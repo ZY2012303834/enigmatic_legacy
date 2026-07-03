@@ -17,11 +17,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import org.enigmatic_legacy.api.CuriosLookupApi;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.item.items.AnimalGuidebook;
 import org.enigmatic_legacy.item.items.OdeToLiving;
-import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.List;
 
@@ -43,9 +43,7 @@ public class CursedRingHelper {
             return false;
         }
 
-        return CuriosApi.getCuriosInventory(player)
-                .map(handler -> handler.findFirstCurio(ModItems.CURSED_RING.get()).isPresent())
-                .orElse(false);
+        return CuriosLookupApi.hasCurio(player, ModItems.CURSED_RING.get());
     }
 
     /**
@@ -59,8 +57,7 @@ public class CursedRingHelper {
             return false;
         }
 
-        return CuriosApi.getCuriosInventory(player)
-                .flatMap(handler -> handler.getStacksHandler(slotIdentifier))
+        return CuriosLookupApi.getStacksHandler(player, slotIdentifier)
                 .map(ringHandler -> {
                     for (int slot = 0; slot < ringHandler.getStacks().getSlots(); slot++) {
                         ItemStack stack = ringHandler.getStacks().getStackInSlot(slot);

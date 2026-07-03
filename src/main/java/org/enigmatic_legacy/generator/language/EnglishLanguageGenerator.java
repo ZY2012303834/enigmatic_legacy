@@ -14,6 +14,8 @@ public class EnglishLanguageGenerator extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add("enchantment.enigmatic_legacy.eternal_binding", "Curse of Eternal Binding");
+        add("enchantment.enigmatic_legacy.eternal_binding.desc", "Makes the item impossible to unequip or lose on death.");
         add("itemGroup.enigmatic_legacy", "Enigmatic Legacy");      // 神秘遗物
         addItem(ModItems.ASTRAL_DUST, "Astral Dust");   // 星尘
         addItem(ModItems.ENDER_ROD, "Ender Rod");   // 末影棒

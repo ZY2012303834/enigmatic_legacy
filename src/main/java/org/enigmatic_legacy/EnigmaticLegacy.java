@@ -60,6 +60,7 @@ public class EnigmaticLegacy {
         modEventBus.addListener(PatchouliBookGenerator::gatherData);
         modEventBus.addListener(DamageTagGenerator::gatherData);
         modEventBus.addListener(DamageTypeGenerator::gatherData);
+        modEventBus.addListener(EnchantmentGenerator::gatherData);
 
         modEventBus.addListener(ItemTagGenerator::gatherData);
 
@@ -121,6 +122,8 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(ExtradimensionalEyeEvents.class);
         NeoForge.EVENT_BUS.register(MajesticElytraEvents.class);
         NeoForge.EVENT_BUS.register(EtheriumArmorEvents.class);     //以太装甲
+
+        NeoForge.EVENT_BUS.register(EternalBindingEvents.class);
 
         if (ModList.get().isLoaded("lootr")) {
             NeoForge.EVENT_BUS.register(LootrCompatEvents.class);

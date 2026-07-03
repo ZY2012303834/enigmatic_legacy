@@ -11,10 +11,10 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import org.enigmatic_legacy.api.CuriosLookupApi;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.util.MagnetRingHelper;
 import org.jetbrains.annotations.NotNull;
-import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
@@ -88,9 +88,7 @@ public class MagnetRing extends Item implements ICurioItem {
     public boolean canEquip(SlotContext context, ItemStack stack) {
         LivingEntity entity = context.entity();
 
-        return CuriosApi.getCuriosInventory(entity)
-                .map(handler -> handler.findFirstCurio(MagnetRingHelper::isMagnetControlRing).isEmpty())
-                .orElse(true);
+        return CuriosLookupApi.findFirstSlot(entity, MagnetRingHelper::isMagnetControlRing).isEmpty();
     }
     /**
      * Curios 每 tick 调用一次。

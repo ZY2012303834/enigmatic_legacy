@@ -1,20 +1,23 @@
 package org.enigmatic_legacy.util;
 
+import net.minecraft.core.Holder;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
+import org.enigmatic_legacy.api.CuriosLookupApi;
+import org.enigmatic_legacy.enchantment.ModEnchantments;
 import org.enigmatic_legacy.item.items.charm.EnchanterPearl;
-import top.theillusivec4.curios.api.CuriosCapability;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
-import net.minecraft.core.Holder;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * 附魔师的珍珠工具类。
@@ -27,14 +30,7 @@ public final class EnchanterPearlHelper {
      * 查找当前佩戴的附魔师的珍珠。
      */
     public static Optional<ItemStack> findEquippedEnchanterPearl(LivingEntity entity) {
-        AtomicReference<ItemStack> result = new AtomicReference<>(ItemStack.EMPTY);
-
-        getCuriosInventory(entity)
-                .flatMap(handler -> handler.findFirstCurio(stack -> stack.getItem() instanceof EnchanterPearl))
-                .ifPresent(slotResult -> result.set(slotResult.stack()));
-
-        ItemStack stack = result.get();
-        return stack.isEmpty() ? Optional.empty() : Optional.of(stack);
+        return CuriosLookupApi.findFirstStack(entity, stack -> stack.getItem() instanceof EnchanterPearl);
     }
 
     /**
@@ -66,7 +62,7 @@ public final class EnchanterPearlHelper {
     }
 
     public static Optional<ICuriosItemHandler> getCuriosInventory(LivingEntity entity) {
-        return Optional.ofNullable(entity.getCapability(CuriosCapability.INVENTORY));
+        return CuriosLookupApi.getInventory(entity);
     }
 
     public static ItemStack mergeEnchantments(ItemStack input, ItemStack mergeFrom) {
@@ -103,5 +99,30 @@ public final class EnchanterPearlHelper {
 
         EnchantmentHelper.setEnchantments(result, resultEnchantments.toImmutable());
         return result;
+    }
+
+    public static ItemStack maybeApplyEternalBinding(Player player, ItemStack stack) {
+        if (player.getRandom().nextFloat() >= 0.5F) {
+            return stack;
+        }
+
+        HolderLookup.RegistryLookup<Enchantment> enchantmentLookup =
+                player.registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
+        Holder<Enchantment> bindingCurse = enchantmentLookup.getOrThrow(Enchantments.BINDING_CURSE);
+        Holder<Enchantment> eternalBinding = enchantmentLookup.getOrThrow(ModEnchantments.ETERNAL_BINDING);
+        ItemEnchantments enchantments = EnchantmentHelper.getEnchantmentsForCrafting(stack);
+
+        if (enchantments.getLevel(bindingCurse) <= 0) {
+            return stack;
+        }
+
+        ItemEnchantments.Mutable mutable = new ItemEnchantments.Mutable(enchantments);
+        int level = mutable.getLevel(bindingCurse);
+        mutable.removeIf(enchantment -> enchantment.is(Enchantments.BINDING_CURSE)
+                || enchantment.is(Enchantments.VANISHING_CURSE));
+        mutable.set(eternalBinding, level);
+        EnchantmentHelper.setEnchantments(stack, mutable.toImmutable());
+
+        return stack;
     }
 }

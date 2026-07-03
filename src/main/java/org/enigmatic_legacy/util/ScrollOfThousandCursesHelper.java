@@ -11,9 +11,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
+import org.enigmatic_legacy.api.CuriosLookupApi;
 import org.enigmatic_legacy.item.ModItems;
-import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.SlotResult;
 
 import java.util.HashSet;
 import java.util.Optional;
@@ -37,11 +36,7 @@ public final class ScrollOfThousandCursesHelper {
     }
 
     public static Optional<ItemStack> findScroll(LivingEntity entity) {
-        return CuriosApi.getCuriosInventory(entity)
-                .flatMap(handler -> handler.findFirstCurio(
-                        stack -> stack.is(ModItems.CURSED_SCROLL.get())
-                ))
-                .map(SlotResult::stack);
+        return CuriosLookupApi.findFirstStack(entity, ModItems.CURSED_SCROLL.get());
     }
 
     public static boolean hasScroll(LivingEntity entity) {
@@ -84,7 +79,7 @@ public final class ScrollOfThousandCursesHelper {
      * 1. 主手；
      * 2. 副手；
      * 3. 身上盔甲；
-     * 4. Curios 的 ring / charm / spellstone / scroll 栏位。
+     * 4. Curios 的全部栏位。
      * 不统计背包普通物品栏。
      */
     private static int countEquippedCurseEnchantments(Player player) {
@@ -100,27 +95,25 @@ public final class ScrollOfThousandCursesHelper {
             curses += countStackCurses(armorStack, enchantmentLookup);
         }
 
-        curses += countCurioSlotCurses(player, enchantmentLookup, "ring");
-        curses += countCurioSlotCurses(player, enchantmentLookup, "charm");
-        curses += countCurioSlotCurses(player, enchantmentLookup, "spellstone");
-        curses += countCurioSlotCurses(player, enchantmentLookup, "scroll");
+        curses += countAllCurioCurses(player, enchantmentLookup);
 
         return curses;
     }
 
-    private static int countCurioSlotCurses(
+    private static int countAllCurioCurses(
             Player player,
-            HolderLookup.RegistryLookup<Enchantment> enchantmentLookup,
-            String slotIdentifier
+            HolderLookup.RegistryLookup<Enchantment> enchantmentLookup
     ) {
-        return CuriosApi.getCuriosInventory(player)
-                .flatMap(handler -> handler.getStacksHandler(slotIdentifier))
-                .map(stacksHandler -> {
+        return CuriosLookupApi.getInventory(player)
+                .map(handler -> {
                     int curses = 0;
-                    var stacks = stacksHandler.getStacks();
 
-                    for (int slot = 0; slot < stacks.getSlots(); slot++) {
-                        curses += countStackCurses(stacks.getStackInSlot(slot), enchantmentLookup);
+                    for (var stacksHandler : handler.getCurios().values()) {
+                        var stacks = stacksHandler.getStacks();
+
+                        for (int slot = 0; slot < stacks.getSlots(); slot++) {
+                            curses += countStackCurses(stacks.getStackInSlot(slot), enchantmentLookup);
+                        }
                     }
 
                     return curses;

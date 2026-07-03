@@ -6,7 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import org.enigmatic_legacy.EnigmaticLegacy;
-import top.theillusivec4.curios.api.CuriosApi;
+import org.enigmatic_legacy.api.CuriosLookupApi;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -45,7 +45,7 @@ public final class AstralFruitSlotHelper {
     public static boolean grantPermanentRingSlot(Player player) {
         AtomicBoolean success = new AtomicBoolean(false);
 
-        CuriosApi.getCuriosInventory(player).ifPresent(curiosInventory -> {
+        CuriosLookupApi.getInventory(player).ifPresent(curiosInventory -> {
             /*
              * 先移除同 ID 修饰，再重新添加。
              *

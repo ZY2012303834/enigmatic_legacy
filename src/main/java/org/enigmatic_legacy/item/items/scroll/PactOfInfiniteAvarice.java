@@ -7,11 +7,11 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
+import org.enigmatic_legacy.api.CuriosLookupApi;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.util.CursedRingHelper;
 import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
-import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
@@ -68,8 +68,7 @@ public class PactOfInfiniteAvarice extends Item implements ICurioItem {
      * 但无尽贪婪契约本体最多只能装备 1 个。
      */
     private static boolean canEquipAvariceScroll(Player player, int currentSlotIndex) {
-        return CuriosApi.getCuriosInventory(player)
-                .flatMap(handler -> handler.getStacksHandler(SCROLL_SLOT))
+        return CuriosLookupApi.getStacksHandler(player, SCROLL_SLOT)
                 .map(scrollHandler -> {
                     var stacks = scrollHandler.getStacks();
 

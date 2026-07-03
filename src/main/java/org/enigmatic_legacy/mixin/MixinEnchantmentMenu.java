@@ -123,6 +123,7 @@ public abstract class MixinEnchantmentMenu extends AbstractContainerMenu {
             }
 
             enchantedItem = EnchanterPearlHelper.mergeEnchantments(enchantedItem, doubleRoll);
+            enchantedItem = EnchanterPearlHelper.maybeApplyEternalBinding(player, enchantedItem);
             this.enchantSlots.setItem(0, enchantedItem);
 
             player.awardStat(Stats.ENCHANT_ITEM);

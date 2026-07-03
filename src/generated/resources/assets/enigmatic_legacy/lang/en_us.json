@@ -94,6 +94,8 @@
   "effect.enigmatic_legacy.growing_hunger": "Growing Hunger",
   "effect.enigmatic_legacy.pure_resistance": "Pure Resistance",
   "effect.enigmatic_legacy.recall": "Recall",
+  "enchantment.enigmatic_legacy.eternal_binding": "Curse of Eternal Binding",
+  "enchantment.enigmatic_legacy.eternal_binding.desc": "Makes the item impossible to unequip or lose on death.",
   "gui.enigmatic_legacy.magnet_control.tooltip.disabled": "%s is disabled. Click to enable.",
   "gui.enigmatic_legacy.magnet_control.tooltip.enabled": "%s is enabled. Click to disable.",
   "item.enigmatic_legacy.abyssal_heart": "Heart of the Abyss",

@@ -1,8 +1,8 @@
 package org.enigmatic_legacy.util;
 
 import net.minecraft.world.entity.player.Player;
+import org.enigmatic_legacy.api.CuriosLookupApi;
 import org.enigmatic_legacy.item.ModItems;
-import top.theillusivec4.curios.api.CuriosApi;
 
 /**
  * 末影之戒工具类。
@@ -16,9 +16,7 @@ public final class EnderRingHelper {
      * 是否佩戴了末影之戒。
      */
     public static boolean hasEnderRing(Player player) {
-        return CuriosApi.getCuriosInventory(player)
-                .map(handler -> handler.findFirstCurio(ModItems.ENDER_RING.get()).isPresent())
-                .orElse(false);
+        return CuriosLookupApi.hasCurio(player, ModItems.ENDER_RING.get());
     }
 
     /**

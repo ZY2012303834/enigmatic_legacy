@@ -2,8 +2,8 @@ package org.enigmatic_legacy.util;
 
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
+import org.enigmatic_legacy.api.CuriosLookupApi;
 import org.enigmatic_legacy.item.ModItems;
-import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotResult;
 
 import java.util.Optional;
@@ -49,8 +49,7 @@ public final class GolemHeartHelper {
      * result.slotContext().identifier() 必须等于 spellstone。
      */
     public static Optional<SlotResult> findEquippedGolemHeartSlot(LivingEntity entity) {
-        return CuriosApi.getCuriosInventory(entity)
-                .flatMap(handler -> handler.findFirstCurio(stack -> stack.is(ModItems.GOLEM_HEART.get())))
+        return CuriosLookupApi.findFirstSlot(entity, ModItems.GOLEM_HEART.get())
                 .filter(result -> result.slotContext() != null)
                 .filter(result -> SPELLSTONE_SLOT.equals(result.slotContext().identifier()));
     }

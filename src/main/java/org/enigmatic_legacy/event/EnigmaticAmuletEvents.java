@@ -22,16 +22,14 @@ import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.enigmatic_legacy.EnigmaticLegacy;
+import org.enigmatic_legacy.api.CuriosLookupApi;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.item.items.charm.AmuletVariant;
 import org.enigmatic_legacy.item.items.charm.EldritchAmulet;
 import org.enigmatic_legacy.item.items.charm.EnigmaticAmulet;
 import org.enigmatic_legacy.item.items.charm.UnwitnessedAmulet;
 import org.enigmatic_legacy.util.AbyssalHeartHelper;
-import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.event.CurioCanEquipEvent;
-
-import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * 神秘护身符事件处理。
@@ -365,59 +363,34 @@ public final class EnigmaticAmuletEvents {
      * 从 Curios 栏位中寻找当前佩戴的神秘护身符颜色。
      */
     private static AmuletVariant getEquippedVariant(LivingEntity entity) {
-        AtomicReference<AmuletVariant> variant = new AtomicReference<>();
-
-        CuriosApi.getCuriosInventory(entity).flatMap(handler -> handler.findFirstCurio(stack -> stack.getItem() instanceof EnigmaticAmulet)).ifPresent(slotResult -> {
-            if (slotResult.stack().getItem() instanceof EnigmaticAmulet amulet) {
-                variant.set(amulet.variant());
-            }
-        });
-
-        return variant.get();
+        return CuriosLookupApi.findFirstStack(entity, stack -> stack.getItem() instanceof EnigmaticAmulet)
+                .map(ItemStack::getItem)
+                .filter(EnigmaticAmulet.class::isInstance)
+                .map(EnigmaticAmulet.class::cast)
+                .map(EnigmaticAmulet::variant)
+                .orElse(null);
     }
 
     /**
      * 判断玩家是否佩戴飞升护符。
      */
     private static boolean hasAscensionAmulet(LivingEntity entity) {
-        AtomicReference<Boolean> hasAscension = new AtomicReference<>(false);
-
-        CuriosApi.getCuriosInventory(entity)
-                .flatMap(handler -> handler.findFirstCurio(stack ->
-                        stack.is(ModItems.ASCENSION_AMULET.get())
-                ))
-                .ifPresent(slotResult -> hasAscension.set(true));
-
-        return hasAscension.get();
+        return CuriosLookupApi.hasCurio(entity, ModItems.ASCENSION_AMULET.get());
     }
 
     public static boolean hasEldritchAmulet(LivingEntity entity) {
-        AtomicReference<Boolean> hasEldritch = new AtomicReference<>(false);
-
-        CuriosApi.getCuriosInventory(entity)
-                .flatMap(handler -> handler.findFirstCurio(stack ->
-                        stack.is(ModItems.ELDRITCH_AMULET.get())
-                ))
-                .ifPresent(slotResult -> hasEldritch.set(true));
-
-        return hasEldritch.get();
+        return CuriosLookupApi.hasCurio(entity, ModItems.ELDRITCH_AMULET.get());
     }
 
     /**
      * 判断玩家 Curios 栏里是否已经佩戴了普通神秘护身符或飞升护符。
      */
     private static boolean hasAnyEquippedAmulet(LivingEntity entity) {
-        AtomicReference<Boolean> hasAmulet = new AtomicReference<>(false);
-
-        CuriosApi.getCuriosInventory(entity)
-                .flatMap(handler -> handler.findFirstCurio(stack ->
+        return CuriosLookupApi.findFirstSlot(entity, stack ->
                         stack.getItem() instanceof EnigmaticAmulet
                                 || stack.is(ModItems.ASCENSION_AMULET.get())
-                                || stack.is(ModItems.ELDRITCH_AMULET.get())
-                ))
-                .ifPresent(slotResult -> hasAmulet.set(true));
-
-        return hasAmulet.get();
+                                || stack.is(ModItems.ELDRITCH_AMULET.get()))
+                .isPresent();
     }
 
     private static boolean hasAnyAmulet(Player player) {
@@ -429,12 +402,7 @@ public final class EnigmaticAmuletEvents {
             }
         }
 
-        AtomicReference<Boolean> hasAmulet = new AtomicReference<>(false);
-        CuriosApi.getCuriosInventory(player)
-                .flatMap(handler -> handler.findFirstCurio(EnigmaticAmuletEvents::isAnyAmulet))
-                .ifPresent(slotResult -> hasAmulet.set(true));
-
-        return hasAmulet.get();
+        return CuriosLookupApi.findFirstSlot(player, EnigmaticAmuletEvents::isAnyAmulet).isPresent();
     }
 
     private static boolean isAnyAmulet(ItemStack stack) {

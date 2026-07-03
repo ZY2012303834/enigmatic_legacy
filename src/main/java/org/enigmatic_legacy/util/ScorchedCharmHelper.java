@@ -1,8 +1,8 @@
 package org.enigmatic_legacy.util;
 
 import net.minecraft.world.entity.LivingEntity;
+import org.enigmatic_legacy.api.CuriosLookupApi;
 import org.enigmatic_legacy.item.ModItems;
-import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotResult;
 
 import java.util.Optional;
@@ -28,7 +28,6 @@ public final class ScorchedCharmHelper {
      * 在实体 Curios 栏中寻找阳灼护符。
      */
     public static Optional<? extends SlotResult> findScorchedCharm(LivingEntity entity) {
-        return CuriosApi.getCuriosInventory(entity)
-                .flatMap(handler -> handler.findFirstCurio(stack -> stack.is(ModItems.SCORCHED_CHARM.get())));
+        return CuriosLookupApi.findFirstSlot(entity, ModItems.SCORCHED_CHARM.get());
     }
 }

@@ -18,11 +18,11 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
+import org.enigmatic_legacy.api.CuriosLookupApi;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.util.ExperienceHelper;
 import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
-import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
@@ -114,10 +114,8 @@ public class ScrollOfAgelessWisdom extends Item implements ICurioItem {
             return true;
         }
 
-        return CuriosApi.getCuriosInventory(entity)
-                .flatMap(handler -> handler.findFirstCurio(
-                        equippedStack -> equippedStack.is(ModItems.XP_SCROLL.get()) && equippedStack != stack
-                ))
+        return CuriosLookupApi.findFirstSlot(entity,
+                        equippedStack -> equippedStack.is(ModItems.XP_SCROLL.get()) && equippedStack != stack)
                 .isEmpty();
     }
 

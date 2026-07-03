@@ -16,10 +16,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BeaconBlockEntity;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.level.chunk.status.ChunkStatus;
+import org.enigmatic_legacy.api.CuriosLookupApi;
 import org.enigmatic_legacy.util.ExperienceHelper;
 import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
-import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
@@ -99,15 +99,12 @@ public class GiftOfTheHeaven extends Item implements ICurioItem {
             return true;
         }
 
-        return CuriosApi.getCuriosInventory(entity)
-                .flatMap(handler -> handler.findFirstCurio(
-                        equippedStack ->
-                                equippedStack != stack
-                                        && (
-                                        equippedStack.getItem() instanceof GiftOfTheHeaven
-                                                || equippedStack.getItem() instanceof GraceOfTheCreator
-                                )
-                ))
+        return CuriosLookupApi.findFirstSlot(entity, equippedStack ->
+                        equippedStack != stack
+                                && (
+                                equippedStack.getItem() instanceof GiftOfTheHeaven
+                                        || equippedStack.getItem() instanceof GraceOfTheCreator
+                        ))
                 .isEmpty();
     }
 

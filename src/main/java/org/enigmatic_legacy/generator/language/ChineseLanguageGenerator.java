@@ -14,6 +14,8 @@ public class ChineseLanguageGenerator extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add("enchantment.enigmatic_legacy.eternal_binding", "永恒绑定诅咒");
+        add("enchantment.enigmatic_legacy.eternal_binding.desc", "使装备无法被卸下，即便持有者死亡。");
         add("itemGroup.enigmatic_legacy", "神秘遗物");
         addItem(ModItems.ASTRAL_DUST, "星尘");
         addItem(ModItems.ENDER_ROD, "末影棒");

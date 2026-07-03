@@ -3,11 +3,10 @@ package org.enigmatic_legacy.util;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import org.enigmatic_legacy.api.CuriosLookupApi;
 import org.enigmatic_legacy.item.items.charm.MonsterCharm;
-import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * 怪物猎人勋章辅助类。
@@ -23,14 +22,7 @@ public final class MonsterCharmHelper {
      * 查找当前实体佩戴的怪物猎人勋章。
      */
     public static Optional<ItemStack> findEquippedMonsterCharm(LivingEntity entity) {
-        AtomicReference<ItemStack> result = new AtomicReference<>(ItemStack.EMPTY);
-
-        CuriosApi.getCuriosInventory(entity)
-                .flatMap(handler -> handler.findFirstCurio(stack -> stack.getItem() instanceof MonsterCharm))
-                .ifPresent(slotResult -> result.set(slotResult.stack()));
-
-        ItemStack stack = result.get();
-        return stack.isEmpty() ? Optional.empty() : Optional.of(stack);
+        return CuriosLookupApi.findFirstStack(entity, stack -> stack.getItem() instanceof MonsterCharm);
     }
 
     /**
