@@ -190,6 +190,17 @@ public class AdvancementGenerator implements DataProvider {
                 return criteria;
             }
 
+            /*
+             * “不听老人言”需要玩家真正喝完不洁圣杯才触发。
+             * 这里禁止 inventory_changed 自动完成，实际授予交给 UnholyGrail。
+             */
+            if ("unholyGrail".equals(key)) {
+                JsonObject criterion = new JsonObject();
+                criterion.addProperty("trigger", "minecraft:impossible");
+                criteria.add("drank_unholy_grail", criterion);
+                return criteria;
+            }
+
             if (requireAll) {
                 for (String item : items) {
                     criteria.add("has_" + item, inventoryCriterion(List.of(item)));
@@ -211,6 +222,12 @@ public class AdvancementGenerator implements DataProvider {
              */
             if ("cursedRing".equals(key)) {
                 group.add("equipped_cursed_ring");
+                requirements.add(group);
+                return requirements;
+            }
+
+            if ("unholyGrail".equals(key)) {
+                group.add("drank_unholy_grail");
                 requirements.add(group);
                 return requirements;
             }

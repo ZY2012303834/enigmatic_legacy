@@ -1,6 +1,5 @@
 package org.enigmatic_legacy.item.items;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
@@ -186,12 +185,9 @@ public class TheInfinitum extends Item {
             return;
         }
 
-        Player player = Minecraft.getInstance().player;
-        if (player != null && CursedRingHelper.hasCursedRing(player)) {
-            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.the_infinitum.2"));
-            tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.the_infinitum.3"));
-            tooltip.add(SpellstoneTooltip.empty());
-        }
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.the_infinitum.2"));
+        tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.the_infinitum.3"));
+        tooltip.add(SpellstoneTooltip.empty());
 
         tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.the_infinitum.4",

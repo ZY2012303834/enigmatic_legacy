@@ -1,7 +1,6 @@
 package org.enigmatic_legacy.item.items;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -24,7 +23,6 @@ import net.minecraft.world.item.TooltipFlag;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.util.AntiqueBookBagHelper;
-import org.enigmatic_legacy.util.CursedRingHelper;
 import org.enigmatic_legacy.util.PlayerInventoryHelper;
 import org.jetbrains.annotations.NotNull;
 
@@ -80,25 +78,13 @@ public class AnimalGuidebook extends Item {
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.animal_guidebook.3")
                     .withStyle(ChatFormatting.GOLD));
 
-            Player player = Minecraft.getInstance().player;
-            if (player != null && CursedRingHelper.hasCursedRing(player)) {
-                tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
-                tooltip.add(Component.translatable("tooltip.enigmatic_legacy.animal_guidebook.4")
-                        .withStyle(ChatFormatting.LIGHT_PURPLE));
-                tooltip.add(Component.translatable("tooltip.enigmatic_legacy.animal_guidebook.5")
-                        .withStyle(ChatFormatting.DARK_PURPLE));
-            }
+            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
+            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.animal_guidebook.4")
+                    .withStyle(ChatFormatting.LIGHT_PURPLE));
+            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.animal_guidebook.5")
+                    .withStyle(ChatFormatting.DARK_PURPLE));
         } else {
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hold_shift"));
-        }
-
-        Player player = Minecraft.getInstance().player;
-        if (player != null && player.isCreative()) {
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.animal_guidebook.creative.1")
-                    .withStyle(ChatFormatting.GOLD));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.animal_guidebook.creative.2")
-                    .withStyle(ChatFormatting.GOLD));
         }
     }
 

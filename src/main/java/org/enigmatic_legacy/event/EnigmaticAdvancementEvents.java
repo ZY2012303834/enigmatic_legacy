@@ -32,7 +32,17 @@ public final class EnigmaticAdvancementEvents {
     private static final ResourceLocation CURSED_RING_ADVANCEMENT =
             ResourceLocation.fromNamespaceAndPath(EnigmaticLegacy.MODID, "main/cursed_ring");
 
+    private static final ResourceLocation UNHOLY_GRAIL_ADVANCEMENT =
+            ResourceLocation.fromNamespaceAndPath(EnigmaticLegacy.MODID, "main/unholy_grail");
+
     private EnigmaticAdvancementEvents() {
+    }
+
+    /**
+     * 不洁圣杯只有在玩家真正饮用完成后才授予进度。
+     */
+    public static void grantUnholyGrail(ServerPlayer player) {
+        grantAdvancement(player, UNHOLY_GRAIL_ADVANCEMENT);
     }
 
     /**

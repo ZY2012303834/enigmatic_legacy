@@ -1,15 +1,8 @@
 {
   "parent": "enigmatic_legacy:main/megasponge",
   "criteria": {
-    "has_item": {
-      "conditions": {
-        "items": [
-          {
-            "items": "enigmatic_legacy:unholy_grail"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
+    "drank_unholy_grail": {
+      "trigger": "minecraft:impossible"
     }
   },
   "display": {
@@ -31,7 +24,7 @@
   },
   "requirements": [
     [
-      "has_item"
+      "drank_unholy_grail"
     ]
   ]
 }

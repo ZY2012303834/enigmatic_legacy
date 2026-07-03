@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-30T08:54:03.7089837	Enigmatic Legacy Advancements
+// 1.21.1	2026-07-03T17:48:29.4182727	Enigmatic Legacy Advancements
 963073e6197b0f7987be34ba6f4dfcde4f4d1191 data/enigmatic_legacy/advancement/main/abyssal_heart.json
 95d9d451a1527e821f27d3f6489205932241f980 data/enigmatic_legacy/advancement/main/all_spellstones.json
 b6549e59c929a7683645f384e3cf987b3f923680 data/enigmatic_legacy/advancement/main/astral_dust.json
@@ -27,6 +27,6 @@ aab30d244a3c0c638ca9f9635f5533da1fc7c629 data/enigmatic_legacy/advancement/main/
 d11d24f3386119b9a4265ccfc393530758e58270 data/enigmatic_legacy/advancement/main/the_twist.json
 b2f6bcacc3ab72eaaff5e1fc1c0530d316d384c3 data/enigmatic_legacy/advancement/main/twisted_heart.json
 0bb43ec924a6cc15ca119e7da77563b0cc93a172 data/enigmatic_legacy/advancement/main/twisted_mirror.json
-bae236022e2b5bd8e93304a0caf64d2e77ec2fec data/enigmatic_legacy/advancement/main/unholy_grail.json
+2030b7340880cd21a6107d69cb1a35304e7ab124 data/enigmatic_legacy/advancement/main/unholy_grail.json
 054624d7dff6f1e29a2c1b2bb4c2c28a657d2baa data/enigmatic_legacy/advancement/main/unholy_grail_worthy.json
 37c2b671fe956504472fe5684b609245206a4203 data/enigmatic_legacy/advancement/main/void_pearl.json

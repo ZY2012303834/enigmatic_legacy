@@ -1,10 +1,10 @@
 package org.enigmatic_legacy.network;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.enigmatic_legacy.EnigmaticLegacy;
@@ -37,10 +37,10 @@ public record PlayerMotionPayload(double x, double y, double z) implements Custo
 
     public static void handle(PlayerMotionPayload payload, IPayloadContext context) {
         context.enqueueWork(() -> {
-            if (Minecraft.getInstance().player != null) {
-                Minecraft.getInstance().player.setDeltaMovement(
-                        new Vec3(payload.x, payload.y, payload.z)
-                );
+            Player player = context.player();
+
+            if (player != null) {
+                player.setDeltaMovement(new Vec3(payload.x, payload.y, payload.z));
             }
         });
     }

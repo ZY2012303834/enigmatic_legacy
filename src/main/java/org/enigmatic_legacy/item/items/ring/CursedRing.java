@@ -1,7 +1,6 @@
 package org.enigmatic_legacy.item.items.ring;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
@@ -43,12 +42,6 @@ public class CursedRing extends Item implements ICurioItem {
             @NotNull TooltipFlag flag
     ) {
         addTooltip(tooltip, "void");
-        Player localPlayer = Minecraft.getInstance().player;
-
-        if (localPlayer != null) {
-            addTooltip(tooltip, "cursedRingTimer", AbyssalHeartHelper.getSufferingPercentage(localPlayer));
-        }
-
         if (ConfigClient.SHOW_CURIO_SLOT_HINT.get()) {
             tooltip.add(Component.literal("可放入：戒指栏位").withStyle(ChatFormatting.DARK_PURPLE));
         }
@@ -92,11 +85,7 @@ public class CursedRing extends Item implements ICurioItem {
         addTooltip(tooltip, "void");
         addTooltip(tooltip, "eternallyBound1");
 
-        if (Minecraft.getInstance().player != null && Minecraft.getInstance().player.isCreative()) {
-            addTooltip(tooltip, "eternallyBound2_creative");
-        } else {
-            addTooltip(tooltip, "eternallyBound2");
-        }
+        addTooltip(tooltip, "eternallyBound2");
 
         addTooltip(tooltip, "void");
         addTooltip(tooltip, "hold_shift");

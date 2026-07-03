@@ -1,8 +1,6 @@
 package org.enigmatic_legacy.util;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Player;
 
 import java.util.List;
 
@@ -30,12 +28,5 @@ public final class CursedSufferingTooltip {
                 SpellstoneTooltip.percent("99.5%")
         ));
 
-        Player player = Minecraft.getInstance().player;
-        if (player != null) {
-            tooltip.add(SpellstoneTooltip.text(
-                    "tooltip.enigmatic_legacy.cursed_suffering.current_percentage",
-                    SpellstoneTooltip.percent(AbyssalHeartHelper.getSufferingPercentage(player))
-            ));
-        }
     }
 }

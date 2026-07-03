@@ -18,6 +18,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
+import org.enigmatic_legacy.event.EnigmaticAdvancementEvents;
 import org.enigmatic_legacy.util.CursedRingHelper;
 import org.jetbrains.annotations.NotNull;
 
@@ -76,6 +77,7 @@ public class UnholyGrail extends Item{
 
             if (player instanceof ServerPlayer serverPlayer) {
                 serverPlayer.awardStat(Stats.ITEM_USED.get(this));
+                EnigmaticAdvancementEvents.grantUnholyGrail(serverPlayer);
             }
         }
 
