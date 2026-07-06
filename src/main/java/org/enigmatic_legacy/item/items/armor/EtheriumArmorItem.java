@@ -6,7 +6,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
-import org.enigmatic_legacy.item.items.armor.material.EtheriumArmorMaterial;
+import org.enigmatic_legacy.item.items.material.EtheriumArmorMaterial;
 import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
 

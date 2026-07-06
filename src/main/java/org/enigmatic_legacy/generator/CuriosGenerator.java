@@ -7,6 +7,7 @@ import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import org.enigmatic_legacy.EnigmaticLegacy;
+import org.enigmatic_legacy.compat.TouhouLittleMaidCompat;
 import org.jetbrains.annotations.NotNull;
 
 import java.nio.file.Path;
@@ -263,7 +264,7 @@ public class CuriosGenerator implements DataProvider {
         json.addProperty("replace", true);
 
         JsonArray entities = new JsonArray();
-        entities.add("touhou_little_maid:maid");
+        entities.add(TouhouLittleMaidCompat.MAID_ENTITY_ID);
 
         JsonArray slots = new JsonArray();
         slots.add("ring");
@@ -282,7 +283,7 @@ public class CuriosGenerator implements DataProvider {
                 .resolve(EnigmaticLegacy.MODID)
                 .resolve("curios")
                 .resolve("entities")
-                .resolve("touhou_little_maid_maid.json");
+                .resolve(TouhouLittleMaidCompat.MAID_CURIOS_ENTITY_FILE);
 
         return DataProvider.saveStable(cachedOutput, json, path);
     }

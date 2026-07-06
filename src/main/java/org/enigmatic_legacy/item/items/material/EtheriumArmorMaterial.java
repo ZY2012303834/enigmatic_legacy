@@ -1,4 +1,4 @@
-package org.enigmatic_legacy.item.items.armor.material;
+package org.enigmatic_legacy.item.items.material;
 
 import net.minecraft.Util;
 import net.minecraft.core.Holder;

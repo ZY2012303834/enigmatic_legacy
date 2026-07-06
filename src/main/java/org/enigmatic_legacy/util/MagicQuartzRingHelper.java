@@ -2,11 +2,11 @@ package org.enigmatic_legacy.util;
 
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.common.Tags;
 import org.enigmatic_legacy.api.CuriosLookupApi;
+import org.enigmatic_legacy.compat.IronsSpellbooksCompat;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.item.items.ring.MagicQuartzRing;
 
@@ -18,8 +18,6 @@ import org.enigmatic_legacy.item.items.ring.MagicQuartzRing;
  * 3. 判断哪些伤害属于魔法石英戒指的减伤范围。
  */
 public final class MagicQuartzRingHelper {
-    private static final String IRONS_SPELLBOOKS_MODID = "irons_spellbooks";
-
     private MagicQuartzRingHelper() {
     }
 
@@ -72,54 +70,7 @@ public final class MagicQuartzRingHelper {
                 || source.is(DamageTypes.WITHER)
                 || source.is(DamageTypes.DRAGON_BREATH)
                 || source.is(DamageTypes.INDIRECT_MAGIC)
-                || isIronsSpellbooksMagicDamage(source);
-    }
-
-    public static boolean isIronsSpellbooksMagicDamage(DamageSource source) {
-        return source.typeHolder()
-                .unwrapKey()
-                .map(key -> isIronsSpellbooksMagicDamage(key.location()))
-                .orElse(false);
-    }
-
-    public static boolean isIronsSpellbooksFireDamage(DamageSource source) {
-        return source.typeHolder()
-                .unwrapKey()
-                .map(key -> isIronsSpellbooksFireDamage(key.location()))
-                .orElse(false);
-    }
-
-    public static boolean isIronsSpellbooksMagicDamage(ResourceLocation damageType) {
-        if (!IRONS_SPELLBOOKS_MODID.equals(damageType.getNamespace())) {
-            return false;
-        }
-
-        String path = damageType.getPath();
-
-        return path.contains("magic")
-                || path.contains("spell")
-                || path.contains("fire")
-                || path.contains("ice")
-                || path.contains("lightning")
-                || path.contains("blood")
-                || path.contains("holy")
-                || path.contains("ender")
-                || path.contains("evocation")
-                || path.contains("poison")
-                || path.contains("wither");
-    }
-
-    public static boolean isIronsSpellbooksFireDamage(ResourceLocation damageType) {
-        if (!IRONS_SPELLBOOKS_MODID.equals(damageType.getNamespace())) {
-            return false;
-        }
-
-        String path = damageType.getPath();
-
-        return path.contains("fire")
-                || path.contains("flame")
-                || path.contains("burn")
-                || path.contains("pyro");
+                || IronsSpellbooksCompat.isMagicDamage(source);
     }
 
     /**

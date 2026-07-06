@@ -2,7 +2,6 @@ package org.enigmatic_legacy.item.items.spellstone;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
@@ -31,7 +30,7 @@ import java.util.List;
  * 2. 没穿任何护甲时，提供更高护甲、护甲韧性与爆炸减伤；
  * 3. 近战减伤；
  * 4. 免疫挤压 / 墙内窒息 / 仙人掌 / 钟乳石伤害；
- * 5. 受到更多魔法伤害。
+ * 5. 受到更多魔法伤害，默认额外受到 100%。
  */
 public class GolemHeart extends Item implements ICurioItem {
     public static final ResourceLocation DEFAULT_ARMOR_ID = ResourceLocation.fromNamespaceAndPath(
@@ -229,7 +228,12 @@ public class GolemHeart extends Item implements ICurioItem {
 
         tooltip.add(SpellstoneTooltip.negative(
                 "tooltip.enigmatic_legacy.golem_heart.8",
-                SpellstoneTooltip.number(String.format("%.1f", ConfigCommon.GOLEM_HEART_MAGIC_VULNERABILITY.get()))
+                SpellstoneTooltip.number(formatMagicVulnerabilityBonus())
         ));
+    }
+
+    private static String formatMagicVulnerabilityBonus() {
+        double multiplier = ConfigCommon.GOLEM_HEART_MAGIC_VULNERABILITY.get();
+        return String.format("+%.0f%%", (multiplier - 1.0D) * 100.0D);
     }
 }

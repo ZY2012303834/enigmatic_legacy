@@ -514,7 +514,7 @@
   "tooltip.enigmatic_legacy.golem_heart.5": "%s Melee Damage Resistance.",
   "tooltip.enigmatic_legacy.golem_heart.6": "%s Knockback Resistance.",
   "tooltip.enigmatic_legacy.golem_heart.7": "Immune to crushing and piercing environmental damage.",
-  "tooltip.enigmatic_legacy.golem_heart.8": "Magic damage taken is multiplied by %s.",
+  "tooltip.enigmatic_legacy.golem_heart.8": "Take %s additional magic damage.",
   "tooltip.enigmatic_legacy.guardian_heart1": "While in your hotbar, looking at a monster within %s blocks turns it against nearby monsters.",
   "tooltip.enigmatic_legacy.guardian_heart2": "Nearby monsters within %s blocks will retaliate against the marked creature.",
   "tooltip.enigmatic_legacy.guardian_heart3": "Ability cooldown: %s seconds.",

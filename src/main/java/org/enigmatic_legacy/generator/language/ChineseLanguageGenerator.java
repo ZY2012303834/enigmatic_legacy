@@ -359,7 +359,7 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.golem_heart.5", "%s 近战伤害抗性。");
         add("tooltip.enigmatic_legacy.golem_heart.6", "%s 击退抗性。");
         add("tooltip.enigmatic_legacy.golem_heart.7", "免疫挤压、窒息、仙人掌与钟乳石刺伤害。");
-        add("tooltip.enigmatic_legacy.golem_heart.8", "受到的魔法伤害变为 %s 倍。");
+        add("tooltip.enigmatic_legacy.golem_heart.8", "额外受到 %s 魔法伤害。");
         // end
 
         // 天使之祝

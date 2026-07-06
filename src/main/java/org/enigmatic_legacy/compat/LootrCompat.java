@@ -1,4 +1,4 @@
-package org.enigmatic_legacy.event;
+package org.enigmatic_legacy.compat;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
@@ -10,11 +10,14 @@ import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ChestMenu;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.neoforged.fml.ModList;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.PlayerContainerEvent;
 import noobanidus.mods.lootr.common.api.data.inventory.ILootrInventory;
 import org.enigmatic_legacy.EnigmaticLegacy;
@@ -24,7 +27,17 @@ import org.enigmatic_legacy.item.items.charm.EnigmaticEye;
 import java.util.List;
 import java.util.Map;
 
-public final class LootrCompatEvents {
+/**
+ * Lootr 兼容逻辑。
+ *
+ * <p>Lootr 会把原版箱子替换成玩家独立战利品箱，
+ * 原本基于原版战利品表注入的物品不会自动进入 Lootr 容器。
+ * 这里在玩家打开 Lootr 容器时手动追加本项目的注入战利品。</p>
+ */
+@SuppressWarnings("UnstableApiUsage")
+public final class LootrCompat {
+    public static final String MODID = "lootr";
+
     private static final String HAS_GENERATED_DORMANT_EYE_TAG =
             "EnigmaticLegacyHasGeneratedDormantEye";
     private static final String LOOTR_INJECTED_TAG =
@@ -126,7 +139,26 @@ public final class LootrCompatEvents {
                     "inject/chests/unholy_grail/overworld_epic_without_earth_heart")
     );
 
-    private LootrCompatEvents() {
+    private LootrCompat() {
+    }
+
+    /**
+     * 仅在 Lootr 已加载时注册兼容事件。
+     */
+    public static void registerEventHandlers() {
+        if (ModList.get().isLoaded(MODID)) {
+            NeoForge.EVENT_BUS.register(LootrCompat.class);
+        }
+    }
+
+    /**
+     * 判断方块实体是否来自 Lootr。
+     *
+     * <p>用于避免本项目的原版战利品箱逻辑和 Lootr 独立箱子逻辑重复处理同一个容器。</p>
+     */
+    public static boolean isLootrBlockEntity(BlockEntity blockEntity) {
+        return blockEntity != null
+                && blockEntity.getClass().getName().startsWith("noobanidus.mods.lootr.");
     }
 
     @SubscribeEvent

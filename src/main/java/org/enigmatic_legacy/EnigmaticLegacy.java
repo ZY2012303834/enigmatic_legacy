@@ -3,11 +3,11 @@ package org.enigmatic_legacy;
 import com.mojang.logging.LogUtils;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.common.NeoForge;
 import org.enigmatic_legacy.block.ModBlocks;
+import org.enigmatic_legacy.compat.LootrCompat;
 import org.enigmatic_legacy.config.ConfigClient;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.config.ConfigFileHelper;
@@ -125,9 +125,7 @@ public class EnigmaticLegacy {
 
         NeoForge.EVENT_BUS.register(EternalBindingEvents.class);
 
-        if (ModList.get().isLoaded("lootr")) {
-            NeoForge.EVENT_BUS.register(LootrCompatEvents.class);
-        }
+        LootrCompat.registerEventHandlers();
 
     }
 }

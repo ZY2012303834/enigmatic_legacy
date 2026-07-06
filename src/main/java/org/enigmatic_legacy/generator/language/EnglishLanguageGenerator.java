@@ -358,7 +358,7 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.golem_heart.5", "%s Melee Damage Resistance.");
         add("tooltip.enigmatic_legacy.golem_heart.6", "%s Knockback Resistance.");
         add("tooltip.enigmatic_legacy.golem_heart.7", "Immune to crushing and piercing environmental damage.");
-        add("tooltip.enigmatic_legacy.golem_heart.8", "Magic damage taken is multiplied by %s.");
+        add("tooltip.enigmatic_legacy.golem_heart.8", "Take %s additional magic damage.");
         // end
 
         // 天使之祝

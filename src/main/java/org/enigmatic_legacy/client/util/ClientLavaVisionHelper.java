@@ -5,15 +5,13 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.material.FogType;
+import org.enigmatic_legacy.compat.IrisCompat;
 import org.enigmatic_legacy.item.items.charm.ScorchedCharm;
 import org.enigmatic_legacy.item.items.spellstone.BlazingCore;
 import org.enigmatic_legacy.util.BlazingCoreHelper;
 import org.enigmatic_legacy.util.ScorchedCharmHelper;
 
 public final class ClientLavaVisionHelper {
-    private static Object irisShaderPackInUseMethod;
-    private static boolean irisLookupAttempted;
-
     // 熔岩雾起始距离。原版默认值：普通岩浆 0.25F，火焰抗性 0.0F。
     public static final float LAVA_FOG_START = 0.0F;
 
@@ -60,35 +58,6 @@ public final class ClientLavaVisionHelper {
     }
 
     public static boolean isIrisShaderPackInUse() {
-        if (!resolveIrisShaderPackHook()) {
-            return false;
-        }
-
-        try {
-            return (boolean) ((java.lang.reflect.Method) irisShaderPackInUseMethod).invoke(null);
-        } catch (ReflectiveOperationException exception) {
-            irisShaderPackInUseMethod = null;
-            return false;
-        }
-    }
-
-    private static boolean resolveIrisShaderPackHook() {
-        if (irisShaderPackInUseMethod != null) {
-            return true;
-        }
-
-        if (irisLookupAttempted) {
-            return false;
-        }
-
-        irisLookupAttempted = true;
-
-        try {
-            Class<?> irisClass = Class.forName("net.irisshaders.iris.Iris");
-            irisShaderPackInUseMethod = irisClass.getMethod("isPackInUseQuick");
-            return true;
-        } catch (ReflectiveOperationException exception) {
-            return false;
-        }
+        return IrisCompat.isShaderPackInUse();
     }
 }

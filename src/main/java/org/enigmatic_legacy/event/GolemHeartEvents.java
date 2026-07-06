@@ -8,6 +8,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
+import org.enigmatic_legacy.compat.IronsSpellbooksCompat;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.items.spellstone.GolemHeart;
 import org.enigmatic_legacy.util.GolemHeartHelper;
@@ -36,8 +37,9 @@ public class GolemHeartEvents {
     /**
      * Plus 版伤害调整：
      * 1. 无护甲时爆炸减伤；
-     * 2. 所有魔法类伤害易伤；
-     * 3. 近战减伤。
+     * 2. 所有魔法类伤害易伤，默认 2.0 倍，即额外受到 100% 魔法伤害；
+     * 3. 铁魔法的法术伤害也会进入魔法易伤；
+     * 4. 近战减伤。
      */
     @SubscribeEvent
     public static void onDamage(LivingDamageEvent.Pre event) {
@@ -70,20 +72,26 @@ public class GolemHeartEvents {
 
     /**
      * 魔像之心的魔法易伤。
+     * 默认配置 GolemHeartMagicVulnerability = 2.0：
+     * - 最终魔法伤害 = 原伤害 * 2.0；
+     * - 等价于额外受到 100% 魔法伤害。
+     *
      * 这里不要只依赖中毒 Mixin。
      * 所有魔法类伤害都应该被放大，包括：
      * - 中毒；
      * - 瞬间伤害；
      * - 龙息；
      * - 凋零；
-     * - 其他被数据标签标记为 neoforge:is_magic 的伤害。
+     * - 其他被数据标签标记为 neoforge:is_magic 的伤害；
+     * - Iron's Spells 'n Spellbooks 的法术伤害。
      */
     private static boolean isMagicDamage(DamageSource source) {
         return source.is(Tags.DamageTypes.IS_MAGIC)
                 || source.is(DamageTypes.MAGIC)
                 || source.is(DamageTypes.INDIRECT_MAGIC)
                 || source.is(DamageTypes.WITHER)
-                || source.is(DamageTypes.DRAGON_BREATH);
+                || source.is(DamageTypes.DRAGON_BREATH)
+                || IronsSpellbooksCompat.isMagicDamage(source);
     }
 
     private static boolean isMeleeDamage(DamageSource source) {

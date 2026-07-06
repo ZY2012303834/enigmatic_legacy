@@ -44,7 +44,7 @@ public class GolemHeartConfig {
                 .defineInRange("GolemHeartExplosionResistance", 40, 0, 100);
 
         magicVulnerability = builder
-                .comment("魔像之心受到魔法伤害时的伤害倍率。")
+                .comment("魔像之心受到魔法伤害时的伤害倍率。2.0 表示最终伤害变为 200%，即额外受到 100% 魔法伤害。铁魔法法术伤害也会使用该倍率。")
                 .defineInRange("GolemHeartMagicVulnerability", 2.0D, 1.0D, 20.0D);
 
         builder.pop();

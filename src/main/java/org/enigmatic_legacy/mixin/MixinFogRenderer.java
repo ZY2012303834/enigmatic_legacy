@@ -5,6 +5,7 @@ import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.FogRenderer;
 import org.enigmatic_legacy.client.util.ClientLavaVisionHelper;
+import org.enigmatic_legacy.compat.IrisCompat;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -16,14 +17,6 @@ public abstract class MixinFogRenderer {
 
     @Unique
     private static boolean enigmaticLegacy$lavaVisionActive;
-    @Unique
-    private static Object enigmaticLegacy$irisCapturedState;
-    @Unique
-    private static java.lang.reflect.Method enigmaticLegacy$irisSetFogColor;
-    @Unique
-    private static java.lang.reflect.Method enigmaticLegacy$irisSetFogDensity;
-    @Unique
-    private static boolean enigmaticLegacy$irisLookupAttempted;
 
     @Inject(method = "setupFog", at = @At("RETURN"))
     private static void enigmaticLegacy$extendLavaFog(
@@ -91,43 +84,7 @@ public abstract class MixinFogRenderer {
 
     @Unique
     private static void enigmaticLegacy$setIrisFog(float red, float green, float blue, float density) {
-        if (!enigmaticLegacy$resolveIrisFogHooks()) {
-            return;
-        }
-
-        try {
-            enigmaticLegacy$irisSetFogColor.invoke(enigmaticLegacy$irisCapturedState, red, green, blue);
-            enigmaticLegacy$irisSetFogDensity.invoke(enigmaticLegacy$irisCapturedState, density);
-        } catch (ReflectiveOperationException ignored) {
-            enigmaticLegacy$irisCapturedState = null;
-            enigmaticLegacy$irisSetFogColor = null;
-            enigmaticLegacy$irisSetFogDensity = null;
-        }
-    }
-
-    @Unique
-    private static boolean enigmaticLegacy$resolveIrisFogHooks() {
-        if (enigmaticLegacy$irisCapturedState != null
-                && enigmaticLegacy$irisSetFogColor != null
-                && enigmaticLegacy$irisSetFogDensity != null) {
-            return true;
-        }
-
-        if (enigmaticLegacy$irisLookupAttempted) {
-            return false;
-        }
-
-        enigmaticLegacy$irisLookupAttempted = true;
-
-        try {
-            Class<?> capturedStateClass = Class.forName("net.irisshaders.iris.uniforms.CapturedRenderingState");
-            enigmaticLegacy$irisCapturedState = capturedStateClass.getField("INSTANCE").get(null);
-            enigmaticLegacy$irisSetFogColor = capturedStateClass.getMethod("setFogColor", float.class, float.class, float.class);
-            enigmaticLegacy$irisSetFogDensity = capturedStateClass.getMethod("setFogDensity", float.class);
-            return true;
-        } catch (ReflectiveOperationException ignored) {
-            return false;
-        }
+        IrisCompat.setFog(red, green, blue, density);
     }
 
     @Unique

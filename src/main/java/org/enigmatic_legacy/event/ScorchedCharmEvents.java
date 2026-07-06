@@ -9,8 +9,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
+import org.enigmatic_legacy.compat.IronsSpellbooksCompat;
 import org.enigmatic_legacy.util.BlazingCoreHelper;
-import org.enigmatic_legacy.util.MagicQuartzRingHelper;
 import org.enigmatic_legacy.util.ScorchedCharmHelper;
 
 /**
@@ -139,7 +139,7 @@ public final class ScorchedCharmEvents {
             return;
         }
 
-        if (!MagicQuartzRingHelper.isIronsSpellbooksFireDamage(event.getSource())) {
+        if (!IronsSpellbooksCompat.isFireSpellDamage(event.getSource())) {
             return;
         }
 

@@ -17,6 +17,7 @@ import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import org.enigmatic_legacy.compat.LootrCompat;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.item.items.charm.EnigmaticEye;
 
@@ -97,7 +98,7 @@ public final class EnigmaticEyeObtainEvents {
         // 获取这个位置的方块实体。
         BlockEntity blockEntity = level.getBlockEntity(pos);
 
-        if (isLootrBlockEntity(blockEntity)) {
+        if (LootrCompat.isLootrBlockEntity(blockEntity)) {
             return;
         }
 
@@ -346,8 +347,4 @@ public final class EnigmaticEyeObtainEvents {
         player.getPersistentData().putBoolean(HAS_GENERATED_DORMANT_EYE_TAG, true);
     }
 
-    private static boolean isLootrBlockEntity(BlockEntity blockEntity) {
-        return blockEntity != null
-                && blockEntity.getClass().getName().startsWith("noobanidus.mods.lootr.");
-    }
 }

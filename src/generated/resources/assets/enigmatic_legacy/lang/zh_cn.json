@@ -514,7 +514,7 @@
   "tooltip.enigmatic_legacy.golem_heart.5": "%s 近战伤害抗性。",
   "tooltip.enigmatic_legacy.golem_heart.6": "%s 击退抗性。",
   "tooltip.enigmatic_legacy.golem_heart.7": "免疫挤压、窒息、仙人掌与钟乳石刺伤害。",
-  "tooltip.enigmatic_legacy.golem_heart.8": "受到的魔法伤害变为 %s 倍。",
+  "tooltip.enigmatic_legacy.golem_heart.8": "额外受到 %s 魔法伤害。",
   "tooltip.enigmatic_legacy.guardian_heart1": "放在快捷栏时，注视 %s 格内的怪物会使其攻击附近怪物。",
   "tooltip.enigmatic_legacy.guardian_heart2": "%s 格内的附近怪物会反过来攻击被标记的怪物。",
   "tooltip.enigmatic_legacy.guardian_heart3": "能力冷却：%s 秒。",
