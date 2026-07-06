@@ -1,6 +1,5 @@
 package org.enigmatic_legacy.item.items.book;
 
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -14,6 +13,7 @@ import net.minecraft.world.item.TooltipFlag;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
+import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -62,28 +62,45 @@ public class SanguinaryHandbook extends AbstractBookItem {
             @NotNull TooltipFlag flag
     ) {
         if (!Screen.hasShiftDown()) {
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.hold_shift"));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
-            tooltip.add(Component.translatable("tooltip.enigmatic_legacy.cursed_ones_only")
-                    .withStyle(ChatFormatting.DARK_PURPLE));
+            tooltip.add(SpellstoneTooltip.holdShift()); // 按住 Shift 查看详情。
+            tooltip.add(SpellstoneTooltip.empty());
+            tooltip.add(SpellstoneTooltip.text(
+                    "tooltip.enigmatic_legacy.cursed_ones_only" // 仅限七咒承受者使用。
+            ));
             return;
         }
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.sanguinary_handbook.1")
-                .withStyle(ChatFormatting.DARK_PURPLE));
-        tooltip.add(Component.translatable(
-                "tooltip.enigmatic_legacy.sanguinary_handbook.2",
-                "+" + Math.round(ConfigCommon.SANGUINARY_HANDBOOK_PET_DAMAGE_MULTIPLIER.get() * 100.0D) + "%"
-        ).withStyle(ChatFormatting.DARK_PURPLE));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.sanguinary_handbook.3")
-                .withStyle(ChatFormatting.DARK_PURPLE));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.sanguinary_handbook.4")
-                .withStyle(ChatFormatting.DARK_PURPLE));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.sanguinary_handbook.5")
-                .withStyle(ChatFormatting.DARK_PURPLE));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.cursed_ones_only")
-                .withStyle(ChatFormatting.DARK_PURPLE));
+        String petDamageBonus = "+"
+                + Math.round(ConfigCommon.GUIDEBOOKS.sanguinaryHandbookPetDamageMultiplier.get() * 100.0D)
+                + "%";
+
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.sanguinary_handbook.1" // 一本属于七咒承受者的血染手册。
+        ));
+
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.sanguinary_handbook.2", // 附近属于你的宠物造成的伤害提高 %s。
+                SpellstoneTooltip.percent(petDamageBonus)
+        ));
+
+        tooltip.add(SpellstoneTooltip.empty());
+
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.sanguinary_handbook.3" // 你的受伤状态会激发宠物更强的凶性。
+        ));
+
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.sanguinary_handbook.4" // 它们会继承血战沙场之证与千咒卷轴的部分暴力增幅。
+        ));
+
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.sanguinary_handbook.5" // 放在快捷栏或古旧书袋中时生效。
+        ));
+
+        tooltip.add(SpellstoneTooltip.empty());
+
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.cursed_ones_only" // 仅限七咒承受者使用。
+        ));
     }
 }
