@@ -6,9 +6,9 @@ import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import org.enigmatic_legacy.config.ConfigCommon;
-import org.enigmatic_legacy.item.items.AnimalGuidebook;
-import org.enigmatic_legacy.item.items.HunterGuidebook;
-import org.enigmatic_legacy.item.items.OdeToLiving;
+import org.enigmatic_legacy.item.items.book.AnimalGuidebook;
+import org.enigmatic_legacy.item.items.book.HunterGuidebook;
+import org.enigmatic_legacy.item.items.book.OdeToLiving;
 
 /**
  * 野猎指南服务端事件。

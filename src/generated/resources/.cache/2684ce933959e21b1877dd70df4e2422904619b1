@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-02T16:27:27.9849878	vanilla/Recipes
+// 1.21.1	2026-07-06T15:11:00.4198373	vanilla/Recipes
 138cca5fc2d36a468976c88c266618e68aa51d88 data/enigmatic_legacy/advancement/recipes/building_blocks/astral_dust_sack.json
 75128c3d277fd90fca1df4cc9f996933af7f7241 data/enigmatic_legacy/advancement/recipes/building_blocks/etherium_block.json
 70a559dbe3db33a763c165b60a23730d9e9f955b data/enigmatic_legacy/advancement/recipes/combat/axe_of_executioner.json
@@ -45,7 +45,7 @@ efa03204eb4f91704aaec8cc30cbc62cf62dc9ed data/enigmatic_legacy/advancement/recip
 0a1f4c966a664b24b1ff0f15da04696c71829f68 data/enigmatic_legacy/advancement/recipes/misc/pure_heart.json
 d31e94ac444757f9907892826fc1de8cfd3fc537 data/enigmatic_legacy/advancement/recipes/misc/scorched_charm.json
 501be4947ff26e2ed6d5e41e09162300a7fffed6 data/enigmatic_legacy/advancement/recipes/misc/the_acknowledgment.json
-0165b94e6e6f736530ee29fc3acd60355868f04e data/enigmatic_legacy/advancement/recipes/misc/the_cube.json
+aeefb73b18cb716a391962bb28a854947a8e372c data/enigmatic_legacy/advancement/recipes/misc/the_cube.json
 0802268decf9f83fe1bbc684a804e15c13e8efbc data/enigmatic_legacy/advancement/recipes/misc/thicc_scroll.json
 1d093f4497302d163cf984678461df7b7ba56b69 data/enigmatic_legacy/advancement/recipes/misc/treasure_hunter_charm.json
 6e95028fab00920c226748ae0c7ec592a4ba6b87 data/enigmatic_legacy/advancement/recipes/misc/twisted_heart.json

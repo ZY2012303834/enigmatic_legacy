@@ -9,6 +9,7 @@ import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.block.ModBlocks;
 import org.enigmatic_legacy.item.items.*;
 import org.enigmatic_legacy.item.items.armor.EtheriumArmorItem;
+import org.enigmatic_legacy.item.items.book.*;
 import org.enigmatic_legacy.item.items.charm.*;
 import org.enigmatic_legacy.item.items.ring.*;
 import org.enigmatic_legacy.item.items.scroll.*;

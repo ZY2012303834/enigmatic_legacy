@@ -1,6 +1,36 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
+    "has_angel_blessing": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:angel_blessing"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_blazing_core": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:blazing_core"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_cosmic_heart": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:cosmic_heart"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_eye_of_nebula": {
       "conditions": {
         "items": [
@@ -11,17 +41,53 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_golem_heart": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:golem_heart"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ocean_stone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:ocean_stone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_the_recipe": {
       "conditions": {
         "recipe": "enigmatic_legacy:the_cube"
       },
       "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_void_pearl": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:void_pearl"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_eye_of_nebula"
+      "has_golem_heart",
+      "has_cosmic_heart",
+      "has_angel_blessing",
+      "has_blazing_core",
+      "has_eye_of_nebula",
+      "has_ocean_stone",
+      "has_void_pearl"
     ]
   ],
   "rewards": {

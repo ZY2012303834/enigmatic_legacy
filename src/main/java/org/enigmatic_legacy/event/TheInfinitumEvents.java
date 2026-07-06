@@ -17,7 +17,7 @@ import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingKnockBackEvent;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
-import org.enigmatic_legacy.item.items.TheInfinitum;
+import org.enigmatic_legacy.item.items.book.TheInfinitum;
 import org.enigmatic_legacy.util.AbyssalHeartHelper;
 
 import java.util.Map;

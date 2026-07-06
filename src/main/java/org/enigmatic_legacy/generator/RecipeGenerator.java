@@ -424,7 +424,13 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('E', ModItems.EYE_OF_NEBULA.get())
                 .define('P', ModItems.OCEAN_STONE.get())
                 .define('V', ModItems.VOID_PEARL.get())
+                .unlockedBy("has_golem_heart", has(ModItems.GOLEM_HEART.get()))
+                .unlockedBy("has_cosmic_heart", has(ModItems.COSMIC_HEART.get()))
+                .unlockedBy("has_angel_blessing", has(ModItems.ANGEL_BLESSING.get()))
+                .unlockedBy("has_blazing_core", has(ModItems.BLAZING_CORE.get()))
                 .unlockedBy("has_eye_of_nebula", has(ModItems.EYE_OF_NEBULA.get()))
+                .unlockedBy("has_ocean_stone", has(ModItems.OCEAN_STONE.get()))
+                .unlockedBy("has_void_pearl", has(ModItems.VOID_PEARL.get()))
                 .save(output);
 
         // 千咒卷轴 / Scroll of a Thousand Curses。

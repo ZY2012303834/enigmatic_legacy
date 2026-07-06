@@ -1,4 +1,4 @@
-package org.enigmatic_legacy.item.items;
+package org.enigmatic_legacy.item.items.book;
 
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.Holder;
@@ -12,7 +12,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
@@ -36,7 +35,7 @@ import java.util.List;
  * <p>
  * 原项目定位：启示之证的深渊终极变体，既是手册入口，也是高阶武器。
  */
-public class TheInfinitum extends Item {
+public class TheInfinitum extends AbstractBookItem {
     public static final ResourceLocation BOOK_ID = ResourceLocation.fromNamespaceAndPath(
             EnigmaticLegacy.MODID,
             "the_acknowledgment"
@@ -61,7 +60,6 @@ public class TheInfinitum extends Item {
 
     public TheInfinitum() {
         super(new Properties()
-                .stacksTo(1)
                 .rarity(Rarity.EPIC)
                 .fireResistant()
                 .attributes(createAttributes()));

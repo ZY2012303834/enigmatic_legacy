@@ -18,7 +18,7 @@
       "translate": "advancement.enigmatic_legacy:theCube.desc"
     },
     "frame": "goal",
-    "hidden": true,
+    "hidden": false,
     "icon": {
       "id": "enigmatic_legacy:the_cube"
     },

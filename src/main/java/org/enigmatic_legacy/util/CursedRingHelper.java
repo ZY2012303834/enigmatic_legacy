@@ -20,8 +20,8 @@ import net.minecraft.world.phys.Vec3;
 import org.enigmatic_legacy.api.CuriosLookupApi;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
-import org.enigmatic_legacy.item.items.AnimalGuidebook;
-import org.enigmatic_legacy.item.items.OdeToLiving;
+import org.enigmatic_legacy.item.items.book.AnimalGuidebook;
+import org.enigmatic_legacy.item.items.book.OdeToLiving;
 
 import java.util.List;
 

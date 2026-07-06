@@ -1,4 +1,4 @@
-package org.enigmatic_legacy.item.items;
+package org.enigmatic_legacy.item.items.book;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
@@ -16,14 +16,11 @@ import net.minecraft.world.entity.animal.Bee;
 import net.minecraft.world.entity.animal.Wolf;
 import net.minecraft.world.entity.monster.hoglin.Hoglin;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
-import org.enigmatic_legacy.util.AntiqueBookBagHelper;
-import org.enigmatic_legacy.util.PlayerInventoryHelper;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -33,17 +30,14 @@ import java.util.List;
  * <p>
  * 原项目类名 PetGuidebook。物品栏中持有时保护动物，并削弱七咒之戒第二诅咒对可驯服动物的影响。
  */
-public class AnimalGuidebook extends Item {
+public class AnimalGuidebook extends AbstractBookItem {
 
     public AnimalGuidebook() {
-        super(new Item.Properties()
-                .stacksTo(1)
-                .rarity(Rarity.UNCOMMON));
+        super(Rarity.UNCOMMON);
     }
 
     public static boolean hasGuidebook(Player player) {
-        return PlayerInventoryHelper.hasInHotbar(player, stack -> stack.is(ModItems.ANIMAL_GUIDEBOOK.get()))
-                || AntiqueBookBagHelper.hasBook(player, ModItems.ANIMAL_GUIDEBOOK.get());
+        return hasInHotbarOrBookBag(player, ModItems.ANIMAL_GUIDEBOOK.get());
     }
 
     public static boolean isProtectedAnimal(LivingEntity entity) {

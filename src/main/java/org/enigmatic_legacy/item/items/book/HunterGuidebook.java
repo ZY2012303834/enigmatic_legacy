@@ -1,17 +1,14 @@
-package org.enigmatic_legacy.item.items;
+package org.enigmatic_legacy.item.items.book;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
-import org.enigmatic_legacy.util.AntiqueBookBagHelper;
-import org.enigmatic_legacy.util.PlayerInventoryHelper;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -21,17 +18,14 @@ import java.util.List;
  * <p>
  * 原项目类名 HunterGuidebook。物品栏中持有时，将附近宠物受到的伤害转移给主人。
  */
-public class HunterGuidebook extends Item {
+public class HunterGuidebook extends AbstractBookItem {
 
     public HunterGuidebook() {
-        super(new Item.Properties()
-                .stacksTo(1)
-                .rarity(Rarity.RARE));
+        super(Rarity.RARE);
     }
 
     public static boolean hasGuidebook(Player player) {
-        return PlayerInventoryHelper.hasInHotbar(player, stack -> stack.is(ModItems.HUNTER_GUIDEBOOK.get()))
-                || AntiqueBookBagHelper.hasBook(player, ModItems.HUNTER_GUIDEBOOK.get());
+        return hasInHotbarOrBookBag(player, ModItems.HUNTER_GUIDEBOOK.get());
     }
 
     @Override

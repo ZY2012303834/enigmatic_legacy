@@ -1,4 +1,4 @@
-package org.enigmatic_legacy.item.items;
+package org.enigmatic_legacy.item.items.book;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
@@ -13,13 +13,10 @@ import net.minecraft.world.entity.NeutralMob;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.hoglin.Hoglin;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import org.enigmatic_legacy.item.ModItems;
-import org.enigmatic_legacy.util.AntiqueBookBagHelper;
-import org.enigmatic_legacy.util.PlayerInventoryHelper;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -31,18 +28,15 @@ import java.util.Optional;
  * <p>放在快捷栏或古旧书袋中时保护大多数动物，并让被保护动物不会因为七咒之戒主动攻击玩家。
  * 当前实现不再包含攻击例外和黑名单机制。</p>
  */
-public class OdeToLiving extends Item {
+public class OdeToLiving extends AbstractBookItem {
     public static final int COOLDOWN_TICKS = 1200;
 
     public OdeToLiving() {
-        super(new Item.Properties()
-                .stacksTo(1)
-                .rarity(Rarity.RARE));
+        super(Rarity.RARE);
     }
 
     public static Optional<ItemStack> findOde(Player player) {
-        return PlayerInventoryHelper.findInHotbar(player, stack -> stack.is(ModItems.ODE_TO_LIVING.get()))
-                .or(() -> AntiqueBookBagHelper.findBook(player, ModItems.ODE_TO_LIVING.get()));
+        return findInHotbarOrBookBag(player, ModItems.ODE_TO_LIVING.get());
     }
 
     public static boolean hasOde(Player player) {

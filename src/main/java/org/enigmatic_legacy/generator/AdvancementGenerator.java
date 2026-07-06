@@ -72,7 +72,7 @@ public class AdvancementGenerator implements DataProvider {
         advancements.add(AdvancementSpec.hidden("main/void_pearl", "main/discover_spellstone", "void_pearl", "voidPearl", -1.0F, -2.0F, "challenge"));
         advancements.add(AdvancementSpec.allFramed("main/all_spellstones", "main/discover_spellstone", "heart_of_creation", "allSpellstones", 1.0F, -2.0F, "challenge",
                 "golem_heart", "angel_blessing", "ocean_stone", "blazing_core", "eye_of_nebula", "void_pearl", "the_cube", "heart_of_creation"));
-        advancements.add(AdvancementSpec.hidden("main/the_cube", "main/all_spellstones", "the_cube", "theCube", 1.0F, -3.0F, "goal"));
+        advancements.add(AdvancementSpec.framed("main/the_cube", "main/all_spellstones", "the_cube", "theCube", 1.0F, -3.0F, "goal"));
 
         advancements.add(AdvancementSpec.hidden("main/discover_scroll", ROOT, "thicc_scroll", "discoverScroll", -3.0F, -1.0F, "task",
                 "thicc_scroll", "xp_scroll", "heaven_scroll", "cursed_scroll", "fabulous_scroll", "avarice_scroll"));

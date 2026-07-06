@@ -10,7 +10,7 @@ import net.neoforged.neoforge.event.entity.living.LivingChangeTargetEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.enigmatic_legacy.config.ConfigCommon;
-import org.enigmatic_legacy.item.items.AnimalGuidebook;
+import org.enigmatic_legacy.item.items.book.AnimalGuidebook;
 
 import java.util.List;
 

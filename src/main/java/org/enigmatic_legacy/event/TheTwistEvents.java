@@ -14,7 +14,7 @@ import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingKnockBackEvent;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
-import org.enigmatic_legacy.item.items.TheTwist;
+import org.enigmatic_legacy.item.items.book.TheTwist;
 import org.enigmatic_legacy.util.CursedRingHelper;
 
 import java.util.Map;

@@ -6,7 +6,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.item.items.charm.EnigmaticEye;
-import org.enigmatic_legacy.item.items.TheInfinitum;
+import org.enigmatic_legacy.item.items.book.TheInfinitum;
 import org.enigmatic_legacy.item.items.TwistedHeart;
 
 public final class ClientItemProperties {

@@ -13,19 +13,21 @@ import java.util.List;
 
 /**
  * 噬咒之书 / Tome of Devoured Malignancy。
- * 原项目 ID：
- * enigmaticlegacy:curse_transposer
- * 当前项目 ID：
- * enigmatic_legacy:curse_transposer
- * 效果：
- * 与任意除附魔书以外的附魔物品合成时，
- * 将该物品上的全部诅咒附魔转移到一本附魔书上。
- * 限制：
- * 只有承受七咒之人才能使用该物品。
+ *
+ * <p>这是诅咒附魔转移配方的功能类物品。虽然名称和外观属于“书”，
+ * 但它不是古旧书袋可收纳的随身书类，也不应该继承书袋书籍基类。</p>
+ *
+ * <p>原项目 ID：{@code enigmaticlegacy:curse_transposer}；
+ * 当前项目 ID：{@code enigmatic_legacy:curse_transposer}。</p>
+ *
+ * <p>用途：与任意非附魔书的附魔物品一起合成时，
+ * 将该物品上的全部诅咒附魔转移到一本附魔书上。</p>
+ *
+ * <p>限制：只有承受七咒之人才能使用该物品对应的诅咒转移能力。</p>
  */
 public class TomeOfDevouredMalignancy extends Item {
     public TomeOfDevouredMalignancy() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.EPIC));
     }
