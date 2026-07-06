@@ -64,8 +64,8 @@ public class SanguinaryHandbook extends AbstractBookItem {
         if (!Screen.hasShiftDown()) {
             tooltip.add(SpellstoneTooltip.holdShift()); // 按住 Shift 查看详情。
             tooltip.add(SpellstoneTooltip.empty());
-            tooltip.add(SpellstoneTooltip.text(
-                    "tooltip.enigmatic_legacy.cursed_ones_only" // 仅限七咒承受者使用。
+            tooltip.add(SpellstoneTooltip.negative(
+                    "tooltip.enigmatic_legacy.cursed_ones_only" // 唯有背负诅咒者方能理解它的用途。
             ));
             return;
         }
@@ -99,8 +99,8 @@ public class SanguinaryHandbook extends AbstractBookItem {
 
         tooltip.add(SpellstoneTooltip.empty());
 
-        tooltip.add(SpellstoneTooltip.text(
-                "tooltip.enigmatic_legacy.cursed_ones_only" // 仅限七咒承受者使用。
+        tooltip.add(SpellstoneTooltip.negative(
+                "tooltip.enigmatic_legacy.cursed_ones_only" // 唯有背负诅咒者方能理解它的用途。
         ));
     }
 }
