@@ -7,6 +7,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.common.NeoForge;
 import org.enigmatic_legacy.block.ModBlocks;
+import org.enigmatic_legacy.compat.CataclysmCompat;
 import org.enigmatic_legacy.compat.LootrCompat;
 import org.enigmatic_legacy.config.ConfigClient;
 import org.enigmatic_legacy.config.ConfigCommon;
@@ -127,6 +128,7 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(EternalBindingEvents.class);
 
         LootrCompat.registerEventHandlers();
+        CataclysmCompat.registerEventHandlers();
 
     }
 }

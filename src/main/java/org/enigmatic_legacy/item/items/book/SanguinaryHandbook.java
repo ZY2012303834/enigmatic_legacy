@@ -19,10 +19,13 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 /**
- * 血腥狩猎手册 / Sanguinary Hunting Handbook。
+ * 血腥狩猎手册。
  *
- * <p>七咒专属追随者手册。放在快捷栏或古旧书袋中时，强化主人附近宠物造成的伤害，
- * 并让宠物继承血战沙场之证与千咒卷轴的部分暴力增幅。</p>
+ * <p>这是七咒体系下强化宠物进攻能力的手册。玩家将它放在快捷栏或古旧书袋中时，
+ * 附近属于自己的宠物会获得额外伤害，并且可以从血战沙场之证、千咒卷轴等效果中继承部分增益。</p>
+ *
+ * <p>具体事件逻辑位于 {@code SanguinaryHandbookEvents}，本类只负责物品基础属性、
+ * 持有检测、宠物判定和 Tooltip 展示。</p>
  */
 public class SanguinaryHandbook extends AbstractBookItem {
     public static final ResourceLocation PET_MOVEMENT_SPEED_ID = ResourceLocation.fromNamespaceAndPath(
@@ -62,10 +65,10 @@ public class SanguinaryHandbook extends AbstractBookItem {
             @NotNull TooltipFlag flag
     ) {
         if (!Screen.hasShiftDown()) {
-            tooltip.add(SpellstoneTooltip.holdShift()); // 按住 Shift 查看详情。
+            tooltip.add(SpellstoneTooltip.holdShift());
             tooltip.add(SpellstoneTooltip.empty());
             tooltip.add(SpellstoneTooltip.negative(
-                    "tooltip.enigmatic_legacy.cursed_ones_only" // 唯有背负诅咒者方能理解它的用途。
+                    "tooltip.enigmatic_legacy.cursed_ones_only"
             ));
             return;
         }
@@ -75,32 +78,32 @@ public class SanguinaryHandbook extends AbstractBookItem {
                 + "%";
 
         tooltip.add(SpellstoneTooltip.text(
-                "tooltip.enigmatic_legacy.sanguinary_handbook.1" // 一本属于七咒承受者的血染手册。
+                "tooltip.enigmatic_legacy.sanguinary_handbook.1"
         ));
 
         tooltip.add(SpellstoneTooltip.text(
-                "tooltip.enigmatic_legacy.sanguinary_handbook.2", // 附近属于你的宠物造成的伤害提高 %s。
+                "tooltip.enigmatic_legacy.sanguinary_handbook.2",
                 SpellstoneTooltip.percent(petDamageBonus)
         ));
 
         tooltip.add(SpellstoneTooltip.empty());
 
         tooltip.add(SpellstoneTooltip.text(
-                "tooltip.enigmatic_legacy.sanguinary_handbook.3" // 你的受伤状态会激发宠物更强的凶性。
+                "tooltip.enigmatic_legacy.sanguinary_handbook.3"
         ));
 
         tooltip.add(SpellstoneTooltip.text(
-                "tooltip.enigmatic_legacy.sanguinary_handbook.4" // 它们会继承血战沙场之证与千咒卷轴的部分暴力增幅。
+                "tooltip.enigmatic_legacy.sanguinary_handbook.4"
         ));
 
         tooltip.add(SpellstoneTooltip.text(
-                "tooltip.enigmatic_legacy.sanguinary_handbook.5" // 放在快捷栏或古旧书袋中时生效。
+                "tooltip.enigmatic_legacy.sanguinary_handbook.5"
         ));
 
         tooltip.add(SpellstoneTooltip.empty());
 
         tooltip.add(SpellstoneTooltip.negative(
-                "tooltip.enigmatic_legacy.cursed_ones_only" // 唯有背负诅咒者方能理解它的用途。
+                "tooltip.enigmatic_legacy.cursed_ones_only"
         ));
     }
 }
