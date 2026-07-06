@@ -86,6 +86,7 @@ public final class ConfigCommon {
     public static final ModConfigSpec.ConfigValue<List<String>> ANIMAL_GUIDE_ANIMAL_EXCLUSION_LIST;
     public static final ModConfigSpec.IntValue HUNTER_GUIDE_EFFECTIVE_DISTANCE;
     public static final ModConfigSpec.IntValue HUNTER_GUIDE_SYNERGY_DAMAGE_REDUCTION;
+    public static final ModConfigSpec.DoubleValue SANGUINARY_HANDBOOK_PET_DAMAGE_MULTIPLIER;
 
     // ==============================
     // 旧字段兼容别名：禁果
@@ -244,6 +245,7 @@ public final class ConfigCommon {
         ANIMAL_GUIDE_ANIMAL_EXCLUSION_LIST = CURSED_RING.animalGuideAnimalExclusionList;
         HUNTER_GUIDE_EFFECTIVE_DISTANCE = GUIDEBOOKS.hunterGuideEffectiveDistance;
         HUNTER_GUIDE_SYNERGY_DAMAGE_REDUCTION = GUIDEBOOKS.hunterGuideSynergyDamageReduction;
+        SANGUINARY_HANDBOOK_PET_DAMAGE_MULTIPLIER = GUIDEBOOKS.sanguinaryHandbookPetDamageMultiplier;
         // end
 
         FORBIDDEN_FRUIT_REGENERATION_SUBTRACTION = FORBIDDEN_FRUIT.regenerationSubtraction;

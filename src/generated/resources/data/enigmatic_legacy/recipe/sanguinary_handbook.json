@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "minecraft:dragon_breath"
+    },
+    "H": {
+      "item": "enigmatic_legacy:twisted_heart"
+    },
+    "I": {
+      "item": "minecraft:ghast_tear"
+    },
+    "M": {
+      "item": "minecraft:phantom_membrane"
+    },
+    "N": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "X": {
+      "item": "enigmatic_legacy:hunter_guidebook"
+    }
+  },
+  "pattern": [
+    "MNM",
+    "IXI",
+    "DHD"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:sanguinary_handbook"
+  }
+}

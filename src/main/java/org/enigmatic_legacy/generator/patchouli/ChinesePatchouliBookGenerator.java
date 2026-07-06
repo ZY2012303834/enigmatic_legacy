@@ -679,6 +679,31 @@ final class ChinesePatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 )
         )));
 
+        futures.add(save(output, "zh_cn", "entries/relics/sanguinary_handbook", entry(
+                "血腥狩猎手册",
+                "relics",
+                "enigmatic_legacy:sanguinary_handbook",
+                117,
+
+                spotlightPage(
+                        "enigmatic_legacy:sanguinary_handbook",
+                        "血腥狩猎",
+                        "在一定的时期之后，你一定会有所感觉：身边追随者们的实力已经与你相差过大，而野猎指南提供的保护也不值一提了。$(br2)" +
+                                "于是，你又想到了有关扭曲之心的一个新用途。"
+                ),
+
+                textPage(
+                        "暴力训诫",
+                        "这本手册让你的追随者们掌握新的能力，并从你身上获得部分暴力增幅。$(br2)" +
+                                "让他们聆听手册中的箴言，无私地奉献生命吧！"
+                ),
+
+                craftingPage(
+                        "enigmatic_legacy:sanguinary_handbook",
+                        "以野猎指南为基础，配合扭曲之心、下界合金、恶魂之泪、龙息与幻翼膜即可制成。"
+                )
+        )));
+
         futures.add(save(output, "zh_cn", "entries/relics/guardian_heart", simpleSpotlight(
                 "守卫者之心",
                 "relics",

@@ -73,6 +73,7 @@ public final class ModeTabs {
                                 output.accept(ModItems.WAYFINDER_OF_THE_DAMNED.get());  // 被诅咒者的寻路指针
                                 output.accept(ModItems.ANIMAL_GUIDEBOOK.get());         // 兽友指南
                                 output.accept(ModItems.HUNTER_GUIDEBOOK.get());         // 野猎指南
+                                output.accept(ModItems.SANGUINARY_HANDBOOK.get());      // 血腥狩猎手册
                                 output.accept(ModItems.ANTIQUE_BOOK_BAG.get());         // 古旧书袋
                                 output.accept(ModItems.ODE_TO_LIVING.get());            // 生灵颂词
 

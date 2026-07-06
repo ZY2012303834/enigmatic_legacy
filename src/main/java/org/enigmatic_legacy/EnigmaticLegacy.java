@@ -100,6 +100,7 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(EnigmaticAdvancementEvents.class); // 本项目进度触发与聊天样式
         NeoForge.EVENT_BUS.register(AnimalGuidebookEvents.class);
         NeoForge.EVENT_BUS.register(HunterGuidebookEvents.class);
+        NeoForge.EVENT_BUS.register(SanguinaryHandbookEvents.class);
         NeoForge.EVENT_BUS.register(OdeToLivingEvents.class);
         NeoForge.EVENT_BUS.register(AntiqueBookBagEvents.class);
         NeoForge.EVENT_BUS.register(EvilEssenceEvents.class);

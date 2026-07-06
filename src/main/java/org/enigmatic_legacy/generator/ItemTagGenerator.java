@@ -342,6 +342,7 @@ public class ItemTagGenerator extends ItemTagsProvider {
         tag(BOOKSHELF_BOOKS)
                 .add(ModItems.ANIMAL_GUIDEBOOK.get())
                 .add(ModItems.HUNTER_GUIDEBOOK.get())
+                .add(ModItems.SANGUINARY_HANDBOOK.get())
                 .add(ModItems.ODE_TO_LIVING.get())
                 .add(ModItems.THE_ACKNOWLEDGMENT.get())
                 .add(ModItems.THE_TWIST.get())

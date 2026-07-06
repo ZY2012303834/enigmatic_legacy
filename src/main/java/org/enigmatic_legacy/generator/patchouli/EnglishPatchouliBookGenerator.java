@@ -679,6 +679,31 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 )
         )));
 
+        futures.add(save(output, "en_us", "entries/relics/sanguinary_handbook", entry(
+                "Sanguinary Hunting Handbook",
+                "relics",
+                "enigmatic_legacy:sanguinary_handbook",
+                117,
+
+                spotlightPage(
+                        "enigmatic_legacy:sanguinary_handbook",
+                        "Sanguinary Hunting",
+                        "After some time, you will certainly feel that your followers' strength has fallen far behind yours, while the protection provided by the Guide to Feral Hunt is no longer enough.$(br2)" +
+                                "So, you found a new use for Twisted Hearts."
+                ),
+
+                textPage(
+                        "Violent Doctrine",
+                        "This handbook lets your followers master new abilities and receive part of the violent power carried by you.$(br2)" +
+                                "Let them listen to the proverbs in the handbook and dedicate their lives without hesitation."
+                ),
+
+                craftingPage(
+                        "enigmatic_legacy:sanguinary_handbook",
+                        "The handbook is crafted by strengthening the Guide to Feral Hunt with Twisted Heart, netherite, ghast tears, dragon breath, and phantom membranes."
+                )
+        )));
+
         futures.add(save(output, "en_us", "entries/relics/guardian_heart", simpleSpotlight(
                 "Guardian Heart",
                 "relics",

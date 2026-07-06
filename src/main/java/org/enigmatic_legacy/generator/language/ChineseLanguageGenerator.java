@@ -331,6 +331,15 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.hunter_guidebook.5", "转移伤害会降低 %1$s。");
         // end
 
+        // 血腥狩猎手册
+        addItem(ModItems.SANGUINARY_HANDBOOK, "血腥狩猎手册");
+        add("tooltip.enigmatic_legacy.sanguinary_handbook.1", "放在物品栏中时：");
+        add("tooltip.enigmatic_legacy.sanguinary_handbook.2", "%1$s 宠物伤害");
+        add("tooltip.enigmatic_legacy.sanguinary_handbook.3", "如果同时佩戴血战沙场之证，");
+        add("tooltip.enigmatic_legacy.sanguinary_handbook.4", "或是佩戴千咒卷轴，宠物也会依据");
+        add("tooltip.enigmatic_legacy.sanguinary_handbook.5", "你的状态获得相应的部分增益。");
+        // end
+
         addItem(ModItems.ANTIQUE_BOOK_BAG, "古旧书袋");
         add("container.enigmatic_legacy.antique_book_bag", "魔法书袋");
         add("tooltip.enigmatic_legacy.antique_book_bag.1", "类似于末影箱的容器。");

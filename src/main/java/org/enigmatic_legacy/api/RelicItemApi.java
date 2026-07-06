@@ -34,6 +34,7 @@ public final class RelicItemApi {
                 ModItems.WAYFINDER_OF_THE_DAMNED.get(),
                 ModItems.ANIMAL_GUIDEBOOK.get(),
                 ModItems.HUNTER_GUIDEBOOK.get(),
+                ModItems.SANGUINARY_HANDBOOK.get(),
                 ModItems.ODE_TO_LIVING.get(),
                 ModItems.ANTIQUE_BOOK_BAG.get(),
                 ModItems.UNWITNESSED_AMULET.get(),

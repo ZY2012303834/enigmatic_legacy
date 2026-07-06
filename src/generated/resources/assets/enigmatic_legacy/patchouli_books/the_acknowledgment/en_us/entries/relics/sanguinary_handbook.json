@@ -1,0 +1,28 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:sanguinary_handbook",
+  "name": "Sanguinary Hunting Handbook",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:sanguinary_handbook",
+      "link_recipe": true,
+      "text": "After some time, you will certainly feel that your followers' strength has fallen far behind yours, while the protection provided by the Guide to Feral Hunt is no longer enough.$(br2)So, you found a new use for Twisted Hearts.",
+      "title": "Sanguinary Hunting"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "This handbook lets your followers master new abilities and receive part of the violent power carried by you.$(br2)Let them listen to the proverbs in the handbook and dedicate their lives without hesitation.",
+      "title": "Violent Doctrine"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:sanguinary_handbook",
+      "text": "The handbook is crafted by strengthening the Guide to Feral Hunt with Twisted Heart, netherite, ghast tears, dragon breath, and phantom membranes.",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 117
+}

@@ -1,0 +1,28 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:sanguinary_handbook",
+  "name": "血腥狩猎手册",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:sanguinary_handbook",
+      "link_recipe": true,
+      "text": "在一定的时期之后，你一定会有所感觉：身边追随者们的实力已经与你相差过大，而野猎指南提供的保护也不值一提了。$(br2)于是，你又想到了有关扭曲之心的一个新用途。",
+      "title": "血腥狩猎"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "这本手册让你的追随者们掌握新的能力，并从你身上获得部分暴力增幅。$(br2)让他们聆听手册中的箴言，无私地奉献生命吧！",
+      "title": "暴力训诫"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:sanguinary_handbook",
+      "text": "以野猎指南为基础，配合扭曲之心、下界合金、恶魂之泪、龙息与幻翼膜即可制成。",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 117
+}

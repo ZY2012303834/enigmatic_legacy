@@ -330,6 +330,15 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.hunter_guidebook.5", "possessed, redirected damage is reduced by %1$s.");
         // end
 
+        // Sanguinary Hunting Handbook
+        addItem(ModItems.SANGUINARY_HANDBOOK, "Sanguinary Hunting Handbook");
+        add("tooltip.enigmatic_legacy.sanguinary_handbook.1", "While in your inventory:");
+        add("tooltip.enigmatic_legacy.sanguinary_handbook.2", "%1$s Pet Attack Damage");
+        add("tooltip.enigmatic_legacy.sanguinary_handbook.3", "If you equip Emblem of Bloodstained Valor");
+        add("tooltip.enigmatic_legacy.sanguinary_handbook.4", "or Scroll of a Thousand Curses, your pets");
+        add("tooltip.enigmatic_legacy.sanguinary_handbook.5", "also receive corresponding effects based on you.");
+        // end
+
         addItem(ModItems.ANTIQUE_BOOK_BAG, "Antique Book Bag");
         add("container.enigmatic_legacy.antique_book_bag", "Magic Book Bag");
         add("tooltip.enigmatic_legacy.antique_book_bag.1", "A container similar to an Ender Chest.");

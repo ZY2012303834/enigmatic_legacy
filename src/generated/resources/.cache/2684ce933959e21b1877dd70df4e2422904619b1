@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-06T15:11:00.4198373	vanilla/Recipes
+// 1.21.1	2026-07-06T16:32:01.2197301	vanilla/Recipes
 138cca5fc2d36a468976c88c266618e68aa51d88 data/enigmatic_legacy/advancement/recipes/building_blocks/astral_dust_sack.json
 75128c3d277fd90fca1df4cc9f996933af7f7241 data/enigmatic_legacy/advancement/recipes/building_blocks/etherium_block.json
 70a559dbe3db33a763c165b60a23730d9e9f955b data/enigmatic_legacy/advancement/recipes/combat/axe_of_executioner.json
@@ -43,6 +43,7 @@ efa03204eb4f91704aaec8cc30cbc62cf62dc9ed data/enigmatic_legacy/advancement/recip
 03d4356a380943e7d1952c0b1149bc38da4bccc7 data/enigmatic_legacy/advancement/recipes/misc/monster_charm.json
 26846853b6b9202d4e63df93bcc61c187d9aca25 data/enigmatic_legacy/advancement/recipes/misc/ode_to_living.json
 0a1f4c966a664b24b1ff0f15da04696c71829f68 data/enigmatic_legacy/advancement/recipes/misc/pure_heart.json
+58f04a77e7648570b2a0694d83c4186c3aac53a7 data/enigmatic_legacy/advancement/recipes/misc/sanguinary_handbook.json
 d31e94ac444757f9907892826fc1de8cfd3fc537 data/enigmatic_legacy/advancement/recipes/misc/scorched_charm.json
 501be4947ff26e2ed6d5e41e09162300a7fffed6 data/enigmatic_legacy/advancement/recipes/misc/the_acknowledgment.json
 aeefb73b18cb716a391962bb28a854947a8e372c data/enigmatic_legacy/advancement/recipes/misc/the_cube.json
@@ -101,6 +102,7 @@ d7ac2e0da59059256e77bc61b36e3925d2b5c44f data/enigmatic_legacy/recipe/mending_mi
 73dffe23d0416988f96b69e6853bf9014071a213 data/enigmatic_legacy/recipe/monster_charm.json
 9e0324e12a29db9f0807ffea610121d5c4bd63f6 data/enigmatic_legacy/recipe/ode_to_living.json
 901309fffafc1ceb7b2174ecdfc8271ac3eef645 data/enigmatic_legacy/recipe/pure_heart.json
+5249a5767d3ef22c9829bbe716cbc6d00e6b7309 data/enigmatic_legacy/recipe/sanguinary_handbook.json
 89d8138ef2921df9d6bcbce97f442114369a3776 data/enigmatic_legacy/recipe/scorched_charm.json
 516862b7044c46c4e7294da1ab7aafe5196ee822 data/enigmatic_legacy/recipe/the_acknowledgment.json
 37833edd533983868b64f9e92e785dfe87090cf6 data/enigmatic_legacy/recipe/the_cube.json

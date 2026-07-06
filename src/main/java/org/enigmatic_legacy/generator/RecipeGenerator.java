@@ -386,6 +386,31 @@ public class RecipeGenerator extends RecipeProvider {
                 .unlockedBy("has_book", has(Items.BOOK))
                 .save(output);
 
+        // 血腥狩猎手册 / Sanguinary Hunting Handbook。
+        // 复刻 Enigmatic Addons 配方：
+        // M N M
+        // I X I
+        // D H D
+        // X = 野猎指南
+        // M = 幻翼膜
+        // N = 下界合金锭
+        // I = 恶魂之泪
+        // D = 龙息
+        // H = 扭曲之心
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SANGUINARY_HANDBOOK.get())
+                .pattern("MNM")
+                .pattern("IXI")
+                .pattern("DHD")
+                .define('M', Items.PHANTOM_MEMBRANE)
+                .define('N', Items.NETHERITE_INGOT)
+                .define('I', Items.GHAST_TEAR)
+                .define('X', ModItems.HUNTER_GUIDEBOOK.get())
+                .define('D', Items.DRAGON_BREATH)
+                .define('H', ModItems.TWISTED_HEART.get())
+                .unlockedBy("has_hunter_guidebook", has(ModItems.HUNTER_GUIDEBOOK.get()))
+                .unlockedBy("has_twisted_heart", has(ModItems.TWISTED_HEART.get()))
+                .save(output);
+
         // 生灵颂词 / Ode to Living Beings。
         //
         // 复刻 Enigmatic Addons 原配方：
