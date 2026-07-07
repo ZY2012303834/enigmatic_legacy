@@ -1105,6 +1105,44 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 )
         )));
 
+        futures.add(save(output, "en_us", "entries/spellstones/revival_leaf", entry(
+                "Revival Leaves",
+                "spellstones",
+                "enigmatic_legacy:revival_leaf",
+                35,
+
+                spotlightPage(
+                        "enigmatic_legacy:revival_leaf",
+                        "Revival Leaves",
+                        "A nature-aspected spellstone overflowing with restorative life force.$(br2)" +
+                                "It turns experience into regeneration, cleanses withering flowers, and answers nearby plant life."
+                ),
+
+                textPage(
+                        "Active Power",
+                        "Activating Revival Leaves consumes experience and grants regeneration to nearby creatures.$(br2)" +
+                                "It also purifies nearby Wither Roses, turning them into Poppies."
+                ),
+
+                textPage(
+                        "Passive Growth",
+                        "While worn, it slowly restores health, removes Hunger, Poison, and Wither, and accelerates nearby crops.$(br2)" +
+                                "Your attacks poison targets and reduce their healing while poisoned."
+                ),
+
+                textPage(
+                        "Plant Flight",
+                        "When plant blocks are nearby, Revival Leaves grants flight.$(br2)" +
+                                "Leaving plant life behind will soon revoke this flight. It does not override stronger flight relics."
+                ),
+
+                textPage(
+                        "Weakness",
+                        "Its life force is vulnerable to burning and piercing force.$(br2)" +
+                                "Fire and projectile damage against you are increased while this spellstone is worn."
+                )
+        )));
+
         futures.add(save(output, "en_us", "entries/spellstones/eye_of_nebula", entry(
                 "Eye of the Nebula",
                 "spellstones",

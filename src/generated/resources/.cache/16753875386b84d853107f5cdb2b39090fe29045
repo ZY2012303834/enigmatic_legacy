@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-06T16:32:01.2158253	vanilla/Enigmatic Legacy Patchouli Books: en_us
+// 1.21.1	2026-07-07T11:43:22.3778564	vanilla/Enigmatic Legacy Patchouli Books: en_us
 9dd5e7973ba905f424bfe6f5c9adfcbc37f5c317 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/categories/equipment.json
 d6b58f139e8f10e617f46435a2f7c38ab110f182 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/categories/materials.json
 1516486cac3e0447a643d6f865e0c7501b206391 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/categories/relics.json
@@ -81,6 +81,7 @@ c6a6f05557104452aeda4133f025a424302ba272 assets/enigmatic_legacy/patchouli_books
 eb1b27fe21cabbdfe3cf4ae0e19d371d3ed2c2dc assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/entries/spellstones/golem_heart.json
 ee3a84291860369ff928350dbb5865d24c5abe65 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/entries/spellstones/heart_of_creation.json
 d25563df7eb3c50ac95b69c6e43a5d3e7a91caea assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/entries/spellstones/ocean_stone.json
+00be14a5af2b6a2de851614b19a4f617ae4d4908 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/entries/spellstones/revival_leaf.json
 a323b876aba28ad87eaf9e733d4a4228414c41cb assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/entries/spellstones/the_cube.json
 c14c184ddb9a90dd0025086cf2753b701e1d075a assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/entries/spellstones/void_pearl.json
 c416517b34d0ffa9e0e6c7bbe9162e3500139f82 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/entries/world/getting_started.json

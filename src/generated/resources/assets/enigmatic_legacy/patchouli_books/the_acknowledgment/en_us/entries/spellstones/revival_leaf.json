@@ -1,0 +1,37 @@
+{
+  "category": "enigmatic_legacy:spellstones",
+  "icon": "enigmatic_legacy:revival_leaf",
+  "name": "Revival Leaves",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:revival_leaf",
+      "link_recipe": true,
+      "text": "A nature-aspected spellstone overflowing with restorative life force.$(br2)It turns experience into regeneration, cleanses withering flowers, and answers nearby plant life.",
+      "title": "Revival Leaves"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Activating Revival Leaves consumes experience and grants regeneration to nearby creatures.$(br2)It also purifies nearby Wither Roses, turning them into Poppies.",
+      "title": "Active Power"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "While worn, it slowly restores health, removes Hunger, Poison, and Wither, and accelerates nearby crops.$(br2)Your attacks poison targets and reduce their healing while poisoned.",
+      "title": "Passive Growth"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "When plant blocks are nearby, Revival Leaves grants flight.$(br2)Leaving plant life behind will soon revoke this flight. It does not override stronger flight relics.",
+      "title": "Plant Flight"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Its life force is vulnerable to burning and piercing force.$(br2)Fire and projectile damage against you are increased while this spellstone is worn.",
+      "title": "Weakness"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 35
+}

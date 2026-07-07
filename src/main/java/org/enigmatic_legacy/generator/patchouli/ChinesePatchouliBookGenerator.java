@@ -1106,6 +1106,44 @@ final class ChinesePatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 )
         )));
 
+        futures.add(save(output, "zh_cn", "entries/spellstones/revival_leaf", entry(
+                "复苏之叶",
+                "spellstones",
+                "enigmatic_legacy:revival_leaf",
+                35,
+
+                spotlightPage(
+                        "enigmatic_legacy:revival_leaf",
+                        "复苏之叶",
+                        "充满自然生命力的术石。$(br2)" +
+                                "它会将经验转化为生命恢复，净化凋零之花，并回应附近的植物。"
+                ),
+
+                textPage(
+                        "主动能力",
+                        "主动使用复苏之叶会消耗经验，并为附近生物施加生命恢复。$(br2)" +
+                                "它还会净化附近的凋零玫瑰，将其转化为虞美人。"
+                ),
+
+                textPage(
+                        "被动生长",
+                        "佩戴时，它会缓慢恢复生命，清除饥饿、中毒与凋零，并加速附近作物生长。$(br2)" +
+                                "你的攻击会使目标中毒，并在其中毒时降低其受到的治疗。"
+                ),
+
+                textPage(
+                        "植物飞行",
+                        "附近存在植物方块时，复苏之叶会给予飞行能力。$(br2)" +
+                                "远离植物后，这份飞行能力会很快消失。它不会覆盖更强遗物提供的飞行。"
+                ),
+
+                textPage(
+                        "弱点",
+                        "旺盛生命力同样惧怕焚烧与穿刺。$(br2)" +
+                                "佩戴这枚术石时，你受到的火焰与弹射物伤害会提高。"
+                )
+        )));
+
         futures.add(save(output, "zh_cn", "entries/spellstones/eye_of_nebula", entry(
                 "星云之眼",
                 "spellstones",

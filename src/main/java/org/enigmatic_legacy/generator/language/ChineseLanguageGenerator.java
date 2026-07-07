@@ -998,6 +998,29 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.scorched_charm.7",
                 "受到的铁魔法火焰法术伤害降低 %s。");
 
+        // 复苏之叶
+        addItem(ModItems.REVIVAL_LEAVES, "复苏之叶");
+
+        add("tooltip.enigmatic_legacy.revival_leaves.active.1",
+                "消耗经验，为附近生物施加生命恢复。");
+        add("tooltip.enigmatic_legacy.revival_leaves.passive.1",
+                "随时间缓慢恢复生命值。");
+        add("tooltip.enigmatic_legacy.revival_leaves.passive.2",
+                "你的攻击会使目标中毒，并在其中毒时降低其受到的治疗。");
+        add("tooltip.enigmatic_legacy.revival_leaves.passive.3",
+                "清除佩戴者身上的饥饿、中毒与凋零效果。");
+        add("tooltip.enigmatic_legacy.revival_leaves.passive.4",
+                "附近作物生长得更快。");
+        add("tooltip.enigmatic_legacy.revival_leaves.passive.5",
+                "新获得的状态效果持续时间更长。");
+        add("tooltip.enigmatic_legacy.revival_leaves.passive.6",
+                "附近存在植物方块时，你可以飞行。");
+        add("tooltip.enigmatic_legacy.revival_leaves.passive.7",
+                "主动能力会将附近凋零玫瑰转化为虞美人。");
+        add("tooltip.enigmatic_legacy.revival_leaves.passive.8",
+                "你受到的火焰与弹射物伤害会提高。");
+        // end
+
         // 七咒折磨 99.5% 使用资格提示，所有需要该资格的物品共用这一组语言 key。
         add("tooltip.enigmatic_legacy.cursed_suffering.requirement", "你需要在七咒之戒的折磨下度过总游戏时间的 %s 才能使用该物品。");
         add("tooltip.enigmatic_legacy.cursed_suffering.current_percentage", "当前受七咒折磨的时间百分比：%s");
