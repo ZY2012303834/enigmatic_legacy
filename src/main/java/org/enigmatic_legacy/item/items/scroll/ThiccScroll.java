@@ -6,6 +6,6 @@ import net.minecraft.world.item.Item;
 public class ThiccScroll extends Item {
 
     public ThiccScroll() {
-        super(new Item.Properties().stacksTo(16));
+        super(new Properties().stacksTo(16));
     }
 }

@@ -20,7 +20,7 @@ import java.util.List;
 public class EnderRing extends Item implements ICurioItem {
 
     public EnderRing() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.UNCOMMON));
     }

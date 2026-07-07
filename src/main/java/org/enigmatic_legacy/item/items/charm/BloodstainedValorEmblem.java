@@ -25,7 +25,7 @@ import java.util.List;
 public class BloodstainedValorEmblem extends Item implements ICurioItem {
 
     public BloodstainedValorEmblem() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.EPIC));
     }

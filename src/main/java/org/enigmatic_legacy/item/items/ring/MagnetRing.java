@@ -66,7 +66,7 @@ public class MagnetRing extends Item implements ICurioItem {
     private static final double MAX_PULL_SPEED = 0.80D;
 
     public MagnetRing() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.RARE));
     }

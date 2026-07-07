@@ -49,6 +49,7 @@ public class InjectLootTableGenerator implements DataProvider {
          * 生成术石相关箱子注入表。
          */
         addSpellstoneTables(cachedOutput, futures);
+        addForgottenIceCrystalTables(cachedOutput, futures);
         addRevivalLeavesTables(cachedOutput, futures);
 
         /*
@@ -762,4 +763,17 @@ public class InjectLootTableGenerator implements DataProvider {
                 new InjectLootTableGenerator(event.getGenerator().getPackOutput())
         );
     }
+
+
+    private void addForgottenIceCrystalTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {
+        futures.add(saveTable(
+                cachedOutput,
+                "forgotten_ice/igloo_chest",
+                1.0D,
+                1.0D,
+                itemEntry(ModItems.FORGOTTEN_ICE_CRYSTAL.get(), 15),
+                emptyEntry(85)
+        ));
+    }
+
 }

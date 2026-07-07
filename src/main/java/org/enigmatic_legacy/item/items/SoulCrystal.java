@@ -44,7 +44,7 @@ public class SoulCrystal extends Item {
     private final Map<Player, Multimap<Attribute, AttributeModifier>> attributeDispatcher = new WeakHashMap<>();
 
     public SoulCrystal() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.EPIC)
                 .fireResistant());

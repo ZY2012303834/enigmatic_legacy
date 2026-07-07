@@ -80,7 +80,7 @@ public class EnderSlayer extends SwordItem {
     public EnderSlayer() {
         super(
                 EnderSlayerToolMaterial.INSTANCE,
-                new Item.Properties()
+                new Properties()
                         .stacksTo(1)
                         .rarity(Rarity.EPIC)
                         .fireResistant()

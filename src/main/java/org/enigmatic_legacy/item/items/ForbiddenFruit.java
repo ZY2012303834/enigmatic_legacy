@@ -42,7 +42,7 @@ public class ForbiddenFruit extends Item {
     public static final String CONSUMED_FRUIT_TAG = "ConsumedForbiddenFruit";
 
     public ForbiddenFruit() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.EPIC)
                 .fireResistant());

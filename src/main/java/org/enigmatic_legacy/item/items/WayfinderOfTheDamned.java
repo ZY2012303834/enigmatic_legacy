@@ -77,7 +77,7 @@ public class WayfinderOfTheDamned extends Item {
     private static final String HAS_TARGET_TAG = "HasTarget";
 
     public WayfinderOfTheDamned() {
-        super(new Item.Properties()
+        super(new Properties()
                 // 指针类遗物只允许堆叠 1 个。
                 .stacksTo(1)
                 // 设为稀有品质。

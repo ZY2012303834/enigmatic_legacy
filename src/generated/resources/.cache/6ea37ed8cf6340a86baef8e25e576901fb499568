@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-07T09:32:25.5139359	Injected Chest Loot Tables
+// 1.21.1	2026-07-08T05:08:31.3136604	Injected Chest Loot Tables
 22c261779c8a6601556ac93c34c65328a395b443 data/enigmatic_legacy/loot_table/inject/chests/angel_blessing/heavenly_challenger.json
 9e0988cdbdba1f2ac0930e212d02730045dcf3e8 data/enigmatic_legacy/loot_table/inject/chests/antique_book_bag/overworld_epic.json
 a87e2a6c898a6a01323cad5dd44eeade50da1349 data/enigmatic_legacy/loot_table/inject/chests/astral_dust/end_city_treasure.json
@@ -8,6 +8,7 @@ dfc4b2675f3d7117eaec30f0a72429f6870fa939 data/enigmatic_legacy/loot_table/inject
 8504a4b28fb7e2a5d3bf7c7efe8b589a6902bb0d data/enigmatic_legacy/loot_table/inject/chests/earth_heart_fragment/overworld_epic.json
 2395d66b60eb7cdb7fc24c103ffe77268907edb0 data/enigmatic_legacy/loot_table/inject/chests/etherium_ore/end_city_treasure.json
 b336b2c549be245e1e8dc88117af632d5fb021f0 data/enigmatic_legacy/loot_table/inject/chests/forbidden_fruit/bastion_common.json
+70b3ec6f068bd620c02795f5c91f92c81981180b data/enigmatic_legacy/loot_table/inject/chests/forgotten_ice/igloo_chest.json
 639981c7ab533a1e743e11207090d56e47ce165a data/enigmatic_legacy/loot_table/inject/chests/ichor_droplet/nether_common.json
 ac12e4c77e27e3497449f5683adc4987130aa2d7 data/enigmatic_legacy/loot_table/inject/chests/majestic_elytra/end_city_treasure.json
 b39e0dd7e3d8471a730455f059175e3b2b31de1d data/enigmatic_legacy/loot_table/inject/chests/mending_mixture/end_city_treasure.json

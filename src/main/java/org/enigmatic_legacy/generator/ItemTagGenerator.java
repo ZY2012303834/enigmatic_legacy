@@ -77,7 +77,7 @@ public class ItemTagGenerator extends ItemTagsProvider {
     public ItemTagGenerator(
             PackOutput output,
             CompletableFuture<HolderLookup.Provider> lookupProvider,
-            CompletableFuture<TagsProvider.TagLookup<Block>> blockTags,
+            CompletableFuture<TagLookup<Block>> blockTags,
             @Nullable ExistingFileHelper existingFileHelper
     ) {
         super(output, lookupProvider, blockTags, EnigmaticLegacy.MODID, existingFileHelper);

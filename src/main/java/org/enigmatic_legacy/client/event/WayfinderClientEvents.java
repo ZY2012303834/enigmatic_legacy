@@ -1,4 +1,4 @@
-package org.enigmatic_legacy.client;
+package org.enigmatic_legacy.client.event;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;

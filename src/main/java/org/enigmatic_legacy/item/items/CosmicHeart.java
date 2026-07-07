@@ -7,7 +7,7 @@ import net.minecraft.world.item.Rarity;
 public class CosmicHeart extends Item {
 
     public CosmicHeart() {
-        super(new Item.Properties().rarity(Rarity.EPIC).stacksTo(1).fireResistant());
+        super(new Properties().rarity(Rarity.EPIC).stacksTo(1).fireResistant());
     }
 
 }

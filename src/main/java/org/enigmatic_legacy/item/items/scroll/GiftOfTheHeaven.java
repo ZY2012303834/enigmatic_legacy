@@ -68,7 +68,7 @@ public class GiftOfTheHeaven extends Item implements ICurioItem {
     private static final int XP_COST_AMOUNT = 1;
 
     public GiftOfTheHeaven() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.RARE)
                 .fireResistant());

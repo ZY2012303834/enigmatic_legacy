@@ -19,7 +19,7 @@ import java.util.List;
 public class EvilIngot extends Item {
 
     public EvilIngot() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(8)
                 .rarity(Rarity.EPIC)
                 .fireResistant());

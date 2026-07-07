@@ -71,7 +71,7 @@ public class OceanStone extends Item implements ICurioItem {
     private static final int XP_COST_BASE = 150;
 
     public OceanStone() {
-        super(new Item.Properties().stacksTo(1).rarity(Rarity.RARE));
+        super(new Properties().stacksTo(1).rarity(Rarity.RARE));
     }
 
     @Override
@@ -277,7 +277,7 @@ public class OceanStone extends Item implements ICurioItem {
     @Override
     public void appendHoverText(
             @NotNull ItemStack stack,
-            Item.@NotNull TooltipContext context,
+            @NotNull TooltipContext context,
             @NotNull List<Component> tooltip,
             @NotNull TooltipFlag flag
     ) {

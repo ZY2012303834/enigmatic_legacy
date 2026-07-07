@@ -39,7 +39,7 @@ public class EnchanterPearl extends Item implements ICurioItem {
     public static final double EXTRA_CHARM_SLOT_AMOUNT = 1.0D;
 
     public EnchanterPearl() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.EPIC)
                 .fireResistant());

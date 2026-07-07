@@ -26,7 +26,7 @@ public class PactOfInfiniteAvarice extends Item implements ICurioItem {
     private static final String SCROLL_SLOT = "scroll";
 
     public PactOfInfiniteAvarice() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.EPIC)
                 .fireResistant());

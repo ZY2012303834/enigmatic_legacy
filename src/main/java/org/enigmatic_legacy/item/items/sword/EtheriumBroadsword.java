@@ -41,7 +41,7 @@ public class EtheriumBroadsword extends SwordItem {
     public EtheriumBroadsword() {
         super(
                 EtheriumToolMaterial.INSTANCE,
-                new Item.Properties()
+                new Properties()
                         .stacksTo(1)
                         .fireResistant()
                         .rarity(Rarity.EPIC)

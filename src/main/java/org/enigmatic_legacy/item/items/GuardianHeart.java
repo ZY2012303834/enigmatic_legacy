@@ -49,7 +49,7 @@ public class GuardianHeart extends Item {
     public static final int ACTIVE_ABILITY_COOLDOWN = 200;
 
     public GuardianHeart() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.EPIC)
                 .fireResistant());

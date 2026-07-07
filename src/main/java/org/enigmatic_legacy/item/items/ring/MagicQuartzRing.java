@@ -45,7 +45,7 @@ public class MagicQuartzRing extends Item implements ICurioItem {
     public static final double MAGIC_RESISTANCE = 0.20D;
 
     public MagicQuartzRing() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.UNCOMMON)
         );

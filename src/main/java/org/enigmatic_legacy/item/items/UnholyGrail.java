@@ -43,7 +43,7 @@ import java.util.List;
 public class UnholyGrail extends Item{
 
     public UnholyGrail() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.EPIC)
                 .fireResistant());

@@ -28,7 +28,7 @@ import java.util.List;
 public class CursedRing extends Item implements ICurioItem {
 
     public CursedRing() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.EPIC)
                 .fireResistant());

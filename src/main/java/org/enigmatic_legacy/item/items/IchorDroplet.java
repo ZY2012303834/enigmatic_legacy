@@ -14,7 +14,7 @@ import net.minecraft.world.item.Rarity;
 public class IchorDroplet extends Item {
 
     public IchorDroplet() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(64)
                 .rarity(Rarity.UNCOMMON)
         );

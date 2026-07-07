@@ -59,7 +59,7 @@ public class GolemHeart extends Item implements ICurioItem {
     );
 
     public GolemHeart() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.RARE));
     }

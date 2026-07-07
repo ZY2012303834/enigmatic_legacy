@@ -31,6 +31,16 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_forgotten_ice": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:forgotten_ice"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_golem_heart": {
       "conditions": {
         "items": [
@@ -115,6 +125,7 @@
       "has_angel_blessing",
       "has_ocean_stone",
       "has_blazing_core",
+      "has_forgotten_ice",
       "has_revival_leaf",
       "has_eye_of_nebula",
       "has_void_pearl",

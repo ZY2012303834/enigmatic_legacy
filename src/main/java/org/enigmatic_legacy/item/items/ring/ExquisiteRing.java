@@ -39,7 +39,7 @@ import java.util.List;
 public class ExquisiteRing extends Item implements ICurioItem {
 
     public ExquisiteRing() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.UNCOMMON));
     }

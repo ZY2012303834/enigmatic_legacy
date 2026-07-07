@@ -23,7 +23,7 @@ import java.util.List;
  */
 public class UnwitnessedAmulet extends Item {
     public UnwitnessedAmulet() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.RARE)
                 .fireResistant());

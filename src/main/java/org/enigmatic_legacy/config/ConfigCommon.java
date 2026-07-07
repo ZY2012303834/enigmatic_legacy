@@ -45,7 +45,7 @@ public final class ConfigCommon {
     // ==============================
     public static final ModConfigSpec.IntValue SOUL_CRYSTALS_MODE;
     public static final ModConfigSpec.IntValue MAX_SOUL_CRYSTAL_LOSS;
-    public static final ModConfigSpec.ConfigValue<java.util.List<? extends String>> COMPLETE_BOSS_LIST;
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> COMPLETE_BOSS_LIST;
 
     // ==============================
     // 旧字段兼容别名：物品与方块启用开关
@@ -177,6 +177,22 @@ public final class ConfigCommon {
     public static final ModConfigSpec.IntValue BLAZING_CORE_EFFECT_DURATION_MODIFIER;
     public static final ModConfigSpec.IntValue BLAZING_CORE_MOLTEN_EFFECT_DURATION_MODIFIER;
     public static final ModConfigSpec.DoubleValue BLAZING_CORE_AQUATIC_DAMAGE_VULNERABILITY;
+
+    // 忘却冰晶
+    public static final ForgottenIceCrystalConfig FORGOTTEN_ICE_CRYSTAL;
+    public static final ModConfigSpec.IntValue FORGOTTEN_ICE_CRYSTAL_COOLDOWN;
+    public static final ModConfigSpec.DoubleValue FORGOTTEN_ICE_CRYSTAL_ACTIVE_RADIUS;
+    public static final ModConfigSpec.IntValue FORGOTTEN_ICE_CRYSTAL_ACTIVE_FREEZE_TICKS;
+    public static final ModConfigSpec.IntValue FORGOTTEN_ICE_CRYSTAL_MELEE_FREEZE_TICKS;
+    public static final ModConfigSpec.DoubleValue FORGOTTEN_ICE_CRYSTAL_RETALIATION_FREEZE_DAMAGE;
+    public static final ModConfigSpec.DoubleValue FORGOTTEN_ICE_CRYSTAL_EXTRA_DAMAGE_BASE;
+    public static final ModConfigSpec.DoubleValue FORGOTTEN_ICE_CRYSTAL_EXTRA_DAMAGE_PER_FROZEN_TICK;
+    public static final ModConfigSpec.IntValue FORGOTTEN_ICE_CRYSTAL_FROST_DAMAGE_BOOST;
+    public static final ModConfigSpec.IntValue FORGOTTEN_ICE_CRYSTAL_PROJECTILE_AND_SONIC_RESISTANCE;
+    public static final ModConfigSpec.DoubleValue FORGOTTEN_ICE_CRYSTAL_FIRE_DAMAGE_VULNERABILITY;
+    public static final ModConfigSpec.DoubleValue FORGOTTEN_ICE_CRYSTAL_FALL_DAMAGE_VULNERABILITY;
+    public static final ModConfigSpec.IntValue FORGOTTEN_ICE_CRYSTAL_HARD_FROZEN_THRESHOLD;
+    public static final ModConfigSpec.IntValue FORGOTTEN_ICE_CRYSTAL_MAX_STORED_FROZEN_TICKS;
 
     // 复苏之叶
     public static final RevivalLeavesConfig REVIVAL_LEAVES;
@@ -329,6 +345,22 @@ public final class ConfigCommon {
         BLAZING_CORE_EFFECT_DURATION_MODIFIER = BLAZING_CORE.effectDurationModifier;
         BLAZING_CORE_MOLTEN_EFFECT_DURATION_MODIFIER = BLAZING_CORE.moltenEffectDurationModifier;
         BLAZING_CORE_AQUATIC_DAMAGE_VULNERABILITY = BLAZING_CORE.aquaticDamageVulnerability;
+
+        // 忘却冰晶
+        FORGOTTEN_ICE_CRYSTAL = new ForgottenIceCrystalConfig(builder);
+        FORGOTTEN_ICE_CRYSTAL_COOLDOWN = FORGOTTEN_ICE_CRYSTAL.cooldown;
+        FORGOTTEN_ICE_CRYSTAL_ACTIVE_RADIUS = FORGOTTEN_ICE_CRYSTAL.activeRadius;
+        FORGOTTEN_ICE_CRYSTAL_ACTIVE_FREEZE_TICKS = FORGOTTEN_ICE_CRYSTAL.activeFreezeTicks;
+        FORGOTTEN_ICE_CRYSTAL_MELEE_FREEZE_TICKS = FORGOTTEN_ICE_CRYSTAL.meleeFreezeTicks;
+        FORGOTTEN_ICE_CRYSTAL_RETALIATION_FREEZE_DAMAGE = FORGOTTEN_ICE_CRYSTAL.retaliationFreezeDamage;
+        FORGOTTEN_ICE_CRYSTAL_EXTRA_DAMAGE_BASE = FORGOTTEN_ICE_CRYSTAL.extraDamageBase;
+        FORGOTTEN_ICE_CRYSTAL_EXTRA_DAMAGE_PER_FROZEN_TICK = FORGOTTEN_ICE_CRYSTAL.extraDamagePerFrozenTick;
+        FORGOTTEN_ICE_CRYSTAL_FROST_DAMAGE_BOOST = FORGOTTEN_ICE_CRYSTAL.frostDamageBoost;
+        FORGOTTEN_ICE_CRYSTAL_PROJECTILE_AND_SONIC_RESISTANCE = FORGOTTEN_ICE_CRYSTAL.projectileAndSonicResistance;
+        FORGOTTEN_ICE_CRYSTAL_FIRE_DAMAGE_VULNERABILITY = FORGOTTEN_ICE_CRYSTAL.fireDamageVulnerability;
+        FORGOTTEN_ICE_CRYSTAL_FALL_DAMAGE_VULNERABILITY = FORGOTTEN_ICE_CRYSTAL.fallDamageVulnerability;
+        FORGOTTEN_ICE_CRYSTAL_HARD_FROZEN_THRESHOLD = FORGOTTEN_ICE_CRYSTAL.hardFrozenThreshold;
+        FORGOTTEN_ICE_CRYSTAL_MAX_STORED_FROZEN_TICKS = FORGOTTEN_ICE_CRYSTAL.maxStoredFrozenTicks;
 
         // 复苏之叶
         REVIVAL_LEAVES = new RevivalLeavesConfig(builder);

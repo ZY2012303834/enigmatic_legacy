@@ -38,6 +38,7 @@ public class GlobalLootModifierGenerator extends GlobalLootModifierProvider {
     @Override
     protected void start() {
         addSpellstoneModifiers();
+        addForgottenIceCrystalModifiers();
         addRevivalLeavesModifiers();
         addDarkestScrollModifiers();
         addUnholyGrailModifiers();
@@ -582,4 +583,14 @@ public class GlobalLootModifierGenerator extends GlobalLootModifierProvider {
                 )
         );
     }
+
+
+    private void addForgottenIceCrystalModifiers() {
+        addTableModifier(
+                "forgotten_ice_igloo_chest",
+                BuiltInLootTables.IGLOO_CHEST,
+                "inject/chests/forgotten_ice/igloo_chest"
+        );
+    }
+
 }

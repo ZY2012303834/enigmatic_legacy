@@ -65,7 +65,7 @@ public class GraceOfTheCreator extends Item implements ICurioItem {
     private static final int XP_COST_AMOUNT = 1;
 
     public GraceOfTheCreator() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.EPIC)
                 .fireResistant());

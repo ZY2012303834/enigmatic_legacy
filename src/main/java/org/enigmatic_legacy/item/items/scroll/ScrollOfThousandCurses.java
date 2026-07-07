@@ -33,7 +33,7 @@ public class ScrollOfThousandCurses extends Item implements ICurioItem {
     private static final String CACHED_CURSE_FACTOR_TAG = "cachedCurseFactor";
 
     public ScrollOfThousandCurses() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.EPIC)
                 .fireResistant());

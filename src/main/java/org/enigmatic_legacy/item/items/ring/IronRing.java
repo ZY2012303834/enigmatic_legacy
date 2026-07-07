@@ -27,7 +27,7 @@ public class IronRing extends Item implements ICurioItem {
     private static final double ARMOR_BONUS = 1.0D;
 
     public IronRing() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1));
     }
 

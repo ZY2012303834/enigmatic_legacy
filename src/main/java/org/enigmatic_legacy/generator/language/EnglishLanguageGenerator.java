@@ -435,6 +435,25 @@ public class EnglishLanguageGenerator extends LanguageProvider {
                 "Reduces fire spell damage from Iron's Spells by %s.");
         // end
 
+        // Forgotten Ice Crystal
+        addItem(ModItems.FORGOTTEN_ICE_CRYSTAL, "Forgotten Ice Crystal");
+
+        add("tooltip.enigmatic_legacy.forgotten_ice_crystal.active.1",
+                "Releases a freezing wave that damages and freezes nearby creatures.");
+        add("tooltip.enigmatic_legacy.forgotten_ice_crystal.passive.1",
+                "Immune to freezing damage.");
+        add("tooltip.enigmatic_legacy.forgotten_ice_crystal.passive.2",
+                "Projectile and sonic damage taken is reduced by %s.");
+        add("tooltip.enigmatic_legacy.forgotten_ice_crystal.passive.3",
+                "Melee attacks freeze targets more quickly.");
+        add("tooltip.enigmatic_legacy.forgotten_ice_crystal.passive.4",
+                "Fully frozen targets take %s more damage from you.");
+        add("tooltip.enigmatic_legacy.forgotten_ice_crystal.passive.5",
+                "Creatures kept fully frozen for long enough become hard frozen and can barely move.");
+        add("tooltip.enigmatic_legacy.forgotten_ice_crystal.passive.6",
+                "Its cold makes fire and fall damage far more dangerous.");
+        // end
+
         // 复苏之叶
         addItem(ModItems.REVIVAL_LEAVES, "Revival Leaves");
 

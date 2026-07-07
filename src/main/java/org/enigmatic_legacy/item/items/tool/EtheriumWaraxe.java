@@ -25,7 +25,7 @@ public class EtheriumWaraxe extends AxeItem {
     public EtheriumWaraxe() {
         super(
                 EtheriumToolMaterial.INSTANCE,
-                new Item.Properties()
+                new Properties()
                         .stacksTo(1)
                         .fireResistant()
                         .rarity(Rarity.EPIC)

@@ -38,7 +38,7 @@ public class ExtradimensionalEye extends Item {
     private static final String BOUND_DIMENSION_TAG = "BoundDimension";
 
     public ExtradimensionalEye() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.UNCOMMON));
     }

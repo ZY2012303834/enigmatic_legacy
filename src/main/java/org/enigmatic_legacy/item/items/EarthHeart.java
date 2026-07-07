@@ -6,7 +6,7 @@ import net.minecraft.world.item.Rarity;
 // 大地之心
 public class EarthHeart extends Item {
     public EarthHeart() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.UNCOMMON));
     }

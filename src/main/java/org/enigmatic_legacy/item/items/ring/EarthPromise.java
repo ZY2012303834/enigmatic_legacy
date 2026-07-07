@@ -55,7 +55,7 @@ public class EarthPromise extends Item implements ICurioItem {
      * 而是在装备限制、属性修饰器和事件逻辑里根据七咒之戒状态分别判断。
      */
     public EarthPromise() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.EPIC));
     }

@@ -48,7 +48,7 @@ public class MegaSponge extends Item implements ICurioItem {
     private static final int COOLDOWN_TICKS = 20;
 
     public MegaSponge() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.UNCOMMON));
     }

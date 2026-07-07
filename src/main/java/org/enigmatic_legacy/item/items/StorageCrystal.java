@@ -36,7 +36,7 @@ public class StorageCrystal extends Item {
     private static final String EMBEDDED_SOUL_TAG = "embeddedSoul";
 
     public StorageCrystal() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.EPIC)
                 .fireResistant());

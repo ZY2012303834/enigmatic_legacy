@@ -46,7 +46,7 @@ public class DislocationRing extends Item implements ICurioItem {
     private static final int MAX_TELEPORTED_ITEMS_PER_TICK = 512;
 
     public DislocationRing() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.EPIC));
     }

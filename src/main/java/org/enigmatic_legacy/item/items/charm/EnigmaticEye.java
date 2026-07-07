@@ -63,7 +63,7 @@ public class EnigmaticEye extends Item implements ICurioItem {
     public static final double BLOCK_REACH_AMOUNT = 3.0D;
 
     public EnigmaticEye() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.EPIC)
                 .fireResistant());

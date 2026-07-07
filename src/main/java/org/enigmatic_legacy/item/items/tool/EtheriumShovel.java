@@ -52,7 +52,7 @@ public class EtheriumShovel extends ShovelItem {
     public EtheriumShovel() {
         super(
                 EtheriumToolMaterial.INSTANCE,
-                new Item.Properties()
+                new Properties()
                         .stacksTo(1)
                         .fireResistant()
                         .rarity(Rarity.EPIC)

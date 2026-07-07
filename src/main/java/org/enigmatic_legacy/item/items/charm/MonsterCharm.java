@@ -30,7 +30,7 @@ import java.util.List;
 public class MonsterCharm extends Item implements ICurioItem {
 
     public MonsterCharm() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.EPIC));
     }

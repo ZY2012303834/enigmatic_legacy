@@ -32,7 +32,7 @@ public class BlazingCore extends Item implements ICurioItem {
     public static final String CLIENT_TICK_TAG = "enigmatic_legacy.blazing_core_client_tick";
 
     public BlazingCore() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.UNCOMMON)
                 .fireResistant());

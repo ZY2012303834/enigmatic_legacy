@@ -112,7 +112,7 @@ public class NonEuclideanCube extends Item implements ICurioItem {
     );
 
     public NonEuclideanCube() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.EPIC)
                 .fireResistant());

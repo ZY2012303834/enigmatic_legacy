@@ -109,7 +109,7 @@ public class EyeOfNebula extends Item implements ICurioItem {
             "enigmatic_legacy_eye_of_nebula_teleport_protection_until";
 
     public EyeOfNebula() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.EPIC)
                 .fireResistant());

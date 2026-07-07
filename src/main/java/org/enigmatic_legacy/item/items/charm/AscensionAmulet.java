@@ -25,7 +25,7 @@ import java.util.List;
 public class AscensionAmulet extends Item {
 
     public AscensionAmulet() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.EPIC)
                 .fireResistant()

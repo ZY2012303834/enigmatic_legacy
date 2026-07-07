@@ -32,7 +32,7 @@ public class RedemptionPotionItem extends Item {
     private static final int DRINK_DURATION = 32;
 
     public RedemptionPotionItem() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.RARE));
     }

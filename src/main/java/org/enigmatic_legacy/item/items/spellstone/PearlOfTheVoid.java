@@ -77,7 +77,7 @@ public class PearlOfTheVoid extends Item implements ICurioItem {
     public static final int AURA_MINING_FATIGUE_AMPLIFIER = 3; // 挖掘疲劳 IV
 
     public PearlOfTheVoid() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.EPIC)
                 .fireResistant());

@@ -1105,6 +1105,44 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 )
         )));
 
+        futures.add(save(output, "en_us", "entries/spellstones/forgotten_ice", entry(
+                "Forgotten Ice Crystal",
+                "spellstones",
+                "enigmatic_legacy:forgotten_ice",
+                34,
+
+                spotlightPage(
+                        "enigmatic_legacy:forgotten_ice",
+                        "Forgotten Ice Crystal",
+                        "A cold spellstone crystallized from forgotten frost.$(br2)" +
+                                "It stores the memory of freezing, turning prolonged ice into harder imprisonment."
+                ),
+
+                textPage(
+                        "Active Power",
+                        "Activating the crystal releases a freezing wave around you.$(br2)" +
+                                "Nearby creatures take freeze damage and receive additional frozen ticks. Fully frozen targets suffer even more damage."
+                ),
+
+                textPage(
+                        "Frozen Memory",
+                        "The crystal remembers creatures kept fully frozen near its bearer.$(br2)" +
+                                "If a target remains fully frozen long enough, it becomes hard frozen and can barely move."
+                ),
+
+                textPage(
+                        "Combat Effects",
+                        "Your melee attacks freeze targets more quickly, and fully frozen enemies take increased damage from you.$(br2)" +
+                                "When melee attackers strike you, the crystal answers with freezing backlash."
+                ),
+
+                textPage(
+                        "Weakness",
+                        "Forgotten frost resists freezing, projectiles, and sonic force.$(br2)" +
+                                "However, fire and falling become far more dangerous while this spellstone is worn."
+                )
+        )));
+
         futures.add(save(output, "en_us", "entries/spellstones/revival_leaf", entry(
                 "Revival Leaves",
                 "spellstones",

@@ -23,7 +23,7 @@ public class TwistedHeart extends Item {
     public static final int CHECK_INTERVAL_TICKS = 40; // 2 秒检测一次
 
     public TwistedHeart() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.EPIC));
     }

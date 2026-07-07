@@ -54,7 +54,7 @@ public class ScrollOfAgelessWisdom extends Item implements ICurioItem {
     private static final int MIN_XP_PORTION = 5;
 
     public ScrollOfAgelessWisdom() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.RARE)
                 .fireResistant());

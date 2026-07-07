@@ -21,7 +21,7 @@ import java.util.List;
 public class PureHeart extends Item {
 
     public PureHeart() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.EPIC)
         );

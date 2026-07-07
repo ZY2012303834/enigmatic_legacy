@@ -129,7 +129,7 @@ public class RevivalLeaves extends Item implements ICurioItem {
     );
 
     public RevivalLeaves() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.RARE));
     }

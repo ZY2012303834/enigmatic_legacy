@@ -7,6 +7,6 @@ import net.minecraft.world.item.Rarity;
 public class DarkestScroll extends Item {
 
     public DarkestScroll() {
-        super(new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(1));
+        super(new Properties().rarity(Rarity.UNCOMMON).stacksTo(1));
     }
 }

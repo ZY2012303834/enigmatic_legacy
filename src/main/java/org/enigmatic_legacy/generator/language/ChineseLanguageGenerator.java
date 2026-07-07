@@ -998,6 +998,25 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.scorched_charm.7",
                 "受到的铁魔法火焰法术伤害降低 %s。");
 
+        // 忘却冰晶
+        addItem(ModItems.FORGOTTEN_ICE_CRYSTAL, "忘却冰晶");
+
+        add("tooltip.enigmatic_legacy.forgotten_ice_crystal.active.1",
+                "释放冻结寒潮，伤害并冻结附近生物。");
+        add("tooltip.enigmatic_legacy.forgotten_ice_crystal.passive.1",
+                "免疫冻结伤害。");
+        add("tooltip.enigmatic_legacy.forgotten_ice_crystal.passive.2",
+                "受到的弹射物与音波伤害降低 %s。");
+        add("tooltip.enigmatic_legacy.forgotten_ice_crystal.passive.3",
+                "近战攻击会使目标更快冻结。");
+        add("tooltip.enigmatic_legacy.forgotten_ice_crystal.passive.4",
+                "完全冻结的目标受到你造成的伤害提高 %s。");
+        add("tooltip.enigmatic_legacy.forgotten_ice_crystal.passive.5",
+                "长时间保持完全冻结的生物会陷入硬冻结，几乎无法移动。");
+        add("tooltip.enigmatic_legacy.forgotten_ice_crystal.passive.6",
+                "极寒会让火焰与摔落伤害变得更加危险。");
+        // end
+
         // 复苏之叶
         addItem(ModItems.REVIVAL_LEAVES, "复苏之叶");
 

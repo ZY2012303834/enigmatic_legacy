@@ -31,7 +31,7 @@ public class RecallPotionItem extends Item {
     private static final int DRINK_DURATION = 32;
 
     public RecallPotionItem() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.RARE));
     }

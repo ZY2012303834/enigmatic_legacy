@@ -31,7 +31,7 @@ import java.util.List;
 public class ScorchedCharm extends Item implements ICurioItem {
 
     public ScorchedCharm() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.EPIC)
                 .fireResistant()

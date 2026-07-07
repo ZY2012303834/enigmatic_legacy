@@ -51,7 +51,7 @@ public class TwistedMirror extends Item {
     public static final int USE_DURATION_TICKS = 40;
 
     public TwistedMirror() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.RARE));
     }

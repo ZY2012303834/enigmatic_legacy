@@ -5,6 +5,6 @@ import net.minecraft.world.item.Item;
 public class EnderRod extends Item {
 
     public EnderRod() {
-        super(new Item.Properties().stacksTo(64));
+        super(new Properties().stacksTo(64));
     }
 }

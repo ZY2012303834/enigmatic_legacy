@@ -67,7 +67,7 @@ public class AxeOfExecutioner extends SwordItem {
     public AxeOfExecutioner() {
         super(
                 Tiers.NETHERITE,
-                new Item.Properties()
+                new Properties()
                         .stacksTo(1)
                         .fireResistant()
                         .rarity(Rarity.EPIC)

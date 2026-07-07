@@ -17,7 +17,7 @@ import java.util.List;
 
 public class MajesticElytra extends ElytraItem {
     public MajesticElytra() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .durability(5000)
                 .rarity(Rarity.EPIC)

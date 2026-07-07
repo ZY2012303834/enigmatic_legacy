@@ -32,7 +32,7 @@ import java.util.List;
  */
 public class AbyssalHeart extends Item {
     public AbyssalHeart() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.EPIC)
                 .fireResistant());

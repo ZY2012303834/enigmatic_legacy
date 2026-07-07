@@ -1,0 +1,37 @@
+{
+  "category": "enigmatic_legacy:spellstones",
+  "icon": "enigmatic_legacy:forgotten_ice",
+  "name": "Forgotten Ice Crystal",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:forgotten_ice",
+      "link_recipe": true,
+      "text": "A cold spellstone crystallized from forgotten frost.$(br2)It stores the memory of freezing, turning prolonged ice into harder imprisonment.",
+      "title": "Forgotten Ice Crystal"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Activating the crystal releases a freezing wave around you.$(br2)Nearby creatures take freeze damage and receive additional frozen ticks. Fully frozen targets suffer even more damage.",
+      "title": "Active Power"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The crystal remembers creatures kept fully frozen near its bearer.$(br2)If a target remains fully frozen long enough, it becomes hard frozen and can barely move.",
+      "title": "Frozen Memory"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Your melee attacks freeze targets more quickly, and fully frozen enemies take increased damage from you.$(br2)When melee attackers strike you, the crystal answers with freezing backlash.",
+      "title": "Combat Effects"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Forgotten frost resists freezing, projectiles, and sonic force.$(br2)However, fire and falling become far more dangerous while this spellstone is worn.",
+      "title": "Weakness"
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 34
+}

@@ -1106,6 +1106,44 @@ final class ChinesePatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 )
         )));
 
+        futures.add(save(output, "zh_cn", "entries/spellstones/forgotten_ice", entry(
+                "忘却冰晶",
+                "spellstones",
+                "enigmatic_legacy:forgotten_ice",
+                34,
+
+                spotlightPage(
+                        "enigmatic_legacy:forgotten_ice",
+                        "忘却冰晶",
+                        "由被遗忘寒霜凝结成的术石。$(br2)" +
+                                "它会记住冻结的过程，并把长久的冰封化为更残酷的束缚。"
+                ),
+
+                textPage(
+                        "主动能力",
+                        "主动使用忘却冰晶会在身边释放冻结寒潮。$(br2)" +
+                                "附近生物会受到冻结伤害并增加冻结时间。已经完全冻结的目标会承受更高伤害。"
+                ),
+
+                textPage(
+                        "冻结记忆",
+                        "冰晶会记录佩戴者附近长期保持完全冻结的生物。$(br2)" +
+                                "如果目标被完全冻结足够久，它会陷入硬冻结，几乎无法移动。"
+                ),
+
+                textPage(
+                        "战斗效果",
+                        "你的近战攻击会使目标更快冻结，完全冻结的敌人受到你造成的伤害提高。$(br2)" +
+                                "当近战攻击者击中你时，冰晶也会以冻结反击回应。"
+                ),
+
+                textPage(
+                        "弱点",
+                        "被遗忘的寒霜能抵御冻结、弹射物与音波。$(br2)" +
+                                "但佩戴这枚术石时，火焰与摔落会变得更加危险。"
+                )
+        )));
+
         futures.add(save(output, "zh_cn", "entries/spellstones/revival_leaf", entry(
                 "复苏之叶",
                 "spellstones",

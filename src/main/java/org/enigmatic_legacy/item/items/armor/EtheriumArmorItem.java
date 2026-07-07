@@ -27,7 +27,7 @@ public class EtheriumArmorItem extends ArmorItem {
         super(
                 EtheriumArmorMaterial.HOLDER,
                 type,
-                new Item.Properties()
+                new Properties()
                         .stacksTo(1)
                         .fireResistant()
                         .rarity(Rarity.EPIC)

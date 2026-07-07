@@ -35,7 +35,7 @@ public class AngelBlessing extends Item implements ICurioItem {
     private static final String SPELLSTONE_SLOT = "spellstone";
 
     public AngelBlessing() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.RARE));
     }

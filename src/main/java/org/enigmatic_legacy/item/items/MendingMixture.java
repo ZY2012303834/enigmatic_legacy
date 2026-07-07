@@ -39,7 +39,7 @@ public class MendingMixture extends Item {
     private static final int DRINK_DURATION = 32;
 
     public MendingMixture() {
-        super(new Item.Properties()
+        super(new Properties()
                 // 修补混合物是瓶装消耗品，允许堆叠。
                 .stacksTo(16)
                 // 稀有度设置为稀有。

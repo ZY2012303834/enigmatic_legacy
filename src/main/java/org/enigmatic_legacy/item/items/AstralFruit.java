@@ -40,7 +40,7 @@ public class AstralFruit extends Item {
     public static final String CONSUMED_FRUIT_TAG = "ConsumedAstralFruit";
 
     public AstralFruit() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.EPIC)
                 .fireResistant()

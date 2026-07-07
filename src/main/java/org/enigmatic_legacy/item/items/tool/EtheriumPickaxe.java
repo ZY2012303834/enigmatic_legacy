@@ -54,7 +54,7 @@ public class EtheriumPickaxe extends PickaxeItem {
     public EtheriumPickaxe() {
         super(
                 EtheriumToolMaterial.INSTANCE,
-                new Item.Properties()
+                new Properties()
                         .stacksTo(1)
                         .fireResistant()
                         .rarity(Rarity.EPIC)

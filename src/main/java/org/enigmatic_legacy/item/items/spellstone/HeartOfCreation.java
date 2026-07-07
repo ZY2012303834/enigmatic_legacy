@@ -60,7 +60,7 @@ public class HeartOfCreation extends Item implements ICurioItem {
     public static final int ACTIVE_WITHER_AMPLIFIER = 2;
 
     public HeartOfCreation() {
-        super(new Item.Properties()
+        super(new Properties()
                 .stacksTo(1)
                 .rarity(Rarity.EPIC)
                 .fireResistant());
