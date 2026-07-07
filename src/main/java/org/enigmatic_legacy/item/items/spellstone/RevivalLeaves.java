@@ -571,11 +571,15 @@ public class RevivalLeaves extends Item implements ICurioItem {
 
     /**
      * 物品 tooltip。
-     * 统一样式：
-     * - 普通介绍：紫色；
-     * - 数字 / 冷却：金色；
-     * - 负面代价：红色。
-     * 这里在国际化 key 后方写中文注释，方便后续维护语言文件。
+     *
+     * <p>统一样式：</p>
+     * <ul>
+     *     <li>普通介绍：紫色；</li>
+     *     <li>数字 / 冷却：金色；</li>
+     *     <li>负面代价：红色。</li>
+     * </ul>
+     *
+     * <p>这里在国际化 key 后方写中文注释，方便后续维护语言文件。</p>
      */
     @Override
     public void appendHoverText(
@@ -591,43 +595,45 @@ public class RevivalLeaves extends Item implements ICurioItem {
             return;
         }
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.spellstone.active")
-                .withStyle(ChatFormatting.DARK_PURPLE)); // 主动能力
         tooltip.add(SpellstoneTooltip.text(
-                "tooltip.enigmatic_legacy.revival_leaves.active.1" // 消耗经验治疗附近生物，并净化凋零玫瑰。
+                "tooltip.enigmatic_legacy.spellstone.active" // 主动能力：
         ));
         tooltip.add(SpellstoneTooltip.text(
-                "tooltip.enigmatic_legacy.spellstone.cooldown", // 冷却时间：%s 秒。
+                "tooltip.enigmatic_legacy.revival_leaves.active.1" // 消耗经验，为附近生物施加生命恢复。
+        ));
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.spellstone.cooldown", // 冷却：%s 秒。
                 SpellstoneTooltip.number(String.format("%.1f", ConfigCommon.REVIVAL_LEAVES_COOLDOWN.get() / 20.0F))
         ));
 
         tooltip.add(SpellstoneTooltip.empty());
 
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.spellstone.passive")
-                .withStyle(ChatFormatting.DARK_PURPLE)); // 被动能力
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.spellstone.passive" // 被动能力：
+        ));
         tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.revival_leaves.passive.1" // 随时间缓慢恢复生命值。
         ));
         tooltip.add(SpellstoneTooltip.text(
-                "tooltip.enigmatic_legacy.revival_leaves.passive.2" // 清除饥饿、中毒与凋零效果。
+                "tooltip.enigmatic_legacy.revival_leaves.passive.2" // 你的攻击会使目标中毒，并在其中毒时降低其受到的治疗。
         ));
         tooltip.add(SpellstoneTooltip.text(
-                "tooltip.enigmatic_legacy.revival_leaves.passive.3" // 加速附近作物生长。
+                "tooltip.enigmatic_legacy.revival_leaves.passive.3" // 清除佩戴者身上的饥饿、中毒与凋零效果。
         ));
         tooltip.add(SpellstoneTooltip.text(
-                "tooltip.enigmatic_legacy.revival_leaves.passive.4" // 附近存在植物时允许飞行。
+                "tooltip.enigmatic_legacy.revival_leaves.passive.4" // 附近作物生长得更快。
         ));
         tooltip.add(SpellstoneTooltip.text(
-                "tooltip.enigmatic_legacy.revival_leaves.passive.5" // 离开植物范围后，飞行能力会很快消失。
+                "tooltip.enigmatic_legacy.revival_leaves.passive.5" // 新获得的状态效果持续时间更长。
         ));
         tooltip.add(SpellstoneTooltip.text(
-                "tooltip.enigmatic_legacy.revival_leaves.passive.6" // 不会覆盖更强遗物提供的飞行能力。
+                "tooltip.enigmatic_legacy.revival_leaves.passive.6" // 附近存在植物方块时，你可以飞行。
         ));
         tooltip.add(SpellstoneTooltip.text(
-                "tooltip.enigmatic_legacy.revival_leaves.passive.7" // 自然祝福粒子会标记它的力量。
+                "tooltip.enigmatic_legacy.revival_leaves.passive.7" // 主动能力会将附近凋零玫瑰转化为虞美人。
         ));
         tooltip.add(SpellstoneTooltip.negative(
-                "tooltip.enigmatic_legacy.revival_leaves.passive.8" // 火焰与弹射物伤害会变得更加危险。
+                "tooltip.enigmatic_legacy.revival_leaves.passive.8" // 你受到的火焰与弹射物伤害会提高。
         ));
     }
 }
