@@ -4,6 +4,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import org.enigmatic_legacy.api.CuriosLookupApi;
+import org.enigmatic_legacy.api.CursedRingApi;
 import org.enigmatic_legacy.item.ModItems;
 
 import java.util.Optional;
@@ -21,7 +22,6 @@ public final class PactOfInfiniteAvariceHelper {
 
     public static boolean hasPact(LivingEntity entity) {
         return entity instanceof Player player
-                && CursedRingHelper.hasCursedRing(player)
-                && findPact(player).isPresent();
+                && CursedRingApi.canUseRestrictedCurio(player, ModItems.AVARICE_SCROLL.get());
     }
 }

@@ -15,8 +15,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import org.enigmatic_legacy.EnigmaticLegacy;
-import org.enigmatic_legacy.api.CuriosLookupApi;
-import org.enigmatic_legacy.util.CursedRingHelper;
+import org.enigmatic_legacy.api.CursedRingApi;
 import org.enigmatic_legacy.util.EnchanterPearlHelper;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.CuriosApi;
@@ -64,7 +63,7 @@ public class EnchanterPearl extends Item implements ICurioItem {
             return false;
         }
 
-        return (CursedRingHelper.hasCursedRing(player) || CuriosLookupApi.isStackInSlot(player, context, stack))
+        return CursedRingApi.canEquipRestrictedCurio(context, stack)
                 && !EnchanterPearlHelper.hasOtherEnchanterPearl(player, context);
     }
 
@@ -76,7 +75,7 @@ public class EnchanterPearl extends Item implements ICurioItem {
     ) {
         Multimap<Holder<Attribute>, AttributeModifier> attributes = HashMultimap.create();
 
-        if (slotContext.entity() instanceof Player player && CursedRingHelper.hasCursedRing(player)) {
+        if (slotContext.entity() instanceof Player player && CursedRingApi.hasCursedRing(player)) {
             CuriosApi.addSlotModifier(
                     attributes,
                     EXTRA_CHARM_SLOT,

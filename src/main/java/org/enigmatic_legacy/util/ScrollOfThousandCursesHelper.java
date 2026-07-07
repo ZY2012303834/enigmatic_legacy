@@ -12,6 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
 import org.enigmatic_legacy.api.CuriosLookupApi;
+import org.enigmatic_legacy.api.CursedRingApi;
 import org.enigmatic_legacy.item.ModItems;
 
 import java.util.HashSet;
@@ -40,7 +41,8 @@ public final class ScrollOfThousandCursesHelper {
     }
 
     public static boolean hasScroll(LivingEntity entity) {
-        return findScroll(entity).isPresent();
+        return entity instanceof Player player
+                && CursedRingApi.canUseRestrictedCurio(player, ModItems.CURSED_SCROLL.get());
     }
 
     /**
@@ -50,10 +52,6 @@ public final class ScrollOfThousandCursesHelper {
      * 其中 +7 代表七咒之戒本身的七项诅咒。
      */
     public static int getCurseFactor(Player player) {
-        if (!CursedRingHelper.hasCursedRing(player)) {
-            return 0;
-        }
-
         if (!hasScroll(player)) {
             return 0;
         }

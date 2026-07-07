@@ -18,6 +18,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.storage.loot.LootContext;
 import org.enigmatic_legacy.EnigmaticLegacy;
+import org.enigmatic_legacy.api.CursedRingApi;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.util.EarthPromiseHelper;
 import org.enigmatic_legacy.util.SpellstoneTooltip;
@@ -74,13 +75,12 @@ public class EarthPromise extends Item implements ICurioItem {
     /**
      * 限制地灵之诺只能放入 Curios 的 ring 槽。
      *
-     * <p>这里不检查七咒之戒。地灵之诺的设计是“只有七咒者才能使用效果”，
-     * 不是“没有七咒就不能放进戒指槽”。这样能避免登录、维度切换或 Curios
-     * 刷新槽位时，因为短时间查不到七咒之戒导致物品被自动卸下。
+     * <p>新装备时必须佩戴七咒之戒；如果这是 Curios 正在刷新当前槽位里的旧物品，
+     * 则交给 {@link CursedRingApi} 放行，避免登录、维度切换或槽位刷新时误卸下。
      */
     @Override
     public boolean canEquip(SlotContext context, ItemStack stack) {
-        return RING_SLOT.equals(context.identifier());
+        return RING_SLOT.equals(context.identifier()) && CursedRingApi.canEquipRestrictedCurio(context, stack);
     }
 
     /**

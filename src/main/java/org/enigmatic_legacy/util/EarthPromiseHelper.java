@@ -4,6 +4,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import org.enigmatic_legacy.api.CuriosLookupApi;
+import org.enigmatic_legacy.api.CursedRingApi;
 import org.enigmatic_legacy.item.ModItems;
 
 import java.util.Optional;
@@ -21,6 +22,6 @@ public final class EarthPromiseHelper {
     }
 
     public static boolean canUseEarthPromise(Player player) {
-        return CursedRingHelper.hasCursedRing(player);
+        return CursedRingApi.canUseRestrictedCurio(player, ModItems.EARTH_PROMISE.get());
     }
 }

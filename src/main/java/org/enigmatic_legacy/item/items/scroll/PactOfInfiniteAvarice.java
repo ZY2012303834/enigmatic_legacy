@@ -8,8 +8,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import org.enigmatic_legacy.api.CuriosLookupApi;
+import org.enigmatic_legacy.api.CursedRingApi;
 import org.enigmatic_legacy.item.ModItems;
-import org.enigmatic_legacy.util.CursedRingHelper;
 import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.SlotContext;
@@ -56,7 +56,7 @@ public class PactOfInfiniteAvarice extends Item implements ICurioItem {
             return false;
         }
 
-        if (!CursedRingHelper.hasCursedRing(player) && !CuriosLookupApi.isStackInSlot(player, context, stack)) {
+        if (!CursedRingApi.canEquipRestrictedCurio(context, stack)) {
             return false;
         }
 

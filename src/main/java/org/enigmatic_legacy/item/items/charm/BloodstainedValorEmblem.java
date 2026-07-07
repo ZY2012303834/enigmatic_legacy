@@ -7,9 +7,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
-import org.enigmatic_legacy.api.CuriosLookupApi;
+import org.enigmatic_legacy.api.CursedRingApi;
 import org.enigmatic_legacy.config.ConfigCommon;
-import org.enigmatic_legacy.util.CursedRingHelper;
 import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.SlotContext;
@@ -48,7 +47,7 @@ public class BloodstainedValorEmblem extends Item implements ICurioItem {
             return false;
         }
 
-        return CursedRingHelper.hasCursedRing(player) || CuriosLookupApi.isStackInSlot(player, context, stack);
+        return CursedRingApi.canEquipRestrictedCurio(context, stack);
     }
 
     @Override

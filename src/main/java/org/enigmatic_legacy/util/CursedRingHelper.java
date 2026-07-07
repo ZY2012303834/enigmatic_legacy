@@ -18,6 +18,7 @@ import net.minecraft.world.level.GameRules;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.enigmatic_legacy.api.CuriosLookupApi;
+import org.enigmatic_legacy.api.CursedRingApi;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.item.items.book.AnimalGuidebook;
@@ -39,11 +40,7 @@ public class CursedRingHelper {
      * 判断玩家是否在 Curios 栏位中佩戴七咒之戒。
      */
     public static boolean hasCursedRing(Player player) {
-        if (!ConfigCommon.CURSED_RING_ENABLED.get()) {
-            return false;
-        }
-
-        return CuriosLookupApi.hasCurio(player, ModItems.CURSED_RING.get());
+        return CursedRingApi.hasCursedRing(player);
     }
 
     /**

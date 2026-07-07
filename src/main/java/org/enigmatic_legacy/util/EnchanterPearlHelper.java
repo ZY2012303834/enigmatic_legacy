@@ -11,7 +11,9 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
 import org.enigmatic_legacy.api.CuriosLookupApi;
+import org.enigmatic_legacy.api.CursedRingApi;
 import org.enigmatic_legacy.enchantment.ModEnchantments;
+import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.item.items.charm.EnchanterPearl;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
@@ -58,7 +60,7 @@ public final class EnchanterPearlHelper {
      * 判断玩家是否能触发附魔师的珍珠效果。
      */
     public static boolean canUseEnchanterPearl(Player player) {
-        return hasEnchanterPearl(player) && CursedRingHelper.hasCursedRing(player);
+        return CursedRingApi.canUseRestrictedCurio(player, ModItems.ENCHANTER_PEARL.get());
     }
 
     public static Optional<ICuriosItemHandler> getCuriosInventory(LivingEntity entity) {

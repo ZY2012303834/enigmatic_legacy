@@ -4,6 +4,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import org.enigmatic_legacy.api.CuriosLookupApi;
+import org.enigmatic_legacy.api.CursedRingApi;
+import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.item.items.charm.BloodstainedValorEmblem;
 
 import java.util.Optional;
@@ -34,7 +36,7 @@ public final class BloodstainedValorHelper {
      * 原项目要求该物品只能由七咒之戒佩戴者使用。
      */
     public static boolean canUseBloodstainedValor(Player player) {
-        return hasBloodstainedValor(player) && CursedRingHelper.hasCursedRing(player);
+        return CursedRingApi.canUseRestrictedCurio(player, ModItems.BLOODSTAINED_VALOR_EMBLEM.get());
     }
 
     /**
