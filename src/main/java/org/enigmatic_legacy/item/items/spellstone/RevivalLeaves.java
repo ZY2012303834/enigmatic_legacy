@@ -55,7 +55,6 @@ import java.util.List;
  *     <li>净化附近凋零玫瑰，将其替换为虞美人；</li>
  *     <li>触发配置冷却。</li>
  * </ul>
- *
  * <p>被动能力：</p>
  * <ul>
  *     <li>只能装备在 Curios 的 spellstone 槽；</li>
