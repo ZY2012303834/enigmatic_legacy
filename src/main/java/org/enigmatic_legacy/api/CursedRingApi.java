@@ -15,6 +15,12 @@ import top.theillusivec4.curios.api.SlotContext;
  * 物品类只负责调用这个 API，避免每个物品各写一套略有差异的检测逻辑。
  */
 public final class CursedRingApi {
+    /**
+     * Curios 在玩家刚进入世界时会分批恢复各个饰品槽。
+     * 受限饰品可能先于七咒之戒被校验，所以登录初期只允许“保留装备”，实际效果仍由 hasCursedRing 判断。
+     */
+    public static final int LOAD_GRACE_TICKS = 100;
+
     private CursedRingApi() {
     }
 
@@ -50,7 +56,17 @@ public final class CursedRingApi {
             return false;
         }
 
-        return hasCursedRing(player) || CuriosLookupApi.isStackInSlot(player, context, stack);
+        return hasCursedRing(player)
+                || CuriosLookupApi.isStackInSlot(player, context, stack)
+                || isInLoadGrace(player);
+    }
+
+    /**
+     * 玩家刚进入世界时的 Curios 恢复宽限。
+     * 只用于避免装备被误卸下；所有实际效果仍必须走 canUseRestrictedCurio。
+     */
+    public static boolean isInLoadGrace(Player player) {
+        return player != null && player.tickCount < LOAD_GRACE_TICKS;
     }
 
     /**

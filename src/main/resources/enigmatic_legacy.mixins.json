@@ -15,7 +15,8 @@
   ],
   "client": [
     "compat.MixinIrisCommonUniforms",
-    "MixinFogRenderer"
+    "MixinFogRenderer",
+    "MixinHumanoidArmorLayer"
   ],
   "injectors": {
     "defaultRequire": 1

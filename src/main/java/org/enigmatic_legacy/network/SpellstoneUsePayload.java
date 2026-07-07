@@ -66,6 +66,10 @@ public record SpellstoneUsePayload() implements CustomPacketPayload {
             }
 
             if (stack.isEmpty()) {
+                stack = EtheriumCoreHelper.findEtheriumCore(player).orElse(ItemStack.EMPTY);
+            }
+
+            if (stack.isEmpty()) {
                 stack = RevivalLeavesHelper.findRevivalLeaves(player).orElse(ItemStack.EMPTY);
             }
 
@@ -77,6 +81,7 @@ public record SpellstoneUsePayload() implements CustomPacketPayload {
                 case NonEuclideanCube cube -> cube.triggerActiveAbility(level, player, stack);
                 case HeartOfCreation heartOfCreation -> heartOfCreation.triggerActiveAbility(level, player, stack);
                 case ForgottenIceCrystal forgottenIceCrystal -> forgottenIceCrystal.triggerActiveAbility(level, player, stack);
+                case EtheriumCore etheriumCore -> etheriumCore.triggerActiveAbility(level, player, stack);
                 case RevivalLeaves revivalLeaves -> revivalLeaves.triggerActiveAbility(level, player, stack);
 
                 default -> {

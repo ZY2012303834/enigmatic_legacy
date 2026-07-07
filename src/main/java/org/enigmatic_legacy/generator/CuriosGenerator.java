@@ -136,6 +136,7 @@ public class CuriosGenerator implements DataProvider {
         values.add(EnigmaticLegacy.MODID + ":ocean_stone");
         values.add(EnigmaticLegacy.MODID + ":blazing_core");
         values.add(EnigmaticLegacy.MODID + ":forgotten_ice"); // 忘却冰晶
+        values.add(EnigmaticLegacy.MODID + ":etherium_core"); // 以太核心
         values.add(EnigmaticLegacy.MODID + ":revival_leaf"); // 复苏之叶
         values.add(EnigmaticLegacy.MODID + ":eye_of_nebula"); // 星云之眼
         values.add(EnigmaticLegacy.MODID + ":void_pearl"); // 虚空珍珠

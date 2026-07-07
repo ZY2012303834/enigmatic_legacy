@@ -1143,6 +1143,49 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 )
         )));
 
+        futures.add(save(output, "en_us", "entries/spellstones/etherium_core", entry(
+                "Etherium Core",
+                "spellstones",
+                "enigmatic_legacy:etherium_core",
+                36,
+
+                spotlightPage(
+                        "enigmatic_legacy:etherium_core",
+                        "Etherium Core",
+                        "A defensive spellstone condensed from Etherium armor technology.$(br2)It hides worn equipment, reinforces physical defenses, and turns damage taken into power for the next strike."
+                ),
+
+                textPage(
+                        "Active Power",
+                        "Activating the Etherium Core starts Etherium Shield for 20 seconds.$(br2)Cooldown: 40 seconds. While active, projectiles are reflected, incoming attacks are weakened, and attackers are knocked back."
+                ),
+
+                textPage(
+                        "Defenses",
+                        "While worn, it grants +12 Armor and +10 Armor Toughness.$(br2)It also increases Armor by 20%, Armor Toughness by 40%, and grants 50% Knockback Resistance."
+                ),
+
+                textPage(
+                        "Stored Retaliation",
+                        "When you take damage, the Etherium Core stores 40% of it and releases that stored force as extra damage on your next attack.$(br2)Stored damage has a cap to prevent unlimited buildup."
+                ),
+
+                textPage(
+                        "Etherium Protection",
+                        "While worn, it makes you immune to cramming, thorns, and explosion damage.$(br2)It also increases the Etherium armor shield health threshold by 50%."
+                ),
+
+                textPage(
+                        "Visibility",
+                        "The Etherium Core hides worn equipment by default.$(br2)Hold Shift and right-click the core to toggle equipment visibility."
+                ),
+
+                craftingPage(
+                        "enigmatic_legacy:etherium_core",
+                        "The crafting recipe for the Etherium Core."
+                )
+        )));
+
         futures.add(save(output, "en_us", "entries/spellstones/revival_leaf", entry(
                 "Revival Leaves",
                 "spellstones",

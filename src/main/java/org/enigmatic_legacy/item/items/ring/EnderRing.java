@@ -1,16 +1,10 @@
 package org.enigmatic_legacy.item.items.ring;
 
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.TooltipFlag;
-import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
-
-import java.util.List;
 
 /**
  * 末影之戒 / Ring of Ender。
@@ -33,14 +27,4 @@ public class EnderRing extends Item implements ICurioItem {
         return true;
     }
 
-    @Override
-    public void appendHoverText(@NotNull ItemStack stack,
-                                @NotNull TooltipContext context,
-                                @NotNull List<Component> tooltip,
-                                @NotNull TooltipFlag flag) {
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.ender_ring1")
-                .withStyle(ChatFormatting.DARK_PURPLE));
-        tooltip.add(Component.translatable("tooltip.enigmatic_legacy.ender_ring2")
-                .withStyle(ChatFormatting.LIGHT_PURPLE));
-    }
 }

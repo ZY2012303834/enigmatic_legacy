@@ -1,11 +1,13 @@
 package org.enigmatic_legacy.recipe;
 
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.crafting.CustomRecipe;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.Level;
 import org.enigmatic_legacy.item.ModItems;
@@ -44,6 +46,28 @@ public class DarkestScrollDuplicationRecipe extends CustomRecipe {
     @Override
     public @NotNull ItemStack getResultItem(@NotNull HolderLookup.Provider registries) {
         return new ItemStack(ModItems.DARKEST_SCROLL.get(), 2);
+    }
+
+    @Override
+    public @NotNull NonNullList<Ingredient> getIngredients() {
+        NonNullList<Ingredient> ingredients = NonNullList.create();
+
+        ingredients.add(Ingredient.of(Items.BLACK_DYE));
+        ingredients.add(Ingredient.of(Items.WITHER_ROSE));
+        ingredients.add(Ingredient.of(Items.BLACK_DYE));
+        ingredients.add(Ingredient.of(ModItems.THICC_SCROLL.get()));
+        ingredients.add(Ingredient.of(ModItems.DARKEST_SCROLL.get()));
+        ingredients.add(Ingredient.of(ModItems.THICC_SCROLL.get()));
+        ingredients.add(Ingredient.of(Items.BLACK_DYE));
+        ingredients.add(Ingredient.of(Items.WITHER_ROSE));
+        ingredients.add(Ingredient.of(Items.BLACK_DYE));
+
+        return ingredients;
+    }
+
+    @Override
+    public boolean isSpecial() {
+        return false;
     }
 
     @Override

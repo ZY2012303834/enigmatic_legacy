@@ -15,9 +15,11 @@ import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
+import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.network.HeartOfCreationGuardPayload;
 import org.enigmatic_legacy.sound.ModSounds;
+import org.enigmatic_legacy.util.EtheriumCoreHelper;
 
 /**
  * 以太套装护盾事件。
@@ -108,7 +110,13 @@ public final class EtheriumArmorEvents {
     }
 
     private static boolean isShieldActive(Player player) {
-        return player.getHealth() / player.getMaxHealth() <= SHIELD_HEALTH_THRESHOLD;
+        float threshold = SHIELD_HEALTH_THRESHOLD;
+
+        if (EtheriumCoreHelper.hasEtheriumCore(player)) {
+            threshold *= 1.0F + ConfigCommon.ETHERIUM_CORE_SHIELD_THRESHOLD_BONUS.get() / 100.0F;
+        }
+
+        return player.getHealth() / player.getMaxHealth() <= threshold;
     }
 
     private static void knockBackAttacker(Player player, LivingEntity attacker) {

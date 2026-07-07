@@ -765,10 +765,17 @@ public class InjectLootTableGenerator implements DataProvider {
     }
 
 
+    /**
+     * 生成冰系术石 loot table。
+     *
+     * <p>按本项目术石统一概率：
+     * 忘却冰晶权重 15，空结果权重 85。
+     * 即单个注入表触发时，有 15% 概率出现忘却冰晶。</p>
+     */
     private void addForgottenIceCrystalTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {
         futures.add(saveTable(
                 cachedOutput,
-                "forgotten_ice/igloo_chest",
+                "spellstones/ice",
                 1.0D,
                 1.0D,
                 itemEntry(ModItems.FORGOTTEN_ICE_CRYSTAL.get(), 15),

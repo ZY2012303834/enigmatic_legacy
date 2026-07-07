@@ -70,7 +70,8 @@ public class DislocationRing extends Item implements ICurioItem {
     public boolean canEquip(SlotContext context, ItemStack stack) {
         LivingEntity entity = context.entity();
 
-        return CuriosLookupApi.findFirstSlot(entity, MagnetRingHelper::isMagnetControlRing).isEmpty();
+        return CuriosLookupApi.isStackInSlot(entity, context, stack)
+                || CuriosLookupApi.findFirstSlot(entity, MagnetRingHelper::isMagnetControlRing).isEmpty();
     }
 
     /**
@@ -108,7 +109,7 @@ public class DislocationRing extends Item implements ICurioItem {
 
     /**
      * 搜索并直接拾取附近物品。
-     *
+     * <p>
      * 注意：
      * 转位之戒不是磁力吸附。
      * 它不会修改掉落物速度，而是直接触发玩家拾取逻辑。
@@ -130,7 +131,7 @@ public class DislocationRing extends Item implements ICurioItem {
         List<ItemEntity> items = player.level().getEntitiesOfClass(
                 ItemEntity.class,
                 area,
-                this::canTeleportItem
+                item -> this.canTeleportItem(player, item)
         );
 
         int collected = 0;
@@ -144,6 +145,7 @@ public class DislocationRing extends Item implements ICurioItem {
                 continue;
             }
 
+            MagnetRingHelper.reserveItemPickupForPlayer(player, item);
             item.setNoPickUpDelay();
             item.playerTouch(player);
 
@@ -154,7 +156,7 @@ public class DislocationRing extends Item implements ICurioItem {
     /**
      * 判断物品实体是否允许被转位之戒处理。
      */
-    private boolean canTeleportItem(@NotNull ItemEntity item) {
+    private boolean canTeleportItem(Player player, @NotNull ItemEntity item) {
         ItemStack stack = item.getItem();
 
         if (!item.isAlive()) {
@@ -162,6 +164,10 @@ public class DislocationRing extends Item implements ICurioItem {
         }
 
         if (stack.isEmpty()) {
+            return false;
+        }
+
+        if (!MagnetRingHelper.canMagnetAffectItem(player, item)) {
             return false;
         }
 

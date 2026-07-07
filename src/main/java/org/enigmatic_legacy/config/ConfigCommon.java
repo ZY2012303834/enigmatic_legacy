@@ -194,6 +194,21 @@ public final class ConfigCommon {
     public static final ModConfigSpec.IntValue FORGOTTEN_ICE_CRYSTAL_HARD_FROZEN_THRESHOLD;
     public static final ModConfigSpec.IntValue FORGOTTEN_ICE_CRYSTAL_MAX_STORED_FROZEN_TICKS;
 
+    // 以太核心
+    public static final EtheriumCoreConfig ETHERIUM_CORE;
+    public static final ModConfigSpec.IntValue ETHERIUM_CORE_COOLDOWN;
+    public static final ModConfigSpec.IntValue ETHERIUM_CORE_SHIELD_DURATION;
+    public static final ModConfigSpec.DoubleValue ETHERIUM_CORE_ARMOR_BONUS;
+    public static final ModConfigSpec.DoubleValue ETHERIUM_CORE_TOUGHNESS_BONUS;
+    public static final ModConfigSpec.IntValue ETHERIUM_CORE_ARMOR_MULTIPLIER;
+    public static final ModConfigSpec.IntValue ETHERIUM_CORE_TOUGHNESS_MULTIPLIER;
+    public static final ModConfigSpec.IntValue ETHERIUM_CORE_KNOCKBACK_RESISTANCE;
+    public static final ModConfigSpec.IntValue ETHERIUM_CORE_DAMAGE_CONVERSION;
+    public static final ModConfigSpec.DoubleValue ETHERIUM_CORE_MAX_STORED_DAMAGE;
+    public static final ModConfigSpec.IntValue ETHERIUM_CORE_SHIELD_DAMAGE_RESISTANCE;
+    public static final ModConfigSpec.DoubleValue ETHERIUM_CORE_SHIELD_KNOCKBACK_STRENGTH;
+    public static final ModConfigSpec.IntValue ETHERIUM_CORE_SHIELD_THRESHOLD_BONUS;
+
     // 复苏之叶
     public static final RevivalLeavesConfig REVIVAL_LEAVES;
     public static final ModConfigSpec.IntValue REVIVAL_LEAVES_COOLDOWN;
@@ -361,6 +376,21 @@ public final class ConfigCommon {
         FORGOTTEN_ICE_CRYSTAL_FALL_DAMAGE_VULNERABILITY = FORGOTTEN_ICE_CRYSTAL.fallDamageVulnerability;
         FORGOTTEN_ICE_CRYSTAL_HARD_FROZEN_THRESHOLD = FORGOTTEN_ICE_CRYSTAL.hardFrozenThreshold;
         FORGOTTEN_ICE_CRYSTAL_MAX_STORED_FROZEN_TICKS = FORGOTTEN_ICE_CRYSTAL.maxStoredFrozenTicks;
+
+        // 以太核心
+        ETHERIUM_CORE = new EtheriumCoreConfig(builder);
+        ETHERIUM_CORE_COOLDOWN = ETHERIUM_CORE.cooldown;
+        ETHERIUM_CORE_SHIELD_DURATION = ETHERIUM_CORE.shieldDuration;
+        ETHERIUM_CORE_ARMOR_BONUS = ETHERIUM_CORE.armorBonus;
+        ETHERIUM_CORE_TOUGHNESS_BONUS = ETHERIUM_CORE.toughnessBonus;
+        ETHERIUM_CORE_ARMOR_MULTIPLIER = ETHERIUM_CORE.armorMultiplier;
+        ETHERIUM_CORE_TOUGHNESS_MULTIPLIER = ETHERIUM_CORE.toughnessMultiplier;
+        ETHERIUM_CORE_KNOCKBACK_RESISTANCE = ETHERIUM_CORE.knockbackResistance;
+        ETHERIUM_CORE_DAMAGE_CONVERSION = ETHERIUM_CORE.damageConversion;
+        ETHERIUM_CORE_MAX_STORED_DAMAGE = ETHERIUM_CORE.maxStoredDamage;
+        ETHERIUM_CORE_SHIELD_DAMAGE_RESISTANCE = ETHERIUM_CORE.shieldDamageResistance;
+        ETHERIUM_CORE_SHIELD_KNOCKBACK_STRENGTH = ETHERIUM_CORE.shieldKnockbackStrength;
+        ETHERIUM_CORE_SHIELD_THRESHOLD_BONUS = ETHERIUM_CORE.shieldThresholdBonus;
 
         // 复苏之叶
         REVIVAL_LEAVES = new RevivalLeavesConfig(builder);

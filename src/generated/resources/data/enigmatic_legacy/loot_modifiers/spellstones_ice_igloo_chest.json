@@ -6,5 +6,5 @@
       "loot_table_id": "minecraft:chests/igloo_chest"
     }
   ],
-  "table": "enigmatic_legacy:inject/chests/forgotten_ice/igloo_chest"
+  "table": "enigmatic_legacy:inject/chests/spellstones/ice"
 }

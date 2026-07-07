@@ -88,8 +88,10 @@ public class MagnetRing extends Item implements ICurioItem {
     public boolean canEquip(SlotContext context, ItemStack stack) {
         LivingEntity entity = context.entity();
 
-        return CuriosLookupApi.findFirstSlot(entity, MagnetRingHelper::isMagnetControlRing).isEmpty();
+        return CuriosLookupApi.isStackInSlot(entity, context, stack)
+                || CuriosLookupApi.findFirstSlot(entity, MagnetRingHelper::isMagnetControlRing).isEmpty();
     }
+
     /**
      * Curios 每 tick 调用一次。
      * 这里不需要额外注册 NeoForge 事件；
@@ -149,7 +151,7 @@ public class MagnetRing extends Item implements ICurioItem {
         List<ItemEntity> items = player.level().getEntitiesOfClass(
                 ItemEntity.class,
                 area,
-                this::canPullItem
+                item -> this.canPullItem(player, item)
         );
 
         int pulled = 0;
@@ -173,7 +175,7 @@ public class MagnetRing extends Item implements ICurioItem {
     /**
      * 判断某个掉落物能不能被磁力之戒移动。
      */
-    private boolean canPullItem(@NotNull ItemEntity item) {
+    private boolean canPullItem(Player player, @NotNull ItemEntity item) {
         ItemStack stack = item.getItem();
 
         if (!item.isAlive()) {
@@ -181,6 +183,10 @@ public class MagnetRing extends Item implements ICurioItem {
         }
 
         if (stack.isEmpty()) {
+            return false;
+        }
+
+        if (!MagnetRingHelper.canMagnetAffectItem(player, item)) {
             return false;
         }
 
@@ -231,6 +237,7 @@ public class MagnetRing extends Item implements ICurioItem {
 
         // 距离太近时只清除拾取延迟，让原版拾取逻辑接手。
         if (distance < 0.05D) {
+            MagnetRingHelper.reserveItemPickupForPlayer(player, item);
             item.setNoPickUpDelay();
             return;
         }
@@ -241,6 +248,7 @@ public class MagnetRing extends Item implements ICurioItem {
         );
 
         item.setDeltaMovement(toPlayer.normalize().scale(speed));
+        MagnetRingHelper.reserveItemPickupForPlayer(player, item);
         item.setNoPickUpDelay();
 
         // 标记实体速度发生变化，帮助服务端同步。

@@ -585,11 +585,23 @@ public class GlobalLootModifierGenerator extends GlobalLootModifierProvider {
     }
 
 
+    /**
+     * 忘却冰晶获取方式。
+     *
+     * <p>按本项目术石战利品表风格处理：
+     * 注入目标只负责“出现在哪些箱子”，实际概率由 inject/chests/spellstones/ice 控制。</p>
+     */
     private void addForgottenIceCrystalModifiers() {
         addTableModifier(
-                "forgotten_ice_igloo_chest",
+                "spellstones_ice_igloo_chest",
                 BuiltInLootTables.IGLOO_CHEST,
-                "inject/chests/forgotten_ice/igloo_chest"
+                "inject/chests/spellstones/ice"
+        );
+
+        addTableModifier(
+                "spellstones_ice_ancient_city_ice_box",
+                BuiltInLootTables.ANCIENT_CITY_ICE_BOX,
+                "inject/chests/spellstones/ice"
         );
     }
 

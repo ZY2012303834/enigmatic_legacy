@@ -5,6 +5,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
@@ -13,6 +14,7 @@ import org.enigmatic_legacy.api.CuriosLookupApi;
 import org.enigmatic_legacy.item.items.ring.MagnetRing;
 
 import java.util.Optional;
+import java.util.UUID;
 
 /**
  * 磁力之戒工具类。
@@ -23,6 +25,9 @@ public final class MagnetRingHelper {
     public static final String TOGGLE_COMMAND = "enigmatic_legacy_toggle_magnet_ring";
 
     private static final String ENABLED_TAG = "MagnetEnabled";
+    private static final String TEMP_PICKUP_TARGET_TAG = "EnigmaticLegacyMagnetPickupTarget";
+    private static final String TEMP_PICKUP_TARGET_EXPIRES_TAG = "EnigmaticLegacyMagnetPickupTargetExpires";
+    private static final long TEMP_PICKUP_TARGET_DURATION_TICKS = 20L;
 
     private MagnetRingHelper() {
     }
@@ -96,6 +101,71 @@ public final class MagnetRingHelper {
         boolean next = !isMagnetEnabled(stack);
         setMagnetEnabled(stack, next);
         return next;
+    }
+
+    /**
+     * 判断当前玩家是否可以用磁力类戒指处理这个掉落物。
+     * 有拾取归属的物品只允许归属玩家吸取，避免多人场景中抢走别人刚丢出的物品。
+     * 仍有原版拾取延迟的物品不处理，避免玩家刚丢出的物品被立刻吸回背包。
+     */
+    public static boolean canMagnetAffectItem(Player player, ItemEntity item) {
+        if (item.hasPickUpDelay()) {
+            return false;
+        }
+
+        UUID target = item.getTarget();
+        return target == null || target.equals(player.getUUID());
+    }
+
+    /**
+     * 将公共掉落物临时锁给触发磁力效果的玩家。
+     * 磁力之戒会清除拾取延迟；如果不设置临时拾取目标，物品被拉过其他玩家身边时也会被捡走。
+     */
+    public static void reserveItemPickupForPlayer(Player player, ItemEntity item) {
+        UUID playerId = player.getUUID();
+        UUID target = item.getTarget();
+
+        if (target != null && !target.equals(playerId)) {
+            return;
+        }
+
+        CompoundTag tag = item.getPersistentData();
+
+        if (target == null || isTemporaryMagnetTarget(tag, playerId)) {
+            item.setTarget(playerId);
+            tag.putUUID(TEMP_PICKUP_TARGET_TAG, playerId);
+            tag.putLong(TEMP_PICKUP_TARGET_EXPIRES_TAG, item.level().getGameTime() + TEMP_PICKUP_TARGET_DURATION_TICKS);
+        }
+    }
+
+    /**
+     * 清理磁力效果写入的临时拾取目标，防止公共掉落物被永久绑定给某个玩家。
+     */
+    public static void clearExpiredMagnetPickupReservation(ItemEntity item) {
+        CompoundTag tag = item.getPersistentData();
+
+        if (!tag.hasUUID(TEMP_PICKUP_TARGET_TAG)) {
+            return;
+        }
+
+        long expiresAt = tag.getLong(TEMP_PICKUP_TARGET_EXPIRES_TAG);
+
+        if (item.level().getGameTime() < expiresAt) {
+            return;
+        }
+
+        UUID target = tag.getUUID(TEMP_PICKUP_TARGET_TAG);
+
+        if (target.equals(item.getTarget())) {
+            item.setTarget(null);
+        }
+
+        tag.remove(TEMP_PICKUP_TARGET_TAG);
+        tag.remove(TEMP_PICKUP_TARGET_EXPIRES_TAG);
+    }
+
+    private static boolean isTemporaryMagnetTarget(CompoundTag tag, UUID playerId) {
+        return tag.hasUUID(TEMP_PICKUP_TARGET_TAG) && tag.getUUID(TEMP_PICKUP_TARGET_TAG).equals(playerId);
     }
 
     /**

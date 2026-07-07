@@ -105,8 +105,6 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.astral_fruit.3", "星辰以禁忌的生命力回应你。");
 
         addItem(ModItems.ENDER_RING, "末影之戒");
-        add("tooltip.enigmatic_legacy.ender_ring1", "装备时可访问你的末影箱。");
-        add("tooltip.enigmatic_legacy.ender_ring2", "按下绑定按键，或使用背包界面按钮。");
         add("key.categories.enigmatic_legacy", "神秘遗物");
         add("key.enigmatic_legacy.ender_ring", "打开末影箱");
         add("button.enigmatic_legacy.open_ender_chest", "打开末影箱");
@@ -1015,6 +1013,21 @@ public class ChineseLanguageGenerator extends LanguageProvider {
                 "长时间保持完全冻结的生物会陷入硬冻结，几乎无法移动。");
         add("tooltip.enigmatic_legacy.forgotten_ice_crystal.passive.6",
                 "极寒会让火焰与摔落伤害变得更加危险。");
+        // end
+
+        // 以太核心
+        addItem(ModItems.ETHERIUM_CORE, "以太核心");
+        add("message.enigmatic_legacy.etherium_core.armor_hidden", "以太核心护甲显示：隐藏。");
+        add("message.enigmatic_legacy.etherium_core.armor_visible", "以太核心护甲显示：显示。");
+        add("tooltip.enigmatic_legacy.etherium_core.active.1", "启动 %s 秒以太护盾。");
+        add("tooltip.enigmatic_legacy.etherium_core.passive.1", "提供 %s 护甲值与 %s 盔甲韧性。");
+        add("tooltip.enigmatic_legacy.etherium_core.passive.2", "额外提高 %s 护甲值与 %s 盔甲韧性。");
+        add("tooltip.enigmatic_legacy.etherium_core.passive.3", "提供 %s 击退抗性。");
+        add("tooltip.enigmatic_legacy.etherium_core.passive.4", "将受到伤害的 %s 转化为下一次攻击的额外伤害。");
+        add("tooltip.enigmatic_legacy.etherium_core.passive.5", "最多储存 %s 点反击伤害。");
+        add("tooltip.enigmatic_legacy.etherium_core.passive.6", "免疫挤压、荆棘与爆炸伤害。");
+        add("tooltip.enigmatic_legacy.etherium_core.passive.7", "提高 %s 以太护盾触发阈值。");
+        add("tooltip.enigmatic_legacy.etherium_core.passive.8", "默认隐藏装备，Shift + 右键可切换装备可见性。");
         // end
 
         // 复苏之叶

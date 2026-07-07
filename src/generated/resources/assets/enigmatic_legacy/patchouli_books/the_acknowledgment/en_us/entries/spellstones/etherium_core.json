@@ -1,0 +1,48 @@
+{
+  "category": "enigmatic_legacy:spellstones",
+  "icon": "enigmatic_legacy:etherium_core",
+  "name": "Etherium Core",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:etherium_core",
+      "link_recipe": true,
+      "text": "A defensive spellstone condensed from Etherium armor technology.$(br2)It hides worn equipment, reinforces physical defenses, and turns damage taken into power for the next strike.",
+      "title": "Etherium Core"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Activating the Etherium Core starts Etherium Shield for 20 seconds.$(br2)Cooldown: 40 seconds. While active, projectiles are reflected, incoming attacks are weakened, and attackers are knocked back.",
+      "title": "Active Power"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "While worn, it grants +12 Armor and +10 Armor Toughness.$(br2)It also increases Armor by 20%, Armor Toughness by 40%, and grants 50% Knockback Resistance.",
+      "title": "Defenses"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "When you take damage, the Etherium Core stores 40% of it and releases that stored force as extra damage on your next attack.$(br2)Stored damage has a cap to prevent unlimited buildup.",
+      "title": "Stored Retaliation"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "While worn, it makes you immune to cramming, thorns, and explosion damage.$(br2)It also increases the Etherium armor shield health threshold by 50%.",
+      "title": "Etherium Protection"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The Etherium Core hides worn equipment by default.$(br2)Hold Shift and right-click the core to toggle equipment visibility.",
+      "title": "Visibility"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:etherium_core",
+      "text": "The crafting recipe for the Etherium Core.",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 36
+}

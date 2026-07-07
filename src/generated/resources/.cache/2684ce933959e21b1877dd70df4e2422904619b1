@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-06T16:32:01.2197301	vanilla/Recipes
+// 1.21.1	2026-07-08T06:03:02.4736754	vanilla/Recipes
 138cca5fc2d36a468976c88c266618e68aa51d88 data/enigmatic_legacy/advancement/recipes/building_blocks/astral_dust_sack.json
 75128c3d277fd90fca1df4cc9f996933af7f7241 data/enigmatic_legacy/advancement/recipes/building_blocks/etherium_block.json
 70a559dbe3db33a763c165b60a23730d9e9f955b data/enigmatic_legacy/advancement/recipes/combat/axe_of_executioner.json
@@ -31,6 +31,7 @@ b6f9d7cdd926410d205a53b63f580af88e26d3ed data/enigmatic_legacy/advancement/recip
 fc3526652407b200798a6967f8f2bc68f688bb86 data/enigmatic_legacy/advancement/recipes/misc/ender_ring.json
 5bfd2c1c2844d378811f31a88242dcc7a374a6f3 data/enigmatic_legacy/advancement/recipes/misc/ender_rod.json
 24c3d8ea697dfe04025193385be65d07fe3dc919 data/enigmatic_legacy/advancement/recipes/misc/etherium_block_uncrafting.json
+685f82a4e8e513410e496ae69c71bef01988e5e6 data/enigmatic_legacy/advancement/recipes/misc/etherium_core.json
 d7c3233c5491f5a2a19d12075ed845178837bc83 data/enigmatic_legacy/advancement/recipes/misc/evil_ingot.json
 eab20bff7cc5b751515a84c801e7e858703f6c08 data/enigmatic_legacy/advancement/recipes/misc/fabulous_scroll.json
 c42014eeb94e52f8cd0ec999471820c210701d1b data/enigmatic_legacy/advancement/recipes/misc/golden_ring.json
@@ -81,6 +82,7 @@ a3b72831dbddf7781e03cb59142517b6b6c68533 data/enigmatic_legacy/recipe/ender_ring
 8f8a0b2bf4d6a776633bcc11239db349b6d8def5 data/enigmatic_legacy/recipe/etherium_block_uncrafting.json
 32d7932a95fb592d1994d789d41103218425f5d3 data/enigmatic_legacy/recipe/etherium_boots.json
 351f82dd8a50293cc6b672be79f15578cc07d8cf data/enigmatic_legacy/recipe/etherium_chestplate.json
+fa4fd31147406967136a21b01a5ecf03afc7502f data/enigmatic_legacy/recipe/etherium_core.json
 b8df9708268aa6259a60b3c9760f1df773617054 data/enigmatic_legacy/recipe/etherium_helmet.json
 08bc1348c1a0b17e595275692f2f3e44bb397475 data/enigmatic_legacy/recipe/etherium_leggings.json
 92bbccb13133d1a383cf9773e92cd7ffb335230a data/enigmatic_legacy/recipe/etherium_pickaxe.json

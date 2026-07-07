@@ -4,9 +4,11 @@ import com.mojang.brigadier.Command;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import org.enigmatic_legacy.util.MagnetRingHelper;
 
 import java.util.Optional;
@@ -19,6 +21,19 @@ import java.util.Optional;
  */
 public final class MagnetRingEvents {
     private MagnetRingEvents() {
+    }
+
+    /**
+     * 磁力戒指会临时指定掉落物拾取目标，避免被其他玩家蹭到。
+     * 这里负责过期清理，防止公共掉落物永久绑定给某个玩家。
+     */
+    @SubscribeEvent
+    public static void onEntityTick(EntityTickEvent.Post event) {
+        if (!(event.getEntity() instanceof ItemEntity item) || item.level().isClientSide) {
+            return;
+        }
+
+        MagnetRingHelper.clearExpiredMagnetPickupReservation(item);
     }
 
     /**

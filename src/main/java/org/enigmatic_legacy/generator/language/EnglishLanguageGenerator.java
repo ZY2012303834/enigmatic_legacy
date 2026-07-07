@@ -105,8 +105,6 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.astral_fruit.3", "The stars answer with a promise of forbidden vitality.");
 
         addItem(ModItems.ENDER_RING, "Ring of Ender");
-        add("tooltip.enigmatic_legacy.ender_ring1", "Allows access to your Ender Chest while equipped.");
-        add("tooltip.enigmatic_legacy.ender_ring2", "Press the keybind or use the inventory button.");
         add("key.categories.enigmatic_legacy", "Enigmatic Legacy");
         add("key.enigmatic_legacy.ender_ring", "Open Ender Chest");
         add("button.enigmatic_legacy.open_ender_chest", "Open Ender Chest");
@@ -452,6 +450,21 @@ public class EnglishLanguageGenerator extends LanguageProvider {
                 "Creatures kept fully frozen for long enough become hard frozen and can barely move.");
         add("tooltip.enigmatic_legacy.forgotten_ice_crystal.passive.6",
                 "Its cold makes fire and fall damage far more dangerous.");
+        // end
+
+        // Etherium Core
+        addItem(ModItems.ETHERIUM_CORE, "Etherium Core");
+        add("message.enigmatic_legacy.etherium_core.armor_hidden", "Etherium Core armor visibility: hidden.");
+        add("message.enigmatic_legacy.etherium_core.armor_visible", "Etherium Core armor visibility: visible.");
+        add("tooltip.enigmatic_legacy.etherium_core.active.1", "Activates Etherium Shield for %s seconds.");
+        add("tooltip.enigmatic_legacy.etherium_core.passive.1", "Provides %s Armor and %s Armor Toughness.");
+        add("tooltip.enigmatic_legacy.etherium_core.passive.2", "Further increases Armor by %s and Armor Toughness by %s.");
+        add("tooltip.enigmatic_legacy.etherium_core.passive.3", "Provides %s Knockback Resistance.");
+        add("tooltip.enigmatic_legacy.etherium_core.passive.4", "Converts %s of damage taken into extra damage for your next attack.");
+        add("tooltip.enigmatic_legacy.etherium_core.passive.5", "Stores up to %s retaliation damage.");
+        add("tooltip.enigmatic_legacy.etherium_core.passive.6", "Immune to cramming, thorns, and explosion damage.");
+        add("tooltip.enigmatic_legacy.etherium_core.passive.7", "Increases the Etherium Shield threshold by %s.");
+        add("tooltip.enigmatic_legacy.etherium_core.passive.8", "Equipment is hidden by default. Shift + right-click to toggle visibility.");
         // end
 
         // 复苏之叶

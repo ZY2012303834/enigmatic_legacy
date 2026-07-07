@@ -113,6 +113,7 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(OceanStoneEvents.class);
         NeoForge.EVENT_BUS.register(BlazingCoreEvents.class);
         NeoForge.EVENT_BUS.register(ForgottenIceCrystalEvents.class);
+        NeoForge.EVENT_BUS.register(EtheriumCoreEvents.class);
         NeoForge.EVENT_BUS.register(RevivalLeavesEvents.class);
         NeoForge.EVENT_BUS.register(EyeOfNebulaEvents.class);
         NeoForge.EVENT_BUS.register(PearlOfTheVoidEvents.class);

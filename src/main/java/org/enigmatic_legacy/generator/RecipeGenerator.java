@@ -619,6 +619,33 @@ public class RecipeGenerator extends RecipeProvider {
                 .save(output);
 
 
+        // 以太核心 / Etherium Core
+        // 复刻 Enigmatic Addons 配方：
+        // EHE
+        // CXL
+        // EBE
+        //
+        // E = 末影棒
+        // H = 以太头盔
+        // C = 以太胸甲
+        // L = 以太护腿
+        // B = 以太靴子
+        // X = 魔像之心
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ETHERIUM_CORE.get())
+                .pattern("EHE")
+                .pattern("CXL")
+                .pattern("EBE")
+                .define('E', ModItems.ENDER_ROD.get())
+                .define('H', ModItems.ETHERIUM_HELMET.get())
+                .define('C', ModItems.ETHERIUM_CHESTPLATE.get())
+                .define('L', ModItems.ETHERIUM_LEGGINGS.get())
+                .define('B', ModItems.ETHERIUM_BOOTS.get())
+                .define('X', ModItems.GOLEM_HEART.get())
+                .unlockedBy("has_golem_heart", has(ModItems.GOLEM_HEART.get()))
+                .unlockedBy("has_etherium_armor", has(ModItems.ETHERIUM_CHESTPLATE.get()))
+                .save(output);
+
+
         // 行刑者之斧 / Axe of Executioner
         // 说明：
         // - 这个配方对齐原作者 forbidden_axe 的合成逻辑。

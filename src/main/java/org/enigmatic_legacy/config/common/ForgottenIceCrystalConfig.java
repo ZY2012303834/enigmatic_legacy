@@ -31,7 +31,7 @@ public class ForgottenIceCrystalConfig {
 
         activeRadius = builder
                 .comment("忘却冰晶主动能力影响半径。范围内生物会受到冻结伤害并增加冻结时间。")
-                .defineInRange("activeRadius", 5.0D, 0.0D, 128.0D);
+                .defineInRange("activeRadius", 10.0D, 0.0D, 128.0D);
 
         activeFreezeTicks = builder
                 .comment("主动能力对可冻结目标追加的冻结时间，单位为刻。")

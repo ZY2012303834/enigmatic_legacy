@@ -116,6 +116,8 @@ public final class ModeTabs {
                                 output.accept(ModItems.ANGEL_BLESSING.get());           // 天使之祝
                                 output.accept(ModItems.OCEAN_STONE.get());              // 海洋意志
                                 output.accept(ModItems.BLAZING_CORE.get());             // 烈焰核心
+                                output.accept(ModItems.FORGOTTEN_ICE_CRYSTAL.get());    // 忘却冰晶
+                                output.accept(ModItems.ETHERIUM_CORE.get());            // 以太核心
                                 output.accept(ModItems.REVIVAL_LEAVES.get());           // 复苏之叶
                                 output.accept(ModItems.EYE_OF_NEBULA.get());            // 星云之眼
                                 output.accept(ModItems.VOID_PEARL.get());               // 虚空珍珠

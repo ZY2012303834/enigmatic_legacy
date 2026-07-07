@@ -1,8 +1,8 @@
-// 1.21.1	2026-07-08T05:08:31.3284664	Curios 数据生成器
+// 1.21.1	2026-07-08T06:03:02.4662266	Curios 数据生成器
 283bb0865f4a12920dff2f2e66358e0b4c924c02 data/curios/tags/item/charm.json
 98dce52639e497e12385735ed0a4d616806f7f04 data/curios/tags/item/ring.json
 d3f7fa03b17ec082e9f4331d5d0ba8ff13000d4c data/curios/tags/item/scroll.json
-0226ecd9d65233fe16cc81508075a62958dcab21 data/curios/tags/item/spellstone.json
+1e3f8bd0a125570f038e0e72389ebc2acc786d0b data/curios/tags/item/spellstone.json
 ee2154ae798df7c3a7e7723037a602687671ddaa data/enigmatic_legacy/curios/entities/player.json
 dacd3b8cf7a2bace968af08d69a3bc58c57dba13 data/enigmatic_legacy/curios/entities/touhou_little_maid_maid.json
 93d1aac81e88a4bb97ea8fb966b34b205a347526 data/enigmatic_legacy/curios/slots/charm.json

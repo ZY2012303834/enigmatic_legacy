@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-08T05:08:31.3240931	vanilla/Item Models: enigmatic_legacy
+// 1.21.1	2026-07-08T06:03:02.4626336	vanilla/Item Models: enigmatic_legacy
 aaf9eff73642636d85d6ecd1627b8303f5153a76 assets/enigmatic_legacy/models/item/abyssal_heart.json
 79e416a4d6e90035107f541617b7d4a2d2d7abbb assets/enigmatic_legacy/models/item/angel_blessing.json
 68297c97e7030e0520fb869529bc94ce254c3292 assets/enigmatic_legacy/models/item/antique_book_bag.json
@@ -45,6 +45,7 @@ ceb5e49f22170948b7cdd6a842e3efc27a78dc8f assets/enigmatic_legacy/models/item/eni
 9bbd972f74bce73974729163b518fc854297bcf6 assets/enigmatic_legacy/models/item/etherium_axe.json
 327c7b9453b8b7b29a381f719b98f7e9677d9949 assets/enigmatic_legacy/models/item/etherium_boots.json
 d82ef987d6eff6590bad5f2e71bd8ea75e0366da assets/enigmatic_legacy/models/item/etherium_chestplate.json
+90696b93d212bcaa21439744de1e1f0447575ceb assets/enigmatic_legacy/models/item/etherium_core.json
 2516b9a3ad35d5974245889626be61bbe32fb10c assets/enigmatic_legacy/models/item/etherium_helmet.json
 25fd4c3fc52e68aad5da239a21e0a082169e9549 assets/enigmatic_legacy/models/item/etherium_ingot.json
 37f224c0d25581057c34e600fddbc709a5db3586 assets/enigmatic_legacy/models/item/etherium_leggings.json

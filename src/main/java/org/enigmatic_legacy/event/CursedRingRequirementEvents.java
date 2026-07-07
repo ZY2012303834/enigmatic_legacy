@@ -38,6 +38,11 @@ public final class CursedRingRequirementEvents {
             return;
         }
 
+        if (CursedRingApi.isInLoadGrace(player)) {
+            MISSING_CURSE_TICKS.remove(player.getUUID());
+            return;
+        }
+
         MISSING_CURSE_TICKS.remove(player.getUUID());
         CursedRingApi.ejectRestrictedCurios(player);
     }
@@ -55,6 +60,11 @@ public final class CursedRingRequirementEvents {
         }
 
         UUID playerId = player.getUUID();
+
+        if (CursedRingApi.isInLoadGrace(player)) {
+            MISSING_CURSE_TICKS.remove(playerId);
+            return;
+        }
 
         if (CursedRingApi.hasCursedRing(player) || !CursedRingApi.hasRestrictedCurio(player)) {
             MISSING_CURSE_TICKS.remove(playerId);

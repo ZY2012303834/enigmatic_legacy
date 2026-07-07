@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_etherium_armor": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:etherium_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_golem_heart": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:golem_heart"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "enigmatic_legacy:etherium_core"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_golem_heart",
+      "has_etherium_armor"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "enigmatic_legacy:etherium_core"
+    ]
+  }
+}

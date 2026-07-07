@@ -1144,6 +1144,49 @@ final class ChinesePatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 )
         )));
 
+        futures.add(save(output, "zh_cn", "entries/spellstones/etherium_core", entry(
+                "以太核心",
+                "spellstones",
+                "enigmatic_legacy:etherium_core",
+                36,
+
+                spotlightPage(
+                        "enigmatic_legacy:etherium_core",
+                        "以太核心",
+                        "以太核心是以太护甲技术凝结成的防御型术石。$(br2)它会隐藏穿戴装备，强化防护属性，并把承受的伤害转化为下一次攻击的蓄势。"
+                ),
+
+                textPage(
+                        "主动能力",
+                        "主动使用以太核心会启动 20 秒以太护盾。$(br2)冷却时间为 40 秒。护盾激活期间，弹射物会被反射，来袭攻击会被削弱，攻击者也会被击退。"
+                ),
+
+                textPage(
+                        "防护属性",
+                        "佩戴时提供 +12 护甲值与 +10 盔甲韧性。$(br2)同时额外提高 20% 护甲值、40% 盔甲韧性，并提供 50% 击退抗性。"
+                ),
+
+                textPage(
+                        "蓄势反击",
+                        "受到伤害时，以太核心会将其中 40% 储存起来，并在你的下一次攻击中释放为额外伤害。$(br2)储存伤害有上限，避免无限累积。"
+                ),
+
+                textPage(
+                        "以太防护",
+                        "佩戴以太核心时，你免疫挤压、荆棘与爆炸伤害。$(br2)它还会将以太套装护盾的生命触发阈值提高 50%。"
+                ),
+
+                textPage(
+                        "装备可见性",
+                        "以太核心默认会使装备不可见。$(br2)按住 Shift 右键以太核心，可以在隐藏装备与显示装备之间切换。"
+                ),
+
+                craftingPage(
+                        "enigmatic_legacy:etherium_core",
+                        "以太核心的合成配方。"
+                )
+        )));
+
         futures.add(save(output, "zh_cn", "entries/spellstones/revival_leaf", entry(
                 "复苏之叶",
                 "spellstones",

@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-08T05:08:31.3305115	vanilla/Enigmatic Legacy Patchouli Books: en_us
+// 1.21.1	2026-07-08T06:34:19.7737007	vanilla/Enigmatic Legacy Patchouli Books: en_us
 9dd5e7973ba905f424bfe6f5c9adfcbc37f5c317 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/categories/equipment.json
 d6b58f139e8f10e617f46435a2f7c38ab110f182 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/categories/materials.json
 1516486cac3e0447a643d6f865e0c7501b206391 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/categories/relics.json
@@ -77,6 +77,7 @@ f8119b630da875a7d0ff2d530988dc8af3967656 assets/enigmatic_legacy/patchouli_books
 c77b41c627bbd3cd32254aee410be638319c3164 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/entries/scrolls/xp_scroll.json
 c6a6f05557104452aeda4133f025a424302ba272 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/entries/spellstones/angel_blessing.json
 26e11ec96386fa3c1975e886eaad8cb1823c4f40 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/entries/spellstones/blazing_core.json
+05d30217c2e26e5eb5c50e753ef0b4f16f2d16a5 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/entries/spellstones/etherium_core.json
 44968875326ed92ab262c02154d22b117cf7b49e assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/entries/spellstones/eye_of_nebula.json
 0b5b6858ec532dd6886d181e8c0352e114e2f5ce assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/entries/spellstones/forgotten_ice.json
 eb1b27fe21cabbdfe3cf4ae0e19d371d3ed2c2dc assets/enigmatic_legacy/patchouli_books/the_acknowledgment/en_us/entries/spellstones/golem_heart.json
