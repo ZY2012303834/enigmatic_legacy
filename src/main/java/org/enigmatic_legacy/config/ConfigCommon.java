@@ -178,6 +178,19 @@ public final class ConfigCommon {
     public static final ModConfigSpec.IntValue BLAZING_CORE_MOLTEN_EFFECT_DURATION_MODIFIER;
     public static final ModConfigSpec.DoubleValue BLAZING_CORE_AQUATIC_DAMAGE_VULNERABILITY;
 
+    // 复苏之叶
+    public static final RevivalLeavesConfig REVIVAL_LEAVES;
+    public static final ModConfigSpec.IntValue REVIVAL_LEAVES_COOLDOWN;
+    public static final ModConfigSpec.IntValue REVIVAL_LEAVES_NATURAL_REGENERATION_TICK;
+    public static final ModConfigSpec.DoubleValue REVIVAL_LEAVES_ABILITY_RADIUS;
+    public static final ModConfigSpec.IntValue REVIVAL_LEAVES_POISON_TIME;
+    public static final ModConfigSpec.IntValue REVIVAL_LEAVES_POISON_LEVEL;
+    public static final ModConfigSpec.IntValue REVIVAL_LEAVES_REGENERATION_TIME;
+    public static final ModConfigSpec.IntValue REVIVAL_LEAVES_REGENERATION_LEVEL;
+    public static final ModConfigSpec.IntValue REVIVAL_LEAVES_EFFECT_DURATION_MODIFIER;
+    public static final ModConfigSpec.DoubleValue REVIVAL_LEAVES_FIRE_DAMAGE_VULNERABILITY;
+    public static final ModConfigSpec.DoubleValue REVIVAL_LEAVES_PROJECTILE_DAMAGE_VULNERABILITY;
+
     // 创造之心
     public static final HeartOfCreationConfig HEART_OF_CREATION;
     public static final ModConfigSpec.IntValue HEART_OF_CREATION_COOLDOWN;
@@ -316,6 +329,19 @@ public final class ConfigCommon {
         BLAZING_CORE_EFFECT_DURATION_MODIFIER = BLAZING_CORE.effectDurationModifier;
         BLAZING_CORE_MOLTEN_EFFECT_DURATION_MODIFIER = BLAZING_CORE.moltenEffectDurationModifier;
         BLAZING_CORE_AQUATIC_DAMAGE_VULNERABILITY = BLAZING_CORE.aquaticDamageVulnerability;
+
+        // 复苏之叶
+        REVIVAL_LEAVES = new RevivalLeavesConfig(builder);
+        REVIVAL_LEAVES_COOLDOWN = REVIVAL_LEAVES.cooldown;
+        REVIVAL_LEAVES_NATURAL_REGENERATION_TICK = REVIVAL_LEAVES.naturalRegenerationTick;
+        REVIVAL_LEAVES_ABILITY_RADIUS = REVIVAL_LEAVES.abilityRadius;
+        REVIVAL_LEAVES_POISON_TIME = REVIVAL_LEAVES.poisonTime;
+        REVIVAL_LEAVES_POISON_LEVEL = REVIVAL_LEAVES.poisonLevel;
+        REVIVAL_LEAVES_REGENERATION_TIME = REVIVAL_LEAVES.regenerationTime;
+        REVIVAL_LEAVES_REGENERATION_LEVEL = REVIVAL_LEAVES.regenerationLevel;
+        REVIVAL_LEAVES_EFFECT_DURATION_MODIFIER = REVIVAL_LEAVES.effectDurationModifier;
+        REVIVAL_LEAVES_FIRE_DAMAGE_VULNERABILITY = REVIVAL_LEAVES.fireDamageVulnerability;
+        REVIVAL_LEAVES_PROJECTILE_DAMAGE_VULNERABILITY = REVIVAL_LEAVES.projectileDamageVulnerability;
 
         // 创造之心
         HEART_OF_CREATION = new HeartOfCreationConfig(builder);

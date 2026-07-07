@@ -19,6 +19,7 @@
     "enigmatic_legacy:spellstones_water_shipwreck_treasure",
     "enigmatic_legacy:spellstones_water_buried_treasure",
     "enigmatic_legacy:spellstones_ender_end_city_treasure",
+    "enigmatic_legacy:revival_leaf_jungle_temple",
     "enigmatic_legacy:darkest_scroll_ancient_city",
     "enigmatic_legacy:darkest_scroll_ancient_city_ice_box",
     "enigmatic_legacy:unholy_grail_simple_dungeon",
@@ -88,7 +89,19 @@
     "enigmatic_legacy:antique_book_bag_jungle_temple",
     "enigmatic_legacy:antique_book_bag_igloo_chest",
     "enigmatic_legacy:antique_book_bag_woodland_mansion",
-    "enigmatic_legacy:antique_book_bag_shipwreck_supply"
+    "enigmatic_legacy:antique_book_bag_shipwreck_supply",
+    "enigmatic_legacy:dungeons_arise_angel_blessing_chests_heavenly_challenger_heavenly_challenger_treasure",
+    "enigmatic_legacy:dungeons_arise_angel_blessing_chests_heavenly_rider_heavenly_rider_treasure",
+    "enigmatic_legacy:dungeons_arise_angel_blessing_chests_heavenly_conqueror_heavenly_conqueror_treasure",
+    "enigmatic_legacy:dungeons_arise_foundry_normal_chests_foundry_foundry_normal_0",
+    "enigmatic_legacy:dungeons_arise_foundry_normal_chests_foundry_foundry_normal_1",
+    "enigmatic_legacy:dungeons_arise_foundry_normal_chests_foundry_foundry_passage_normal_0",
+    "enigmatic_legacy:dungeons_arise_foundry_normal_chests_foundry_foundry_passage_normal_1",
+    "enigmatic_legacy:dungeons_arise_foundry_treasure_chests_foundry_foundry_treasure_0",
+    "enigmatic_legacy:dungeons_arise_foundry_treasure_chests_foundry_foundry_treasure_1",
+    "enigmatic_legacy:dungeons_arise_foundry_treasure_chests_foundry_foundry_treasure_2",
+    "enigmatic_legacy:dungeons_arise_foundry_treasure_chests_foundry_foundry_treasure_3",
+    "enigmatic_legacy:dungeons_arise_foundry_treasure_chests_foundry_foundry_treasure_4"
   ],
   "replace": false
 }

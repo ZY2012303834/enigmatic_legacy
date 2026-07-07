@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_table",
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "dungeons_arise:chests/heavenly_rider/heavenly_rider_treasure"
+    }
+  ],
+  "table": "enigmatic_legacy:inject/chests/angel_blessing/heavenly_challenger"
+}

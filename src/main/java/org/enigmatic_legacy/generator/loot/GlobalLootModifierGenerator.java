@@ -13,7 +13,9 @@ import net.neoforged.neoforge.common.loot.AddTableLootModifier;
 import net.neoforged.neoforge.common.loot.LootTableIdCondition;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import org.enigmatic_legacy.EnigmaticLegacy;
+import org.enigmatic_legacy.compat.DungeonsAriseCompat;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 /**
@@ -36,6 +38,7 @@ public class GlobalLootModifierGenerator extends GlobalLootModifierProvider {
     @Override
     protected void start() {
         addSpellstoneModifiers();
+        addRevivalLeavesModifiers();
         addDarkestScrollModifiers();
         addUnholyGrailModifiers();
         addForbiddenFruitModifiers();
@@ -56,7 +59,75 @@ public class GlobalLootModifierGenerator extends GlobalLootModifierProvider {
         addEarthHeartFragmentModifiers();
 
         addAntiqueBookBagModifiers();
+        addDungeonsAriseModifiers();
 
+    }
+
+    /**
+     * 地牢浮现之时兼容战利品注入。
+     *
+     * <p>天际挑战者、天际骑士团战舰、天堂征服者都属于天空/天堂主题结构。
+     * 这里全部注入同一张“天使之祝”附加表，但只注入 treasure 战利品箱。</p>
+     */
+    private void addDungeonsAriseModifiers() {
+        addDungeonsAriseHeavenlyModifiers();
+        addDungeonsAriseFoundryModifiers();
+    }
+
+    private void addDungeonsAriseHeavenlyModifiers() {
+        for (ResourceLocation table : DungeonsAriseCompat.HEAVENLY_ANGEL_BLESSING_CHEST_TABLES) {
+            addTableModifier(
+                    "dungeons_arise_angel_blessing_" + table.getPath().replace('/', '_'),
+                    table,
+                    DungeonsAriseCompat.HEAVENLY_CHALLENGER_ANGEL_BLESSING_INJECT
+            );
+        }
+    }
+
+    /**
+     * 铸造厂 / Foundry 兼容战利品注入。
+     *
+     * <p>普通箱只处理 foundry_normal 与 foundry_passage_normal；
+     * 宝藏箱只处理 foundry_treasure。chains、lava_pit、passage_exterior 等特殊箱池不注入，
+     * 避免把稀有物品扩散到非目标箱子。</p>
+     */
+    private void addDungeonsAriseFoundryModifiers() {
+        addDungeonsAriseModifiers(
+                "foundry_normal",
+                DungeonsAriseCompat.FOUNDRY_NORMAL_CHEST_TABLES,
+                DungeonsAriseCompat.FOUNDRY_NORMAL_INJECTS
+        );
+
+        addDungeonsAriseModifiers(
+                "foundry_treasure",
+                DungeonsAriseCompat.FOUNDRY_TREASURE_CHEST_TABLES,
+                DungeonsAriseCompat.FOUNDRY_TREASURE_INJECTS
+        );
+    }
+
+    private void addDungeonsAriseModifiers(String groupName, List<ResourceLocation> targetTables, List<String> injectPaths) {
+        for (ResourceLocation table : targetTables) {
+            for (int index = 0; index < injectPaths.size(); index++) {
+                addTableModifier(
+                        "dungeons_arise_" + groupName + "_" + table.getPath().replace('/', '_') + "_" + index,
+                        table,
+                        injectPaths.get(index)
+                );
+            }
+        }
+    }
+
+    /**
+     * 复苏之叶获取方式。
+     *
+     * <p>复刻 Enigmatic Addons：复苏之叶可以在丛林神庙战利品箱中发现。</p>
+     */
+    private void addRevivalLeavesModifiers() {
+        addTableModifier(
+                "revival_leaf_jungle_temple",
+                BuiltInLootTables.JUNGLE_TEMPLE,
+                "inject/chests/revival_leaf/jungle_temple"
+        );
     }
 
     private void addAntiqueBookBagModifiers() {
@@ -473,11 +544,20 @@ public class GlobalLootModifierGenerator extends GlobalLootModifierProvider {
      * - 要追加进去的自定义 loot table 路径，不带 .json 后缀。
      */
     private void addTableModifier(String name, ResourceKey<LootTable> targetTable, String injectPath) {
+        addTableModifier(name, targetTable.location(), injectPath);
+    }
+
+    /**
+     * 添加一个战利品表注入规则。
+     *
+     * <p>外部模组的战利品表没有 BuiltInLootTables 常量，使用 ResourceLocation 重载处理。</p>
+     */
+    private void addTableModifier(String name, ResourceLocation targetTable, String injectPath) {
         add(
                 name,
                 new AddTableLootModifier(
                         new LootItemCondition[]{
-                                LootTableIdCondition.builder(targetTable.location()).build()
+                                LootTableIdCondition.builder(targetTable).build()
                         },
                         ResourceKey.create(
                                 Registries.LOOT_TABLE,

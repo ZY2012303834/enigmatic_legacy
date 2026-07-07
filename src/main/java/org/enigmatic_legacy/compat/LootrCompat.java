@@ -80,6 +80,7 @@ public final class LootrCompat {
                     "inject/chests/unholy_grail/overworld_epic"),
             entry("minecraft", "chests/jungle_temple",
                     "inject/chests/spellstones/air_earthen",
+                    "inject/chests/revival_leaf/jungle_temple",
                     "inject/chests/earth_heart/overworld_epic",
                     "inject/chests/earth_heart_fragment/overworld_epic",
                     "inject/chests/unholy_grail/overworld_epic"),
@@ -136,7 +137,13 @@ public final class LootrCompat {
                     "inject/chests/earth_heart_fragment/overworld_epic",
                     "inject/chests/unholy_grail/overworld_epic"),
             entry("minecraft", "chests/pillager_outpost",
-                    "inject/chests/unholy_grail/overworld_epic_without_earth_heart")
+                    "inject/chests/unholy_grail/overworld_epic_without_earth_heart"),
+            dungeonsAriseHeavenlyEntry(0),
+            dungeonsAriseHeavenlyEntry(1),
+            dungeonsAriseHeavenlyEntry(2),
+            dungeonsAriseFoundryNormalEntry(0),
+            dungeonsAriseFoundryNormalEntry(1),
+            dungeonsAriseFoundryTreasureEntry(0)
     );
 
     private LootrCompat() {
@@ -253,5 +260,26 @@ public final class LootrCompat {
 
     private static Map.Entry<ResourceLocation, List<String>> entry(String namespace, String path, String... injectPaths) {
         return Map.entry(ResourceLocation.fromNamespaceAndPath(namespace, path), List.of(injectPaths));
+    }
+
+    private static Map.Entry<ResourceLocation, List<String>> dungeonsAriseHeavenlyEntry(int index) {
+        return Map.entry(
+                DungeonsAriseCompat.HEAVENLY_ANGEL_BLESSING_CHEST_TABLES.get(index),
+                List.of(DungeonsAriseCompat.HEAVENLY_CHALLENGER_ANGEL_BLESSING_INJECT)
+        );
+    }
+
+    private static Map.Entry<ResourceLocation, List<String>> dungeonsAriseFoundryNormalEntry(int index) {
+        return Map.entry(
+                DungeonsAriseCompat.FOUNDRY_NORMAL_CHEST_TABLES.get(index),
+                DungeonsAriseCompat.FOUNDRY_NORMAL_INJECTS
+        );
+    }
+
+    private static Map.Entry<ResourceLocation, List<String>> dungeonsAriseFoundryTreasureEntry(int index) {
+        return Map.entry(
+                DungeonsAriseCompat.FOUNDRY_TREASURE_CHEST_TABLES.get(index),
+                DungeonsAriseCompat.FOUNDRY_TREASURE_INJECTS
+        );
     }
 }

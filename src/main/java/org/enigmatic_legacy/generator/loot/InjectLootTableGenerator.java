@@ -49,6 +49,7 @@ public class InjectLootTableGenerator implements DataProvider {
          * 生成术石相关箱子注入表。
          */
         addSpellstoneTables(cachedOutput, futures);
+        addRevivalLeavesTables(cachedOutput, futures);
 
         /*
          * 生成至暗卷轴箱子注入表。
@@ -99,12 +100,48 @@ public class InjectLootTableGenerator implements DataProvider {
         // 古旧书袋
         addAntiqueBookBagTables(cachedOutput, futures);
 
+        // 地牢浮现之时：天际挑战者结构中的天使之祝。
+        addDungeonsAriseTables(cachedOutput, futures);
 
 
         /*
          * 等待所有 loot table 文件全部写入完成。
          */
         return CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new));
+    }
+
+    /**
+     * 生成复苏之叶 loot table。
+     *
+     * <p>Enigmatic Addons 原项目把复苏之叶加入丛林神庙战利品。
+     * 当前项目使用统一的术石箱子概率：15% 出现，85% 空结果。</p>
+     */
+    private void addRevivalLeavesTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {
+        futures.add(saveTable(
+                cachedOutput,
+                "revival_leaf/jungle_temple",
+                1.0D,
+                1.0D,
+                itemEntry(ModItems.REVIVAL_LEAVES.get(), 15),
+                emptyEntry(85)
+        ));
+    }
+
+    /**
+     * 生成地牢浮现之时兼容用 loot table。
+     *
+     * <p>天际挑战者是空中/天界主题结构，因此只注入天使之祝，不复用通用空气术石表。
+     * 概率保持和本项目普通空气术石箱子一致：15% 出现，85% 空结果。</p>
+     */
+    private void addDungeonsAriseTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {
+        futures.add(saveTable(
+                cachedOutput,
+                "angel_blessing/heavenly_challenger",
+                1.0D,
+                1.0D,
+                itemEntry(ModItems.ANGEL_BLESSING.get(), 15),
+                emptyEntry(85)
+        ));
     }
 
     private void addAntiqueBookBagTables(CachedOutput cachedOutput, List<CompletableFuture<?>> futures) {

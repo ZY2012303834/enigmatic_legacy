@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_table",
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "dungeons_arise:chests/heavenly_challenger/heavenly_challenger_treasure"
+    }
+  ],
+  "table": "enigmatic_legacy:inject/chests/angel_blessing/heavenly_challenger"
+}

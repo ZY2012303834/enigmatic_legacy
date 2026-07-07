@@ -1,4 +1,5 @@
-// 1.21.1	2026-07-01T09:47:49.4587166	Injected Chest Loot Tables
+// 1.21.1	2026-07-07T09:32:25.5139359	Injected Chest Loot Tables
+22c261779c8a6601556ac93c34c65328a395b443 data/enigmatic_legacy/loot_table/inject/chests/angel_blessing/heavenly_challenger.json
 9e0988cdbdba1f2ac0930e212d02730045dcf3e8 data/enigmatic_legacy/loot_table/inject/chests/antique_book_bag/overworld_epic.json
 a87e2a6c898a6a01323cad5dd44eeade50da1349 data/enigmatic_legacy/loot_table/inject/chests/astral_dust/end_city_treasure.json
 3affbd9cf24827d1ced91b21ca39ebccec251822 data/enigmatic_legacy/loot_table/inject/chests/astral_fruit/end_city_treasure.json
@@ -11,6 +12,7 @@ b336b2c549be245e1e8dc88117af632d5fb021f0 data/enigmatic_legacy/loot_table/inject
 ac12e4c77e27e3497449f5683adc4987130aa2d7 data/enigmatic_legacy/loot_table/inject/chests/majestic_elytra/end_city_treasure.json
 b39e0dd7e3d8471a730455f059175e3b2b31de1d data/enigmatic_legacy/loot_table/inject/chests/mending_mixture/end_city_treasure.json
 76f21cfc306eaef656c89ebeedec798fcd25f1ab data/enigmatic_legacy/loot_table/inject/chests/redemption_potion/village.json
+077524d743f567cf6c2948686673ea0346954da3 data/enigmatic_legacy/loot_table/inject/chests/revival_leaf/jungle_temple.json
 22c261779c8a6601556ac93c34c65328a395b443 data/enigmatic_legacy/loot_table/inject/chests/spellstones/air.json
 d5b48f6585b398b4fe0181725e77175b58205979 data/enigmatic_legacy/loot_table/inject/chests/spellstones/air_earthen.json
 55e682ee5a743d89c103586f98ec55d84e9795fd data/enigmatic_legacy/loot_table/inject/chests/spellstones/earthen.json

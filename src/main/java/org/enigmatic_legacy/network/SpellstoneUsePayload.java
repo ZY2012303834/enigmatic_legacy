@@ -61,6 +61,10 @@ public record SpellstoneUsePayload() implements CustomPacketPayload {
                 stack = HeartOfCreationHelper.findHeartOfCreation(player).orElse(ItemStack.EMPTY);
             }
 
+            if (stack.isEmpty()) {
+                stack = RevivalLeavesHelper.findRevivalLeaves(player).orElse(ItemStack.EMPTY);
+            }
+
             // 根据找到的物品类型触发对应主动技能。
             switch (stack.getItem()) {
                 case AngelBlessing angelBlessing -> angelBlessing.triggerActiveAbility(level, player, stack);
@@ -68,6 +72,7 @@ public record SpellstoneUsePayload() implements CustomPacketPayload {
                 case EyeOfNebula eyeOfNebula -> eyeOfNebula.triggerActiveAbility(level, player, stack);
                 case NonEuclideanCube cube -> cube.triggerActiveAbility(level, player, stack);
                 case HeartOfCreation heartOfCreation -> heartOfCreation.triggerActiveAbility(level, player, stack);
+                case RevivalLeaves revivalLeaves -> revivalLeaves.triggerActiveAbility(level, player, stack);
 
                 default -> {
                 }

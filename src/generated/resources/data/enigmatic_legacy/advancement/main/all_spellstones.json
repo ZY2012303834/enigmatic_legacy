@@ -61,6 +61,16 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_revival_leaf": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:revival_leaf"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_the_cube": {
       "conditions": {
         "items": [
@@ -105,6 +115,7 @@
       "has_angel_blessing",
       "has_ocean_stone",
       "has_blazing_core",
+      "has_revival_leaf",
       "has_eye_of_nebula",
       "has_void_pearl",
       "has_the_cube",

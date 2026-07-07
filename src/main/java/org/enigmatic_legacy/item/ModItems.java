@@ -138,6 +138,7 @@ public final class ModItems {
     public static final DeferredItem<AngelBlessing> ANGEL_BLESSING = ITEMS.register("angel_blessing", AngelBlessing::new); // 天使之祝
     public static final DeferredItem<OceanStone> OCEAN_STONE = ITEMS.register("ocean_stone", OceanStone::new);  // 海洋意志
     public static final DeferredItem<BlazingCore> BLAZING_CORE = ITEMS.register("blazing_core", BlazingCore::new); // 烈焰核心
+    public static final DeferredItem<RevivalLeaves> REVIVAL_LEAVES = ITEMS.register("revival_leaf", RevivalLeaves::new); // 复苏之叶
     public static final DeferredItem<EyeOfNebula> EYE_OF_NEBULA = ITEMS.register("eye_of_nebula", EyeOfNebula::new); // 星云之眼
     public static final DeferredItem<PearlOfTheVoid> VOID_PEARL = ITEMS.register("void_pearl", PearlOfTheVoid::new); // 虚空珍珠
     public static final DeferredItem<NonEuclideanCube> THE_CUBE = ITEMS.register("the_cube", NonEuclideanCube::new); // 非欧立方

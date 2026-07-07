@@ -435,6 +435,29 @@ public class EnglishLanguageGenerator extends LanguageProvider {
                 "Reduces fire spell damage from Iron's Spells by %s.");
         // end
 
+        // 复苏之叶
+        addItem(ModItems.REVIVAL_LEAVES, "Revival Leaves");
+
+        add("tooltip.enigmatic_legacy.revival_leaves.active.1",
+                "Consumes experience to grant regeneration to nearby creatures.");
+        add("tooltip.enigmatic_legacy.revival_leaves.passive.1",
+                "Slowly restores health over time.");
+        add("tooltip.enigmatic_legacy.revival_leaves.passive.2",
+                "Your attacks poison targets and reduce their healing while poisoned.");
+        add("tooltip.enigmatic_legacy.revival_leaves.passive.3",
+                "Removes Hunger, Poison, and Wither effects from the bearer.");
+        add("tooltip.enigmatic_legacy.revival_leaves.passive.4",
+                "Nearby crops grow faster.");
+        add("tooltip.enigmatic_legacy.revival_leaves.passive.5",
+                "New status effects last longer.");
+        add("tooltip.enigmatic_legacy.revival_leaves.passive.6",
+                "You can fly while plant blocks are nearby.");
+        add("tooltip.enigmatic_legacy.revival_leaves.passive.7",
+                "The active ability turns nearby Wither Roses into Poppies.");
+        add("tooltip.enigmatic_legacy.revival_leaves.passive.8",
+                "Fire and projectile damage against you are increased.");
+        // end
+
         // 星云之眼
         addItem(ModItems.EYE_OF_NEBULA, "Eye of the Nebula");
 
