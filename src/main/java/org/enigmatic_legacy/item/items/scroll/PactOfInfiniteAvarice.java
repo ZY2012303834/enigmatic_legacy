@@ -56,7 +56,7 @@ public class PactOfInfiniteAvarice extends Item implements ICurioItem {
             return false;
         }
 
-        if (!CursedRingHelper.hasCursedRing(player)) {
+        if (!CursedRingHelper.hasCursedRing(player) && !CuriosLookupApi.isStackInSlot(player, context, stack)) {
             return false;
         }
 

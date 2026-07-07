@@ -7,6 +7,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
+import org.enigmatic_legacy.api.CuriosLookupApi;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.util.CursedRingHelper;
 import org.enigmatic_legacy.util.SpellstoneTooltip;
@@ -35,7 +36,7 @@ public class BloodstainedValorEmblem extends Item implements ICurioItem {
      */
     @Override
     public boolean canEquipFromUse(SlotContext context, ItemStack stack) {
-        return true;
+        return canEquip(context, stack);
     }
 
     /**
@@ -47,7 +48,7 @@ public class BloodstainedValorEmblem extends Item implements ICurioItem {
             return false;
         }
 
-        return CursedRingHelper.hasCursedRing(player);
+        return CursedRingHelper.hasCursedRing(player) || CuriosLookupApi.isStackInSlot(player, context, stack);
     }
 
     @Override
@@ -73,11 +74,6 @@ public class BloodstainedValorEmblem extends Item implements ICurioItem {
             tooltip.add(SpellstoneTooltip.text(
                     "tooltip.enigmatic_legacy.bloodstained_valor_emblem.3",
                     SpellstoneTooltip.percent(format(ConfigCommon.BLOODSTAINED_VALOR_MOVEMENT_SPEED.get()))
-            ));
-
-            tooltip.add(SpellstoneTooltip.text(
-                    "tooltip.enigmatic_legacy.bloodstained_valor_emblem.4",
-                    SpellstoneTooltip.percent(format(ConfigCommon.BLOODSTAINED_VALOR_DAMAGE_RESISTANCE.get()))
             ));
 
             tooltip.add(SpellstoneTooltip.empty());

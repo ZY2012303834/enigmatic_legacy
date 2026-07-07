@@ -3,6 +3,7 @@ package org.enigmatic_legacy.api;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
+import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotResult;
 import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
@@ -70,5 +71,28 @@ public final class CuriosLookupApi {
     public static Optional<ICurioStacksHandler> getStacksHandler(LivingEntity entity, String slotIdentifier) {
         return getInventory(entity)
                 .flatMap(handler -> handler.getStacksHandler(slotIdentifier));
+    }
+
+    /**
+     * 判断指定 ItemStack 是否已经位于当前 Curios 槽。
+     * 用于 canEquip 在 Curios 反序列化/刷新已有装备时放行，避免依赖其它 Curios 状态的物品登录后被误卸下。
+     */
+    public static boolean isStackInSlot(LivingEntity entity, SlotContext context, ItemStack stack) {
+        if (entity == null || context == null || stack.isEmpty() || context.index() < 0) {
+            return false;
+        }
+
+        return getStacksHandler(entity, context.identifier())
+                .map(stacksHandler -> {
+                    var stacks = stacksHandler.getStacks();
+
+                    if (context.index() >= stacks.getSlots()) {
+                        return false;
+                    }
+
+                    ItemStack equippedStack = stacks.getStackInSlot(context.index());
+                    return equippedStack == stack || ItemStack.matches(equippedStack, stack);
+                })
+                .orElse(false);
     }
 }

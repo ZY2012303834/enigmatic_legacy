@@ -15,6 +15,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import org.enigmatic_legacy.EnigmaticLegacy;
+import org.enigmatic_legacy.api.CuriosLookupApi;
 import org.enigmatic_legacy.util.CursedRingHelper;
 import org.enigmatic_legacy.util.EnchanterPearlHelper;
 import org.jetbrains.annotations.NotNull;
@@ -63,7 +64,7 @@ public class EnchanterPearl extends Item implements ICurioItem {
             return false;
         }
 
-        return CursedRingHelper.hasCursedRing(player)
+        return (CursedRingHelper.hasCursedRing(player) || CuriosLookupApi.isStackInSlot(player, context, stack))
                 && !EnchanterPearlHelper.hasOtherEnchanterPearl(player, context);
     }
 

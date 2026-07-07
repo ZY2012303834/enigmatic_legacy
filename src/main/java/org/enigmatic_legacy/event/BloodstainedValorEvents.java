@@ -19,8 +19,7 @@ import org.enigmatic_legacy.util.BloodstainedValorHelper;
  * 效果随缺失生命比例动态变化：
  * 1. 提高攻击伤害；
  * 2. 提高攻击速度；
- * 3. 提高移动速度；
- * 4. 降低受到的伤害。
+ * 3. 提高移动速度。
  */
 public class BloodstainedValorEvents {
     private static final ResourceLocation ATTACK_SPEED_ID = ResourceLocation.fromNamespaceAndPath(
@@ -79,7 +78,7 @@ public class BloodstainedValorEvents {
     }
 
     /**
-     * 处理攻击伤害提升和受到伤害降低。
+     * 处理攻击伤害提升。
      */
     @SubscribeEvent
     public static void onIncomingDamage(LivingIncomingDamageEvent event) {
@@ -94,17 +93,6 @@ public class BloodstainedValorEvents {
             }
         }
 
-        // 受击者佩戴血战沙场之证：降低受到的伤害。
-        if (event.getEntity() instanceof Player defender
-                && BloodstainedValorHelper.canUseBloodstainedValor(defender)) {
-            double missingHealthRatio = BloodstainedValorHelper.getMissingHealthRatio(defender);
-            double resistance = missingHealthRatio * ConfigCommon.BLOODSTAINED_VALOR_DAMAGE_RESISTANCE.get();
-
-            if (resistance > 0.0D) {
-                double multiplier = Math.max(0.0D, 1.0D - resistance);
-                event.setAmount((float) (event.getAmount() * multiplier));
-            }
-        }
     }
 
     private static void addMultipliedBaseModifier(

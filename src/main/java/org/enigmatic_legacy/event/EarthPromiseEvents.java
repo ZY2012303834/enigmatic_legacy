@@ -7,6 +7,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.EventPriority;
@@ -17,12 +18,13 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.potion.ModEffects;
-import org.enigmatic_legacy.util.CursedRingHelper;
 import org.enigmatic_legacy.util.EarthPromiseHelper;
 
 public final class EarthPromiseEvents {
     private static final int PURE_RESISTANCE_DURATION = 20 * 5;
     private static final int PURE_RESISTANCE_AMPLIFIER = 4;
+    private static final int EARTH_PROMISE_REGENERATION_DURATION = 20 * 5;
+    private static final int EARTH_PROMISE_BUFF_AMPLIFIER = 3;
     private static final String COOLDOWN_UNTIL_TAG = "enigmatic_legacy_earth_promise_cooldown_until";
 
     private EarthPromiseEvents() {
@@ -107,13 +109,22 @@ public final class EarthPromiseEvents {
         if (player.level() instanceof ServerLevel serverLevel) {
             serverLevel.sendParticles(ParticleTypes.FLASH, player.getX(), player.getY(), player.getZ(), 1, 0.0D, 0.0D, 0.0D, 0.0D);
             serverLevel.sendParticles(ParticleTypes.END_ROD, player.getX(), player.getY(0.5D), player.getZ(), 36, 0.1D, 0.1D, 0.1D, 0.2D);
-            player.level().playSound(null, player, SoundEvents.ENDER_EYE_DEATH, SoundSource.PLAYERS, 5.0F, 1.5F);
+            player.level().playSound(null, player, SoundEvents.ITEM_BREAK, SoundSource.PLAYERS, 1.0F, 1.0F);
         }
 
         player.addEffect(new MobEffectInstance(
                 ModEffects.PURE_RESISTANCE,
                 PURE_RESISTANCE_DURATION,
                 PURE_RESISTANCE_AMPLIFIER,
+                false,
+                true,
+                true
+        ));
+
+        player.addEffect(new MobEffectInstance(
+                MobEffects.REGENERATION,
+                EARTH_PROMISE_REGENERATION_DURATION,
+                EARTH_PROMISE_BUFF_AMPLIFIER,
                 false,
                 true,
                 true

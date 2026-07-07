@@ -1,6 +1,7 @@
 package org.enigmatic_legacy.util;
 
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import org.enigmatic_legacy.api.CuriosLookupApi;
 import org.enigmatic_legacy.item.ModItems;
@@ -19,6 +20,8 @@ public final class PactOfInfiniteAvariceHelper {
     }
 
     public static boolean hasPact(LivingEntity entity) {
-        return findPact(entity).isPresent();
+        return entity instanceof Player player
+                && CursedRingHelper.hasCursedRing(player)
+                && findPact(player).isPresent();
     }
 }

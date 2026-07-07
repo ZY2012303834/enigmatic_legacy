@@ -5,18 +5,15 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.piglin.Piglin;
-import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
+import net.minecraft.world.item.trading.Merchant;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -52,8 +49,8 @@ public final class PactOfInfiniteAvariceEvents {
      */
     private static final Map<UUID, BarterRecord> RECENT_PIGLIN_BARTERS = new HashMap<>();
 
-    private static final int BARTER_TRACK_TICKS = 20 * 15;
-    private static final double BARTER_DUPLICATE_RANGE = 8.0D;
+    private static final int BARTER_TRACK_TICKS = 20 * 10;
+    private static final double BARTER_DUPLICATE_RANGE = 4.0D;
     private static final String DUPLICATED_BARTER_ITEM_TAG = "enigmatic_legacy_avarice_barter_duplicate";
 
     private PactOfInfiniteAvariceEvents() {
@@ -215,12 +212,21 @@ public final class PactOfInfiniteAvariceEvents {
             return;
         }
 
+        if (itemEntity.getOwner() != null) {
+            return;
+        }
+
         long gameTime = level.getGameTime();
         String dimension = level.dimension().location().toString();
 
         cleanupOldBarterRecords(gameTime);
 
-        for (BarterRecord record : RECENT_PIGLIN_BARTERS.values()) {
+        Iterator<Map.Entry<UUID, BarterRecord>> iterator = RECENT_PIGLIN_BARTERS.entrySet().iterator();
+
+        while (iterator.hasNext()) {
+            Map.Entry<UUID, BarterRecord> entry = iterator.next();
+            BarterRecord record = entry.getValue();
+
             if (!record.dimension().equals(dimension)) {
                 continue;
             }
@@ -249,6 +255,7 @@ public final class PactOfInfiniteAvariceEvents {
             extra.getPersistentData().putBoolean(DUPLICATED_BARTER_ITEM_TAG, true);
 
             level.addFreshEntity(extra);
+            iterator.remove();
             return;
         }
     }
@@ -296,12 +303,16 @@ public final class PactOfInfiniteAvariceEvents {
     }
 
     /**
-     * 村民交易提供 35% 折扣。
-     * 在玩家右键打开村民交易前，修改当前 offers 的 special price。
+     * 可交易生物提供 35% 折扣。
+     * 在玩家右键打开交易前，修改当前 offers 的 special price。
+     *
+     * <p>这里使用原版 Merchant 接口而不是 AbstractVillager，
+     * 可以同时覆盖村民和 Iron's Spells 'n Spellbooks 的 IMerchantWizard，
+     * 且不会在未安装铁魔法时加载它的类。</p>
      */
     @SubscribeEvent
-    public static void onVillagerInteract(PlayerInteractEvent.EntityInteract event) {
-        if (!(event.getTarget() instanceof AbstractVillager villager)) {
+    public static void onMerchantInteract(PlayerInteractEvent.EntityInteract event) {
+        if (!(event.getTarget() instanceof Merchant merchant)) {
             return;
         }
 
@@ -315,11 +326,11 @@ public final class PactOfInfiniteAvariceEvents {
             return;
         }
 
-        applyVillagerDiscount(villager);
+        applyMerchantDiscount(merchant);
     }
 
-    private static void applyVillagerDiscount(AbstractVillager villager) {
-        for (MerchantOffer offer : villager.getOffers()) {
+    private static void applyMerchantDiscount(Merchant merchant) {
+        for (MerchantOffer offer : merchant.getOffers()) {
             ItemStack baseCost = offer.getBaseCostA();
 
             if (baseCost.isEmpty()) {
