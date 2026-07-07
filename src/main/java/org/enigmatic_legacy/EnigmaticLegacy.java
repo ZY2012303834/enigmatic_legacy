@@ -71,7 +71,6 @@ public class EnigmaticLegacy {
         ModRecipeSerializers.register(modEventBus);
 
         NeoForge.EVENT_BUS.register(MonsterCharmEvents.class);
-        NeoForge.EVENT_BUS.register(EnchanterPearlEvents.class);
         NeoForge.EVENT_BUS.register(EnigmaticAmuletEvents.class);
         NeoForge.EVENT_BUS.register(EldritchAmuletEvents.class);
         NeoForge.EVENT_BUS.register(EnigmaticEyeQuoteEvents.class);
