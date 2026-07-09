@@ -369,7 +369,7 @@
   "tooltip.enigmatic_legacy.cursedRing4_alt": "§5- 使受到的§6任何§5来源的伤害变化为原先的 §6%1$s",
   "tooltip.enigmatic_legacy.cursedRing5": "§5- 中立生物会主动攻击你",
   "tooltip.enigmatic_legacy.cursedRing6": "§5- 盔甲效力降低 §6%1$s",
-  "tooltip.enigmatic_legacy.cursedRing7": "§5- 你对怪物的伤害降低 §6%1$s§5",
+  "tooltip.enigmatic_legacy.cursedRing7": "§5- 你造成的所有伤害降低 §6%1$s§5",
   "tooltip.enigmatic_legacy.cursedRing8": "§5- 一旦着火，火焰将会永远灼烧着你",
   "tooltip.enigmatic_legacy.cursedRing9": "§5- 每次死亡都会使你的灵魂破裂",
   "tooltip.enigmatic_legacy.cursedRingLore1": "§5由远古时代的神明铸造，无论是凡人",

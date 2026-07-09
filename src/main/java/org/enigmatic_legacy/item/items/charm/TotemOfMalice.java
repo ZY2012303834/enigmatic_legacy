@@ -191,15 +191,18 @@ public class TotemOfMalice extends Item implements ICurioItem {
     }
 
     /**
-     * 允许玩家右键尝试装备，但仍复用完整 Curios 装备限制。
+     * 禁止玩家直接右键装备恶意图腾。
+     *
+     * <p>恶意图腾仍然可以通过 Curios 界面手动放入 {@code charm} 槽。</p>
+     * <p>这样可以避免玩家把它当作普通右键饰品误装备，同时保留 {@link #canEquip(SlotContext, ItemStack)} 的完整限制。</p>
      *
      * @param context Curios 槽位上下文
-     * @param stack   被装备的恶意图腾
-     * @return 满足装备限制时返回 true
+     * @param stack   尝试右键装备的恶意图腾
+     * @return 总是 false，表示不允许右键装备
      */
     @Override
     public boolean canEquipFromUse(SlotContext context, ItemStack stack) {
-        return canEquip(context, stack);
+        return false;
     }
 
     /**

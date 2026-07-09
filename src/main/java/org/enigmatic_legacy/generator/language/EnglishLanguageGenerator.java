@@ -1142,7 +1142,7 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.cursedRing4_alt", "§5- You receive §6%1$s§5 damage from §6ANY§5 source.");
         add("tooltip.enigmatic_legacy.cursedRing5", "§5- Neutral creatures are aggressive towards you.");
         add("tooltip.enigmatic_legacy.cursedRing6", "§5- Armor is §6%1$s§5 less effective.");
-        add("tooltip.enigmatic_legacy.cursedRing7", "§5- Monsters receive §6%1$s§5 less damage from you.");
+        add("tooltip.enigmatic_legacy.cursedRing7", "§5- All damage you deal is reduced by §6%1$s§5.");
         add("tooltip.enigmatic_legacy.cursedRing8", "§5- When on fire, you burn forever.");
         add("tooltip.enigmatic_legacy.cursedRing9", "§5- Every death tears your soul apart.");
         add("tooltip.enigmatic_legacy.cursedRing10", "§5- You suffer from incurable insomnia.");

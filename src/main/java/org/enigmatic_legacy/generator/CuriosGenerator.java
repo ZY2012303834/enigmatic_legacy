@@ -70,7 +70,10 @@ public class CuriosGenerator implements DataProvider {
         // 注册 charm 护符栏位类型，神秘护身符需要这个栏位。
         futures.add(generateCharmSlotType(cachedOutput));
 
-        // 为玩家实体分配 ring 和 charm 栏位。
+        // 注册 back 背饰栏位类型。
+        futures.add(generateBackSlotType(cachedOutput));
+
+        // 为玩家实体分配 ring、charm、back 等栏位。
         futures.add(generatePlayerRingSlot(cachedOutput));
         futures.add(generateTouhouMaidSlot(cachedOutput));
 
@@ -180,6 +183,36 @@ public class CuriosGenerator implements DataProvider {
         return DataProvider.saveStable(cachedOutput, json, path);
     }
 
+    /**
+     * 生成 back 背饰栏位类型配置。
+     *
+     * <p>生成路径：</p>
+     * <pre>
+     * src/generated/resources/data/enigmatic_legacy/curios/slots/back.json
+     * </pre>
+     *
+     * <p>作用：告诉 Curios 存在一个名为 {@code back} 的背饰栏位。</p>
+     * <p>该栏位当前只负责提供槽位本身；具体物品是否能放入，需要对应物品加入 {@code curios:back} 标签并实现装备限制。</p>
+     *
+     * @param cachedOutput Minecraft 数据生成缓存输出
+     * @return 数据生成异步结果
+     */
+    private CompletableFuture<?> generateBackSlotType(CachedOutput cachedOutput) {
+        JsonObject json = new JsonObject();
+        json.addProperty("size", 1);
+        json.addProperty("operation", "ADD");
+        json.addProperty("order", 150);
+        json.addProperty("icon", "curios:slot/empty_back_slot");
+
+        Path path = output.getOutputFolder(PackOutput.Target.DATA_PACK)
+                .resolve(EnigmaticLegacy.MODID)
+                .resolve("curios")
+                .resolve("slots")
+                .resolve("back.json");
+
+        return DataProvider.saveStable(cachedOutput, json, path);
+    }
+
     private CompletableFuture<?> generateEnigmaticAmuletTag(CachedOutput cachedOutput) {
         JsonObject json = new JsonObject();
 
@@ -250,6 +283,7 @@ public class CuriosGenerator implements DataProvider {
         slots.add("charm");
         slots.add("spellstone");
         slots.add("scroll");
+        slots.add("back");
 
         json.add("entities", entities);
         json.add("slots", slots);
@@ -279,6 +313,7 @@ public class CuriosGenerator implements DataProvider {
         slots.add("charm");
         slots.add("spellstone");
         slots.add("scroll");
+        slots.add("back");
 
         json.add("entities", entities);
         json.add("slots", slots);

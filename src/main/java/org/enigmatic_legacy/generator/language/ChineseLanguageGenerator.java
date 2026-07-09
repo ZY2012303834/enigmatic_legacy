@@ -1148,7 +1148,7 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.cursedRing4_alt", "§5- 使受到的§6任何§5来源的伤害变化为原先的 §6%1$s");
         add("tooltip.enigmatic_legacy.cursedRing5", "§5- 中立生物会主动攻击你");
         add("tooltip.enigmatic_legacy.cursedRing6", "§5- 盔甲效力降低 §6%1$s");
-        add("tooltip.enigmatic_legacy.cursedRing7", "§5- 你对怪物的伤害降低 §6%1$s§5");
+        add("tooltip.enigmatic_legacy.cursedRing7", "§5- 你造成的所有伤害降低 §6%1$s§5");
         add("tooltip.enigmatic_legacy.cursedRing8", "§5- 一旦着火，火焰将会永远灼烧着你");
         add("tooltip.enigmatic_legacy.cursedRing9", "§5- 每次死亡都会使你的灵魂破裂");
         add("tooltip.enigmatic_legacy.cursedRing10", "§5- 无药可医的失眠症困扰着你");

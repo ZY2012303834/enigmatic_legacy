@@ -14,7 +14,6 @@ import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.monster.Drowned;
 import net.minecraft.world.entity.monster.ElderGuardian;
 import net.minecraft.world.entity.monster.EnderMan;
-import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.monster.Evoker;
 import net.minecraft.world.entity.monster.Ghast;
 import net.minecraft.world.entity.monster.Guardian;
@@ -99,7 +98,7 @@ public class CursedRingEvents {
     /**
      * 七咒之戒调整伤害：
      * 1. 七咒之戒本体通过属性修饰降低护甲与盔甲韧性；
-     * 2. 这里只处理佩戴者攻击怪物时的伤害降低。
+     * 2. 这里只处理佩戴者造成伤害时的全局伤害降低。
      * 注意：
      * 佩戴者受到更多伤害的倍率不要在这里处理。
      * 原因：
@@ -110,14 +109,11 @@ public class CursedRingEvents {
      */
     @SubscribeEvent
     public static void onIncomingDamage(LivingIncomingDamageEvent event) {
-        LivingEntity target = event.getEntity();
-
         /*
-         * 七咒佩戴者攻击怪物时，伤害降低。
+         * 七咒佩戴者造成任意实体伤害时，伤害降低。
          */
         if (event.getSource().getEntity() instanceof Player attacker
-                && CursedRingHelper.hasCursedRing(attacker)
-                && target instanceof Enemy) {
+                && CursedRingHelper.hasCursedRing(attacker)) {
             float debuff = ConfigCommon.CURSED_RING_MONSTER_DAMAGE_DEBUFF.get() / 100.0F;
             event.setAmount(event.getAmount() * Math.max(0.0F, 1.0F - debuff));
         }
