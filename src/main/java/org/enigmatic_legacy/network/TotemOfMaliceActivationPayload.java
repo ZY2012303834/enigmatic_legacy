@@ -1,18 +1,17 @@
 package org.enigmatic_legacy.network;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.player.Player;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.enigmatic_legacy.EnigmaticLegacy;
-import org.enigmatic_legacy.item.ModItems;
 import org.jetbrains.annotations.NotNull;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 /**
  * 通知客户端播放恶意图腾触发动画。
@@ -21,6 +20,9 @@ import org.jetbrains.annotations.NotNull;
  * <p>这个 payload 保存触发坐标，用于客户端在原位置播放图腾音效，同时显示恶意图腾物品激活动画。</p>
  */
 public record TotemOfMaliceActivationPayload(double x, double y, double z) implements CustomPacketPayload {
+    private static final String CLIENT_EFFECTS_CLASS = "org.enigmatic_legacy.client.TotemOfMaliceClientEffects";
+    private static final String CLIENT_EFFECTS_METHOD = "playActivation";
+
     public static final Type<TotemOfMaliceActivationPayload> TYPE = new Type<>(
             ResourceLocation.fromNamespaceAndPath(EnigmaticLegacy.MODID, "totem_of_malice_activation")
     );
@@ -62,26 +64,28 @@ public record TotemOfMaliceActivationPayload(double x, double y, double z) imple
      * @param context 网络上下文
      */
     public static void handle(TotemOfMaliceActivationPayload payload, IPayloadContext context) {
-        context.enqueueWork(() -> {
-            Minecraft minecraft = Minecraft.getInstance();
-            Player player = minecraft.player;
+        if (FMLEnvironment.dist != Dist.CLIENT) {
+            return;
+        }
 
-            if (player == null || minecraft.level == null) {
-                return;
-            }
+        context.enqueueWork(() -> playClientEffects(payload));
+    }
 
-            minecraft.particleEngine.createTrackingEmitter(player, ParticleTypes.WITCH, 40);
-            minecraft.level.playLocalSound(
-                    payload.x,
-                    payload.y,
-                    payload.z,
-                    SoundEvents.TOTEM_USE,
-                    SoundSource.PLAYERS,
-                    1.0F,
-                    1.0F,
-                    false
-            );
-            minecraft.gameRenderer.displayItemActivation(ModItems.TOTEM_OF_MALICE.get().getDefaultInstance());
-        });
+    /**
+     * 延迟调用客户端播放逻辑。
+     *
+     * <p>这个 payload 会在专用服务器启动时注册，因此此类不能直接引用 {@code net.minecraft.client.*}。</p>
+     * <p>使用反射可以让专服完全不解析客户端类，同时客户端收到包时仍能调用真实播放逻辑。</p>
+     *
+     * @param payload 恶意图腾触发包
+     */
+    private static void playClientEffects(TotemOfMaliceActivationPayload payload) {
+        try {
+            Class<?> effectsClass = Class.forName(CLIENT_EFFECTS_CLASS);
+            Method method = effectsClass.getMethod(CLIENT_EFFECTS_METHOD, double.class, double.class, double.class);
+            method.invoke(null, payload.x, payload.y, payload.z);
+        } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InvocationTargetException exception) {
+            EnigmaticLegacy.LOGGER.error("Failed to play Totem of Malice activation effects", exception);
+        }
     }
 }
