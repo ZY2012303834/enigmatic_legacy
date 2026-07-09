@@ -581,6 +581,44 @@ final class ChinesePatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 )
         )));
 
+        futures.add(save(output, "zh_cn", "entries/relics/avarice_ring", entry(
+                "极尽奢华之戒",
+                "relics",
+                "enigmatic_legacy:avarice_ring",
+                65,
+
+                spotlightPage(
+                        "enigmatic_legacy:avarice_ring",
+                        "极尽奢华之戒",
+                        "由精致戒指与无尽贪婪契约升华而成的奢华戒指。$(br2)" +
+                                "它回应财富、交易与宝石，也会让佩戴者成为袭击者眼中更显眼的目标。"
+                ),
+
+                textPage(
+                        "奢华收益",
+                        "佩戴后，极尽奢华之戒会提供额外 1 级时运。$(br2)" +
+                                "村民交易不会涨价，也不会售罄。$(br2)" +
+                                "除猪灵外的商人类生物不会主动将佩戴者作为攻击目标。"
+                ),
+
+                textPage(
+                        "契约联动",
+                        "如果同时佩戴无尽贪婪契约，方块掉落的时运加成会提高到 2 级。$(br2)" +
+                                "此时佩戴者造成的伤害会根据背包中宝石数量提高，携带越多宝石，伤害越高，但收益会逐渐递减。"
+                ),
+
+                textPage(
+                        "代价",
+                        "袭击者会优先攻击极尽奢华之戒的佩戴者。$(br2)" +
+                                "当戒指与无尽贪婪契约联动时，袭击者对佩戴者造成的伤害也会随携带宝石数量提高。"
+                ),
+
+                craftingPage(
+                        "enigmatic_legacy:avarice_ring",
+                        "使用无尽贪婪契约与精致戒指合成极尽奢华之戒。"
+                )
+        )));
+
         futures.add(save(output, "zh_cn", "entries/relics/twisted_mirror", recipeEntry(
                 "扭曲魔镜",
                 "relics",
@@ -607,6 +645,38 @@ final class ChinesePatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 90,
                 "蕴含救赎力量的药水。$(br2)" +
                         "它并不常见，通常需要通过高阶探索获得。"
+        )));
+
+        futures.add(save(output, "zh_cn", "entries/relics/totem_of_malice", entry(
+                "恶意图腾",
+                "relics",
+                "enigmatic_legacy:totem_of_malice",
+                95,
+
+                spotlightPage(
+                        "enigmatic_legacy:totem_of_malice",
+                        "恶意图腾",
+                        "以不死图腾为容器，用邪恶精髓释放其中封存的怨怒。$(br2)" +
+                                "它会让袭击者承受更重的反击，也会削弱袭击者对佩戴者造成的伤害。"
+                ),
+
+                textPage(
+                        "禁用与修补",
+                        "新合成的恶意图腾拥有满恶意能量。$(br2)" +
+                                "在铁砧中消耗 5 级经验并使用邪恶精髓，可以恢复它的能量。$(br2)" +
+                                "耐久附魔会提高能量上限，最高不超过 8 点。"
+                ),
+
+                textPage(
+                        "垂死爆发",
+                        "当承受七咒的玩家在主手、副手或护符栏放置有能量的恶意图腾时，它可以阻止一次致死伤害。$(br2)" +
+                                "触发后图腾消耗 1 点能量，玩家恢复生命，并向周围释放恶意爆发。"
+                ),
+
+                craftingPage(
+                        "enigmatic_legacy:totem_of_malice",
+                        "使用不死图腾、下界合金锭和邪恶精髓合成恶意图腾。"
+                )
         )));
 
         futures.add(save(output, "zh_cn", "entries/relics/mending_mixture", simpleSpotlight(

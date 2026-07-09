@@ -1,0 +1,33 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:totem_of_malice",
+  "name": "恶意图腾",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:totem_of_malice",
+      "link_recipe": true,
+      "text": "以不死图腾为容器，用邪恶精髓释放其中封存的怨怒。$(br2)它会让袭击者承受更重的反击，也会削弱袭击者对佩戴者造成的伤害。",
+      "title": "恶意图腾"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "新合成的恶意图腾拥有满恶意能量。$(br2)在铁砧中消耗 5 级经验并使用邪恶精髓，可以恢复它的能量。$(br2)耐久附魔会提高能量上限，最高不超过 8 点。",
+      "title": "禁用与修补"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "当承受七咒的玩家在主手、副手或护符栏放置有能量的恶意图腾时，它可以阻止一次致死伤害。$(br2)触发后图腾消耗 1 点能量，玩家恢复生命，并向周围释放恶意爆发。",
+      "title": "垂死爆发"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:totem_of_malice",
+      "text": "使用不死图腾、下界合金锭和邪恶精髓合成恶意图腾。",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 95
+}

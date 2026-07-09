@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-08T05:08:31.3337593	Enigmatic Legacy Advancements
+// 1.21.1	2026-07-09T18:26:30.3534715	Enigmatic Legacy Advancements
 963073e6197b0f7987be34ba6f4dfcde4f4d1191 data/enigmatic_legacy/advancement/main/abyssal_heart.json
 2e3e00b2d7ec8935c4ec0452c9de09b4db99a92a data/enigmatic_legacy/advancement/main/all_spellstones.json
 b6549e59c929a7683645f384e3cf987b3f923680 data/enigmatic_legacy/advancement/main/astral_dust.json
@@ -16,6 +16,7 @@ ab20f331312e315904777de2a3dad539fe915704 data/enigmatic_legacy/advancement/main/
 c3a5a2800c96a7d022703a135b7d91bfe363d69b data/enigmatic_legacy/advancement/main/heaven_scroll.json
 84b8485261e66987c39e0ead109532cdbe4e8b77 data/enigmatic_legacy/advancement/main/infernal_shield.json
 4482400324f0007293f0bd1b66e2931ed171779b data/enigmatic_legacy/advancement/main/magnet_ring.json
+30c30bd784de4a30c525e0e5a7a81ae40ad8f88f data/enigmatic_legacy/advancement/main/malice_totem.json
 da910facbc2ef5af3a22d87820c130460100635f data/enigmatic_legacy/advancement/main/megasponge.json
 80cd56f498e30b7950458a15bd08c53921028674 data/enigmatic_legacy/advancement/main/mending_mixture.json
 c50a438604a3b8b72d56d79cd1fce0bbd8c356a8 data/enigmatic_legacy/advancement/main/recall_potion.json

@@ -195,6 +195,17 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.6", "The closer you are to death, the stronger it becomes.");
         add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.cursed_only", "Only bearers of the Seven Curses can use this item.");
 
+        // Totem of Malice
+        addItem(ModItems.TOTEM_OF_MALICE, "Totem of Malice");
+        add("tooltip.enigmatic_legacy.totem_of_malice.1", "While in the main hand, offhand, or charm slot, resonates with raiders.");
+        add("tooltip.enigmatic_legacy.totem_of_malice.2", "Increases damage dealt to raiders by %s.");
+        add("tooltip.enigmatic_legacy.totem_of_malice.3", "Reduces damage taken from raiders by %s.");
+        add("tooltip.enigmatic_legacy.totem_of_malice.4", "While charged, it can prevent one death.");
+        add("tooltip.enigmatic_legacy.totem_of_malice.5", "When triggered, restores health and releases a malicious blast nearby.");
+        add("tooltip.enigmatic_legacy.totem_of_malice.power", "Malice Power: %s / %s");
+        add("tooltip.enigmatic_legacy.totem_of_malice.cursed_only", "Only bearers of the Seven Curses can use this item.");
+        // end
+
 
         // Mega Sponge
         addItem(ModItems.MEGA_SPONGE, "Extrapolated Megasponge");
@@ -619,6 +630,16 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.avarice_scroll.4", "Killing any creature has a %s chance to drop %s extra emerald.");
         add("tooltip.enigmatic_legacy.avarice_scroll.5", "Villager trades receive a %s discount.");
         add("tooltip.enigmatic_legacy.avarice_scroll.cursed_only", "Only bearers of the Seven Curses may use this item.");
+        // end
+
+        // Ring of Ultimate Luxury
+        addItem(ModItems.ULTIMATE_LUXURY_RING, "Ring of Ultimate Luxury");
+
+        add("tooltip.enigmatic_legacy.ultimate_luxury_ring.1", "Villagers no longer raise prices or run out of stock.");
+        add("tooltip.enigmatic_legacy.ultimate_luxury_ring.2", "Merchants other than Piglins will not target you actively.");
+        add("tooltip.enigmatic_legacy.ultimate_luxury_ring.3", "Raiders prioritize you as a target.");
+        add("tooltip.enigmatic_legacy.ultimate_luxury_ring.5", "With the Pact of Infinite Avarice, your damage increases based on carried gems.");
+        add("tooltip.enigmatic_legacy.ultimate_luxury_ring.6", "Raiders deal more damage to you based on carried gems.");
         // end
 
         // 深渊之心
@@ -1088,6 +1109,7 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         addAdvancement("forbiddenFruit", "Primordial Sin", "Consume The Forbidden Fruit and rid yourself of the curse of hunger");
         addAdvancement("cursedRing", "Darkness Lies Ahead", "Equip the Ring and embrace the Seven Curses");
         addAdvancement("twistedHeart", "It Will Betray You", "Create the Twisted Heart");
+        addAdvancement("maliceTotem", "Life and Death Are But a Game", "Craft the Totem of Malice");
         addAdvancement("guardianHeart", "The Baleful Eye", "Slay the Elder Guardian and claim Heart of the Guardian");
         addAdvancement("infernalShield", "You Try Penetrating THIS!", "Forge Bulwark of Blazing Pride, the ultimate tool of defense");
         addAdvancement("twistedMirror", "Warped Beauty", "Create the Twisted Mirror");

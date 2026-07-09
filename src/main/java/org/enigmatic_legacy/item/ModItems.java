@@ -57,6 +57,7 @@ public final class ModItems {
     public static final DeferredItem<EnderRing> ENDER_RING = ITEMS.register("ender_ring", EnderRing::new); // 末影之戒
     public static final DeferredItem<MagnetRing> MAGNET_RING = ITEMS.register("magnet_ring", MagnetRing::new);  // 磁力之戒
     public static final DeferredItem<DislocationRing> DISLOCATION_RING = ITEMS.register("dislocation_ring", DislocationRing::new); // 转位之戒
+    public static final DeferredItem<UltimateLuxuryRing> ULTIMATE_LUXURY_RING = ITEMS.register("avarice_ring", UltimateLuxuryRing::new); // 极尽奢华之戒
     public static final DeferredItem<AbyssalHeart> ABYSSAL_HEART = ITEMS.register("abyssal_heart", AbyssalHeart::new); // 深渊之心
     public static final DeferredItem<ExtradimensionalEye> EXTRADIMENSIONAL_EYE = ITEMS.register("extradimensional_eye", ExtradimensionalEye::new); // 超维之眼
     public static final DeferredItem<TomeOfHungeringKnowledge> ENCHANTMENT_TRANSPOSER = ITEMS.register("enchantment_transposer", TomeOfHungeringKnowledge::new); // 求知之书
@@ -97,6 +98,7 @@ public final class ModItems {
     public static final DeferredItem<MonsterCharm> MONSTER_CHARM = ITEMS.register("monster_charm", MonsterCharm::new); // 怪物猎人勋章
     public static final DeferredItem<TreasureHunterCharm> TREASURE_HUNTER_CHARM = ITEMS.register("treasure_hunter_charm", TreasureHunterCharm::new); // 猎宝者护符
     public static final DeferredItem<BloodstainedValorEmblem> BLOODSTAINED_VALOR_EMBLEM = ITEMS.register("bloodstained_valor_emblem", BloodstainedValorEmblem::new); //
+    public static final DeferredItem<TotemOfMalice> TOTEM_OF_MALICE = ITEMS.register("totem_of_malice", TotemOfMalice::new); // 恶意图腾
     public static final DeferredItem<MegaSponge> MEGA_SPONGE = ITEMS.register("mega_sponge", MegaSponge::new); // 超级海绵
     public static final DeferredItem<EnchanterPearl> ENCHANTER_PEARL = ITEMS.register("enchanter_pearl", EnchanterPearl::new); // 附魔师的珍珠
     public static final DeferredItem<EnigmaticEye> ENIGMATIC_EYE = ITEMS.register("enigmatic_eye", EnigmaticEye::new); // 休眠之眼

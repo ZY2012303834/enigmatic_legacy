@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_avarice_scroll": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:avarice_scroll"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "enigmatic_legacy:avarice_ring"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_avarice_scroll"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "enigmatic_legacy:avarice_ring"
+    ]
+  }
+}

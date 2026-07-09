@@ -256,6 +256,14 @@ public class RecipeGenerator extends RecipeProvider {
                 .unlockedBy("has_ender_chest", has(Items.ENDER_CHEST))
                 .save(output);
 
+        // 极尽奢华之戒 / Ring of Ultimate Luxury。
+        // 复刻 Enigmatic Addons：无尽贪婪契约 + 精美戒指。
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.ULTIMATE_LUXURY_RING.get())
+                .requires(ModItems.AVARICE_SCROLL.get())
+                .requires(ModItems.EXQUISITE_RING.get())
+                .unlockedBy("has_avarice_scroll", has(ModItems.AVARICE_SCROLL.get()))
+                .save(output);
+
         // 磁力之戒配方。
         // 对齐原项目：钻石 + 铁锭 + 铁指环 + 金锭 + 红石。
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MAGNET_RING.get())
@@ -323,6 +331,18 @@ public class RecipeGenerator extends RecipeProvider {
                 .define('I', Items.NETHERITE_INGOT)
                 .define('X', ModItems.TWISTED_HEART.get())
                 .unlockedBy("has_twisted_heart", has(ModItems.TWISTED_HEART.get()))
+                .save(output);
+
+        // 恶意图腾 / Totem of Malice。
+        // 复刻 Enigmatic Addons 配方：下界合金锭 + 邪恶精髓 + 不死图腾。
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.TOTEM_OF_MALICE.get())
+                .pattern(" Q ")
+                .pattern("WGW")
+                .pattern(" Q ")
+                .define('Q', Items.NETHERITE_INGOT)
+                .define('W', ModItems.EVIL_ESSENCE.get())
+                .define('G', Items.TOTEM_OF_UNDYING)
+                .unlockedBy("has_evil_essence", has(ModItems.EVIL_ESSENCE.get()))
                 .save(output);
 
         // 超级海绵 / Extrapolated Megasponge。

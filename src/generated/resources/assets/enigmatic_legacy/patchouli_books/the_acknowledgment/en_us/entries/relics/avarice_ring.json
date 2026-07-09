@@ -1,0 +1,38 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:avarice_ring",
+  "name": "Ring of Ultimate Luxury",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:avarice_ring",
+      "link_recipe": true,
+      "text": "A luxurious ring elevated from an Exquisite Ring and the Pact of Infinite Avarice.$(br2)It answers wealth, trade, and gems, while making its bearer stand out to raiders.",
+      "title": "Ring of Ultimate Luxury"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "When worn, the Ring of Ultimate Luxury grants 1 extra Fortune level.$(br2)Villager trades do not raise prices and do not run out of stock.$(br2)Merchants other than Piglins will not actively choose the bearer as a target.",
+      "title": "Luxurious Gains"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "If the Pact of Infinite Avarice is worn at the same time, the block-drop Fortune bonus rises to 2 levels.$(br2)The bearer's outgoing damage then increases based on carried gems. More gems mean more damage, with diminishing returns.",
+      "title": "Pact Synergy"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Raiders will prioritize the bearer of the Ring of Ultimate Luxury.$(br2)When the ring is empowered by the Pact of Infinite Avarice, raiders also deal more damage to the bearer based on carried gems.",
+      "title": "Cost"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:avarice_ring",
+      "text": "Craft the Ring of Ultimate Luxury from the Pact of Infinite Avarice and an Exquisite Ring.",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 65
+}

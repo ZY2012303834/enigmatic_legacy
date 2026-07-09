@@ -196,6 +196,17 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.bloodstained_valor_emblem.cursed_only", "只有七咒之戒的佩戴者才能使用此物。");
         // end
 
+        // 恶意图腾
+        addItem(ModItems.TOTEM_OF_MALICE, "恶意图腾");
+        add("tooltip.enigmatic_legacy.totem_of_malice.1", "位于主副手或护符栏时，对袭击者产生恶意共鸣。");
+        add("tooltip.enigmatic_legacy.totem_of_malice.2", "对袭击者造成的伤害提高 %s。");
+        add("tooltip.enigmatic_legacy.totem_of_malice.3", "受到袭击者造成的伤害降低 %s。");
+        add("tooltip.enigmatic_legacy.totem_of_malice.4", "能量未耗尽时，可以避免一次死亡。");
+        add("tooltip.enigmatic_legacy.totem_of_malice.5", "触发时恢复生命，并对周围实体造成恶意爆发。");
+        add("tooltip.enigmatic_legacy.totem_of_malice.power", "恶意能量：%s / %s");
+        add("tooltip.enigmatic_legacy.totem_of_malice.cursed_only", "只有七咒之戒的佩戴者才能使用此物。");
+        // end
+
 
         // 超级海绵
         addItem(ModItems.MEGA_SPONGE, "超级海绵");
@@ -563,6 +574,16 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.avarice_scroll.4", "杀死任意生物有 %s 概率额外掉落 %s 枚绿宝石。");
         add("tooltip.enigmatic_legacy.avarice_scroll.5", "村民交易提供 %s 折扣。");
         add("tooltip.enigmatic_legacy.avarice_scroll.cursed_only", "只有承受七咒之人才能使用。");
+        // end
+
+        // 极尽奢华之戒
+        addItem(ModItems.ULTIMATE_LUXURY_RING, "极尽奢华之戒");
+
+        add("tooltip.enigmatic_legacy.ultimate_luxury_ring.1", "村民不再涨价，也不会售罄。");
+        add("tooltip.enigmatic_legacy.ultimate_luxury_ring.2", "猪灵以外的可交易生物不会主动以你为目标。");
+        add("tooltip.enigmatic_legacy.ultimate_luxury_ring.3", "袭击者会优先将你作为攻击目标。");
+        add("tooltip.enigmatic_legacy.ultimate_luxury_ring.5", "搭配无尽贪婪契约时，你造成的伤害会依据携带的宝石数量提高。");
+        add("tooltip.enigmatic_legacy.ultimate_luxury_ring.6", "袭击者对你造成的伤害也会依据携带的宝石数量提高。");
         // end
 
         // 深渊之心
@@ -1092,6 +1113,7 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         addAdvancement("forbiddenFruit", "原初罪行", "吃下禁果，摆脱饥饿的诅咒");
         addAdvancement("cursedRing", "前途黑暗", "带上七咒之戒并接受七个诅咒");
         addAdvancement("twistedHeart", "它将背叛你", "创造扭曲的心");
+        addAdvancement("maliceTotem", "生死不过嬉戏", "制作恶意图腾");
         addAdvancement("guardianHeart", "恶意之眼", "杀死远古守护者并获得守卫者之心");
         addAdvancement("infernalShield", "有本事刺穿§l它§r啊！", "锻造烈焰之傲壁垒，一个终极防御工具");
         addAdvancement("twistedMirror", "嫉妒美人", "创建扭曲魔镜");

@@ -95,6 +95,7 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(TreasureHunterCharmEvents.class);
         NeoForge.EVENT_BUS.register(ScorchedCharmEvents.class); // 阳灼护符事件
         NeoForge.EVENT_BUS.register(BloodstainedValorEvents.class);
+        NeoForge.EVENT_BUS.register(TotemOfMaliceEvents.class);
         NeoForge.EVENT_BUS.register(CursedRingEvents.class);
         NeoForge.EVENT_BUS.register(CursedRingRequirementEvents.class);
         NeoForge.EVENT_BUS.register(CursedRingCommandEvents.class);
@@ -123,6 +124,7 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(ScrollOfThousandCursesEvents.class);
         NeoForge.EVENT_BUS.register(GraceOfTheCreatorEvents.class);
         NeoForge.EVENT_BUS.register(PactOfInfiniteAvariceEvents.class);
+        NeoForge.EVENT_BUS.register(UltimateLuxuryRingEvents.class);
         NeoForge.EVENT_BUS.register(AbyssalHeartEvents.class);
         NeoForge.EVENT_BUS.register(ExtradimensionalEyeEvents.class);
         NeoForge.EVENT_BUS.register(MajesticElytraEvents.class);

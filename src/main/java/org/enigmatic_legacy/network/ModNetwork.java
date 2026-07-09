@@ -47,6 +47,12 @@ public final class ModNetwork {
                 CursedRingTimerPayload::handle
         );
 
+        registrar.playToClient(
+                TotemOfMaliceActivationPayload.TYPE,
+                TotemOfMaliceActivationPayload.STREAM_CODEC,
+                TotemOfMaliceActivationPayload::handle
+        );
+
         registrar.playToServer(
                 ScrollUsePayload.TYPE,
                 ScrollUsePayload.STREAM_CODEC,

@@ -1,0 +1,33 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:totem_of_malice",
+  "name": "Totem of Malice",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:totem_of_malice",
+      "link_recipe": true,
+      "text": "A Totem of Undying turned into a vessel for spite through Evil Essence.$(br2)It makes raiders suffer heavier retaliation and weakens the damage they deal to its bearer.",
+      "title": "Totem of Malice"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "A newly crafted Totem of Malice starts with full Malice Power.$(br2)Repair it with Evil Essence in an anvil for 5 experience levels to restore its energy.$(br2)Unbreaking increases its energy limit, up to 8 points.",
+      "title": "Disabled and Repair"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "When a bearer of the Seven Curses keeps a charged Totem of Malice in the main hand, offhand, or charm slot, it can prevent one fatal hit.$(br2)Triggering it consumes 1 energy, restores the player, and releases a malicious blast nearby.",
+      "title": "Death Burst"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:totem_of_malice",
+      "text": "Craft the Totem of Malice from a Totem of Undying, Netherite Ingots, and Evil Essence.",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 95
+}

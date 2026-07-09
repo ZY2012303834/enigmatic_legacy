@@ -57,7 +57,12 @@ public final class MagnetRingClientEvents {
     /**
      * 按钮尺寸。
      */
-    private static final int BUTTON_SIZE = 20;
+    private static final int BUTTON_SIZE = 18;
+
+    /**
+     * 16x16 物品图标在按钮内的偏移。
+     */
+    private static final int ICON_OFFSET = 1;
 
     /**
      * 磁力按钮与末影箱按钮之间的间距。
@@ -352,8 +357,8 @@ public final class MagnetRingClientEvents {
             // 渲染磁力之戒图标。
             guiGraphics.renderItem(
                     new ItemStack(ModItems.MAGNET_RING.get()),
-                    getX() + 2,
-                    getY() + 2
+                    getX() + ICON_OFFSET,
+                    getY() + ICON_OFFSET
             );
 
             // 磁力关闭时给图标盖一层暗色遮罩。

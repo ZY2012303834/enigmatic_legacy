@@ -87,6 +87,7 @@ public class AdvancementGenerator implements DataProvider {
         advancements.add(AdvancementSpec.framed("main/twisted_mirror", "main/twisted_heart", "twisted_mirror", "twistedMirror", 4.0F, 3.0F, "goal"));
         advancements.add(AdvancementSpec.framed("main/the_twist", "main/twisted_heart", "the_twist", "theTwist", 5.0F, 3.0F, "challenge"));
         advancements.add(AdvancementSpec.framed("main/earth_promise", "main/twisted_heart", "earth_promise", "earthPromise", 6.0F, 3.0F, "goal"));
+        advancements.add(AdvancementSpec.framed("main/malice_totem", "main/twisted_heart", "totem_of_malice", "maliceTotem", 4.0F, 4.0F, "challenge"));
         advancements.add(AdvancementSpec.framed("main/astral_fruit", "main/cursed_ring", "astral_fruit", "astralFruit", 6.0F, 2.0F, "challenge"));
         advancements.add(AdvancementSpec.framed("main/abyssal_heart", "main/cursed_ring", "abyssal_heart", "abyssalHeart", 7.0F, 2.0F, "challenge"));
         advancements.add(AdvancementSpec.single("main/the_infinitum", "main/abyssal_heart", "the_infinitum", "theInfinitum", 7.0F, 3.0F));

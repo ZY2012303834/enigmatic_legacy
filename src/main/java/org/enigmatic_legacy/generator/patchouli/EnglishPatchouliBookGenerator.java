@@ -581,6 +581,44 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 )
         )));
 
+        futures.add(save(output, "en_us", "entries/relics/avarice_ring", entry(
+                "Ring of Ultimate Luxury",
+                "relics",
+                "enigmatic_legacy:avarice_ring",
+                65,
+
+                spotlightPage(
+                        "enigmatic_legacy:avarice_ring",
+                        "Ring of Ultimate Luxury",
+                        "A luxurious ring elevated from an Exquisite Ring and the Pact of Infinite Avarice.$(br2)" +
+                                "It answers wealth, trade, and gems, while making its bearer stand out to raiders."
+                ),
+
+                textPage(
+                        "Luxurious Gains",
+                        "When worn, the Ring of Ultimate Luxury grants 1 extra Fortune level.$(br2)" +
+                                "Villager trades do not raise prices and do not run out of stock.$(br2)" +
+                                "Merchants other than Piglins will not actively choose the bearer as a target."
+                ),
+
+                textPage(
+                        "Pact Synergy",
+                        "If the Pact of Infinite Avarice is worn at the same time, the block-drop Fortune bonus rises to 2 levels.$(br2)" +
+                                "The bearer's outgoing damage then increases based on carried gems. More gems mean more damage, with diminishing returns."
+                ),
+
+                textPage(
+                        "Cost",
+                        "Raiders will prioritize the bearer of the Ring of Ultimate Luxury.$(br2)" +
+                                "When the ring is empowered by the Pact of Infinite Avarice, raiders also deal more damage to the bearer based on carried gems."
+                ),
+
+                craftingPage(
+                        "enigmatic_legacy:avarice_ring",
+                        "Craft the Ring of Ultimate Luxury from the Pact of Infinite Avarice and an Exquisite Ring."
+                )
+        )));
+
         futures.add(save(output, "en_us", "entries/relics/twisted_mirror", recipeEntry(
                 "Twisted Mirror",
                 "relics",
@@ -607,6 +645,38 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 90,
                 "A potion carrying the force of redemption.$(br2)" +
                         "It is uncommon and is usually obtained through higher exploration rewards."
+        )));
+
+        futures.add(save(output, "en_us", "entries/relics/totem_of_malice", entry(
+                "Totem of Malice",
+                "relics",
+                "enigmatic_legacy:totem_of_malice",
+                95,
+
+                spotlightPage(
+                        "enigmatic_legacy:totem_of_malice",
+                        "Totem of Malice",
+                        "A Totem of Undying turned into a vessel for spite through Evil Essence.$(br2)" +
+                                "It makes raiders suffer heavier retaliation and weakens the damage they deal to its bearer."
+                ),
+
+                textPage(
+                        "Disabled and Repair",
+                        "A newly crafted Totem of Malice starts with full Malice Power.$(br2)" +
+                                "Repair it with Evil Essence in an anvil for 5 experience levels to restore its energy.$(br2)" +
+                                "Unbreaking increases its energy limit, up to 8 points."
+                ),
+
+                textPage(
+                        "Death Burst",
+                        "When a bearer of the Seven Curses keeps a charged Totem of Malice in the main hand, offhand, or charm slot, it can prevent one fatal hit.$(br2)" +
+                                "Triggering it consumes 1 energy, restores the player, and releases a malicious blast nearby."
+                ),
+
+                craftingPage(
+                        "enigmatic_legacy:totem_of_malice",
+                        "Craft the Totem of Malice from a Totem of Undying, Netherite Ingots, and Evil Essence."
+                )
         )));
 
         futures.add(save(output, "en_us", "entries/relics/mending_mixture", simpleSpotlight(

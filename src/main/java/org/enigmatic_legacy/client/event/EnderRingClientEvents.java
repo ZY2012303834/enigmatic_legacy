@@ -42,7 +42,8 @@ public final class EnderRingClientEvents {
     private static final int INVENTORY_GUI_HEIGHT = 166;
     private static final int CREATIVE_GUI_WIDTH = 195;
     private static final int CREATIVE_GUI_HEIGHT = 136;
-    private static final int BUTTON_SIZE = 20;
+    private static final int BUTTON_SIZE = 18;
+    private static final int ICON_OFFSET = 1;
     private static final ItemStack ENDER_CHEST_ICON = new ItemStack(Items.ENDER_CHEST);
 
     public static final KeyMapping OPEN_ENDER_CHEST = new KeyMapping(
@@ -161,7 +162,7 @@ public final class EnderRingClientEvents {
             }
 
             super.renderWidget(guiGraphics, mouseX, mouseY, partialTick);
-            guiGraphics.renderItem(ENDER_CHEST_ICON, getX() + 2, getY() + 2);
+            guiGraphics.renderItem(ENDER_CHEST_ICON, getX() + ICON_OFFSET, getY() + ICON_OFFSET);
         }
 
         @Override

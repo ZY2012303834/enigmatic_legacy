@@ -1,0 +1,38 @@
+{
+  "category": "enigmatic_legacy:relics",
+  "icon": "enigmatic_legacy:avarice_ring",
+  "name": "极尽奢华之戒",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:avarice_ring",
+      "link_recipe": true,
+      "text": "由精致戒指与无尽贪婪契约升华而成的奢华戒指。$(br2)它回应财富、交易与宝石，也会让佩戴者成为袭击者眼中更显眼的目标。",
+      "title": "极尽奢华之戒"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "佩戴后，极尽奢华之戒会提供额外 1 级时运。$(br2)村民交易不会涨价，也不会售罄。$(br2)除猪灵外的商人类生物不会主动将佩戴者作为攻击目标。",
+      "title": "奢华收益"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "如果同时佩戴无尽贪婪契约，方块掉落的时运加成会提高到 2 级。$(br2)此时佩戴者造成的伤害会根据背包中宝石数量提高，携带越多宝石，伤害越高，但收益会逐渐递减。",
+      "title": "契约联动"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "袭击者会优先攻击极尽奢华之戒的佩戴者。$(br2)当戒指与无尽贪婪契约联动时，袭击者对佩戴者造成的伤害也会随携带宝石数量提高。",
+      "title": "代价"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:avarice_ring",
+      "text": "使用无尽贪婪契约与精致戒指合成极尽奢华之戒。",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 65
+}

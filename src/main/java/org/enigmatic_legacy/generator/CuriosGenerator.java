@@ -213,6 +213,7 @@ public class CuriosGenerator implements DataProvider {
         values.add(EnigmaticLegacy.MODID + ":monster_charm");
         values.add(EnigmaticLegacy.MODID + ":treasure_hunter_charm");
         values.add(EnigmaticLegacy.MODID + ":bloodstained_valor_emblem");
+        values.add(EnigmaticLegacy.MODID + ":totem_of_malice");
         values.add(EnigmaticLegacy.MODID + ":scorched_charm"); // 阳灼护符
         values.add(EnigmaticLegacy.MODID + ":mega_sponge");
         values.add(EnigmaticLegacy.MODID + ":enchanter_pearl");
@@ -359,6 +360,7 @@ public class CuriosGenerator implements DataProvider {
         values.add(EnigmaticLegacy.MODID + ":iron_ring");
         values.add(EnigmaticLegacy.MODID + ":magnet_ring");
         values.add(EnigmaticLegacy.MODID + ":dislocation_ring");
+        values.add(EnigmaticLegacy.MODID + ":avarice_ring");
         values.add(EnigmaticLegacy.MODID + ":golden_ring");
         values.add(EnigmaticLegacy.MODID + ":ender_ring");
         values.add(EnigmaticLegacy.MODID + ":magic_quartz_ring");

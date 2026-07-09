@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "enigmatic_legacy:avarice_scroll"
+    },
+    {
+      "item": "enigmatic_legacy:golden_ring"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:avarice_ring"
+  }
+}

@@ -32,6 +32,7 @@ public class ItemGenerator extends ItemModelProvider {
         basicItem(ModItems.EARTH_HEART_FRAGMENT.getId());
         basicItem(ModItems.EARTH_HEART.getId());
         basicItem(ModItems.BLOODSTAINED_VALOR_EMBLEM.getId());
+        basicItem(ModItems.TOTEM_OF_MALICE.getId());
         basicItem(ModItems.SCORCHED_CHARM.getId()); // 阳灼护符
 
         var twistedHeartOn = withExistingParent("item/twisted_heart_on", mcLoc("item/generated"))
@@ -72,6 +73,7 @@ public class ItemGenerator extends ItemModelProvider {
 
         basicItem(ModItems.MAGNET_RING.getId());
         basicItem(ModItems.DISLOCATION_RING.getId());
+        basicItem(ModItems.ULTIMATE_LUXURY_RING.getId());
         basicItem(ModItems.MONSTER_CHARM.getId());
         basicItem(ModItems.TREASURE_HUNTER_CHARM.getId());
         basicItem(ModItems.MEGA_SPONGE.getId());

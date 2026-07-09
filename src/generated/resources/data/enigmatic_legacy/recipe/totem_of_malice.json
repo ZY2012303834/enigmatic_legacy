@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "item": "minecraft:totem_of_undying"
+    },
+    "Q": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "W": {
+      "item": "enigmatic_legacy:evil_essence"
+    }
+  },
+  "pattern": [
+    " Q ",
+    "WGW",
+    " Q "
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:totem_of_malice"
+  }
+}

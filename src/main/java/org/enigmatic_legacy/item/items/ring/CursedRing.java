@@ -1,15 +1,23 @@
 package org.enigmatic_legacy.item.items.ring;
 
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.storage.loot.LootContext;
+import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.config.ConfigClient;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.util.AbyssalHeartHelper;
@@ -178,6 +186,40 @@ public class CursedRing extends Item implements ICurioItem {
     @Override
     public ICurio.@NotNull DropRule getDropRule(SlotContext slotContext, DamageSource source, boolean recentlyHit, ItemStack stack) {
         return ICurio.DropRule.ALWAYS_KEEP;
+    }
+
+    @Override
+    public @NotNull Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(
+            SlotContext slotContext,
+            ResourceLocation id,
+            ItemStack stack
+    ) {
+        Multimap<Holder<Attribute>, AttributeModifier> attributes = HashMultimap.create();
+
+        if (!ConfigCommon.CURSED_RING_ENABLED.get()) {
+            return attributes;
+        }
+
+        double armorDebuff = ConfigCommon.CURSED_RING_ARMOR_DEBUFF.get() / 100.0D;
+
+        attributes.put(
+                Attributes.ARMOR,
+                new AttributeModifier(
+                        ResourceLocation.fromNamespaceAndPath(EnigmaticLegacy.MODID, "cursed_ring_armor_modifier"),
+                        -armorDebuff,
+                        AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
+                )
+        );
+        attributes.put(
+                Attributes.ARMOR_TOUGHNESS,
+                new AttributeModifier(
+                        ResourceLocation.fromNamespaceAndPath(EnigmaticLegacy.MODID, "cursed_ring_armor_toughness_modifier"),
+                        -armorDebuff,
+                        AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
+                )
+        );
+
+        return attributes;
     }
 
     @Override
