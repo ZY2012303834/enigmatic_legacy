@@ -19,6 +19,7 @@ import org.enigmatic_legacy.generator.language.LanguageGenerator;
 import org.enigmatic_legacy.generator.loot.*;
 import org.enigmatic_legacy.generator.patchouli.PatchouliBookGenerator;
 import org.enigmatic_legacy.item.ModItems;
+import org.enigmatic_legacy.loot.ModLootModifiers;
 import org.enigmatic_legacy.menu.ModMenus;
 import org.enigmatic_legacy.network.ModNetwork;
 import org.enigmatic_legacy.potion.ModEffects;
@@ -48,6 +49,7 @@ public class EnigmaticLegacy {
         ModEffects.register(modEventBus);
         ModPotions.register(modEventBus);
         ModSounds.SOUND_EVENTS.register(modEventBus);
+        ModLootModifiers.register(modEventBus);
 
         modEventBus.addListener(ModNetwork::registerPayloads);
         modEventBus.addListener(BlockGenerator::gatherData);

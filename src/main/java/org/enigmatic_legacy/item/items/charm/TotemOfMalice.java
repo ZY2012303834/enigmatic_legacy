@@ -292,7 +292,7 @@ public class TotemOfMalice extends Item implements ICurioItem {
      */
     @Override
     public boolean isBarVisible(@NotNull ItemStack stack) {
-        return true;
+        return getPower(stack) < getMaxPower(stack);
     }
 
     /**
@@ -349,11 +349,19 @@ public class TotemOfMalice extends Item implements ICurioItem {
      * @return 只有耐久附魔返回 true
      */
     @Override
+    public boolean isPrimaryItemFor(
+            @NotNull ItemStack stack,
+            @NotNull Holder<Enchantment> enchantment
+    ) {
+        return isUnbreaking(enchantment);
+    }
+
+    @Override
     public boolean supportsEnchantment(
             @NotNull ItemStack stack,
             @NotNull Holder<Enchantment> enchantment
     ) {
-        return enchantment.is(Enchantments.UNBREAKING);
+        return isUnbreaking(enchantment);
     }
 
     /**
@@ -425,6 +433,10 @@ public class TotemOfMalice extends Item implements ICurioItem {
         }
 
         return 0;
+    }
+
+    private static boolean isUnbreaking(Holder<Enchantment> enchantment) {
+        return enchantment.is(Enchantments.UNBREAKING);
     }
 
     private static CompoundTag copyCustomData(ItemStack stack) {

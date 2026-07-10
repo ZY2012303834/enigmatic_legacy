@@ -98,7 +98,7 @@ public final class ModeTabs {
                                 output.accept(ModItems.ENIGMATIC_EYE.get());            // 莫测之眼
                                 output.accept(ModItems.MONSTER_CHARM.get());            // 怪物猎人勋章
                                 output.accept(ModItems.TREASURE_HUNTER_CHARM.get());    // 猎宝者护符
-                                output.accept(ModItems.TOTEM_OF_MALICE.get());          // 恶意图腾
+                                output.accept(ModItems.TOTEM_OF_MALICE.get().getDefaultInstance());          // 恶意图腾
                                 output.accept(ModItems.MEGA_SPONGE.get());              // 吸水海绵
                                 output.accept(ModItems.ENCHANTER_PEARL.get());          // 附魔师的珍珠
                                 output.accept(ModItems.SCORCHED_CHARM.get());           // 阳灼护符

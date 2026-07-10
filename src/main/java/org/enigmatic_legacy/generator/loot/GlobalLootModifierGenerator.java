@@ -9,11 +9,11 @@ import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.neoforged.neoforge.common.data.GlobalLootModifierProvider;
-import net.neoforged.neoforge.common.loot.AddTableLootModifier;
 import net.neoforged.neoforge.common.loot.LootTableIdCondition;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.compat.DungeonsAriseCompat;
+import org.enigmatic_legacy.loot.ConfigurableAddTableLootModifier;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -556,7 +556,7 @@ public class GlobalLootModifierGenerator extends GlobalLootModifierProvider {
     private void addTableModifier(String name, ResourceLocation targetTable, String injectPath) {
         add(
                 name,
-                new AddTableLootModifier(
+                new ConfigurableAddTableLootModifier(
                         new LootItemCondition[]{
                                 LootTableIdCondition.builder(targetTable).build()
                         },

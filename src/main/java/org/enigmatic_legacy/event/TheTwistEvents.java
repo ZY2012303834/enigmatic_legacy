@@ -1,9 +1,6 @@
 package org.enigmatic_legacy.event;
 
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import net.minecraft.world.entity.boss.wither.WitherBoss;
-import net.minecraft.world.entity.monster.ElderGuardian;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.entity.player.Player;
@@ -175,8 +172,6 @@ public final class TheTwistEvents {
      */
     private static boolean isBossOrPlayer(LivingEntity entity) {
         return entity instanceof Player
-                || entity instanceof EnderDragon
-                || entity instanceof WitherBoss
-                || entity instanceof ElderGuardian;
+                || ConfigCommon.isBoss(entity);
     }
 }

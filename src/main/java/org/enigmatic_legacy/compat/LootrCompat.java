@@ -21,6 +21,7 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.PlayerContainerEvent;
 import noobanidus.mods.lootr.common.api.data.inventory.ILootrInventory;
 import org.enigmatic_legacy.EnigmaticLegacy;
+import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.item.items.charm.EnigmaticEye;
 
@@ -188,6 +189,10 @@ public final class LootrCompat {
     }
 
     private static void addConfiguredLoot(ServerPlayer player, ILootrInventory inventory) {
+        if (!ConfigCommon.CUSTOM_DUNGEON_LOOT_ENABLED.get()) {
+            return;
+        }
+
         ResourceKey<LootTable> sourceTable = inventory.getInfo().getInfoLootTable();
 
         if (sourceTable == null || hasInjectedLootrContainer(player, inventory)) {
@@ -222,6 +227,10 @@ public final class LootrCompat {
     }
 
     private static void addDormantEye(ServerPlayer player, ILootrInventory inventory) {
+        if (!ConfigCommon.CUSTOM_DUNGEON_LOOT_ENABLED.get()) {
+            return;
+        }
+
         if (player.getPersistentData().getBoolean(HAS_GENERATED_DORMANT_EYE_TAG)) {
             return;
         }

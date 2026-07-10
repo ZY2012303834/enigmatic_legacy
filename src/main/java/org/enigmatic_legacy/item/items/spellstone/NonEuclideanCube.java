@@ -27,6 +27,7 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import org.enigmatic_legacy.EnigmaticLegacy;
+import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.event.TeleportParticleEvents;
 import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
@@ -379,8 +380,8 @@ public class NonEuclideanCube extends Item implements ICurioItem {
 
         tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.non_euclidean_cube.passive.3",
-                SpellstoneTooltip.number("100"),
-                SpellstoneTooltip.number("150")
+                SpellstoneTooltip.number(String.valueOf(ConfigCommon.CUBE_DAMAGE_LIMIT.get())),
+                SpellstoneTooltip.number(String.valueOf(Math.round(ConfigCommon.CUBE_DAMAGE_LIMIT.get() * 1.5F)))
         ));
 
         tooltip.add(SpellstoneTooltip.text(

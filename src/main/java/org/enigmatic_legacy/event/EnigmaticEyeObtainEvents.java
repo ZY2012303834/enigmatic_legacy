@@ -18,6 +18,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import org.enigmatic_legacy.compat.LootrCompat;
+import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.item.items.charm.EnigmaticEye;
 
@@ -62,6 +63,10 @@ public final class EnigmaticEyeObtainEvents {
      */
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
+        if (!ConfigCommon.CUSTOM_DUNGEON_LOOT_ENABLED.get()) {
+            return;
+        }
+
         // 只处理主手。
         // 否则主手、副手可能各触发一次，导致逻辑重复。
         if (event.getHand() != InteractionHand.MAIN_HAND) {

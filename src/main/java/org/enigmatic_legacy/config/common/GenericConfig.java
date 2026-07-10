@@ -44,7 +44,21 @@ public class GenericConfig {
                         List.of(
                                 "minecraft:ender_dragon",
                                 "minecraft:wither",
-                                "minecraft:elder_guardian"
+                                "minecraft:elder_guardian",
+                                "cataclysm:ender_golem",
+                                "cataclysm:ender_guardian",
+                                "cataclysm:netherite_monstrosity",
+                                "cataclysm:ignis",
+                                "cataclysm:ignited_revenant",
+                                "cataclysm:the_harbinger",
+                                "cataclysm:the_leviathan",
+                                "cataclysm:coralssus",
+                                "cataclysm:amethyst_crab",
+                                "cataclysm:ancient_remnant",
+                                "cataclysm:kobolediator",
+                                "cataclysm:wadjet",
+                                "cataclysm:maledictus",
+                                "cataclysm:scylla"
                         ),
                         () -> "minecraft:ender_dragon",
                         value -> value instanceof String string

@@ -1,6 +1,8 @@
 package org.enigmatic_legacy.event;
 
 import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
@@ -19,6 +21,7 @@ import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
+import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.items.spellstone.NonEuclideanCube;
 import org.enigmatic_legacy.sound.ModSounds;
 import org.enigmatic_legacy.util.CursedRingHelper;
@@ -34,7 +37,7 @@ public final class NonEuclideanCubeEvents {
     private NonEuclideanCubeEvents() {
     }
 
-    private static final List<Holder<MobEffect>> NEGATIVE_EFFECTS = List.of(
+    private static final List<Holder<MobEffect>> DEFAULT_NEGATIVE_EFFECTS = List.of(
             MobEffects.WEAKNESS,
             MobEffects.MOVEMENT_SLOWDOWN,
             MobEffects.DIG_SLOWDOWN,
@@ -50,7 +53,7 @@ public final class NonEuclideanCubeEvents {
 
      * 按你的要求：排除缓降 SLOW_FALLING。
      */
-    private static final List<Holder<MobEffect>> POSITIVE_EFFECTS = List.of(
+    private static final List<Holder<MobEffect>> DEFAULT_POSITIVE_EFFECTS = List.of(
             MobEffects.REGENERATION,
             MobEffects.MOVEMENT_SPEED,
             MobEffects.DIG_SPEED,
@@ -193,6 +196,10 @@ public final class NonEuclideanCubeEvents {
             return;
         }
 
+        if (!ConfigCommon.CUBE_AUTO_SKILL_TRIGGERING.get()) {
+            return;
+        }
+
         /*
          * 血量小于等于 1 时，触发主动效果。
          * 这里只对玩家处理，因为主动技能需要 ServerPlayer。
@@ -229,8 +236,12 @@ public final class NonEuclideanCubeEvents {
             return;
         }
 
-        Holder<MobEffect> effect = POSITIVE_EFFECTS.get(
-                player.getRandom().nextInt(POSITIVE_EFFECTS.size())
+        List<Holder<MobEffect>> positiveEffects = getConfiguredEffects(
+                ConfigCommon.THE_CUBE_RANDOM_BUFFS.get(),
+                DEFAULT_POSITIVE_EFFECTS
+        );
+        Holder<MobEffect> effect = positiveEffects.get(
+                player.getRandom().nextInt(positiveEffects.size())
         );
 
         player.addEffect(new MobEffectInstance(
@@ -264,11 +275,13 @@ public final class NonEuclideanCubeEvents {
      * 未佩戴七咒之戒：100。
      */
     private static float getHighDamageLimit(LivingEntity entity) {
+        int damageLimit = ConfigCommon.CUBE_DAMAGE_LIMIT.get();
+
         if (entity instanceof Player player && CursedRingHelper.hasCursedRing(player)) {
-            return NonEuclideanCube.HIGH_DAMAGE_LIMIT_CURSED;
+            return damageLimit * 1.5F;
         }
 
-        return NonEuclideanCube.HIGH_DAMAGE_LIMIT_NORMAL;
+        return damageLimit;
     }
 
     /**
@@ -346,14 +359,19 @@ public final class NonEuclideanCubeEvents {
      * 2. 如果所有效果都已经有了，就延长所有效果持续时间。
      */
     private static void addProgressiveNegativeEffect(LivingEntity attacker, LivingEntity source) {
-        for (Holder<MobEffect> effect : NEGATIVE_EFFECTS) {
+        List<Holder<MobEffect>> negativeEffects = getConfiguredEffects(
+                ConfigCommon.THE_CUBE_RANDOM_DEBUFFS.get(),
+                DEFAULT_NEGATIVE_EFFECTS
+        );
+
+        for (Holder<MobEffect> effect : negativeEffects) {
             if (!attacker.hasEffect(effect)) {
                 attacker.addEffect(new MobEffectInstance(effect, 20 * 8, 0), source);
                 return;
             }
         }
 
-        for (Holder<MobEffect> effect : NEGATIVE_EFFECTS) {
+        for (Holder<MobEffect> effect : negativeEffects) {
             MobEffectInstance old = attacker.getEffect(effect);
 
             if (old == null) {
@@ -366,6 +384,25 @@ public final class NonEuclideanCubeEvents {
                     old.getAmplifier()
             ), source);
         }
+    }
+
+    private static List<Holder<MobEffect>> getConfiguredEffects(
+            List<? extends String> effectIds,
+            List<Holder<MobEffect>> fallback
+    ) {
+        List<Holder<MobEffect>> effects = new ArrayList<>();
+
+        for (String rawId : effectIds) {
+            ResourceLocation id = ResourceLocation.tryParse(rawId.trim());
+
+            if (id == null) {
+                continue;
+            }
+
+            BuiltInRegistries.MOB_EFFECT.getHolder(id).ifPresent(effects::add);
+        }
+
+        return effects.isEmpty() ? fallback : effects;
     }
 
     /**

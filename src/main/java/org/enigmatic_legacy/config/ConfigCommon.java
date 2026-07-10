@@ -1,6 +1,8 @@
 package org.enigmatic_legacy.config;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import org.enigmatic_legacy.config.common.*;
 
@@ -19,6 +21,7 @@ public final class ConfigCommon {
 
     public static final AccessibilityConfig ACCESSIBILITY;      // 基础配置
     public static final GenericConfig GENERIC;      // 通用机制配置
+    public static final NonEuclideanCubeConfig NON_EUCLIDEAN_CUBE;
     public static final ItemOptionsConfig ITEM_OPTIONS;
     public static final CursedRingConfig CURSED_RING;
     public static final ForbiddenFruitConfig FORBIDDEN_FRUIT;
@@ -46,6 +49,14 @@ public final class ConfigCommon {
     public static final ModConfigSpec.IntValue SOUL_CRYSTALS_MODE;
     public static final ModConfigSpec.IntValue MAX_SOUL_CRYSTAL_LOSS;
     public static final ModConfigSpec.ConfigValue<List<? extends String>> COMPLETE_BOSS_LIST;
+
+    // ==============================
+    // 旧字段兼容别名：非欧立方
+    // ==============================
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> THE_CUBE_RANDOM_BUFFS;
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> THE_CUBE_RANDOM_DEBUFFS;
+    public static final ModConfigSpec.IntValue CUBE_DAMAGE_LIMIT;
+    public static final ModConfigSpec.BooleanValue CUBE_AUTO_SKILL_TRIGGERING;
 
     // ==============================
     // 旧字段兼容别名：物品与方块启用开关
@@ -233,6 +244,7 @@ public final class ConfigCommon {
 
         ACCESSIBILITY = new AccessibilityConfig(builder);   // 基础配置
         GENERIC = new GenericConfig(builder);       // 通用机制配置
+        NON_EUCLIDEAN_CUBE = new NonEuclideanCubeConfig(builder);
         ITEM_OPTIONS = new ItemOptionsConfig(builder);
         CURSED_RING = new CursedRingConfig(builder);
         FORBIDDEN_FRUIT = new ForbiddenFruitConfig(builder);
@@ -254,6 +266,10 @@ public final class ConfigCommon {
         SOUL_CRYSTALS_MODE = GENERIC.soulCrystalsMode;
         MAX_SOUL_CRYSTAL_LOSS = GENERIC.maxSoulCrystalLoss;
         COMPLETE_BOSS_LIST = GENERIC.completeBossList;
+        THE_CUBE_RANDOM_BUFFS = NON_EUCLIDEAN_CUBE.randomBuffs;
+        THE_CUBE_RANDOM_DEBUFFS = NON_EUCLIDEAN_CUBE.randomDebuffs;
+        CUBE_DAMAGE_LIMIT = NON_EUCLIDEAN_CUBE.damageLimit;
+        CUBE_AUTO_SKILL_TRIGGERING = NON_EUCLIDEAN_CUBE.autoSkillTriggering;
 
         CURSED_RING_ENABLED = ITEM_OPTIONS.cursedRingEnabled;
         COSMIC_HEART_ENABLED = ITEM_OPTIONS.cosmicHeartEnabled;
@@ -423,6 +439,10 @@ public final class ConfigCommon {
 
     public static boolean isBoss(ResourceLocation entityId) {
         return COMPLETE_BOSS_LIST.get().contains(entityId.toString());
+    }
+
+    public static boolean isBoss(LivingEntity entity) {
+        return isBoss(BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()));
     }
 
     public static boolean isCursedRingEnabled() {

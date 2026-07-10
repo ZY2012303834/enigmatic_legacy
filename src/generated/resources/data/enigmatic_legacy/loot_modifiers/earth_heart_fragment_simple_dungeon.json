@@ -1,5 +1,5 @@
 {
-  "type": "neoforge:add_table",
+  "type": "enigmatic_legacy:configurable_add_table",
   "conditions": [
     {
       "condition": "neoforge:loot_table_id",
