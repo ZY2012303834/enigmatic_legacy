@@ -49,6 +49,10 @@ public final class ConfigCommon {
     public static final ModConfigSpec.IntValue SOUL_CRYSTALS_MODE;
     public static final ModConfigSpec.IntValue MAX_SOUL_CRYSTAL_LOSS;
     public static final ModConfigSpec.ConfigValue<List<? extends String>> COMPLETE_BOSS_LIST;
+    public static final ModConfigSpec.DoubleValue IGNORANCE_SCROLL_DAMAGE_BOOST_LIMIT;
+    public static final ModConfigSpec.DoubleValue IGNORANCE_SCROLL_HEAL_BOOST_LIMIT;
+    public static final ModConfigSpec.DoubleValue IGNORANCE_SCROLL_KNOCKBACK_RESISTANCE_LIMIT;
+    public static final ModConfigSpec.IntValue IGNORANCE_SCROLL_XP_LEVEL_UPPER_LIMIT;
 
     // ==============================
     // 旧字段兼容别名：非欧立方
@@ -266,6 +270,10 @@ public final class ConfigCommon {
         SOUL_CRYSTALS_MODE = GENERIC.soulCrystalsMode;
         MAX_SOUL_CRYSTAL_LOSS = GENERIC.maxSoulCrystalLoss;
         COMPLETE_BOSS_LIST = GENERIC.completeBossList;
+        IGNORANCE_SCROLL_DAMAGE_BOOST_LIMIT = GENERIC.ignoranceScrollDamageBoostLimit;
+        IGNORANCE_SCROLL_HEAL_BOOST_LIMIT = GENERIC.ignoranceScrollHealBoostLimit;
+        IGNORANCE_SCROLL_KNOCKBACK_RESISTANCE_LIMIT = GENERIC.ignoranceScrollKnockbackResistanceLimit;
+        IGNORANCE_SCROLL_XP_LEVEL_UPPER_LIMIT = GENERIC.ignoranceScrollXpLevelUpperLimit;
         THE_CUBE_RANDOM_BUFFS = NON_EUCLIDEAN_CUBE.randomBuffs;
         THE_CUBE_RANDOM_DEBUFFS = NON_EUCLIDEAN_CUBE.randomDebuffs;
         CUBE_DAMAGE_LIMIT = NON_EUCLIDEAN_CUBE.damageLimit;

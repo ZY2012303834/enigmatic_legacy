@@ -40,6 +40,7 @@ public final class CursedRingApi {
         return !stack.isEmpty()
                 && (stack.is(ModItems.ENCHANTER_PEARL.get())
                 || stack.is(ModItems.CURSED_SCROLL.get())
+                || stack.is(ModItems.CURSED_XP_SCROLL.get())
                 || stack.is(ModItems.AVARICE_SCROLL.get())
                 || stack.is(ModItems.ULTIMATE_LUXURY_RING.get())
                 || stack.is(ModItems.BLOODSTAINED_VALOR_EMBLEM.get())

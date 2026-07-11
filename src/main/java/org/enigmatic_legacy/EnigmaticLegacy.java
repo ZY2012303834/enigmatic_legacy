@@ -124,6 +124,7 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(HeartOfCreationEvents.class);
         NeoForge.EVENT_BUS.register(GiftOfTheHeavenEvents.class);
         NeoForge.EVENT_BUS.register(ScrollOfThousandCursesEvents.class);
+        NeoForge.EVENT_BUS.register(ScrollOfIgnoranceCurseEvents.class);
         NeoForge.EVENT_BUS.register(GraceOfTheCreatorEvents.class);
         NeoForge.EVENT_BUS.register(PactOfInfiniteAvariceEvents.class);
         NeoForge.EVENT_BUS.register(UltimateLuxuryRingEvents.class);

@@ -527,6 +527,28 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.xp_scroll.usage.3", "启用时会收集 %s 格内的经验球。");
         // end
 
+        // 无知诅咒卷轴
+        addItem(ModItems.CURSED_XP_SCROLL, "无知诅咒卷轴");
+
+        add("message.enigmatic_legacy.cursed_xp_scroll.enabled", "无知诅咒卷轴已启用。");
+        add("message.enigmatic_legacy.cursed_xp_scroll.disabled", "无知诅咒卷轴已停用。");
+        add("message.enigmatic_legacy.cursed_xp_scroll.mode_absorption", "无知诅咒卷轴切换为吸收模式。");
+        add("message.enigmatic_legacy.cursed_xp_scroll.mode_extraction", "无知诅咒卷轴切换为提取模式。");
+
+        add("tooltip.enigmatic_legacy.cursed_xp_scroll.stored", "已储存经验：%s（%s 级）");
+        add("tooltip.enigmatic_legacy.cursed_xp_scroll.active", "状态：已启用");
+        add("tooltip.enigmatic_legacy.cursed_xp_scroll.inactive", "状态：已停用");
+        add("tooltip.enigmatic_legacy.cursed_xp_scroll.mode_absorption", "模式：吸收");
+        add("tooltip.enigmatic_legacy.cursed_xp_scroll.mode_extraction", "模式：提取");
+        add("tooltip.enigmatic_legacy.cursed_xp_scroll.current.damage", "当前攻击伤害：%s");
+        add("tooltip.enigmatic_legacy.cursed_xp_scroll.current.healing", "当前生命恢复：%s");
+        add("tooltip.enigmatic_legacy.cursed_xp_scroll.current.knockback", "当前击退抗性：%s");
+        add("tooltip.enigmatic_legacy.cursed_xp_scroll.usage.1", "Shift + 右键切换吸收 / 提取模式。");
+        add("tooltip.enigmatic_legacy.cursed_xp_scroll.usage.2", "按卷轴快捷键启用或停用卷轴。");
+        add("tooltip.enigmatic_legacy.cursed_xp_scroll.usage.3", "启用时会狩猎 %s 格内的经验球。");
+        add("tooltip.enigmatic_legacy.cursed_xp_scroll.cursed_only", "只有承受七咒之人才能使用。死亡会清空其中储存的经验。");
+        // end
+
         // 天堂之礼
         addItem(ModItems.HEAVEN_SCROLL, "天堂之礼");
 

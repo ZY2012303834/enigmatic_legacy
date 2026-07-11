@@ -1,0 +1,23 @@
+{
+  "category": "enigmatic_legacy:scrolls",
+  "icon": "enigmatic_legacy:cursed_xp_scroll",
+  "name": "Ignorance Curse",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:cursed_xp_scroll",
+      "link_recipe": true,
+      "text": "When experience has lost most of its meaning, the curse teaches this scroll a hungrier use.$(br2)It hunts experience from farther away, stores it greedily, and turns hoarded levels into battle strength.",
+      "title": "Scroll of Ignorance Curse"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:cursed_xp_scroll",
+      "text": "The blessing is conditional: only bearers of the Seven Curses can use it.$(br2)If death catches its holder, the curse empties every point of experience stored within.",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 5
+}

@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-09T15:06:20.50838	vanilla/Recipes
+// 1.21.1	2026-07-11T09:13:23.9321097	vanilla/Recipes
 138cca5fc2d36a468976c88c266618e68aa51d88 data/enigmatic_legacy/advancement/recipes/building_blocks/astral_dust_sack.json
 75128c3d277fd90fca1df4cc9f996933af7f7241 data/enigmatic_legacy/advancement/recipes/building_blocks/etherium_block.json
 70a559dbe3db33a763c165b60a23730d9e9f955b data/enigmatic_legacy/advancement/recipes/combat/axe_of_executioner.json
@@ -22,6 +22,7 @@ e35f8c56da887f970352076ea7d5f82170782440 data/enigmatic_legacy/advancement/recip
 94d1a138371805bfef8ef1eada28fc133984a8ed data/enigmatic_legacy/advancement/recipes/misc/bloodstained_valor_emblem.json
 1b98626a43928d7448ba4330e6bdef4c9cb7085f data/enigmatic_legacy/advancement/recipes/misc/cosmic_heart.json
 87a011569d6c9a2a7c5f39f27fdfdca37e67473f data/enigmatic_legacy/advancement/recipes/misc/cursed_scroll.json
+22c71d1624c1a06fe5326fe6dfdd9bd55885281a data/enigmatic_legacy/advancement/recipes/misc/cursed_xp_scroll.json
 5d7ac7a4f32a118fcc0ead01627b0f2a38ac964a data/enigmatic_legacy/advancement/recipes/misc/curse_transposer.json
 3ddfd3bd46194924b4ab8e755165e4c685b72d99 data/enigmatic_legacy/advancement/recipes/misc/dislocation_ring.json
 af8bdf3eca5269e0bdaf8fbd98c431f2a9190ec4 data/enigmatic_legacy/advancement/recipes/misc/earth_heart.json
@@ -67,6 +68,7 @@ fb27980e68235d55440fe805245fb1b9e16ced28 data/enigmatic_legacy/recipe/axe_of_exe
 461bff7973fdfaaaa4c4918c7a3eb08618d05e5d data/enigmatic_legacy/recipe/bloodstained_valor_emblem.json
 874378b1428b2e4f0b7923bec326928f7e37ba59 data/enigmatic_legacy/recipe/cosmic_heart.json
 a68e9f47121f7c2f4e9d9d83a3dc9b7c97b499c3 data/enigmatic_legacy/recipe/cursed_scroll.json
+603f0f7a340446e75480dd9fcfc5631bd804ced4 data/enigmatic_legacy/recipe/cursed_xp_scroll.json
 1870a36d5e13b417304e3093bca3398549bcac48 data/enigmatic_legacy/recipe/curse_transposer.json
 7c9df7e58eca2d13da3fb5ba533db3bb77c0e0dd data/enigmatic_legacy/recipe/darkest_scroll_duplication.json
 aa39ef5036cc226d1f775becab4cb81df43437c1 data/enigmatic_legacy/recipe/dislocation_ring.json

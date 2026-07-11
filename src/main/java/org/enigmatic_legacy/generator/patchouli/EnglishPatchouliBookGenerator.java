@@ -1399,6 +1399,26 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 )
         )));
 
+        futures.add(save(output, "en_us", "entries/scrolls/cursed_xp_scroll", entry(
+                "Ignorance Curse",
+                "scrolls",
+                "enigmatic_legacy:cursed_xp_scroll",
+                5,
+
+                spotlightPage(
+                        "enigmatic_legacy:cursed_xp_scroll",
+                        "Scroll of Ignorance Curse",
+                        "When experience has lost most of its meaning, the curse teaches this scroll a hungrier use.$(br2)" +
+                                "It hunts experience from farther away, stores it greedily, and turns hoarded levels into battle strength."
+                ),
+
+                craftingPage(
+                        "enigmatic_legacy:cursed_xp_scroll",
+                        "The blessing is conditional: only bearers of the Seven Curses can use it.$(br2)" +
+                                "If death catches its holder, the curse empties every point of experience stored within."
+                )
+        )));
+
         futures.add(save(output, "en_us", "entries/scrolls/heaven_scroll", entry(
                 "Gift of the Heaven",
                 "scrolls",

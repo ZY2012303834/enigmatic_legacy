@@ -1,0 +1,23 @@
+{
+  "category": "enigmatic_legacy:scrolls",
+  "icon": "enigmatic_legacy:cursed_xp_scroll",
+  "name": "无知诅咒",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:cursed_xp_scroll",
+      "link_recipe": true,
+      "text": "当经验在旅途后段逐渐失去意义时，诅咒教会了这枚卷轴更饥渴的用途。$(br2)它会从更远处狩猎经验，将其贪婪地封入卷轴，并把囤积的等级转化为战斗能力。",
+      "title": "无知诅咒卷轴"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:cursed_xp_scroll",
+      "text": "这份恩惠只回应承受七咒之人。$(br2)若持有者被死亡追上，诅咒会清空卷轴中储存的全部经验。",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 5
+}

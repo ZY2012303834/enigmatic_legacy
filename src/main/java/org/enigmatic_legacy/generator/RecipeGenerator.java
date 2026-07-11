@@ -494,6 +494,20 @@ public class RecipeGenerator extends RecipeProvider {
                 .unlockedBy("has_darkest_scroll", has(ModItems.DARKEST_SCROLL.get()))
                 .save(output);
 
+        // 无知诅咒卷轴 / Scroll of Ignorance Curse。
+        // 复刻 Enigmatic Addons：永恒智慧卷轴 + 经验瓶、扭曲之心、邪恶精髓与绿宝石块。
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CURSED_XP_SCROLL.get())
+                .pattern("QTQ")
+                .pattern("WXW")
+                .pattern("QGQ")
+                .define('Q', Items.EXPERIENCE_BOTTLE)
+                .define('T', ModItems.TWISTED_HEART.get())
+                .define('W', ModItems.EVIL_ESSENCE.get())
+                .define('X', ModItems.XP_SCROLL.get())
+                .define('G', Items.EMERALD_BLOCK)
+                .unlockedBy("has_xp_scroll", has(ModItems.XP_SCROLL.get()))
+                .save(output);
+
         // 创造者的恩赐 / Grace of the Creator。
         // 原项目配方：以太锭 * 2、星尘 * 3、天堂之礼、龙息 * 2、鞘翅。
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.FABULOUS_SCROLL.get())

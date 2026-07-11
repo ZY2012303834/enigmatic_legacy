@@ -583,6 +583,28 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.xp_scroll.usage.3", "While active, collects experience orbs within %s blocks.");
         // end
 
+        // Scroll of Ignorance Curse
+        addItem(ModItems.CURSED_XP_SCROLL, "Scroll of Ignorance Curse");
+
+        add("message.enigmatic_legacy.cursed_xp_scroll.enabled", "Scroll of Ignorance Curse enabled.");
+        add("message.enigmatic_legacy.cursed_xp_scroll.disabled", "Scroll of Ignorance Curse disabled.");
+        add("message.enigmatic_legacy.cursed_xp_scroll.mode_absorption", "Scroll of Ignorance Curse switched to Absorption Mode.");
+        add("message.enigmatic_legacy.cursed_xp_scroll.mode_extraction", "Scroll of Ignorance Curse switched to Extraction Mode.");
+
+        add("tooltip.enigmatic_legacy.cursed_xp_scroll.stored", "Stored Experience: %s (%s levels)");
+        add("tooltip.enigmatic_legacy.cursed_xp_scroll.active", "State: Active");
+        add("tooltip.enigmatic_legacy.cursed_xp_scroll.inactive", "State: Inactive");
+        add("tooltip.enigmatic_legacy.cursed_xp_scroll.mode_absorption", "Mode: Absorption");
+        add("tooltip.enigmatic_legacy.cursed_xp_scroll.mode_extraction", "Mode: Extraction");
+        add("tooltip.enigmatic_legacy.cursed_xp_scroll.current.damage", "Current Attack Damage: %s");
+        add("tooltip.enigmatic_legacy.cursed_xp_scroll.current.healing", "Current Healing: %s");
+        add("tooltip.enigmatic_legacy.cursed_xp_scroll.current.knockback", "Current Knockback Resistance: %s");
+        add("tooltip.enigmatic_legacy.cursed_xp_scroll.usage.1", "Shift + right-click to switch between Absorption and Extraction Mode.");
+        add("tooltip.enigmatic_legacy.cursed_xp_scroll.usage.2", "Press the scroll key to enable or disable the scroll.");
+        add("tooltip.enigmatic_legacy.cursed_xp_scroll.usage.3", "While active, hunts experience orbs within %s blocks.");
+        add("tooltip.enigmatic_legacy.cursed_xp_scroll.cursed_only", "Only bearers of the Seven Curses may use this item. Death empties its stored experience.");
+        // end
+
         // 天堂之礼
         addItem(ModItems.HEAVEN_SCROLL, "Gift of the Heaven");
 

@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "item": "minecraft:emerald_block"
+    },
+    "Q": {
+      "item": "minecraft:experience_bottle"
+    },
+    "T": {
+      "item": "enigmatic_legacy:twisted_heart"
+    },
+    "W": {
+      "item": "enigmatic_legacy:evil_essence"
+    },
+    "X": {
+      "item": "enigmatic_legacy:xp_scroll"
+    }
+  },
+  "pattern": [
+    "QTQ",
+    "WXW",
+    "QGQ"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:cursed_xp_scroll"
+  }
+}

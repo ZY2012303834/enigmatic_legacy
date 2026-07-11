@@ -169,6 +169,7 @@ public class ItemGenerator extends ItemModelProvider {
         basicItem(ModItems.HEART_OF_CREATION.getId()); // 创造之心
         // 卷轴
         basicItem(ModItems.XP_SCROLL.getId()); // 永恒智慧卷轴
+        basicItem(ModItems.CURSED_XP_SCROLL.getId()); // 无知诅咒卷轴
         basicItem(ModItems.HEAVEN_SCROLL.getId()); // 天堂之礼
         basicItem(ModItems.CURSED_SCROLL.getId()); // 千咒卷轴
         basicItem(ModItems.FABULOUS_SCROLL.getId()); // 创造者的恩赐

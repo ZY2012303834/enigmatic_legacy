@@ -9,7 +9,9 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.item.items.scroll.ScrollOfAgelessWisdom;
+import org.enigmatic_legacy.item.items.scroll.ScrollOfIgnoranceCurse;
 import org.enigmatic_legacy.util.ScrollOfAgelessWisdomHelper;
+import org.enigmatic_legacy.util.ScrollOfIgnoranceCurseHelper;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -44,6 +46,14 @@ public record ScrollUsePayload() implements CustomPacketPayload {
 
             if (stack.getItem() instanceof ScrollOfAgelessWisdom) {
                 ScrollOfAgelessWisdom.toggleActive(player, stack);
+            }
+
+            ItemStack cursedStack = ScrollOfIgnoranceCurseHelper.findScroll(player)
+                    .orElse(ItemStack.EMPTY);
+
+            if (ScrollOfIgnoranceCurseHelper.hasScroll(player)
+                    && cursedStack.getItem() instanceof ScrollOfIgnoranceCurse) {
+                ScrollOfIgnoranceCurse.toggleActive(player, cursedStack);
             }
         });
     }

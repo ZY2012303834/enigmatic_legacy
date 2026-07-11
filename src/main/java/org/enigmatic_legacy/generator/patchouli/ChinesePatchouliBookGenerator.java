@@ -1400,6 +1400,26 @@ final class ChinesePatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 )
         )));
 
+        futures.add(save(output, "zh_cn", "entries/scrolls/cursed_xp_scroll", entry(
+                "无知诅咒",
+                "scrolls",
+                "enigmatic_legacy:cursed_xp_scroll",
+                5,
+
+                spotlightPage(
+                        "enigmatic_legacy:cursed_xp_scroll",
+                        "无知诅咒卷轴",
+                        "当经验在旅途后段逐渐失去意义时，诅咒教会了这枚卷轴更饥渴的用途。$(br2)" +
+                                "它会从更远处狩猎经验，将其贪婪地封入卷轴，并把囤积的等级转化为战斗能力。"
+                ),
+
+                craftingPage(
+                        "enigmatic_legacy:cursed_xp_scroll",
+                        "这份恩惠只回应承受七咒之人。$(br2)" +
+                                "若持有者被死亡追上，诅咒会清空卷轴中储存的全部经验。"
+                )
+        )));
+
         futures.add(save(output, "zh_cn", "entries/scrolls/heaven_scroll", entry(
                 "天堂之礼",
                 "scrolls",
