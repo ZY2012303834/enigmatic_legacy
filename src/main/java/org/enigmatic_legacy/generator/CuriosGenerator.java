@@ -83,6 +83,9 @@ public class CuriosGenerator implements DataProvider {
         // 生成 curios:charm 标签，让神秘护身符可以放入 charm 栏位。
         futures.add(generateEnigmaticAmuletTag(cachedOutput));
 
+        // 生成 curios:back 标签，让壮丽鞘翅可以放入 back 背饰栏位。
+        futures.add(generateBackTag(cachedOutput));
+
         // 术石
         futures.add(generateSpellstoneSlotType(cachedOutput));
         futures.add(generateSpellstoneTag(cachedOutput));
@@ -227,6 +230,31 @@ public class CuriosGenerator implements DataProvider {
                 .resolve("tags")
                 .resolve("item")
                 .resolve("charm.json");
+
+        return DataProvider.saveStable(cachedOutput, json, path);
+    }
+
+    /**
+     * 生成 curios:back 物品标签。
+     *
+     * <p>Curios 使用槽位同名标签判断物品是否属于某类饰品。
+     * 壮丽鞘翅实现了 ICurioItem 只负责运行时槽位限制和功能逻辑；
+     * 如果没有这个标签，玩家仍然无法把它拖入 back 背饰栏。</p>
+     */
+    private CompletableFuture<?> generateBackTag(CachedOutput cachedOutput) {
+        JsonObject json = new JsonObject();
+        json.addProperty("replace", false);
+
+        JsonArray values = new JsonArray();
+        values.add(EnigmaticLegacy.MODID + ":majestic_elytra");
+
+        json.add("values", values);
+
+        Path path = output.getOutputFolder(PackOutput.Target.DATA_PACK)
+                .resolve("curios")
+                .resolve("tags")
+                .resolve("item")
+                .resolve("back.json");
 
         return DataProvider.saveStable(cachedOutput, json, path);
     }

@@ -3,21 +3,25 @@ package org.enigmatic_legacy.mixin;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.animal.FlyingAnimal;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.Vec3;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.util.BlazingCoreHelper;
 import org.enigmatic_legacy.util.CursedRingHelper;
+import org.enigmatic_legacy.util.MajesticElytraHelper;
 import org.enigmatic_legacy.util.ScorchedCharmHelper;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -30,6 +34,23 @@ public abstract class MixinLivingEntity {
 
     @Shadow
     protected boolean jumping;
+
+    /**
+     * 让背饰栏中的壮丽鞘翅参与原版“持续滑翔”检查。
+     * <p>
+     * 原版 LivingEntity#updateFallFlying 每 tick 都会读取胸甲槽：
+     * 如果那里没有可用鞘翅，玩家会被立刻停止滑翔。
+     * 这里只替换该方法内部读取胸甲槽的结果：
+     * 胸甲槽有可用鞘翅时保持原版返回；
+     * 胸甲槽没有可用鞘翅时，才把 Curios back 槽中的壮丽鞘翅交给原版继续检查。
+     */
+    @Redirect(
+            method = "updateFallFlying",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;getItemBySlot(Lnet/minecraft/world/entity/EquipmentSlot;)Lnet/minecraft/world/item/ItemStack;")
+    )
+    private ItemStack enigmaticLegacy$useBackSlotMajesticElytraForFlightTick(LivingEntity entity, EquipmentSlot slot) {
+        return MajesticElytraHelper.getChestOrBackElytraStack(entity, slot);
+    }
 
     @Inject(method = "travel", at = @At("HEAD"), cancellable = true)
     private void enigmaticLegacy$travelInLavaLikeWater(Vec3 travelVector, CallbackInfo callback) {

@@ -1,15 +1,13 @@
 package org.enigmatic_legacy.client.event;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ElytraItem;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
-import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.network.MajesticElytraBoostPayload;
+import org.enigmatic_legacy.util.MajesticElytraHelper;
 
 public final class MajesticElytraClientEvents {
     private static boolean boosting;
@@ -27,11 +25,10 @@ public final class MajesticElytraClientEvents {
             return;
         }
 
-        ItemStack chestStack = player.getItemBySlot(EquipmentSlot.CHEST);
+        ItemStack elytraStack = MajesticElytraHelper.getEquippedStack(player);
         boolean shouldBoost = minecraft.options.keyJump.isDown()
                 && player.isFallFlying()
-                && chestStack.is(ModItems.MAJESTIC_ELYTRA.get())
-                && ElytraItem.isFlyEnabled(chestStack);
+                && !elytraStack.isEmpty();
 
         setBoosting(shouldBoost);
     }

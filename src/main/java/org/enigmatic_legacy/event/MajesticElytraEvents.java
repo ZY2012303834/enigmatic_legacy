@@ -4,12 +4,11 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ElytraItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
-import org.enigmatic_legacy.item.ModItems;
+import org.enigmatic_legacy.util.MajesticElytraHelper;
 
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
@@ -39,9 +38,9 @@ public final class MajesticElytraEvents {
             return;
         }
 
-        ItemStack stack = player.getItemBySlot(EquipmentSlot.CHEST);
+        ItemStack stack = MajesticElytraHelper.getEquippedStack(player);
 
-        if (!stack.is(ModItems.MAJESTIC_ELYTRA.get()) || !ElytraItem.isFlyEnabled(stack) || !player.isFallFlying()) {
+        if (stack.isEmpty() || !player.isFallFlying()) {
             BOOSTING_PLAYERS.remove(player.getUUID());
             return;
         }

@@ -52,6 +52,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
+import org.enigmatic_legacy.item.items.book.TheTwist;
 import org.enigmatic_legacy.util.CursedRingHelper;
 import top.theillusivec4.curios.api.event.CurioCanUnequipEvent;
 import top.theillusivec4.curios.api.event.DropRulesEvent;
@@ -96,55 +97,76 @@ public class CursedRingEvents {
     }
 
     /**
-     * 七咒之戒调整伤害：
-     * 1. 七咒之戒本体通过属性修饰降低护甲与盔甲韧性；
-     * 2. 这里只处理佩戴者造成伤害时的全局伤害降低。
-     * 注意：
-     * 佩戴者受到更多伤害的倍率不要在这里处理。
-     * 原因：
-     * LivingIncomingDamageEvent 发生在护甲、防御等减伤之前。
-     * 如果这里直接把原始伤害乘以 200%，然后再削弱护甲，
-     * 实际最终伤害会远高于预期。
-     * 所以七咒最终受伤倍率移动到 LivingDamageEvent.Pre 中处理。
-     */
-    @SubscribeEvent
-    public static void onIncomingDamage(LivingIncomingDamageEvent event) {
-        /*
-         * 七咒佩戴者造成任意实体伤害时，伤害降低。
-         */
-        if (event.getSource().getEntity() instanceof Player attacker
-                && CursedRingHelper.hasCursedRing(attacker)) {
-            float debuff = ConfigCommon.CURSED_RING_MONSTER_DAMAGE_DEBUFF.get() / 100.0F;
-            event.setAmount(event.getAmount() * Math.max(0.0F, 1.0F - debuff));
-        }
-    }
-
-    /**
-     * 七咒之戒佩戴者受到更多最终伤害。
-     * 修复点：
-     * 之前在 LivingIncomingDamageEvent 中直接放大原始伤害，
-     * 会和护甲削弱叠加得过猛。
-     * 现在改为在 LivingDamageEvent.Pre 中处理：
+     * 七咒之戒调整最终伤害。
+     * <p>
+     * 这里同时处理两条和伤害倍率有关的诅咒：
+     * 1. 佩戴者造成的伤害降低；
+     * 2. 佩戴者受到的最终伤害提高。
+     * <p>
+     * 这两条都放在 LivingDamageEvent.Pre 中处理，而不是放在
+     * LivingIncomingDamageEvent 中处理。原因是 Incoming 阶段拿到的是
+     * 护甲、抗性、附魔等减伤之前的原始伤害；如果在那个阶段直接改数值，
+     * 后续原版伤害计算可能把倍率抵消、放大，或者被其他模组覆盖。
+     * Pre 阶段的 newDamage 已经接近最终扣血值，修改它能更稳定地表现为
+     * “最终伤害乘以配置倍率”。
+     * <p>
+     * 对佩戴者受到更多伤害这一条：
      * 1. 七咒之戒属性修饰先降低护甲与盔甲韧性；
      * 2. 原版护甲、抗性、附魔等减伤按削弱后的护甲值计算；
      * 3. 最后再对最终伤害应用七咒痛苦倍率。
-     * 这样实际效果更接近“最终受到伤害提高到配置倍率”，
-     * 不会因为先放大原始伤害导致怪物伤害异常过高。
+     * 这样不会因为先放大原始伤害导致怪物打玩家时异常过高。
      */
     @SubscribeEvent
     public static void onFinalDamage(LivingDamageEvent.Pre event) {
         LivingEntity target = event.getEntity();
+        float damage = event.getNewDamage();
 
-        if (!(target instanceof Player player)) {
-            return;
+        /*
+         * 第四诅咒：佩戴七咒之戒的玩家造成伤害降低。
+         *
+         * 注意：
+         * 倒转之启和无尽之书本身有“修正第四诅咒 / 始终造成全额伤害”的设计，
+         * 所以七咒在这里直接跳过它们，避免先砍半再让对应武器事件除回去。
+         */
+        if (event.getSource().getEntity() instanceof Player attacker
+                && CursedRingHelper.hasCursedRing(attacker)
+                && shouldApplyFourthCurseDamageDebuff(attacker)) {
+            float debuff = ConfigCommon.CURSED_RING_MONSTER_DAMAGE_DEBUFF.get() / 100.0F;
+            damage *= Math.max(0.0F, 1.0F - debuff);
         }
 
-        if (!CursedRingHelper.hasCursedRing(player)) {
-            return;
+        /*
+         * 第二诅咒：佩戴七咒之戒的玩家受到更多最终伤害。
+         *
+         * 这里不 return，是因为同一次伤害事件可能既是七咒佩戴者攻击，
+         * 也可能目标本身也是七咒佩戴者。两条诅咒需要允许顺序叠加。
+         */
+        if (target instanceof Player player && CursedRingHelper.hasCursedRing(player)) {
+            float multiplier = ConfigCommon.CURSED_RING_PAIN_MODIFIER.get() / 100.0F;
+            damage *= multiplier;
         }
 
-        float multiplier = ConfigCommon.CURSED_RING_PAIN_MODIFIER.get() / 100.0F;
-        event.setNewDamage(event.getNewDamage() * multiplier);
+        event.setNewDamage(damage);
+    }
+
+    /**
+     * 判断七咒的“造成伤害降低”是否应该套用到当前攻击。
+     * <p>
+     * 倒转之启和无尽之书是围绕七咒体系设计的特殊武器，
+     * 它们的机制文本明确表示会修正第四诅咒、保持全额伤害。
+     * <p>
+     * 倒转之启已经按书类规则支持快捷栏和古旧书袋生效，
+     * 所以这里只要玩家携带可生效的倒转之启，就跳过第四诅咒的伤害降低。
+     * 这保证了“修正第四诅咒”不会只在主手使用时才生效。
+     * <p>
+     * 无尽之书目前仍按它现有的主手特殊武器逻辑处理，
+     * 避免在没有完整复核无尽之书携带规则前扩大它的生效范围。
+     */
+    private static boolean shouldApplyFourthCurseDamageDebuff(Player attacker) {
+        ItemStack weapon = attacker.getMainHandItem();
+
+        return !TheTwist.hasTheTwist(attacker)
+                && !weapon.is(ModItems.THE_INFINITUM.get());
     }
 
     /**

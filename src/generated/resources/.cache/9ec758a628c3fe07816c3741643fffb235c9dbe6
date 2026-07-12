@@ -1,11 +1,11 @@
-// 1.21.1	2026-07-12T16:46:05.6954545	vanilla/Tags for minecraft:item mod id enigmatic_legacy
+// 1.21.1	2026-07-12T17:58:12.3554663	vanilla/Tags for minecraft:item mod id enigmatic_legacy
 782ad49cfd8886a590be46f0c1b3806725b63381 data/enigmatic_legacy/tags/item/enigmatic_amulets.json
 57e12fdad87d237bba5a935e019e11e4cd5f257b data/minecraft/tags/item/axes.json
 9f1526ee01a9c110fb04c1f806e46cb81f33dab3 data/minecraft/tags/item/bookshelf_books.json
 137fbf1d2c880c581cb51458f188e2574c37a8c2 data/minecraft/tags/item/enchantable/armor.json
 57e12fdad87d237bba5a935e019e11e4cd5f257b data/minecraft/tags/item/enchantable/axe.json
 2746afc570db4245f5d80c04210b621025499a52 data/minecraft/tags/item/enchantable/chest_armor.json
-e4cc5867ee0feac71efe95b481a7aede56b5c926 data/minecraft/tags/item/enchantable/durability.json
+52e461205aff09a1e2fa71280bb461d11ab8f6da data/minecraft/tags/item/enchantable/durability.json
 ff7591e968ed76aa14d42fc6589e449260aae583 data/minecraft/tags/item/enchantable/equippable.json
 1f89b68266bf35d8cb09cb783450d369a31ecbcb data/minecraft/tags/item/enchantable/fire_aspect.json
 91560a1d339cf0c248b603e2c27daf54fae7a556 data/minecraft/tags/item/enchantable/foot_armor.json

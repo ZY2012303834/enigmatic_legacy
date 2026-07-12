@@ -330,6 +330,15 @@ public class ItemTagGenerator extends ItemTagsProvider {
     }
 
     private void addRelicEnchantableTags() {
+        /*
+         * 恶意图腾的“耐久”不是原版 damage，而是自定义恶意能量。
+         * 但它仍然需要耐久附魔来提高能量上限，所以必须加入
+         * minecraft:enchantable/durability。仅覆盖 supportsEnchantment 不够，
+         * 1.21.1 附魔台和铁砧会优先读取这些数据驱动标签来判断附魔适用物品。
+         */
+        tag(ENCHANTABLE_DURABILITY)
+                .add(ModItems.TOTEM_OF_MALICE.get());
+
         tag(ENCHANTABLE_VANISHING)
                 .add(RelicItemApi.curseEnchantableRelics());
 

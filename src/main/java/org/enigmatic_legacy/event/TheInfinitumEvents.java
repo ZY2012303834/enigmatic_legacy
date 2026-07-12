@@ -3,7 +3,6 @@ package org.enigmatic_legacy.event;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -58,10 +57,12 @@ public final class TheInfinitumEvents {
 
         float damage = event.getAmount();
 
-        if (target instanceof Enemy) {
-            damage = restoreFourthCurseDamage(damage);
-        }
-
+        /*
+         * 无尽之书同样属于会修正第四诅咒的特殊武器。
+         * 当前七咒之戒在 LivingDamageEvent.Pre 中识别主手无尽之书，
+         * 并直接跳过“造成伤害降低”这条诅咒。
+         * 因此这里不再把伤害按第四诅咒倍率除回去，避免新旧逻辑叠加后变成额外增伤。
+         */
         if (isBossOrPlayer(target)) {
             damage += damage * BOSS_DAMAGE_BONUS_MULTIPLIER;
         }
@@ -136,17 +137,6 @@ public final class TheInfinitumEvents {
         target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 300, 3, false, true));
         target.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 300, 3, false, true));
         target.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 100, 3, false, true));
-    }
-
-    private static float restoreFourthCurseDamage(float damage) {
-        float debuff = ConfigCommon.CURSED_RING_MONSTER_DAMAGE_DEBUFF.get() / 100.0F;
-        float multiplier = Math.max(0.0F, 1.0F - debuff);
-
-        if (multiplier <= 0.0001F) {
-            return damage;
-        }
-
-        return damage / multiplier;
     }
 
     private static boolean isBossOrPlayer(LivingEntity entity) {

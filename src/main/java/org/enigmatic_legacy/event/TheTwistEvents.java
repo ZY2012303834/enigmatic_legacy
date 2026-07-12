@@ -1,7 +1,6 @@
 package org.enigmatic_legacy.event;
 
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -57,9 +56,13 @@ public final class TheTwistEvents {
     /**
      * 伤害阶段。
      * 使用 LOWEST：
-     * - 让七咒之戒的怪物伤害削弱先执行；
-     * - 然后倒转之启再把第四诅咒修正回来；
-     * - 最后再追加 Boss / 玩家伤害加成。
+     * - 让其他 Incoming 阶段的基础伤害修正先执行；
+     * - 倒转之启再追加 Boss / 玩家伤害加成。
+     *
+     * 第四诅咒不在这里除回去。
+     * 当前七咒之戒已经在 LivingDamageEvent.Pre 中识别倒转之启，
+     * 并且直接跳过“佩戴者造成伤害降低”这条诅咒。
+     * 这样能避免旧写法在最终伤害阶段迁移后变成额外增伤。
      */
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onIncomingDamage(LivingIncomingDamageEvent event) {
@@ -68,39 +71,37 @@ public final class TheTwistEvents {
         }
 
         ItemStack weapon = attacker.getMainHandItem();
+        boolean attackingWithTheTwist = weapon.is(ModItems.THE_TWIST.get());
 
-        if (!weapon.is(ModItems.THE_TWIST.get())) {
+        /*
+         * 倒转之启属于可由快捷栏 / 古旧书袋提供效果的书类物品。
+         * 旧逻辑只检查主手，导致玩家把它放在快捷栏其它格子或书袋中时，
+         * 完全进不到后续的 Boss / 玩家增伤与击退增强逻辑。
+         */
+        if (!attackingWithTheTwist && !TheTwist.hasTheTwist(attacker)) {
             return;
         }
 
         LivingEntity target = event.getEntity();
 
         /*
-         * 未佩戴七咒之戒：
-         * - 不直接 cancel；
-         * - 只把伤害归零；
-         * - 这样物品本身 hurtEnemy 的点燃效果仍然可以保留。
+         * 未佩戴七咒之戒时：
+         * - 如果玩家实际用主手倒转之启攻击，仍按原项目表现把伤害归零；
+         * - 如果倒转之启只是放在快捷栏或书袋中，则只是不提供被动加成，
+         *   不应该让玩家手里的其它武器也变成 0 伤害。
+         *
+         * 这样可以同时保留“七咒专属武器”的限制，
+         * 又不会让被动携带判定误伤普通攻击。
          */
         if (!CursedRingHelper.hasCursedRing(attacker)) {
-            event.setAmount(0.0F);
+            if (attackingWithTheTwist) {
+                event.setAmount(0.0F);
+            }
+
             return;
         }
 
         float damage = event.getAmount();
-
-        /*
-         * 修正第四诅咒。
-         *
-         * 你当前 CursedRingEvents 中，七咒佩戴者攻击 Enemy 会被削弱。
-         * 原项目倒转之启的机制是：
-         * - Alteration of the Fourth Curse
-         * - Always deals its full damage.
-         *
-         * 所以这里在七咒削弱之后，把伤害除回去。
-         */
-        if (target instanceof Enemy) {
-            damage = restoreFourthCurseDamage(damage);
-        }
 
         /*
          * 对 Boss 和玩家 +300% 伤害。
@@ -139,26 +140,6 @@ public final class TheTwistEvents {
         }
 
         event.setStrength(event.getStrength() * multiplier);
-    }
-
-    /**
-     * 修正第四诅咒伤害。
-     * 当前项目七咒之戒对怪物伤害削弱来自：
-     * ConfigCommon.CURSED_RING_MONSTER_DAMAGE_DEBUFF
-     * 例如默认 50%：
-     * - 七咒先把伤害乘 0.5；
-     * - 倒转之启再除以 0.5；
-     * - 最终恢复为全额伤害。
-     */
-    private static float restoreFourthCurseDamage(float damage) {
-        float debuff = ConfigCommon.CURSED_RING_MONSTER_DAMAGE_DEBUFF.get() / 100.0F;
-        float multiplier = Math.max(0.0F, 1.0F - debuff);
-
-        if (multiplier <= 0.0001F) {
-            return damage;
-        }
-
-        return damage / multiplier;
     }
 
     /**

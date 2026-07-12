@@ -22,6 +22,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import org.enigmatic_legacy.EnigmaticLegacy;
+import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.util.CursedRingHelper;
 import org.jetbrains.annotations.NotNull;
 import vazkii.patchouli.api.PatchouliAPI;
@@ -96,6 +97,22 @@ public class TheTwist extends AbstractBookItem {
                 .fireResistant()
                 .attributes(createAttributes())
         );
+    }
+
+    /**
+     * 判断玩家是否拥有一份可以提供被动效果的倒转之启。
+     * <p>
+     * 倒转之启继承自 AbstractBookItem，按当前项目的书类规则，
+     * 放在快捷栏或放入玩家可访问的古旧书袋中都视为“携带”。
+     * 这里故意不检查普通背包，避免普通背包里的备用书也自动生效。
+     * <p>
+     * 注意：
+     * 这个方法只表示书类被动机制可以生效。
+     * 主手攻击属性、命中点燃等物品自身攻击行为，
+     * 仍然需要玩家实际用倒转之启攻击才会由物品方法触发。
+     */
+    public static boolean hasTheTwist(Player player) {
+        return hasInHotbarOrBookBag(player, ModItems.THE_TWIST.get());
     }
 
     /**
