@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "enigmatic_legacy:evil_essence"
+    },
+    "B": {
+      "item": "enigmatic_legacy:curse_transposer"
+    },
+    "E": {
+      "item": "enigmatic_legacy:abyssal_heart"
+    },
+    "N": {
+      "item": "enigmatic_legacy:cosmic_heart"
+    },
+    "Q": {
+      "item": "enigmatic_legacy:twisted_heart"
+    },
+    "X": {
+      "item": "enigmatic_legacy:cursed_scroll"
+    }
+  },
+  "pattern": [
+    "NEN",
+    "AXA",
+    "QBQ"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:violence_scroll"
+  }
+}

@@ -1499,6 +1499,25 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 )
         )));
 
+        futures.add(save(output, "en_us", "entries/scrolls/violence_scroll", entry(
+                "Curse of Violence",
+                "scrolls",
+                "enigmatic_legacy:violence_scroll",
+                27,
+
+                spotlightPage(
+                        "enigmatic_legacy:violence_scroll",
+                        "Curse of Violence",
+                        "In the endless slaughter, the pleasure brought by violence makes you linger. The Scroll of Thousand Curses has extended an invitation, allowing you to carry the power of curses and climb with the abyss.$(br2)" +
+                                "Faced with thirst for violence, you fight braver and madder, counterattacking through injury and releasing accumulated fury."
+                ),
+
+                craftingPage(
+                        "enigmatic_legacy:violence_scroll",
+                        "As an upgrade to Thousand Curses and Devoured Malignancy, this object still thirsts for curses. Satisfy it, and it will not mistreat you."
+                )
+        )));
+
         futures.add(save(output, "en_us", "entries/scrolls/fabulous_scroll", entry(
                 "Grace of the Creator",
                 "scrolls",

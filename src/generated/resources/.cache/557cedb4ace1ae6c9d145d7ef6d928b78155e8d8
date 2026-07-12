@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-11T12:42:36.7853122	vanilla/Item Models: enigmatic_legacy
+// 1.21.1	2026-07-12T16:46:05.7081476	vanilla/Item Models: enigmatic_legacy
 aaf9eff73642636d85d6ecd1627b8303f5153a76 assets/enigmatic_legacy/models/item/abyssal_heart.json
 79e416a4d6e90035107f541617b7d4a2d2d7abbb assets/enigmatic_legacy/models/item/angel_blessing.json
 68297c97e7030e0520fb869529bc94ce254c3292 assets/enigmatic_legacy/models/item/antique_book_bag.json
@@ -101,6 +101,7 @@ b60822a6492f8f0c723e3a4d7efdfe697ab0e0f1 assets/enigmatic_legacy/models/item/thu
 00598ccacd7ac960c93913a492d1d82fd921d471 assets/enigmatic_legacy/models/item/twisted_mirror.json
 d41a4664e69fdd63324518d3d62670247220d9d5 assets/enigmatic_legacy/models/item/unholy_grail.json
 b5f00c0683730d8cd3271b69f783b18961bc7749 assets/enigmatic_legacy/models/item/unwitnessed_amulet.json
+f02616525bb64a0c74182b290cbae2260505b722 assets/enigmatic_legacy/models/item/violence_scroll.json
 66d21b417902351a20c426f721c34225c21f2a39 assets/enigmatic_legacy/models/item/void_pearl.json
 58301d93c4eaaf6ab6f6eff39df9f2b53c7f3f5b assets/enigmatic_legacy/models/item/wayfinder_of_the_damned.json
 524e254176d89b844d6330b35eba6a02c2627449 assets/enigmatic_legacy/models/item/wayfinder_of_the_damned_00.json

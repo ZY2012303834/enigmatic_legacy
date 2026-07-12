@@ -249,6 +249,17 @@ public final class ConfigCommon {
     public static final ModConfigSpec.DoubleValue PACT_OF_DARK_NIGHT_AVERAGE_DAMAGE_RESISTANCE;
     public static final ModConfigSpec.DoubleValue PACT_OF_DARK_NIGHT_AVERAGE_LIFE_STEAL;
 
+    // 暴戾之咒
+    public static final CurseOfViolenceConfig CURSE_OF_VIOLENCE;
+    public static final ModConfigSpec.DoubleValue CURSE_OF_VIOLENCE_BASE_CURSE_MODIFIER;
+    public static final ModConfigSpec.DoubleValue CURSE_OF_VIOLENCE_BOOST_PER_CURSE_MODIFIER;
+    public static final ModConfigSpec.DoubleValue CURSE_OF_VIOLENCE_INVULNERABLE_ATTACK_MODIFIER;
+    public static final ModConfigSpec.DoubleValue CURSE_OF_VIOLENCE_INVULNERABLE_HEAL_MULTIPLIER;
+    public static final ModConfigSpec.DoubleValue CURSE_OF_VIOLENCE_ATTACK_SPEED_BOOST;
+    public static final ModConfigSpec.DoubleValue CURSE_OF_VIOLENCE_ENTITY_REACH_BOOST;
+    public static final ModConfigSpec.DoubleValue CURSE_OF_VIOLENCE_KNOCKBACK_RESISTANCE_BOOST;
+    public static final ModConfigSpec.IntValue CURSE_OF_VIOLENCE_MAX_DURABILITY;
+
     static {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
 
@@ -450,6 +461,17 @@ public final class ConfigCommon {
 
 
 
+
+        // 暴戾之咒
+        CURSE_OF_VIOLENCE = new CurseOfViolenceConfig(builder);
+        CURSE_OF_VIOLENCE_BASE_CURSE_MODIFIER = CURSE_OF_VIOLENCE.baseCurseModifier;
+        CURSE_OF_VIOLENCE_BOOST_PER_CURSE_MODIFIER = CURSE_OF_VIOLENCE.boostPerCurseModifier;
+        CURSE_OF_VIOLENCE_INVULNERABLE_ATTACK_MODIFIER = CURSE_OF_VIOLENCE.invulnerableAttackModifier;
+        CURSE_OF_VIOLENCE_INVULNERABLE_HEAL_MULTIPLIER = CURSE_OF_VIOLENCE.invulnerableHealMultiplier;
+        CURSE_OF_VIOLENCE_ATTACK_SPEED_BOOST = CURSE_OF_VIOLENCE.attackSpeedBoost;
+        CURSE_OF_VIOLENCE_ENTITY_REACH_BOOST = CURSE_OF_VIOLENCE.entityReachBoost;
+        CURSE_OF_VIOLENCE_KNOCKBACK_RESISTANCE_BOOST = CURSE_OF_VIOLENCE.knockbackResistanceBoost;
+        CURSE_OF_VIOLENCE_MAX_DURABILITY = CURSE_OF_VIOLENCE.maxDurability;
 
         SPEC = builder.build();
     }

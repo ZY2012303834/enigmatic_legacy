@@ -174,6 +174,7 @@ public class ItemGenerator extends ItemModelProvider {
         basicItem(ModItems.CURSED_SCROLL.getId()); // 千咒卷轴
         basicItem(ModItems.THUNDER_SCROLL.getId()); // 万钧之护卷轴
         basicItem(ModItems.NIGHT_SCROLL.getId()); // 暗夜契约卷轴
+        basicItem(ModItems.VIOLENCE_SCROLL.getId()); // 暴戾之咒
         basicItem(ModItems.FABULOUS_SCROLL.getId()); // 创造者的恩赐
         basicItem(ModItems.AVARICE_SCROLL.getId()); // 无尽贪婪契约
         basicItem(ModItems.ABYSSAL_HEART.getId()); // 深渊之心

@@ -597,6 +597,28 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.night_scroll.cursed_only", "只有承受七咒之人才能使用。");
         // end
 
+        // 暴戾之咒
+        addItem(ModItems.VIOLENCE_SCROLL, "暴戾之咒");
+        add("tooltip.enigmatic_legacy.violence_scroll.lore.1", "这是一个不可直面的诅咒存在");
+        add("tooltip.enigmatic_legacy.violence_scroll.lore.2", "无论那些诅咒带来的是幸运、痛苦还是贫困");
+        add("tooltip.enigmatic_legacy.violence_scroll.lore.3", "他们已经失去太多原本属于他们的事物");
+        add("tooltip.enigmatic_legacy.violence_scroll.lore.4", "以至对于战斗——将变得义无反顾");
+        add("tooltip.enigmatic_legacy.violence_scroll.damage_store", "攻击同一目标时，额外造成上次伤害的 %s");
+        add("tooltip.enigmatic_legacy.violence_scroll.invulnerable.title", "若攻击时处于受击无敌状态：");
+        add("tooltip.enigmatic_legacy.violence_scroll.invulnerable.damage", "- 造成的伤害 %s");
+        add("tooltip.enigmatic_legacy.violence_scroll.invulnerable.heal", "- 恢复造成与原伤害 %s 等量的生命值");
+        add("tooltip.enigmatic_legacy.violence_scroll.invulnerable.reset", "- 使自身受击无敌时间归零");
+        add("tooltip.enigmatic_legacy.violence_scroll.absorb", "可以在物品栏右键其他物品吸收其诅咒附魔");
+        add("tooltip.enigmatic_legacy.violence_scroll.attack_speed", "- %s 攻击速度");
+        add("tooltip.enigmatic_legacy.violence_scroll.entity_reach", "- %s 实体范围");
+        add("tooltip.enigmatic_legacy.violence_scroll.knockback_resistance", "- %s 击退抗性");
+        add("tooltip.enigmatic_legacy.violence_scroll.weakened_curses.1", "- 攻击目标将被施加弱化的第一、第三与第四诅咒");
+        add("tooltip.enigmatic_legacy.violence_scroll.weakened_curses.2", "- 修正第四诅咒，使其影响减半");
+        add("tooltip.enigmatic_legacy.violence_scroll.count", "吸收诅咒数：%s");
+        add("tooltip.enigmatic_legacy.violence_scroll.cursed_only", "只有承受七咒之人才能理解它。");
+        add("tooltip.enigmatic_legacy.violence_scroll.worthy_only", "只有达到深渊之心资格者才能使用。");
+        // end
+
         // 创造者的恩赐
         addItem(ModItems.FABULOUS_SCROLL, "创造者的恩赐");
 

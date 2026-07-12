@@ -653,6 +653,28 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.night_scroll.cursed_only", "Only bearers of the Seven Curses may use this item.");
         // end
 
+        // The Curse of Violence
+        addItem(ModItems.VIOLENCE_SCROLL, "The Curse of Violence");
+        add("tooltip.enigmatic_legacy.violence_scroll.lore.1", "This curse is not something to be faced directly.");
+        add("tooltip.enigmatic_legacy.violence_scroll.lore.2", "Whether those curses bring fortune, pain, or poverty,");
+        add("tooltip.enigmatic_legacy.violence_scroll.lore.3", "they have already taken too much of what once belonged to them.");
+        add("tooltip.enigmatic_legacy.violence_scroll.lore.4", "Thus, in battle, they no longer hesitate.");
+        add("tooltip.enigmatic_legacy.violence_scroll.damage_store", "When attacking the same target, deals %s of the previous damage as extra damage.");
+        add("tooltip.enigmatic_legacy.violence_scroll.invulnerable.title", "If attacking during invulnerability time:");
+        add("tooltip.enigmatic_legacy.violence_scroll.invulnerable.damage", "- Damage dealt %s");
+        add("tooltip.enigmatic_legacy.violence_scroll.invulnerable.heal", "- Restores health equal to %s of the original damage dealt");
+        add("tooltip.enigmatic_legacy.violence_scroll.invulnerable.reset", "- Resets your invulnerability time");
+        add("tooltip.enigmatic_legacy.violence_scroll.absorb", "Right-click other items in the inventory to absorb their curse enchantments.");
+        add("tooltip.enigmatic_legacy.violence_scroll.attack_speed", "- %s Attack Speed");
+        add("tooltip.enigmatic_legacy.violence_scroll.entity_reach", "- %s Entity Reach");
+        add("tooltip.enigmatic_legacy.violence_scroll.knockback_resistance", "- %s Knockback Resistance");
+        add("tooltip.enigmatic_legacy.violence_scroll.weakened_curses.1", "- Targets you strike receive weakened First, Third, and Fourth Curses");
+        add("tooltip.enigmatic_legacy.violence_scroll.weakened_curses.2", "- Alters the Fourth Curse, halving its effect");
+        add("tooltip.enigmatic_legacy.violence_scroll.count", "Absorbed Curses: %s");
+        add("tooltip.enigmatic_legacy.violence_scroll.cursed_only", "Only bearers of the Seven Curses may understand it.");
+        add("tooltip.enigmatic_legacy.violence_scroll.worthy_only", "Only those worthy of the Abyssal Heart may use it.");
+        // end
+
         // 创造者的恩赐
         addItem(ModItems.FABULOUS_SCROLL, "Grace of the Creator");
 

@@ -155,6 +155,7 @@ public final class ModItems {
     public static final DeferredItem<ScrollOfThousandCurses> CURSED_SCROLL = ITEMS.register("cursed_scroll", ScrollOfThousandCurses::new); // 千咒卷轴
     public static final DeferredItem<ScrollOfThunderEmbrace> THUNDER_SCROLL = ITEMS.register("thunder_scroll", ScrollOfThunderEmbrace::new); // 万钧之护卷轴
     public static final DeferredItem<PactOfDarkNight> NIGHT_SCROLL = ITEMS.register("night_scroll", PactOfDarkNight::new); // 暗夜契约卷轴
+    public static final DeferredItem<CurseOfViolence> VIOLENCE_SCROLL = ITEMS.register("violence_scroll", CurseOfViolence::new); // 暴戾之咒
     public static final DeferredItem<GraceOfTheCreator> FABULOUS_SCROLL = ITEMS.register("fabulous_scroll", GraceOfTheCreator::new); // 创造者的恩赐
     public static final DeferredItem<PactOfInfiniteAvarice> AVARICE_SCROLL = ITEMS.register("avarice_scroll", PactOfInfiniteAvarice::new); // 无尽贪婪契约
 

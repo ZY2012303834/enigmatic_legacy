@@ -1500,6 +1500,25 @@ final class ChinesePatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 )
         )));
 
+        futures.add(save(output, "zh_cn", "entries/scrolls/violence_scroll", entry(
+                "暴戾之咒",
+                "scrolls",
+                "enigmatic_legacy:violence_scroll",
+                27,
+
+                spotlightPage(
+                        "enigmatic_legacy:violence_scroll",
+                        "暴戾之咒",
+                        "在无尽的屠戮之中，暴力带来的快感使你流连忘返。而千咒卷轴向你递出了邀请，让你携带着诅咒之力，与深渊一并走向巅峰。$(br2)" +
+                                "面对对暴戾的渴求，在战斗中愈战愈勇，愈战愈狂，在受伤中不断反击，将积累的怒意不断释放。"
+                ),
+
+                craftingPage(
+                        "enigmatic_legacy:violence_scroll",
+                        "而作为千咒与噬咒的升级，此物依旧抱有对诅咒的渴求，请满足它，它是不会亏待你的。"
+                )
+        )));
+
         futures.add(save(output, "zh_cn", "entries/scrolls/fabulous_scroll", entry(
                 "创造者的恩赐",
                 "scrolls",

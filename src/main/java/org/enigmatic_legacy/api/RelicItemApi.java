@@ -72,6 +72,7 @@ public final class RelicItemApi {
                 ModItems.XP_SCROLL.get(),
                 ModItems.HEAVEN_SCROLL.get(),
                 ModItems.CURSED_SCROLL.get(),
+                ModItems.VIOLENCE_SCROLL.get(),
                 ModItems.FABULOUS_SCROLL.get(),
                 ModItems.AVARICE_SCROLL.get(),
                 ModItems.STORAGE_CRYSTAL.get(),

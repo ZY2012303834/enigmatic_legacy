@@ -527,6 +527,32 @@ public class RecipeGenerator extends RecipeProvider {
                 .unlockedBy("has_phantom_membrane", has(Items.PHANTOM_MEMBRANE))
                 .save(output);
 
+        // 暴戾之咒 / The Curse of Violence。
+        // 复刻 Enigmatic Addons 配方：
+        // n e n
+        // a X a
+        // q b q
+        //
+        // X = 千咒卷轴
+        // n = 寰宇之心
+        // e = 深渊之心
+        // a = 邪恶精髓
+        // q = 扭曲之心
+        // b = 噬咒之书
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.VIOLENCE_SCROLL.get())
+                .pattern("NEN")
+                .pattern("AXA")
+                .pattern("QBQ")
+                .define('N', ModItems.COSMIC_HEART.get())
+                .define('E', ModItems.ABYSSAL_HEART.get())
+                .define('A', ModItems.EVIL_ESSENCE.get())
+                .define('X', ModItems.CURSED_SCROLL.get())
+                .define('Q', ModItems.TWISTED_HEART.get())
+                .define('B', ModItems.CURSE_TRANSPOSER.get())
+                .unlockedBy("has_cursed_scroll", has(ModItems.CURSED_SCROLL.get()))
+                .unlockedBy("has_abyssal_heart", has(ModItems.ABYSSAL_HEART.get()))
+                .save(output);
+
         // 无知诅咒卷轴 / Scroll of Ignorance Curse。
         // 复刻 Enigmatic Addons：永恒智慧卷轴 + 经验瓶、扭曲之心、邪恶精髓与绿宝石块。
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CURSED_XP_SCROLL.get())

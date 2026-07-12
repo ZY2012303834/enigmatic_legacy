@@ -125,6 +125,7 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(ScrollOfIgnoranceCurseEvents.class);
         NeoForge.EVENT_BUS.register(ScrollOfThunderEmbraceEvents.class);
         NeoForge.EVENT_BUS.register(PactOfDarkNightEvents.class);
+        NeoForge.EVENT_BUS.register(CurseOfViolenceEvents.class);
         NeoForge.EVENT_BUS.register(GraceOfTheCreatorEvents.class);
         NeoForge.EVENT_BUS.register(PactOfInfiniteAvariceEvents.class);
         NeoForge.EVENT_BUS.register(UltimateLuxuryRingEvents.class);

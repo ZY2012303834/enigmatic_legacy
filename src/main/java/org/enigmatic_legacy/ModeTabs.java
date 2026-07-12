@@ -133,6 +133,7 @@ public final class ModeTabs {
                                 output.accept(ModItems.CURSED_SCROLL.get());            // 千咒卷轴
                                 output.accept(ModItems.THUNDER_SCROLL.get());           // 万钧之护卷轴
                                 output.accept(ModItems.NIGHT_SCROLL.get());             // 暗夜契约卷轴
+                                output.accept(ModItems.VIOLENCE_SCROLL.get());          // 暴戾之咒
                                 output.accept(ModItems.FABULOUS_SCROLL.get());          // 创造者的恩赐
                                 output.accept(ModItems.AVARICE_SCROLL.get());           // 无尽贪婪契约
                             })
