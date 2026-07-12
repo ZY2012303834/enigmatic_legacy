@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-11T09:13:23.918789	vanilla/Enigmatic Legacy Patchouli Books: zh_cn
+// 1.21.1	2026-07-11T12:42:36.7796473	vanilla/Enigmatic Legacy Patchouli Books: zh_cn
 cd2228d4eb2e84839fc05be8d27501d37ee82de1 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/categories/equipment.json
 f52c760edc0a0eba5f768202bde3aa481452400d assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/categories/materials.json
 ffd12d3c6a57628b47bf69332abf107f01d3a070 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/categories/relics.json
@@ -77,6 +77,8 @@ b12f69a4e9bec4844a349e4a6ffd11eb63c10158 assets/enigmatic_legacy/patchouli_books
 1dc11deb53dcb2197edeb85e86fe13ec4afe6d64 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/entries/scrolls/cursed_xp_scroll.json
 5444a669a5c5a497387f5a3cfd98362fbcc00e89 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/entries/scrolls/fabulous_scroll.json
 ec2ae7494a22591a80b4399497fe90c6e81d34f2 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/entries/scrolls/heaven_scroll.json
+ec0ae8aebd94ee03b7dc1806b382e571dc5705aa assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/entries/scrolls/night_scroll.json
+6c71e068261c3eb1e6b9ec5ad1386719d110f01e assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/entries/scrolls/thunder_scroll.json
 5c396a53a15183b593679caa5e7b5f68d04a2a95 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/entries/scrolls/xp_scroll.json
 bf41801210bbadc2c96dba18fa4d70e9aba7bc0f assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/entries/spellstones/angel_blessing.json
 2a5152ef0e519474df63a7abc242bee168d3cf18 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/entries/spellstones/blazing_core.json

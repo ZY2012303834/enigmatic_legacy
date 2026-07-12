@@ -1460,6 +1460,46 @@ final class ChinesePatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 )
         )));
 
+        futures.add(save(output, "zh_cn", "entries/scrolls/thunder_scroll", entry(
+                "万钧之护",
+                "scrolls",
+                "enigmatic_legacy:thunder_scroll",
+                25,
+
+                spotlightPage(
+                        "enigmatic_legacy:thunder_scroll",
+                        "万钧之护卷轴",
+                        "海洋意志能让雷电听从召唤，但那终究只是间接控制，响应仍显迟缓。$(br2)" +
+                                "于是我们以神圣之力将共鸣雷霆的咒文书写在卷轴之上，以术石为基底，以剑刃为媒介，引下来自天穹的力量。"
+                ),
+
+                craftingPage(
+                        "enigmatic_legacy:thunder_scroll",
+                        "战斗中，卷轴会驱使持有者施展完整的横扫攻击，让雷霆的目标尽可能扩散。$(br2)" +
+                                "电性的冲击也更容易穿透护甲影响，并会在连续命中后向目标降下不会点火的闪电。请放心，天空的闪电不会轻易伤到它的主人。"
+                )
+        )));
+
+        futures.add(save(output, "zh_cn", "entries/scrolls/night_scroll", entry(
+                "暗夜契约",
+                "scrolls",
+                "enigmatic_legacy:night_scroll",
+                26,
+
+                spotlightPage(
+                        "enigmatic_legacy:night_scroll",
+                        "暗夜契约卷轴",
+                        "虽说失眠症对于半神而言不值一提，但那些夜幕中的潜伏者着实令人生厌：不止的嘶叫声，上下翻飞的身影。$(br2)" +
+                                "你决定用它们的残体来制作一份卷轴，让暗夜本身回应你的契约。"
+                ),
+
+                craftingPage(
+                        "enigmatic_legacy:night_scroll",
+                        "暗夜的力量不仅会使幻翼退避，也允许你在黑暗之中发挥出更多能力。$(br2)" +
+                                "光越稀薄，契约越强；在真正的黑暗里，它会提高伤害、减轻创伤，并从攻击中夺回生命。"
+                )
+        )));
+
         futures.add(save(output, "zh_cn", "entries/scrolls/fabulous_scroll", entry(
                 "创造者的恩赐",
                 "scrolls",

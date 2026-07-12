@@ -494,6 +494,39 @@ public class RecipeGenerator extends RecipeProvider {
                 .unlockedBy("has_darkest_scroll", has(ModItems.DARKEST_SCROLL.get()))
                 .save(output);
 
+        // 万钧之护卷轴 / Scroll of Thunder Embrace。
+        // 复刻 Enigmatic Addons：至暗卷轴、灵液滴、青金石、纯净之心、墨囊、海洋意志与羽毛。
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.THUNDER_SCROLL.get())
+                .pattern("NEN")
+                .pattern("ISF")
+                .pattern("LPL")
+                .define('N', ModItems.ICHOR_DROPLET.get())
+                .define('E', ModItems.OCEAN_STONE.get())
+                .define('I', Items.INK_SAC)
+                .define('S', ModItems.DARKEST_SCROLL.get())
+                .define('F', Items.FEATHER)
+                .define('L', Items.LAPIS_LAZULI)
+                .define('P', ModItems.PURE_HEART.get())
+                .unlockedBy("has_darkest_scroll", has(ModItems.DARKEST_SCROLL.get()))
+                .unlockedBy("has_ocean_stone", has(ModItems.OCEAN_STONE.get()))
+                .save(output);
+
+        // 暗夜契约卷轴 / Pact of Dark Night。
+        // 复刻 Enigmatic Addons：至暗卷轴、幻翼膜、末影之眼、凋零玫瑰、扭曲之心与羽毛。
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.NIGHT_SCROLL.get())
+                .pattern("NEN")
+                .pattern("WSF")
+                .pattern("NON")
+                .define('N', Items.PHANTOM_MEMBRANE)
+                .define('E', ModItems.TWISTED_HEART.get())
+                .define('W', Items.WITHER_ROSE)
+                .define('S', ModItems.DARKEST_SCROLL.get())
+                .define('F', Items.FEATHER)
+                .define('O', Items.ENDER_EYE)
+                .unlockedBy("has_darkest_scroll", has(ModItems.DARKEST_SCROLL.get()))
+                .unlockedBy("has_phantom_membrane", has(Items.PHANTOM_MEMBRANE))
+                .save(output);
+
         // 无知诅咒卷轴 / Scroll of Ignorance Curse。
         // 复刻 Enigmatic Addons：永恒智慧卷轴 + 经验瓶、扭曲之心、邪恶精髓与绿宝石块。
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CURSED_XP_SCROLL.get())

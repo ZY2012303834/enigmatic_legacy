@@ -1,0 +1,23 @@
+{
+  "category": "enigmatic_legacy:scrolls",
+  "icon": "enigmatic_legacy:thunder_scroll",
+  "name": "万钧之护",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:thunder_scroll",
+      "link_recipe": true,
+      "text": "海洋意志能让雷电听从召唤，但那终究只是间接控制，响应仍显迟缓。$(br2)于是我们以神圣之力将共鸣雷霆的咒文书写在卷轴之上，以术石为基底，以剑刃为媒介，引下来自天穹的力量。",
+      "title": "万钧之护卷轴"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:thunder_scroll",
+      "text": "战斗中，卷轴会驱使持有者施展完整的横扫攻击，让雷霆的目标尽可能扩散。$(br2)电性的冲击也更容易穿透护甲影响，并会在连续命中后向目标降下不会点火的闪电。请放心，天空的闪电不会轻易伤到它的主人。",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 25
+}

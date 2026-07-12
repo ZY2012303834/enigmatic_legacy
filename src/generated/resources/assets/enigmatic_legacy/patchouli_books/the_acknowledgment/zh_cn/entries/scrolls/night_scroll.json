@@ -1,0 +1,23 @@
+{
+  "category": "enigmatic_legacy:scrolls",
+  "icon": "enigmatic_legacy:night_scroll",
+  "name": "暗夜契约",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:night_scroll",
+      "link_recipe": true,
+      "text": "虽说失眠症对于半神而言不值一提，但那些夜幕中的潜伏者着实令人生厌：不止的嘶叫声，上下翻飞的身影。$(br2)你决定用它们的残体来制作一份卷轴，让暗夜本身回应你的契约。",
+      "title": "暗夜契约卷轴"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:night_scroll",
+      "text": "暗夜的力量不仅会使幻翼退避，也允许你在黑暗之中发挥出更多能力。$(br2)光越稀薄，契约越强；在真正的黑暗里，它会提高伤害、减轻创伤，并从攻击中夺回生命。",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 26
+}

@@ -469,8 +469,6 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.void_pearl.passive.5", "拥有 %s 的概率抵挡致命伤害。");
         add("tooltip.enigmatic_legacy.void_pearl.passive.6", "每 tick 熄灭自身火焰，并免疫墙内窒息伤害。");
 
-        add("death.attack.enigmatic_legacy.darkness", "%1$s 被黑暗吞噬了");
-        add("death.attack.enigmatic_legacy.darkness.player", "%1$s 被 %2$s 身边的虚空黑暗吞噬了");
         // end
 
         // 非欧立方
@@ -576,6 +574,27 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.cursed_scroll.current.attack", "当前攻击伤害：+%s");
         add("tooltip.enigmatic_legacy.cursed_scroll.current.mining", "当前挖掘速度：+%s");
         add("tooltip.enigmatic_legacy.cursed_scroll.current.healing", "当前生命恢复：+%s");
+        // end
+
+        // 万钧之护卷轴
+        addItem(ModItems.THUNDER_SCROLL, "万钧之护卷轴");
+
+        add("tooltip.enigmatic_legacy.thunder_scroll.1", "横扫攻击造成完整伤害。");
+        add("tooltip.enigmatic_legacy.thunder_scroll.2", "对护甲越高的目标造成越高伤害。");
+        add("tooltip.enigmatic_legacy.thunder_scroll.3", "多次命中同一目标后，会引导闪电轰击目标。");
+        add("tooltip.enigmatic_legacy.thunder_scroll.4", "受到的闪电伤害减半，并免疫本卷轴召来的闪电。");
+        add("tooltip.enigmatic_legacy.thunder_scroll.cursed_only", "只有承受七咒之人才能使用。");
+        // end
+
+        // 暗夜契约卷轴
+        addItem(ModItems.NIGHT_SCROLL, "暗夜契约卷轴");
+
+        add("tooltip.enigmatic_legacy.night_scroll.1", "幻翼会更少在你附近生成。");
+        add("tooltip.enigmatic_legacy.night_scroll.2", "暗度越深，卷轴提供的能力越强。");
+        add("tooltip.enigmatic_legacy.night_scroll.3", "当前攻击伤害：+%s");
+        add("tooltip.enigmatic_legacy.night_scroll.4", "当前伤害抗性：+%s");
+        add("tooltip.enigmatic_legacy.night_scroll.5", "当前生命吸取：%s");
+        add("tooltip.enigmatic_legacy.night_scroll.cursed_only", "只有承受七咒之人才能使用。");
         // end
 
         // 创造者的恩赐

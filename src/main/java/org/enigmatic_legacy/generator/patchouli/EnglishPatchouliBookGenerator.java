@@ -1459,6 +1459,46 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                 )
         )));
 
+        futures.add(save(output, "en_us", "entries/scrolls/thunder_scroll", entry(
+                "Thunder Embrace",
+                "scrolls",
+                "enigmatic_legacy:thunder_scroll",
+                25,
+
+                spotlightPage(
+                        "enigmatic_legacy:thunder_scroll",
+                        "Scroll of Thunder Embrace",
+                        "The Ocean Stone can coax lightning into being, but such control remains indirect and slow.$(br2)" +
+                                "So we wrote a resonant thunder incantation onto a scroll with sacred power, using the spellstone as foundation and the sword as conduit for the force of the sky."
+                ),
+
+                craftingPage(
+                        "enigmatic_legacy:thunder_scroll",
+                        "In battle, the scroll urges its bearer into full sweeping strikes, spreading thunder toward as many foes as possible.$(br2)" +
+                                "The electric assault bites through armor more easily and calls fireless lightning after repeated hits. Rest assured: sky-born thunder does not readily harm its master."
+                )
+        )));
+
+        futures.add(save(output, "en_us", "entries/scrolls/night_scroll", entry(
+                "Pact of Dark Night",
+                "scrolls",
+                "enigmatic_legacy:night_scroll",
+                26,
+
+                spotlightPage(
+                        "enigmatic_legacy:night_scroll",
+                        "Pact of Dark Night",
+                        "Although insomnia is barely worth mentioning to demigods, the figures lurking in the dark are truly irritating: endless shrieks, shadows diving through the sky.$(br2)" +
+                                "You decide to use their remains to craft a scroll, binding the night itself into a pact."
+                ),
+
+                craftingPage(
+                        "enigmatic_legacy:night_scroll",
+                        "The power of dark night drives phantoms away and lets you unleash more strength in darkness.$(br2)" +
+                                "The thinner the light, the stronger the pact: it increases damage, softens wounds, and steals life back through your attacks."
+                )
+        )));
+
         futures.add(save(output, "en_us", "entries/scrolls/fabulous_scroll", entry(
                 "Grace of the Creator",
                 "scrolls",

@@ -1,0 +1,23 @@
+{
+  "category": "enigmatic_legacy:scrolls",
+  "icon": "enigmatic_legacy:thunder_scroll",
+  "name": "Thunder Embrace",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "enigmatic_legacy:thunder_scroll",
+      "link_recipe": true,
+      "text": "The Ocean Stone can coax lightning into being, but such control remains indirect and slow.$(br2)So we wrote a resonant thunder incantation onto a scroll with sacred power, using the spellstone as foundation and the sword as conduit for the force of the sky.",
+      "title": "Scroll of Thunder Embrace"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "enigmatic_legacy:thunder_scroll",
+      "text": "In battle, the scroll urges its bearer into full sweeping strikes, spreading thunder toward as many foes as possible.$(br2)The electric assault bites through armor more easily and calls fireless lightning after repeated hits. Rest assured: sky-born thunder does not readily harm its master.",
+      "title": " "
+    }
+  ],
+  "read_by_default": true,
+  "secret": false,
+  "sortnum": 25
+}

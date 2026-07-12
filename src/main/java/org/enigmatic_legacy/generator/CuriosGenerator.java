@@ -487,6 +487,8 @@ public class CuriosGenerator implements DataProvider {
         values.add(EnigmaticLegacy.MODID + ":cursed_xp_scroll");
         values.add(EnigmaticLegacy.MODID + ":heaven_scroll");
         values.add(EnigmaticLegacy.MODID + ":cursed_scroll");
+        values.add(EnigmaticLegacy.MODID + ":thunder_scroll");
+        values.add(EnigmaticLegacy.MODID + ":night_scroll");
         values.add(EnigmaticLegacy.MODID + ":fabulous_scroll");
         values.add(EnigmaticLegacy.MODID + ":avarice_scroll");
 

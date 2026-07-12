@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_darkest_scroll": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:darkest_scroll"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ocean_stone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "enigmatic_legacy:ocean_stone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "enigmatic_legacy:thunder_scroll"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_darkest_scroll",
+      "has_ocean_stone"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "enigmatic_legacy:thunder_scroll"
+    ]
+  }
+}

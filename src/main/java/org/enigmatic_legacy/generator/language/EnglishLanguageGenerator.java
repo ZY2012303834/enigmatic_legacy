@@ -525,8 +525,6 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.void_pearl.passive.5", "Has a %s chance to prevent lethal damage.");
         add("tooltip.enigmatic_legacy.void_pearl.passive.6", "Extinguishes you every tick and prevents suffocation damage inside blocks.");
 
-        add("death.attack.enigmatic_legacy.darkness", "%1$s was devoured by darkness");
-        add("death.attack.enigmatic_legacy.darkness.player", "%1$s was devoured by the void darkness around %2$s");
         // end
 
         // 非欧立方
@@ -632,6 +630,27 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.cursed_scroll.current.attack", "Current Attack Damage: +%s");
         add("tooltip.enigmatic_legacy.cursed_scroll.current.mining", "Current Mining Speed: +%s");
         add("tooltip.enigmatic_legacy.cursed_scroll.current.healing", "Current Healing: +%s");
+        // end
+
+        // Scroll of Thunder Embrace
+        addItem(ModItems.THUNDER_SCROLL, "Scroll of Thunder Embrace");
+
+        add("tooltip.enigmatic_legacy.thunder_scroll.1", "Sweep attacks deal full damage.");
+        add("tooltip.enigmatic_legacy.thunder_scroll.2", "Deals more damage to heavily armored targets.");
+        add("tooltip.enigmatic_legacy.thunder_scroll.3", "Repeated hits charge the target until lightning strikes.");
+        add("tooltip.enigmatic_legacy.thunder_scroll.4", "Halves lightning damage taken and ignores this scroll's lightning.");
+        add("tooltip.enigmatic_legacy.thunder_scroll.cursed_only", "Only bearers of the Seven Curses may use this item.");
+        // end
+
+        // Pact of Dark Night
+        addItem(ModItems.NIGHT_SCROLL, "Pact of Dark Night");
+
+        add("tooltip.enigmatic_legacy.night_scroll.1", "Phantoms spawn less often near you.");
+        add("tooltip.enigmatic_legacy.night_scroll.2", "The darker it gets, the stronger this pact becomes.");
+        add("tooltip.enigmatic_legacy.night_scroll.3", "Current Attack Damage: +%s");
+        add("tooltip.enigmatic_legacy.night_scroll.4", "Current Damage Resistance: +%s");
+        add("tooltip.enigmatic_legacy.night_scroll.5", "Current Life Steal: %s");
+        add("tooltip.enigmatic_legacy.night_scroll.cursed_only", "Only bearers of the Seven Curses may use this item.");
         // end
 
         // 创造者的恩赐

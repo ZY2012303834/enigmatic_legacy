@@ -16,7 +16,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
-import org.enigmatic_legacy.damage.ModDamageTypes;
 import org.enigmatic_legacy.item.items.spellstone.PearlOfTheVoid;
 import org.enigmatic_legacy.potion.ModEffects;
 import org.enigmatic_legacy.util.PearlOfTheVoidHelper;
@@ -259,10 +258,10 @@ public final class PearlOfTheVoidEvents {
                 continue;
             }
 
-            // 自定义 DARKNESS 伤害源。
-            // 伤害类型本身会通过数据生成器加入 BYPASSES_ARMOR 标签，从而无视护甲。
+            // 使用原版“掉出世界”伤害源。
+            // 这样无需为虚空珍珠额外维护自定义 DamageType、死亡消息和伤害标签。
             target.hurt(
-                    ModDamageTypes.darkness(level, bearer),
+                    bearer.damageSources().source(DamageTypes.FELL_OUT_OF_WORLD, bearer),
                     PearlOfTheVoid.DARKNESS_DAMAGE
             );
 

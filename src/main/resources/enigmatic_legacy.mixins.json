@@ -10,6 +10,7 @@
     "MixinEnchantmentCompatibility",
     "MixinLiquidBlock",
     "MixinLivingEntity",
+    "MixinLightningBolt",
     "MixinPlayer",
     "MixinPoisonMobEffect"
   ],

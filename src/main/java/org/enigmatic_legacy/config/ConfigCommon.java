@@ -243,6 +243,12 @@ public final class ConfigCommon {
     public static final ModConfigSpec.DoubleValue HEART_OF_CREATION_LIGHTNING_RANGE;
     public static final ModConfigSpec.DoubleValue HEART_OF_CREATION_LIGHTNING_DAMAGE;
 
+    // 暗夜契约卷轴
+    public static final PactOfDarkNightConfig PACT_OF_DARK_NIGHT;
+    public static final ModConfigSpec.DoubleValue PACT_OF_DARK_NIGHT_AVERAGE_DAMAGE_BOOST;
+    public static final ModConfigSpec.DoubleValue PACT_OF_DARK_NIGHT_AVERAGE_DAMAGE_RESISTANCE;
+    public static final ModConfigSpec.DoubleValue PACT_OF_DARK_NIGHT_AVERAGE_LIFE_STEAL;
+
     static {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
 
@@ -434,6 +440,12 @@ public final class ConfigCommon {
         HEART_OF_CREATION_COOLDOWN = HEART_OF_CREATION.cooldown;
         HEART_OF_CREATION_LIGHTNING_RANGE = HEART_OF_CREATION.lightningRange;
         HEART_OF_CREATION_LIGHTNING_DAMAGE = HEART_OF_CREATION.lightningDamage;
+
+        // 暗夜契约卷轴
+        PACT_OF_DARK_NIGHT = new PactOfDarkNightConfig(builder);
+        PACT_OF_DARK_NIGHT_AVERAGE_DAMAGE_BOOST = PACT_OF_DARK_NIGHT.averageDamageBoost;
+        PACT_OF_DARK_NIGHT_AVERAGE_DAMAGE_RESISTANCE = PACT_OF_DARK_NIGHT.averageDamageResistance;
+        PACT_OF_DARK_NIGHT_AVERAGE_LIFE_STEAL = PACT_OF_DARK_NIGHT.averageLifeSteal;
 
 
 

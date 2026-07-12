@@ -60,6 +60,12 @@ public final class ModNetwork {
         );
 
         registrar.playToServer(
+                ThunderScrollSweepPayload.TYPE,
+                ThunderScrollSweepPayload.STREAM_CODEC,
+                ThunderScrollSweepPayload::handle
+        );
+
+        registrar.playToServer(
                 MajesticElytraBoostPayload.TYPE,
                 MajesticElytraBoostPayload.STREAM_CODEC,
                 MajesticElytraBoostPayload::handle

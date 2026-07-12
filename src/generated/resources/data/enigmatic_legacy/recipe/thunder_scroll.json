@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "E": {
+      "item": "enigmatic_legacy:ocean_stone"
+    },
+    "F": {
+      "item": "minecraft:feather"
+    },
+    "I": {
+      "item": "minecraft:ink_sac"
+    },
+    "L": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "N": {
+      "item": "enigmatic_legacy:ichor_droplet"
+    },
+    "P": {
+      "item": "enigmatic_legacy:pure_heart"
+    },
+    "S": {
+      "item": "enigmatic_legacy:darkest_scroll"
+    }
+  },
+  "pattern": [
+    "NEN",
+    "ISF",
+    "LPL"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:thunder_scroll"
+  }
+}

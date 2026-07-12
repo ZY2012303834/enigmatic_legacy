@@ -164,37 +164,53 @@ public class ScrollOfThousandCurses extends Item implements ICurioItem {
             tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.cursed_scroll.mining", SpellstoneTooltip.percent("7%")));
             tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.cursed_scroll.healing", SpellstoneTooltip.percent("4%")));
 
-            int curseFactor = getCachedCurseFactor(stack);
-
-            if (curseFactor > 0) {
-                tooltip.add(SpellstoneTooltip.empty());
-
-                tooltip.add(SpellstoneTooltip.text(
-                        "tooltip.enigmatic_legacy.cursed_scroll.current.factor",
-                        SpellstoneTooltip.number(curseFactor)
-                ));
-
-                tooltip.add(SpellstoneTooltip.text(
-                        "tooltip.enigmatic_legacy.cursed_scroll.current.attack",
-                        SpellstoneTooltip.percent(formatPercent(curseFactor * 0.04D))
-                ));
-
-                tooltip.add(SpellstoneTooltip.text(
-                        "tooltip.enigmatic_legacy.cursed_scroll.current.mining",
-                        SpellstoneTooltip.percent(formatPercent(curseFactor * 0.07D))
-                ));
-
-                tooltip.add(SpellstoneTooltip.text(
-                        "tooltip.enigmatic_legacy.cursed_scroll.current.healing",
-                        SpellstoneTooltip.percent(formatPercent(curseFactor * 0.04D))
-                ));
-            }
+            addCurrentBonusTooltip(stack, tooltip);
 
             tooltip.add(SpellstoneTooltip.empty());
 
             tooltip.add(SpellstoneTooltip.negative("tooltip.enigmatic_legacy.cursed_scroll.cursed_only"));
         } else {
+            addCurrentBonusTooltip(stack, tooltip);
+
+            tooltip.add(SpellstoneTooltip.empty());
             tooltip.add(SpellstoneTooltip.holdShift());
         }
+    }
+
+    /**
+     * 常驻显示当前加成。
+     *
+     * <p>千咒卷轴的实际倍率由装备中的诅咒项数动态决定，服务端会在 curioTick 中把
+     * 当前诅咒因子缓存到物品数据里。tooltip 读取这个缓存后，无论是否按住 Shift，
+     * 都能直接看到当前攻击、挖掘速度和生命恢复加成。</p>
+     */
+    private static void addCurrentBonusTooltip(ItemStack stack, List<Component> tooltip) {
+        int curseFactor = getCachedCurseFactor(stack);
+
+        if (curseFactor <= 0) {
+            return;
+        }
+
+        tooltip.add(SpellstoneTooltip.empty());
+
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.cursed_scroll.current.factor",
+                SpellstoneTooltip.number(curseFactor)
+        ));
+
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.cursed_scroll.current.attack",
+                SpellstoneTooltip.percent(formatPercent(curseFactor * 0.04D))
+        ));
+
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.cursed_scroll.current.mining",
+                SpellstoneTooltip.percent(formatPercent(curseFactor * 0.07D))
+        ));
+
+        tooltip.add(SpellstoneTooltip.text(
+                "tooltip.enigmatic_legacy.cursed_scroll.current.healing",
+                SpellstoneTooltip.percent(formatPercent(curseFactor * 0.04D))
+        ));
     }
 }

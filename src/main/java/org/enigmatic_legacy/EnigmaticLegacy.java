@@ -61,8 +61,6 @@ public class EnigmaticLegacy {
         modEventBus.addListener(CuriosGenerator::gatherData);
         modEventBus.addListener(SoundGenerator::gatherData);
         modEventBus.addListener(PatchouliBookGenerator::gatherData);
-        modEventBus.addListener(DamageTagGenerator::gatherData);
-        modEventBus.addListener(DamageTypeGenerator::gatherData);
         modEventBus.addListener(EnchantmentGenerator::gatherData);
 
         modEventBus.addListener(ItemTagGenerator::gatherData);
@@ -125,6 +123,8 @@ public class EnigmaticLegacy {
         NeoForge.EVENT_BUS.register(GiftOfTheHeavenEvents.class);
         NeoForge.EVENT_BUS.register(ScrollOfThousandCursesEvents.class);
         NeoForge.EVENT_BUS.register(ScrollOfIgnoranceCurseEvents.class);
+        NeoForge.EVENT_BUS.register(ScrollOfThunderEmbraceEvents.class);
+        NeoForge.EVENT_BUS.register(PactOfDarkNightEvents.class);
         NeoForge.EVENT_BUS.register(GraceOfTheCreatorEvents.class);
         NeoForge.EVENT_BUS.register(PactOfInfiniteAvariceEvents.class);
         NeoForge.EVENT_BUS.register(UltimateLuxuryRingEvents.class);

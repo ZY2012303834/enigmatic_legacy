@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "E": {
+      "item": "enigmatic_legacy:twisted_heart"
+    },
+    "F": {
+      "item": "minecraft:feather"
+    },
+    "N": {
+      "item": "minecraft:phantom_membrane"
+    },
+    "O": {
+      "item": "minecraft:ender_eye"
+    },
+    "S": {
+      "item": "enigmatic_legacy:darkest_scroll"
+    },
+    "W": {
+      "item": "minecraft:wither_rose"
+    }
+  },
+  "pattern": [
+    "NEN",
+    "WSF",
+    "NON"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:night_scroll"
+  }
+}
