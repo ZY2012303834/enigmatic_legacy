@@ -1,8 +1,6 @@
 package org.enigmatic_legacy.item.items.scroll;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -15,6 +13,7 @@ import org.enigmatic_legacy.api.CuriosLookupApi;
 import org.enigmatic_legacy.api.CursedRingApi;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
+import org.enigmatic_legacy.util.ClientTooltipState;
 import org.enigmatic_legacy.util.PactOfDarkNightHelper;
 import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
@@ -148,8 +147,8 @@ public class PactOfDarkNight extends Item implements ICurioItem {
     ) {
         tooltip.add(SpellstoneTooltip.empty());
 
-        if (Screen.hasShiftDown()) {
-            Player player = Minecraft.getInstance().player;
+        if (ClientTooltipState.isShiftDown()) {
+            Player player = ClientTooltipState.getClientPlayer();
             double darkModifier = player == null ? PactOfDarkNightHelper.MIN_DARK_MODIFIER : PactOfDarkNightHelper.getDarkModifier(player);
 
             tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.night_scroll.1"));

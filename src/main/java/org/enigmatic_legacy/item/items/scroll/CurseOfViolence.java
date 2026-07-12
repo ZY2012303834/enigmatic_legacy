@@ -36,6 +36,7 @@ import org.enigmatic_legacy.api.CursedRingApi;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.util.AbyssalHeartHelper;
+import org.enigmatic_legacy.util.ClientTooltipState;
 import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.SlotContext;
@@ -272,7 +273,7 @@ public class CurseOfViolence extends Item implements ICurioItem {
 
         tooltip.add(SpellstoneTooltip.empty());
 
-        if (net.minecraft.client.gui.screens.Screen.hasShiftDown()) {
+        if (ClientTooltipState.isShiftDown()) {
             tooltip.add(SpellstoneTooltip.text(
                     "tooltip.enigmatic_legacy.violence_scroll.damage_store",
                     SpellstoneTooltip.percent(formatPercent(getStoredDamageModifier(stack) / 100.0D))
