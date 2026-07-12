@@ -42,14 +42,30 @@ public final class TheInfinitumEvents {
         }
 
         ItemStack weapon = attacker.getMainHandItem();
-        if (!weapon.is(ModItems.THE_INFINITUM.get())) {
+        boolean attackingWithTheInfinitum = weapon.is(ModItems.THE_INFINITUM.get());
+
+        /*
+         * 无止之言是启示之证路线的书类物品，基础被动应当和其它可收纳书一样，
+         * 在快捷栏或古旧书袋中都可以生效。这里保留主手判定，只用于区分
+         * “实际拿无止之言攻击”与“携带无止之言给其它武器提供被动”。
+         */
+        if (!attackingWithTheInfinitum && !TheInfinitum.hasTheInfinitum(attacker)) {
             return;
         }
 
         LivingEntity target = event.getEntity();
 
+        /*
+         * 未满足深渊之心资格时：
+         * - 主手直接用无止之言攻击仍然造成 0 伤害；
+         * - 如果只是把无止之言放在快捷栏或书袋中，则不提供被动，
+         *   但也不能把其它武器的伤害错误归零。
+         */
         if (!AbyssalHeartHelper.isWorthy(attacker)) {
-            event.setAmount(0.0F);
+            if (attackingWithTheInfinitum) {
+                event.setAmount(0.0F);
+            }
+
             return;
         }
 
@@ -83,7 +99,11 @@ public final class TheInfinitumEvents {
             return;
         }
 
-        if (!attacker.getMainHandItem().is(ModItems.THE_INFINITUM.get())) {
+        /*
+         * 吸血属于无止之言的被动效果，和增伤/击退一样需要支持快捷栏与古旧书袋。
+         * 主手属性和附魔仍然只来自实际拿在手里的物品；这里只处理战斗后回血。
+         */
+        if (!TheInfinitum.hasTheInfinitum(attacker)) {
             return;
         }
 
@@ -103,7 +123,11 @@ public final class TheInfinitumEvents {
             return;
         }
 
-        if (!TheInfinitum.isHeld(player) || !AbyssalHeartHelper.isWorthy(player)) {
+        /*
+         * 濒死保护同样按书类携带规则生效。
+         * 旧的 isHeld 只检查主副手，会漏掉快捷栏其它格子和古旧书袋。
+         */
+        if (!TheInfinitum.hasTheInfinitum(player) || !AbyssalHeartHelper.isWorthy(player)) {
             return;
         }
 

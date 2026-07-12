@@ -48,7 +48,8 @@ public final class CursedRingApi {
                 || stack.is(ModItems.ULTIMATE_LUXURY_RING.get())
                 || stack.is(ModItems.BLOODSTAINED_VALOR_EMBLEM.get())
                 || stack.is(ModItems.TOTEM_OF_MALICE.get())
-                || stack.is(ModItems.EARTH_PROMISE.get()));
+                || stack.is(ModItems.EARTH_PROMISE.get())
+                || stack.is(ModItems.ELDRITCH_AMULET.get()));
     }
 
     /**

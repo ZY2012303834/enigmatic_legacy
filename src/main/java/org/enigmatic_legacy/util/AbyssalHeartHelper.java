@@ -46,10 +46,6 @@ public final class AbyssalHeartHelper {
         CompoundTag data = player.getPersistentData();
         long cursedPlayTime = data.getLong(CURSED_PLAY_TIME_TAG) + 1L;
         data.putLong(CURSED_PLAY_TIME_TAG, cursedPlayTime);
-
-        if (player.tickCount % 20 == 0) {
-            syncTimer(serverPlayer);
-        }
     }
 
     /**

@@ -52,7 +52,9 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
+import org.enigmatic_legacy.item.items.book.TheInfinitum;
 import org.enigmatic_legacy.item.items.book.TheTwist;
+import org.enigmatic_legacy.util.AbyssalHeartHelper;
 import org.enigmatic_legacy.util.CursedRingHelper;
 import top.theillusivec4.curios.api.event.CurioCanUnequipEvent;
 import top.theillusivec4.curios.api.event.DropRulesEvent;
@@ -78,6 +80,17 @@ public class CursedRingEvents {
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
         Player player = event.getEntity();
+
+        /*
+         * 七咒折磨时间百分比会显示在所有需要深渊之心资格的物品 tooltip 中。
+         * 即使玩家当前没有佩戴七咒之戒，总游戏时间也会继续增加，
+         * 因此服务端需要定期同步“七咒佩戴时间 / 总游戏时间”给客户端。
+         */
+        if (!player.level().isClientSide()
+                && player instanceof ServerPlayer serverPlayer
+                && player.tickCount % 20 == 0) {
+            AbyssalHeartHelper.syncTimer(serverPlayer);
+        }
 
         // 复刻原项目：七咒之戒佩戴者着火后，燃烧时间会不断延长。
         // 注意：这里只在“已经着火”时延长，不会主动点燃玩家。
@@ -159,14 +172,13 @@ public class CursedRingEvents {
      * 所以这里只要玩家携带可生效的倒转之启，就跳过第四诅咒的伤害降低。
      * 这保证了“修正第四诅咒”不会只在主手使用时才生效。
      * <p>
-     * 无尽之书目前仍按它现有的主手特殊武器逻辑处理，
-     * 避免在没有完整复核无尽之书携带规则前扩大它的生效范围。
+     * 无止之言也属于同一书类携带规则，但它额外要求深渊之心资格。
+     * 因此只有玩家真正满足资格并携带可生效的无止之言时，
+     * 才跳过第四诅咒，避免未满足资格时仅把书放在快捷栏就绕过七咒减伤。
      */
     private static boolean shouldApplyFourthCurseDamageDebuff(Player attacker) {
-        ItemStack weapon = attacker.getMainHandItem();
-
         return !TheTwist.hasTheTwist(attacker)
-                && !weapon.is(ModItems.THE_INFINITUM.get());
+                && !(TheInfinitum.hasTheInfinitum(attacker) && AbyssalHeartHelper.isWorthy(attacker));
     }
 
     /**

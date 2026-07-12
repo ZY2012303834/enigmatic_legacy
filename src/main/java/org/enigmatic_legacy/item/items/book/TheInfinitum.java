@@ -93,6 +93,21 @@ public class TheInfinitum extends AbstractBookItem {
                 || player.getOffhandItem().is(ModItems.THE_INFINITUM.get());
     }
 
+    /**
+     * 判断玩家是否拥有一份可以提供被动效果的无止之言。
+     * <p>
+     * 无止之言和倒转之启一样继承自 AbstractBookItem，
+     * 应按项目里的书类规则从快捷栏或玩家可访问的古旧书袋中生效。
+     * 旧逻辑只检查主手或副手，会导致把无止之言放在快捷栏其它格子、
+     * 或收进古旧书袋后，增伤、击退、吸血和濒死保护等效果都无法触发。
+     * <p>
+     * 这里不检查普通背包，避免备用书在背包深处也自动提供效果。
+     */
+    public static boolean hasTheInfinitum(Player player) {
+        return isHeld(player)
+                || hasInHotbarOrBookBag(player, ModItems.THE_INFINITUM.get());
+    }
+
     public static float getModelProperty(Player player) {
         if (AbyssalHeartHelper.isWorthy(player)) {
             return 1.0F;

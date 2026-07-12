@@ -23,12 +23,14 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.enigmatic_legacy.EnigmaticLegacy;
 import org.enigmatic_legacy.api.CuriosLookupApi;
+import org.enigmatic_legacy.api.CursedRingApi;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.item.items.charm.AmuletVariant;
 import org.enigmatic_legacy.item.items.charm.EldritchAmulet;
 import org.enigmatic_legacy.item.items.charm.EnigmaticAmulet;
 import org.enigmatic_legacy.item.items.charm.UnwitnessedAmulet;
 import org.enigmatic_legacy.util.AbyssalHeartHelper;
+import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.event.CurioCanEquipEvent;
 
 /**
@@ -191,12 +193,26 @@ public final class EnigmaticAmuletEvents {
         boolean isAscensionAmulet = stack.is(ModItems.ASCENSION_AMULET.get());
         boolean isEldritchAmulet = stack.is(ModItems.ELDRITCH_AMULET.get());
 
-        if (isEldritchAmulet && (player == null || !AbyssalHeartHelper.isWorthy(player))) {
+        /*
+         * 轻蔑之约是七咒路线的深渊级护符，正常新装备时必须满足深渊之心资格。
+         *
+         * 但 Curios 在玩家登录时会分批恢复槽位，可能先校验轻蔑之约，
+         * 再恢复七咒之戒。此时直接调用 isWorthy 会因为暂时查不到七咒而返回 false，
+         * 导致已经合法装备的轻蔑之约在加载后被误弹出。
+         *
+         * 因此这里复用七咒受限物品的统一加载宽限：
+         * - 正常游玩时仍要求 isWorthy；
+         * - 登录恢复或同槽刷新时允许先保留装备；
+         * - 实际效果入口仍继续检查 isWorthy，不会因为宽限而生效。
+         */
+        if (isEldritchAmulet
+                && (player == null || !canEquipEldritchAmulet(player, event.getSlotContext(), stack))) {
             event.setEquipResult(TriState.FALSE);
             return;
         }
 
-        if ((isRegularAmulet || isAscensionAmulet || isEldritchAmulet) && hasAnyEquippedAmulet(event.getEntity())) {
+        if ((isRegularAmulet || isAscensionAmulet || isEldritchAmulet)
+                && hasOtherEquippedAmulet(event.getEntity(), event.getSlotContext())) {
             event.setEquipResult(TriState.FALSE);
         }
     }
@@ -385,12 +401,38 @@ public final class EnigmaticAmuletEvents {
     /**
      * 判断玩家 Curios 栏里是否已经佩戴了普通神秘护身符或飞升护符。
      */
-    private static boolean hasAnyEquippedAmulet(LivingEntity entity) {
-        return CuriosLookupApi.findFirstSlot(entity, stack ->
-                        stack.getItem() instanceof EnigmaticAmulet
-                                || stack.is(ModItems.ASCENSION_AMULET.get())
-                                || stack.is(ModItems.ELDRITCH_AMULET.get()))
-                .isPresent();
+    private static boolean canEquipEldritchAmulet(Player player, SlotContext slotContext, ItemStack stack) {
+        return AbyssalHeartHelper.isWorthy(player)
+                || (CursedRingApi.isInLoadGrace(player)
+                && CursedRingApi.canEquipRestrictedCurio(slotContext, stack));
+    }
+
+    /**
+     * 判断除了当前正在校验的槽位外，玩家是否已经装备了其它神秘护符路线物品。
+     * <p>
+     * Curios 在登录恢复或槽位刷新时，可能会重新校验当前槽位里已经存在的物品。
+     * 如果这里使用“是否存在任意护符”，当前物品会把自己算成冲突，
+     * 从而在加载后被误判为重复装备并弹出。
+     */
+    private static boolean hasOtherEquippedAmulet(LivingEntity entity, SlotContext currentSlot) {
+        return CuriosLookupApi.getInventory(entity)
+                .map(handler -> handler.findCurios(EnigmaticAmuletEvents::isEquippableAmulet)
+                        .stream()
+                        .anyMatch(slotResult -> !isSameSlot(slotResult.slotContext(), currentSlot)))
+                .orElse(false);
+    }
+
+    private static boolean isEquippableAmulet(ItemStack stack) {
+        return stack.getItem() instanceof EnigmaticAmulet
+                || stack.is(ModItems.ASCENSION_AMULET.get())
+                || stack.is(ModItems.ELDRITCH_AMULET.get());
+    }
+
+    private static boolean isSameSlot(SlotContext first, SlotContext second) {
+        return first != null
+                && second != null
+                && first.index() == second.index()
+                && first.identifier().equals(second.identifier());
     }
 
     private static boolean hasAnyAmulet(Player player) {

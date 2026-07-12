@@ -37,6 +37,7 @@ import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.util.AbyssalHeartHelper;
 import org.enigmatic_legacy.util.ClientTooltipState;
+import org.enigmatic_legacy.util.CursedSufferingTooltip;
 import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.SlotContext;
@@ -304,6 +305,7 @@ public class CurseOfViolence extends Item implements ICurioItem {
 
             tooltip.add(SpellstoneTooltip.empty());
             tooltip.add(SpellstoneTooltip.negative("tooltip.enigmatic_legacy.violence_scroll.worthy_only"));
+            CursedSufferingTooltip.appendTooltip(tooltip);
         } else {
             tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.violence_scroll.lore.1"));
             tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.violence_scroll.lore.2"));
