@@ -50,7 +50,7 @@ public abstract class MixinPlayer {
                 || player.isFallFlying()
                 || player.isInWater()
                 || player.hasEffect(MobEffects.LEVITATION)
-                || MajesticElytraHelper.getBackSlotStack(player).isEmpty()) {
+                || MajesticElytraHelper.getEquippedStack(player).isEmpty()) {
             return;
         }
 

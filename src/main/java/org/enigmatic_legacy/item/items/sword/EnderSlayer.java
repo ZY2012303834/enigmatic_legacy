@@ -5,7 +5,12 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.monster.Endermite;
@@ -15,6 +20,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.level.Level;
+import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.items.material.EnderSlayerToolMaterial;
 import org.jetbrains.annotations.NotNull;
 
@@ -32,7 +40,6 @@ import java.util.Set;
  * - 史诗品质；
  * - 防火；
  * - 对末地生物造成额外 +150% 伤害；
- * - 对末地生物造成额外 +600% 击退；
  * - 可以短暂压制末影人、潜影贝、玩家的传送能力。
  */
 public class EnderSlayer extends SwordItem {
@@ -42,7 +49,7 @@ public class EnderSlayer extends SwordItem {
      * 原项目说明：
      * 实际显示攻击伤害约为 4 + 此值。
      */
-    public static final float ATTACK_DAMAGE = 4.0F;
+    public static final float DEFAULT_ATTACK_DAMAGE = 4.0F;
 
     /**
      * 原项目默认攻击速度。
@@ -57,11 +64,18 @@ public class EnderSlayer extends SwordItem {
     public static final float END_DAMAGE_BONUS = 1.50F;
 
     /**
-     * 对末地生物的击退加成。
-     * 600% = 6.0
-     * 最终击退倍率 = 1 + 6 = 7 倍。
+     * 与原版 SwordItem 相同的属性 ID。
+     * 物品栈刷新属性时使用相同 ID 覆盖默认攻击伤害/攻击速度，避免重复叠加。
      */
-    public static final float END_KNOCKBACK_BONUS = 6.00F;
+    private static final ResourceLocation ATTACK_DAMAGE_ID = ResourceLocation.fromNamespaceAndPath(
+            "minecraft",
+            "base_attack_damage"
+    );
+
+    private static final ResourceLocation ATTACK_SPEED_ID = ResourceLocation.fromNamespaceAndPath(
+            "minecraft",
+            "base_attack_speed"
+    );
 
     /**
      * 传送压制时间。
@@ -87,10 +101,77 @@ public class EnderSlayer extends SwordItem {
                         .durability(2000)
                         .attributes(SwordItem.createAttributes(
                                 EnderSlayerToolMaterial.INSTANCE,
-                                ATTACK_DAMAGE,
+                                DEFAULT_ATTACK_DAMAGE,
                                 ATTACK_SPEED
                         ))
         );
+    }
+
+    /**
+     * 读取末影之屠的基础攻击伤害配置。
+     * <p>
+     * 物品注册阶段不能读取 COMMON 配置，因此构造器只写入默认属性。
+     * 游戏运行后由 inventoryTick 将物品栈属性刷新为当前配置值。
+     */
+    private static float getConfiguredAttackDamage() {
+        try {
+            return ConfigCommon.ENDER_SLAYER_ATTACK_DAMAGE.get().floatValue();
+        } catch (IllegalStateException exception) {
+            return DEFAULT_ATTACK_DAMAGE;
+        }
+    }
+
+    /**
+     * 刷新末影之屠物品栈上的属性组件。
+     * <p>
+     * 构造器阶段只能写入默认属性，因为 COMMON 配置当时可能还没有加载完成。
+     * 游戏运行后配置已经可读，再把当前配置值写入物品栈自己的 ATTRIBUTE_MODIFIERS 组件，
+     * 让实际面板和攻击结算使用配置后的基础攻击伤害。
+     */
+    @Override
+    public void inventoryTick(
+            @NotNull ItemStack stack,
+            @NotNull Level level,
+            @NotNull Entity entity,
+            int slotId,
+            boolean isSelected
+    ) {
+        ItemAttributeModifiers configuredAttributes = createConfiguredAttributes();
+
+        if (!configuredAttributes.equals(stack.get(DataComponents.ATTRIBUTE_MODIFIERS))) {
+            stack.set(DataComponents.ATTRIBUTE_MODIFIERS, configuredAttributes);
+        }
+
+        super.inventoryTick(stack, level, entity, slotId, isSelected);
+    }
+
+    /**
+     * 根据当前配置创建末影之屠的主手属性。
+     * <p>
+     * 使用与原版 SwordItem 相同的两个属性 ID，确保覆盖默认攻击伤害/攻击速度组件，
+     * 而不是在旧组件之外叠加一组额外属性。
+     */
+    private static ItemAttributeModifiers createConfiguredAttributes() {
+        return ItemAttributeModifiers.builder()
+                .add(
+                        Attributes.ATTACK_DAMAGE,
+                        new AttributeModifier(
+                                ATTACK_DAMAGE_ID,
+                                getConfiguredAttackDamage(),
+                                AttributeModifier.Operation.ADD_VALUE
+                        ),
+                        EquipmentSlotGroup.MAINHAND
+                )
+                .add(
+                        Attributes.ATTACK_SPEED,
+                        new AttributeModifier(
+                                ATTACK_SPEED_ID,
+                                ATTACK_SPEED,
+                                AttributeModifier.Operation.ADD_VALUE
+                        ),
+                        EquipmentSlotGroup.MAINHAND
+                )
+                .build();
     }
 
     /**
@@ -165,13 +246,6 @@ public class EnderSlayer extends SwordItem {
                     "tooltip.enigmatic_legacy.ender_slayer.3",
                     Component.literal("+150%").withStyle(ChatFormatting.GOLD)
             ).withStyle(ChatFormatting.GRAY));
-
-            tooltip.add(Component.translatable(
-                    "tooltip.enigmatic_legacy.ender_slayer.4",
-                    Component.literal("+600%").withStyle(ChatFormatting.GOLD)
-            ).withStyle(ChatFormatting.GRAY));
-
-            tooltip.add(Component.empty());
 
             tooltip.add(Component.translatable("tooltip.enigmatic_legacy.ender_slayer.5")
                     .withStyle(ChatFormatting.GRAY));

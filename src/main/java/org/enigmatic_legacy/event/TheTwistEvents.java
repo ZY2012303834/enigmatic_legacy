@@ -1,20 +1,15 @@
 package org.enigmatic_legacy.event;
 
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
-import net.neoforged.neoforge.event.entity.living.LivingKnockBackEvent;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.item.items.book.TheTwist;
 import org.enigmatic_legacy.util.CursedRingHelper;
-
-import java.util.Map;
-import java.util.WeakHashMap;
 
 /**
  * 倒转之启事件。
@@ -22,8 +17,6 @@ import java.util.WeakHashMap;
  * 1. 未佩戴七咒之戒时，倒转之启造成 0 伤害；
  * 2. 佩戴七咒之戒时，倒转之启修正第四诅咒，始终造成全额伤害；
  * 3. 对 Boss 和玩家造成 +300% 额外伤害；
- * 4. 造成 +300% 击退；
- * 5. 对幻翼的击退额外乘 1.5。
  */
 public final class TheTwistEvents {
 
@@ -34,21 +27,6 @@ public final class TheTwistEvents {
      */
     private static final float BOSS_DAMAGE_BONUS_MULTIPLIER =
             TheTwist.BOSS_DAMAGE_BONUS_PERCENT / 100.0F;
-
-    /**
-     * 击退加成。
-     * +300% 表示最终击退强度约为 4 倍。
-     */
-    private static final float KNOCKBACK_MULTIPLIER =
-            1.0F + TheTwist.KNOCKBACK_BONUS_PERCENT / 100.0F;
-
-    /**
-     * 临时记录需要增强击退的目标。
-     * LivingIncomingDamageEvent 中能拿到攻击者；
-     * LivingKnockBackEvent 中主要处理目标击退。
-     * 所以这里用 WeakHashMap 过渡。
-     */
-    private static final Map<LivingEntity, Float> KNOCKBACK_TARGETS = new WeakHashMap<>();
 
     private TheTwistEvents() {
     }
@@ -76,7 +54,7 @@ public final class TheTwistEvents {
         /*
          * 倒转之启属于可由快捷栏 / 古旧书袋提供效果的书类物品。
          * 旧逻辑只检查主手，导致玩家把它放在快捷栏其它格子或书袋中时，
-         * 完全进不到后续的 Boss / 玩家增伤与击退增强逻辑。
+         * 完全进不到后续的 Boss / 玩家增伤逻辑。
          */
         if (!attackingWithTheTwist && !TheTwist.hasTheTwist(attacker)) {
             return;
@@ -112,34 +90,6 @@ public final class TheTwistEvents {
 
         event.setAmount(damage);
 
-        /*
-         * 注册额外击退。
-         *
-         * 原项目：
-         * - 普通目标：+300% 击退，即约 4 倍击退；
-         * - 幻翼：再乘 1.5。
-         */
-        float knockback = KNOCKBACK_MULTIPLIER;
-
-        if (target instanceof Phantom) {
-            knockback *= 1.5F;
-        }
-
-        KNOCKBACK_TARGETS.put(target, knockback);
-    }
-
-    /**
-     * 击退阶段。
-     */
-    @SubscribeEvent
-    public static void onKnockback(LivingKnockBackEvent event) {
-        Float multiplier = KNOCKBACK_TARGETS.remove(event.getEntity());
-
-        if (multiplier == null) {
-            return;
-        }
-
-        event.setStrength(event.getStrength() * multiplier);
     }
 
     /**

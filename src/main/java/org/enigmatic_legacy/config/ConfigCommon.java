@@ -21,6 +21,8 @@ public final class ConfigCommon {
 
     public static final AccessibilityConfig ACCESSIBILITY;      // 基础配置
     public static final GenericConfig GENERIC;      // 通用机制配置
+    public static final ScrollOfIgnoranceCurseConfig SCROLL_OF_IGNORANCE_CURSE;
+    public static final EnderSlayerConfig ENDER_SLAYER;
     public static final NonEuclideanCubeConfig NON_EUCLIDEAN_CUBE;
     public static final ItemOptionsConfig ITEM_OPTIONS;
     public static final CursedRingConfig CURSED_RING;
@@ -53,6 +55,7 @@ public final class ConfigCommon {
     public static final ModConfigSpec.DoubleValue IGNORANCE_SCROLL_HEAL_BOOST_LIMIT;
     public static final ModConfigSpec.DoubleValue IGNORANCE_SCROLL_KNOCKBACK_RESISTANCE_LIMIT;
     public static final ModConfigSpec.IntValue IGNORANCE_SCROLL_XP_LEVEL_UPPER_LIMIT;
+    public static final ModConfigSpec.DoubleValue ENDER_SLAYER_ATTACK_DAMAGE;
 
     // ==============================
     // 旧字段兼容别名：非欧立方
@@ -265,6 +268,8 @@ public final class ConfigCommon {
 
         ACCESSIBILITY = new AccessibilityConfig(builder);   // 基础配置
         GENERIC = new GenericConfig(builder);       // 通用机制配置
+        SCROLL_OF_IGNORANCE_CURSE = new ScrollOfIgnoranceCurseConfig(builder);
+        ENDER_SLAYER = new EnderSlayerConfig(builder);
         NON_EUCLIDEAN_CUBE = new NonEuclideanCubeConfig(builder);
         ITEM_OPTIONS = new ItemOptionsConfig(builder);
         CURSED_RING = new CursedRingConfig(builder);
@@ -287,10 +292,11 @@ public final class ConfigCommon {
         SOUL_CRYSTALS_MODE = GENERIC.soulCrystalsMode;
         MAX_SOUL_CRYSTAL_LOSS = GENERIC.maxSoulCrystalLoss;
         COMPLETE_BOSS_LIST = GENERIC.completeBossList;
-        IGNORANCE_SCROLL_DAMAGE_BOOST_LIMIT = GENERIC.ignoranceScrollDamageBoostLimit;
-        IGNORANCE_SCROLL_HEAL_BOOST_LIMIT = GENERIC.ignoranceScrollHealBoostLimit;
-        IGNORANCE_SCROLL_KNOCKBACK_RESISTANCE_LIMIT = GENERIC.ignoranceScrollKnockbackResistanceLimit;
-        IGNORANCE_SCROLL_XP_LEVEL_UPPER_LIMIT = GENERIC.ignoranceScrollXpLevelUpperLimit;
+        IGNORANCE_SCROLL_DAMAGE_BOOST_LIMIT = SCROLL_OF_IGNORANCE_CURSE.damageBoostLimit;
+        IGNORANCE_SCROLL_HEAL_BOOST_LIMIT = SCROLL_OF_IGNORANCE_CURSE.healBoostLimit;
+        IGNORANCE_SCROLL_KNOCKBACK_RESISTANCE_LIMIT = SCROLL_OF_IGNORANCE_CURSE.knockbackResistanceLimit;
+        IGNORANCE_SCROLL_XP_LEVEL_UPPER_LIMIT = SCROLL_OF_IGNORANCE_CURSE.xpLevelUpperLimit;
+        ENDER_SLAYER_ATTACK_DAMAGE = ENDER_SLAYER.attackDamage;
         THE_CUBE_RANDOM_BUFFS = NON_EUCLIDEAN_CUBE.randomBuffs;
         THE_CUBE_RANDOM_DEBUFFS = NON_EUCLIDEAN_CUBE.randomDebuffs;
         CUBE_DAMAGE_LIMIT = NON_EUCLIDEAN_CUBE.damageLimit;

@@ -3,7 +3,6 @@ package org.enigmatic_legacy.event;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.monster.Shulker;
@@ -16,24 +15,20 @@ import net.neoforged.neoforge.event.entity.EntityTeleportEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
-import net.neoforged.neoforge.event.entity.living.LivingKnockBackEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.item.items.sword.EnderSlayer;
 import org.enigmatic_legacy.util.CursedRingHelper;
 
-import java.util.Map;
-import java.util.WeakHashMap;
 
 /**
  * 末影之屠事件。
  * 按原项目复刻：
  * 1. 未佩戴七咒之戒时，末影之屠无法造成伤害；
  * 2. 对末地生物造成 +150% 伤害；
- * 3. 对末地生物造成 +600% 击退；
- * 4. 命中玩家时，压制末影珍珠、召回药水、扭曲魔镜、星云之眼、非欧立方；
- * 5. 命中末影人 / 潜影贝时，短时间阻止其传送；
- * 6. 在末地用满蓄力攻击末影人时，额外强化伤害并清除其普通掉落，转为经验。
+ * 3. 命中玩家时，压制末影珍珠、召回药水、扭曲魔镜、星云之眼、非欧立方；
+ * 4. 命中末影人 / 潜影贝时，短时间阻止其传送；
+ * 5. 在末地用满蓄力攻击末影人时，额外强化伤害并清除其普通掉落，转为经验。
  */
 public final class EnderSlayerEvents {
 
@@ -49,15 +44,6 @@ public final class EnderSlayerEvents {
      */
     private static final String ENDER_SLAYER_VICTIM_TAG = "EnderSlayerVictim";
 
-    /**
-     * 临时击退倍率表。
-     * 说明：
-     * - LivingIncomingDamageEvent 阶段判断目标是否应该获得额外击退；
-     * - LivingKnockBackEvent 阶段真正修改击退强度；
-     * - 使用 WeakHashMap，实体销毁后不会长期占用内存。
-     */
-    private static final Map<LivingEntity, Float> KNOCKBACK_MULTIPLIERS = new WeakHashMap<>();
-
     private EnderSlayerEvents() {
     }
 
@@ -67,7 +53,6 @@ public final class EnderSlayerEvents {
      * - 非七咒佩戴者不能使用末影之屠；
      * - 命中玩家时压制目标传送能力；
      * - 命中末影人 / 潜影贝时压制其传送；
-     * - 对末地生物预登记击退倍率。
      */
     @SubscribeEvent
     public static void onIncomingDamage(LivingIncomingDamageEvent event) {
@@ -96,22 +81,6 @@ public final class EnderSlayerEvents {
         // 压制目标的传送能力。
         suppressTeleportAbilities(target);
 
-        /*
-         * 对末地生物登记额外击退。
-         *
-         * 特殊处理：
-         * - 末影龙仍然属于末地生物；
-         * - 末影之屠仍然对末影龙造成额外伤害；
-         * - 但末影龙不应该被末影之屠击飞。
-         *
-         * 所以这里排除 EnderDragon。
-         */
-        if (EnderSlayer.isEndDweller(target) && !(target instanceof EnderDragon)) {
-            KNOCKBACK_MULTIPLIERS.put(
-                    target,
-                    1.0F + EnderSlayer.END_KNOCKBACK_BONUS
-            );
-        }
     }
 
     /**
@@ -171,21 +140,6 @@ public final class EnderSlayerEvents {
         damage *= 1.0F + EnderSlayer.END_DAMAGE_BONUS;
 
         event.setNewDamage(damage);
-    }
-
-    /**
-     * 修改击退强度。
-     * 原项目对末地生物提供 +600% 击退。
-     */
-    @SubscribeEvent
-    public static void onLivingKnockback(LivingKnockBackEvent event) {
-        Float multiplier = KNOCKBACK_MULTIPLIERS.remove(event.getEntity());
-
-        if (multiplier == null) {
-            return;
-        }
-
-        event.setStrength(event.getStrength() * multiplier);
     }
 
     /**

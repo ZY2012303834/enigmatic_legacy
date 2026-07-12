@@ -805,9 +805,6 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.ender_slayer.3",
                 "对末地生物造成 %s 伤害。");
 
-        add("tooltip.enigmatic_legacy.ender_slayer.4",
-                "对末地生物造成 %s 击退。");
-
         add("tooltip.enigmatic_legacy.ender_slayer.5",
                 "命中末影人和潜影贝时，会暂时压制它们的传送。");
 
@@ -902,16 +899,12 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.the_twist.6",
                 "对 Boss 和玩家造成 %s 伤害。");
 
-        add("tooltip.enigmatic_legacy.the_twist.7",
-                "%s 击退");
-
         // The Infinitum / 无止之言
         addItem(ModItems.THE_INFINITUM, "无止之言");
         add("tooltip.enigmatic_legacy.the_infinitum.1", "深渊会回望最无畏的凝视。");
         add("tooltip.enigmatic_legacy.the_infinitum.2", "第四诅咒的修正：");
         add("tooltip.enigmatic_legacy.the_infinitum.3", "- 始终造成全额伤害。");
         add("tooltip.enigmatic_legacy.the_infinitum.4", "对 Boss 和玩家造成 %s 伤害。");
-        add("tooltip.enigmatic_legacy.the_infinitum.5", "%s 击退");
         add("tooltip.enigmatic_legacy.the_infinitum.6", "%s 生命偷取");
         add("tooltip.enigmatic_legacy.the_infinitum.7", "可以承载大多数剑类附魔。");
         add("tooltip.enigmatic_legacy.the_infinitum.8", "每次攻击都会施加恐怖的负面效果。");

@@ -38,8 +38,7 @@ import java.util.List;
  * - 既是 Patchouli 手册入口，也是武器；
  * - 命中目标时点燃目标；
  * - 修正七咒第四诅咒，使自身攻击始终造成全额伤害；
- * - 对 Boss 和玩家造成额外 +300% 伤害；
- * - 造成额外 +300% 击退。
+ * - 对 Boss 和玩家造成额外 +300% 伤害。
  */
 public class TheTwist extends AbstractBookItem {
 
@@ -71,12 +70,6 @@ public class TheTwist extends AbstractBookItem {
      * BossDamageBonus = 300%
      */
     public static final float BOSS_DAMAGE_BONUS_PERCENT = 300.0F;
-
-    /**
-     * 原项目配置：
-     * KnockbackPowerBonus = 300%
-     */
-    public static final float KNOCKBACK_BONUS_PERCENT = 300.0F;
 
     /**
      * 属性 ID。
@@ -264,10 +257,6 @@ public class TheTwist extends AbstractBookItem {
                     Component.literal("+300%").withStyle(ChatFormatting.GOLD)
             ).withStyle(ChatFormatting.LIGHT_PURPLE));
 
-            tooltip.add(Component.translatable(
-                    "tooltip.enigmatic_legacy.the_twist.7",
-                    Component.literal("+300%").withStyle(ChatFormatting.GOLD)
-            ).withStyle(ChatFormatting.LIGHT_PURPLE));
         }
 
         tooltip.add(Component.translatable("tooltip.enigmatic_legacy.void"));

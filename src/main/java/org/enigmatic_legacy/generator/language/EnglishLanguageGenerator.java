@@ -862,9 +862,6 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.ender_slayer.3",
                 "Deals %s damage against dwellers of The End.");
 
-        add("tooltip.enigmatic_legacy.ender_slayer.4",
-                "Deals %s knockback against dwellers of The End.");
-
         add("tooltip.enigmatic_legacy.ender_slayer.5",
                 "Suppresses teleportation of Endermen and Shulkers.");
 
@@ -957,16 +954,12 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.the_twist.6",
                 "%s Damage against bosses and players.");
 
-        add("tooltip.enigmatic_legacy.the_twist.7",
-                "%s Knockback");
-
         // The Infinitum / 无止之言
         addItem(ModItems.THE_INFINITUM, "The Infinitum");
         add("tooltip.enigmatic_legacy.the_infinitum.1", "The abyss returns even the boldest gaze.");
         add("tooltip.enigmatic_legacy.the_infinitum.2", "Alteration of the Fourth Curse:");
         add("tooltip.enigmatic_legacy.the_infinitum.3", "- Always deals its full damage.");
         add("tooltip.enigmatic_legacy.the_infinitum.4", "%s Damage against bosses and players.");
-        add("tooltip.enigmatic_legacy.the_infinitum.5", "%s Knockback");
         add("tooltip.enigmatic_legacy.the_infinitum.6", "%s Lifesteal");
         add("tooltip.enigmatic_legacy.the_infinitum.7", "Can bear most sword enchantments.");
         add("tooltip.enigmatic_legacy.the_infinitum.8", "Each attack inflicts horrific debuffs.");

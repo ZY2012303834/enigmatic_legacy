@@ -44,7 +44,6 @@ public class TheInfinitum extends AbstractBookItem {
     public static final double ATTACK_DAMAGE = 15.0D;
     public static final double ATTACK_SPEED = -2.0D;
     public static final float BOSS_DAMAGE_BONUS_PERCENT = 200.0F;
-    public static final float KNOCKBACK_BONUS_PERCENT = 200.0F;
     public static final float LIFESTEAL_PERCENT = 10.0F;
     public static final int UNDEAD_PROBABILITY_PERCENT = 85;
 
@@ -99,7 +98,7 @@ public class TheInfinitum extends AbstractBookItem {
      * 无止之言和倒转之启一样继承自 AbstractBookItem，
      * 应按项目里的书类规则从快捷栏或玩家可访问的古旧书袋中生效。
      * 旧逻辑只检查主手或副手，会导致把无止之言放在快捷栏其它格子、
-     * 或收进古旧书袋后，增伤、击退、吸血和濒死保护等效果都无法触发。
+     * 或收进古旧书袋后，增伤、吸血和濒死保护等效果都无法触发。
      * <p>
      * 这里不检查普通背包，避免备用书在背包深处也自动提供效果。
      */
@@ -204,11 +203,6 @@ public class TheInfinitum extends AbstractBookItem {
 
         tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.the_infinitum.4",
-                SpellstoneTooltip.percent("+200%")
-        ));
-
-        tooltip.add(SpellstoneTooltip.text(
-                "tooltip.enigmatic_legacy.the_infinitum.5",
                 SpellstoneTooltip.percent("+200%")
         ));
 

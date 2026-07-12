@@ -7,18 +7,17 @@ import java.util.List;
 
 /**
  * 通用机制配置。
+ * <p>
+ * 这里只保留跨多个系统共用的基础机制配置。
+ * 具体物品自己的数值配置应拆到独立配置类中，避免 GenericConfig 继续膨胀。
  */
 public class GenericConfig {
     public final ModConfigSpec.IntValue soulCrystalsMode;
     public final ModConfigSpec.IntValue maxSoulCrystalLoss;
     public final ModConfigSpec.ConfigValue<List<? extends String>> completeBossList;
-    public final ModConfigSpec.DoubleValue ignoranceScrollDamageBoostLimit;
-    public final ModConfigSpec.DoubleValue ignoranceScrollHealBoostLimit;
-    public final ModConfigSpec.DoubleValue ignoranceScrollKnockbackResistanceLimit;
-    public final ModConfigSpec.IntValue ignoranceScrollXpLevelUpperLimit;
 
     public GenericConfig(ModConfigSpec.Builder builder) {
-        builder.comment("通用机制配置").push("Generic Config");
+        builder.comment("通用机制配置。").push("Generic Config");
 
         soulCrystalsMode = builder
                 .comment(
@@ -32,10 +31,9 @@ public class GenericConfig {
         maxSoulCrystalLoss = builder
                 .comment(
                         "玩家最多可以损失多少个灵魂水晶。",
-                        "每损失 1 个灵魂水晶，后续可用于减少 10% 最大生命上限。",
-                        "如果设置为 10，代表玩家最多可能损失全部灵魂水晶。"
+                        "每损失 1 个灵魂水晶，后续可用于减少 10% 最大生命上限。"
                 )
-                .defineInRange("MaxSoulCrystalLoss", 9, 1, 10);
+                .defineInRange("MaxSoulCrystalLoss", 9, 1, 9);
 
         completeBossList = builder
                 .comment(
@@ -68,26 +66,6 @@ public class GenericConfig {
                         value -> value instanceof String string
                                 && ResourceLocation.tryParse(string) != null
                 );
-
-        builder.comment("无知诅咒卷轴配置。").push("Scroll of Ignorance Curse");
-
-        ignoranceScrollDamageBoostLimit = builder
-                .comment("无知诅咒卷轴提供的攻击伤害加成上限，按百分比计算。")
-                .defineInRange("DamageBoostLimit", 100.0D, 0.0D, 1000.0D);
-
-        ignoranceScrollHealBoostLimit = builder
-                .comment("无知诅咒卷轴提供的生命恢复加成上限，按百分比计算。")
-                .defineInRange("HealBoostLimit", 50.0D, 0.0D, 1000.0D);
-
-        ignoranceScrollKnockbackResistanceLimit = builder
-                .comment("无知诅咒卷轴提供的击退抗性加成上限，按百分比计算。")
-                .defineInRange("KnockbackResistanceBoostLimit", 160.0D, 0.0D, 1000.0D);
-
-        ignoranceScrollXpLevelUpperLimit = builder
-                .comment("储存经验达到多少等级时，无知诅咒卷轴的加成达到上限。")
-                .defineInRange("XPLevelUpperLimit", 1000, 1, 1000);
-
-        builder.pop();
 
         builder.pop();
     }

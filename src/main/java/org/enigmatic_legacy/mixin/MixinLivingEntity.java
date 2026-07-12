@@ -19,6 +19,7 @@ import org.enigmatic_legacy.util.MajesticElytraHelper;
 import org.enigmatic_legacy.util.ScorchedCharmHelper;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -28,6 +29,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(LivingEntity.class)
 public abstract class MixinLivingEntity {
     private static final float LAVA_SWIM_INPUT_SPEED = 0.08F;
+
+    @Unique
+    private boolean enigmaticLegacy$wasFallFlyingBeforeUpdate;
 
     @Shadow
     protected abstract boolean isAffectedByFluids();
@@ -50,6 +54,50 @@ public abstract class MixinLivingEntity {
     )
     private ItemStack enigmaticLegacy$useBackSlotMajesticElytraForFlightTick(LivingEntity entity, EquipmentSlot slot) {
         return MajesticElytraHelper.getChestOrBackElytraStack(entity, slot);
+    }
+
+    /**
+     * 记录 updateFallFlying 执行前的滑翔状态。
+     * <p>
+     * 部分环境下原版方法的胸甲槽读取不会被上面的 Redirect 稳定替换；
+     * 这种情况下玩家即使已经通过背饰栏壮丽鞘翅起飞，也会在下一次 updateFallFlying 中被原版停止滑翔。
+     * 这里先记住进入方法前是否正在滑翔，RETURN 阶段再决定是否需要用 back 槽鞘翅恢复。
+     */
+    @Inject(method = "updateFallFlying", at = @At("HEAD"))
+    private void enigmaticLegacy$captureFallFlyingState(CallbackInfo callback) {
+        LivingEntity entity = (LivingEntity) (Object) this;
+        this.enigmaticLegacy$wasFallFlyingBeforeUpdate = entity.isFallFlying();
+    }
+
+    /**
+     * 让 Curios back 槽中的壮丽鞘翅兜底维持滑翔。
+     * <p>
+     * 如果原版因为胸甲槽没有可用鞘翅而关闭了滑翔，但玩家在进入 updateFallFlying 前确实已经在滑翔，
+     * 且 back 槽里仍有可用壮丽鞘翅，就恢复滑翔状态并手动执行一次鞘翅飞行 tick。
+     * 这样可以覆盖 redirect 未命中、其它 mixin 改写 updateFallFlying 等情况。
+     */
+    @Inject(method = "updateFallFlying", at = @At("RETURN"))
+    private void enigmaticLegacy$keepFlyingWithBackSlotMajesticElytra(CallbackInfo callback) {
+        LivingEntity entity = (LivingEntity) (Object) this;
+
+        if (!(entity instanceof Player player)
+                || !this.enigmaticLegacy$wasFallFlyingBeforeUpdate
+                || player.isFallFlying()
+                || player.onGround()
+                || player.isPassenger()
+                || player.isInWater()
+                || player.hasEffect(MobEffects.LEVITATION)) {
+            return;
+        }
+
+        ItemStack backStack = MajesticElytraHelper.getEquippedStack(player);
+
+        if (backStack.isEmpty()) {
+            return;
+        }
+
+        player.startFallFlying();
+        backStack.elytraFlightTick(player, player.getFallFlyingTicks());
     }
 
     @Inject(method = "travel", at = @At("HEAD"), cancellable = true)

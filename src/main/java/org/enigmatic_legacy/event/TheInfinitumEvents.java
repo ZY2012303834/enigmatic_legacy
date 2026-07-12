@@ -3,21 +3,16 @@ package org.enigmatic_legacy.event;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
-import net.neoforged.neoforge.event.entity.living.LivingKnockBackEvent;
 import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.item.items.book.TheInfinitum;
 import org.enigmatic_legacy.util.AbyssalHeartHelper;
-
-import java.util.Map;
-import java.util.WeakHashMap;
 
 /**
  * 无止之言事件。
@@ -25,12 +20,8 @@ import java.util.WeakHashMap;
 public final class TheInfinitumEvents {
     private static final float BOSS_DAMAGE_BONUS_MULTIPLIER =
             TheInfinitum.BOSS_DAMAGE_BONUS_PERCENT / 100.0F;
-    private static final float KNOCKBACK_MULTIPLIER =
-            1.0F + TheInfinitum.KNOCKBACK_BONUS_PERCENT / 100.0F;
     private static final float LIFESTEAL_MULTIPLIER =
             TheInfinitum.LIFESTEAL_PERCENT / 100.0F;
-
-    private static final Map<LivingEntity, Float> KNOCKBACK_TARGETS = new WeakHashMap<>();
 
     private TheInfinitumEvents() {
     }
@@ -85,12 +76,6 @@ public final class TheInfinitumEvents {
 
         event.setAmount(damage);
 
-        float knockback = KNOCKBACK_MULTIPLIER;
-        if (target instanceof Phantom) {
-            knockback *= 1.5F;
-        }
-
-        KNOCKBACK_TARGETS.put(target, knockback);
     }
 
     @SubscribeEvent
@@ -100,7 +85,7 @@ public final class TheInfinitumEvents {
         }
 
         /*
-         * 吸血属于无止之言的被动效果，和增伤/击退一样需要支持快捷栏与古旧书袋。
+         * 吸血属于无止之言的被动效果，和增伤一样需要支持快捷栏与古旧书袋。
          * 主手属性和附魔仍然只来自实际拿在手里的物品；这里只处理战斗后回血。
          */
         if (!TheInfinitum.hasTheInfinitum(attacker)) {
@@ -141,17 +126,6 @@ public final class TheInfinitumEvents {
 
         event.setCanceled(true);
         player.setHealth(Math.max(player.getHealth(), 1.0F));
-    }
-
-    @SubscribeEvent
-    public static void onKnockback(LivingKnockBackEvent event) {
-        Float multiplier = KNOCKBACK_TARGETS.remove(event.getEntity());
-
-        if (multiplier == null) {
-            return;
-        }
-
-        event.setStrength(event.getStrength() * multiplier);
     }
 
     private static void applyDebuffs(LivingEntity target) {
