@@ -1,6 +1,5 @@
 package org.enigmatic_legacy.config.common;
 
-import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 import java.util.List;
@@ -132,7 +131,7 @@ public class CursedRingConfig {
                                 "irons_spellbooks:apothecarist",
                                 "touhou_little_maid_spell:elf_templar"
                         ),
-                        CursedRingConfig::isValidEntityIdList
+                        ConfigListValidators::isValidEntityIdListWithNamespaceWildcard
                 );
 
         animalGuideAnimalExclusionList = builder
@@ -149,61 +148,9 @@ public class CursedRingConfig {
                 .define(
                         "AnimalGuideAnimalExclusionList",
                         List.of(),
-                        CursedRingConfig::isValidExactEntityIdList
+                        ConfigListValidators::isValidExactResourceIdList
                 );
 
         builder.pop();
     }
-
-    private static boolean isValidEntityIdList(Object value) {
-        if (!(value instanceof List<?> list)) {
-            return false;
-        }
-
-        for (Object element : list) {
-            if (!(element instanceof String string)) {
-                return false;
-            }
-
-            String trimmed = string.trim();
-
-            if (trimmed.isEmpty()) {
-                return false;
-            }
-
-            if (trimmed.endsWith(":*")) {
-                String namespace = trimmed.substring(0, trimmed.length() - 2);
-                if (!ResourceLocation.isValidNamespace(namespace)) {
-                    return false;
-                }
-
-                continue;
-            }
-
-            if (ResourceLocation.tryParse(trimmed) == null) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    private static boolean isValidExactEntityIdList(Object value) {
-        if (!(value instanceof List<?> list)) {
-            return false;
-        }
-
-        for (Object element : list) {
-            if (!(element instanceof String string)) {
-                return false;
-            }
-
-            if (ResourceLocation.tryParse(string.trim()) == null) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
 }

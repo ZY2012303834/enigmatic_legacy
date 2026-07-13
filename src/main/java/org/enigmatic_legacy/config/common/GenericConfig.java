@@ -1,20 +1,19 @@
 package org.enigmatic_legacy.config.common;
 
-import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 import java.util.List;
 
 /**
  * 通用机制配置。
- * <p>
- * 这里只保留跨多个系统共用的基础机制配置。
- * 具体物品自己的数值配置应拆到独立配置类中，避免 GenericConfig 继续膨胀。
+ *
+ * <p>这里只保留跨多个系统共用的基础机制配置。
+ * 具体物品自己的数值配置应拆到独立配置类中，避免 GenericConfig 继续膨胀。</p>
  */
 public class GenericConfig {
     public final ModConfigSpec.IntValue soulCrystalsMode;
     public final ModConfigSpec.IntValue maxSoulCrystalLoss;
-    public final ModConfigSpec.ConfigValue<List<? extends String>> completeBossList;
+    public final ModConfigSpec.ConfigValue<List<String>> completeBossList;
 
     public GenericConfig(ModConfigSpec.Builder builder) {
         builder.comment("通用机制配置。").push("Generic Config");
@@ -37,11 +36,19 @@ public class GenericConfig {
 
         completeBossList = builder
                 .comment(
-                        "完整 Boss 列表。",
-                        "后续实现 Boss 判断、特殊掉落或饰品效果时，可使用该列表。",
-                        "格式示例：minecraft:wither"
+                        "完整 Boss 实体列表。",
+                        "后续实现 Boss 判断、特殊掉落或饰品效果时，会使用该列表判断实体是否属于 Boss。",
+                        "格式：TOML 字符串数组。",
+                        "每一项必须是精确实体注册名，格式为 namespace:path，不支持通配符。",
+                        "两个实体之间使用英文逗号 , 隔开，允许换行和缩进。",
+                        "示例：",
+                        "CompleteBossList = [",
+                        "    \"minecraft:ender_dragon\",",
+                        "    \"minecraft:wither\",",
+                        "    \"cataclysm:ender_golem\",",
+                        "]"
                 )
-                .defineList(
+                .define(
                         "CompleteBossList",
                         List.of(
                                 "minecraft:ender_dragon",
@@ -62,9 +69,7 @@ public class GenericConfig {
                                 "cataclysm:maledictus",
                                 "cataclysm:scylla"
                         ),
-                        () -> "minecraft:ender_dragon",
-                        value -> value instanceof String string
-                                && ResourceLocation.tryParse(string) != null
+                        ConfigListValidators::isValidExactResourceIdList
                 );
 
         builder.pop();

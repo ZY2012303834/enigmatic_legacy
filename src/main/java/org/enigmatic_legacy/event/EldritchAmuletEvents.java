@@ -28,6 +28,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import org.enigmatic_legacy.item.ModItems;
 import org.enigmatic_legacy.item.items.charm.EldritchAmulet;
 import org.enigmatic_legacy.util.AbyssalHeartHelper;
+import org.enigmatic_legacy.util.OwnedEntityHelper;
 import top.theillusivec4.curios.api.event.DropRulesEvent;
 import top.theillusivec4.curios.api.type.capability.ICurio;
 
@@ -131,6 +132,12 @@ public final class EldritchAmuletEvents {
                 entity -> entity != player
                         && entity.isAlive()
                         && EntitySelector.NO_SPECTATORS.test(entity)
+                        /*
+                         * 轻蔑之约的凝视只负责给目标附加负面效果。
+                         * 在目标枚举阶段排除玩家友方实体，避免已驯服生物、女仆、
+                         * 玩家傀儡以及由傀儡继续装配出的傀儡被反复施加减益。
+                         */
+                        && !OwnedEntityHelper.isProtectedPlayerOwnedAlly(player, entity)
                         && isNearSightLine(start, look, end, entity, maxProjection, maxDistanceSqr)
                         && player.hasLineOfSight(entity)
         );

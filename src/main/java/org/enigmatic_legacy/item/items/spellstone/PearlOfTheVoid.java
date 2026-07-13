@@ -6,6 +6,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
+import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.util.SpellstoneTooltip;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.SlotContext;
@@ -34,11 +35,6 @@ public class PearlOfTheVoid extends Item implements ICurioItem {
      * 10 tick = 0.5 秒。
      */
     public static final int DARKNESS_INTERVAL_TICKS = 10;
-
-    /**
-     * 黑暗光环默认范围。
-     */
-    public static final double DARKNESS_RANGE = 16.0D;
 
     /**
      * 黑暗光环每次造成的虚空伤害。
@@ -140,7 +136,7 @@ public class PearlOfTheVoid extends Item implements ICurioItem {
                 "tooltip.enigmatic_legacy.void_pearl.passive.4",
                 SpellstoneTooltip.number("0.5"),
                 SpellstoneTooltip.number(String.format("%.1f", DARKNESS_DAMAGE)),
-                SpellstoneTooltip.number(String.format("%.1f", DARKNESS_RANGE)),
+                SpellstoneTooltip.number(String.format("%.1f", ConfigCommon.VOID_PEARL_DARKNESS_RANGE.get())),
                 SpellstoneTooltip.negativeTerm("tooltip.enigmatic_legacy.term.severe_negative_effects")
         ));
 

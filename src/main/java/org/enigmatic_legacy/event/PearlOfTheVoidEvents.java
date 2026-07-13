@@ -1,6 +1,8 @@
 package org.enigmatic_legacy.event;
 
 import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
@@ -8,7 +10,6 @@ import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.AABB;
@@ -16,8 +17,10 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
+import org.enigmatic_legacy.config.ConfigCommon;
 import org.enigmatic_legacy.item.items.spellstone.PearlOfTheVoid;
 import org.enigmatic_legacy.potion.ModEffects;
+import org.enigmatic_legacy.util.OwnedEntityHelper;
 import org.enigmatic_legacy.util.PearlOfTheVoidHelper;
 import org.enigmatic_legacy.util.TreasureHunterCharmHelper;
 
@@ -140,6 +143,7 @@ public final class PearlOfTheVoidEvents {
         if (source.getEntity() instanceof LivingEntity attacker
                 && attacker != target
                 && PearlOfTheVoidHelper.hasPearlOfTheVoid(attacker)
+                && !(attacker instanceof Player player && OwnedEntityHelper.isProtectedPlayerOwnedAlly(player, target))
                 && damage > 0.0F) {
 
             target.addEffect(new MobEffectInstance(
@@ -245,7 +249,7 @@ public final class PearlOfTheVoidEvents {
             return;
         }
 
-        AABB area = bearer.getBoundingBox().inflate(PearlOfTheVoid.DARKNESS_RANGE);
+        AABB area = bearer.getBoundingBox().inflate(ConfigCommon.VOID_PEARL_DARKNESS_RANGE.get());
 
         List<LivingEntity> targets = level.getEntitiesOfClass(
                 LivingEntity.class,
@@ -286,6 +290,15 @@ public final class PearlOfTheVoidEvents {
          * 同样佩戴虚空珍珠的玩家除外。
          * 这里按你的描述只排除玩家，避免其他可穿戴实体出现奇怪兼容问题。
          */
+        /*
+         * 黑暗光环后续会同时执行虚空伤害和 addEffect。
+         * 在筛选阶段排除玩家友方实体，可以一次性阻止宠物、女仆、玩家傀儡
+         * 被持续扣血或反复附加凋零、缓慢、失明、饥饿、挖掘疲劳。
+         */
+        if (bearer instanceof Player player && OwnedEntityHelper.isProtectedPlayerOwnedAlly(player, target)) {
+            return false;
+        }
+
         return !(target instanceof Player) || !PearlOfTheVoidHelper.hasPearlOfTheVoid(target);
     }
 
@@ -300,11 +313,38 @@ public final class PearlOfTheVoidEvents {
      */
     private static boolean isExposedToDarkness(ServerLevel level, LivingEntity target) {
         // 文本提到的“飞行生物”实测按幻翼处理。
-        if (target.getType() == EntityType.PHANTOM && !target.isOnFire()) {
+        if (isConfiguredFlyingCreature(target) && !target.isOnFire()) {
             return true;
         }
 
-        return level.getMaxLocalRawBrightness(target.blockPosition()) < 3;
+        /*
+         * 触发暗度改为服务器配置项。
+         * 这里保持原语义：综合亮度必须“小于阈值”才算暴露在黑暗中。
+         * 默认阈值为 3，因此亮度 0、1、2 会触发，和旧逻辑完全一致。
+         */
+        return level.getMaxLocalRawBrightness(target.blockPosition())
+                < ConfigCommon.VOID_PEARL_DARKNESS_BRIGHTNESS_THRESHOLD.get();
+    }
+
+    /**
+     * 判断目标是否属于虚空珍珠配置中的“飞行生物”。
+     *
+     * <p>这些实体在没有着火时会被黑暗光环直接视为暴露于黑暗中，
+     * 不再检查当前位置亮度。默认列表只有 {@code minecraft:phantom}，
+     * 因此不修改配置时仍保持原来的幻翼特殊规则。</p>
+     */
+    private static boolean isConfiguredFlyingCreature(LivingEntity target) {
+        ResourceLocation entityId = BuiltInRegistries.ENTITY_TYPE.getKey(target.getType());
+
+        for (String rawId : ConfigCommon.VOID_PEARL_FLYING_CREATURES.get()) {
+            ResourceLocation configuredId = ResourceLocation.tryParse(rawId.trim());
+
+            if (entityId.equals(configuredId)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**

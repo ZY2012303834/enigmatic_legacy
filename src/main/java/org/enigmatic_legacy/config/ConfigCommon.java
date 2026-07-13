@@ -50,7 +50,7 @@ public final class ConfigCommon {
     // ==============================
     public static final ModConfigSpec.IntValue SOUL_CRYSTALS_MODE;
     public static final ModConfigSpec.IntValue MAX_SOUL_CRYSTAL_LOSS;
-    public static final ModConfigSpec.ConfigValue<List<? extends String>> COMPLETE_BOSS_LIST;
+    public static final ModConfigSpec.ConfigValue<List<String>> COMPLETE_BOSS_LIST;
     public static final ModConfigSpec.DoubleValue IGNORANCE_SCROLL_DAMAGE_BOOST_LIMIT;
     public static final ModConfigSpec.DoubleValue IGNORANCE_SCROLL_HEAL_BOOST_LIMIT;
     public static final ModConfigSpec.DoubleValue IGNORANCE_SCROLL_KNOCKBACK_RESISTANCE_LIMIT;
@@ -239,6 +239,12 @@ public final class ConfigCommon {
     public static final ModConfigSpec.IntValue REVIVAL_LEAVES_EFFECT_DURATION_MODIFIER;
     public static final ModConfigSpec.DoubleValue REVIVAL_LEAVES_FIRE_DAMAGE_VULNERABILITY;
     public static final ModConfigSpec.DoubleValue REVIVAL_LEAVES_PROJECTILE_DAMAGE_VULNERABILITY;
+
+    // 虚空珍珠
+    public static final PearlOfTheVoidConfig PEARL_OF_THE_VOID;
+    public static final ModConfigSpec.IntValue VOID_PEARL_DARKNESS_BRIGHTNESS_THRESHOLD;
+    public static final ModConfigSpec.DoubleValue VOID_PEARL_DARKNESS_RANGE;
+    public static final ModConfigSpec.ConfigValue<List<String>> VOID_PEARL_FLYING_CREATURES;
 
     // 创造之心
     public static final HeartOfCreationConfig HEART_OF_CREATION;
@@ -451,6 +457,12 @@ public final class ConfigCommon {
         REVIVAL_LEAVES_EFFECT_DURATION_MODIFIER = REVIVAL_LEAVES.effectDurationModifier;
         REVIVAL_LEAVES_FIRE_DAMAGE_VULNERABILITY = REVIVAL_LEAVES.fireDamageVulnerability;
         REVIVAL_LEAVES_PROJECTILE_DAMAGE_VULNERABILITY = REVIVAL_LEAVES.projectileDamageVulnerability;
+
+        // 虚空珍珠
+        PEARL_OF_THE_VOID = new PearlOfTheVoidConfig(builder);
+        VOID_PEARL_DARKNESS_BRIGHTNESS_THRESHOLD = PEARL_OF_THE_VOID.darknessBrightnessThreshold;
+        VOID_PEARL_DARKNESS_RANGE = PEARL_OF_THE_VOID.darknessRange;
+        VOID_PEARL_FLYING_CREATURES = PEARL_OF_THE_VOID.flyingCreatures;
 
         // 创造之心
         HEART_OF_CREATION = new HeartOfCreationConfig(builder);
