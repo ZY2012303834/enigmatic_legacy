@@ -247,6 +247,7 @@ public class CuriosGenerator implements DataProvider {
 
         JsonArray values = new JsonArray();
         values.add(EnigmaticLegacy.MODID + ":majestic_elytra");
+        values.add(EnigmaticLegacy.MODID + ":chaos_elytra");
 
         json.add("values", values);
 

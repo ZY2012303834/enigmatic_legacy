@@ -40,7 +40,8 @@ public final class EldritchAmuletEvents {
     private static final String INVENTORY_MAIN = "InventoryMain";
     private static final String INVENTORY_ARMOR = "InventoryArmor";
     private static final String INVENTORY_OFFHAND = "InventoryOffhand";
-    private static final int GAZE_EFFECT_DURATION = 10;
+    // 轻蔑之约凝视减益持续 5 秒；Minecraft 状态效果时间单位为 tick，20 tick = 1 秒。
+    private static final int GAZE_EFFECT_DURATION = 100;
     private static final int GAZE_EFFECT_AMPLIFIER = 1;
 
     private static final Map<UUID, CompoundTag> STORED_INVENTORIES = new HashMap<>();

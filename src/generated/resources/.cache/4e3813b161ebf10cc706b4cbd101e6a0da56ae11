@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-12T16:46:05.7018179	vanilla/Enigmatic Legacy Patchouli Books: zh_cn
+// 1.21.1	2026-07-13T22:37:34.9398956	vanilla/Enigmatic Legacy Patchouli Books: zh_cn
 cd2228d4eb2e84839fc05be8d27501d37ee82de1 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/categories/equipment.json
 f52c760edc0a0eba5f768202bde3aa481452400d assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/categories/materials.json
 ffd12d3c6a57628b47bf69332abf107f01d3a070 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/categories/relics.json
@@ -7,6 +7,7 @@ ffd12d3c6a57628b47bf69332abf107f01d3a070 assets/enigmatic_legacy/patchouli_books
 fabc51cd78d39c6bcf9c7c3d950fd8b5c93040aa assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/categories/world.json
 07aee75a0108bcea86098dd7a669d89888e8a421 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/entries/equipment/axe_of_executioner.json
 99ec401912b060d83270afb85db42eb3bdb0ccc6 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/entries/equipment/bulwark_of_blazing_pride.json
+e4957b9cd4d4a661a313f5ea6fb18c4ffe31bdec assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/entries/equipment/chaos_elytra.json
 45670e161571b5cab964699416499f0df264e1a4 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/entries/equipment/ender_slayer.json
 f1383dbd89e8fc08257c3106739f22699cf3b939 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/entries/equipment/etherium_armor.json
 b6ba7bf26217c13bf56febe35e361367914f2071 assets/enigmatic_legacy/patchouli_books/the_acknowledgment/zh_cn/entries/equipment/etherium_axe.json

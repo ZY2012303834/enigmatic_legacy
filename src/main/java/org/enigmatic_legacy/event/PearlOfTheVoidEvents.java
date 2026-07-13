@@ -11,6 +11,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -41,6 +42,18 @@ import java.util.List;
  * 8. 35% 概率抵挡致命伤害。
  */
 public final class PearlOfTheVoidEvents {
+    /*
+     * 灾变 Cataclysm 咒魂胸甲复活后附加的“幽灵病”效果。
+     *
+     * 该效果用于阻止咒魂胸甲在短时间内反复触发复活。
+     * 虚空珍珠的常驻净化如果把它清掉，会导致咒魂胸甲复活冷却失效，形成无限复活漏洞。
+     * 这里直接硬编码保留该效果，不把它暴露为配置项，避免服务器配置误删后重新引入漏洞。
+     */
+    private static final ResourceLocation CATACLYSM_GHOST_SICKNESS = ResourceLocation.fromNamespaceAndPath(
+            "cataclysm",
+            "ghost_sickness"
+    );
+
     private PearlOfTheVoidEvents() {
     }
 
@@ -63,8 +76,11 @@ public final class PearlOfTheVoidEvents {
      */
     @SubscribeEvent
     public static void onEntityTick(EntityTickEvent.Post event) {
-        // 虚空珍珠是玩家 Curios 术石，所以这里只处理服务端玩家。
-        if (!(event.getEntity() instanceof ServerPlayer bearer)) {
+        // 玩家每 tick 处理完整被动；女仆等 OwnableEntity 只在黑暗光环间隔检查，避免对所有生物高频查询 Curios。
+        if (!(event.getEntity() instanceof LivingEntity bearer)
+                || (!(bearer instanceof ServerPlayer)
+                && (!(bearer instanceof OwnableEntity)
+                || bearer.tickCount % PearlOfTheVoid.DARKNESS_INTERVAL_TICKS != 0))) {
             return;
         }
 
@@ -144,6 +160,7 @@ public final class PearlOfTheVoidEvents {
                 && attacker != target
                 && PearlOfTheVoidHelper.hasPearlOfTheVoid(attacker)
                 && !(attacker instanceof Player player && OwnedEntityHelper.isProtectedPlayerOwnedAlly(player, target))
+                && !OwnedEntityHelper.isOwnerProtectedFromOwnedAlly(attacker, target)
                 && damage > 0.0F) {
 
             target.addEffect(new MobEffectInstance(
@@ -197,8 +214,10 @@ public final class PearlOfTheVoidEvents {
      * 清除佩戴者身上的状态效果。
 
      * 保留例外：
-     * 1. 禁忌之果的隐藏同步效果；
-     * 2. 猎宝者护符提供的夜视。
+     * 1. 灾变咒魂胸甲用于防止反复复活的幽灵病；
+     * 2. 配置白名单中显式保留的效果；
+     * 3. 禁忌之果的隐藏同步效果；
+     * 4. 猎宝者护符提供的夜视。
      */
     private static void removeForbiddenEffects(LivingEntity entity) {
         List<Holder<MobEffect>> effectsToRemove = new ArrayList<>();
@@ -218,6 +237,29 @@ public final class PearlOfTheVoidEvents {
      * 判断某个效果是否不应该被虚空珍珠清理。
      */
     private static boolean shouldKeepEffect(LivingEntity entity, MobEffectInstance instance) {
+        /*
+         * 灾变 Cataclysm 的 cataclysm:ghost_sickness 不能清。
+         * 咒魂胸甲复活后会附加这个“幽灵病”效果，用它阻止胸甲在短时间内再次复活。
+         * 如果虚空珍珠把它清掉，咒魂胸甲的复活冷却就会失效，从而出现无限复活漏洞。
+         *
+         * 这里使用 MobEffect 的注册 ID 做判断，而不是使用显示名称或类名。
+         * 这样不受语言文件影响，也不需要在编译期直接依赖灾变的效果类。
+         */
+        if (isCataclysmGhostSickness(instance)) {
+            return true;
+        }
+
+        /*
+         * 服务器配置白名单用于追加其他模组的关键状态效果。
+         *
+         * 这和上面的灾变硬编码保护是并列关系：
+         * - cataclysm:ghost_sickness 永远保留，避免配置误删后重新出现无限复活漏洞；
+         * - EffectWhitelist 只负责让整合包作者额外指定“不能被虚空珍珠净化”的效果。
+         */
+        if (isConfiguredWhitelistedEffect(instance)) {
+            return true;
+        }
+
         // 禁忌之果的永久标记效果不能清，否则禁忌之果逻辑会被破坏。
         if (instance.is(ModEffects.FORBIDDEN_FRUIT)) {
             return true;
@@ -232,6 +274,39 @@ public final class PearlOfTheVoidEvents {
         return entity instanceof Player player
                 && instance.is(MobEffects.NIGHT_VISION)
                 && TreasureHunterCharmHelper.hasTreasureHunterCharm(player);
+    }
+
+    /**
+     * 判断效果是否是灾变咒魂胸甲用于防止反复复活的幽灵病。
+     */
+    private static boolean isCataclysmGhostSickness(MobEffectInstance instance) {
+        ResourceLocation effectId = BuiltInRegistries.MOB_EFFECT.getKey(instance.getEffect().value());
+
+        return CATACLYSM_GHOST_SICKNESS.equals(effectId);
+    }
+
+    /**
+     * 判断效果是否位于虚空珍珠配置白名单中。
+     *
+     * <p>配置项只接受精确的 {@code namespace:path} 效果注册名。
+     * 这里每次按注册表 ID 比较，不依赖效果显示名称，因此不会受语言文件影响。</p>
+     */
+    private static boolean isConfiguredWhitelistedEffect(MobEffectInstance instance) {
+        ResourceLocation effectId = BuiltInRegistries.MOB_EFFECT.getKey(instance.getEffect().value());
+
+        if (effectId == null) {
+            return false;
+        }
+
+        for (String rawId : ConfigCommon.VOID_PEARL_EFFECT_WHITELIST.get()) {
+            ResourceLocation configuredId = ResourceLocation.tryParse(rawId.trim());
+
+            if (effectId.equals(configuredId)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -296,6 +371,14 @@ public final class PearlOfTheVoidEvents {
          * 被持续扣血或反复附加凋零、缓慢、失明、饥饿、挖掘疲劳。
          */
         if (bearer instanceof Player player && OwnedEntityHelper.isProtectedPlayerOwnedAlly(player, target)) {
+            return false;
+        }
+
+        /*
+         * 女仆、宠物、召唤物自己佩戴虚空珍珠时，黑暗光环的来源不是 Player。
+         * 这种情况下需要反向判断“光环来源是否属于目标玩家”，从而保护它的主人。
+         */
+        if (OwnedEntityHelper.isOwnerProtectedFromOwnedAlly(bearer, target)) {
             return false;
         }
 

@@ -1668,6 +1668,15 @@ final class EnglishPatchouliBookGenerator extends AbstractPatchouliBookContentGe
                         "It is useful for long-distance exploration and can be used alongside higher equipment progression."
         )));
 
+        futures.add(save(output, "en_us", "entries/equipment/chaos_elytra", simpleSpotlight(
+                "The Arrogance of Chaos",
+                "equipment",
+                "enigmatic_legacy:chaos_elytra",
+                95,
+                "Since the Heart of the Abyss is in hand, why not set your gaze on the sky?$(br2)" +
+                        "Forged from the same idea as the Majestic Elytra, this stronger wing bears cosmic, ender and abyssal power. It lets the cursed look down upon the creatures crawling below, then descend with chaos."
+        )));
+
         futures.add(save(output, "en_us", "entries/equipment/bulwark_of_blazing_pride", simpleSpotlight(
                 "Bulwark of Blazing Pride",
                 "equipment",

@@ -152,6 +152,7 @@ public class ItemGenerator extends ItemModelProvider {
         basicItem(ModItems.ETHERIUM_LEGGINGS.getId());
         basicItem(ModItems.ETHERIUM_BOOTS.getId());
         basicItem(ModItems.MAJESTIC_ELYTRA.getId());
+        basicItem(ModItems.CHAOS_ELYTRA.getId());
 
         basicItem(ModItems.GOLEM_HEART.getId());
         basicItem(ModItems.ANGEL_BLESSING.getId());

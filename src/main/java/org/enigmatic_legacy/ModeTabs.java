@@ -94,6 +94,7 @@ public final class ModeTabs {
                                 output.accept(ModItems.ETHERIUM_LEGGINGS.get());        // 以太护腿
                                 output.accept(ModItems.ETHERIUM_BOOTS.get());           // 以太靴子
                                 output.accept(ModItems.MAJESTIC_ELYTRA.get());
+                                output.accept(ModItems.CHAOS_ELYTRA.get());
                                 // 护符
                                 output.accept(ModItems.ENIGMATIC_EYE.get());            // 莫测之眼
                                 output.accept(ModItems.MONSTER_CHARM.get());            // 怪物猎人勋章
@@ -169,6 +170,7 @@ public final class ModeTabs {
 
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
             event.accept(ModItems.MAJESTIC_ELYTRA.get());
+            event.accept(ModItems.CHAOS_ELYTRA.get());
         }
     }
 }

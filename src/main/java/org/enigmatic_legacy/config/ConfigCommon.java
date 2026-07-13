@@ -245,6 +245,7 @@ public final class ConfigCommon {
     public static final ModConfigSpec.IntValue VOID_PEARL_DARKNESS_BRIGHTNESS_THRESHOLD;
     public static final ModConfigSpec.DoubleValue VOID_PEARL_DARKNESS_RANGE;
     public static final ModConfigSpec.ConfigValue<List<String>> VOID_PEARL_FLYING_CREATURES;
+    public static final ModConfigSpec.ConfigValue<List<String>> VOID_PEARL_EFFECT_WHITELIST;
 
     // 创造之心
     public static final HeartOfCreationConfig HEART_OF_CREATION;
@@ -268,6 +269,13 @@ public final class ConfigCommon {
     public static final ModConfigSpec.DoubleValue CURSE_OF_VIOLENCE_ENTITY_REACH_BOOST;
     public static final ModConfigSpec.DoubleValue CURSE_OF_VIOLENCE_KNOCKBACK_RESISTANCE_BOOST;
     public static final ModConfigSpec.IntValue CURSE_OF_VIOLENCE_MAX_DURABILITY;
+
+    // 混沌之傲
+    public static final TheArroganceOfChaosConfig THE_ARROGANCE_OF_CHAOS;
+    public static final ModConfigSpec.DoubleValue CHAOS_ELYTRA_FLYING_SPEED_MODIFIER;
+    public static final ModConfigSpec.DoubleValue CHAOS_ELYTRA_DESCENDING_POWER_MODIFIER;
+    public static final ModConfigSpec.IntValue CHAOS_ELYTRA_DESCENDING_COOLDOWN;
+    public static final ModConfigSpec.DoubleValue CHAOS_ELYTRA_DAMAGE_RESISTANCE;
 
     static {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
@@ -463,6 +471,7 @@ public final class ConfigCommon {
         VOID_PEARL_DARKNESS_BRIGHTNESS_THRESHOLD = PEARL_OF_THE_VOID.darknessBrightnessThreshold;
         VOID_PEARL_DARKNESS_RANGE = PEARL_OF_THE_VOID.darknessRange;
         VOID_PEARL_FLYING_CREATURES = PEARL_OF_THE_VOID.flyingCreatures;
+        VOID_PEARL_EFFECT_WHITELIST = PEARL_OF_THE_VOID.effectWhitelist;
 
         // 创造之心
         HEART_OF_CREATION = new HeartOfCreationConfig(builder);
@@ -490,6 +499,13 @@ public final class ConfigCommon {
         CURSE_OF_VIOLENCE_ENTITY_REACH_BOOST = CURSE_OF_VIOLENCE.entityReachBoost;
         CURSE_OF_VIOLENCE_KNOCKBACK_RESISTANCE_BOOST = CURSE_OF_VIOLENCE.knockbackResistanceBoost;
         CURSE_OF_VIOLENCE_MAX_DURABILITY = CURSE_OF_VIOLENCE.maxDurability;
+
+        // 混沌之傲
+        THE_ARROGANCE_OF_CHAOS = new TheArroganceOfChaosConfig(builder);
+        CHAOS_ELYTRA_FLYING_SPEED_MODIFIER = THE_ARROGANCE_OF_CHAOS.flyingSpeedModifier;
+        CHAOS_ELYTRA_DESCENDING_POWER_MODIFIER = THE_ARROGANCE_OF_CHAOS.descendingPowerModifier;
+        CHAOS_ELYTRA_DESCENDING_COOLDOWN = THE_ARROGANCE_OF_CHAOS.descendingCooldown;
+        CHAOS_ELYTRA_DAMAGE_RESISTANCE = THE_ARROGANCE_OF_CHAOS.damageResistance;
 
         SPEC = builder.build();
     }

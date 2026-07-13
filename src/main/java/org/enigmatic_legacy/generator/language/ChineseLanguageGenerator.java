@@ -751,6 +751,13 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.majestic_elytra.1", "拥有惊人耐久的华美之翼。");
         add("tooltip.enigmatic_legacy.majestic_elytra.2", "滑翔时按住跳跃键可向前加速。");
         add("tooltip.enigmatic_legacy.majestic_elytra.3", "可使用以太锭修复。");
+        addItem(ModItems.CHAOS_ELYTRA, "混沌之傲");
+        add("tooltip.enigmatic_legacy.chaos_elytra.1", "减少 %s 来自背后的伤害。");
+        add("tooltip.enigmatic_legacy.chaos_elytra.2", "滑翔时按住跳跃键可借混沌之力加速。");
+        add("tooltip.enigmatic_legacy.chaos_elytra.3", "垂直冲向地面时，会释放范围伤害。");
+        add("tooltip.enigmatic_legacy.chaos_elytra.4", "俯冲冷却：%s tick。");
+        add("tooltip.enigmatic_legacy.chaos_elytra.5", "深渊强化：+3 护甲，并提高俯冲范围、俯冲伤害与伤害减免。");
+        add("tooltip.enigmatic_legacy.chaos_elytra.cursed_only", "只有承受七咒之人才能驾驭这份傲慢。");
         // end
 
         // 以太斧

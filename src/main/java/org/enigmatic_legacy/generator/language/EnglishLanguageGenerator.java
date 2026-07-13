@@ -814,6 +814,13 @@ public class EnglishLanguageGenerator extends LanguageProvider {
         add("tooltip.enigmatic_legacy.majestic_elytra.1", "A refined pair of wings with immense durability.");
         add("tooltip.enigmatic_legacy.majestic_elytra.2", "Hold jump while gliding to boost forward.");
         add("tooltip.enigmatic_legacy.majestic_elytra.3", "Can be repaired with Etherium Ingots.");
+        addItem(ModItems.CHAOS_ELYTRA, "The Arrogance of Chaos");
+        add("tooltip.enigmatic_legacy.chaos_elytra.1", "Reduces %s of damage from behind.");
+        add("tooltip.enigmatic_legacy.chaos_elytra.2", "Hold jump while gliding to accelerate with chaotic force.");
+        add("tooltip.enigmatic_legacy.chaos_elytra.3", "Diving vertically into the ground releases area damage.");
+        add("tooltip.enigmatic_legacy.chaos_elytra.4", "Descending cooldown: %s ticks.");
+        add("tooltip.enigmatic_legacy.chaos_elytra.5", "Abyss boost: +3 Armor, stronger descent range, descent damage and damage resistance.");
+        add("tooltip.enigmatic_legacy.chaos_elytra.cursed_only", "Only bearers of the Seven Curses can command this arrogance.");
         // end
 
         // 行刑者之斧

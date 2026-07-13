@@ -303,10 +303,12 @@ public class ItemTagGenerator extends ItemTagsProvider {
 
     private void addElytraEnchantableTags() {
         tag(ENCHANTABLE_EQUIPPABLE)
-                .add(ModItems.MAJESTIC_ELYTRA.get());
+                .add(ModItems.MAJESTIC_ELYTRA.get())
+                .add(ModItems.CHAOS_ELYTRA.get());
 
         tag(ENCHANTABLE_DURABILITY)
-                .add(ModItems.MAJESTIC_ELYTRA.get());
+                .add(ModItems.MAJESTIC_ELYTRA.get())
+                .add(ModItems.CHAOS_ELYTRA.get());
     }
 
     /**

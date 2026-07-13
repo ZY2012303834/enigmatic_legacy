@@ -59,6 +59,7 @@ public final class RelicItemApi {
                 ModItems.THE_TWIST.get(),
                 ModItems.THE_INFINITUM.get(),
                 ModItems.MAJESTIC_ELYTRA.get(),
+                ModItems.CHAOS_ELYTRA.get(),
                 ModItems.BULWARK_OF_BLAZING_PRIDE.get(),
                 ModItems.VORACIOUS_PAN.get(),
                 ModItems.GOLEM_HEART.get(),

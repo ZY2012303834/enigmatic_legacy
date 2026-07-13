@@ -125,6 +125,7 @@ public final class ModItems {
     // 七咒遗物，专门用于对抗末地生物。
     public static final DeferredItem<EnderSlayer> ENDER_SLAYER = ITEMS.register("ender_slayer", EnderSlayer::new);
     public static final DeferredItem<MajesticElytra> MAJESTIC_ELYTRA = ITEMS.register("majestic_elytra", MajesticElytra::new);
+    public static final DeferredItem<TheArroganceOfChaos> CHAOS_ELYTRA = ITEMS.register("chaos_elytra", TheArroganceOfChaos::new);
     // 烈焰之傲壁垒 / Bulwark of Blazing Pride
     // 原项目类名 InfernalShield。
     // 只有承受七咒之人才能使用的防火盾牌。

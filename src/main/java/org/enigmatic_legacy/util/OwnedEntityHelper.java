@@ -84,6 +84,25 @@ public final class OwnedEntityHelper {
         return isProtectedPlayerOwnedAlly(effectSource, target, 0);
     }
 
+    /**
+     * 判断“佩戴效果的实体”是否属于目标玩家。
+     *
+     * <p>用于女仆、宠物、召唤物自己佩戴虚空珍珠这类场景：
+     * 这些实体不是 Player，不能走 {@link #isProtectedPlayerOwnedAlly(Player, LivingEntity)} 的
+     * “玩家作为效果来源”判断；但当它们的主人是本次受影响目标时，仍然应该保护主人，
+     * 避免女仆佩戴虚空珍珠后攻击主人并给主人附加凋零等负面效果。</p>
+     */
+    public static boolean isOwnerProtectedFromOwnedAlly(LivingEntity effectSource, LivingEntity target) {
+        if (effectSource == null
+                || target == null
+                || effectSource == target
+                || !(target instanceof Player owner)) {
+            return false;
+        }
+
+        return isEntityOwnedByPlayer(effectSource, owner, 0);
+    }
+
     private static boolean isProtectedPlayerOwnedAlly(Player effectSource, LivingEntity target, int depth) {
         if (effectSource == null || target == null || target == effectSource) {
             return false;
@@ -146,6 +165,44 @@ public final class OwnedEntityHelper {
         return isProtectedPlayerOwnedAlly(effectSource, livingOwner, depth + 1);
     }
 
+    private static boolean isEntityOwnedByPlayer(LivingEntity entity, Player expectedOwner, int depth) {
+        if (entity == null || expectedOwner == null || entity == expectedOwner) {
+            return false;
+        }
+
+        if (entity instanceof OwnableEntity ownable
+                && isExpectedOwnerEntity(expectedOwner, ownable.getOwner(), depth)) {
+            return true;
+        }
+
+        if (isReflectivelyOwnedByPlayer(entity, expectedOwner, depth)) {
+            return true;
+        }
+
+        UUID ownerId = findReflectiveOwnerUuid(entity);
+        return expectedOwner.getUUID().equals(ownerId);
+    }
+
+    private static boolean isExpectedOwnerEntity(Player expectedOwner, Entity owner, int depth) {
+        if (owner == null) {
+            return false;
+        }
+
+        if (owner == expectedOwner) {
+            return true;
+        }
+
+        if (owner instanceof Player player) {
+            return player.getUUID().equals(expectedOwner.getUUID());
+        }
+
+        if (depth >= MAX_OWNER_LOOKUP_DEPTH || !(owner instanceof LivingEntity livingOwner)) {
+            return false;
+        }
+
+        return isEntityOwnedByPlayer(livingOwner, expectedOwner, depth + 1);
+    }
+
     private static boolean isProtectedReflectiveOwnerEntity(Player effectSource, LivingEntity target, int depth) {
         for (Method method : target.getClass().getMethods()) {
             if (!isUsableOwnerMethod(method, ENTITY_OWNER_METHODS)) {
@@ -159,6 +216,26 @@ public final class OwnedEntityHelper {
             }
 
             if (value instanceof Entity owner && isProtectedOwnerEntity(effectSource, owner, depth)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private static boolean isReflectivelyOwnedByPlayer(LivingEntity entity, Player expectedOwner, int depth) {
+        for (Method method : entity.getClass().getMethods()) {
+            if (!isUsableOwnerMethod(method, ENTITY_OWNER_METHODS)) {
+                continue;
+            }
+
+            Object value = invokeOwnerMethod(entity, method);
+
+            if (value instanceof Optional<?> optional) {
+                value = optional.orElse(null);
+            }
+
+            if (value instanceof Entity owner && isExpectedOwnerEntity(expectedOwner, owner, depth)) {
                 return true;
             }
         }

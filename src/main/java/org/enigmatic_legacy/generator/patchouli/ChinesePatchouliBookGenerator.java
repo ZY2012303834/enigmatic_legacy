@@ -1669,6 +1669,15 @@ final class ChinesePatchouliBookGenerator extends AbstractPatchouliBookContentGe
                         "它适合长距离探索，也可以和其它高阶装备共同使用。"
         )));
 
+        futures.add(save(output, "zh_cn", "entries/equipment/chaos_elytra", simpleSpotlight(
+                "混沌之傲",
+                "equipment",
+                "enigmatic_legacy:chaos_elytra",
+                95,
+                "既然深渊之心已经在手，为何不将目光置于天空之中？$(br2)" +
+                        "基于壮丽鞘翅相同的制作思路，以更邪恶、更有力量的材料铸成这副更强大的鞘翅。它借助宇宙、末影与深渊的力量翱翔，使承咒者俯视大地上的生灵，并在降临时带来混沌。"
+        )));
+
         futures.add(save(output, "zh_cn", "entries/equipment/bulwark_of_blazing_pride", simpleSpotlight(
                 "烈焰之傲壁垒",
                 "equipment",

@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "enigmatic_legacy:cosmic_heart"
+    },
+    "D": {
+      "item": "enigmatic_legacy:evil_essence"
+    },
+    "G": {
+      "item": "enigmatic_legacy:void_pearl"
+    },
+    "Q": {
+      "item": "enigmatic_legacy:evil_ingot"
+    },
+    "W": {
+      "item": "enigmatic_legacy:abyssal_heart"
+    },
+    "X": {
+      "item": "minecraft:elytra"
+    }
+  },
+  "pattern": [
+    "AWA",
+    "QXQ",
+    "DGD"
+  ],
+  "result": {
+    "count": 1,
+    "id": "enigmatic_legacy:chaos_elytra"
+  }
+}

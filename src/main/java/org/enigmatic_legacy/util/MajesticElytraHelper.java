@@ -36,7 +36,7 @@ public final class MajesticElytraHelper {
     public static ItemStack getEquippedStack(LivingEntity entity) {
         ItemStack chestStack = entity.getItemBySlot(EquipmentSlot.CHEST);
 
-        if (isUsableMajesticElytra(chestStack)) {
+        if (isUsableCustomElytra(chestStack, entity)) {
             return chestStack;
         }
 
@@ -79,7 +79,7 @@ public final class MajesticElytraHelper {
                     for (int slot = 0; slot < stacks.getSlots(); slot++) {
                         ItemStack stack = stacks.getStackInSlot(slot);
 
-                        if (isUsableMajesticElytra(stack)) {
+                        if (isUsableCustomElytra(stack, entity)) {
                             return stack;
                         }
                     }
@@ -98,7 +98,24 @@ public final class MajesticElytraHelper {
          * 或者在登录恢复阶段暂时无法通过固定 back 标识拿到栈处理器。
          * 精确 back 查询失败时，扫描所有 Curios 槽，找到第一件可用的壮丽鞘翅作为功能来源。
          */
-        return CuriosLookupApi.findFirstStack(entity, MajesticElytraHelper::isUsableMajesticElytra)
+        return CuriosLookupApi.findFirstStack(entity, stack -> isUsableCustomElytra(stack, entity))
+                .orElse(ItemStack.EMPTY);
+    }
+
+    /**
+     * 获取玩家当前装备的混沌之傲。
+     *
+     * <p>混沌之傲和壮丽鞘翅共享背饰槽飞行入口，但它的减伤、深渊强化和俯冲落地伤害
+     * 只能由混沌之傲本体触发，因此这里提供一个只匹配混沌之傲的查询方法。</p>
+     */
+    public static ItemStack getEquippedChaosElytraStack(LivingEntity entity) {
+        ItemStack chestStack = entity.getItemBySlot(EquipmentSlot.CHEST);
+
+        if (isUsableChaosElytra(chestStack, entity)) {
+            return chestStack;
+        }
+
+        return CuriosLookupApi.findFirstStack(entity, stack -> isUsableChaosElytra(stack, entity))
                 .orElse(ItemStack.EMPTY);
     }
 
@@ -111,6 +128,40 @@ public final class MajesticElytraHelper {
     public static boolean isUsableMajesticElytra(ItemStack stack) {
         return stack.is(ModItems.MAJESTIC_ELYTRA.get())
                 && ElytraItem.isFlyEnabled(stack);
+    }
+
+    /**
+     * 判断给定物品栈是否是可用的混沌之傲。
+     */
+    public static boolean isUsableChaosElytra(ItemStack stack) {
+        return stack.is(ModItems.CHAOS_ELYTRA.get())
+                && ElytraItem.isFlyEnabled(stack);
+    }
+
+    /**
+     * 判断给定物品栈是否是对指定实体可用的混沌之傲。
+     *
+     * <p>混沌之傲需要七咒资格，因此不能只检查耐久是否足够。
+     * 这里调用物品自身的 {@link ItemStack#canElytraFly(LivingEntity)}，
+     * 让胸甲槽、背饰槽、客户端起飞 mixin 和服务端持续飞行都使用同一套资格判断。</p>
+     */
+    public static boolean isUsableChaosElytra(ItemStack stack, LivingEntity entity) {
+        return stack.is(ModItems.CHAOS_ELYTRA.get())
+                && canElytraFly(stack, entity);
+    }
+
+    /**
+     * 判断给定物品栈是否属于本项目接入背饰槽飞行的自定义鞘翅。
+     */
+    public static boolean isUsableCustomElytra(ItemStack stack) {
+        return isUsableMajesticElytra(stack) || isUsableChaosElytra(stack);
+    }
+
+    /**
+     * 判断给定物品栈是否是对指定实体可用的本项目自定义鞘翅。
+     */
+    public static boolean isUsableCustomElytra(ItemStack stack, LivingEntity entity) {
+        return isUsableMajesticElytra(stack) || isUsableChaosElytra(stack, entity);
     }
 
     private static boolean canElytraFly(ItemStack stack, LivingEntity entity) {

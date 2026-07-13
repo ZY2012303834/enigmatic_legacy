@@ -992,6 +992,24 @@ public class RecipeGenerator extends RecipeProvider {
 // a = 远古残骸
 // q = 玄武岩
 // b = 纯净之心
+        // 混沌之傲 / The Arrogance of Chaos
+        // 复刻 Enigmatic Addons 的 chaos_elytra 配方：
+        // AWA / QXQ / DGD
+        // A = 宇宙之心，W = 深渊之心，Q = 极恶锭，X = 鞘翅，D = 邪恶精髓，G = 虚空珍珠。
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.CHAOS_ELYTRA.get())
+                .pattern("AWA")
+                .pattern("QXQ")
+                .pattern("DGD")
+                .define('A', ModItems.COSMIC_HEART.get())
+                .define('W', ModItems.ABYSSAL_HEART.get())
+                .define('Q', ModItems.EVIL_INGOT.get())
+                .define('X', Items.ELYTRA)
+                .define('D', ModItems.EVIL_ESSENCE.get())
+                .define('G', ModItems.VOID_PEARL.get())
+                .unlockedBy("has_abyssal_heart", has(ModItems.ABYSSAL_HEART.get()))
+                .unlockedBy("has_elytra", has(Items.ELYTRA))
+                .save(output);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SCORCHED_CHARM.get())
                 .pattern("N N")
                 .pattern("AXA")
