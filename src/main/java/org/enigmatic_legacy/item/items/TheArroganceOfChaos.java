@@ -131,7 +131,9 @@ public class TheArroganceOfChaos extends ElytraItem implements ICurioItem {
      * 混沌之傲只能放入 Curios back 背饰槽，并且需要深渊之心资格。
      *
      * <p>这里保留 Curios 受限物品的通用检查，再额外要求玩家七咒佩戴时间达到 99.5%。
-     * 这个条件只是使用门槛，不再提供护甲、伤害、范围或减伤倍率强化。</p>
+     * 这个条件只是使用门槛，不再提供护甲、伤害、范围或减伤倍率强化。
+     * 登录恢复时 Curios 可能先校验背饰槽，再恢复七咒之戒或统计缓存；
+     * 因此加载宽限内允许它先保留在槽位里，真正效果仍由 {@link #canUse(Player)} 严格校验。</p>
      */
     @Override
     public boolean canEquip(SlotContext context, ItemStack stack) {
@@ -139,9 +141,13 @@ public class TheArroganceOfChaos extends ElytraItem implements ICurioItem {
             return false;
         }
 
-        return context.entity() instanceof Player player
-                && AbyssalHeartHelper.isWorthy(player)
-                && CursedRingApi.canEquipRestrictedCurio(context, stack);
+        if (!(context.entity() instanceof Player player)) {
+            return false;
+        }
+
+        return AbyssalHeartHelper.isWorthy(player)
+                || (CursedRingApi.isInLoadGrace(player)
+                && CursedRingApi.canEquipRestrictedCurio(context, stack));
     }
 
     @Override
