@@ -45,6 +45,7 @@ public final class EldritchAmuletEvents {
     private static final int GAZE_EFFECT_AMPLIFIER = 1;
 
     private static final Map<UUID, CompoundTag> STORED_INVENTORIES = new HashMap<>();
+    private static final Map<UUID, Long> GAZE_EFFECT_PROTECTION_UNTIL = new HashMap<>();
 
     private EldritchAmuletEvents() {
     }
@@ -64,9 +65,7 @@ public final class EldritchAmuletEvents {
                 continue;
             }
 
-            target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, GAZE_EFFECT_DURATION, GAZE_EFFECT_AMPLIFIER));
-            target.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, GAZE_EFFECT_DURATION, GAZE_EFFECT_AMPLIFIER));
-            target.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, GAZE_EFFECT_DURATION, GAZE_EFFECT_AMPLIFIER));
+            applyGazeEffects(serverPlayer, target);
         }
     }
 
@@ -113,8 +112,42 @@ public final class EldritchAmuletEvents {
         );
     }
 
-    private static boolean hasEldritchAndWorthy(Player player) {
+    public static boolean hasEldritchAndWorthy(Player player) {
         return EnigmaticAmuletEvents.hasEldritchAmulet(player) && AbyssalHeartHelper.isWorthy(player);
+    }
+
+    public static boolean isProtectedGazeEffect(LivingEntity entity, MobEffectInstance instance) {
+        Long protectedUntil = GAZE_EFFECT_PROTECTION_UNTIL.get(entity.getUUID());
+
+        if (protectedUntil == null) {
+            return false;
+        }
+
+        if (entity.level().getGameTime() > protectedUntil) {
+            GAZE_EFFECT_PROTECTION_UNTIL.remove(entity.getUUID(), protectedUntil);
+            return false;
+        }
+
+        return isGazeEffect(instance);
+    }
+
+    private static void applyGazeEffects(ServerPlayer player, LivingEntity target) {
+        target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, GAZE_EFFECT_DURATION, GAZE_EFFECT_AMPLIFIER), player);
+        target.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, GAZE_EFFECT_DURATION, GAZE_EFFECT_AMPLIFIER), player);
+        target.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, GAZE_EFFECT_DURATION, GAZE_EFFECT_AMPLIFIER), player);
+
+        /*
+         * MobEffectInstance 本身不会持久保存“效果来源”。虚空珍珠清理目标状态时，
+         * 只能看到缓慢/挖掘疲劳/虚弱这三个原版效果，无法直接判断它们是否来自轻蔑之约。
+         * 因此这里在施加凝视压制时记录目标一个短期保护窗口，让虚空珍珠只保留确实由轻蔑之约刚刚刷新过的效果。
+         */
+        GAZE_EFFECT_PROTECTION_UNTIL.put(target.getUUID(), target.level().getGameTime() + GAZE_EFFECT_DURATION + 5L);
+    }
+
+    private static boolean isGazeEffect(MobEffectInstance instance) {
+        return instance.is(MobEffects.MOVEMENT_SLOWDOWN)
+                || instance.is(MobEffects.DIG_SLOWDOWN)
+                || instance.is(MobEffects.WEAKNESS);
     }
 
     private static Iterable<LivingEntity> getObservedEntities(ServerPlayer player) {

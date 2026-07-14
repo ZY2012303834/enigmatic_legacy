@@ -43,12 +43,17 @@ import java.util.List;
  */
 public final class PearlOfTheVoidEvents {
     /*
-     * 灾变 Cataclysm 咒魂胸甲复活后附加的“幽灵病”效果。
+     * 灾变 Cataclysm 咒魂胸甲复活链路中的关键效果。
      *
-     * 该效果用于阻止咒魂胸甲在短时间内反复触发复活。
-     * 虚空珍珠的常驻净化如果把它清掉，会导致咒魂胸甲复活冷却失效，形成无限复活漏洞。
-     * 这里直接硬编码保留该效果，不把它暴露为配置项，避免服务器配置误删后重新引入漏洞。
+     * ghost_form 是复活后 5 秒的鬼魂形态；Cataclysm 会在它自然结束时附加 ghost_sickness。
+     * ghost_sickness 才是真正阻止咒魂胸甲短时间内再次复活的 6 分钟负面效果。
+     * 虚空珍珠如果提前清掉 ghost_form，ghost_sickness 就不会被正常附加；
+     * 如果清掉 ghost_sickness，则复活冷却直接失效。两者都必须硬编码保留。
      */
+    private static final ResourceLocation CATACLYSM_GHOST_FORM = ResourceLocation.fromNamespaceAndPath(
+            "cataclysm",
+            "ghost_form"
+    );
     private static final ResourceLocation CATACLYSM_GHOST_SICKNESS = ResourceLocation.fromNamespaceAndPath(
             "cataclysm",
             "ghost_sickness"
@@ -214,10 +219,11 @@ public final class PearlOfTheVoidEvents {
      * 清除佩戴者身上的状态效果。
 
      * 保留例外：
-     * 1. 灾变咒魂胸甲用于防止反复复活的幽灵病；
+     * 1. 灾变咒魂胸甲复活链路中的鬼魂形态与幽灵病；
      * 2. 配置白名单中显式保留的效果；
      * 3. 禁忌之果的隐藏同步效果；
-     * 4. 猎宝者护符提供的夜视。
+     * 4. 猎宝者护符提供的夜视；
+     * 5. 轻蔑之约凝视压制相关的状态效果。
      */
     private static void removeForbiddenEffects(LivingEntity entity) {
         List<Holder<MobEffect>> effectsToRemove = new ArrayList<>();
@@ -238,14 +244,15 @@ public final class PearlOfTheVoidEvents {
      */
     private static boolean shouldKeepEffect(LivingEntity entity, MobEffectInstance instance) {
         /*
-         * 灾变 Cataclysm 的 cataclysm:ghost_sickness 不能清。
-         * 咒魂胸甲复活后会附加这个“幽灵病”效果，用它阻止胸甲在短时间内再次复活。
-         * 如果虚空珍珠把它清掉，咒魂胸甲的复活冷却就会失效，从而出现无限复活漏洞。
+         * 灾变 Cataclysm 的 cataclysm:ghost_form 和 cataclysm:ghost_sickness 都不能清。
+         * 咒魂胸甲复活后先附加 ghost_form；该效果自然结束时才会附加 ghost_sickness。
+         * ghost_sickness 用于阻止胸甲在短时间内再次复活。
+         * 任意一个被虚空珍珠清掉，都会导致咒魂胸甲复活冷却链路失效，从而出现无限复活漏洞。
          *
          * 这里使用 MobEffect 的注册 ID 做判断，而不是使用显示名称或类名。
          * 这样不受语言文件影响，也不需要在编译期直接依赖灾变的效果类。
          */
-        if (isCataclysmGhostSickness(instance)) {
+        if (isCataclysmCursiumReviveEffect(instance)) {
             return true;
         }
 
@@ -253,7 +260,7 @@ public final class PearlOfTheVoidEvents {
          * 服务器配置白名单用于追加其他模组的关键状态效果。
          *
          * 这和上面的灾变硬编码保护是并列关系：
-         * - cataclysm:ghost_sickness 永远保留，避免配置误删后重新出现无限复活漏洞；
+         * - cataclysm:ghost_form 和 cataclysm:ghost_sickness 永远保留，避免配置误删后重新出现无限复活漏洞；
          * - EffectWhitelist 只负责让整合包作者额外指定“不能被虚空珍珠净化”的效果。
          */
         if (isConfiguredWhitelistedEffect(instance)) {
@@ -262,6 +269,15 @@ public final class PearlOfTheVoidEvents {
 
         // 禁忌之果的永久标记效果不能清，否则禁忌之果逻辑会被破坏。
         if (instance.is(ModEffects.FORBIDDEN_FRUIT)) {
+            return true;
+        }
+
+        /*
+         * 轻蔑之约的凝视压制使用原版缓慢、虚弱、挖掘疲劳。
+         * 这些效果不能全局白名单，否则虚空珍珠会失去清理常见负面效果的能力；
+         * 因此只保留 EldritchAmuletEvents 刚刚标记过的凝视效果。
+         */
+        if (EldritchAmuletEvents.isProtectedGazeEffect(entity, instance)) {
             return true;
         }
 
@@ -277,12 +293,12 @@ public final class PearlOfTheVoidEvents {
     }
 
     /**
-     * 判断效果是否是灾变咒魂胸甲用于防止反复复活的幽灵病。
+     * 判断效果是否属于灾变咒魂胸甲复活链路。
      */
-    private static boolean isCataclysmGhostSickness(MobEffectInstance instance) {
+    private static boolean isCataclysmCursiumReviveEffect(MobEffectInstance instance) {
         ResourceLocation effectId = BuiltInRegistries.MOB_EFFECT.getKey(instance.getEffect().value());
 
-        return CATACLYSM_GHOST_SICKNESS.equals(effectId);
+        return CATACLYSM_GHOST_FORM.equals(effectId) || CATACLYSM_GHOST_SICKNESS.equals(effectId);
     }
 
     /**

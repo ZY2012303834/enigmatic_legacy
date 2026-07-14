@@ -172,7 +172,7 @@ public final class TheArroganceOfChaosEvents {
         List<LivingEntity> targets = player.level().getEntitiesOfClass(
                 LivingEntity.class,
                 area,
-                target -> target != player && target.isAlive()
+                target -> target != player && target.isAlive() && isInsideSphericalRange(player, target, range)
         );
 
         for (LivingEntity target : targets) {
@@ -180,6 +180,17 @@ public final class TheArroganceOfChaosEvents {
             target.invulnerableTime = 0;
             target.hurt(player.damageSources().source(DamageTypes.MAGIC, player), damage);
         }
+    }
+
+    private static boolean isInsideSphericalRange(Player player, LivingEntity target, double range) {
+        Vec3 center = player.getBoundingBox().getCenter();
+
+        /*
+         * AABB#distanceToSqr 计算点到目标碰撞箱的最近距离。
+         * 这样大型实体只要碰撞箱进入球形半径就会被命中，
+         * 小型实体则按它自身碰撞箱位置判断，不再吃到立方体角落里的超范围伤害。
+         */
+        return target.getBoundingBox().distanceToSqr(center) <= range * range;
     }
 
     private static void knockAwayFromImpact(Player player, LivingEntity target) {

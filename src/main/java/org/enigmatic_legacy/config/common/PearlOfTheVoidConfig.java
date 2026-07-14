@@ -60,7 +60,7 @@ public class PearlOfTheVoidConfig {
                 .comment(
                         "虚空珍珠清除佩戴者状态效果时额外保留的效果白名单。",
                         "虚空珍珠会持续清除佩戴者身上的绝大多数状态效果；如果某些模组效果承担冷却、锁定、防止重复触发等关键逻辑，可以把效果注册名加入这里。",
-                        "注意：灾变 Cataclysm 的 cataclysm:ghost_sickness 已在代码中硬编码保留，用于防止咒魂胸甲无限复活，不需要也不建议从这里配置。",
+                        "注意：灾变 Cataclysm 的 cataclysm:ghost_form 和 cataclysm:ghost_sickness 已在代码中硬编码保留，用于保证咒魂胸甲复活冷却链路正常，不需要也不建议从这里配置。",
                         "本配置只用于追加额外白名单，不会覆盖代码内置保护。",
                         "格式：TOML 字符串数组。",
                         "每一项必须是精确效果注册名，格式为 namespace:path，不支持通配符。",

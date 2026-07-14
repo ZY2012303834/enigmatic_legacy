@@ -451,16 +451,16 @@ public class InjectLootTableGenerator implements DataProvider {
          * - 末地城宝藏箱。
          *
          * 当前总出现概率：
-         * - 任意术石：20%
+         * - 任意末影术石：12.5%
          *
          * 具体概率：
-         * - 星云之眼：140 / 1000 = 14%
-         * - 虚空珍珠：60 / 1000 = 6%
-         * - 空结果：800 / 1000 = 80%
+         * - 星云之眼：420 / 4000 = 10.5%
+         * - 虚空珍珠：80 / 4000 = 2%
+         * - 空结果：3500 / 4000 = 87.5%
          *
          * 说明：
-         * - 虚空珍珠概率从 2% 提高到 6%；
-         * - 末影术石总概率仍然保持 20%；
+         * - 虚空珍珠概率改为 2%；
+         * - 星云之眼概率保持 10.5% 不变；
          * - 每个箱子最多只会出现 1 个术石。
          */
         futures.add(saveTable(
@@ -468,9 +468,9 @@ public class InjectLootTableGenerator implements DataProvider {
                 "spellstones/ender",
                 1.0D,
                 1.0D,
-                itemEntry(ModItems.EYE_OF_NEBULA.get(), 105),
-                itemEntry(ModItems.VOID_PEARL.get(), 45),
-                emptyEntry(850)
+                itemEntry(ModItems.EYE_OF_NEBULA.get(), 420),
+                itemEntry(ModItems.VOID_PEARL.get(), 80),
+                emptyEntry(3500)
         ));
     }
 
