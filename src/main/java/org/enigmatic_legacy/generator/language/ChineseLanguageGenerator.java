@@ -754,9 +754,9 @@ public class ChineseLanguageGenerator extends LanguageProvider {
         addItem(ModItems.CHAOS_ELYTRA, "混沌之傲");
         add("tooltip.enigmatic_legacy.chaos_elytra.1", "减少 %s 来自背后的伤害。");
         add("tooltip.enigmatic_legacy.chaos_elytra.2", "滑翔时按住跳跃键可借混沌之力加速。");
-        add("tooltip.enigmatic_legacy.chaos_elytra.3", "垂直冲向地面时，会释放范围伤害。");
-        add("tooltip.enigmatic_legacy.chaos_elytra.4", "俯冲冷却：%s tick。");
-        add("tooltip.enigmatic_legacy.chaos_elytra.5", "深渊强化：+3 护甲，并提高俯冲范围、俯冲伤害与伤害减免。");
+        add("tooltip.enigmatic_legacy.chaos_elytra.3", "落地时会释放范围伤害。");
+        add("tooltip.enigmatic_legacy.chaos_elytra.4", "需要先持续飞行至少 %s 秒。");
+        add("tooltip.enigmatic_legacy.chaos_elytra.5", "深渊强化：+3 护甲，并提高落地范围、落地伤害与伤害减免。");
         add("tooltip.enigmatic_legacy.chaos_elytra.cursed_only", "只有承受七咒之人才能驾驭这份傲慢。");
         // end
 

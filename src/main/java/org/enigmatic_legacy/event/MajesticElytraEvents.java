@@ -53,6 +53,24 @@ public final class MajesticElytraEvents {
             removeExpiredFlightRecord(player);
         }
 
+        /*
+         * 混沌之傲的俯冲落地在原扩展中同时监听普通下落事件和 Caelus 的 flyable fall 事件。
+         * 当前项目没有接入 Caelus，且背饰栏鞘翅的落地路径有时不会产生 LivingFallEvent，
+         * 因此这里在服务端 tick 里补一个兜底：玩家刚结束滑翔并且已经触地时，
+         * 仍然尝试触发一次混沌之傲落地伤害。
+         */
+        Long lastFlightTick = LAST_MAJESTIC_FLIGHT_TICKS.get(player.getUUID());
+        if (!stack.isEmpty()
+                && player.onGround()
+                && lastFlightTick != null
+                && player.level().getGameTime() - lastFlightTick <= FALL_DAMAGE_GRACE_TICKS
+                && TheArroganceOfChaosEvents.tryTriggerDescending(player, stack)) {
+            player.resetFallDistance();
+            BOOSTING_PLAYERS.remove(player.getUUID());
+            LAST_MAJESTIC_FLIGHT_TICKS.remove(player.getUUID(), lastFlightTick);
+            return;
+        }
+
         if (!BOOSTING_PLAYERS.containsKey(player.getUUID())) {
             return;
         }
@@ -105,11 +123,11 @@ public final class MajesticElytraEvents {
          * 如果玩家正在助推并垂直俯冲，优先触发混沌之傲的落地范围伤害；
          * 之后同样取消本次 fall 事件，避免技能触发后又吃到普通摔落伤害。
          */
-        if (BOOSTING_PLAYERS.containsKey(player.getUUID())
-                && TheArroganceOfChaosEvents.tryTriggerDescending(player, stack)) {
+        if (TheArroganceOfChaosEvents.tryTriggerDescending(player, stack)) {
             event.setCanceled(true);
             event.setDistance(0.0F);
             player.resetFallDistance();
+            BOOSTING_PLAYERS.remove(player.getUUID());
             LAST_MAJESTIC_FLIGHT_TICKS.remove(player.getUUID(), lastFlightTick);
             return;
         }

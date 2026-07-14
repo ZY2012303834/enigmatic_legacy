@@ -273,8 +273,8 @@ public final class ConfigCommon {
     // 混沌之傲
     public static final TheArroganceOfChaosConfig THE_ARROGANCE_OF_CHAOS;
     public static final ModConfigSpec.DoubleValue CHAOS_ELYTRA_FLYING_SPEED_MODIFIER;
+    public static final ModConfigSpec.DoubleValue CHAOS_ELYTRA_DESCENDING_MINIMUM_SPEED;
     public static final ModConfigSpec.DoubleValue CHAOS_ELYTRA_DESCENDING_POWER_MODIFIER;
-    public static final ModConfigSpec.IntValue CHAOS_ELYTRA_DESCENDING_COOLDOWN;
     public static final ModConfigSpec.DoubleValue CHAOS_ELYTRA_DAMAGE_RESISTANCE;
 
     static {
@@ -503,8 +503,8 @@ public final class ConfigCommon {
         // 混沌之傲
         THE_ARROGANCE_OF_CHAOS = new TheArroganceOfChaosConfig(builder);
         CHAOS_ELYTRA_FLYING_SPEED_MODIFIER = THE_ARROGANCE_OF_CHAOS.flyingSpeedModifier;
+        CHAOS_ELYTRA_DESCENDING_MINIMUM_SPEED = THE_ARROGANCE_OF_CHAOS.descendingMinimumSpeed;
         CHAOS_ELYTRA_DESCENDING_POWER_MODIFIER = THE_ARROGANCE_OF_CHAOS.descendingPowerModifier;
-        CHAOS_ELYTRA_DESCENDING_COOLDOWN = THE_ARROGANCE_OF_CHAOS.descendingCooldown;
         CHAOS_ELYTRA_DAMAGE_RESISTANCE = THE_ARROGANCE_OF_CHAOS.damageResistance;
 
         SPEC = builder.build();

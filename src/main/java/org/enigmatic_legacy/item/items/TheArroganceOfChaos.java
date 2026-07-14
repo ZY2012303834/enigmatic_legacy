@@ -32,8 +32,8 @@ import java.util.Locale;
  * 它同时是一件胸甲槽鞘翅和 Curios back 背饰：胸甲槽用于兼容原版鞘翅流程，
  * back 槽则复用本项目已经为壮丽鞘翅修好的起飞与持续滑翔 mixin。</p>
  *
- * <p>重要限制：该物品属于七咒限定装备。未佩戴七咒之戒时，即使物品仍停留在胸甲槽或背饰槽，
- * 也不会提供飞行、助推、减伤、俯冲伤害等实际效果。</p>
+ * <p>重要限制：该物品属于深渊之心资格限定装备。玩家必须佩戴七咒之戒，
+ * 且七咒佩戴时间达到总游玩时间 99.5%，才会提供飞行、助推、减伤、俯冲伤害等实际效果。</p>
  */
 public class TheArroganceOfChaos extends ElytraItem implements ICurioItem {
     public TheArroganceOfChaos() {
@@ -87,15 +87,15 @@ public class TheArroganceOfChaos extends ElytraItem implements ICurioItem {
     }
 
     /**
-     * 胸甲槽和背饰槽真正提供飞行前，都必须重新校验七咒资格。
+     * 胸甲槽和背饰槽真正提供飞行前，都必须重新校验深渊之心资格。
      *
      * <p>Curios 登录恢复时可能临时允许物品留在槽位里；这里不依赖“是否还在槽位中”，
-     * 而是以玩家当前是否佩戴七咒之戒作为最终生效条件。</p>
+     * 而是以玩家当前是否佩戴七咒之戒，并且七咒佩戴时间是否达到总游玩时间 99.5% 作为最终生效条件。</p>
      */
     @Override
     public boolean canElytraFly(ItemStack stack, LivingEntity entity) {
         return entity instanceof Player player
-                && CursedRingApi.hasCursedRing(player)
+                && AbyssalHeartHelper.isWorthy(player)
                 && ElytraItem.isFlyEnabled(stack);
     }
 
@@ -128,7 +128,10 @@ public class TheArroganceOfChaos extends ElytraItem implements ICurioItem {
     }
 
     /**
-     * 混沌之傲只能放入 Curios back 背饰槽，并且属于七咒限定装备。
+     * 混沌之傲只能放入 Curios back 背饰槽，并且需要深渊之心资格。
+     *
+     * <p>这里保留 Curios 受限物品的通用检查，再额外要求玩家七咒佩戴时间达到 99.5%。
+     * 这个条件只是使用门槛，不再提供护甲、伤害、范围或减伤倍率强化。</p>
      */
     @Override
     public boolean canEquip(SlotContext context, ItemStack stack) {
@@ -136,7 +139,9 @@ public class TheArroganceOfChaos extends ElytraItem implements ICurioItem {
             return false;
         }
 
-        return CursedRingApi.canEquipRestrictedCurio(context, stack);
+        return context.entity() instanceof Player player
+                && AbyssalHeartHelper.isWorthy(player)
+                && CursedRingApi.canEquipRestrictedCurio(context, stack);
     }
 
     @Override
@@ -155,7 +160,7 @@ public class TheArroganceOfChaos extends ElytraItem implements ICurioItem {
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.chaos_elytra.3"));
         tooltip.add(SpellstoneTooltip.text(
                 "tooltip.enigmatic_legacy.chaos_elytra.4",
-                SpellstoneTooltip.number(Integer.toString(ConfigCommon.CHAOS_ELYTRA_DESCENDING_COOLDOWN.get()))
+                SpellstoneTooltip.number("1")
         ));
         tooltip.add(SpellstoneTooltip.empty());
         tooltip.add(SpellstoneTooltip.text("tooltip.enigmatic_legacy.chaos_elytra.5"));
@@ -168,22 +173,25 @@ public class TheArroganceOfChaos extends ElytraItem implements ICurioItem {
 
     public static boolean canUse(Player player) {
         return player != null
-                && CursedRingApi.hasCursedRing(player)
-                && !MajesticElytraHelper.getEquippedChaosElytraStack(player).isEmpty();
+                && AbyssalHeartHelper.isWorthy(player)
+                /*
+                 * 多个 Curios back 槽或数据包扩展槽位可能同时放入多件鞘翅。
+                 * 混沌之傲的减伤和落地伤害必须绑定到当前真正提供飞行的那一件，
+                 * 否则会出现其它鞘翅消耗耐久时，背包里另一件混沌之傲仍然触发效果的问题。
+                 */
+                && MajesticElytraHelper.getEquippedStack(player).is(ModItems.CHAOS_ELYTRA.get());
     }
 
-    public static boolean hasAbyssBoost(Player player) {
-        return AbyssalHeartHelper.isWorthy(player);
-    }
-
-    public static double getDamageResistance(Player player) {
+    public static double getDamageResistance() {
         double resistance = ConfigCommon.CHAOS_ELYTRA_DAMAGE_RESISTANCE.get() / 100.0D;
 
-        if (hasAbyssBoost(player)) {
-            resistance *= 1.25D;
-        }
-
-        return Math.min(1.0D, Math.max(0.0D, resistance));
+        /*
+         * 不能让最终减伤达到 100%。
+         * 如果整合包把配置改到 100%，背后伤害、摔落伤害和撞墙伤害会被完全清零；
+         * 玩家反馈会变成“佩戴混沌之傲后不会受到伤害”。
+         * 这里保留一个 5% 的最低受伤比例，既保留高额防御定位，也避免完全免疫。
+         */
+        return Math.min(0.95D, Math.max(0.0D, resistance));
     }
 
     private static boolean isAllowedElytraEnchantment(Holder<Enchantment> enchantment) {
